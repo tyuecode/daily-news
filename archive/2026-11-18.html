@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>2026-11-18 · 每日国际大事 · 中文播报</title>
+<meta name="description" content="每天更新的中文新闻播报站：国内外热点、多家媒体的不同观点，在中国大陆无需翻墙即可打开。">
+<meta name="theme-color" content="#c62828">
+<style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --ink:#1a1d21; --muted:#6b7280;
+  --line:#e5e7eb; --accent:#c62828; --accent-soft:#fdeaea; --radius:16px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;padding:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",
+    "Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:17px;line-height:1.65;
+}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px 64px}
+header.top{padding:20px 0 12px;border-bottom:1px solid var(--line);margin-bottom:18px}
+header.top h1{margin:0;font-size:23px;letter-spacing:.5px}
+header.top .date{color:var(--muted);font-size:15px;margin-top:4px}
+.brand-note{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.5}
+
+/* 播报区 */
+.broadcast{background:var(--card);border-radius:var(--radius);padding:16px;
+  margin-bottom:22px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.broadcast h2{margin:0 0 12px;font-size:18px;display:flex;align-items:center;gap:8px}
+.broadcast h2::before{content:"";width:4px;height:18px;background:var(--accent);
+  border-radius:2px;display:inline-block}
+audio{width:100%;height:44px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:48px;padding:0 20px;border:0;border-radius:12px;background:var(--accent);
+  color:#fff;font-size:17px;font-weight:600;cursor:pointer;width:100%}
+.btn:active{opacity:.85}
+details.script{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+details.script summary{cursor:pointer;color:var(--muted);font-size:15px;
+  list-style:none;padding:6px 0}
+details.script summary::-webkit-details-marker{display:none}
+details.script summary::after{content:" ▾";font-size:12px}
+details.script[open] summary::after{content:" ▴"}
+.script-body{white-space:pre-wrap;font-size:16px;color:#333;margin-top:8px;
+  background:var(--bg);border-radius:10px;padding:12px}
+
+/* 版块 */
+section.block{margin-bottom:30px}
+section.block > h2{font-size:20px;margin:0 0 14px;padding-left:10px;
+  border-left:5px solid var(--accent);line-height:1.3}
+.empty-note{background:var(--accent-soft);color:#7a2222;border-radius:12px;
+  padding:14px;font-size:15px;line-height:1.6}
+
+/* 卡片 */
+article.card{background:var(--card);border-radius:var(--radius);overflow:hidden;
+  margin-bottom:16px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.card-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#e9eaee}
+.card-body{padding:14px 16px 16px}
+.card-body h3{margin:0 0 8px;font-size:19px;line-height:1.45;font-weight:700}
+.card-body .imp{margin:0 0 10px;color:var(--muted);font-size:15px}
+.card-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:4px}
+.chip{background:var(--accent-soft);color:var(--accent);border-radius:999px;
+  padding:3px 11px;font-size:13px;font-weight:600}
+.toggle{width:100%;min-height:46px;margin-top:8px;border:1px solid var(--line);
+  background:#fff;border-radius:12px;color:var(--ink);font-size:16px;cursor:pointer;
+  font-family:inherit}
+.toggle:active{background:var(--bg)}
+
+/* 多观点展开区 */
+.cluster{margin-top:8px;border-top:1px dashed var(--line);padding-top:12px}
+.cluster-note{background:#fff8e1;color:#7a5c00;border-radius:10px;padding:10px 12px;
+  font-size:14px;line-height:1.55;margin:0 0 12px}
+.media{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}
+.media.primary{border-color:#ffd0d0;background:#fffafa}
+.media .src{font-size:13px;color:var(--muted);margin-bottom:6px;display:flex;
+  gap:8px;align-items:center;flex-wrap:wrap}
+.media .src .tag{background:var(--accent);color:#fff;border-radius:6px;
+  padding:1px 8px;font-size:12px}
+.media h4{margin:0 0 8px;font-size:17px;line-height:1.5}
+.media h4 a{color:var(--ink)}
+.media .en-title{font-size:14px;color:var(--muted);margin:0 0 8px;line-height:1.5}
+.media .sum{font-size:15px;color:#333;margin:0 0 8px;line-height:1.65}
+.media .sum-en{font-size:13px;color:var(--muted);border-left:3px solid var(--line);
+  padding-left:10px;margin:8px 0 0;line-height:1.55}
+.media .thumb{width:100%;border-radius:10px;margin-bottom:8px;display:block;
+  aspect-ratio:16/9;object-fit:cover;background:#e9eaee}
+.media .go{display:inline-block;min-height:44px;line-height:44px;padding:0 16px;
+  border-radius:10px;background:var(--bg);font-size:15px;font-weight:600}
+
+/* 近7天 */
+section.recent{background:var(--card);border-radius:var(--radius);padding:16px;
+  margin-bottom:26px}
+section.recent h2{margin:0 0 10px;font-size:18px}
+.recent-item{border-bottom:1px solid var(--line);padding:10px 0}
+.recent-item:last-child{border-bottom:0;padding-bottom:0}
+.recent-item .d{font-size:14px;color:var(--muted)}
+.recent-item .t{font-size:15px;color:#333;line-height:1.55;margin-top:2px}
+
+/* 原始新闻 */
+details.raw{background:var(--card);border-radius:var(--radius);padding:16px;
+  margin-bottom:20px}
+details.raw summary{cursor:pointer;font-size:17px;font-weight:600;list-style:none}
+details.raw summary::-webkit-details-marker{display:none}
+details.raw summary::after{content:" ▾";font-size:13px;color:var(--muted)}
+details.raw[open] summary::after{content:" ▴"}
+.raw-item{padding:11px 0;border-bottom:1px solid var(--line)}
+.raw-item:last-child{border-bottom:0}
+.raw-item .zh{font-size:15px;line-height:1.6}
+.raw-item .en{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.5}
+.raw-item .meta{font-size:12px;color:var(--muted);margin-top:3px}
+footer{border-top:1px solid var(--line);padding:22px 0 10px;color:var(--muted);
+  font-size:13px;line-height:1.8;text-align:center}
+footer a{color:var(--muted);text-decoration:underline}
+@media (min-width:600px){
+  body{font-size:18px}
+  .wrap{padding:0 20px 72px}
+  .card-img{aspect-ratio:2/1}
+  .btn{width:auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<h1><a href="../index.html" style="color:inherit">每日国际大事</a></h1>
+<div class="date">2026-11-18</div>
+<div class="brand-note">国内热点与国际热点并排呈现，同一事件并列多家媒体的报道与观点，点开卡片可见各家原文。</div>
+</header>
+<div class="broadcast"><h2>今日播报</h2><p style="color:#6b7280;font-size:15px;margin:0">音频仅当日有效，历史归档只保留文字播报稿。</p><details class="script"><summary>展开播报稿全文</summary><div class="script-body" id="broadcast-text-archive">各位好，今天是2026年11月18日，欢迎收听今日国际大事。
+
+首先来看经贸方面的消息。中加双方已经达成一致，同意将初步联合安排的豁免措施延长两年，这对于中加经贸关系的稳定发展具有重要意义。与此同时，中方公使也表达了关切，指出荷兰在芯片设备出口方面的限制措施，正在威胁中欧经贸谈判，并可能影响到中欧之间的经贸合作。
+
+在国际冲突方面，俄乌局势再次出现升级。乌克兰利用无人机和导弹袭击了克里米亚境内的重要桥梁，导致克里米亚大桥的路面拱门坠入海中。尽管俄罗斯方面表示每天都击落了大量的乌克兰无人机，但仍有部分无人机命中了关键目标，战场局势依然严峻。
+
+此外，在外交与社会治理领域，英国因为以色列在约旦河西岸的定居点问题，宣布对相关公司实施制裁，这使得双方的外交关系趋于紧张。而在韩国，随着高考临近，当地升级了防作弊措施，李在明也对此发声，强调作弊是严重的犯罪行为。在英国，伯纳姆任命了米尔伯恩负责领导相关部门，旨在通过实施年轻人就业福利方案来改善民生。在塞尔维亚，获得学生支持的议员在选举获胜后正式就职议会，当地政坛迎来了更迭。
+
+最后关注航天领域，日本的隼鸟二号小行星探测器因为发动机出现故障，不得不变更探测目标，这使得日本的航天任务受到了阻碍。
+
+以上就是今天的要闻，明天同一时间再见。</div></details></div>
+<p class="empty-note" style="margin-bottom:20px">这是 2026-11-18 的归档页，音频仅当日有效。</p>
+<section class="block"><h2>国内热点</h2><article class="card"><div class="card-body"><h3>中加同意将初步联合安排的豁免措施延长两年</h3><p class="imp">涉及中加经贸关系</p><div class="card-meta"><span class="chip">2 家媒体报道</span></div><button class="toggle" type="button" data-target="cluster-c1" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c1" hidden><p class="cluster-note">以下报道来自 2 家媒体，观点可能不同，请自行判断。</p><div class="media primary"><div class="src"><span class="tag">头条</span><span>联合早报</span></div><h4><a href="https://www.zaobao.com/news/china/story20261117-10014672" target="_blank" rel="noopener noreferrer">中国商务部：中加同意将初步联合安排的豁免措施延长两年</a></h4><p class="sum">亚太经济合作组织（APEC）峰会经举行前夕，中国国家主席习近平在深圳与加拿大总理卡尼星期二（11月17日）举行双边会晤。中国商务部同晚在声明中说，双方同意将初步联合安排的豁免措施延长两年。
+中国商务部发言人星期二在官网就中加经贸磋商成果答记者问时说，在中加两国领导人重要共识的引领下，双方本着相互尊重、合作共赢的精神，在初步联合安排基础上开展多轮经贸磋商，就双方关注的经贸问题形成补充联合安排。
+发言人指出，双方同意将初步联合安排的相关豁免措施延长两年。加方还将进一步扩大对中国钢铝产品的豁免范围。相应地，中方将依法规进一步调整对加方部分农水产品采取的反歧视措施。
+发言人说，双方也就电子商务合作、中资银行在加设立分支机构、优化营商环境等经贸问题形成积极共识。这将有利于双方深化经贸合作，并为两国民众带来更大福祉。
+发言人称，双方将加紧履行各自国内程序，推动有关成果尽早落地见效，并将持续探讨进一步深化经贸合作的相关安排。双方同时将充分用好中加经贸联委会机制，继续拓展合作、解决问题、管控分歧，推动中加经贸关系健康、稳定、可持续发展。
+中国商务部部长王文涛与加拿大国际贸易部长西杜11月3日在北京共同主持召开第29届中加经贸联委会，就中加经贸关系、传统和新兴领域合作以及彼此经贸关切等进行“坦诚、深入交流”。这是中加经贸联委会首次部长级会议。
+加拿大政府11月4日在会后发布的新闻稿中宣布，中加同意延</p><a class="go" href="https://www.zaobao.com/news/china/story20261117-10014672" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div><div class="media"><div class="src"><span>中新网</span></div><h4><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733707.shtml" target="_blank" rel="noopener noreferrer">中加同意将初步联合安排的相关豁免措施延长2年</a></h4><a class="go" href="https://www.chinanews.com.cn/gn/2026/11-17/10733707.shtml" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>韩国高考防作弊措施升级，李在明称作弊是严重犯罪</h3><p class="imp">关注韩国社会民生</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c2" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c2" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>中新网</span></div><h4><a href="https://www.chinanews.com.cn/gj/2026/11-18/10733799.shtml" target="_blank" rel="noopener noreferrer">韩国高考防作弊“升级” 李在明称作弊行为是严重犯罪</a></h4><p class="sum">中新社 首尔11月17日电 (记者 金旭)针对韩国社会近期对利用人工智能(AI)技术实施考试作弊的担忧，韩国总统李在明当地时间17日表示，作弊行为严重破坏公平竞争的根基，损害社会长期积累的信任，是一种严重犯罪。
+韩国大学修学能力考试(即高考)将于19日举行。李在明强调，对于作弊者必须坚持零容忍原则，依法严肃处理。他要求有关政府部门再次检查是否存在疏漏，并及时完善。
+据韩联社报道，韩国政府17日出台各项防作弊追加措施。韩国国务总理韩圣淑表示，韩国政府将加强考场检查和监考力度，从源头上杜绝考生利用高科技电子设备作弊。同时，推动把作弊考生的禁考期限由1年延长至10年。对于情节严重者，政府不再仅以考试成绩无效和限制报考资格作为处罚，将依法追究其刑事责任。
+根据新措施，所有考生必须在第一科目考试开始前关闭手机等电子设备并统一上交。书包也将统一存放在走廊指定区域。韩国政府将在考试前发送无法拒收的紧急灾难警报短信，以排查未按规定上交手机的学生。
+此外，佩戴眼镜的考生须在考试前将眼镜放在桌面上，由监考人员逐一检查。为防止利用微型摄像头作弊，监考人员还将在考生衣服的每颗纽扣上粘贴贴纸，并要求考生卷起袖口，检查衣领、纽扣等部位。第三科目考试开始前，考场将结合考生身份核验，再次对其携带的所有物品进行全面检查。
+韩联社报道称，韩国政府已在全国1312个考点安排约7.5万名监考人员，并计划增派1800余名智</p><a class="go" href="https://www.chinanews.com.cn/gj/2026/11-18/10733799.shtml" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>日本“隼鸟2”号小行星探测器因发动机故障变更探测目标</h3><p class="imp">日本航天任务受阻</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c3" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c3" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>中新网</span></div><a class="go" href="https://www.chinanews.com.cn/gj/2026/11-17/10733796.shtml" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://cassette.sphdigital.com.sg/image/zaobao/e220fb0cef6e734b614260f47bb2c558d1afc87b87d91924e4ab84624d1c2844" alt="中国公使称荷兰芯片设备对华出口限制威胁中欧经贸谈判" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>中国公使称荷兰芯片设备对华出口限制威胁中欧经贸谈判</h3><p class="imp">影响中欧经贸合作</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c6" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c6" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>联合早报</span></div><img class="" src="https://cassette.sphdigital.com.sg/image/zaobao/e220fb0cef6e734b614260f47bb2c558d1afc87b87d91924e4ab84624d1c2844" alt="中国公使：荷兰晶片设备对华长期出口限制将威胁中欧经贸谈判" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.zaobao.com/news/china/story20261117-10014994" target="_blank" rel="noopener noreferrer">中国公使：荷兰晶片设备对华长期出口限制将威胁中欧经贸谈判</a></h4><a class="go" href="https://www.zaobao.com/news/china/story20261117-10014994" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://s.rfi.fr/media/display/fe16fd1c-e296-11f1-8ef9-1ba7ddfab527/w:1024/p:16x9/2026-11-17T144605Z-1280893353-RC2QPOA5M1CR-RTRMADP-3-UKRAINE-CRISIS-ATTACK-CRIMEA-SBU-1.jpg" alt="乌克兰再次袭击克里米亚大桥导致路面拱门坠海" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>乌克兰再次袭击克里米亚大桥导致路面拱门坠海</h3><p class="imp">俄乌冲突持续升级</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c7" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c7" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>法广RFI</span></div><img class="" src="https://s.rfi.fr/media/display/fe16fd1c-e296-11f1-8ef9-1ba7ddfab527/w:1024/p:16x9/2026-11-17T144605Z-1280893353-RC2QPOA5M1CR-RTRMADP-3-UKRAINE-CRISIS-ATTACK-CRIMEA-SBU-1.jpg" alt="乌再袭克里米亚大桥 路面拱门坠海 泽连斯基：战争总将回到初始地" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261117-%E4%B9%8C%E5%86%8D%E8%A2%AD%E5%85%8B%E9%87%8C%E7%B1%B3%E4%BA%9A%E5%A4%A7%E6%A1%A5-%E8%B7%AF%E9%9D%A2%E6%8B%B1%E9%97%A8%E5%9D%A0%E6%B5%B7-%E6%B3%BD%E8%BF%9E%E6%96%AF%E5%9F%BA-%E6%88%98%E4%BA%89%E6%80%BB%E5%B0%86%E5%9B%9E%E5%88%B0%E5%88%9D%E5%A7%8B%E5%9C%B0" target="_blank" rel="noopener noreferrer">乌再袭克里米亚大桥 路面拱门坠海 泽连斯基：战争总将回到初始地</a></h4><p class="sum">周二，乌克兰的无人机和导弹摧毁了连接俄罗斯与克里米亚半岛的大桥的中央公路路段。这是克里米亚大桥连续第二天遭袭。在俄总统普京即将与中美两国领导人会晤的前两天，这一事件对他造成了象征意义上的打击。
+发表时间： 17/11/2026 - 16:02 更改时间： 17/11/2026 - 16:11
+乌克兰总统泽连斯基（Volodymyr Zelenskyy）在社交平台X上发布了相关视频和图片，显示该大桥的公路路面拱门已坍塌入海，留下一道巨大缺口。这座全长19公里的大桥是普京于2018年启用的旗舰项目，也是俄罗斯对克里米亚半岛——即俄方于2014年从乌克兰手中夺取并吞并的领土——所控制的象征。
+泽连斯基周二在帖文中写道：“我们曾多次向俄罗斯提出旨在缓和局势的举措，但每一项提议都遭到了断然拒绝。俄罗斯每天都在袭击我们的基础设施，包括扎波罗热、第聂伯罗、基辅以及敖德萨地区境内的桥梁”。
+泽连斯基补充说，“我们正在修复这些基础设施，但同时也要提醒俄罗斯：战争总将回到它初始的地方。乌克兰拥有强大的防御能力，且这种能力将持续保持；对于针对我们城市和人民的恐怖行径，我们绝不会不予回应”。
+泽连斯基称，此次打击是在一场史无前例的行动之后进行的；该行动有条不紊地摧毁了俄罗斯的防空系统、雷达系统以及电子战能力。
+由俄方扶持的克里米亚行政长官阿克肖诺夫（Sergei Aksyonov）表示，事件造成两人死亡，</p><a class="go" href="https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261117-%E4%B9%8C%E5%86%8D%E8%A2%AD%E5%85%8B%E9%87%8C%E7%B1%B3%E4%BA%9A%E5%A4%A7%E6%A1%A5-%E8%B7%AF%E9%9D%A2%E6%8B%B1%E9%97%A8%E5%9D%A0%E6%B5%B7-%E6%B3%BD%E8%BF%9E%E6%96%AF%E5%9F%BA-%E6%88%98%E4%BA%89%E6%80%BB%E5%B0%86%E5%9B%9E%E5%88%B0%E5%88%9D%E5%A7%8B%E5%9C%B0" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://s.rfi.fr/media/display/efed35f6-e225-11f1-a2bb-f71d22e7fea9/w:1024/p:16x9/2026-11-15T113515Z-1912996520-RC2138A1MUYS-RTRMADP-3-NVIDIA-CEO.jpg" alt="美国两部门声明对Megaspeed展开调查，印尼警方搜查当地分支" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>美国两部门声明对Megaspeed展开调查，印尼警方搜查当地分支</h3><p class="imp">跨国企业面临调查</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c17" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c17" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>法广RFI</span></div><img class="" src="https://s.rfi.fr/media/display/efed35f6-e225-11f1-a2bb-f71d22e7fea9/w:1024/p:16x9/2026-11-15T113515Z-1912996520-RC2138A1MUYS-RTRMADP-3-NVIDIA-CEO.jpg" alt="美国两部门声明指对Megaspeed调查于2024年启动 印尼警方搜查当地分支" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261117-%E7%BE%8E%E5%9B%BD%E4%B8%A4%E9%83%A8%E9%97%A8%E5%A3%B0%E6%98%8E%E6%8C%87%E5%AF%B9megaspeed%E8%B0%83%E6%9F%A5%E4%BA%8E2024%E5%B9%B4%E5%90%AF%E5%8A%A8-%E5%8D%B0%E5%B0%BC%E8%AD%A6%E6%96%B9%E6%90%9C%E6%9F%A5%E5%BD%93%E5%9C%B0%E5%88%86%E6%94%AF" target="_blank" rel="noopener noreferrer">美国两部门声明指对Megaspeed调查于2024年启动 印尼警方搜查当地分支</a></h4><a class="go" href="https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261117-%E7%BE%8E%E5%9B%BD%E4%B8%A4%E9%83%A8%E9%97%A8%E5%A3%B0%E6%98%8E%E6%8C%87%E5%AF%B9megaspeed%E8%B0%83%E6%9F%A5%E4%BA%8E2024%E5%B9%B4%E5%90%AF%E5%8A%A8-%E5%8D%B0%E5%B0%BC%E8%AD%A6%E6%96%B9%E6%90%9C%E6%9F%A5%E5%BD%93%E5%9C%B0%E5%88%86%E6%94%AF" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://static01.nyt.com/images/2026/11/16/multimedia/16dc-bessent-01-tfpz/16dc-bessent-01-tfpz-videoLarge.jpg" alt="白宫内部对华政策分歧公开化，贝森特日趋鹰派" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>白宫内部对华政策分歧公开化，贝森特日趋鹰派</h3><p class="imp">美对华政策存在变数</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c141" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c141" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>纽约时报中文网</span></div><img class="" src="https://static01.nyt.com/images/2026/11/16/multimedia/16dc-bessent-01-tfpz/16dc-bessent-01-tfpz-videoLarge.jpg" alt="白宫内部对华政策分歧公开化，贝森特日趋鹰派" referrerpolicy="no-referrer" onerror="this.style.display='none'"><a class="go" href="https://cn.nytimes.com/usa/20261117/bessent-lutnick-china/" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article></section>
+<section class="block"><h2>国际热点</h2><article class="card"><img class="card-img" src="https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/222d/live/db8315b0-e278-11f1-99a1-253766e7ad8b.png" alt="乌克兰利用无人机和导弹袭击克里米亚境内俄罗斯重要桥梁" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>乌克兰利用无人机和导弹袭击克里米亚境内俄罗斯重要桥梁</h3><p class="imp">影响俄乌战局</p><div class="card-meta"><span class="chip">2 家媒体报道</span></div><button class="toggle" type="button" data-target="cluster-i1" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i1" hidden><p class="cluster-note">以下报道来自 2 家媒体，观点可能不同，请自行判断。</p><div class="media primary"><div class="src"><span class="tag">头条</span><span>BBC</span></div><img class="" src="https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/222d/live/db8315b0-e278-11f1-99a1-253766e7ad8b.png" alt="普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“前所未有”的袭击" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.bbc.co.uk/news/articles/cw772jk4rvmxo" target="_blank" rel="noopener noreferrer">普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“前所未有”的袭击</a></h4><p class="en-title" lang="en">Putin&#x27;s Crimea bridge partly collapses as Zelensky hails &#x27;unprecedented&#x27; attack by Ukraine</p><p class="sum">普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“史无前例”的袭击
+
+视频显示乌克兰导弹正接近克里米亚大桥
+
+乌克兰严重损毁了一座连接俄罗斯与被占领克里米亚的关键桥梁，总统泽连斯基称这是一场筹备数周的“史无前例的行动”。
+
+乌克兰官员分享的图像显示，克里米亚大桥的一部分已坍塌落入水中，这给莫斯科的战争行动带来了物流与象征意义上的双重打击。
+
+克里姆林宫表示，将把这座桥梁重建得“比以前更好”，并称俄罗斯总统弗拉基米尔·普京已听取了关于此次夜间袭击的情况汇报。
+
+在其他地方，基辅市长维塔利·克里奇科表示，在俄罗斯于夜间袭击乌克兰首都后，横跨第聂伯河的关键通道——北桥（Pivnichnyi）和南桥（Pivdennyi）均已关闭。
+
+克里奇科表示，南桥已于周二部分重新开放。
+
+普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“史无前例”的袭击
+
+长期以来，乌克兰一直将克里米亚大桥作为袭击目标，该桥为前往前线的俄罗斯士兵提供了公路和铁路通道，但乌方一直难以将其彻底切断。
+
+尽管基辅一直试图通过袭击炼油厂和油库来增加俄罗斯发动战争的经济成本，但袭击这座大桥则是为了增加俄罗斯总统弗拉基米尔·普京的政治成本。
+
+此次袭击的时机正值关键时刻，赶在普京会见中国和美国领导人之前。这可能会令他重回聚光灯下的时刻蒙上阴影。
+
+克里米亚大桥是由俄罗斯在2014年入侵并非法吞并乌克兰南部半岛后建造的。
+
+这座耗资36亿美元（27亿英镑）的基础设施被俄罗斯和乌克兰广泛视为普京的个人心头好：它由他的亲密财阀好友阿卡迪·罗滕贝格建造，随后普京在2018年5月亲自驾车驶过大桥并为其举行了启用仪式。
+
+普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“史无前例”的袭击
+
+在乌克兰，这座备受仇恨的大桥被视为俄罗斯持续占领乌克兰土地的主要象征之一。
+
+2018年5月，普京（中）亲自驾驶一辆卡车驶过大桥，为克里米亚大桥举行了开通仪式。
+
+在涉及巡航导弹和无人机的夜间袭击后，造成的破坏似乎比此前对该桥的袭击更为严重，大桥的一个大型拱形部分显然已被摧毁。
+
+视频画面显示，路段遭受了关键性破坏，可以看到支撑拱和路面的残骸从下方的水中伸出。
+
+泽连斯基表示，这次打击是军方和安全部门开展的一项七阶段行动的结果，在此过程中，乌克兰军队“在通往最终目标的途中，逐步摧毁了防空系统、雷达、电子战设备以及其他指定目标”。
+
+普京的克里米亚大桥部分坍塌，泽连斯基赞扬乌克兰发动了“史无前例”的袭击
+
+他表示，在这一“关键阶段”，乌克兰在夜间发射了多种类型的无人机，以及该国的“火烈鸟”和“海王星”巡航导弹。
+
+乌克兰总统还表示，与大桥公路平行的铁路部分也遭到了无人机浪潮的袭击，尽管图像显示其支撑拱桥仍然屹立，俄罗斯交通部随后也表示部分铁路服务已恢复。
+
+乌克兰国家安全局（SBU）表示，其行动在过去一个月中“系统性地压制了敌方的防空系统”，并称这表明“没有任何俄罗斯防御系统能够保证被侵略者占领的非法设施的安全”。
+
+与此同时，乌克兰军方表示，大桥上的车行道已“停止使用”，车辆无法通行，铁路部分虽然仍然屹立，但拱桥已受损。
+
+普京的克里米亚大桥部分坍塌，泽连斯基称乌克兰发动了“史无前例”的袭击
+
+克里姆林宫发言人德米特里·佩斯科夫表示，大桥将在“遭受乌克兰袭击后得到修复，而且会比以前更好”，并并不排除此次袭击可能与普京访问中国有关。
+
+俄罗斯调查委员会确认了大桥的结构性损坏，并表示在遭到“乌克兰武装部队”袭击后，已“以恐怖主义指控展开刑事调查”。
+
+据国防部称，俄罗斯连续第二天记录到战争爆发以来规模最大的乌克兰无人机袭击，共有2,256架无人机被击落。
+
+泽连斯基此前曾发出警告，称在周四普京、唐纳德·特朗普与习近平于中国深圳举行会晤前的几天内，可能会发生大规模袭击。
+
+视频：BBC报道基辅大桥遭到俄罗斯袭击
+
+周二午夜前夕，基辅传出巨大的爆炸声，克利奇科随后不久表示，该市的“关键基础设施系统遭受了损坏”，并且
+
+普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“史无前例”的袭击
+
+供暖和供水中断。
+
+周二上午，泽连斯基表示，四枚弹道导弹袭击了南桥，另有三枚导弹袭击了北桥。
+
+当地官员表示，在要求平民前往民防避难所后，基辅的部分地面地铁服务也在夜间的袭击中受损。
+
+共有八座主要桥梁横跨第聂伯河，连接着基辅的东部和西部，估计有300万居民依赖这些桥梁在城市中穿行。
+
+对繁忙的北桥和南桥的袭击将给人们的日常生活带来重大干扰。
+
+据当地官员称，在其他地方，俄罗斯的导弹袭击造成了中部的切尔卡瑟州三人受伤。
+
+虽然对俄罗斯军队造成严重交通和物流危机的风险已经增加，但袭击克里米亚大桥的长期影响目前尚不完全明确。
+
+普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“史无前例”的袭击
+
+拱形部分的坍塌切断了克里米亚半岛与俄罗斯之间的直接公路和铁路联系——至少在渡口修复之前是这样。
+
+然而，目前仍有一条贯穿乌克兰南部被占领的扎波罗热州和赫尔松州的陆路走廊——尽管基辅一直在系统性地打击克里米亚北部的运输路线，以及琼加尔地区周边的桥梁和其他渡口。
+
+这已经导致了燃料和其他物资（包括军事货物）的运送出现问题。
+
+在连接黑海与亚速海的刻赤海峡设有轮渡渡口。它可以在一定程度上弥补大桥损毁带来的损失，但其运力非常有限，且同样容易受到攻击。
+
+俄罗斯也可以通过海路向克里米亚提供补给，但这条路线也充满风险，因为乌克兰的海军和空中无人机在该地区开展着广泛的行动。
+
+此外，克里米亚大桥的碎片——尤其是其巨大的拱形结构——可能已经阻塞了航道。
+
+这将使得大型船只更难通过，并为包括马里乌波尔和别尔江斯克在内的亚速海俄罗斯占领港口带来进一步的问题。
+
+俄罗斯在2022年2月发起了对乌克兰的全规模入侵。目前，约五分之一的乌克兰领土处于俄罗斯占领之下，而基辅拒绝了普京要求其放弃仍由其控制的乌克兰东部顿巴斯地区的诉求。
+
+对普京珍视的克里米亚大桥袭击是如何展开的
+
+地标性克里米亚大桥遭袭，俄罗斯报告称遭遇了战争中规模最大的乌克兰无人机袭击</p><p class="sum-en" lang="en">Ukraine says the missile and drone attack on the strategic bridge in the Russian-annexed Crimea took weeks to plan.</p><a class="go" href="https://www.bbc.co.uk/news/articles/cw772jk4rvmxo" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div><div class="media"><div class="src"><span>Al Jazeera</span></div><h4><a href="https://www.aljazeera.com/video/newsfeed/2026/11/17/unprecedented-ukraine-attack-on-crimean-bridge?traffic_source=rss" target="_blank" rel="noopener noreferrer">乌克兰对克里米亚大桥发起“前所未有”的袭击</a></h4><p class="en-title" lang="en">‘Unprecedented’ Ukraine attack on Crimean bridge</p><p class="sum-en" lang="en">Ukraine has struck the Kerch Bridge linking Russia to Russian-annexed Crimea for a second day.</p><a class="go" href="https://www.aljazeera.com/video/newsfeed/2026/11/17/unprecedented-ukraine-attack-on-crimean-bridge?traffic_source=rss" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/b109/live/1b3b72b0-e283-11f1-b166-176de21e2352.jpg" alt="英国因以色列约旦河西岸定居点问题制裁相关公司" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>英国因以色列约旦河西岸定居点问题制裁相关公司</h3><p class="imp">外交关系趋于紧张</p><div class="card-meta"><span class="chip">2 家媒体报道</span></div><button class="toggle" type="button" data-target="cluster-i3" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i3" hidden><p class="cluster-note">以下报道来自 3 家媒体，观点可能不同，请自行判断。</p><div class="media primary"><div class="src"><span class="tag">头条</span><span>BBC</span></div><img class="" src="https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/b109/live/1b3b72b0-e283-11f1-b166-176de21e2352.jpg" alt="英国因以色列约旦河西岸定居点问题制裁相关公司" referrerpolicy="no-referrer" onerror="this.style.display='none'"><p class="en-title" lang="en">UK sanctions firms over Israeli West Bank settlements</p><p class="sum">英国因以色列约旦河西岸定居点问题制裁相关公司
+
+耶路撒冷以东的 E1 地区是被占领约旦河西岸具有战略意义的重要部分
+
+英国对一些公司实施了制裁，称这些公司参与了在被占领约旦河西岸建设定居点的活动。这是政府宣布对以色列在该地区的行动采取更强硬立场后推出的首批措施。
+
+政府表示，对八家建筑和房地产开发公司的制裁将扰乱其资金流，并削弱其支持在约旦河西岸进行建设的能力。
+
+根据国际法，建设定居点属于非法行为，而近年来此类建设活动急剧增加。
+
+定居者对巴勒斯坦人及其财产的袭击也出现了激增。
+
+以色列尚未对这一公告做出回应，但此前曾谴责过与约旦河西岸定居点相关的英国制裁措施，指责工党政府“在系统性地采取针对以色列国的行动”。
+
+英国因以色列约旦河西岸定居点问题制裁相关企业
+
+然而，巴勒斯坦外交部对英国此举表示欢迎。
+
+此举发生在该地区建筑招标截止日期的两天前，该招标涉及耶路撒冷以东高度敏感的E1地区。
+
+这些计划已遭到国际社会的谴责，其效果实际上将把约旦河西岸一分为二，并将其与东耶路撒冷隔离开来。
+
+英国外交大臣埃德·米利班德表示，E1开发计划将通过“切断巴勒斯坦的心脏”使“两国方案”变得“不可行”。
+
+制裁对象还包括Tzav 9，这是一个以色列活动家运动，英国政府称该组织组织并实施了封锁，以阻止援助进入加沙。
+
+此前，英国在上个月扩大了其人权制裁机制，使政府能够制裁在世界任何地方参与违反国际人道主义法行为的个人和公司。
+
+英国因以色列约旦河西岸定居点问题制裁相关公司
+
+政府还在制定单独的立法，以禁止从以色列定居点进口商品，并禁止在英国为定居点房产提供广告服务。
+
+米利班德表示：“保护‘两国方案’是本届政府方针的北极星。”
+
+“这就是为什么我对E1地区的立场如此明确：不要投标，不要建设，不要从破坏‘两国方案’的行为中获利。”
+
+“约旦河西岸和加沙地带的现状是不可接受的。”
+
+“我们致力于与新的以色列政府及巴勒斯坦权力机构开展富有成效的合作，以推进以色列人和巴勒斯坦人共同享有持久的和平与安全。”
+
+今年9月，英国政府宣布将禁止从以色列定居点进口商品，并将对为定居点扩张提供服务的公司和个人采取行动。
+
+英国因以色列约旦河西岸定居点问题制裁相关公司
+
+当时，米利班表示，此举标志着处理巴以冲突“新方法”的开始，这种方法“不仅谴责不公与苦难，而且付诸行动”。
+
+该声明引发了以色列的激烈反应，以色列表示将关闭英国驻东耶路撒冷领事馆以示报复。
+
+上个月，大多数外交官离开了该领事馆——该机构负责处理英国与耶路撒冷以及约旦河西岸和加沙地带巴勒斯坦人的关系——但英国坚持认为该建筑不会关闭，并将作为“英国代表团”运作。
+
+自1967年中东战争期间占领约旦河西岸和东耶路撒冷以来，以色列已建立了约160个定居点，居住着70万犹太人。据估计，有330万巴勒斯坦人与他们共同生活。
+
+自加沙战争爆发以来，定居者对约旦河西岸巴勒斯坦人及其财产的袭击激增，而这场战争是由哈马斯领导的对以色列的袭击所引发的。
+
+英国因以色列约旦河西岸定居点问题制裁相关公司
+
+2023年10月7日。
+
+英国宣布对约旦河西岸定居点实施制裁，引发以色列方面的激烈反应
+
+以色列就高度敏感的约旦河西岸定居点项目开始招标
+
+订阅我们的“政治要闻”（Politics Essential）时事通讯，掌握威斯敏斯特及其他地区的内部运作动态。</p><p class="sum-en" lang="en">It marks the first sanctions since the UK announced a tougher approach to Israeli actions in the territory.</p><a class="go" href="https://www.bbc.co.uk/news/articles/cvglr977x3z0o" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div><div class="media"><div class="src"><span>Al Jazeera</span></div><h4><a href="https://www.aljazeera.com/news/2026/11/17/uk-sanctions-8-israeli-firms-over-occupied-west-bank-settlements-gaza-aid?traffic_source=rss" target="_blank" rel="noopener noreferrer">英国因约旦河西岸定居点问题制裁八家以色列建筑公司</a></h4><p class="en-title" lang="en">UK sanctions eight Israeli construction firms over West Bank settlements</p><p class="sum-en" lang="en">Settler group also sanctioned for blocking Gaza aid as foreign secretary calls for &#x27;protecting the two-state solution&#x27;.</p><a class="go" href="https://www.aljazeera.com/news/2026/11/17/uk-sanctions-8-israeli-firms-over-occupied-west-bank-settlements-gaza-aid?traffic_source=rss" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div><div class="media"><div class="src"><span>Google News</span></div><h4><a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE9obnNFbkotNFRLSk8tb05PUTJwcnJjbVhOSDNuWVpmWmF1bDlBdTRtWjVpY2c4V3BjZnRDOEJqbFFzS3k2TzRYdjBzMHdxZ1kycDliSTBtZVA2U1U?oc=5" target="_blank" rel="noopener noreferrer">英国因以色列在约旦河西岸的定居点问题对相关企业实施制裁 - BBC</a></h4><p class="en-title" lang="en">UK sanctions firms over Israeli West Bank settlements - BBC</p><p class="sum-en" lang="en">UK sanctions firms over Israeli West Bank settlements BBC Ed Miliband announces first sanctions on Israeli firms working in West Bank The Guardian UK sanctions eight Israeli construction firms over West Bank settlements Al Jazeera Britain sanctions Israeli settlement firms in push to protect two-state solution Reuters UK sanctions eight Israeli firms, activist group over Judea and Samaria, Gaza aid Cleveland Jewish News</p><a class="go" href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE9obnNFbkotNFRLSk8tb05PUTJwcnJjbVhOSDNuWVpmWmF1bDlBdTRtWjVpY2c4V3BjZnRDOEJqbFFzS3k2TzRYdjBzMHdxZ1kycDliSTBtZVA2U1U?oc=5" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://s.france24.com/media/display/87a472fc-e29d-11f1-b8c8-7908c4e1a3c7/w:1024/p:16x9/EN-20261117-162342-162539-CS.jpg" alt="塞尔维亚获学生支持的议员在选举获胜后就职议会" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>塞尔维亚获学生支持的议员在选举获胜后就职议会</h3><p class="imp">当地政坛更迭</p><div class="card-meta"><span class="chip">2 家媒体报道</span></div><button class="toggle" type="button" data-target="cluster-i4" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i4" hidden><p class="cluster-note">以下报道来自 2 家媒体，观点可能不同，请自行判断。</p><div class="media primary"><div class="src"><span class="tag">头条</span><span>France 24</span></div><img class="" src="https://s.france24.com/media/display/87a472fc-e29d-11f1-b8c8-7908c4e1a3c7/w:1024/p:16x9/EN-20261117-162342-162539-CS.jpg" alt="塞尔维亚获学生支持的议员在选举获胜后就职议会" referrerpolicy="no-referrer" onerror="this.style.display='none'"><p class="en-title" lang="en">Serbia&#x27;s student-backed MPs take seats in parliament after election win</p><p class="sum">塞尔维亚学生支持的议员在选举获胜后入驻议会
+
+发布时间：2026年11月17日 - 16:48 修改时间：2026年11月17日 - 16:48
+
+在10月的选举获胜结束了塞尔维亚进步党（SNS）长达14年的统治后，塞尔维亚“学生名单”党的立法者们在数百名支持者的欢呼声中于周二进入了议会。“学生名单”是一个由学生大会选出的群体，成员包括学者、专业人士、农民、演员和活动家。在10月25日的投票中，该党在拥有250个席位的议会中获得了140个席位，而塞尔维亚进步党获得了104个席位。</p><p class="sum-en" lang="en">Serbia&#x27;s Student ⁠List lawmakers entered parliament ​on Tuesday, cheered on by hundreds of supporters, after their October ​election victory ended 14 years of rule by the Serbian Progressive Party (SNS). The Student List, a group that includes academics, professionals, farmers, actors and activists ​chosen ‌by student assemblies, secured 140 seats in the ⁠250-member parliament in October 25 polls, while the SNS gained 104.</p><a class="go" href="https://www.france24.com/en/video/20261117-serbia-s-student-backed-mps-take-seats-in-parliament-after-election-win" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div><div class="media"><div class="src"><span>The Guardian</span></div><img class="thumb" src="https://i.guim.co.uk/img/media/3fd406c80b12642e836ed680f572f9f3958bdec9/516_0_6882_5504/master/6882.jpg?width=1200&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=b1981b6458a3f713bc99944b8605e854" alt="塞尔维亚“学生名单”党候选人在选举获胜后宣誓就任议员" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'"><h4><a href="https://www.theguardian.com/world/2026/nov/17/serbia-student-list-mps-sworn-in-election-triumph" target="_blank" rel="noopener noreferrer">塞尔维亚“学生名单”党候选人在选举获胜后宣誓就任议员</a></h4><p class="en-title" lang="en">Serbia’s Student List candidates sworn in as MPs after election triumph</p><p class="sum-en" lang="en">Inaugural parliamentary session comes as ousted populist Aleksandar Vučić threatens mass protests of his own Candidates for Serbia’s Student List, the grassroots movement of political outsiders that pulled off a spectacular victory in last month’s elections over the party of the populist leader Aleksandar Vučić, have been sworn in as MPs as they begin the process of forming a government. The 140 candidates – among them academics, lawyers, scientists and the odd actor – were sworn in on Tuesday during the inaugural session of the new parliament, bringing 14 years of rule by Vučić and his Serbian Progressive party (SNS) to an end. Continue reading...</p><a class="go" href="https://www.theguardian.com/world/2026/nov/17/serbia-student-list-mps-sworn-in-election-triumph" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://i.guim.co.uk/img/media/7902cdb79f148d1d0391151d406f13d8457d1446/541_134_3999_3200/master/3999.jpg?width=1200&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=cdf521cc74be3c957f7e6b5764336bab" alt="伯纳姆任命米尔伯恩负责领导部门以实施年轻人就业福利方案" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>伯纳姆任命米尔伯恩负责领导部门以实施年轻人就业福利方案</h3><p class="imp">旨在改善民生</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i9" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i9" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>The Guardian</span></div><img class="" src="https://i.guim.co.uk/img/media/7902cdb79f148d1d0391151d406f13d8457d1446/541_134_3999_3200/master/3999.jpg?width=1200&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=cdf521cc74be3c957f7e6b5764336bab" alt="伯纳姆任命米尔伯恩负责领导部门，以实施针对年轻人的新就业与福利方案 – 现场直播" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.theguardian.com/politics/live/2026/nov/17/alan-milburn-youth-unempolyment-neets-economy-welfare-brexit-latest-news-updates" target="_blank" rel="noopener noreferrer">伯纳姆任命米尔伯恩负责领导部门，以实施针对年轻人的新就业与福利方案 – 现场直播</a></h4><p class="en-title" lang="en">Burnham makes Milburn head of unit to implement new jobs and welfare approach for young people – live</p><p class="sum-en" lang="en">Author of Neets report will be in charge of ‘unblocking delivery and driving progress’ Full story: Milburn says plan will save only £200m a year Explainer: what’s in the report? This chart, from the Milburn report, shows what is likely to happen to the Neet rate, with or without the Milburn policies. The Alan Milburn report has now formally been published. It should be online here very soon. Continue reading...</p><a class="go" href="https://www.theguardian.com/politics/live/2026/nov/17/alan-milburn-youth-unempolyment-neets-economy-welfare-brexit-latest-news-updates" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300-rw" alt="俄罗斯每天击落大量乌克兰无人机但仍有部分命中关键目标" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>俄罗斯每天击落大量乌克兰无人机但仍有部分命中关键目标</h3><p class="imp">战场局势持续</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i13" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i13" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>Google News</span></div><h4><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPZDlCTW56NHdBOFAzbUhTYmlMckVwejlHR2E0cmtaN0tQbHY1ekdBR0o4VnA1dWdyRlMyVVJfajM0dUVXWVlrMHpDNnNFUHVqR09PMVZTYy0yX1FQejg5QVFvX2FRQWpkTWZUMGg4RnFSMVVwRmtjMTdZMkFNQTVOWmVKU1h2YmN0Zjl1ZGtZcy1ubVI5cDBqTDhBNjJXTUU?oc=5" target="_blank" rel="noopener noreferrer">俄罗斯每天击落大量乌克兰无人机，但仍有部分能突围并命中关键目标 - 美联社</a></h4><p class="en-title" lang="en">Russia downs swarms of Ukrainian drones daily. But some still get through, hitting key targets - AP News</p><p class="sum-en" lang="en">Russia downs swarms of Ukrainian drones daily. But some still get through, hitting key targets AP News Russian Offensive Campaign Assessment, November 15, 2026 Institute for the Study of War Ukraine fires 1,336 drones into Russia in one of war&#x27;s largest attacks, Moscow says ABC News - Breaking News, Latest News and Videos Ukraine strikes Russian military airfield in Astrakhan Oblast, drone launch site in Oryol Oblast, General Staff says The Kyiv Independent Russia says its defenses intercepted over 1,300 Ukrainian drones in a major attack PBS</p><a class="go" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPZDlCTW56NHdBOFAzbUhTYmlMckVwejlHR2E0cmtaN0tQbHY1ekdBR0o4VnA1dWdyRlMyVVJfajM0dUVXWVlrMHpDNnNFUHVqR09PMVZTYy0yX1FQejg5QVFvX2FRQWpkTWZUMGg4RnFSMVVwRmtjMTdZMkFNQTVOWmVKU1h2YmN0Zjl1ZGtZcy1ubVI5cDBqTDhBNjJXTUU?oc=5" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article></section>
+<details class="raw"><summary>原始新闻列表（350 条）</summary><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-18/10733799.shtml" target="_blank" rel="noopener noreferrer">韩国高考防作弊“升级” 李在明称作弊行为是严重犯罪</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733796.shtml" target="_blank" rel="noopener noreferrer">日本“隼鸟2”号小行星探测器因发动机故障变更探测目标</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733795.shtml" target="_blank" rel="noopener noreferrer">（深圳APEC）1500把椅子的“亚太时刻”</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733794.shtml" target="_blank" rel="noopener noreferrer">王毅会见加拿大外长阿南德</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.zaobao.com/news/china/story20261117-10014994" target="_blank" rel="noopener noreferrer">中国公使：荷兰晶片设备对华长期出口限制将威胁中欧经贸谈判</a></div><div class="meta">联合早报</div></div><div class="raw-item"><div class="zh"><a href="https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261117-%E4%B9%8C%E5%86%8D%E8%A2%AD%E5%85%8B%E9%87%8C%E7%B1%B3%E4%BA%9A%E5%A4%A7%E6%A1%A5-%E8%B7%AF%E9%9D%A2%E6%8B%B1%E9%97%A8%E5%9D%A0%E6%B5%B7-%E6%B3%BD%E8%BF%9E%E6%96%AF%E5%9F%BA-%E6%88%98%E4%BA%89%E6%80%BB%E5%B0%86%E5%9B%9E%E5%88%B0%E5%88%9D%E5%A7%8B%E5%9C%B0" target="_blank" rel="noopener noreferrer">乌再袭克里米亚大桥 路面拱门坠海 泽连斯基：战争总将回到初始地</a></div><div class="meta">法广RFI</div></div><div class="raw-item"><div class="zh"><a href="https://www.zaobao.com/news/china/story20261117-10014673" target="_blank" rel="noopener noreferrer">中加关系迈入稳步修复期 习近平三会卡尼同意扩大关税减免</a></div><div class="meta">联合早报</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733790.shtml" target="_blank" rel="noopener noreferrer">APEC工商领导人峰会聚焦区域合作 共绘亚太发展蓝图</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733789.shtml" target="_blank" rel="noopener noreferrer">一组数字，看深圳与APEC“双向奔赴”</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733788.shtml" target="_blank" rel="noopener noreferrer">绿电点亮APEC会场 在深圳看见中国式现代化城市样本</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733787.shtml" target="_blank" rel="noopener noreferrer">APEC与会各经济体领导人将共商亚太发展大计</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/tp/2026/11-17/10733782.shtml" target="_blank" rel="noopener noreferrer">全国花滑少年逐梦长春 长春大冬会同步测试赛场</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733786.shtml" target="_blank" rel="noopener noreferrer">中国贡献为亚太发展注入新动能</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733785.shtml" target="_blank" rel="noopener noreferrer">深圳，见证高光时刻！</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733784.shtml" target="_blank" rel="noopener noreferrer">德勤：中国企业出海从拼产品转向拼能力</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261117-%E7%BE%8E%E5%9B%BD%E4%B8%A4%E9%83%A8%E9%97%A8%E5%A3%B0%E6%98%8E%E6%8C%87%E5%AF%B9megaspeed%E8%B0%83%E6%9F%A5%E4%BA%8E2024%E5%B9%B4%E5%90%AF%E5%8A%A8-%E5%8D%B0%E5%B0%BC%E8%AD%A6%E6%96%B9%E6%90%9C%E6%9F%A5%E5%BD%93%E5%9C%B0%E5%88%86%E6%94%AF" target="_blank" rel="noopener noreferrer">美国两部门声明指对Megaspeed调查于2024年启动 印尼警方搜查当地分支</a></div><div class="meta">法广RFI</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733780.shtml" target="_blank" rel="noopener noreferrer">特朗普最新表态：我期待访问中国</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.rfi.fr/cn/%E4%B8%93%E6%A0%8F%E6%A3%80%E7%B4%A2/%E6%B3%95%E5%9B%BD%E6%8A%A5%E7%BA%B8%E6%91%98%E8%A6%81/20261117-%E7%89%B9%E6%9C%97%E6%99%AE%E6%94%B6%E7%B4%A7%E5%AF%B9%E5%8D%8E%E8%8A%AF%E7%89%87%E5%87%BA%E5%8F%A3%E7%AE%A1%E6%8E%A7%EF%BC%8C%E5%8A%A0%E9%80%9F%E6%8E%A8%E5%8A%A8%E7%BE%8E%E5%9B%BD%E9%BE%99%E5%A4%B4%E4%BC%81%E4%B8%9A%E5%85%A8%E7%90%83%E6%89%A9%E5%BC%A0" target="_blank" rel="noopener noreferrer">特朗普收紧对华芯片出口管控，加速推动美国龙头企业全球扩张</a></div><div class="meta">法广RFI</div></div><div class="raw-item"><div class="zh"><a href="https://www.rfi.fr/cn/%E4%B8%93%E6%A0%8F%E6%A3%80%E7%B4%A2/%E7%8E%AF%E4%BF%9D%E5%A4%A9%E5%9C%B0/20261117-%E6%B0%94%E5%80%99%E6%B4%BB%E5%8A%A8%E5%AE%B6-%E4%B8%AD%E5%9B%BD%E6%B0%91%E4%BC%97%E4%B9%9F%E9%A1%BB%E5%8F%8D%E6%80%9D%E5%BA%94%E6%89%BF%E6%8B%85%E4%BD%95%E7%AD%89%E8%B4%A3%E4%BB%BB" target="_blank" rel="noopener noreferrer">气候活动家：中国民众也须反思应承担何等责任？</a></div><div class="meta">法广RFI</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/dwq/2026/11-17/10733779.shtml" target="_blank" rel="noopener noreferrer">新书《APEC作家湾区手记》正式与读者见面</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733778.shtml" target="_blank" rel="noopener noreferrer">21条硬核措施 云南省七部门联合推进“电动云南”建设</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/dwq/2026/11-17/10733774.shtml" target="_blank" rel="noopener noreferrer">港教大嘉许亚运会得奖运动员 橄榄球冠军李卡度盼深耕青少年体育</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="http://www.chinanews.com.cn/tp/hd2011/2026/11-17/1211042.shtml" target="_blank" rel="noopener noreferrer">习近平会见智利总统卡斯特</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.zaobao.com/news/china/story20261117-10014672" target="_blank" rel="noopener noreferrer">中国商务部：中加同意将初步联合安排的豁免措施延长两年</a></div><div class="meta">联合早报</div></div><div class="raw-item"><div class="zh"><a href="http://www.chinanews.com.cn/tp/hd2011/2026/11-17/1211038.shtml" target="_blank" rel="noopener noreferrer">赞歌故里迎远客 歌声为桥叙友谊</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/dwq/2026/11-17/10733767.shtml" target="_blank" rel="noopener noreferrer">外交部驻港公署举办中国共产党二十届五中全会专题宣介会</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733771.shtml" target="_blank" rel="noopener noreferrer">云南侦办首例替来他明电子烟案</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733770.shtml" target="_blank" rel="noopener noreferrer">（长征胜利90周年）广西桂林老兵永安关下重走长征路</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733772.shtml" target="_blank" rel="noopener noreferrer">欧盟称今年前三季度经济增长好于预期</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/hr/2026/11-17/10733769.shtml" target="_blank" rel="noopener noreferrer">巴西累西腓华侨华人协会拜会中国驻累总领馆</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733742.shtml" target="_blank" rel="noopener noreferrer">一名驻日美军涉嫌酒后损坏财物被捕</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/dwq/2026/11-17/10733768.shtml" target="_blank" rel="noopener noreferrer">广东迎候鸟迁徙高峰 黑脸琵鹭飞舞深圳湾</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733746.shtml" target="_blank" rel="noopener noreferrer">（深圳APEC）韩国青年申文燮：深圳赋予我创作热情和灵感</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cul/2026/11-17/10733765.shtml" target="_blank" rel="noopener noreferrer">聚焦林默“少年时代” 《妈祖之林默传》动画电影项目发布</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/tp/2026/11-17/10733761.shtml" target="_blank" rel="noopener noreferrer">浙江杭州：丰食良境筑新驿 万千候鸟栖湾区</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cul/2026/11-17/10733766.shtml" target="_blank" rel="noopener noreferrer">两部海洋文化题材动画电影项目在福建霞浦启动</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733763.shtml" target="_blank" rel="noopener noreferrer">四川首个“水风光储直柔”一体化构网型微电网在攀枝花投运</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733760.shtml" target="_blank" rel="noopener noreferrer">中华慈善论坛在南宁举行 多个慈善项目在广西启动试点</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733764.shtml" target="_blank" rel="noopener noreferrer">全国扫黑除恶斗争领导小组部署开展深化扫黑除恶专项斗争督导 陈文清出席行前培训并讲话</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.rfi.fr/cn/%E4%B8%93%E6%A0%8F%E6%A3%80%E7%B4%A2/%E5%8C%97%E7%BE%8E%E6%9D%A5%E9%B8%BF/20261117-%E4%BA%BA%E6%9D%83%E6%8A%A5%E5%91%8A%E6%8C%87%E4%B8%AD%E5%9B%BD%E6%B5%B7%E5%A4%96%E8%AD%A6%E5%AF%9F%E7%AB%99%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%89%A9%E5%BC%A0-%E5%8A%A0%E6%80%BB%E7%90%86%E5%8D%A1%E5%B0%BC%E5%B0%86%E5%90%91%E4%B9%A0%E8%BF%91%E5%B9%B3%E6%8F%90%E5%87%BA%E8%AE%A8%E8%AE%BA" target="_blank" rel="noopener noreferrer">人权报告指中国海外警察站大规模扩张 加总理卡尼将向习近平提出讨论</a></div><div class="meta">法广RFI</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733744.shtml" target="_blank" rel="noopener noreferrer">甘南青少年访国博：在文物中品读中华文化</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733736.shtml" target="_blank" rel="noopener noreferrer">2026知识产权服务万里行雄安站活动举办</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733737.shtml" target="_blank" rel="noopener noreferrer">（深圳APEC）习近平会见智利总统卡斯特</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733734.shtml" target="_blank" rel="noopener noreferrer">（乡村行·看振兴）浙江庆元：花椰菜“长成”大产业 留守老人家门口增收</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733729.shtml" target="_blank" rel="noopener noreferrer">IMF上调韩国今明两年经济增长预期</a></div><div class="meta">中新网·要闻</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733731.shtml" target="_blank" rel="noopener noreferrer">旧马甲见证美国老人柏大卫的湟源情：不求盛名 只念桑梓</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733730.shtml" target="_blank" rel="noopener noreferrer">海口多校创新形式引导青少年树牢总体国家安全观</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.zaobao.com/news/china/story20261117-10014411" target="_blank" rel="noopener noreferrer">美升级AI晶片出口管制 中国商务部：破坏国际经贸秩序</a></div><div class="meta">联合早报</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733721.shtml" target="_blank" rel="noopener noreferrer">一场长期陪伴，如何为“阳光儿童”点亮微光？</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733712.shtml" target="_blank" rel="noopener noreferrer">“中国糖都”广西崇左启动新榨季糖料蔗机械化收获</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733716.shtml" target="_blank" rel="noopener noreferrer">北方冷空气南下 广东将明显降温</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733715.shtml" target="_blank" rel="noopener noreferrer">水陆两栖飞机AG600“鲲龙”参加北京森林火灾应急处置综合演练</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733707.shtml" target="_blank" rel="noopener noreferrer">中加同意将初步联合安排的相关豁免措施延长2年</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733710.shtml" target="_blank" rel="noopener noreferrer">山东非遗“逐”新潮 青年“守”艺人崭露头角</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733711.shtml" target="_blank" rel="noopener noreferrer">一座没有农村的城市连起亚太田野</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733703.shtml" target="_blank" rel="noopener noreferrer">学习手记｜共同做大亚太合作蛋糕</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261117-%E7%89%B9%E6%9C%97%E6%99%AE%E7%A7%B0%E9%87%91%E6%AD%A3%E6%81%A9%E6%83%B3%E6%9D%A5%E4%B8%AD%E5%9B%BD-%E8%AE%A9%E6%88%91%E4%BB%AC%E6%8B%AD%E7%9B%AE%E4%BB%A5%E5%BE%85-%E5%85%8B%E5%AE%AB%E4%B8%8D%E6%8E%92%E9%99%A4%E6%99%AE%E9%87%91%E4%BC%9A%E5%8F%AF%E8%83%BD" target="_blank" rel="noopener noreferrer">特朗普称金正恩想来中国：让我们拭目以待 克宫不排除普金会可能</a></div><div class="meta">法广RFI</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733695.shtml" target="_blank" rel="noopener noreferrer">轨道交通上的平安守护：浙江温州民警把服务送到旅客身边</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.zaobao.com/news/china/story20261117-10014184" target="_blank" rel="noopener noreferrer">中国防长时隔18年再访意大利</a></div><div class="meta">联合早报</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733699.shtml" target="_blank" rel="noopener noreferrer">西藏自治区检察机关自2021年以来共开展国家司法救助1265人</a></div><div class="meta">中新网·时政</div></div></details>
+<footer>
+本站由 GitHub Actions 每日北京时间 08:00 自动更新，内容来自公开 RSS，仅供个人阅读参考。
+</footer>
+</div>
+<script>
+(function () {
+  'use strict';
+
+  /* 展开/收起「查看各家报道」 */
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest ? event.target.closest('.toggle') : null;
+    if (!button) { return; }
+    var panel = document.getElementById(button.getAttribute('data-target'));
+    if (!panel) { return; }
+    var open = panel.hasAttribute('hidden') === false;
+    if (open) {
+      panel.setAttribute('hidden', '');
+      button.textContent = button.getAttribute('data-label-closed');
+    } else {
+      panel.removeAttribute('hidden');
+      button.textContent = '收起各家报道 ▴';
+    }
+  });
+
+  /* 无 mp3 时用浏览器自带的 SpeechSynthesis 朗读播报稿 */
+  var speaking = false;
+  window.dailyNewsSpeak = function () {
+    if (!('speechSynthesis' in window)) {
+      alert('当前浏览器不支持语音朗读，请直接阅读下方文字播报稿。');
+      return;
+    }
+    var holder = document.getElementById('broadcast-text');
+    if (!holder) { return; }
+    var text = (holder.textContent || '').trim();
+    if (!text) { return; }
+
+    if (speaking) {
+      window.speechSynthesis.cancel();
+      speaking = false;
+      return;
+    }
+
+    var utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'zh-CN';
+    utterance.rate = 1.0;
+
+    function pickVoiceAndSpeak() {
+      var voices = window.speechSynthesis.getVoices() || [];
+      for (var i = 0; i < voices.length; i += 1) {
+        if (/^zh[-_]CN/i.test(voices[i].lang) || /^zh/i.test(voices[i].lang)) {
+          utterance.voice = voices[i];
+          break;
+        }
+      }
+      speaking = true;
+      utterance.onend = function () { speaking = false; };
+      utterance.onerror = function () { speaking = false; };
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
+    var ready = window.speechSynthesis.getVoices() || [];
+    if (ready.length) {
+      pickVoiceAndSpeak();
+      return;
+    }
+    window.speechSynthesis.onvoiceschanged = function () {
+      window.speechSynthesis.onvoiceschanged = null;
+      pickVoiceAndSpeak();
+    };
+    setTimeout(function () {
+      if (!speaking && !utterance.voice) { pickVoiceAndSpeak(); }
+    }, 900);
+  };
+}());
+</script>
+</body>
+</html>
