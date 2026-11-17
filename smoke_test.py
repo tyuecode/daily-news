@@ -1766,7 +1766,7 @@ def test_domestic_classification():
 
 
 def test_publisher_seat_quota():
-    group("媒体席位配额（防止发稿量大的媒体垄断版块）")
+    group("媒体席位配额（热点覆盖优先，配额只做兜底）")
 
     now = datetime.now(BJ)
 
@@ -1779,76 +1779,83 @@ def test_publisher_seat_quota():
             "items": [{
                 "source": publisher, "publisher": publisher, "title_zh": title,
                 "title": title, "title_en": "", "summary": "",
-                "url": "https://news.example-site.com/%s" % cid, "image": "",
+                "url": "https://example.org/%s" % cid, "image": "",
                 "published": now, "lang": "zh",
             }],
         }
 
-    # 复现线上真实情况：France 24 独占 6 个单源席位，其他媒体各 1 个
-    clusters = [
-        cluster("i1", "France 24", hours_ago=1),
-        cluster("i2", "France 24", hours_ago=2),
-        cluster("i3", "France 24", hours_ago=3),
-        cluster("i4", "France 24", hours_ago=4),
-        cluster("i5", "France 24", hours_ago=5),
-        cluster("i6", "France 24", hours_ago=6),
-        cluster("i7", "BBC", hours_ago=7),
-        cluster("i8", "NPR", hours_ago=8),
-        cluster("i9", "Sky News", hours_ago=9),
-    ]
-    ordered, dropped = generate.apply_publisher_quota(clusters, quota=2)
+    # 25 条素材，France 24 占 20 条，另有 5 家小媒体各 1 条。
+    # 结果会是：France 24 拿 2 席 + 5 家小媒体各 1 席 = 7 席，
+    # 第 8 席只能再给 France 24（其他媒体已经没素材了）→ 3 席。
+    # 这是「热点优先」下的正确取舍：宁可第 8 条重复来源，也不要空着。
+    clusters = [cluster("f%d" % i, "France 24", hours_ago=i) for i in range(20)]
+    clusters += [cluster("s%d" % i, "小媒体%d" % i, hours_ago=i + 30)
+                 for i in range(5)]
+    clusters.sort(key=lambda c: (c["source_count"], c["published"]), reverse=True)
 
-    check("没有丢事件（入选 + 舍去 = 总数）",
+    ordered, dropped = generate.apply_publisher_quota(clusters)
+
+    check("席位必须填满（热点优先于多样性）",
+          len(ordered) == generate.MAX_EVENTS_PER_SECTION,
+          "实际 %d 条，上限 %d" % (len(ordered), generate.MAX_EVENTS_PER_SECTION))
+    check("入选 + 舍去 = 总数",
           len(ordered) + len(dropped) == len(clusters),
-          "入选 %d + 舍去 %d ≠ %d" % (len(ordered), len(dropped), len(clusters)))
+          "入选 %d + 舍去 %d != %d" % (len(ordered), len(dropped), len(clusters)))
 
-    # 配额必须直接作用于「入选名额」，而不只是排序。
-    # （只排序是没用的：事件数不足时被挤下去的又会被捞回来凑数，实测 France 24 仍占 5 席）
     pub_counts = {}
     for c in ordered:
         pub_counts[c["primary_publisher"]] = pub_counts.get(
             c["primary_publisher"], 0) + 1
+    # 关键：其他媒体都用尽后才允许超配额，最多超出「席位余数」
+    check("单一媒体占比不超过配额 + 少量溢出",
+          pub_counts.get("France 24", 0) <= generate.PUBLISHER_SEAT_QUOTA + 2,
+          "France 24 占了 %d 席" % pub_counts.get("France 24", 0))
+    check("所有有素材的小媒体都露脸了",
+          sum(1 for p in pub_counts if p.startswith("小媒体")) == 5,
+          "只有 %d 家小媒体入选" % sum(
+              1 for p in pub_counts if p.startswith("小媒体")))
 
-    check("单一媒体在入选名单里不超过配额",
-          pub_counts.get("France 24", 0) <= 2,
-          "France 24 占了 %d 席（上限 2）" % pub_counts.get("France 24", 0))
-    check("小媒体能够露脸（BBC/NPR/Sky 至少各 1 席）",
-          all(pub_counts.get(p, 0) >= 1 for p in ("BBC", "NPR", "Sky News")),
-          "实际分布=%r" % pub_counts)
-    check("入选数量不超过版块上限",
-          len(ordered) <= generate.MAX_EVENTS_PER_SECTION,
-          "实际 %d 条" % len(ordered))
-    check("入选数量不低于版块下限（不能因为配额让版块空掉）",
-          len(ordered) >= min(generate.MIN_EVENTS_PER_SECTION, len(clusters)),
-          "实际 %d 条" % len(ordered))
+    # 强验证：素材充足时（远多于席位），配额必须严格生效
+    rich = [cluster("r%d" % i, "France 24", hours_ago=i) for i in range(20)]
+    rich += [cluster("q%d_%d" % (i, j), "媒体%d" % i, hours_ago=i * 2 + j)
+             for i in range(6) for j in range(3)]
+    rich.sort(key=lambda c: (c["source_count"], c["published"]), reverse=True)
+    ordered_rich, _ = generate.apply_publisher_quota(rich)
+    rich_counts = {}
+    for c in ordered_rich:
+        rich_counts[c["primary_publisher"]] = rich_counts.get(
+            c["primary_publisher"], 0) + 1
+    check("素材充足时配额严格生效（不超配额）",
+          rich_counts.get("France 24", 0) <= generate.PUBLISHER_SEAT_QUOTA,
+          "France 24 占了 %d 席（上限 %d）" % (
+              rich_counts.get("France 24", 0), generate.PUBLISHER_SEAT_QUOTA))
+    check("素材充足时席位依然填满",
+          len(ordered_rich) == generate.MAX_EVENTS_PER_SECTION,
+          "实际 %d 条" % len(ordered_rich))
 
-    # 多源事件不受配额限制，永远优先入选
-    multi = [cluster("m1", "France 24", count=4, hours_ago=20)]
-    picked, _dropped = generate.apply_publisher_quota(
-        [cluster("s1", "France 24", hours_ago=1)] + multi, quota=2)
-    expect_eq("多源事件优先入选", picked[0]["cid"], "m1")
+    # 关键取舍：素材刚好够、一家占大头时，热点覆盖优先。
+    # 读者是来知道「今天发生了什么」，不是来检查媒体清单的。
+    mono = [cluster("m%d" % i, "France 24", hours_ago=i) for i in range(6)]
+    mono += [cluster("b1", "BBC", hours_ago=7), cluster("n1", "NPR", hours_ago=8)]
+    picked_mono, _ = generate.apply_publisher_quota(mono)
+    check("素材刚好够时优先填满席位（不为配额牺牲热点）",
+          len(picked_mono) == len(mono),
+          "8 条素材只入选 %d 条" % len(picked_mono))
 
-    # 空列表不炸
-    expect_eq("空输入返回两个空列表", generate.apply_publisher_quota([]), ([], []))
+    # 多源事件优先入选（caller 传进来时已按家数排好序）
+    multi = [cluster("mm1", "France 24", count=4, hours_ago=20)]
+    single = [cluster("ss1", "France 24", hours_ago=1)]
+    picked, _ = generate.apply_publisher_quota(multi + single)
+    expect_eq("多源事件优先入选", picked[0]["cid"], "mm1")
 
-    # 事件不足时，配额不能把版块搞空（低于下限才允许放宽）
-    few = [cluster("a1", "France 24", hours_ago=1),
-           cluster("a2", "France 24", hours_ago=2),
-           cluster("a3", "France 24", hours_ago=3)]
-    picked_few, _dropped_few = generate.apply_publisher_quota(few, quota=1)
-    check("全同类事件时仍保证版块下限（不空掉）",
-          len(picked_few) >= min(generate.MIN_EVENTS_PER_SECTION, len(few)),
-          "实际入选 %d 条" % len(picked_few))
+    expect_eq("空输入返回两个空列表",
+              generate.apply_publisher_quota([]), ([], []))
 
-    # 配额优先于「凑满上限」：宁可少发几条，也不让一家媒体垄断
-    picked_many, dropped_many = generate.apply_publisher_quota(clusters, quota=2)
-    check("配额优先于凑满上限（允许少于 MAX）",
-          len(picked_many) < generate.MAX_EVENTS_PER_SECTION,
-          "实际 %d 条，说明仍在强行凑满" % len(picked_many))
-    check("被配额挤下去的事件记入 dropped",
-          len(dropped_many) > 0, "dropped 为空")
-
-
+    only = [cluster("o%d" % i, "中新网", hours_ago=i) for i in range(10)]
+    picked_only, _ = generate.apply_publisher_quota(only)
+    check("只有一家媒体时版块不空掉",
+          len(picked_only) >= generate.MIN_EVENTS_PER_SECTION,
+          "实际 %d 条" % len(picked_only))
 def test_og_image_extraction():
     group("从正文页取 og:image（国内源 RSS 完全不带图，导致 0/8 有图）")
 

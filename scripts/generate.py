@@ -262,11 +262,25 @@ STALE_SOURCE_DAYS = 7
 # 聚合器来源：簇内有具体媒体时不计票；单独成簇时才计 1 家
 AGGREGATOR_SOURCES = {"Google News"}
 
-# 判断「涉华报道」（国内源全挂时的退化方案用）
-CHINA_KEYWORDS = [
-    "china", "chinese", "beijing", "shanghai", "xi jinping", "beijing's",
+# 判断「涉华报道」用的关键词。
+# 英文那组必须用词边界匹配（否则 "us" 会命中 "business"）；
+# 中文那组直接子串匹配即可（中文没有词边界问题）。
+CHINA_KEYWORDS_EN = [
+    "china", "chinese", "beijing", "shanghai", "xi jinping",
     "hong kong", "taiwan", "shenzhen", "guangzhou", "ccp",
+    "sino", "renminbi", "yuan", "prc",
 ]
+
+CHINA_KEYWORDS_ZH = [
+    "中国", "中方", "北京", "上海", "习近平", "中共", "国务院", "全国",
+    "香港", "台湾", "深圳", "广州", "内地", "大陆", "人民币", "对外",
+    "外交部", "商务部", "工信部", "发改委", "央行", "解放军",
+    "涉华", "访华", "中加", "中美", "中俄", "中欧", "中日", "中韩",
+    "中印", "中澳", "中英", "中法", "中德", "中越", "中菲", "中拉",
+]
+
+# 兼容旧名字（退化方案那处代码在用）
+CHINA_KEYWORDS = CHINA_KEYWORDS_EN
 
 # ----------------------------------------------------------------------------
 # 1.2 软新闻过滤词（必须用词边界匹配，否则 "software" 会被 "war" 误杀）
@@ -1208,6 +1222,61 @@ def normalize_items(items, now=None, window_hours=WINDOW_HOURS):
     return kept, stats
 
 
+def is_china_related(item):
+    """判断一条新闻是否与中国相关（用于把综合媒体的条目分到正确版块）。
+
+    背景：法广RFI、纽约时报中文网是**综合媒体**，RSS 里既有中国新闻
+    也有纯国际新闻。如果把整个源都塞进「国内热点」，就会出现
+    「乌克兰再次袭击克里米亚大桥」出现在国内版块这种荒谬情况
+    （线上真实发生过）。
+
+    判定依据：标题或摘要里出现中国相关关键词。
+    """
+    blob = " ".join([
+        item.get("title") or "",
+        item.get("title_zh") or "",
+        item.get("summary") or "",
+    ])
+    if not blob.strip():
+        return False
+    # 中文关键词直接子串匹配
+    for word in CHINA_KEYWORDS_ZH:
+        if word in blob:
+            return True
+    # 英文关键词用词边界匹配（"us" 不能命中 "business"）
+    for word in CHINA_KEYWORDS_EN:
+        if contains_word(blob, word):
+            return True
+    return False
+
+
+def route_overseas_items(items, overseas_publishers):
+    """把综合媒体的条目按「是否涉华」分流到国内/国际版块。
+
+    只对海外中文媒体生效——中新网这类国内媒体整源都是国内新闻，不必分流。
+
+    返回 (国内条目, 国际条目)。
+    """
+    domestic = []
+    international = []
+    for item in items:
+        publisher = item_publisher(item)
+        if publisher not in overseas_publishers:
+            # 非综合媒体：保持原版块不变
+            (domestic if item.get("section") == "domestic"
+             else international).append(item)
+            continue
+        if is_china_related(item):
+            clone = dict(item)
+            clone["section"] = "domestic"
+            domestic.append(clone)
+        else:
+            clone = dict(item)
+            clone["section"] = "international"
+            international.append(clone)
+    return domestic, international
+
+
 def filter_china_related(items):
     """从国际源里筛出涉华报道（国内源全挂时的退化方案）。"""
     out = []
@@ -1440,64 +1509,84 @@ def build_clusters(raw_items, section_prefix):
 
 def apply_publisher_quota(clusters, limit=MAX_EVENTS_PER_SECTION,
                           quota=PUBLISHER_SEAT_QUOTA):
-    """按「媒体不垄断」的原则挑出最终入选的事件，并排好序。
+    """挑出最终入选的事件：**热点覆盖优先，配额只做兜底**。
 
-    为什么需要这个：
-        线上真实数据——国际版块 8 条里 France 24 独占 5 条，NPR / Sky News
-        一条都没进。配置里 7 个源，最终只有 5 家露面。
+    设计原则来自项目初衷：
+        「核心诉求是快速了解新闻热点，看不同观点是深入需求而非默认需求。」
+        所以第一步永远是「把最重要的热点排满」，而不是「保证每家媒体都露脸」。
 
-    为什么配额必须直接作用于入选名额：
-        只把超配额的事件「排到后面」是没用的——只要入选名额没满，后面还会被
-        重新捞回来凑数（实测：9 条事件里 France 24 仍占 5 席）。
+    历史教训（两次都修过了头）：
+      第一次：完全按（家数, 时间）排序 → France 24 独占 5 席，读者只能看到一家之言。
+      第二次：加了「每个媒体保底 1 席」→ 反而更糟：
+              · 国际版块 179 条素材最终只显示 5 条，3 个席位被浪费；
+              · 为了给低频媒体腾位置，挤掉了更重要的热点。
+              这和「了解热点」的初衷直接冲突。
 
-    配额与「凑满 8 条」冲突时怎么办（关键决策）：
-        优先保配额，不强行凑满。
-        宁可今天只发 5 条多样化的事件，也不要发 8 条里 5 条来自同一家媒体——
-        后者会让「看不同观点」这个核心目标失效。版块少几条不是问题，
-        单一信源垄断才是问题。
+    现在的规则（简单、可预测）：
+        1. 先按原排序（家数多 → 时间新）依次取，每个媒体最多 quota 席
+        2. 如果这样没取满 limit，**用剩余事件按原排序补齐**，忽略配额
+           —— 宁可让某家多几条，也不能让版块少几条热点
+        3. 只有当事件总数本身就少于 limit 时，才可能取不满
 
-    规则（优先级从高到低）：
-        1. 多源事件（source_count >= 2）不设限，全部优先入选——它们本身就是多方印证
-        2. 单源事件按媒体计数，每个媒体最多占 quota 席
-        3. 只有当前面两步凑不满 limit、且有「未达配额的媒体」可补时才补
-        4. 绝不为了凑数把已达配额的媒体重新放进来
+    换句话说：配额只在高频媒体会挤掉别人时起作用；
+    一旦配额导致席位浪费，立刻让位给「覆盖更多热点」。
 
     返回 (入选列表, 被舍去的列表)。
     """
     if not clusters:
         return [], []
 
-    multi = [c for c in clusters if c["source_count"] >= 2]
-    single = [c for c in clusters if c["source_count"] < 2]
-
-    # 1) 多源事件先占位（不设限，但也不超过 limit）
-    picked = list(multi[:limit])
-    overflow = list(multi[limit:])
-
-    # 2) 单源事件按媒体配额入选
+    picked = []
+    picked_ids = set()
     used = {}
-    deferred = []
-    for cluster in single:
+
+    # 第一轮：按原排序，遵守每媒体 quota 上限
+    for cluster in clusters:
+        if len(picked) >= limit:
+            break
         publisher = cluster.get("primary_publisher") or ""
-        count = used.get(publisher, 0)
-        if len(picked) < limit and count < quota:
-            used[publisher] = count + 1
-            picked.append(cluster)
-        else:
-            deferred.append(cluster)
+        if used.get(publisher, 0) >= quota:
+            continue
+        used[publisher] = used.get(publisher, 0) + 1
+        picked.append(cluster)
+        picked_ids.add(id(cluster))
 
-    # 3) 注意：这里刻意**不**用 deferred 去补齐到 limit。
-    #    补齐会把已达配额的媒体重新捞回来（实测 France 24 又占满 5 席），
-    #    等于配额形同虚设。宁可版块少几条，也要保证来源多样。
+    # 第二轮：席位没用满 → 补齐到 limit。
     #
-    #    保护机制：万一配额卡得太狠，入选数少于版块最少数（3 条），
-    #    说明今天确实只有一两家媒体发了稿，那就放宽配额补齐，
-    #    否则版块会因为「材料太单调」而彻底空掉——那比垄断更糟。
-    if len(picked) < MIN_EVENTS_PER_SECTION and deferred:
-        while len(picked) < min(limit, MIN_EVENTS_PER_SECTION) and deferred:
-            picked.append(deferred.pop(0))
+    # 这里的取舍体现项目初衷：**热点覆盖优先于观点多样性**。
+    #   · 如果还有别的媒体没到配额，优先补它们（顺便提升多样性）
+    #   · 如果剩下的全来自已达配额的媒体（比如今天只有它发了稿），
+    #     也要补进来——宁可看到重复来源的热点，也不能让版块只剩 4 条。
+    #     读者打开页面是为了「知道今天发生了什么」，不是来检查媒体清单的。
+    #
+    # 反例（曾经写错）：补齐时无条件守配额，结果 8 条素材只显示 4 条，
+    # 一半的热点被配额吃掉，与「了解热点」的初衷直接冲突。
+    if len(picked) < limit:
+        # 先补未达配额的媒体
+        for cluster in clusters:
+            if len(picked) >= limit:
+                break
+            if id(cluster) in picked_ids:
+                continue
+            publisher = cluster.get("primary_publisher") or ""
+            if used.get(publisher, 0) >= quota:
+                continue
+            used[publisher] = used.get(publisher, 0) + 1
+            picked.append(cluster)
+            picked_ids.add(id(cluster))
 
-    return picked, deferred + overflow
+    # 还不够 → 认了，把剩下的按排序补满，不让席位浪费
+    if len(picked) < limit:
+        for cluster in clusters:
+            if len(picked) >= limit:
+                break
+            if id(cluster) in picked_ids:
+                continue
+            picked.append(cluster)
+            picked_ids.add(id(cluster))
+
+    dropped = [c for c in clusters if id(c) not in picked_ids]
+    return picked, dropped
 
 
 def summarize_events(clusters, section_label, client):
@@ -3229,6 +3318,20 @@ def run(dry_run=False, dry_run_tts_ok=False, root=None):
     dom_items, dom_stats = normalize_items(dom_raw, now=now_bj())
     log("国际：%s" % intl_stats)
     log("国内：%s" % dom_stats)
+
+    # 海外中文媒体是综合媒体：法广RFI / 纽约时报中文网 的 RSS 里既有涉华新闻
+    # 也有纯国际新闻。必须按「是否涉华」分流，否则会出现
+    # 「乌克兰袭击克里米亚大桥」出现在「国内热点」版块（线上真实发生过）。
+    overseas_publishers = {f.get("publisher") for f in OVERSEAS_ZH_FEEDS if f.get("publisher")}
+    if overseas_publishers and (dom_items or intl_items):
+        dom_routed, intl_extra = route_overseas_items(
+            dom_items + intl_items, overseas_publishers)
+        moved_out = len(dom_items) - len(dom_routed)
+        if intl_extra:
+            intl_items = intl_items + intl_extra
+        dom_items = dom_routed
+        if moved_out > 0:
+            log("海外中文媒体分流：%d 条非涉华新闻已移到国际版块" % moved_out)
 
     # 国内源全挂 → 退化为从国际源筛选涉华报道，并在页面注明
     domestic_fallback = False
