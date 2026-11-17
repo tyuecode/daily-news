@@ -93,6 +93,17 @@ BROADCAST_MAX_EVENTS_PER_SECTION = 6
 # 这里做硬性上限，避免页面和播报稿被稀释。
 MAX_EVENTS_PER_SECTION = 8
 
+# 单源事件被配额挤下去之后，入选数若低于这个下限，就放宽配额补齐。
+# 理由：版块空掉的危害 > 一家媒体多占几席。今天确实只有一两家发了稿时，
+# 硬守配额会让「国内热点」变成空白，那还不如让它单调一点。
+MIN_EVENTS_PER_SECTION = 3
+
+# 单个媒体在一个版块里最多占几个「单源席位」。
+# 线上真实数据：国际版块 8 条里 France 24 独占 5 条，NPR / Sky News 一条没进，
+# 配置里 7 个源最后只有 5 家露面。设成 2 之后，小媒体也能稳定露脸。
+# 多源事件（source_count >= 2）不受此限制——它们本身就值得靠前。
+PUBLISHER_SEAT_QUOTA = 2
+
 # 每批翻译的标题数量：一次给 20 条模型只会翻前 5 条（实测），必须分批 8 条
 TRANSLATE_BATCH = 8
 
@@ -161,7 +172,7 @@ INTL_FEEDS = [
 #   ⚠️ BBC 中文 simp 会被 302 到 trad（拿到繁体），且多次实测超 20s 超时，故不采用。
 DOMESTIC_FEEDS = [
     # 中新网：官方源，境外实测畅通、0.1s 级响应、30 条/源、时间字段完整。
-    # publisher 字段是关键：这 5 个频道同属「中新网」一家媒体，
+    # publisher 字段是关键：这些频道同属「中新网」一家媒体，
     # 同一家媒体的不同频道绝不能互相充数成「多家媒体报道」。
     {"name": "中新网·即时", "url": "https://www.chinanews.com.cn/rss/scroll-news.xml",
      "publisher": "中新网"},
@@ -171,13 +182,20 @@ DOMESTIC_FEEDS = [
      "publisher": "中新网"},
     {"name": "中新网·社会", "url": "https://www.chinanews.com.cn/rss/society.xml",
      "publisher": "中新网"},
-    {"name": "中新网·国际", "url": "https://www.chinanews.com.cn/rss/world.xml",
-     "publisher": "中新网"},
+    # ⚠️ 注意：`中新网·国际`（world.xml）**刻意不放在这里**。
+    # 它是国际新闻频道，放进国内源会导致「伊朗油轮触雷」这类新闻出现在
+    # 「国内热点」版块里（线上真的发生过）。若需要中文国际新闻，
+    # 应该按 publisher 归到国际版块，而不是混进国内。
     # 联合早报（第三方镜像，非官方）：唯一实测「有图 + 有全文」的中文源，用来给卡片配图。
     # 它是公益镜像，随时可能变慢或失效，所以只做补充；失败会被静默跳过，不影响主流程。
     {"name": "联合早报", "url": "https://plink.anyfeeder.com/zaobao/realtime/china",
      "publisher": "联合早报"},
 ]
+
+# 中文国际源：中文媒体里的国际新闻。它们属于「国际热点」版块，
+# 但因为是中文，不需要 AI 翻译，且能提供与英文媒体不同的中文视角。
+# 目前为空：待探测到稳定可用的中文国际 RSS 后填入，格式同上。
+DOMESTIC_INTL_FEEDS = []
 
 # 停更源守卫：一个源的最新条目若比「现在」还老这么多天，判定为僵尸源并整源丢弃。
 # 这条守卫是实测踩坑的产物——人民网/新华网/新浪都会返回 HTTP 200、bozo=False、
@@ -836,12 +854,67 @@ def entry_published(entry):
     return None
 
 
+# 明显不是文章配图的图片特征（导航箭头、图标、广告位、二维码、站点通用分享图）。
+# 实测教训：
+#   1. 中新网正文页**没有 og:image**，页面上全是导航图和广告图，
+#      不加过滤会取到 `toparr.png`（导航箭头）当头条大图——取到错图比没有图更糟。
+#   2. 联合早报 RSS 第一条给的是站点通用 `social-share.png`，不是文章配图。
+NON_ARTICLE_IMAGE_HINTS = (
+    # 通用图标类
+    "logo", "icon", "avatar", "pixel", "1x1", "blank", "spacer",
+    "placeholder", "banner", "advert", "ad_", "/ad/", "qrcode", "qr_code",
+    # 实测遇到的具体坏图
+    "toparr", "arr.png", "arrow", "btn", "button", "share", "weixin", "weibo",
+    "default/", "/nav", "menu", "loading", "transparent",
+    # 站点通用社交分享图（不是文章配图）
+    "social-share", "social_share", "og-default", "default-og",
+)
+
+
+def looks_like_article_image(url):
+    """判断一个图片 URL 是否可能是「文章配图」。
+
+    宁可漏掉一张真图，也不要把导航箭头/广告图放进头条大图位置。
+
+    注意：**不能强制要求 URL 带图片扩展名**。
+    实测联合早报的真实文章配图长这样（没有扩展名，但确实是照片）：
+        https://cassette.sphdigital.com.sg/image/zaobao/c3f3a6b10f79
+    强制要求 .jpg/.png 会把这类 CDN 图全部误杀。
+    所以判断以「黑名单 + 长度 + 明显非图片特征」为主。
+    """
+    if not url:
+        return False
+    lowered = url.lower()
+    if any(hint in lowered for hint in NON_ARTICLE_IMAGE_HINTS):
+        return False
+
+    path = lowered.split("?")[0]
+
+    # 明确不是图片的扩展名直接排除
+    if path.endswith((".svg", ".ico", ".css", ".js", ".woff", ".woff2", ".ttf")):
+        return False
+
+    # 太短的路径多半是站点资源图，不是文章图
+    if len(url) < 40:
+        return False
+
+    return True
+
+
 def entry_image(entry):
     """从条目里抽图片，按可靠性依次尝试。
 
     顺序：media:thumbnail / media:content → enclosure（按 type 过滤音频）
          → description 内嵌 <img>。
+
+    所有候选都要过 looks_like_article_image()：
+    实测联合早报 RSS 第一条给的是站点通用 social-share.png，不是文章配图，
+    直接拿来当头条大图很难看。
     """
+    def pick(url):
+        found = normalize_image_url(url or "")
+        return found if looks_like_article_image(found) else ""
+
     # 1) media:thumbnail / media:content
     for key in ("media_thumbnail", "media_content", "media_content_b64"):
         media = entry.get(key)
@@ -850,7 +923,9 @@ def entry_image(entry):
                 if isinstance(item, dict):
                     url = item.get("url") or ""
                     if url and not str(item.get("type", "")).startswith("audio"):
-                        return normalize_image_url(url)
+                        found = pick(url)
+                        if found:
+                            return found
     # 2) enclosure（必须过滤音频，否则会把 mp3 当图片）
     for encl in entry.get("enclosures") or []:
         if not isinstance(encl, dict):
@@ -860,17 +935,19 @@ def entry_image(entry):
             continue
         href = encl.get("href") or encl.get("url") or ""
         if href:
-            return normalize_image_url(href)
+            found = pick(href)
+            if found:
+                return found
     # 3) 兜底：description / content 里的 <img>
     for key in ("summary", "description"):
-        found = extract_image_from_html(entry.get(key))
+        found = pick(extract_image_from_html(entry.get(key)))
         if found:
             return found
     contents = entry.get("content")
     if isinstance(contents, list):
         for item in contents:
             if isinstance(item, dict):
-                found = extract_image_from_html(item.get("value"))
+                found = pick(extract_image_from_html(item.get("value")))
                 if found:
                     return found
     return ""
@@ -1277,6 +1354,8 @@ def build_clusters(raw_items, section_prefix):
             "source_count": count,
             "image": primary.get("image") or "",
             "is_primary_source": primary.get("source"),
+            # 媒体名：席位配额按这个字段计数（同一媒体的多频道算一家）
+            "primary_publisher": item_publisher(primary),
             "primary_title_zh": primary.get("title_zh") or primary.get("title"),
             "published": max(
                 (it.get("published") or datetime.min.replace(tzinfo=timezone.utc)
@@ -1300,6 +1379,68 @@ def build_clusters(raw_items, section_prefix):
         cluster["cid"] = "%s%d" % (section_prefix, index)
 
     return built
+
+
+def apply_publisher_quota(clusters, limit=MAX_EVENTS_PER_SECTION,
+                          quota=PUBLISHER_SEAT_QUOTA):
+    """按「媒体不垄断」的原则挑出最终入选的事件，并排好序。
+
+    为什么需要这个：
+        线上真实数据——国际版块 8 条里 France 24 独占 5 条，NPR / Sky News
+        一条都没进。配置里 7 个源，最终只有 5 家露面。
+
+    为什么配额必须直接作用于入选名额：
+        只把超配额的事件「排到后面」是没用的——只要入选名额没满，后面还会被
+        重新捞回来凑数（实测：9 条事件里 France 24 仍占 5 席）。
+
+    配额与「凑满 8 条」冲突时怎么办（关键决策）：
+        优先保配额，不强行凑满。
+        宁可今天只发 5 条多样化的事件，也不要发 8 条里 5 条来自同一家媒体——
+        后者会让「看不同观点」这个核心目标失效。版块少几条不是问题，
+        单一信源垄断才是问题。
+
+    规则（优先级从高到低）：
+        1. 多源事件（source_count >= 2）不设限，全部优先入选——它们本身就是多方印证
+        2. 单源事件按媒体计数，每个媒体最多占 quota 席
+        3. 只有当前面两步凑不满 limit、且有「未达配额的媒体」可补时才补
+        4. 绝不为了凑数把已达配额的媒体重新放进来
+
+    返回 (入选列表, 被舍去的列表)。
+    """
+    if not clusters:
+        return [], []
+
+    multi = [c for c in clusters if c["source_count"] >= 2]
+    single = [c for c in clusters if c["source_count"] < 2]
+
+    # 1) 多源事件先占位（不设限，但也不超过 limit）
+    picked = list(multi[:limit])
+    overflow = list(multi[limit:])
+
+    # 2) 单源事件按媒体配额入选
+    used = {}
+    deferred = []
+    for cluster in single:
+        publisher = cluster.get("primary_publisher") or ""
+        count = used.get(publisher, 0)
+        if len(picked) < limit and count < quota:
+            used[publisher] = count + 1
+            picked.append(cluster)
+        else:
+            deferred.append(cluster)
+
+    # 3) 注意：这里刻意**不**用 deferred 去补齐到 limit。
+    #    补齐会把已达配额的媒体重新捞回来（实测 France 24 又占满 5 席），
+    #    等于配额形同虚设。宁可版块少几条，也要保证来源多样。
+    #
+    #    保护机制：万一配额卡得太狠，入选数少于版块最少数（3 条），
+    #    说明今天确实只有一两家媒体发了稿，那就放宽配额补齐，
+    #    否则版块会因为「材料太单调」而彻底空掉——那比垄断更糟。
+    if len(picked) < MIN_EVENTS_PER_SECTION and deferred:
+        while len(picked) < min(limit, MIN_EVENTS_PER_SECTION) and deferred:
+            picked.append(deferred.pop(0))
+
+    return picked, deferred + overflow
 
 
 def summarize_events(clusters, section_label, client):
@@ -1521,6 +1662,8 @@ def redo_event(cluster, client):
 def build_section_events(clusters, section_label, client, max_retry=2):
     """生成一个版块的大事列表，并逐条过校验闸门。
 
+    传入的 clusters 应已经过 apply_publisher_quota() 排序，
+    靠前的就是「多源优先 + 媒体不垄断」之后最该露出的事件。
     返回 (事件列表, 闸门日志列表)。
     """
     if not clusters:
@@ -1612,6 +1755,8 @@ def build_section_events(clusters, section_label, client, max_retry=2):
         (cluster["cid"], events[cluster["cid"]])
         for cluster in clusters if cluster["cid"] in events
     ]
+    # 这里的 clusters 已经过 apply_publisher_quota() 筛选与排序，
+    # 长度本身通常就 <= MAX_EVENTS_PER_SECTION，这里只是兜底。
     if len(ordered) > MAX_EVENTS_PER_SECTION:
         dropped = len(ordered) - MAX_EVENTS_PER_SECTION
         log("  %s版块事件过多（%d 条），按重要性只保留前 %d 条，舍去 %d 条" % (
@@ -1666,9 +1811,83 @@ def split_text_segments(text, target=900, low=800, high=950):
     return [s for s in segments if s]
 
 
-def fetch_article_text(url, http_get=None, timeout=SOURCE_TIMEOUT):
-    """抓正文纯文本。失败（含 403）返回空串，由调用方回退 RSS 摘要。
+def extract_og_image(html, page_url=""):
+    """从 HTML 里取文章主图。
 
+    为什么需要这个：
+        中新网等中文源的 RSS **完全不带图**（没有 media:thumbnail，
+        description 里也没 <img>），导致「国内热点」版块 0/8 有图，
+        而国际版块 7/8 有图，两边观感割裂。
+
+    取值顺序：og:image → twitter:image → 正文里第一张「像文章配图」的图。
+    所有候选都必须过 looks_like_article_image()，避免取到导航箭头/广告图。
+
+    返回空串表示「这篇文章确实没有可用配图」——这是可接受的结果，
+    页面会渲染成纯文字卡片，比放一张错误的图好。
+    """
+    if not html:
+        return ""
+    try:
+        from bs4 import BeautifulSoup
+
+        soup = BeautifulSoup(html, "html.parser")
+    except Exception:
+        return ""
+
+    def resolve(src):
+        """把相对路径补成绝对地址。"""
+        src = (src or "").strip()
+        if not src:
+            return ""
+        if src.startswith("//"):
+            src = "https:" + src
+        elif src.startswith("/") and page_url:
+            try:
+                from urllib.parse import urljoin
+
+                src = urljoin(page_url, src)
+            except Exception:
+                return ""
+        elif not src.startswith(("http://", "https://")) and page_url:
+            try:
+                from urllib.parse import urljoin
+
+                src = urljoin(page_url, src)
+            except Exception:
+                return ""
+        return normalize_image_url(src)
+
+    # 1) og:image / og:image:secure_url
+    for prop in ("og:image:secure_url", "og:image", "og:image:url"):
+        tag = soup.find("meta", attrs={"property": prop})
+        if tag and tag.get("content"):
+            found = resolve(tag["content"])
+            if found and looks_like_article_image(found):
+                return found
+    # 2) twitter:image
+    for name in ("twitter:image", "twitter:image:src"):
+        tag = soup.find("meta", attrs={"name": name})
+        if tag and tag.get("content"):
+            found = resolve(tag["content"])
+            if found and looks_like_article_image(found):
+                return found
+    # 3) 不做「正文第一张 <img>」兜底。
+    #
+    #    实测结论：这个兜底对中文站点弊大于利。
+    #    中新网正文页没有 og:image，页面上全是站点 logo、导航箭头、广告 banner，
+    #    无论怎么加关键词过滤，都会取到错图（试过 toparr.png、站点 logo、
+    #    广告位图三种）。而「取到错图」比「没有图」糟糕得多——
+    #    读者看到头条大图是个导航箭头，会直接认为站点坏了。
+    #
+    #    所以：只信任站点自己声明的社交分享图（og:image / twitter:image）。
+    #    没有就渲染纯文字卡片，这是可接受的降级。
+    return ""
+
+
+def fetch_article(url, http_get=None, timeout=SOURCE_TIMEOUT):
+    """抓正文，同时返回纯文本与主图。
+
+    返回 (正文文本, 主图 URL)。失败返回 ("", "")。
     http_get 可注入，dry-run 时必须传假抓取器，否则演练就会偷偷联网。
     """
     http_get = http_get or http_get_bytes
@@ -1676,14 +1895,18 @@ def fetch_article_text(url, http_get=None, timeout=SOURCE_TIMEOUT):
         raw = http_get(url, timeout)
     except Exception as exc:  # noqa: BLE001 正文抓取失败是常态（France24 必 403）
         log("正文抓取失败（%s）：%s" % (str(url)[:60], type(exc).__name__))
-        return ""
+        return "", ""
+
+    html = raw.decode("utf-8", "replace")
+    # 传入页面 URL，让相对路径（如 /fileftp/xxx.jpg）能补成绝对地址
+    image = extract_og_image(html, page_url=url)
 
     try:
         from bs4 import BeautifulSoup
 
-        soup = BeautifulSoup(raw.decode("utf-8", "replace"), "html.parser")
+        soup = BeautifulSoup(html, "html.parser")
     except Exception:
-        return ""
+        return "", image
 
     for tag in soup(["script", "style", "nav", "footer", "aside", "header", "form"]):
         tag.decompose()
@@ -1696,7 +1919,13 @@ def fetch_article_text(url, http_get=None, timeout=SOURCE_TIMEOUT):
     body = "\n".join(paragraphs)
     # 正文太短基本是抓到了 cookie 墙或 403 页面，按失败处理
     if len(body) < 200:
-        return ""
+        return "", image
+    return body, image
+
+
+def fetch_article_text(url, http_get=None, timeout=SOURCE_TIMEOUT):
+    """只要正文纯文本（兼容旧调用方）。"""
+    body, _image = fetch_article(url, http_get=http_get, timeout=timeout)
     return body
 
 
@@ -1763,13 +1992,21 @@ def deep_dive(clusters, client, limit=DEEP_DIVE_COUNT, http_get=None):
         # 中文源的正文本来就能直接读，再「翻译」一遍等于把中文当中文翻，
         # 纯属浪费额度还会产出诡异结果。中文源只抓正文补全，不做翻译。
         if primary.get("lang") == "zh":
-            body = fetch_article_text(primary.get("url") or "", http_get=http_get)
+            body, og_image = fetch_article(primary.get("url") or "", http_get=http_get)
+            # 中文源 RSS 普遍不带图，用正文页的 og:image 补上（国内版块原本 0/8 有图）
+            if og_image and not primary.get("image"):
+                primary["image"] = og_image
+                cluster["image"] = cluster.get("image") or og_image
             if body:
                 primary["summary_zh"] = body[:600]
                 done += 1
             continue
 
-        body = fetch_article_text(primary.get("url") or "", http_get=http_get)
+        body, og_image = fetch_article(primary.get("url") or "", http_get=http_get)
+        # 英文源若 RSS 也没给图，同样用 og:image 兜底
+        if og_image and not primary.get("image"):
+            primary["image"] = og_image
+            cluster["image"] = cluster.get("image") or og_image
         if not body:
             # 403 / 超时 → 回退 RSS 摘要（France 24 正文页必 403）
             body = primary.get("summary") or ""
@@ -2769,7 +3006,13 @@ def build_day(section_inputs, client, today, tts_broadcast_text=None):
 
     for key in ("domestic", "international"):
         raw_items = section_inputs.get(key) or []
-        clusters = build_clusters(raw_items, prefixes[key])
+        # 先聚类并排序（家数优先、时间倒序），再按媒体配额挑出最终入选的事件，
+        # 避免发稿量大的媒体（如一天发 24 条的 France 24）把席位占满。
+        candidates = build_clusters(raw_items, prefixes[key])
+        clusters, dropped = apply_publisher_quota(candidates)
+        if dropped:
+            log("  %s版块按媒体配额舍去 %d 条（保留 %d 条）" % (
+                labels[key], len(dropped), len(clusters)))
         events_ordered, gate_log = build_section_events(
             clusters, labels[key], client
         )
@@ -2997,6 +3240,12 @@ def run(dry_run=False, dry_run_tts_ok=False, root=None):
         )
     log("全文翻译完成：%d 篇" % deep_count)
 
+    # L5.5 补图：深挖只覆盖少数几篇，其余入选事件的卡片还是没图。
+    # 中文源 RSS 普遍不带图，所以这里对「入选但无图」的事件逐个抓 og:image。
+    backfilled = backfill_images(day_entry, meta, http_get=http_get)
+    if backfilled:
+        log("补图完成：%d 个事件从正文页取到了主图" % backfilled)
+
     # 深挖后把 summary_zh 回填到事件的 cluster 里
     _refresh_event_summaries(day_entry, meta)
 
@@ -3065,6 +3314,61 @@ def run(dry_run=False, dry_run_tts_ok=False, root=None):
     if not dry_run:
         log("接下来由 workflow 负责 git 提交与 Cloudflare Pages 部署")
     return 0
+
+
+def backfill_images(day_entry, meta, http_get=None):
+    """给「已入选但还没有主图」的事件补图。
+
+    背景：国内版块线上 0/8 有图，国际版块 7/8 有图，观感割裂。
+    中文源 RSS 完全不带图，而 deep_dive 只覆盖少数几篇。
+    这里对剩下的事件逐个打开正文页取 og:image。
+
+    成本控制：
+      - 只处理入选的事件（最多每版块 8 条），不会把几百条都抓一遍
+      - 并发 4 路，单条超时 15 秒
+      - 任何失败静默跳过，绝不影响主流程（配图是锦上添花）
+    """
+    http_get = http_get or http_get_bytes
+
+    targets = []
+    for key in ("domestic", "international"):
+        clusters = {c["cid"]: c for c in meta["clusters"][key]}
+        for event in day_entry["sections"][key]:
+            if event.get("image"):
+                continue
+            cluster = clusters.get(event["cid"])
+            if not cluster or not cluster["items"]:
+                continue
+            primary = cluster["items"][0]
+            url = primary.get("url") or ""
+            if not is_valid_url(url):
+                continue
+            targets.append((event, cluster, primary, url))
+
+    if not targets:
+        return 0
+
+    def work(target):
+        event, cluster, primary, url = target
+        try:
+            _body, image = fetch_article(url, http_get=http_get, timeout=15)
+        except Exception:  # noqa: BLE001 补图失败不影响任何东西
+            return target, ""
+        return target, image
+
+    filled = 0
+    # 并发 4 路：比串行快很多，又不会把外部站点打爆
+    workers = min(4, len(targets))
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        for (event, cluster, primary, _url), image in pool.map(work, targets):
+            if not image:
+                continue
+            event["image"] = image
+            cluster["image"] = image
+            if not primary.get("image"):
+                primary["image"] = image
+            filled += 1
+    return filled
 
 
 def _refresh_event_summaries(day_entry, meta):
@@ -3351,8 +3655,11 @@ def _fake_article_bytes(url):
         "Several countries have called for restraint and for an investigation "
         "into how the mine was placed in the waterway. "
     ) * 4
+    # 刻意带上 og:image，让 dry-run 也能走到「从正文页补图」这条分支
     html = (
-        "<html><body><article><h1>Dry-run article</h1>"
+        "<html><head>"
+        '<meta property="og:image" content="http://ichef.bbci.co.uk/ace/standard/240/og.jpg">'
+        "</head><body><article><h1>Dry-run article</h1>"
         + "".join("<p>%s</p>" % body[i:i + 400] for i in range(0, len(body), 400))
         + "</article></body></html>"
     )

@@ -531,8 +531,8 @@ def test_image_normalize():
     check("Guardian 保留其它参数", "quality=85" in guardian, "实际=%s" % guardian)
 
     expect_eq("协议相对链接补 https",
-              generate.normalize_image_url("//cdn.example.org/a.jpg"),
-              "https://cdn.example.org/a.jpg")
+              generate.normalize_image_url("//cdn.news.example-site.com/a.jpg"),
+              "https://cdn.news.example-site.com/a.jpg")
     expect_eq("空值返回空串", generate.normalize_image_url(""), "")
     expect_eq("非法值返回空串", generate.normalize_image_url("not-a-url"), "")
 
@@ -744,7 +744,7 @@ def make_day(tts_ok, image="https://ichef.bbci.co.uk/ace/standard/1024/x.jpg"):
 
 def test_render_with_audio():
     group("页面渲染：今日 + 有音频分支")
-    html = generate.render_page(make_day(tts_ok=True), True, [], "https://daily.example.org")
+    html = generate.render_page(make_day(tts_ok=True), True, [], "https://daily.news.example-site.com")
 
     check("输出是完整 HTML",
           html.lstrip().startswith("<!DOCTYPE html>") and html.rstrip().endswith("</html>"))
@@ -779,7 +779,7 @@ def test_render_with_audio():
 def test_render_without_audio():
     group("页面渲染：今日 + 无音频降级分支")
 
-    html = generate.render_page(make_day(tts_ok=False), True, [], "https://daily.example.org")
+    html = generate.render_page(make_day(tts_ok=False), True, [], "https://daily.news.example-site.com")
     check("无音频时不输出 <audio>", "<audio" not in html)
     check("无音频时输出朗读按钮", "dailyNewsSpeak()" in html)
     check("朗读按钮文案存在", "朗读播报" in html)
@@ -792,7 +792,7 @@ def test_render_without_audio():
 def test_render_archive():
     group("页面渲染：归档页（不放播放器，注明音频仅当日有效）")
 
-    html = generate.render_page(make_day(tts_ok=True), False, None, "https://daily.example.org")
+    html = generate.render_page(make_day(tts_ok=True), False, None, "https://daily.news.example-site.com")
     check("归档页不放 <audio>", "<audio" not in html)
     check("归档页有 audio 相关提示", "音频仅当日有效" in html)
     check("归档页不放朗读按钮", "dailyNewsSpeak()" not in html)
@@ -1033,7 +1033,7 @@ def test_source_status_collection():
             return "<rss><channel><title>坏源</title></channel></rss>".encode("utf-8")
         return (
             '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel>'
-            "<title>好源</title><link>https://example.org/</link>"
+            "<title>好源</title><link>https://news.example-site.com/</link>"
             "<item><title>Good news headline</title>"
             "<link>https://www.npr.org/2026/11/17/good</link>"
             "<description>Something happened.</description>"
@@ -1182,7 +1182,7 @@ def test_stale_source_guard():
             old = (now - timedelta(days=730)).astimezone(timezone.utc)
             return (
                 '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel>'
-                "<title>僵尸源</title><link>https://example.org/</link>"
+                "<title>僵尸源</title><link>https://news.example-site.com/</link>"
                 "<item><title>两年前的旧闻标题</title>"
                 "<link>https://www.people.com.cn/old</link>"
                 "<description>旧内容</description>"
@@ -1192,7 +1192,7 @@ def test_stale_source_guard():
         fresh = (now - timedelta(hours=2)).astimezone(timezone.utc)
         return (
             '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel>'
-            "<title>新源</title><link>https://example.org/</link>"
+            "<title>新源</title><link>https://news.example-site.com/</link>"
             "<item><title>刚发生的新鲜新闻</title>"
             "<link>https://www.chinanews.com.cn/fresh</link>"
             "<description>新内容</description>"
@@ -1744,6 +1744,244 @@ def test_broadcast_not_truncated():
     check("截断后仍有足够条数（≥3）", len(events) >= 3)
 
 
+def test_domestic_classification():
+    group("国内源分类（线上故障：「伊朗油轮触雷」出现在国内热点版块）")
+
+    names = [f["name"] for f in generate.DOMESTIC_FEEDS]
+    check("国内源里没有「中新网·国际」频道",
+          not any("国际" in n for n in names),
+          "实际源=%r" % names)
+
+    # 每个国内源都必须声明 publisher（否则会被当成独立媒体，虚增家数）
+    check("国内源都声明了 publisher",
+          all(f.get("publisher") for f in generate.DOMESTIC_FEEDS),
+          "缺 publisher 的源：%r" % [
+              f["name"] for f in generate.DOMESTIC_FEEDS if not f.get("publisher")])
+
+    # 同一媒体的多频道 publisher 必须一致
+    for feed in generate.DOMESTIC_FEEDS:
+        check("源 %s 的 publisher 是媒体名而非频道名" % feed["name"],
+              "·" not in feed["publisher"],
+              "publisher=%r 看起来是频道名" % feed["publisher"])
+
+
+def test_publisher_seat_quota():
+    group("媒体席位配额（防止发稿量大的媒体垄断版块）")
+
+    now = datetime.now(BJ)
+
+    def cluster(cid, publisher, count=1, hours_ago=1):
+        title = "事件标题编号%s内容大约二十个字" % cid
+        return {
+            "cid": cid, "section": "international", "source_count": count,
+            "image": "", "primary_publisher": publisher, "primary_title_zh": title,
+            "published": now - timedelta(hours=hours_ago),
+            "items": [{
+                "source": publisher, "publisher": publisher, "title_zh": title,
+                "title": title, "title_en": "", "summary": "",
+                "url": "https://news.example-site.com/%s" % cid, "image": "",
+                "published": now, "lang": "zh",
+            }],
+        }
+
+    # 复现线上真实情况：France 24 独占 6 个单源席位，其他媒体各 1 个
+    clusters = [
+        cluster("i1", "France 24", hours_ago=1),
+        cluster("i2", "France 24", hours_ago=2),
+        cluster("i3", "France 24", hours_ago=3),
+        cluster("i4", "France 24", hours_ago=4),
+        cluster("i5", "France 24", hours_ago=5),
+        cluster("i6", "France 24", hours_ago=6),
+        cluster("i7", "BBC", hours_ago=7),
+        cluster("i8", "NPR", hours_ago=8),
+        cluster("i9", "Sky News", hours_ago=9),
+    ]
+    ordered, dropped = generate.apply_publisher_quota(clusters, quota=2)
+
+    check("没有丢事件（入选 + 舍去 = 总数）",
+          len(ordered) + len(dropped) == len(clusters),
+          "入选 %d + 舍去 %d ≠ %d" % (len(ordered), len(dropped), len(clusters)))
+
+    # 配额必须直接作用于「入选名额」，而不只是排序。
+    # （只排序是没用的：事件数不足时被挤下去的又会被捞回来凑数，实测 France 24 仍占 5 席）
+    pub_counts = {}
+    for c in ordered:
+        pub_counts[c["primary_publisher"]] = pub_counts.get(
+            c["primary_publisher"], 0) + 1
+
+    check("单一媒体在入选名单里不超过配额",
+          pub_counts.get("France 24", 0) <= 2,
+          "France 24 占了 %d 席（上限 2）" % pub_counts.get("France 24", 0))
+    check("小媒体能够露脸（BBC/NPR/Sky 至少各 1 席）",
+          all(pub_counts.get(p, 0) >= 1 for p in ("BBC", "NPR", "Sky News")),
+          "实际分布=%r" % pub_counts)
+    check("入选数量不超过版块上限",
+          len(ordered) <= generate.MAX_EVENTS_PER_SECTION,
+          "实际 %d 条" % len(ordered))
+    check("入选数量不低于版块下限（不能因为配额让版块空掉）",
+          len(ordered) >= min(generate.MIN_EVENTS_PER_SECTION, len(clusters)),
+          "实际 %d 条" % len(ordered))
+
+    # 多源事件不受配额限制，永远优先入选
+    multi = [cluster("m1", "France 24", count=4, hours_ago=20)]
+    picked, _dropped = generate.apply_publisher_quota(
+        [cluster("s1", "France 24", hours_ago=1)] + multi, quota=2)
+    expect_eq("多源事件优先入选", picked[0]["cid"], "m1")
+
+    # 空列表不炸
+    expect_eq("空输入返回两个空列表", generate.apply_publisher_quota([]), ([], []))
+
+    # 事件不足时，配额不能把版块搞空（低于下限才允许放宽）
+    few = [cluster("a1", "France 24", hours_ago=1),
+           cluster("a2", "France 24", hours_ago=2),
+           cluster("a3", "France 24", hours_ago=3)]
+    picked_few, _dropped_few = generate.apply_publisher_quota(few, quota=1)
+    check("全同类事件时仍保证版块下限（不空掉）",
+          len(picked_few) >= min(generate.MIN_EVENTS_PER_SECTION, len(few)),
+          "实际入选 %d 条" % len(picked_few))
+
+    # 配额优先于「凑满上限」：宁可少发几条，也不让一家媒体垄断
+    picked_many, dropped_many = generate.apply_publisher_quota(clusters, quota=2)
+    check("配额优先于凑满上限（允许少于 MAX）",
+          len(picked_many) < generate.MAX_EVENTS_PER_SECTION,
+          "实际 %d 条，说明仍在强行凑满" % len(picked_many))
+    check("被配额挤下去的事件记入 dropped",
+          len(dropped_many) > 0, "dropped 为空")
+
+
+def test_og_image_extraction():
+    group("从正文页取 og:image（国内源 RSS 完全不带图，导致 0/8 有图）")
+
+    html_with_og = (
+        '<html><head><meta property="og:image" '
+        'content="http://ichef.bbci.co.uk/ace/standard/240/pic.jpg">'
+        "</head><body><p>正文</p></body></html>"
+    )
+    found = generate.extract_og_image(html_with_og)
+    check("能取到 og:image",
+          "pic.jpg" in found, "实际=%r" % found)
+    check("og:image 也做了分辨率升级（BBC 240→1024）",
+          "/1024/" in found and "/240/" not in found, "实际=%r" % found)
+    check("og:image 也做了 http→https 升级",
+          found.startswith("https://"), "实际=%r" % found)
+
+    # twitter:image 兜底
+    html_tw = ('<html><head><meta name="twitter:image" '
+               'content="https://news.example-site.com/media/2026/11/17/tw-photo.jpg"></head></html>')
+    expect_eq("twitter:image 兜底", generate.extract_og_image(html_tw),
+              "https://news.example-site.com/media/2026/11/17/tw-photo.jpg")
+
+    # 正文里第一张图兜底，且要过滤 logo / 追踪像素
+    html_img = (
+        '<html><body>'
+        '<img src="https://news.example-site.com/logo.png">'
+        '<img src="https://news.example-site.com/pixel/1x1.gif">'
+        '<img src="https://news.example-site.com/media/2026/11/17/photo-real.jpg">'
+        "</body></html>"
+    )
+    # 正文里第一张图**不再作为兜底**：实测中文站点（中新网）页面上全是
+    # 导航箭头/站点 logo/广告图，任何兜底都会取到错图，而取错图比没图更糟。
+    expect_eq("不再从正文 <img> 兜底取图（避免取到导航/广告图）",
+              generate.extract_og_image(html_img), "")
+
+    # 没有任何图时返回空串，不能报错
+    expect_eq("无图返回空串", generate.extract_og_image("<html><body>x</body></html>"), "")
+    expect_eq("空 HTML 返回空串", generate.extract_og_image(""), "")
+
+    # fetch_article 必须同时返回正文和图片
+    def fake_http(url, timeout=20):
+        return (
+            '<html><head><meta property="og:image" '
+            'content="https://news.example-site.com/media/2026/11/17/a-photo.jpg"></head>'
+            "<body><article>"
+            + "".join("<p>%s</p>" % ("这是一段足够长的中文正文内容用来测试提取。" * 2)
+                      for _ in range(6))
+            + "</article></body></html>"
+        ).encode("utf-8")
+
+    body, image = generate.fetch_article("https://news.example-site.com/a", http_get=fake_http)
+    check("fetch_article 同时返回正文", len(body) >= 200, "正文长度=%d" % len(body))
+    expect_eq("fetch_article 同时返回主图", image, "https://news.example-site.com/media/2026/11/17/a-photo.jpg")
+
+    # 兼容旧接口
+    only_body = generate.fetch_article_text(
+        "https://news.example-site.com/a", http_get=fake_http)
+    expect_eq("fetch_article_text 仍然只返回正文", only_body, body)
+
+
+def test_backfill_images():
+    group("补图：给入选但无图的事件补上 og:image")
+
+    now = datetime.now(BJ)
+
+    def make_cluster(cid, url):
+        title = "事件标题%s" % cid
+        return {
+            "cid": cid, "section": "domestic", "source_count": 1,
+            "image": "", "primary_publisher": "中新网", "primary_title_zh": title,
+            "published": now,
+            "items": [{
+                "source": "中新网", "publisher": "中新网", "title_zh": title,
+                "title": title, "title_en": "", "summary": "",
+                "url": url, "image": "", "published": now, "lang": "zh",
+            }],
+        }
+
+    clusters = [
+        make_cluster("c1", "https://www.chinanews.com.cn/a"),
+        make_cluster("c2", "https://www.chinanews.com.cn/b"),
+    ]
+    day_entry = {
+        "date": "2026-11-17", "broadcast": "x", "tts_ok": False,
+        "sections": {
+            "domestic": [
+                {"cid": "c1", "zh": "事件一", "importance": "i",
+                 "source_count": 1, "image": "", "cluster": []},
+                {"cid": "c2", "zh": "事件二", "importance": "i",
+                 "source_count": 1, "image": "", "cluster": []},
+            ],
+            "international": [],
+        },
+        "raw_news": [],
+    }
+    meta = {"clusters": {"domestic": clusters, "international": []}}
+
+    def fake_http(url, timeout=20):
+        name = url.rsplit("/", 1)[-1]
+        return (
+            '<html><head><meta property="og:image" '
+            'content="https://news.example-site.com/media/2026/11/17/%s-photo.jpg"></head>'
+            "<body><p>%s</p></body></html>"
+            % (name, "正文内容" * 50)
+        ).encode("utf-8")
+
+    filled = generate.backfill_images(day_entry, meta, http_get=fake_http)
+    expect_eq("两个无图事件都补到了图", filled, 2)
+    check("事件一有了图片", bool(day_entry["sections"]["domestic"][0]["image"]))
+    check("事件二有了图片", bool(day_entry["sections"]["domestic"][1]["image"]))
+    check("补到的图是 https", all(
+        e["image"].startswith("https://") for e in day_entry["sections"]["domestic"]))
+
+    # 全部已有图后再跑一次：应当一个都不抓，返回 0
+    filled_again = generate.backfill_images(day_entry, meta, http_get=fake_http)
+    expect_eq("全部有图时不再抓取", filled_again, 0)
+
+    # 已有图的事件不能被覆盖
+    keep_url = "https://news.example-site.com/media/2026/11/17/keep-photo.jpg"
+    day_entry["sections"]["domestic"][0]["image"] = keep_url
+    generate.backfill_images(day_entry, meta, http_get=fake_http)
+    expect_eq("已有图不被覆盖",
+              day_entry["sections"]["domestic"][0]["image"], keep_url)
+
+    # 抓取失败时静默跳过，不影响主流程
+    def broken_http(url, timeout=20):
+        raise OSError("演练：网络中断")
+
+    day_entry["sections"]["domestic"][1]["image"] = ""
+    filled3 = generate.backfill_images(day_entry, meta, http_get=broken_http)
+    expect_eq("抓取失败时返回 0 而不是抛异常", filled3, 0)
+
+
 def test_dry_run_end_to_end():
     group("端到端 dry-run（零网络、零 CF 调用、只写 _dryrun/）")
 
@@ -1989,6 +2227,10 @@ ALL_TESTS = [
     test_tts_retry_behaviour,
     test_requirements_pins,
     test_broadcast_not_truncated,
+    test_domestic_classification,
+    test_publisher_seat_quota,
+    test_og_image_extraction,
+    test_backfill_images,
     test_dry_run_end_to_end,
     test_dry_run_tts_ok_branch,
     test_workflow_guard,
