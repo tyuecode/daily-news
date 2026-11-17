@@ -104,6 +104,25 @@ MIN_EVENTS_PER_SECTION = 3
 # 多源事件（source_count >= 2）不受此限制——它们本身就值得靠前。
 PUBLISHER_SEAT_QUOTA = 2
 
+# ----------------------------------------------------------------------------
+# 同主题归并
+# ----------------------------------------------------------------------------
+# 问题：线上有一天的国内版块 8 条里有 4 条是「习近平会见X国领导人」，
+#       读者打开页面会觉得「今天只有一件事」。
+#
+# 关键认识：这 4 条是**不同事件**（会见的对象不同），不能像 cluster 那样
+# 合并成一个事件——那会丢失信息。它们应该归到**同一主题**下：
+#       主卡片：习近平会见四国领导人（AI 概括）
+#       展开后：4 条各自的事件
+# 于是形成两级结构：theme（同系列事件） → event（单条事件） → cluster（多家报道）。
+#
+# 识别方式：用「标题公共前缀」而不是相似度。
+#   实测这 4 条两两 bigram 相似度只有 0.17–0.23，任何合理阈值都抓不到；
+#   但它们的公共前缀都恰好是「习近平会见」（5 字）。
+#   前缀规则可预测、可解释，且不会把无关新闻误合并。
+THEME_PREFIX_MIN = 5      # 公共前缀至少这么长才算同主题
+THEME_MIN_EVENTS = 2      # 至少这么多条才成组（1 条不成组）
+
 # 每批翻译的标题数量：一次给 20 条模型只会翻前 5 条（实测），必须分批 8 条
 TRANSLATE_BATCH = 8
 
@@ -1255,7 +1274,8 @@ def route_overseas_items(items, overseas_publishers):
 
     只对海外中文媒体生效——中新网这类国内媒体整源都是国内新闻，不必分流。
 
-    返回 (国内条目, 国际条目)。
+    返回 (国内条目, 国际条目)，两者合起来**恰好**等于输入的每一条（一一对应），
+    调用方应当直接用这两个结果替换原列表，不要再做追加拼接。
     """
     domestic = []
     international = []
@@ -1266,12 +1286,11 @@ def route_overseas_items(items, overseas_publishers):
             (domestic if item.get("section") == "domestic"
              else international).append(item)
             continue
+        clone = dict(item)
         if is_china_related(item):
-            clone = dict(item)
             clone["section"] = "domestic"
             domestic.append(clone)
         else:
-            clone = dict(item)
             clone["section"] = "international"
             international.append(clone)
     return domestic, international
@@ -1521,49 +1540,64 @@ def apply_publisher_quota(clusters, limit=MAX_EVENTS_PER_SECTION,
               · 国际版块 179 条素材最终只显示 5 条，3 个席位被浪费；
               · 为了给低频媒体腾位置，挤掉了更重要的热点。
               这和「了解热点」的初衷直接冲突。
+      第三次（本函数要解决的新问题）：同主题的 3 条「习近平会见X」都来自中新网，
+              配额按 publisher 限 2 席，第 3 条被砍掉——同主题组被硬生生拆散。
+              症状是「主题卡片只有 2 条，而源里明明有 3 条」。
 
     现在的规则（简单、可预测）：
-        1. 先按原排序（家数多 → 时间新）依次取，每个媒体最多 quota 席
-        2. 如果这样没取满 limit，**用剩余事件按原排序补齐**，忽略配额
-           —— 宁可让某家多几条，也不能让版块少几条热点
-        3. 只有当事件总数本身就少于 limit 时，才可能取不满
-
-    换句话说：配额只在高频媒体会挤掉别人时起作用；
-    一旦配额导致席位浪费，立刻让位给「覆盖更多热点」。
+        1. 同主题的事件**共享一个席位名额**（它们最终会并成一张卡片，
+           按条数占名额会让主题组残缺）
+        2. 先按原排序（家数多 → 时间新）依次取，每个媒体最多 quota 席
+        3. 席位没满 → 先补未达配额的其他媒体
+        4. 还不够 → 允许超配额补齐（宁可重复来源，也不浪费席位）
 
     返回 (入选列表, 被舍去的列表)。
     """
     if not clusters:
         return [], []
 
+    # 标记每条事件所属的主题前缀（用于「同主题共享名额」）
+    themes = [theme_key_of(c.get("primary_title_zh") or "") for c in clusters]
+    theme_seats = {}   # 主题前缀 → 已占用的「逻辑席位」
+
     picked = []
     picked_ids = set()
     used = {}
 
-    # 第一轮：按原排序，遵守每媒体 quota 上限
-    for cluster in clusters:
-        if len(picked) >= limit:
-            break
+    def theme_of(cluster, index):
+        return themes[index]
+
+    def can_take(cluster, index, allow_overflow=False):
         publisher = cluster.get("primary_publisher") or ""
+        if allow_overflow:
+            return True
         if used.get(publisher, 0) >= quota:
-            continue
+            return False
+        theme = theme_of(cluster, index)
+        # 同主题的多条共享一个名额：只有该主题首次出现时才占位
+        if theme and theme_seats.get(theme, 0) >= quota:
+            return False
+        return True
+
+    def take(cluster, index):
+        publisher = cluster.get("primary_publisher") or ""
         used[publisher] = used.get(publisher, 0) + 1
+        theme = theme_of(cluster, index)
+        if theme:
+            theme_seats[theme] = theme_seats.get(theme, 0) + 1
         picked.append(cluster)
         picked_ids.add(id(cluster))
 
+    # 第一轮：按原排序，遵守每媒体 quota 上限
+    for index, cluster in enumerate(clusters):
+        if len(picked) >= limit:
+            break
+        if can_take(cluster, index):
+            take(cluster, index)
+
     # 第二轮：席位没用满 → 补齐到 limit。
-    #
-    # 这里的取舍体现项目初衷：**热点覆盖优先于观点多样性**。
-    #   · 如果还有别的媒体没到配额，优先补它们（顺便提升多样性）
-    #   · 如果剩下的全来自已达配额的媒体（比如今天只有它发了稿），
-    #     也要补进来——宁可看到重复来源的热点，也不能让版块只剩 4 条。
-    #     读者打开页面是为了「知道今天发生了什么」，不是来检查媒体清单的。
-    #
-    # 反例（曾经写错）：补齐时无条件守配额，结果 8 条素材只显示 4 条，
-    # 一半的热点被配额吃掉，与「了解热点」的初衷直接冲突。
     if len(picked) < limit:
-        # 先补未达配额的媒体
-        for cluster in clusters:
+        for index, cluster in enumerate(clusters):
             if len(picked) >= limit:
                 break
             if id(cluster) in picked_ids:
@@ -1571,19 +1605,16 @@ def apply_publisher_quota(clusters, limit=MAX_EVENTS_PER_SECTION,
             publisher = cluster.get("primary_publisher") or ""
             if used.get(publisher, 0) >= quota:
                 continue
-            used[publisher] = used.get(publisher, 0) + 1
-            picked.append(cluster)
-            picked_ids.add(id(cluster))
+            take(cluster, index)
 
-    # 还不够 → 认了，把剩下的按排序补满，不让席位浪费
+    # 第三轮：还不够 → 认了，把剩下的按排序补满，不让席位浪费
     if len(picked) < limit:
-        for cluster in clusters:
+        for index, cluster in enumerate(clusters):
             if len(picked) >= limit:
                 break
             if id(cluster) in picked_ids:
                 continue
-            picked.append(cluster)
-            picked_ids.add(id(cluster))
+            take(cluster, index)
 
     dropped = [c for c in clusters if id(c) not in picked_ids]
     return picked, dropped
@@ -1917,6 +1948,177 @@ def build_section_events(clusters, section_label, client, max_retry=2):
 
 SENTENCE_END = "。！？!?."
 SOFT_BREAK = "；;\n"
+
+
+def common_prefix_len(text_a, text_b):
+    """两个标题的公共前缀字数。"""
+    count = 0
+    for char_a, char_b in zip(text_a or "", text_b or ""):
+        if char_a != char_b:
+            break
+        count += 1
+    return count
+
+
+def group_by_theme(events, prefix_min=THEME_PREFIX_MIN, min_events=THEME_MIN_EVENTS):
+    """把同一系列的事件归成一个主题组。
+
+    输入是已经排好序的事件列表（保持顺序，主题组放在其首条事件的位置）。
+
+    返回列表，每项形如：
+        {"theme": "习近平会见", "events": [ev1, ev2, ev3, ev4]}
+    或者「单条主题」：
+        {"theme": "", "events": [ev]}
+
+    为什么用公共前缀而不是相似度：
+        实测 4 条「习近平会见X国领导人」两两 bigram 相似度只有 0.17–0.23，
+        因为国家名完全不同，任何合理阈值都抓不到。但它们的公共前缀
+        恰好是「习近平会见」。前缀规则可预测、不会误伤无关新闻。
+    """
+    groups = []
+    for event in events:
+        title = (event.get("zh") or "").strip()
+        if not title:
+            groups.append({"theme": "", "events": [event]})
+            continue
+
+        placed = False
+        for group in groups:
+            if not group["theme"]:
+                continue
+            if common_prefix_len(group["theme"], title) >= prefix_min:
+                group["events"].append(event)
+                placed = True
+                break
+        if not placed:
+            groups.append({"theme": title, "events": [event]})
+
+    # 只保留真正成为「组」的（>= min_events），否则降级为单条
+    result = []
+    for group in groups:
+        if len(group["events"]) >= min_events:
+            # 主题名取组内公共前缀，而不是整条标题
+            prefix = group["theme"]
+            for event in group["events"][1:]:
+                prefix = prefix[:common_prefix_len(prefix, event.get("zh") or "")]
+            result.append({
+                "theme": prefix.strip() or group["theme"],
+                "events": group["events"],
+            })
+        else:
+            for event in group["events"]:
+                result.append({"theme": "", "events": [event]})
+    return result
+
+
+def summarize_theme(group, section_label, client):
+    """为一个主题组生成一句话概括（不超过 40 字）。
+
+    例如 4 条「习近平会见X国领导人」→「习近平在APEC期间会见四国领导人」。
+    AI 失败时用「前缀 + 共 N 条」兜底，绝不空着。
+    """
+    events = group["events"]
+    prefix = group["theme"]
+    fallback = "%s等%d项动态" % (prefix, len(events)) if prefix else "多条相关动态"
+
+    titles = "\n".join("- " + (e.get("zh") or "")[:60] for e in events[:8])
+    prompt = (
+        "下面是一组同一主题的中文新闻标题，请用一句不超过 30 个汉字的话概括它们"
+        "共同讲的是什么事。\n\n"
+        "要求：\n"
+        "- 只输出这一句概括，不要任何开场白、编号或解释\n"
+        "- 必须基于标题内容，禁止编造标题里没有的信息\n"
+        "- 如果这些标题讲的都是同一类动作（例如同一人会见不同国家领导人），"
+        "就点明是谁做了什么、涉及几方\n\n"
+        "标题：\n%s\n" % titles
+    )
+    try:
+        text = strip_wrapping(client.complete(prompt, max_tokens=256))
+        text = text.strip().splitlines()[0].strip() if text.strip() else ""
+        # 防御：AI 偶尔会回显提示词、输出「演练：」这类占位、或返回英文
+        if text and not any(bad in text for bad in (
+                "演练", "未知提示词", "标题：", "要求", "概括", "输出")):
+            candidate = truncate_zh(text.strip("：: ，,"), 40)
+            # 主题概括必须是中文，否则用兜底
+            if candidate and chinese_ratio(candidate) > 0.5:
+                return candidate
+    except AIError as exc:
+        warn("主题概括失败（%s）：%s" % (prefix or section_label, exc))
+    return fallback
+
+
+def theme_key_of(title, prefix_min=THEME_PREFIX_MIN):
+    """取一条标题的「主题前缀键」，用于判断两条是否同主题。
+
+    做法：取标题前 prefix_min 个字（用公共前缀的判定口径）。
+    「习近平会见越南总书记苏林」→「习近平会见」
+    「全国多地迎来寒潮」        →「全国多地迎」
+    这两者前缀完全不同，不会误判成同主题。
+
+    为什么不用「公共前缀比较」而是取固定长度：
+        配额阶段需要一个「每条事件一个值」的键来做分组统计，
+        取固定长度前缀即可，真正的成组判定仍由 group_by_theme 用
+        逐对公共前缀长度来做，两者口径一致。
+    """
+    text = (title or "").strip()
+    if len(text) < prefix_min:
+        return ""
+    return text[:prefix_min]
+
+
+def group_events_by_theme(events, section_label, client):
+    """把同系列事件归成主题卡片，返回新的「卡片列表」。
+
+    输出结构（每个元素是一张卡片）：
+        普通卡片：{"cid": "c1", "zh": ..., "theme": "", "events": [event]}
+        主题卡片：{"cid": "c1", "zh": "习近平会见四国领导人",
+                   "theme": "习近平会见", "events": [ev1, ev2, ev3, ev4]}
+
+    为什么要包一层 events：
+        页面用「主卡片 + 展开」渲染主题卡片，播报稿只需要读 zh 字段，
+        两者都能直接消费这个结构，不必各写一套判断。
+
+    卡片继承第一条事件的 cid，保证引用稳定。
+    """
+    groups = group_by_theme(events)
+    cards = []
+    for group in groups:
+        members = group["events"]
+        if len(members) <= 1:
+            event = members[0]
+            cards.append({
+                "cid": event.get("cid"),
+                "zh": event.get("zh") or "",
+                "importance": event.get("importance") or "",
+                "source_count": event.get("source_count") or 0,
+                "image": event.get("image") or "",
+                "cluster": event.get("cluster") or [],
+                "theme": "",
+                "events": members,
+            })
+            continue
+
+        # 主题卡片：AI 生成一句共同概括，import 取组内最高
+        theme_summary = summarize_theme(group, section_label, client)
+        max_count = max((m.get("source_count") or 0) for m in members)
+        picked_image = ""
+        for member in members:
+            if member.get("image"):
+                picked_image = member["image"]
+                break
+        log("  %s版块主题归并：%r 共 %d 条 → 1 张卡片" % (
+            section_label, group["theme"], len(members)))
+        cards.append({
+            "cid": members[0].get("cid"),
+            "zh": theme_summary,
+            "importance": "共 %d 条相关动态" % len(members),
+            "source_count": max_count,
+            "image": picked_image,
+            "cluster": [],          # 主题卡片本身不再挂媒体列表
+            "theme": group["theme"],
+            "events": members,
+        })
+    return cards
 
 
 def split_text_segments(text, target=900, low=800, high=950):
@@ -2707,14 +2909,63 @@ def _render_media(media, is_primary, event_summary=""):
     return "".join(parts)
 
 
+def _render_theme_member(member):
+    """渲染主题组里的单条事件（二级展示）。
+
+    这是「同一系列的多个事件」，不是「同一事件的多家报道」，
+    所以每条都要显示自己的标题，并附上它的来源列表。
+    """
+    title = esc(member.get("zh") or "")
+    importance = esc(member.get("importance") or "")
+    count = member.get("source_count") or 0
+    cluster = member.get("cluster") or []
+
+    parts = ['<div class="media">']
+    parts.append('<div class="src">')
+    sources = []
+    for media in cluster[:4]:
+        name = media.get("publisher") or media.get("source") or ""
+        if name and name not in sources:
+            sources.append(name)
+    if sources:
+        parts.append("<span>%s</span>" % esc(" · ".join(sources)))
+    elif count:
+        parts.append("<span>%d 家媒体报道</span>" % count)
+    parts.append("</div>")
+    parts.append("<h4>%s</h4>" % title)
+    if importance:
+        parts.append('<p class="sum">%s</p>' % importance)
+
+    # 每条事件挑一个主链接
+    link = ""
+    for media in cluster:
+        if is_valid_url(media.get("url")):
+            link = media["url"]
+            break
+    if link:
+        parts.append(
+            '<a class="go" href="%s" target="_blank" rel="noopener noreferrer">'
+            "阅读原文 ↗</a>" % esc(link)
+        )
+    parts.append("</div>")
+    return "".join(parts)
+
+
 def _render_card(event, index):
-    """渲染一条大事卡片：默认极简，多观点折叠。"""
+    """渲染一条大事卡片：默认极简，多观点折叠。
+
+    支持两种卡片：
+      · 普通卡片：一个事件 + 多家媒体的报道（cluster 折叠）
+      · 主题卡片：同一系列的多个事件（events 折叠），主卡片显示共同概括
+    """
     cid = esc(event.get("cid") or ("e%d" % index))
     zh = esc(event.get("zh") or "")
     importance = esc(event.get("importance") or "")
     image = event.get("image") or ""
     cluster = event.get("cluster") or []
     count = event.get("source_count") or len(cluster) or 0
+    theme_members = event.get("events") or []
+    is_theme = bool(event.get("theme")) and len(theme_members) > 1
     panel_id = "cluster-%s" % cid
 
     parts = ['<article class="card">']
@@ -2729,11 +2980,29 @@ def _render_card(event, index):
         parts.append('<p class="imp">%s</p>' % importance)
 
     parts.append('<div class="card-meta">')
-    if count >= 2:
+    if is_theme:
+        # 主题卡片显示「相关动态 N 条」，比「N 家媒体报道」更贴切
+        parts.append('<span class="chip">相关动态 %d 条</span>' % len(theme_members))
+    elif count >= 2:
         parts.append('<span class="chip">%d 家媒体报道</span>' % count)
     parts.append("</div>")
 
-    if len(cluster) >= 1:
+    if is_theme:
+        label_closed = "查看这 %d 条动态 ▸" % len(theme_members)
+        parts.append(
+            '<button class="toggle" type="button" data-target="%s" '
+            'data-label-closed="%s">%s</button>'
+            % (panel_id, esc(label_closed), esc(label_closed))
+        )
+        parts.append('<div class="cluster" id="%s" hidden>' % panel_id)
+        parts.append(
+            '<p class="cluster-note">以下是同一主题下的 %d 条动态，'
+            "点开任意一条可看媒体原文。</p>" % len(theme_members)
+        )
+        for member in theme_members:
+            parts.append(_render_theme_member(member))
+        parts.append("</div>")
+    elif len(cluster) >= 1:
         label_closed = "查看各家报道 ▸"
         parts.append(
             '<button class="toggle" type="button" data-target="%s" '
@@ -3197,6 +3466,11 @@ def build_day(section_inputs, client, today, tts_broadcast_text=None):
                 "cluster": cluster_media,
             })
 
+        # 同主题归并：把「习近平会见X国领导人」这类同一系列的多条事件
+        # 归到一个主题组下，页面渲染成一张主卡片 + 可展开的条目列表。
+        # 注意这不会丢事件：每个主题组里仍然保留全部原始事件。
+        events = group_events_by_theme(events, labels[key], client)
+
         sections[key] = events
         section_notes[key] = ""
         section_notes["%s_available" % key] = len(raw_items)
@@ -3322,16 +3596,32 @@ def run(dry_run=False, dry_run_tts_ok=False, root=None):
     # 海外中文媒体是综合媒体：法广RFI / 纽约时报中文网 的 RSS 里既有涉华新闻
     # 也有纯国际新闻。必须按「是否涉华」分流，否则会出现
     # 「乌克兰袭击克里米亚大桥」出现在「国内热点」版块（线上真实发生过）。
+    #
+    # ⚠️ 这里必须用返回的两个列表**整体替换**，不能像早期实现那样写成
+    #    `intl_items = intl_items + intl_extra` —— 因为 route_overseas_items
+    #    返回的 intl 是「输入里所有国际条目」，不是「本次新增的国际条目」，
+    #    拼接会让国际条目整体翻倍（线上日志实测出现 189 → 392 条）。
     overseas_publishers = {f.get("publisher") for f in OVERSEAS_ZH_FEEDS if f.get("publisher")}
     if overseas_publishers and (dom_items or intl_items):
-        dom_routed, intl_extra = route_overseas_items(
+        before_dom = len(dom_items)
+        dom_routed, intl_routed = route_overseas_items(
             dom_items + intl_items, overseas_publishers)
-        moved_out = len(dom_items) - len(dom_routed)
-        if intl_extra:
-            intl_items = intl_items + intl_extra
+        moved_out = before_dom - len(dom_routed)
         dom_items = dom_routed
+        intl_items = intl_routed
         if moved_out > 0:
             log("海外中文媒体分流：%d 条非涉华新闻已移到国际版块" % moved_out)
+        # 分流本身可能把国际新闻误放进国内（或反之），这里做一次自检并纠正
+        leaked = [
+            it for it in dom_items
+            if item_publisher(it) in overseas_publishers and not is_china_related(it)
+        ]
+        if leaked:
+            warn("分流后国内版块仍有 %d 条非涉华新闻，已强制移到国际" % len(leaked))
+            for it in leaked:
+                dom_items.remove(it)
+                it["section"] = "international"
+                intl_items.append(it)
 
     # 国内源全挂 → 退化为从国际源筛选涉华报道，并在页面注明
     domestic_fallback = False
@@ -3757,6 +4047,20 @@ def _dry_run_fixture(today):
         ],
         "中新网·要闻": [],
         "中新网·时政": [
+            # 同主题案例：这几条的公共前缀都是「习近平会见」，
+            # 用来验证 group_by_theme 会把它们归成一张主题卡片。
+            ("习近平会见越共中央总书记、国家主席苏林",
+             "https://www.chinanews.com.cn/gn/2026/11-17/meet-sulin.shtml",
+             "习近平在深圳会见越共中央总书记、国家主席苏林。",
+             "", recent),
+            ("习近平会见加拿大总理卡尼",
+             "https://www.chinanews.com.cn/gn/2026/11-17/meet-carney.shtml",
+             "习近平在深圳会见加拿大总理卡尼。",
+             "", recent),
+            ("习近平会见墨西哥总统辛鲍姆",
+             "https://www.chinanews.com.cn/gn/2026/11-17/meet-sheinbaum.shtml",
+             "习近平在深圳会见墨西哥总统辛鲍姆。",
+             "", older),
             ("全国多地迎来寒潮降温天气",
              "https://www.chinanews.com.cn/sh/2026/11-17/cold.shtml",
              "中央气象台发布寒潮预警，全国多地气温明显下降。",
@@ -3881,6 +4185,8 @@ class FakeAIClient:
     def _dispatch(self, prompt):
         if "逐条翻译成简体中文" in prompt:
             return self._translate_titles(prompt)
+        if "同一主题的中文新闻标题" in prompt:
+            return self._summarize_theme(prompt)
         if "今日" in prompt and "大事" in prompt and "总结" in prompt:
             return self._summarize(prompt)
         if "把下面这篇英文新闻翻译成简体中文" in prompt:
@@ -3890,6 +4196,20 @@ class FakeAIClient:
         if "同一事件的新闻报道" in prompt:
             return self._redo(prompt)
         return "演练：未知提示词"
+
+    def _summarize_theme(self, prompt):
+        """为主题组生成概括：用标题里的公共前缀拼一句合理的话。"""
+        lines = [
+            line[2:].strip()
+            for line in prompt.splitlines()
+            if line.startswith("- ")
+        ]
+        if not lines:
+            return "演练：相关动态汇总"
+        title = lines[0]
+        if "会见" in title:
+            return "习近平在APEC期间会见%d国领导人" % len(lines)
+        return "%s等%d条动态" % (title[:12], len(lines))
 
     def _translate_titles(self, prompt):
         """把标题逐条翻成中文：用关键词映射，保证同一事件译出相同中文。"""
@@ -3903,10 +4223,20 @@ class FakeAIClient:
         return "\n".join(lines)
 
     def _summarize(self, prompt):
-        """按 [cid] 输出浓缩概括，模拟真实模型的输出格式。"""
+        """按 [cid] 输出浓缩概括，模拟真实模型的输出格式。
+
+        注意：只能解析「现在，请处理以下 N 条新闻标题：」之后的部分。
+        提示词模板里带有输出示例（[c13] 南非… / [c7] 油轮…），
+        如果不截断，假 AI 会把示例也当成输入，导致 c7 被示例内容污染
+        （实测症状：c7 的概括变成了示例里的「超级油轮触雷沉没」）。
+        """
+        marker = "现在，请处理以下"
+        body = prompt.split(marker, 1)[1] if marker in prompt else prompt
+
         lines = []
-        for raw in prompt.splitlines():
-            match = re.match(r"^\[(c\d+|i\d+)\]\s*(【\d家媒体报道】)?\s*(.+)$", raw.strip())
+        for raw in body.splitlines():
+            match = re.match(r"^\[(c\d+|i\d+)\]\s*(【\d家媒体报道】)?\s*(.+)$",
+                             raw.strip())
             if not match:
                 continue
             cid = match.group(1)

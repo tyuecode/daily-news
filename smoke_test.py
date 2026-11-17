@@ -2021,6 +2021,110 @@ def test_overseas_chinese_feeds():
           "实际源=%r" % sorted(all_names))
 
 
+def test_theme_grouping():
+    group("同主题归并（线上真实问题：8 条里有 4 条「习近平会见X国领导人」）")
+
+    # ---- 1. 公共前缀判定 ----
+    expect_eq("完全相同标题前缀=全长", generate.common_prefix_len("习近平会见甲", "习近平会见甲"), 6)
+    expect_eq("公共前缀正确计算",
+              generate.common_prefix_len("习近平会见甲", "习近平会见乙"), 5)
+    expect_eq("完全不同前缀=0", generate.common_prefix_len("习近平会见", "全国寒潮"), 0)
+
+    # ---- 2. 分组：该合的合，不该合的不合 ----
+    meetings = [
+        {"cid": "c1", "zh": "习近平会见越共中央总书记、国家主席苏林"},
+        {"cid": "c2", "zh": "习近平会见加拿大总理卡尼"},
+        {"cid": "c3", "zh": "习近平会见墨西哥总统辛鲍姆"},
+        {"cid": "c4", "zh": "全国多地迎来寒潮降温天气"},
+        {"cid": "c5", "zh": "中国三季度经济增速超出市场预期"},
+    ]
+    groups = generate.group_by_theme(meetings)
+    multi = [g for g in groups if len(g["events"]) > 1]
+    expect_eq("3 条会见归成 1 个主题组", len(multi), 1)
+    expect_eq("主题组包含 3 条", len(multi[0]["events"]), 3)
+    expect_eq("主题名是公共前缀", multi[0]["theme"], "习近平会见")
+    check("无关新闻没有被误合并",
+          all(len(g["events"]) == 1 for g in groups if not g["theme"]),
+          "实际=%r" % [(g["theme"], len(g["events"])) for g in groups])
+
+    # 关键反例：同框架但不同国家，**不能**因为像就合并成同一「事件」。
+    # 它们同主题（都是「习近平会见」），但每条仍是独立事件——这正是设计的语义。
+    check("同主题不等于同事件（每条仍保留自己的标题）",
+          all(e.get("zh") for g in groups for e in g["events"]))
+
+    # 只有 1 条时不成组
+    single = generate.group_by_theme([{"cid": "x", "zh": "习近平会见某国总理"}])
+    expect_eq("单条不成组", single[0]["theme"], "")
+    expect_eq("单条组里只有 1 条", len(single[0]["events"]), 1)
+
+    # ---- 3. 配额：同主题共享席位（否则主题组会被拆散） ----
+    def mk_cluster(cid, title, publisher="中新网"):
+        return {
+            "cid": cid, "section": "domestic", "source_count": 1, "image": "",
+            "primary_publisher": publisher, "primary_title_zh": title,
+            "published": datetime.now(BJ),
+            "items": [{
+                "source": publisher, "publisher": publisher, "title_zh": title,
+                "title": title, "title_en": "", "summary": "",
+                "url": "https://www.chinanews.com.cn/%s" % cid, "image": "",
+                "published": datetime.now(BJ), "lang": "zh",
+            }],
+        }
+
+    clusters = [
+        mk_cluster("m1", "习近平会见越共中央总书记、国家主席苏林"),
+        mk_cluster("m2", "习近平会见加拿大总理卡尼"),
+        mk_cluster("m3", "习近平会见墨西哥总统辛鲍姆"),
+        mk_cluster("o1", "全国多地迎来寒潮降温天气"),
+        mk_cluster("o2", "中国三季度经济增速超出市场预期"),
+    ]
+    picked, dropped = generate.apply_publisher_quota(clusters)
+    picked_titles = [c["primary_title_zh"] for c in picked]
+    meetings_kept = [t for t in picked_titles if t.startswith("习近平会见")]
+    check("配额不会拆散同主题组（3 条会见全部保留）",
+          len(meetings_kept) == 3,
+          "只保留了 %d 条：%r" % (len(meetings_kept), meetings_kept))
+
+    # ---- 4. 主题卡片结构 ----
+    class ThemeAI:
+        def complete(self, prompt, system_prompt=None, max_tokens=4096):
+            if "同一主题的中文新闻标题" in prompt:
+                return "习近平在APEC期间会见三国领导人"
+            return ""
+
+    events = [
+        {"cid": "c1", "zh": "习近平会见越共中央总书记、国家主席苏林",
+         "importance": "a", "source_count": 1, "image": "", "cluster": []},
+        {"cid": "c2", "zh": "习近平会见加拿大总理卡尼",
+         "importance": "b", "source_count": 1, "image": "", "cluster": []},
+        {"cid": "c3", "zh": "全国多地迎来寒潮降温天气",
+         "importance": "c", "source_count": 1, "image": "", "cluster": []},
+    ]
+    cards = generate.group_events_by_theme(events, "国内", ThemeAI())
+    theme_cards = [c for c in cards if c.get("theme")]
+    expect_eq("生成 1 张主题卡片", len(theme_cards), 1)
+    expect_eq("主题卡片用 AI 概括做标题",
+              theme_cards[0]["zh"], "习近平在APEC期间会见三国领导人")
+    expect_eq("主题卡片保留全部条目", len(theme_cards[0]["events"]), 2)
+    check("主题卡片继承首条的 cid", theme_cards[0]["cid"] == "c1")
+    check("普通卡片 theme 为空",
+          all(not c.get("theme") for c in cards if len(c.get("events") or []) <= 1))
+
+    # ---- 5. AI 失败时兜底，不能出现空标题 ----
+    class FailAI:
+        def complete(self, prompt, system_prompt=None, max_tokens=4096):
+            raise ai_client.AIError("演练：AI 失败")
+
+    cards_fail = generate.group_events_by_theme(events, "国内", FailAI())
+    theme_fail = [c for c in cards_fail if c.get("theme")]
+    check("AI 失败时主题卡片仍有标题",
+          theme_fail and theme_fail[0]["zh"].strip(),
+          "实际=%r" % (theme_fail[0]["zh"] if theme_fail else None))
+    check("兜底标题不含占位文字",
+          "未知" not in (theme_fail[0]["zh"] if theme_fail else ""),
+          "实际=%r" % (theme_fail[0]["zh"] if theme_fail else None))
+
+
 def test_dry_run_end_to_end():
     group("端到端 dry-run（零网络、零 CF 调用、只写 _dryrun/）")
 
@@ -2081,7 +2185,14 @@ def test_dry_run_end_to_end():
             for field in ("cid", "zh", "importance", "source_count", "image", "cluster"):
                 check("%s 事件含字段 %s" % (key, field), field in event)
             check("%s 事件 cid 非空" % key, bool(event["cid"]))
-            check("%s 事件 cluster 非空" % key, len(event["cluster"]) >= 1)
+            # 主题卡片（theme 非空）本身不挂媒体列表，媒体在各条 events 里
+            if event.get("theme") and len(event.get("events") or []) > 1:
+                check("%s 主题卡片含 events" % key, len(event["events"]) >= 2)
+                for member in event["events"]:
+                    check("%s 主题卡片内每条都有标题" % key,
+                          bool(member.get("zh")))
+            else:
+                check("%s 事件 cluster 非空" % key, len(event["cluster"]) >= 1)
             for media in event["cluster"]:
                 for field in ("source", "title_zh", "url", "is_primary"):
                     check("%s 媒体含字段 %s" % (key, field), field in media)
@@ -2271,6 +2382,7 @@ ALL_TESTS = [
     test_og_image_extraction,
     test_backfill_images,
     test_overseas_chinese_feeds,
+    test_theme_grouping,
     test_dry_run_end_to_end,
     test_dry_run_tts_ok_branch,
     test_workflow_guard,
