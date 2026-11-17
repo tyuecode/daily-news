@@ -192,10 +192,33 @@ DOMESTIC_FEEDS = [
      "publisher": "联合早报"},
 ]
 
-# 中文国际源：中文媒体里的国际新闻。它们属于「国际热点」版块，
-# 但因为是中文，不需要 AI 翻译，且能提供与英文媒体不同的中文视角。
-# 目前为空：待探测到稳定可用的中文国际 RSS 后填入，格式同上。
-DOMESTIC_INTL_FEEDS = []
+# 海外中文媒体：用中文报道中国与世界的媒体，是补充「不同观点」的主力。
+#
+# 为什么必须补这批源：
+#   体检线上数据发现，国内版块 8 条事件全部来自「中新网」一家媒体，多源簇为 0。
+#   而「看到不同观点」正是这个项目的核心目标之一。配额机制只能防垄断，
+#   不能凭空创造多样性——必须真的有多家媒体。
+#
+# 这三个源都用美国出口（≈GitHub Actions 网络环境）实测过：
+#   ✅ 纽约时报中文网  20 条、最新当天、15/15 有配图、简体、大量涉华深度报道
+#   ✅ 法广 RFI 中文    30 条、最新当天、15/15 有配图、简体、涉华议题丰富
+#   ❌ 端传媒          连不上（RemoteDisconnected，美国出口也失败，换代理再试仍失败）
+#
+# ⚠️ BBC 中文**刻意不采用**：虽然境外可访问、42 条、有图，
+#    但实测它返回的是**100% 繁体**内容（「特朗普訪華之際 美國封堵中國公司」），
+#    本站面向简体读者，混入繁体体验很差。宁缺毋滥。
+#
+# ⚠️ 德国之声中文可用（55 条、简体、当天）但 **0/15 没有任何配图**，
+#    卡片会变成纯文字，与其他版块观感不一致，故暂不加入。
+#    若以后能接受无图卡片，可以打开下面被注释的那一行。
+OVERSEAS_ZH_FEEDS = [
+    {"name": "纽约时报中文网", "url": "https://cn.nytimes.com/rss/",
+     "publisher": "纽约时报中文网"},
+    {"name": "法广RFI", "url": "https://www.rfi.fr/cn/rss",
+     "publisher": "法广RFI"},
+    # {"name": "德国之声中文", "url": "https://rss.dw.com/rdf/rss-chi-all",
+    #  "publisher": "德国之声"},
+]
 
 # ----------------------------------------------------------------------------
 # 中文源探测结论（2026-11 第二轮实测，中国大陆直连，20 秒超时）
@@ -3192,8 +3215,13 @@ def run(dry_run=False, dry_run_tts_ok=False, root=None):
         http_get = http_get_bytes
 
     intl_raw, intl_status = collect_all(INTL_FEEDS, "international", http_get=http_get)
-    dom_raw, dom_status = collect_all(DOMESTIC_FEEDS, "domestic", http_get=http_get)
-    log("采集结果：国际 %d 条、国内 %d 条" % (len(intl_raw), len(dom_raw)))
+    # 国内版块 = 大陆官方源（中新网）+ 海外中文媒体。
+    # 两者都归到 domestic 版块，但 publisher 不同，所以「家数」计票是正确的。
+    # 没有海外中文源时国内版块就只有中新网一家（线上真实发生过）。
+    dom_sources = list(DOMESTIC_FEEDS) + list(OVERSEAS_ZH_FEEDS)
+    dom_raw, dom_status = collect_all(dom_sources, "domestic", http_get=http_get)
+    log("采集结果：国际 %d 条、国内 %d 条（国内源含 %d 个海外中文媒体）" % (
+        len(intl_raw), len(dom_raw), len(OVERSEAS_ZH_FEEDS)))
 
     # ---------------- L2 规范化 ----------------
     log("L2 规范化：近 %d 小时过滤、去重、软新闻过滤、图片归一" % WINDOW_HOURS)
@@ -3637,7 +3665,20 @@ def _dry_run_fixture(today):
             ("中国与东盟签署新的经贸合作文件",
              "https://www.zaobao.com.sg/news/asean-trade",
              "双方在新加坡签署了新的经贸合作文件。",
-             "https://cassette.sphdigital.com.sg/image/asean.jpg", recent),
+             "https://cassette.sphdigital.com.sg/image/zaobao/asean-trade-photo.jpg", recent),
+        ],
+        # 海外中文媒体（演练也要覆盖，否则会报「该源没有假数据」）
+        "纽约时报中文网": [
+            ("中国与东盟签署新的经贸合作文件",
+             "https://cn.nytimes.com/china/20261117/asean-trade/",
+             "分析认为这标志着区域经贸合作进入新阶段。",
+             "https://static01.nyt.com/images/2026/11/17/multimedia/asean-photo.jpg", recent),
+        ],
+        "法广RFI": [
+            ("全国多地迎来寒潮降温天气",
+             "https://www.rfi.fr/cn/中国/20261117-cold-wave",
+             "气象部门提醒民众注意防寒保暖。",
+             "https://s.rfi.fr/media/display/cold-wave-photo.jpg", older),
         ],
     }
 
@@ -3664,7 +3705,7 @@ def make_fake_http(today):
     feeds = _dry_run_fixture(today)
 
     def fake_http_get(url, timeout=SOURCE_TIMEOUT):
-        for source in INTL_FEEDS + DOMESTIC_FEEDS:
+        for source in INTL_FEEDS + DOMESTIC_FEEDS + OVERSEAS_ZH_FEEDS:
             if source["url"] == url:
                 name = source["name"]
                 payload = feeds.get(name)

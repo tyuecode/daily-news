@@ -1982,6 +1982,38 @@ def test_backfill_images():
     expect_eq("抓取失败时返回 0 而不是抛异常", filled3, 0)
 
 
+def test_overseas_chinese_feeds():
+    group("海外中文源（国内版块原先只有中新网一家，多源簇为 0）")
+
+    check("OVERSEAS_ZH_FEEDS 存在且非空",
+          isinstance(generate.OVERSEAS_ZH_FEEDS, list)
+          and len(generate.OVERSEAS_ZH_FEEDS) >= 1,
+          "实际=%r" % (generate.OVERSEAS_ZH_FEEDS,))
+
+    for feed in generate.OVERSEAS_ZH_FEEDS:
+        check("海外源 %s 有 name" % feed.get("name"), bool(feed.get("name")))
+        check("海外源 %s 有 url" % feed.get("name"), bool(feed.get("url")))
+        check("海外源 %s 有 publisher" % feed.get("name"),
+              bool(feed.get("publisher")))
+        check("海外源 %s 的 url 合法" % feed.get("name"),
+              generate.is_valid_url(feed["url"]))
+
+    # 关键的多样性检查：国内源 + 海外中文源必须来自 3 家以上不同媒体，
+    # 否则「看不同观点」在国内版块仍然是空话。
+    publishers = {f["publisher"] for f in generate.DOMESTIC_FEEDS}
+    publishers |= {f["publisher"] for f in generate.OVERSEAS_ZH_FEEDS}
+    check("国内版块可用媒体数 >= 3 家",
+          len(publishers) >= 3,
+          "只有 %d 家：%r" % (len(publishers), sorted(publishers)))
+
+    # BBC 中文刻意不采用：它返回 100% 繁体，本站面向简体读者
+    all_names = {f["name"] for f in generate.DOMESTIC_FEEDS}
+    all_names |= {f["name"] for f in generate.OVERSEAS_ZH_FEEDS}
+    check("没有采用 BBC 中文（实测返回繁体）",
+          not any("BBC" in n for n in all_names),
+          "实际源=%r" % sorted(all_names))
+
+
 def test_dry_run_end_to_end():
     group("端到端 dry-run（零网络、零 CF 调用、只写 _dryrun/）")
 
@@ -2231,6 +2263,7 @@ ALL_TESTS = [
     test_publisher_seat_quota,
     test_og_image_extraction,
     test_backfill_images,
+    test_overseas_chinese_feeds,
     test_dry_run_end_to_end,
     test_dry_run_tts_ok_branch,
     test_workflow_guard,
