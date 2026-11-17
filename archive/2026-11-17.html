@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>2026-11-17 · 每日国际大事 · 中文播报</title>
+<meta name="description" content="每天更新的中文新闻播报站：国内外热点、多家媒体的不同观点，在中国大陆无需翻墙即可打开。">
+<meta name="theme-color" content="#c62828">
+<style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --ink:#1a1d21; --muted:#6b7280;
+  --line:#e5e7eb; --accent:#c62828; --accent-soft:#fdeaea; --radius:16px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;padding:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",
+    "Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  font-size:17px;line-height:1.65;
+}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px 64px}
+header.top{padding:20px 0 12px;border-bottom:1px solid var(--line);margin-bottom:18px}
+header.top h1{margin:0;font-size:23px;letter-spacing:.5px}
+header.top .date{color:var(--muted);font-size:15px;margin-top:4px}
+.brand-note{color:var(--muted);font-size:13px;margin-top:8px;line-height:1.5}
+
+/* 播报区 */
+.broadcast{background:var(--card);border-radius:var(--radius);padding:16px;
+  margin-bottom:22px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.broadcast h2{margin:0 0 12px;font-size:18px;display:flex;align-items:center;gap:8px}
+.broadcast h2::before{content:"";width:4px;height:18px;background:var(--accent);
+  border-radius:2px;display:inline-block}
+audio{width:100%;height:44px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:48px;padding:0 20px;border:0;border-radius:12px;background:var(--accent);
+  color:#fff;font-size:17px;font-weight:600;cursor:pointer;width:100%}
+.btn:active{opacity:.85}
+details.script{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+details.script summary{cursor:pointer;color:var(--muted);font-size:15px;
+  list-style:none;padding:6px 0}
+details.script summary::-webkit-details-marker{display:none}
+details.script summary::after{content:" ▾";font-size:12px}
+details.script[open] summary::after{content:" ▴"}
+.script-body{white-space:pre-wrap;font-size:16px;color:#333;margin-top:8px;
+  background:var(--bg);border-radius:10px;padding:12px}
+
+/* 版块 */
+section.block{margin-bottom:30px}
+section.block > h2{font-size:20px;margin:0 0 14px;padding-left:10px;
+  border-left:5px solid var(--accent);line-height:1.3}
+.empty-note{background:var(--accent-soft);color:#7a2222;border-radius:12px;
+  padding:14px;font-size:15px;line-height:1.6}
+
+/* 卡片 */
+article.card{background:var(--card);border-radius:var(--radius);overflow:hidden;
+  margin-bottom:16px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.card-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#e9eaee}
+.card-body{padding:14px 16px 16px}
+.card-body h3{margin:0 0 8px;font-size:19px;line-height:1.45;font-weight:700}
+.card-body .imp{margin:0 0 10px;color:var(--muted);font-size:15px}
+.card-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:4px}
+.chip{background:var(--accent-soft);color:var(--accent);border-radius:999px;
+  padding:3px 11px;font-size:13px;font-weight:600}
+.toggle{width:100%;min-height:46px;margin-top:8px;border:1px solid var(--line);
+  background:#fff;border-radius:12px;color:var(--ink);font-size:16px;cursor:pointer;
+  font-family:inherit}
+.toggle:active{background:var(--bg)}
+
+/* 多观点展开区 */
+.cluster{margin-top:8px;border-top:1px dashed var(--line);padding-top:12px}
+.cluster-note{background:#fff8e1;color:#7a5c00;border-radius:10px;padding:10px 12px;
+  font-size:14px;line-height:1.55;margin:0 0 12px}
+.media{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px}
+.media.primary{border-color:#ffd0d0;background:#fffafa}
+.media .src{font-size:13px;color:var(--muted);margin-bottom:6px;display:flex;
+  gap:8px;align-items:center;flex-wrap:wrap}
+.media .src .tag{background:var(--accent);color:#fff;border-radius:6px;
+  padding:1px 8px;font-size:12px}
+.media h4{margin:0 0 8px;font-size:17px;line-height:1.5}
+.media h4 a{color:var(--ink)}
+.media .en-title{font-size:14px;color:var(--muted);margin:0 0 8px;line-height:1.5}
+.media .sum{font-size:15px;color:#333;margin:0 0 8px;line-height:1.65}
+.media .sum-en{font-size:13px;color:var(--muted);border-left:3px solid var(--line);
+  padding-left:10px;margin:8px 0 0;line-height:1.55}
+.media .thumb{width:100%;border-radius:10px;margin-bottom:8px;display:block;
+  aspect-ratio:16/9;object-fit:cover;background:#e9eaee}
+.media .go{display:inline-block;min-height:44px;line-height:44px;padding:0 16px;
+  border-radius:10px;background:var(--bg);font-size:15px;font-weight:600}
+
+/* 近7天 */
+section.recent{background:var(--card);border-radius:var(--radius);padding:16px;
+  margin-bottom:26px}
+section.recent h2{margin:0 0 10px;font-size:18px}
+.recent-item{border-bottom:1px solid var(--line);padding:10px 0}
+.recent-item:last-child{border-bottom:0;padding-bottom:0}
+.recent-item .d{font-size:14px;color:var(--muted)}
+.recent-item .t{font-size:15px;color:#333;line-height:1.55;margin-top:2px}
+
+/* 原始新闻 */
+details.raw{background:var(--card);border-radius:var(--radius);padding:16px;
+  margin-bottom:20px}
+details.raw summary{cursor:pointer;font-size:17px;font-weight:600;list-style:none}
+details.raw summary::-webkit-details-marker{display:none}
+details.raw summary::after{content:" ▾";font-size:13px;color:var(--muted)}
+details.raw[open] summary::after{content:" ▴"}
+.raw-item{padding:11px 0;border-bottom:1px solid var(--line)}
+.raw-item:last-child{border-bottom:0}
+.raw-item .zh{font-size:15px;line-height:1.6}
+.raw-item .en{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.5}
+.raw-item .meta{font-size:12px;color:var(--muted);margin-top:3px}
+footer{border-top:1px solid var(--line);padding:22px 0 10px;color:var(--muted);
+  font-size:13px;line-height:1.8;text-align:center}
+footer a{color:var(--muted);text-decoration:underline}
+@media (min-width:600px){
+  body{font-size:18px}
+  .wrap{padding:0 20px 72px}
+  .card-img{aspect-ratio:2/1}
+  .btn{width:auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<h1><a href="../index.html" style="color:inherit">每日国际大事</a></h1>
+<div class="date">2026-11-17</div>
+<div class="brand-note">国内热点与国际热点并排呈现，同一事件并列多家媒体的报道与观点，点开卡片可见各家原文。</div>
+</header>
+<div class="broadcast"><h2>今日播报</h2><p style="color:#6b7280;font-size:15px;margin:0">音频仅当日有效，历史归档只保留文字播报稿。</p><details class="script"><summary>展开播报稿全文</summary><div class="script-body" id="broadcast-text-archive">各位好，今天是2026年11月17日，欢迎收听今日国际大事。
+
+首先来看国内动态。深圳APEC领导人非正式会议的成果文件磋商工作已经启动，会议即将拉开帷幕。近期，习近平主席接见多位外国领导人，先后会见了越共中央总书记、国家主席苏林，加强双边关系；会见了加拿大总理卡尼，商讨能源与金融合作；还会见了巴布亚新几内亚总理马拉佩，推动区域合作。
+
+在经济方面，我国快递业务量连续两个月超过170亿件，市场规模巨大。从10月的数据来看，中国经济在生产、消费和就业方面的底盘非常稳健，增长韧性十足。不过，天气方面需要大家留意，中东部地区将迎来大范围的雨雪和寒潮天气，很多地方都会面临降温和大风。
+
+在国际局势方面，冲突与外交交织。乌克兰袭击导致俄罗斯克里米亚大桥关闭，并袭击了基辅设施，导致当地供水供电中断，民生受损严重。而俄罗斯方面也袭击了基辅的关键桥梁。同时，在普京拟访华之际，俄罗斯飞机侵入了台湾以及日本领空，地区安全局势变得十分复杂。
+
+外交焦点则集中在特朗普身上。他正前往东盟参加与习近平以及普京的峰会，并计划与中俄进行历史性的核对话。而在菲律宾，数百人在反特朗普抗议活动中被捕，社会局势紧张。
+
+移民问题在欧洲持续发酵。五个欧盟国家计划在卢旺达建立移民返还中心，欧盟移民政策迎来重大调整。另外，数千名移民涌入西班牙加那利群岛，导致该国进入紧急状态。在技术监管领域，联合国正在召开会议，寻求遏制杀人机器人等人工智能武器。
+
+最后关注其他地区消息。印尼卡伊群岛发生了6.6级地震，震源深度为20千米。以色列利用亚马逊面部识别平台追踪巴勒斯坦人，引发了人权争议。而在南非，两起大规模枪击事件导致至少17人死亡，当地治安形势非常严峻。</div></details></div>
+<p class="empty-note" style="margin-bottom:20px">这是 2026-11-17 的归档页，音频仅当日有效。</p>
+<section class="block"><h2>国内热点</h2><article class="card"><div class="card-body"><h3>深圳APEC领导人非正式会议成果文件磋商工作已启动</h3><p class="imp">会议即将拉开帷幕</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c7" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c7" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>中新网</span></div><p class="sum">中新社 深圳11月17日电 (记者 谢雁冰 国璇)2026年亚太经合组织(APEC)高官会主席陈旭17日表示，深圳APEC领导人非正式会议即将举行，会议成果文件的磋商工作已经启动。
+当天，2026年APEC领导人会议周新闻中心吹风会在深圳举行。陈旭在吹风会上介绍说，中方正在已经取得众多务实合作成果的基础之上，进一步凝聚共识，主要体现在要推动发表一份富有雄心的领导人成果文件，规划各方建设亚太共同体的共识和行动。同时中方还积极推动在贸易、联通和创新领域打造务实成果，为APEC相关领域合作注入新的动力。
+今年以来，中国已先后在广州、上海、大连、深圳举办四次高官会。陈旭表示，高官会是推进APEC合作、酝酿领导人非正式会议成果的重要渠道。高官会相关会议和活动有力支撑和促进了APEC“中国年”合作，为领导人非正式会议的成功举办创造了有利条件。
+陈旭介绍说，中方还在上海、苏州、澳门、深圳、杭州、广州、北京、南京、香港、成都等地举办了妇女、贸易、旅游、林业、粮食安全、中小企业、能源、人力资源开发、交通、财政等10场专业部长会议和APEC数字周系列活动，取得了丰硕成果。
+陈旭说，在贸易领域，各方围绕推动区域经济一体化和亚太自贸区建设、支持世贸组织、促进数字合作、发展绿色经济等领域展开深入讨论，重申支持亚太自贸区进程，批准了《APEC创新、有竞争力和韧性的服务业路线图》。
+在数字和人工智能领域，各方围</p><a class="go" href="https://www.chinanews.com.cn/gn/2026/11-17/10733437.shtml" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>习近平会见越共中央总书记、国家主席苏林</h3><p class="imp">加强双边关系</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c13" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c13" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>中新网</span></div><a class="go" href="https://www.chinanews.com.cn/gn/2026/11-17/10733466.shtml" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>习近平会见加拿大总理卡尼</h3><p class="imp">商讨能源与金融合作</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c43" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c43" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>中新网</span></div><a class="go" href="https://www.chinanews.com.cn/gn/2026/11-17/10733427.shtml" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>习近平会见巴布亚新几内亚总理马拉佩</h3><p class="imp">推动区域合作</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c44" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c44" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>中新网</span></div><a class="go" href="https://www.chinanews.com.cn/gn/2026/11-17/10733426.shtml" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>我国快递业务量连续两个月超170亿件</h3><p class="imp">快递市场规模巨大</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c102" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c102" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>中新网</span></div><h4><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733244.shtml" target="_blank" rel="noopener noreferrer">国家邮政局：我国快递业务量连续两个月超170亿件</a></h4><a class="go" href="https://www.chinanews.com.cn/cj/2026/11-17/10733244.shtml" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>中东部将迎来大范围雨雪及寒潮天气</h3><p class="imp">多地面临降温大风</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c107" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c107" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>中新网</span></div><h4><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733205.shtml" target="_blank" rel="noopener noreferrer">寒潮预警上线 中东部大部地区气温下滑明显</a></h4><a class="go" href="https://www.chinanews.com.cn/sh/2026/11-17/10733205.shtml" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>10月中国经济生产消费就业底盘稳健</h3><p class="imp">经济增长韧性十足</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c123" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c123" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>中新网</span></div><h4><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733176.shtml" target="_blank" rel="noopener noreferrer">生产消费就业三大底盘稳稳托住！10月中国经济答卷“韧性十足”</a></h4><a class="go" href="https://www.chinanews.com.cn/cj/2026/11-17/10733176.shtml" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>印尼卡伊群岛发生6.6级地震</h3><p class="imp">震源深度20千米</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-c128" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-c128" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>中新网</span></div><h4><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733165.shtml" target="_blank" rel="noopener noreferrer">印尼卡伊群岛发生6.6级地震，震源深度20千米</a></h4><a class="go" href="https://www.chinanews.com.cn/gj/2026/11-17/10733165.shtml" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article></section>
+<section class="block"><h2>国际热点</h2><article class="card"><img class="card-img" src="https://i.guim.co.uk/img/media/d668e44ea9f6f3fb2d88cfee76bb772cccada10f/456_0_4053_3243/master/4053.jpg?width=1200&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=7839a06430930a2378822738556852d7" alt="五个欧盟国家计划在卢旺达建立移民“返还中心”" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>五个欧盟国家计划在卢旺达建立移民“返还中心”</h3><p class="imp">欧盟移民政策重大调整</p><div class="card-meta"><span class="chip">4 家媒体报道</span></div><button class="toggle" type="button" data-target="cluster-i1" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i1" hidden><p class="cluster-note">以下报道来自 4 家媒体，观点可能不同，请自行判断。</p><div class="media primary"><div class="src"><span class="tag">头条</span><span>The Guardian</span></div><img class="" src="https://i.guim.co.uk/img/media/d668e44ea9f6f3fb2d88cfee76bb772cccada10f/456_0_4053_3243/master/4053.jpg?width=1200&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=7839a06430930a2378822738556852d7" alt="五个欧盟国家宣布在卢旺达建立移民“返还中心”的计划" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.theguardian.com/world/2026/nov/16/eu-states-immigration-return-hubs-rwanda" target="_blank" rel="noopener noreferrer">五个欧盟国家宣布在卢旺达建立移民“返还中心”的计划</a></h4><p class="en-title" lang="en">Five EU states announce plans for immigration ‘return hubs’ in Rwanda</p><p class="sum">五国欧盟成员国宣布在卢旺达设立移民“遣返中心”计划
+
+德国、奥地利、荷兰、丹麦和希腊可能面临挑战，其政策被批评为“严重的道德失败”
+
+五个欧盟成员国宣布计划在卢旺达设立一个离岸中心，用于安置那些在欧洲没有合法居留权的人员。这一试点计划预计将面临法律挑战，并被谴责为“严重的道德失败”。
+
+这五个国家——德国、奥地利、荷兰、丹麦和希腊——是首批试图利用欧盟新达成的遣返法的国家，该法律允许那些已用尽所有针对被驱逐出欧洲的申诉途径的人员被送往第三国。
+
+在周一发布的一份声明中，这五个欧盟国家表示，“为了实施该计划，将开始与合作伙伴国卢旺达进行具体谈判”，并称该计划将“为进一步遏制非法移民、瓦解走私者的商业模式以及减轻我们的……负担做出重要贡献”。
+
+五个欧盟国家宣布在卢旺达设立移民“返回枢纽”的计划
+
+官员们希望从明年年初开始向卢旺达遣送100人，以测试该模式。该方案将适用于其庇护申请已被拒绝的成年人，或其他在欧盟没有合法居住权的人员。
+
+据外交消息人士透露，从理论上讲，移民将在卢旺达的一个接收中心停留几个月，然后选择融入这个大湖地区的国家，或者返回他们的祖国。
+
+与英国保守党政府此前在卢旺达推行的失败方案，或意大利与阿尔巴尼亚达成的协议不同，该方案将不适用于正在寻求庇护的人员。
+
+各国表示，该接收中心将是一个开放式设施，其目的并非长期安置人员，而是为了容纳定期流动的人群。外交消息人士称，欧盟国家并没有使用英国资助在基加利建造的设施。
+
+五个欧盟国家宣布在卢旺达设立移民“遣返中心”的计划
+
+相关政府认为，此举将在消除非法移民前往欧洲动机的同时，保护欧洲的避难制度。
+
+丹麦移民部长莫滕·博德斯科夫（Morten Bødskov）表示这是一次“巨大的突破”，其政府在移民问题上采取的强硬立场已被欧盟多国效仿。
+
+德国内政部长亚历山大·多布林特（Alexander Dobrindt）表示：“对于那些在欧洲没有居留权、没有前途，且原籍国不配合遣返进程的人来说，遣返中心提供了一种积极的处理方式。”
+
+安迪·伯纳姆（Andy Burnham）上周告诉记者，英国尚未与参与设立遣返中心的欧洲政府进行直接讨论，但“我们将饶有兴致地观察此事，并从过去的经验中吸取教训。公众希望我们竭尽所能来应对非法移民问题。”
+
+五个欧盟国家宣布在卢旺达设立移民“遣返中心”的计划
+
+批评人士强调了与卢旺达镇压性政府达成协议所带来的伦理困境。美国国务院在2024年的调查中发现，卢旺达允许国家安全部队和文职官员在不受惩罚的情况下实施侵犯人权的行为，同时也引发了人们对言论自由和强迫劳动的担忧。
+
+西班牙社会党总理佩德罗·桑切斯周一表示，此举毫无“未来或人性”。“我看不到这其中有任何未来或人性。这并不是解决方案，”桑切斯告诉 Telecinco 电视台。在近年来趋于右倾的欧洲，桑切斯是移民权利的直言不讳的捍卫者。
+
+法国绿党欧洲议会议员梅丽莎·卡马拉谴责这五个国家与卢旺达之间的协议是“一份耻辱的协议”和“严重的道德失败”。她表示：“根据这项协议，人们将被驱逐到远离欧盟数千公里的地方，且在……方面没有任何保证”
+
+“……符合他们的权利。”
+
+欧洲人权机构——欧洲委员会秘书长阿兰·贝尔塞（Alain Berset）表示，目前无法“预先如此精确地”界定任何关于回迁中心提案的具体含义。在声明发布前接受《卫报》采访时，他表示，欧洲委员会的所有成员都致力于履行《欧洲人权公约》，而“这必须成为”所有关于回迁中心讨论的“灯塔”。
+
+“至于具体的案例，我们届时必须观察其是否符合公约，”他说道。他强调，“所有国家都必须能够定义自己的移民政策”。
+
+负责建立这些移民中心的官员预计会面临法律挑战，但他们表示，该方案是建立在人权法基础之上的。
+
+权利组织则表示，该方案注定会失败。
+
+五个欧盟国家宣布在卢旺达设立移民“遣返中心”的计划
+
+“成员国可能会称其为‘遣返中心’，甚至是‘欢迎中心’，但任何委婉的说法都无法掩盖这种行为的暴力性——将人们从他们在欧洲建立的生活中连根拔起，在没有家人、社交网络或任何实质性前景的情况下，将他们送往一个他们甚至并不了解的国家，”为无证移民权利开展活动的泛欧组织 Picum 的奇亚拉·卡特利（Chiara Catelli）表示。</p><p class="sum-en" lang="en">Germany, Austria, Netherlands, Denmark and Greece likely to face challenges to policy criticised as ‘grave moral failing’ Five EU member states have announced plans to set up an offshore centre in Rwanda for people with no legal right to stay in Europe, in a pilot scheme that is expected to face legal challenges and has been denounced as “a grave moral failing”. The five countries – Germany, Austria, the Netherlands, Denmark and Greece – are the first to seek to use the EU’s newly agreed returns law that allows people who have exhausted all avenues of appeal against their removal from Europe to be sent to a third country. Continue reading...</p><a class="go" href="https://www.theguardian.com/world/2026/nov/16/eu-states-immigration-return-hubs-rwanda" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div><div class="media"><div class="src"><span>Al Jazeera</span></div><h4><a href="https://www.aljazeera.com/video/newsfeed/2026/11/17/eu-countries-announce-migrant-deportation-centre-in-rwanda?traffic_source=rss" target="_blank" rel="noopener noreferrer">欧盟国家宣布将在卢旺达建立移民遣返中心</a></h4><p class="en-title" lang="en">EU countries announce migrant deportation centre in Rwanda</p><p class="sum-en" lang="en">Germany, Austria, the Netherlands, Denmark and Greece have announced that Rwanda will be used as a deportation centre.</p><a class="go" href="https://www.aljazeera.com/video/newsfeed/2026/11/17/eu-countries-announce-migrant-deportation-centre-in-rwanda?traffic_source=rss" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div><div class="media"><div class="src"><span>BBC</span></div><img class="thumb" src="https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/7397/live/2ac14ca0-e1d9-11f1-b8c8-67fa35f5afdb.jpg" alt="五个欧盟国家宣布在卢旺达建立移民驱逐中心" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'"><h4><a href="https://www.bbc.co.uk/news/articles/cw987343352go" target="_blank" rel="noopener noreferrer">五个欧盟国家宣布在卢旺达建立移民驱逐中心</a></h4><p class="en-title" lang="en">Five EU countries announce migrant deportation centre in Rwanda</p><p class="sum-en" lang="en">Germany, Denmark, Austria, Greece and the Netherlands have announced a &quot;return hub&quot; for failed asylum seekers.</p><a class="go" href="https://www.bbc.co.uk/news/articles/cw987343352go" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div><div class="media"><div class="src"><span>France 24</span></div><img class="thumb" src="https://s.france24.com/media/display/7d2aecd0-e1f7-11f1-9c88-f71d22e7fea9/w:1024/p:16x9/EN-20261116-203438-203717-CS.jpg" alt="欧盟国家公布关于卢旺达移民遣返中心的协议" referrerpolicy="no-referrer" loading="lazy" onerror="this.style.display='none'"><h4><a href="https://www.france24.com/en/eu-nations-unveil-rwanda-deal-for-migrant-return-hub" target="_blank" rel="noopener noreferrer">欧盟国家公布关于卢旺达移民遣返中心的协议</a></h4><p class="en-title" lang="en">EU nations unveil Rwanda deal for migrant return hub</p><p class="sum-en" lang="en">Five EU countries including Germany and Denmark on Monday unveiled a deal to establish a migrant deportation centre in Rwanda -- the first such facility outside the bloc. The group, also comprising Austria, Greece and the Netherlands, has been gunning to open a &quot;return-hub&quot; despite rights groups&#x27; concerns, after the European Union cleared the way with a recent toughening of migration rules. FRANCE 24&#x27;s Dave Keating reports from Brussels.</p><a class="go" href="https://www.france24.com/en/eu-nations-unveil-rwanda-deal-for-migrant-return-hub" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/22e4/live/526312a0-e258-11f1-8199-439bbe0918ee.jpg" alt="乌克兰袭击导致俄罗斯克里米亚大桥关闭并袭击基辅设施" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>乌克兰袭击导致俄罗斯克里米亚大桥关闭并袭击基辅设施</h3><p class="imp">俄乌冲突升级</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i4" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i4" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>BBC</span></div><img class="" src="https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/22e4/live/526312a0-e258-11f1-8199-439bbe0918ee.jpg" alt="据报遭乌克兰袭击后克里米亚大桥关闭，俄罗斯袭击基辅过街设施" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.bbc.co.uk/news/articles/cw772jk4rvmxo" target="_blank" rel="noopener noreferrer">据报遭乌克兰袭击后克里米亚大桥关闭，俄罗斯袭击基辅过街设施</a></h4><p class="en-title" lang="en">Crimea bridge shut after reported Ukrainian strike, as Russia hits Kyiv crossings</p><p class="sum">据报遭乌克兰袭击后克里米亚大桥关闭，俄罗斯袭击基辅过江通道
+
+在交战双方均对主要过江通道发动袭击的一个夜晚，连接被占领的克里米亚与俄罗斯的一座关键桥梁在据报遭到乌克兰袭击并遭受严重破坏后已关闭。
+
+乌克兰总统泽连斯基的前顾问分享了一些图片，据称这些图片显示克里米亚大桥（也被称为克尔奇大桥）的一部分已坍塌落入水中。
+
+与此同时，基辅市长维塔利·克利奇科表示，在俄罗斯实施弹道导弹袭击后，横跨第聂伯河的重要通道——北桥和南桥已关闭。
+
+这些袭击发生于乌克兰开始其最近一次试图瘫痪克里米亚大桥的前一天，该桥是克里姆林宫视若珍宝的资产，被视为俄罗斯占领的象征。
+
+俄罗斯任命的克里米亚州长表示，在周日夜间的袭击中，共有两人死亡。
+
+克里米亚大桥在据报遭乌克兰袭击后关闭，与此同时俄罗斯袭击了基辅的渡口
+
+前乌克兰顾问安东·格拉申科（Anton Gerashchenko）分享了图片和视频资料，内容显示最新的袭击似乎对大桥造成了广泛破坏，可以看到一个支撑拱和一段路面从下方的水中伸出。BBC新闻尚未对这些图像进行独立验证。
+
+这座大桥曾反复遭到乌克兰军队的袭击。它是俄罗斯在2014年入侵并吞并该半岛后建造的，并由俄罗斯总统弗拉基米尔·普京于2018年亲自启用。
+
+虽然乌克兰一直试图通过袭击炼油厂和储油库来增加俄罗斯发动战争的经济成本，但袭击克里米亚大桥则是试图增加普京面临的政治成本。
+
+针对这条拥有多层防空和海上防御措施的路线，最新一次袭击的严重程度尚不完全清楚——但俄罗斯官方媒体报道称，计划于周二举行一次会议以讨论相关情况。
+
+克里米亚桥在据报遭乌克兰袭击后关闭，俄罗斯袭击了基辅的过街设施
+
+克里米亚受莫斯科支持的州长谢尔盖·阿克肖诺夫在 Telegram 上确认，该桥的交通已经暂停。
+
+由于再次遭到俄罗斯的目标攻击，北桥（图中为 10 月照片）已关闭。
+
+在周四中国深圳举行中、美、俄领导人会晤的前几天，泽连斯基曾警告会有重大袭击。
+
+周二午夜前，基辅传出巨大的爆炸声，克里琴科在随后不久表示，该市的“关键基础设施系统遭到破坏”。
+
+他补充说：“部分地区正面临供水和供暖中断。”
+
+官员表示，在通知平民前往民防避难所后，基辅的部分地面地铁服务在夜间的袭击中遭到破坏。
+
+在空袭期间，基辅居民通常会在城市的地下车站寻求避难。
+
+据报道乌克兰发动袭击后克里米亚大桥关闭，俄罗斯袭击基辅跨河通道
+
+共有八座主要桥梁跨越第聂伯河，连接着基辅的西部和东部，估计有300万居民依赖这些桥梁在城市中穿行。
+
+这些最新的俄罗斯袭击将造成重大干扰，据报道首都的交通已经开始拥堵。
+
+今年10月，首都的几座主要桥梁也曾成为俄罗斯无人机袭击的目标。
+
+在其他地方，据当地官员称，俄罗斯的一次导弹袭击造成三人受伤，地点位于切尔卡瑟地区。
+
+官员表示，俄罗斯军方在24小时内拦截并摧毁了2049架无人机和4枚“火烈鸟”（Flamingo）远程导弹。莫斯科市长谢尔盖·索比亚宁表示，仅有约600架无人机就飞向了首都。
+
+在美、乌及欧洲官员就如何促进俄罗斯与欧洲之间进行旨在结束战争的“直接接触”方式进行会谈后，出现了最新一轮的报复性袭击。
+
+克里米亚大桥在据报遭乌克兰袭击后关闭，同时俄罗斯袭击了基辅的渡口
+
+在周一的会议之后，美国特使、特朗普总统的女婿贾里德·库什纳表示，美国致力于为乌克兰提供“强大且可靠的安全保障”，以及通往欧盟成员国的路径。
+
+他补充说，北约“将继续作为欧洲安全的关键支柱”，并且正在为“不久的将来”举行的进一步多边会议做准备。
+
+泽连斯基表示，这次会议“很艰难”，并补充说，为了支持乌克兰防御俄罗斯的弹道导弹袭击，还需要做更多工作。
+
+这位乌克兰总统长期以来一直呼吁将欧洲国家纳入任何和平谈判中，他认为这是必要的，因为基辅有着加入欧盟的长期愿望。
+
+他还在讲话中提到，莫斯科每月都会收到来自朝鲜的“数十枚导弹”。
+
+克里米亚大桥在据报遭乌克兰袭击后关闭，俄罗斯袭击了基辅的交通枢纽
+
+与此同时，乌克兰官员表示，本月早些时候俄罗斯袭击乌克兰南部村庄卡米舒瓦哈（Kamyshuvakha）造成的最终死亡人数已达到72人。
+
+轰炸发生后，仍有四人被认为失踪。乌克兰官员表示，这是自2022年战争爆发以来死亡人数最多的单次袭击之一。
+
+一段来自其中一名遇难警察随身摄像机的画面显示，在11月2日的最初袭击发生后，居民们正走向地下避难所。不久之后，传来了爆炸声，随着避难所遭到袭击，人们看到了火焰。
+
+乌克兰警方表示，遇难者中包括“警务人员、体育馆员工、公用事业工作人员和医务人员”。
+
+俄罗斯于2022年2月发起了对乌克兰的全规模入侵。目前，约五分之一的乌克兰领土处于俄罗斯占领之下，而基辅拒绝了普京提出的放弃其仍控制着的乌克兰东部顿巴斯地区的要求。
+
+据报遭受乌克兰袭击后克里米亚大桥关闭，俄罗斯打击基辅过境点
+
+俄罗斯报告遭遇战争中规模最大的乌克兰无人机袭击，地标性克里米亚大桥遇袭
+
+乌克兰称执法记录仪视频显示了致命的俄罗斯“双重打击”式轰炸
+
+泽连斯基对美国将欧洲引入俄乌和平谈判表示欢迎</p><p class="sum-en" lang="en">The bridge linking Crimea and Russia has reportedly sustained major damage, while two routes through Kyiv are closed.</p><a class="go" href="https://www.bbc.co.uk/news/articles/cw772jk4rvmxo" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://i.guim.co.uk/img/media/75ec4cfc6a89c1babfe1389687fbafa71b3713af/333_0_3333_2666/master/3333.jpg?width=1200&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=d705d30eaf39229da515c775b9c5324e" alt="菲律宾数百人在反特朗普抗议活动中被捕" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>菲律宾数百人在反特朗普抗议活动中被捕</h3><p class="imp">菲律宾社会局势紧张</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i15" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i15" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>The Guardian</span></div><img class="" src="https://i.guim.co.uk/img/media/75ec4cfc6a89c1babfe1389687fbafa71b3713af/333_0_3333_2666/master/3333.jpg?width=1200&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=d705d30eaf39229da515c775b9c5324e" alt="因对伊朗战争及AI协议感到愤怒，菲律宾数百人在反特朗普抗议活动中被捕" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.theguardian.com/world/2026/nov/17/hundreds-arrested-manila-anti-trump-protests-philippines" target="_blank" rel="noopener noreferrer">因对伊朗战争及AI协议感到愤怒，菲律宾数百人在反特朗普抗议活动中被捕</a></h4><p class="en-title" lang="en">Hundreds arrested in anti-Trump protests in Philippines amid anger over Iran war and AI pact</p><p class="sum-en" lang="en">Organisers say up to 10,000 people could join the next round of demonstrations ahead of the US president’s arrival in Manila for the Asean summit Asean and Apec summits – live updates Hundreds of people have been arrested in heated demonstrations against Donald Trump in Manila, as authorities braced for more protests ahead of the US president’s arrival in the city for a leaders’ summit. Organisers claim as many as 10,000 people will join protests against Trump in the Philippine capital on Tuesday, when he will attend the Association of Southeast Asian Nations (Asean) summit. The crowds are expected to try to walk to the summit site. Continue reading...</p><a class="go" href="https://www.theguardian.com/world/2026/nov/17/hundreds-arrested-manila-anti-trump-protests-philippines" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>普京拟访华之际俄罗斯飞机侵入台湾及日本领空</h3><p class="imp">地区安全局势复杂</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i33" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i33" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>Google News</span></div><h4><a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxNZGFJMTUwWmFyejl3MmtfWlhQM2Fud3FVQWFpYXFuU1lLUC0zREVYZDZ0SHgtU3drVzhYdkRXdGtKU0dQUFBCa3A4RWpIVjl5bnVDd0tRY2sxUHRZZlVvQzZtTDBtaHdUa3ZYSVREOE1wZEZUNVAtWWFKcVQyTjdvbnRreGpsbjZtQ2JMc25ZcUNTVkZVMTVjb21XbmZySkhIczRzRU8xRDRGMFpTbDVTQ1QzeWtRYlo4UkNoVHZQMHhiWlVCOERxU0t2cXI?oc=5" target="_blank" rel="noopener noreferrer">路透社：普京准备抵达中国之际，俄罗斯飞机侵入台湾和日本领空</a></h4><p class="en-title" lang="en">Taiwan, Japan flag incursions by Russian aircraft as Putin set to arrive in China - Reuters</p><p class="sum">普京拟访华之际，俄罗斯飞机侵入台湾及日本领空 - 路透社
+
+路透社：俄罗斯飞机侵入台湾及日本领空
+
+DW.com：日本紧急起飞战机以应对疑似俄罗斯飞机
+
+BBC：日本在疑似俄罗斯飞机侵入其领空后出动战机
+
+《日本时报》：在疑似俄罗斯军机进入领空后，日本紧急起飞战斗机
+
+美联社：两架疑似俄罗斯飞机侵犯日本西南部领空后，东京爆发抗议</p><p class="sum-en" lang="en">Taiwan, Japan flag incursions by Russian aircraft as Putin set to arrive in China Reuters Japan scrambles jets to counter suspected Russian aircraft DW.com Japan sends up jets after alleged Russian incursion of its airspace BBC Japan scrambles fighters after suspected Russian military planes enter airspace The Japan Times Tokyo protests after two suspected Russian aircraft violate Japanese airspace in southwestern Japan AP News</p><a class="go" href="https://news.google.com/rss/articles/CBMizAFBVV95cUxNZGFJMTUwWmFyejl3MmtfWlhQM2Fud3FVQWFpYXFuU1lLUC0zREVYZDZ0SHgtU3drVzhYdkRXdGtKU0dQUFBCa3A4RWpIVjl5bnVDd0tRY2sxUHRZZlVvQzZtTDBtaHdUa3ZYSVREOE1wZEZUNVAtWWFKcVQyTjdvbnRreGpsbjZtQ2JMc25ZcUNTVkZVMTVjb21XbmZySkhIczRzRU8xRDRGMFpTbDVTQ1QzeWtRYlo4UkNoVHZQMHhiWlVCOERxU0t2cXI?oc=5" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://s.france24.com/media/display/f3560fd6-e1e6-11f1-a0e9-29048b396e03/w:1024/p:16x9/AP26320545342836.jpg" alt="特朗普前往亚洲并计划与中俄进行历史性核对话" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>特朗普前往亚洲并计划与中俄进行历史性核对话</h3><p class="imp">外交关系重大进展</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i39" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i39" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>France 24</span></div><img class="" src="https://s.france24.com/media/display/f3560fd6-e1e6-11f1-a0e9-29048b396e03/w:1024/p:16x9/AP26320545342836.jpg" alt="特朗普前往亚洲，将与中俄进行历史性核对话" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.france24.com/en/asia-pacific/20261117-trump-asia-nuclear-talks-china-russia" target="_blank" rel="noopener noreferrer">特朗普前往亚洲，将与中俄进行历史性核对话</a></h4><p class="en-title" lang="en">Trump heads to Asia for historic nuclear talks with China and Russia</p><p class="sum-en" lang="en">US President Donald Trump headed to Asia on Monday for economic talks and a planned trilateral meeting with Chinese President Xi Jinping and Russian President Vladimir Putin on nuclear issues and the war in Ukraine. Trump also raised the possibility of meeting North Korean leader Kim Jong Un during his visit.</p><a class="go" href="https://www.france24.com/en/asia-pacific/20261117-trump-asia-nuclear-talks-china-russia" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://s.france24.com/media/display/d2e45bd2-e221-11f1-8e06-5f54d898a954/w:1024/p:16x9/AP26319581736584.jpg" alt="俄罗斯袭击基辅关键桥梁导致当地供水供电中断" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>俄罗斯袭击基辅关键桥梁导致当地供水供电中断</h3><p class="imp">乌克兰民生受损严重</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i53" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i53" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>France 24</span></div><img class="" src="https://s.france24.com/media/display/d2e45bd2-e221-11f1-8e06-5f54d898a954/w:1024/p:16x9/AP26319581736584.jpg" alt="俄罗斯袭击基辅两座关键桥梁，导致供水和供电中断" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.france24.com/en/europe/20261117-russian-strikes-hit-two-key-bridges-in-kyiv-disrupting-water-and-power-supplies-ukraine" target="_blank" rel="noopener noreferrer">俄罗斯袭击基辅两座关键桥梁，导致供水和供电中断</a></h4><p class="en-title" lang="en">Russian strikes hit two key bridges in Kyiv, disrupting water and power supplies</p><p class="sum-en" lang="en">Russian forces struck two major bridges crossing the Dnipro River in Kyiv late Monday, damaging critical infrastructure and causing water and power cuts in parts of the Ukrainian capital, Mayor Vitali Klitschko said. The attacks came as Moscow launched a wider wave of drone and missile strikes across Ukraine, including in the regions of Cherkasy and Kharkiv.</p><a class="go" href="https://www.france24.com/en/europe/20261117-russian-strikes-hit-two-key-bridges-in-kyiv-disrupting-water-and-power-supplies-ukraine" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>特朗普出发前往东盟参加与习近平及普京的峰会</h3><p class="imp">国际外交焦点事件</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i62" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i62" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>Al Jazeera</span></div><p class="en-title" lang="en">Trump departs for ASEAN on summit with Xi and Putin</p><p class="sum-en" lang="en">Donald Trump is heading to the Philippines where he’s scheduled to speak at a meeting of ASEAN leaders in Manila.</p><a class="go" href="https://www.aljazeera.com/video/newsfeed/2026/11/16/trump-departs-for-asean-on-summit-with-xi-and-putin?traffic_source=rss" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://npr.brightspotcdn.com/dims3/default/strip/false/crop/8256x5504+0+0/resize/8256x5504!/quality/85/format/webp/?url=https%3A%2F%2Fnpr-production-npr.s3.us-east-1.amazonaws.com%2Fbrightspot%2F47%2Fdc%2Fbe428cfe43728dcf909ce499cadf%2Fgettyimages-2273123489.jpg" alt="联合国会议寻求遏制“杀人机器人”等人工智能武器" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>联合国会议寻求遏制“杀人机器人”等人工智能武器</h3><p class="imp">全球人工智能监管</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i108" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i108" hidden><p class="cluster-note">以下报道来自 2 家媒体，观点可能不同，请自行判断。</p><div class="media primary"><div class="src"><span class="tag">头条</span><span>NPR</span></div><img class="" src="https://npr.brightspotcdn.com/dims3/default/strip/false/crop/8256x5504+0+0/resize/8256x5504!/quality/85/format/webp/?url=https%3A%2F%2Fnpr-production-npr.s3.us-east-1.amazonaws.com%2Fbrightspot%2F47%2Fdc%2Fbe428cfe43728dcf909ce499cadf%2Fgettyimages-2273123489.jpg" alt="随着人工智能武器担忧增加，联合国会议寻求遏制“杀人机器人”" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.npr.org/2026/11/16/nx-s1-6042548/un-killer-robots-ai-weapons-drones" target="_blank" rel="noopener noreferrer">随着人工智能武器担忧增加，联合国会议寻求遏制“杀人机器人”</a></h4><p class="en-title" lang="en">U.N. talks seek to rein in &#x27;killer robots&#x27; as fears over AI weapons grow</p><p class="sum-en" lang="en">Countries are meeting in Geneva to negotiate rules on weapons that can select and kill targets without human intervention. But with the U.S., Russia and Israel resisting legally binding controls, campaigners fear the window to act is closing.</p><a class="go" href="https://www.npr.org/2026/11/16/nx-s1-6042548/un-killer-robots-ai-weapons-drones" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div><div class="media"><div class="src"><span>Google News</span></div><h4><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxORjVjenZkdk1vNVNjSTR1UklRSHZCMGllZVR5N2lfRXo2MXg0MzBnQjBxekctUk5RZWJQaGRxYTRyekJvSzAzM0piT0I2dVhlcmVUalpyV2FxQVQtMVNLdGZpWjFBUUY4bGVBbldicWVnZ0MtWnNoQmhMYmVYWllHY3pHcUc4Zw?oc=5" target="_blank" rel="noopener noreferrer">随着人工智能武器担忧增加，联合国会议寻求遏制“杀人机器人” - NPR</a></h4><p class="en-title" lang="en">U.N. talks seek to rein in &#x27;killer robots&#x27; as fears over AI weapons grow - NPR</p><p class="sum-en" lang="en">U.N. talks seek to rein in &#x27;killer robots&#x27; as fears over AI weapons grow NPR &#x27;A futuristic debate now very real&#x27;: Why the world is struggling to regulate killer robots France 24 US and Russia to oppose talks on limiting autonomous weapons Reuters What will it take for the world&#x27;s superpowers to agree on AI regulations in war? CBC US Will Say ‘No’ To Global Ban on Killer Robots Newsweek</p><a class="go" href="https://news.google.com/rss/articles/CBMihgFBVV95cUxORjVjenZkdk1vNVNjSTR1UklRSHZCMGllZVR5N2lfRXo2MXg0MzBnQjBxekctUk5RZWJQaGRxYTRyekJvSzAzM0piT0I2dVhlcmVUalpyV2FxQVQtMVNLdGZpWjFBUUY4bGVBbldicWVnZ0MtWnNoQmhMYmVYWllHY3pHcUc4Zw?oc=5" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><div class="card-body"><h3>数千名移民涌入西班牙加那利群岛导致该国进入紧急状态</h3><p class="imp">欧洲移民危机</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i128" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i128" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>Google News</span></div><h4><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOR1B0YXFkZHNoMUNLR2N1NjRMNWxNYjZ6VzFwNUtPSTRqUW5iLWFEVGs4UTdPcnk1VFkyR0xDS053OUN6ZlZPVnVVX05iM1JoMWFsLUFwNnFJX0ZDOGFranY1TEFsOVJ2MjMzLXZsZ29xTHpRc3ZfV2Z0YVVQZW5RTmI4eXk2cVdDcFA3REVqeTJSUW9iamE5RU5OekZwOEFDb3U3bjgzc9IBrAFBVV95cUxQOUcyUnNZVjhhSEZESzR5ckxFeVVHQ3ctdlU5T19BQXYyQ0tJU1VpbUd4UTA1YncxdExFM0k2dXpTbzBSbTZtaFlBeTBRLTJVV2NwR19JM2lZQnNBVlYyYVVSV1htQi1kMTN5b3hhQ0haeW5aMDJrZy1NUlBveEl1R3Q5Mm5sOTJxNm05dC1SR3hTRjVTX0UtNTVGOTRjUFFreEJaZjZsM0tzWnNp?oc=5" target="_blank" rel="noopener noreferrer">数千名移民涌入西班牙加那利群岛，该国宣布进入紧急状态 - 福克斯新闻</a></h4><p class="en-title" lang="en">Spain&#x27;s Canary Islands flooded by thousands of migrants as country declares emergency - Fox News</p><p class="sum-en" lang="en">Spain&#x27;s Canary Islands flooded by thousands of migrants as country declares emergency Fox News Nearly 2,200 migrants reach Canary Islands in 2 days, Spain says NBC News Record number of migrants arrive in Spain’s Canary Islands Al Jazeera Nearly 1,500 migrants arrive in Canary Islands in one day Reuters Nearly 1,600 migrants arrive on Spain&#x27;s Canary Islands in one day DW.com</p><a class="go" href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOR1B0YXFkZHNoMUNLR2N1NjRMNWxNYjZ6VzFwNUtPSTRqUW5iLWFEVGs4UTdPcnk1VFkyR0xDS053OUN6ZlZPVnVVX05iM1JoMWFsLUFwNnFJX0ZDOGFranY1TEFsOVJ2MjMzLXZsZ29xTHpRc3ZfV2Z0YVVQZW5RTmI4eXk2cVdDcFA3REVqeTJSUW9iamE5RU5OekZwOEFDb3U3bjgzc9IBrAFBVV95cUxQOUcyUnNZVjhhSEZESzR5ckxFeVVHQ3ctdlU5T19BQXYyQ0tJU1VpbUd4UTA1YncxdExFM0k2dXpTbzBSbTZtaFlBeTBRLTJVV2NwR19JM2lZQnNBVlYyYVVSV1htQi1kMTN5b3hhQ0haeW5aMDJrZy1NUlBveEl1R3Q5Mm5sOTJxNm05dC1SR3hTRjVTX0UtNTVGOTRjUFFreEJaZjZsM0tzWnNp?oc=5" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://i.guim.co.uk/img/media/bc01b369b562e3e2bf256cd5482bab9f368d5175/1_0_2999_2400/master/2999.jpg?width=1200&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=d4fd5266aa44369a3472db45234f5224" alt="以色列利用亚马逊面部识别平台追踪巴勒斯坦人" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>以色列利用亚马逊面部识别平台追踪巴勒斯坦人</h3><p class="imp">引发人权争议</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i140" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i140" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>The Guardian</span></div><img class="" src="https://i.guim.co.uk/img/media/bc01b369b562e3e2bf256cd5482bab9f368d5175/1_0_2999_2400/master/2999.jpg?width=1200&amp;quality=85&amp;auto=format&amp;fit=max&amp;s=d4fd5266aa44369a3472db45234f5224" alt="揭秘：以色列向亚马逊面部识别平台上传了数百万张照片以追踪巴勒斯坦人" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://www.theguardian.com/world/2026/nov/16/israel-amazon-facial-recognition-palestinians" target="_blank" rel="noopener noreferrer">揭秘：以色列向亚马逊面部识别平台上传了数百万张照片以追踪巴勒斯坦人</a></h4><p class="en-title" lang="en">Revealed: Israel uploaded millions of photos to Amazon’s facial recognition platform to track Palestinians</p><p class="sum-en" lang="en">Upload came as the Israeli military was increasing its reliance on Amazon’s cloud platform to meet the technological demands of its bombardment of Gaza The Israeli military uploaded 3.5m photos to Amazon’s cloud platform in order to use the US company’s facial recognition technology to analyse images of Palestinians, the Guardian can reveal. Leaked documents show the expansive catalogue of images was moved into Amazon’s cloud in the early months of Israel’s devastating aerial bombardment and ground offensive in Gaza. Continue reading...</p><a class="go" href="https://www.theguardian.com/world/2026/nov/16/israel-amazon-facial-recognition-palestinians" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article><article class="card"><img class="card-img" src="https://e3.365dm.com/26/11/1920x1080/skynews-jeffsville-forensic_7407791.jpg?20261116140353=" alt="南非两起大规模枪击事件导致至少17人死亡" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="card-body"><h3>南非两起大规模枪击事件导致至少17人死亡</h3><p class="imp">当地治安形势严峻</p><div class="card-meta"></div><button class="toggle" type="button" data-target="cluster-i149" data-label-closed="查看各家报道 ▸">查看各家报道 ▸</button><div class="cluster" id="cluster-i149" hidden><div class="media primary"><div class="src"><span class="tag">头条</span><span>Sky News</span></div><img class="" src="https://e3.365dm.com/26/11/1920x1080/skynews-jeffsville-forensic_7407791.jpg?20261116140353=" alt="南非两起独立枪击事件导致至少17人死亡" referrerpolicy="no-referrer" onerror="this.style.display='none'"><h4><a href="https://news.sky.com/story/at-least-17-people-killed-in-two-separate-shootings-in-south-africa-13612711" target="_blank" rel="noopener noreferrer">南非两起独立枪击事件导致至少17人死亡</a></h4><p class="en-title" lang="en">At least 17 people killed in two separate shootings in South Africa</p><p class="sum-en" lang="en">At least 17 people have been killed in two separate shootings in South Africa, police said on Monday.</p><a class="go" href="https://news.sky.com/story/at-least-17-people-killed-in-two-separate-shootings-in-south-africa-13612711" target="_blank" rel="noopener noreferrer">阅读原文 ↗</a></div></div></div></article></section>
+<details class="raw"><summary>原始新闻列表（323 条）</summary><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733500.shtml" target="_blank" rel="noopener noreferrer">习近平会见墨西哥总统辛鲍姆</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733496.shtml" target="_blank" rel="noopener noreferrer">“雪”字头列车限时返场 铁路多彩标签精准对接旅客需求</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="http://www.chinanews.com.cn/tp/hd2011/2026/11-17/1210992.shtml" target="_blank" rel="noopener noreferrer">（深圳APEC）智利总统卡斯特抵达深圳</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733346.shtml" target="_blank" rel="noopener noreferrer">国家知识产权局印发《地理标志保护和运用“十五五”规划》</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733444.shtml" target="_blank" rel="noopener noreferrer">习言道丨建设大湾区，习近平寄语“开路先锋”</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733437.shtml" target="_blank" rel="noopener noreferrer">（深圳APEC）深圳APEC领导人非正式会议成果文件磋商工作已启动</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733481.shtml" target="_blank" rel="noopener noreferrer">美媒记者深圳体验自动驾驶汽车 外媒点赞中国科技创新，见证发展活力</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733480.shtml" target="_blank" rel="noopener noreferrer">煤电气多源协同发力 迎峰度冬能源供应有保障</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733469.shtml" target="_blank" rel="noopener noreferrer">前十月新动能贡献超五成 工业增长焕发强劲创新活力</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733461.shtml" target="_blank" rel="noopener noreferrer">APEC时间丨开放带来增长 创新驱动未来 合作共享繁荣</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733475.shtml" target="_blank" rel="noopener noreferrer">中方：APEC领导人非正式会议即将拉开帷幕，期待同各方进一步凝聚共识</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733466.shtml" target="_blank" rel="noopener noreferrer">（深圳APEC）习近平会见越共中央总书记、国家主席苏林</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733474.shtml" target="_blank" rel="noopener noreferrer">外交部回应美国政府调查涉英伟达芯片一事</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/tp/2026/11-17/10733458.shtml" target="_blank" rel="noopener noreferrer">200余件民族服饰亮相山西 展现各族女性服饰风采</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733414.shtml" target="_blank" rel="noopener noreferrer">世行MIGA官员：中国气候投融资试点成效值得肯定 期待深化合作</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733472.shtml" target="_blank" rel="noopener noreferrer">民企成亚太合作重要纽带</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/txy/2026/11-17/10733417.shtml" target="_blank" rel="noopener noreferrer">九三学社沈阳市委会举办纪念中国工农红军长征胜利90周年红色诗文歌咏展演</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733471.shtml" target="_blank" rel="noopener noreferrer">“智能好物”热卖，消费解锁新空间（读数）</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733408.shtml" target="_blank" rel="noopener noreferrer">2026年以来四川省较大交通事故同比下降29.6%</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733470.shtml" target="_blank" rel="noopener noreferrer">到2030年地理标志产品直接产值预期超1万亿</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/dwq/2026/11-17/10733445.shtml" target="_blank" rel="noopener noreferrer">国际绿色燃料联盟三个专委会在港成立 助力全球航运绿色转型</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733419.shtml" target="_blank" rel="noopener noreferrer">台湾霹雳布袋戏电影《霹雳英雄：素还真》厦门开启大陆路演</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/tp/2026/11-17/10733457.shtml" target="_blank" rel="noopener noreferrer">福建永春：第三届永春白鹤拳传承发展大会启幕</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/fz/2026/11-17/10733468.shtml" target="_blank" rel="noopener noreferrer">抢不到的“LABUBU”去了哪里？检察机关办理一起潮玩外挂案</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733467.shtml" target="_blank" rel="noopener noreferrer">中国会否延长对西班牙等国的免签政策？外交部回应</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733442.shtml" target="_blank" rel="noopener noreferrer">“梦想”号大洋钻探船完成重大装备海试任务</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/dwq/2026/11-17/10733407.shtml" target="_blank" rel="noopener noreferrer">2026粤港澳大湾区山地户外运动交流活动在珠海举行</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733406.shtml" target="_blank" rel="noopener noreferrer">近500名残疾人选手佛山同台竞技</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733463.shtml" target="_blank" rel="noopener noreferrer">（深圳APEC）六成生意在亚太，中国外贸的“亚太账本”</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733405.shtml" target="_blank" rel="noopener noreferrer">（乡村行·看振兴）吉林磐石：一枚卤蛋“孵”出乡村振兴产业链</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733460.shtml" target="_blank" rel="noopener noreferrer">中方斥美国涉华规定：典型的经济胁迫和长臂管辖</a></div><div class="meta">中新网·即时</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733446.shtml" target="_blank" rel="noopener noreferrer">北大刘珂团队：绳结人工肌肉破解“快与力”难题，柔性驱动走向手术导丝与万米深海</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.zaobao.com/news/china/story20261117-10011354" target="_blank" rel="noopener noreferrer">腾讯内部讲话：AI带来的范式变革是生死存亡问题</a></div><div class="meta">联合早报</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733456.shtml" target="_blank" rel="noopener noreferrer">特朗普称或将在中国与金正恩会面 中方回应</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733350.shtml" target="_blank" rel="noopener noreferrer">距亚丁仅60公里，胡塞武装逼近也门政府军大本营</a></div><div class="meta">中新网·国际</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cul/2026/11-17/10733451.shtml" target="_blank" rel="noopener noreferrer">揭秘94版《三国演义》：选演员很严格 曾成立补拍组</a></div><div class="meta">中新网·要闻</div></div><div class="raw-item"><div class="zh"><a href="https://www.zaobao.com/news/china/story20261117-10011811" target="_blank" rel="noopener noreferrer">南非要求台湾代表处迁址未果 双方僵持三年</a></div><div class="meta">联合早报</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733403.shtml" target="_blank" rel="noopener noreferrer">兴凯湖明水期捕捞作业结束 湖面进入流冰期</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733439.shtml" target="_blank" rel="noopener noreferrer">生态环境部：到2030年基本建成生态环境智慧执法体系</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.zaobao.com/news/china/story20261117-10011710" target="_blank" rel="noopener noreferrer">高市与中国部长握手交谈 为中日关系恶化后首次公开互动</a></div><div class="meta">联合早报</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733404.shtml" target="_blank" rel="noopener noreferrer">辽宁司法救助“免申即享”织密民生保障网</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733427.shtml" target="_blank" rel="noopener noreferrer">（深圳APEC）习近平会见加拿大总理卡尼</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733426.shtml" target="_blank" rel="noopener noreferrer">（深圳APEC）习近平会见巴布亚新几内亚总理马拉佩</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733432.shtml" target="_blank" rel="noopener noreferrer">西部战区空军某旅探索“体系+”训练模式</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.zaobao.com/news/china/story20261117-10011566" target="_blank" rel="noopener noreferrer">APEC峰会前 两架俄军机飞经台湾东部并进入日本领空</a></div><div class="meta">联合早报</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733398.shtml" target="_blank" rel="noopener noreferrer">“用时光熬一碗米线” 两岸夫妻在南京开暖心小店</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733424.shtml" target="_blank" rel="noopener noreferrer">我国全面推行疫苗处方</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.zaobao.com/news/china/story20261117-10011522" target="_blank" rel="noopener noreferrer">习近平在APEC峰会前会见卡尼 中国将降低加拿大农渔产品关税</a></div><div class="meta">联合早报</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/sh/2026/11-17/10733421.shtml" target="_blank" rel="noopener noreferrer">注意！这些情形需要向公司支付违约金</a></div><div class="meta">中新网·社会</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733412.shtml" target="_blank" rel="noopener noreferrer">习近平会见越共中央总书记、国家主席苏林</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733411.shtml" target="_blank" rel="noopener noreferrer">多国媒体和智库：期待APEC会议带来新机遇</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733399.shtml" target="_blank" rel="noopener noreferrer">用24小时 看深圳的APEC日常故事</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733394.shtml" target="_blank" rel="noopener noreferrer">澳大利亚人士：APEC会议将进一步促进区域交流与合作</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733393.shtml" target="_blank" rel="noopener noreferrer">APEC“中国年”一系列会议和活动取得丰硕成果</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733378.shtml" target="_blank" rel="noopener noreferrer">APEC进入“深圳时间”，多图读懂中国贡献：为亚太发展注入正能量</a></div><div class="meta">中新网·国际</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733390.shtml" target="_blank" rel="noopener noreferrer">加总理卡尼：加拿大或寻求与中国等车企合作</a></div><div class="meta">中新网·国际</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gj/2026/11-17/10733356.shtml" target="_blank" rel="noopener noreferrer">巴勒斯坦称以色列定居者在约旦河西岸开枪致1死10伤</a></div><div class="meta">中新网·要闻</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/cj/2026/11-17/10733362.shtml" target="_blank" rel="noopener noreferrer">中国快递业务量连续两个月超170亿件</a></div><div class="meta">中新网·要闻</div></div><div class="raw-item"><div class="zh"><a href="https://www.chinanews.com.cn/gn/2026/11-17/10733358.shtml" target="_blank" rel="noopener noreferrer">第五届民进促发展产学研合作对接会在沈举办 首家民进服务产学研合作驿站正式启动</a></div><div class="meta">中新网·时政</div></div><div class="raw-item"><div class="zh"><a href="https://www.zaobao.com/news/china/story20261117-10011263" target="_blank" rel="noopener noreferrer">男子登富士山失联多日 中驻日使馆提醒公民勿违规登山</a></div><div class="meta">联合早报</div></div></details>
+<footer>
+本站由 GitHub Actions 每日北京时间 08:00 自动更新，内容来自公开 RSS，仅供个人阅读参考。
+</footer>
+</div>
+<script>
+(function () {
+  'use strict';
+
+  /* 展开/收起「查看各家报道」 */
+  document.addEventListener('click', function (event) {
+    var button = event.target.closest ? event.target.closest('.toggle') : null;
+    if (!button) { return; }
+    var panel = document.getElementById(button.getAttribute('data-target'));
+    if (!panel) { return; }
+    var open = panel.hasAttribute('hidden') === false;
+    if (open) {
+      panel.setAttribute('hidden', '');
+      button.textContent = button.getAttribute('data-label-closed');
+    } else {
+      panel.removeAttribute('hidden');
+      button.textContent = '收起各家报道 ▴';
+    }
+  });
+
+  /* 无 mp3 时用浏览器自带的 SpeechSynthesis 朗读播报稿 */
+  var speaking = false;
+  window.dailyNewsSpeak = function () {
+    if (!('speechSynthesis' in window)) {
+      alert('当前浏览器不支持语音朗读，请直接阅读下方文字播报稿。');
+      return;
+    }
+    var holder = document.getElementById('broadcast-text');
+    if (!holder) { return; }
+    var text = (holder.textContent || '').trim();
+    if (!text) { return; }
+
+    if (speaking) {
+      window.speechSynthesis.cancel();
+      speaking = false;
+      return;
+    }
+
+    var utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'zh-CN';
+    utterance.rate = 1.0;
+
+    function pickVoiceAndSpeak() {
+      var voices = window.speechSynthesis.getVoices() || [];
+      for (var i = 0; i < voices.length; i += 1) {
+        if (/^zh[-_]CN/i.test(voices[i].lang) || /^zh/i.test(voices[i].lang)) {
+          utterance.voice = voices[i];
+          break;
+        }
+      }
+      speaking = true;
+      utterance.onend = function () { speaking = false; };
+      utterance.onerror = function () { speaking = false; };
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utterance);
+    }
+
+    var ready = window.speechSynthesis.getVoices() || [];
+    if (ready.length) {
+      pickVoiceAndSpeak();
+      return;
+    }
+    window.speechSynthesis.onvoiceschanged = function () {
+      window.speechSynthesis.onvoiceschanged = null;
+      pickVoiceAndSpeak();
+    };
+    setTimeout(function () {
+      if (!speaking && !utterance.voice) { pickVoiceAndSpeak(); }
+    }, 900);
+  };
+}());
+</script>
+</body>
+</html>
