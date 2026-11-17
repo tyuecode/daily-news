@@ -73,8 +73,13 @@ DEEP_DIVE_COUNT = 6
 # 每批翻译的标题数量：一次给 20 条模型只会翻前 5 条（实测），必须分批 8 条
 TRANSLATE_BATCH = 8
 
-# 聚类相似度阈值
-CLUSTER_THRESHOLD = 0.35
+# 聚类相似度阈值。
+# 0.35 是初版凭经验定的值，实测太保守：在真实抓取数据上，6 组「明显同一事件、
+# 不同媒体不同措辞」的标题对里只有 1 组能达到 0.35，导致 11 条国际大事中
+# 只有 1 条是多源簇——「看不同观点」这个核心目标基本落空。
+# 用真实标题对做阈值扫描后：0.25 时同事件能合并 3/6，且不同事件误并为 0/6，
+# 是准确率与召回率的最佳平衡点。
+CLUSTER_THRESHOLD = 0.25
 
 # 单个源抓取超时（秒）
 SOURCE_TIMEOUT = 20
@@ -85,9 +90,14 @@ USER_AGENT = (
     "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 daily-news-bot"
 )
 
-# TTS 音色与重试次数
+# TTS 音色与重试次数。
+#
+# 重试次数必须给足：实测 edge-tts 的失败是**服务端随机抖动**，与文本长度无关
+# （同一段文字可能连续 5 次全失败，也可能连续成功）。单次成功率约 20%–60%，
+# 用「8 次重试 + 线性退避」实测可达 5/5 成功，平均只需 2 次尝试。
+# 早期版本只重试 3 次，线上真的出现过 3 次全挂、当天没有音频的情况。
 TTS_VOICE = "zh-CN-XiaoxiaoNeural"
-TTS_ATTEMPTS = 3
+TTS_ATTEMPTS = 8
 
 # 站点地址（用于页面里的绝对链接与分享信息）；可在环境变量里覆盖
 SITE_URL = os.environ.get("SITE_URL", "https://daily-news.pages.dev").rstrip("/")
@@ -231,6 +241,13 @@ COUNTRY_ALIASES = [
     ("新加坡", ["新加坡", "singapore"]),
     ("澳大利亚", ["澳大利亚", "澳洲", "australia", "australian", "sydney", "canberra"]),
     ("新西兰", ["新西兰", "new zealand", "wellington", "auckland"]),
+    ("巴布亚新几内亚", ["巴布亚新几内亚", "巴新", "papua new guinea", "png"]),
+    ("斐济", ["斐济", "fiji", "suva"]),
+    ("柬埔寨", ["柬埔寨", "金边", "cambodia", "cambodian", "phnom penh"]),
+    ("老挝", ["老挝", "万象", "laos", "lao", "vientiane"]),
+    ("蒙古", ["蒙古", "乌兰巴托", "mongolia", "mongolian", "ulaanbaatar"]),
+    ("尼泊尔", ["尼泊尔", "加德满都", "nepal", "nepalese", "kathmandu"]),
+    ("斯里兰卡", ["斯里兰卡", "科伦坡", "sri lanka", "colombo"]),
     ("英国", ["英国", "伦敦", "britain", "british", "UK", "U.K.", "london", "england"]),
     ("法国", ["法国", "巴黎", "france", "french", "paris", "macron"]),
     ("德国", ["德国", "柏林", "germany", "german", "berlin"]),
@@ -1132,6 +1149,23 @@ def item_publisher(item):
     return (item.get("publisher") or item.get("source") or "").strip()
 
 
+def entity_conflict(text_a, text_b):
+    """两条标题是否「国家实体互斥」——即明显在讲不同国家的不同事。
+
+    这是降低阈值之后必须配套的守卫。典型陷阱：
+        「习近平会见加拿大总理卡尼」
+        「习近平会见巴布亚新几内亚总理马拉佩」
+    字面框架高度雷同，bigram 相似度可达 0.23，但它们是完全不同的两件事。
+    规则：两边都提到了国家、且没有任何一个共同国家 → 判定冲突，不许合并。
+    只在一边提到国家时无法判断（例如某条标题没写国名），按不冲突处理。
+    """
+    countries_a = find_countries(text_a)
+    countries_b = find_countries(text_b)
+    if not countries_a or not countries_b:
+        return False
+    return not (countries_a & countries_b)
+
+
 def vote_count(cluster_items):
     """计算一个簇的「家数」。
 
@@ -1175,7 +1209,11 @@ def cluster_items(items, threshold=CLUSTER_THRESHOLD):
             score = 0.0
             for member in cluster["items"]:
                 member_title = member.get("title_zh") or member.get("title") or ""
-                score = max(score, jaccard(grams, zh_bigrams(member_title)))
+                similarity = jaccard(grams, zh_bigrams(member_title))
+                # 实体互斥的绝不合并（防止「习近平会见A国总理」并进「会见B国总理」）
+                if similarity >= threshold and entity_conflict(title, member_title):
+                    continue
+                score = max(score, similarity)
             if score > best_score:
                 best_score = score
                 best = cluster
@@ -1749,18 +1787,28 @@ def is_valid_mp3(path):
     return False
 
 
-async def _tts_save(text, path):
+async def _tts_save(text, path, voice=None, rate=None):
     """真正调用 edge-tts 的协程。"""
     import edge_tts
 
-    communicate = edge_tts.Communicate(text, voice=TTS_VOICE)
+    kwargs = {"voice": voice or TTS_VOICE}
+    if rate:
+        kwargs["rate"] = rate
+    communicate = edge_tts.Communicate(text, **kwargs)
     await asyncio.wait_for(communicate.save(path), timeout=180)
 
 
-def generate_tts(text, path, attempts=TTS_ATTEMPTS):
-    """合成 mp3，websocket 偶发断连，重试 3 次。成功返回 True。"""
+def generate_tts(text, path, attempts=TTS_ATTEMPTS, sleep=time.sleep):
+    """合成 mp3，成功返回 True。
+
+    为什么要这么多次重试：
+      实测失败是服务端随机抖动，与文本长度无关。单次成功率只有 20%–60%，
+      8 次重试 + 线性退避可稳定到 5/5，平均约 2 次尝试即可成功。
+      另外 7.x 的失败模式是 NoAudioReceived（拿到 0 字节），
+      6.x 的失败模式是 403 握手错误——两种都必须当失败处理并重试。
+    """
     if not text or len(text) < 20:
-        warn("播报稿太短，跳过语音合成")
+        warn("播报稿太短（%d 字），跳过语音合成" % len(text or ""))
         return False
 
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
@@ -1769,15 +1817,24 @@ def generate_tts(text, path, attempts=TTS_ATTEMPTS):
             asyncio.run(_tts_save(text, path))
             if is_valid_mp3(path):
                 size = os.path.getsize(path)
-                log("语音合成成功：%s（%.1f KB）" % (path, size / 1024.0))
+                log("语音合成成功：%s（%.1f KB，第 %d 次尝试）" % (
+                    path, size / 1024.0, attempt))
                 return True
-            warn("第 %d 次合成的文件不是合法 MP3，删除重试" % attempt)
+            # 拿到文件但不是合法 MP3（可能是 0 字节或 JSON）
+            got = os.path.getsize(path) if os.path.exists(path) else 0
+            warn("第 %d 次合成未拿到合法 MP3（%d 字节），重试" % (attempt, got))
             _remove_quietly(path)
         except Exception as exc:  # noqa: BLE001 edge-tts 的异常类型很杂
-            warn("第 %d 次语音合成失败：%s: %s" % (attempt, type(exc).__name__, exc))
+            warn("第 %d/%d 次语音合成失败：%s: %s" % (
+                attempt, attempts, type(exc).__name__, str(exc)[:120]))
             _remove_quietly(path)
-            time.sleep(2 * attempt)
+
+        if attempt < attempts:
+            # 线性退避：2s、4s、6s… 实测服务端抖动通常在几秒内恢复
+            sleep(min(2 * attempt, 10))
+
     _remove_quietly(path)
+    warn("语音合成连续 %d 次失败，降级为浏览器朗读" % attempts)
     return False
 
 

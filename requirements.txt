@@ -8,7 +8,15 @@
 #   3.13 下 feedparser 有兼容风险，3.11 是实测最稳的版本。
 
 # 语音合成：微软 edge-tts，纯免费、无需密钥，中文音色 zh-CN-XiaoxiaoNeural
-edge-tts>=6.1,<7
+#
+# ⚠️ 版本上下限至关重要，改动前先看这段：
+#   edge-tts 6.1.19 会在 websocket 握手时被微软返回 403
+#   （WSServerHandshakeError: 403 Invalid response status），
+#   原因是它内置的 Chromium 130 / Sec-MS-GEC token 已过期。
+#   7.x 分支修复了握手，因此下限必须是 7.0。
+#   这里刻意**不写上界**：微软一旦再次收紧 token，通常只有最新版才跟得上，
+#   被上界锁死在旧版就会突然全线失败。
+edge-tts>=7.0
 
 # RSS 解析：命名空间（media:thumbnail 等）处理可靠，不要手写正则硬解 XML
 feedparser>=6.0,<7

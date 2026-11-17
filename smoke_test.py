@@ -21,6 +21,7 @@ from __future__ import annotations
 import io
 import json
 import os
+import re
 import sys
 import tempfile
 import traceback
@@ -1118,7 +1119,7 @@ def test_config_integrity():
     expect_eq("时效窗口 36 小时", generate.WINDOW_HOURS, 36)
     expect_eq("归档保留 30 天", generate.KEEP_DAYS, 30)
     expect_eq("分批翻译 8 条", generate.TRANSLATE_BATCH, 8)
-    expect_eq("聚类阈值 0.35", generate.CLUSTER_THRESHOLD, 0.35)
+    expect_eq("聚类阈值 0.25（实测标定值）", generate.CLUSTER_THRESHOLD, 0.25)
     expect_eq("单源超时 20 秒", generate.SOURCE_TIMEOUT, 20)
     expect_eq("TTS 音色", generate.TTS_VOICE, "zh-CN-XiaoxiaoNeural")
     check("模型为 gemma-4-26b-a4b-it",
@@ -1409,6 +1410,173 @@ def test_publisher_voting():
               s["name"] for s in generate.DOMESTIC_FEEDS if not s.get("publisher")])
 
 
+def test_entity_conflict_guard():
+    group("实体冲突守卫（降阈值后必须配套，防止同框架不同国家被误合并）")
+
+    # 典型陷阱：同一个「习近平会见X国总理」框架，但是两件不同的事
+    a = "习近平会见加拿大总理卡尼"
+    b = "习近平会见巴布亚新几内亚总理马拉佩"
+    check("同框架不同国家判定为实体冲突",
+          generate.entity_conflict(a, b) is True, "未检出冲突")
+    check("陷阱对相似度高到会被阈值误合并（所以必须靠实体守卫兜住）",
+          generate.text_similarity(a, b) >= 0.20,
+          "相似度=%.3f" % generate.text_similarity(a, b))
+
+    # 同一国家的同一事件：不算冲突
+    c = "南非两起大规模枪击事件导致至少17人死亡"
+    d = "南非同日发生两起大规模枪击致至少17人死亡"
+    check("同一国家不算实体冲突", generate.entity_conflict(c, d) is False)
+
+    # 一边没有国家实体：无法判断，按不冲突处理（否则会漏并真事件）
+    check("一方无国家实体时不判冲突",
+          generate.entity_conflict("特朗普前往亚洲并计划与中俄进行核对话",
+                                   "特朗普出发前往东盟参加峰会") is False)
+    check("两边都无国家实体时不判冲突",
+          generate.entity_conflict("联合国警告苏丹面临饥荒风险", "苏丹数百万人面临饥荒") is False)
+
+    # 集成验证：陷阱对在 cluster_items 里绝不能被合并
+    now = datetime.now(BJ)
+
+    def item(source, publisher, title, suffix):
+        return {
+            "source": source, "publisher": publisher, "section": "domestic",
+            "title": title, "title_zh": title, "title_en": "", "summary": "",
+            "url": "https://www.chinanews.com.cn/%s" % suffix, "image": "",
+            "published": now, "lang": "zh",
+        }
+
+    trap = [
+        item("中新网·时政", "中新网", a, "a"),
+        item("联合早报", "联合早报", b, "b"),
+    ]
+    clusters = generate.cluster_items(trap)
+    expect_eq("实体冲突的两条绝不合并", len(clusters), 2)
+    check("两条各自独立成簇且家数都是 1",
+          all(generate.vote_count(c["items"]) == 1 for c in clusters))
+
+
+def test_cluster_threshold_calibration():
+    group("聚类阈值标定（0.25 是根据真实标题对扫描出来的，不是拍脑袋）")
+
+    # 真实抓取数据里「明显同事件、不同措辞」的标题对
+    same_event_pairs = [
+        ("南非两起大规模枪击事件导致至少17人死亡",
+         "南非同日发生两起大规模枪击致至少17人死亡"),
+        ("五个欧盟国家计划在卢旺达建立移民“返还中心”",
+         "多个欧盟国家拟在卢旺达设立遣返中心"),
+        ("联合国警告苏丹面临饥荒风险",
+         "苏丹数百万人面临严重饥荒"),
+    ]
+    # 真实数据里「明显不同事件」的标题对
+    different_pairs = [
+        ("菲律宾数百人在反特朗普抗议活动中被捕",
+         "联合国会议寻求遏制“杀人机器人”等人工智能武器"),
+        ("我国快递业务量连续两个月超170亿件",
+         "中东部将迎来大范围雨雪及寒潮天气"),
+        ("印尼卡伊群岛发生6.6级地震",
+         "10月中国经济生产消费就业底盘稳健"),
+    ]
+
+    th = generate.CLUSTER_THRESHOLD
+    check("阈值为 0.25", th == 0.25, "实际=%.2f" % th)
+    check("阈值不再是最初的 0.35（实测太保守，多源簇几乎聚不出来）",
+          th < 0.35)
+
+    merged_same = sum(1 for a, b in same_event_pairs
+                      if generate.text_similarity(a, b) >= th)
+    merged_diff = sum(1 for a, b in different_pairs
+                      if generate.text_similarity(a, b) >= th)
+
+    check("同事件至少能合并 2/3（0.35 时只有 1/3）",
+          merged_same >= 2, "实际合并 %d/3" % merged_same)
+    expect_eq("不同事件零误并", merged_diff, 0)
+
+
+def test_tts_retry_behaviour():
+    group("TTS 重试（实测失败是服务端随机抖动，必须给足重试次数）")
+
+    check("重试次数不少于 8 次",
+          generate.TTS_ATTEMPTS >= 8, "实际=%d" % generate.TTS_ATTEMPTS)
+
+    import tempfile
+
+    with tempfile.TemporaryDirectory() as tmp:
+        path = os.path.join(tmp, "a.mp3")
+        sleeps = []
+
+        # 前 3 次抛异常，第 4 次成功 → 必须成功且退出
+        state = {"n": 0}
+        original_save = generate._tts_save
+
+        async def flaky_save(text, p, voice=None, rate=None):
+            state["n"] += 1
+            if state["n"] < 4:
+                raise RuntimeError("演练：NoAudioReceived")
+            with open(p, "wb") as handle:
+                handle.write(b"ID3\x03\x00\x00\x00\x00\x00\x00" + b"\x00" * 200)
+
+        generate._tts_save = flaky_save
+        try:
+            ok = generate.generate_tts("各位好，这是一段足够长的测试播报稿内容，用于验证语音合成的重试逻辑。", path,
+                                       sleep=sleeps.append)
+            check("前几次失败后仍能合成成功", ok is True)
+            expect_eq("总共尝试 4 次", state["n"], 4)
+            check("失败之间有退避等待", len(sleeps) >= 3, "实际=%d 次等待" % len(sleeps))
+            check("退避时间是递增的",
+                  all(sleeps[i] <= sleeps[i + 1] for i in range(len(sleeps) - 1)),
+                  "实际=%r" % (sleeps,))
+        finally:
+            generate._tts_save = original_save
+
+        # 全部失败 → 返回 False（上层降级为浏览器朗读），且不留残文件
+        async def always_fail(text, p, voice=None, rate=None):
+            raise RuntimeError("演练：403 Invalid response status")
+
+        original_save = generate._tts_save
+        generate._tts_save = always_fail
+        try:
+            ok = generate.generate_tts("各位好，这是一段足够长的测试播报稿内容，用于验证语音合成的重试逻辑。", path,
+                                       sleep=lambda _s: None)
+            check("全部失败时返回 False（触发降级而非崩溃）", ok is False)
+            check("失败后不留残缺音频文件", not os.path.exists(path))
+        finally:
+            generate._tts_save = original_save
+
+        # 拿到 0 字节 / 非法文件也必须判为失败
+        async def empty_save(text, p, voice=None, rate=None):
+            with open(p, "wb") as handle:
+                handle.write(b"")
+
+        original_save = generate._tts_save
+        generate._tts_save = empty_save
+        try:
+            ok = generate.generate_tts("各位好，这是一段足够长的测试播报稿内容，用于验证语音合成的重试逻辑。", path,
+                                       sleep=lambda _s: None)
+            check("拿到 0 字节文件判为失败", ok is False)
+        finally:
+            generate._tts_save = original_save
+
+        # 播报稿过短直接跳过（不浪费重试）
+        ok = generate.generate_tts("太短", path, sleep=lambda _s: None)
+        check("播报稿过短直接跳过合成", ok is False)
+
+
+def test_requirements_pins():
+    group("依赖版本约束（edge-tts 必须有下限且不加上界）")
+
+    req_path = os.path.join(ROOT, "requirements.txt")
+    content = open(req_path, encoding="utf-8").read()
+
+    check("edge-tts 下限不低于 7.0（6.1.19 会 403 握手失败）",
+          "edge-tts>=7" in content.replace(" ", ""),
+          "实际内容片段=%r" % [
+              l for l in content.splitlines() if "edge-tts" in l and not l.strip().startswith("#")])
+    tts_line = next((l for l in content.splitlines()
+                     if l.strip().startswith("edge-tts")), "")
+    check("edge-tts 不设置上界（微软收紧 token 时只有新版能跟上）",
+          "<" not in tts_line, "实际=%r" % tts_line)
+
+
 def test_dry_run_end_to_end():
     group("端到端 dry-run（零网络、零 CF 调用、只写 _dryrun/）")
 
@@ -1566,11 +1734,24 @@ def test_workflow_guard():
     gen_pos = content.find("python scripts/generate.py")
     check("smoke_test 在 generate 之前执行", 0 <= smoke_pos < gen_pos)
 
-    # 不允许把密钥回显到日志
+    # 不允许把密钥「值」回显到日志；但允许在提示文案里提到密钥「名字」。
+    # 判断标准：出现在 echo 里的必须只是变量名/中文说明，不能是 ${{ secrets.X }} 的实际取值。
     for line in content.splitlines():
         stripped = line.strip()
-        if stripped.startswith("echo") or stripped.startswith("run: echo"):
-            check("日志里没有回显密钥", "CF_API_TOKEN" not in stripped, stripped)
+        if not (stripped.startswith("echo") or stripped.startswith("run: echo")):
+            continue
+        # 真正的泄漏形态：把 secrets 直接 echo 出去
+        check("echo 里没有直接输出 secrets 值",
+              "${{ secrets." not in stripped, stripped)
+        # 也不太可能在 echo 里出现 $CF_API_TOKEN 这类变量解引用
+        check("echo 里没有解引用密钥变量",
+              "$CF_API_TOKEN" not in stripped and "$CF_ACCOUNT_ID" not in stripped,
+              stripped)
+
+    # 整体扫描：文件里不应出现形如 40 位十六进制/字母数字的硬编码 token
+    hardcoded = re.findall(r"\b[A-Za-z0-9_\-]{40}\b", content)
+    check("workflow 里没有硬编码的长 token",
+          not hardcoded, "疑似硬编码：%r" % hardcoded[:3])
 
 
 def test_readme():
@@ -1636,6 +1817,10 @@ ALL_TESTS = [
     test_media_title_not_duplicated,
     test_chinese_source_not_translated,
     test_publisher_voting,
+    test_entity_conflict_guard,
+    test_cluster_threshold_calibration,
+    test_tts_retry_behaviour,
+    test_requirements_pins,
     test_dry_run_end_to_end,
     test_dry_run_tts_ok_branch,
     test_workflow_guard,
