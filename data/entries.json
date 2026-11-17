@@ -2,14 +2,14 @@
   "days": [
     {
       "date": "2026-11-17",
-      "broadcast": "各位好，今天是2026年11月17日，欢迎收听今日国际大事。\n\n首先来看经贸方面的消息。中加两国近日达成一致，同意将初步联合安排的豁免措施延长两年，这一决定将为中加两国的经贸往来提供更多助力。与此同时，科技领域的竞争仍在持续，美国进一步升级了对人工智能芯片的出口管制，对此，中国商务部明确表示，此举破坏了正常的经贸秩序，并加剧了科技领域的博弈。\n\n在军事与安全领域，乌克兰再次对连接俄罗斯与克里米亚的克尔奇大桥发动袭击，重创了俄方的战略通道，当地局势依然持续紧张。而在中东方向，关于伊朗是否在策划针对美国的“脏弹”袭击的相关讨论，也引发了国际社会对安全问题的广泛担忧。此外，国内方面，大型运输投送无人机“长鹰八号”成功完成了运输投送试验，展示了我国军事技术的最新进展。\n\n在亚太地区，APEC工商领导人峰会正在举行，本次峰会重点聚焦区域合作，同时也加强了深圳与APEC之间的互动，致力于推动亚太地区的共同发展。另外，特朗普已经抵达菲律宾，正式开启了他的亚洲之行，其后续的外交动向备受全球关注。\n\n在其他国际新闻方面，莫桑比克反对党领导人因去年选举动乱面临审判，该国的政局正面临严峻考验。而在英国，一些遭遇诈骗的农民工被视为现代奴役的受害者，这引发了外界对劳工权益保护问题的深度关注。同时，美国方面正在加强对Megaspeed的调查，印尼警方也已配合搜查了其分支机构。\n\n以上就是今天的要闻，明天同一时间再见。",
+      "broadcast": "各位好，今天是2026年11月17日，欢迎收听今日国际大事。\n\n我们先来看经贸领域的最新动态。中国商务部近日宣布，中加双方已同意将初步联合安排的豁免措施延长两年，这对于促进两国的双边经贸合作具有积极意义。与此同时，在欧洲方面，中国公使指出，荷兰对芯片设备的出口限制可能会威胁到中欧经贸谈判，这直接关系到中欧之间的贸易关系。另外，在亚太地区，APEC工商领导人峰会正在聚焦区域合作，深圳也展示了与APEC的合作成果，为推动亚太经济发展注入了新动力。\n\n视角转向国际局势。俄乌冲突再次升级，乌克兰袭击了连接克里米亚与俄罗斯的克尔奇大桥，导致路面拱门坠入海中，目前该地区的局势依然非常紧张。在非洲，莫桑比克政局持续动荡，反对党领导人因为选举期间发生的致命抗议事件，目前正因涉嫌恐怖主义接受审判。而在欧洲，塞尔维亚方面也有政局动态，获得学生支持的议员在选举获胜后已经正式就职议会。\n\n在科技与监管领域，英伟达首席执行官黄仁勋将于12月1日出席美国众议院三个委员会的问询，这可能会对科技监管领域产生影响。而在美国，白宫内部对华政策的分歧正在公开化，随着贝森特表现得日趋鹰派，美国未来的对华政策存在变数。此外，美国两个部门声明称，针对Megaspeed的调查已于2024年启动，而印尼警方也搜查了该公司的分支机构，这引发了一场跨国调查。\n\n以上就是今天的要闻，明天同一时间再见。",
       "tts_ok": true,
       "sections": {
         "domestic": [
           {
             "cid": "c1",
-            "zh": "中加同意将初步联合安排的豁免措施延长两年",
-            "importance": "有利于中加经贸往来",
+            "zh": "中国商务部：中加同意将初步联合安排的豁免措施延长两年",
+            "importance": "促进双边经贸合作",
             "source_count": 2,
             "image": "",
             "cluster": [
@@ -37,37 +37,27 @@
           },
           {
             "cid": "c2",
-            "zh": "中国大型运投无人机“长鹰-8”完成运输投送试验",
-            "importance": "展示军事技术进展",
-            "source_count": 2,
-            "image": "https://cassette.sphdigital.com.sg/image/zaobao/ab52ef05ca60568d285e0a46014c5f36cf5710b584a0bda8ddc60402109ba005",
+            "zh": "中国公使：荷兰晶片设备对华出口限制将威胁中欧经贸谈判",
+            "importance": "涉及中欧贸易关系",
+            "source_count": 1,
+            "image": "https://cassette.sphdigital.com.sg/image/zaobao/e220fb0cef6e734b614260f47bb2c558d1afc87b87d91924e4ab84624d1c2844",
             "cluster": [
               {
                 "source": "联合早报",
                 "publisher": "联合早报",
-                "title_zh": "中国大型运投无人机“长鹰-8”完成运输投送试验",
+                "title_zh": "中国公使：荷兰晶片设备对华长期出口限制将威胁中欧经贸谈判",
                 "title_en": "",
-                "url": "https://www.zaobao.com/news/china/story20261117-10010604",
-                "summary_zh": "中国自主研制的7吨级大型运投无人机“长鹰-8”完成运输投送试验，它的容积达到18立方米。\n据央视新闻报道，记者星期二（11月17日）从中国兵器工业集团获悉，“长鹰-8”长17米，翼展达到25米，18立方米超大容积的货舱能兼容多型标准航空集装箱与专业冷链运储箱，并且在15分钟内就可以完成装卸，大幅提升物流周转效率。\n“长鹰-8”起飞重量达到7吨，载重能力3.5吨，最大航程超过3000公里，具备高原起降和最短200米的短距起降能力，可以适应不同环境的起降条件。\n据介绍，“长鹰-8”正从试验验证走向场景合作。后续将面向物流、应急保障、海岛运输、生鲜冷链等场景，开展支线运输、应急投送等合作。",
-                "image": "https://cassette.sphdigital.com.sg/image/zaobao/ab52ef05ca60568d285e0a46014c5f36cf5710b584a0bda8ddc60402109ba005",
-                "is_primary": true
-              },
-              {
-                "source": "中新网·要闻",
-                "publisher": "中新网",
-                "title_zh": "大型运投无人机“长鹰-8”完成运输投送试验",
-                "title_en": "",
-                "url": "https://www.chinanews.com.cn/gn/2026/11-17/10733250.shtml",
+                "url": "https://www.zaobao.com/news/china/story20261117-10014994",
                 "summary_zh": "",
-                "image": "",
-                "is_primary": false
+                "image": "https://cassette.sphdigital.com.sg/image/zaobao/e220fb0cef6e734b614260f47bb2c558d1afc87b87d91924e4ab84624d1c2844",
+                "is_primary": true
               }
             ]
           },
           {
             "cid": "c3",
-            "zh": "乌克兰再次袭击克里米亚大桥",
-            "importance": "局势持续紧张",
+            "zh": "乌克兰再次袭击克里米亚大桥导致路面拱门坠海",
+            "importance": "地区局势持续紧张",
             "source_count": 1,
             "image": "https://s.rfi.fr/media/display/fe16fd1c-e296-11f1-8ef9-1ba7ddfab527/w:1024/p:16x9/2026-11-17T144605Z-1280893353-RC2QPOA5M1CR-RTRMADP-3-UKRAINE-CRISIS-ATTACK-CRIMEA-SBU-1.jpg",
             "cluster": [
@@ -77,16 +67,16 @@
                 "title_zh": "乌再袭克里米亚大桥 路面拱门坠海 泽连斯基：战争总将回到初始地",
                 "title_en": "",
                 "url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261117-%E4%B9%8C%E5%86%8D%E8%A2%AD%E5%85%8B%E9%87%8C%E7%B1%B3%E4%BA%9A%E5%A4%A7%E6%A1%A5-%E8%B7%AF%E9%9D%A2%E6%8B%B1%E9%97%A8%E5%9D%A0%E6%B5%B7-%E6%B3%BD%E8%BF%9E%E6%96%AF%E5%9F%BA-%E6%88%98%E4%BA%89%E6%80%BB%E5%B0%86%E5%9B%9E%E5%88%B0%E5%88%9D%E5%A7%8B%E5%9C%B0",
-                "summary_zh": "周二，乌克兰的无人机和导弹摧毁了连接俄罗斯与克里米亚大桥的中央公路路段。这是克里米亚大桥连续第二天遭袭。在俄总统普京即将与中美两国领导人会晤的前两天，这一事件对他造成了象征意义上的打击。\n发表时间： 17/11/2026 - 16:02 更改时间： 17/11/2026 - 16:04\n乌克兰总统泽连斯基（Volodymyr Zelenskyy）在社交平台X上发布了相关视频和图片，显示该大桥的公路路面拱门已坍塌入海，留下一道巨大缺口。这座全长19公里的大桥是普京于2018年启用的旗舰项目，也是俄罗斯对克里米亚半岛——即俄方于2014年从乌克兰手中夺取并吞并的领土——所控制的象征。\n泽连斯基周二在帖文中写道：“我们曾多次向俄罗斯提出旨在缓和局势的举措，但每一项提议都遭到了断然拒绝。俄罗斯每天都在袭击我们的基础设施，包括扎波罗热、第聂伯罗、基辅以及敖德萨地区境内的桥梁”。\n泽连斯基补充说，“我们正在修复这些基础设施，但同时也要提醒俄罗斯：战争总将回到它初始的地方。乌克兰拥有强大的防御能力，且这种能力将持续保持；对于针对我们城市和人民的恐怖行径，我们绝不会不予回应”。\n泽连斯基称，此次打击是在一场史无前例的行动之后进行的；该行动有条不紊地摧毁了俄罗斯的防空系统、雷达系统以及电子战能力。\n由俄方扶持的克里米亚行政长官阿克肖诺夫（Sergei Aksyonov）表示，事件造成两人死亡，公路交",
+                "summary_zh": "周二，乌克兰的无人机和导弹摧毁了连接俄罗斯与克里米亚半岛的大桥的中央公路路段。这是克里米亚大桥连续第二天遭袭。在俄总统普京即将与中美两国领导人会晤的前两天，这一事件对他造成了象征意义上的打击。\n发表时间： 17/11/2026 - 16:02 更改时间： 17/11/2026 - 16:11\n乌克兰总统泽连斯基（Volodymyr Zelenskyy）在社交平台X上发布了相关视频和图片，显示该大桥的公路路面拱门已坍塌入海，留下一道巨大缺口。这座全长19公里的大桥是普京于2018年启用的旗舰项目，也是俄罗斯对克里米亚半岛——即俄方于2014年从乌克兰手中夺取并吞并的领土——所控制的象征。\n泽连斯基周二在帖文中写道：“我们曾多次向俄罗斯提出旨在缓和局势的举措，但每一项提议都遭到了断然拒绝。俄罗斯每天都在袭击我们的基础设施，包括扎波罗热、第聂伯罗、基辅以及敖德萨地区境内的桥梁”。\n泽连斯基补充说，“我们正在修复这些基础设施，但同时也要提醒俄罗斯：战争总将回到它初始的地方。乌克兰拥有强大的防御能力，且这种能力将持续保持；对于针对我们城市和人民的恐怖行径，我们绝不会不予回应”。\n泽连斯基称，此次打击是在一场史无前例的行动之后进行的；该行动有条不紊地摧毁了俄罗斯的防空系统、雷达系统以及电子战能力。\n由俄方扶持的克里米亚行政长官阿克肖诺夫（Sergei Aksyonov）表示，事件造成两人死亡，",
                 "image": "https://s.rfi.fr/media/display/fe16fd1c-e296-11f1-8ef9-1ba7ddfab527/w:1024/p:16x9/2026-11-17T144605Z-1280893353-RC2QPOA5M1CR-RTRMADP-3-UKRAINE-CRISIS-ATTACK-CRIMEA-SBU-1.jpg",
                 "is_primary": true
               }
             ]
           },
           {
-            "cid": "c4",
-            "zh": "APEC工商领导人峰会聚焦区域合作及深圳与APEC互动",
-            "importance": "推动亚太地区合作",
+            "cid": "c5",
+            "zh": "APEC工商领导人峰会聚焦区域合作并展示深圳与APEC合作成果",
+            "importance": "推动亚太经济发展",
             "source_count": 1,
             "image": "",
             "cluster": [
@@ -96,16 +86,16 @@
                 "title_zh": "APEC工商领导人峰会聚焦区域合作 共绘亚太发展蓝图",
                 "title_en": "",
                 "url": "https://www.chinanews.com.cn/cj/2026/11-17/10733790.shtml",
-                "summary_zh": "",
+                "summary_zh": "今天中外嘉宾聚焦“亚太经济新图景与合作新机遇”展开对话，7场专题研讨覆盖人工智能、数字经济、绿色转型等热点领域。\n参会嘉宾表示，本届峰会搭建起高效务实的对话合作平台，将为亚太乃至全球企业创造更多新机遇。\n秘鲁中国商会会长 阿尔瓦罗・巴雷内切亚： 我对今年APEC期待很多，今天的峰会上，我们还会和中国贸促会签署相关合作备忘录。本次峰会聚焦的主题体现在贸易往来、人员流动、互联互通上，也包括经验、技术和发展成果的交流。这对全球工商界来说，绝对是一件好事。\n澳大利亚中国工商业委员会全国主席 里斯·罗伯茨： 我们非常关注数字领域，特别是人工智能，因为这是下一个全新的发展前沿。我们希望，通过这次在中国举行的APEC会议，做生意变得更加容易了。\n赢创工业集团副董事长、代理CEO 雷铁喜： 很显然，区域合作中的方方面面都离不开中国，这也正是本次峰会意义非凡的原因。正因如此，本届峰会才会会聚众多与会者，还能在这里结识新的合作伙伴。\n参会嘉宾表示，当前APEC经济体正抢抓数字化、智能化、绿色化机遇，推动亚太成为全球创新增长高地，而中国在其中正发挥着重要的引领作用。\n科领盛国际全球首席商务官 托德·汉考克： 我认为，中国是亚太经合组织的定盘星。无论是人工智能、生物技术，还是医疗发展领域，都有许多令人赞叹的创新成果，中国为世界带来了很多创新。\n克诺尔集团亚太区董事 白迪森： 中国已经从商品制造基地转型成为",
                 "image": "",
                 "is_primary": true
               }
             ]
           },
           {
-            "cid": "c12",
-            "zh": "美国调查Megaspeed并由印尼警方搜查其分支",
-            "importance": "美方加强相关调查",
+            "cid": "c13",
+            "zh": "美国两部门声明指对Megaspeed调查于2024年启动且印尼警方搜查其分支",
+            "importance": "引发跨国调查",
             "source_count": 1,
             "image": "https://s.rfi.fr/media/display/efed35f6-e225-11f1-a2bb-f71d22e7fea9/w:1024/p:16x9/2026-11-15T113515Z-1912996520-RC2138A1MUYS-RTRMADP-3-NVIDIA-CEO.jpg",
             "cluster": [
@@ -122,39 +112,20 @@
             ]
           },
           {
-            "cid": "c45",
-            "zh": "美国升级AI晶片出口管制，中国商务部指其破坏经贸秩序",
-            "importance": "加剧科技领域博弈",
+            "cid": "c140",
+            "zh": "白宫内部对华政策分歧公开化且贝森特日趋鹰派",
+            "importance": "美国对华政策存在变数",
             "source_count": 1,
-            "image": "",
+            "image": "https://static01.nyt.com/images/2026/11/16/multimedia/16dc-bessent-01-tfpz/16dc-bessent-01-tfpz-videoLarge.jpg",
             "cluster": [
               {
-                "source": "联合早报",
-                "publisher": "联合早报",
-                "title_zh": "美升级AI晶片出口管制 中国商务部：破坏国际经贸秩序",
+                "source": "纽约时报中文网",
+                "publisher": "纽约时报中文网",
+                "title_zh": "白宫内部对华政策分歧公开化，贝森特日趋鹰派",
                 "title_en": "",
-                "url": "https://www.zaobao.com/news/china/story20261117-10014411",
+                "url": "https://cn.nytimes.com/usa/20261117/bessent-lutnick-china/",
                 "summary_zh": "",
-                "image": "",
-                "is_primary": true
-              }
-            ]
-          },
-          {
-            "cid": "c55",
-            "zh": "中国防长时隔18年再访意大利",
-            "importance": "深化中意军事外交交流",
-            "source_count": 1,
-            "image": "https://cassette.sphdigital.com.sg/image/zaobao/c3f3a6b10f791babdfe6e2774a6991e886637b4555dc20d2dfa035ba14503f9c",
-            "cluster": [
-              {
-                "source": "联合早报",
-                "publisher": "联合早报",
-                "title_zh": "中国防长时隔18年再访意大利",
-                "title_en": "",
-                "url": "https://www.zaobao.com/news/china/story20261117-10014184",
-                "summary_zh": "",
-                "image": "https://cassette.sphdigital.com.sg/image/zaobao/c3f3a6b10f791babdfe6e2774a6991e886637b4555dc20d2dfa035ba14503f9c",
+                "image": "https://static01.nyt.com/images/2026/11/16/multimedia/16dc-bessent-01-tfpz/16dc-bessent-01-tfpz-videoLarge.jpg",
                 "is_primary": true
               }
             ]
@@ -163,60 +134,49 @@
         "international": [
           {
             "cid": "i1",
-            "zh": "乌克兰袭击连接俄罗斯与克里米亚的克尔奇大桥",
-            "importance": "重创俄方战略通道",
+            "zh": "塞尔维亚获选的学生支持议员在选举获胜后就职议会",
+            "importance": "塞尔维亚政局动态",
             "source_count": 2,
-            "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/222d/live/db8315b0-e278-11f1-99a1-253766e7ad8b.png",
+            "image": "https://s.france24.com/media/display/87a472fc-e29d-11f1-b8c8-7908c4e1a3c7/w:1024/p:16x9/EN-20261117-162342-162539-CS.jpg",
             "cluster": [
               {
-                "source": "BBC",
-                "publisher": "BBC",
-                "title_zh": "普京的克里米亚大桥部分坍塌，泽连斯基赞扬乌克兰发动了“前所未有”的袭击",
-                "title_en": "Putin's Crimea bridge partly collapses as Zelensky hails 'unprecedented' attack by Ukraine",
-                "url": "https://www.bbc.co.uk/news/articles/cw772jk4rvmxo",
-                "summary_zh": "普京的克里米亚大桥部分坍塌，泽连斯基称乌克兰发动了“史无前例”的袭击\n\n视频显示乌克兰导弹正逼近克里米亚大桥\n\n乌克兰严重损毁了连接俄罗斯与被占领的克里米亚的一座关键桥梁。总统弗拉基米尔·泽连斯基表示，这是一场筹备了数周之久的“史无前例的行动”。\n\n乌克兰官员分享的图像显示，克里米亚大桥的一段已坍塌入水中，这对莫斯科的战争行动造成了物流和象征意义上的打击。\n\n克里姆林宫表示，将会把这座桥梁重建得“比以前更好”，并称俄罗斯总统弗拉基米尔·普京已就昨夜的袭击接到了汇报。\n\n这座大桥是由俄罗斯在2014年入侵并非法吞并乌克兰南部半岛后建造的，并由普京于2018年亲自启用。\n\n长期以来，乌克兰一直将克里米亚大桥作为攻击目标，该桥为前往前线的俄罗斯士兵提供了公路和铁路通道，但此前一直难以将其彻底切断。\n\n普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“前所未有”的袭击\n\n虽然基辅一直试图通过打击炼油厂和储油库，从经济上增加俄罗斯发动战争的代价，但袭击这座大桥则是试图增加普京的政治代价。\n\n此次袭击的时机非常微妙，正值普京会见中国和美国领导人之前。这可能会令他重新回到聚光灯下的时刻蒙上阴影。\n\n在涉及导弹和无人机的夜间袭击之后，造成的破坏似乎比之前对大桥的袭击要严重得多，大桥的一个大型拱形部分显然已被摧毁。\n\n视频画面显示，道路部分遭受了严重破坏，可以看到支撑拱和路面的残骸从下方的水中伸出。\n\n泽连斯基表示，这次袭击是军方和安全部门开展的七阶段行动的结果，在此期间，乌克兰军队“逐步摧毁了防空系统、雷达、电子战设备以及其他……\n\n普京的克里米亚大桥部分坍塌，泽连斯基赞扬乌克兰进行了“史无前例”的袭击\n\n“……向最终目标前进过程中的指定目标”。\n\n他表示，在这一“关键阶段”的夜间，乌克兰发射了多种类型的无人机，以及该国的“火烈鸟”（Flamingo）和“海王星”（Neptune）巡航导弹。\n\n乌克兰总统还表示，与大桥公路并行的铁路线路也遭到了一波无人机的袭击，不过图像显示其支撑拱门依然屹立，一名受俄罗斯支持的官员表示，部分铁路服务仍在运行。\n\n乌克兰国家安全局（SBU）表示，一个月以来，行动已“系统性地压制了敌方防空系统”，并称这表明“没有任何俄罗斯防御系统能够保证入侵者所占领的非法设施的安全”。\n\n与此同时，乌克兰军方表示，大桥的公路部分已“停止使用”，车辆无法通行，而铁路部分虽然依然屹立，但拱门已受损。\n\n普京的克里米亚大桥部分坍塌，泽连斯基赞扬乌克兰发动了“史无前例”的袭击\n\n克里姆林宫发言人德米特里·佩斯科夫表示，大桥将在“遭到乌克兰袭击后得到修复，而且会比以前更好”，并并不排除此次袭击与普京访问中国有关的可能性。\n\n俄罗斯调查委员会确认了大桥的结构性损坏，并表示在遭到“乌克兰武装部队”袭击后，已开设了一项“……以恐怖主义罪名起诉的刑事案件”。\n\n根据国防部的说法，俄罗斯连续第二天记录到自战争爆发以来规模最大的乌克兰无人机袭击，共击落了2,256架无人机。\n\n在普京、唐纳德·特朗普和习近平于周四在中国深圳举行会晤前的几天里，泽连斯基曾警告会有重大袭击发生。\n\n周二，在两次重大过境点因袭击而关闭后，基辅出现了严重的交通拥堵。\n\n普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“前所未有”的袭击\n\n在其他地方，基辅市长维塔利·克利奇科表示，在俄罗斯于夜间袭击乌克兰首都后，作为跨越第聂伯河关键通道的北桥（Pivnichnyi）和南桥（Pivdennyi）均已关闭。\n\n周二午夜前夕，基辅传出了巨大的爆炸声。克利奇科在不久后表示，该市的“关键基础设施系统遭受破坏”，且供暖和供水也受到了干扰。\n\n当地官员表示，在通知平民前往民防避难所后，基辅的部分地上地铁服务在夜间袭击中受损。\n\n共有八座主要桥梁跨越第聂伯河，连接着基辅的西部和东部，估计有300万居民依赖这些桥梁在城市中穿行。\n\n对繁忙的北桥和南桥的袭击将给人们的日常生活带来重大影响。\n\n普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“史无前例”的袭击\n\n在其他地方，据当地官员称，俄罗斯的导弹袭击造成了中部切尔卡瑟地区的三人受伤。\n\n尽管克里米亚大桥遭袭的长期影响尚不完全明确，但俄罗斯军队面临严重交通和物流危机的风险已显著增加。\n\n拱形部分的坍塌切断了该半岛与俄罗斯之间的直接公路和铁路联系——至少在渡口修复之前是如此。\n\n然而，仍然存在一条穿过乌克兰南部被占领的扎波罗热州和赫尔松州的陆上走廊——尽管基辅一直在有系统地打击贯穿克里米亚北部的运输路线，以及琼加尔附近地区的桥梁和其他渡口。\n\n这已经导致了燃料和其他物资（包括军事货物）的交付出现问题。\n\n普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“前所未有”的袭击\n\n连接黑海与亚速海的克赤海峡设有渡轮航线。这可能在一定程度上弥补大桥损毁带来的影响，但其运力非常有限，且同样容易受到袭击。\n\n俄罗斯也可以通过海路向克里米亚提供补给，但这条路线也充满风险，因为乌克兰的海军无人机和空中无人机在该地区活动频繁。\n\n此外，克里米亚大桥的碎片——尤其是其巨大的拱形结构——可能已经堵塞了航道。\n\n这将使得大型船只更难通过，并为俄罗斯占领的亚速海港口（包括马里乌波尔和别尔江斯克）带来进一步的问题。\n\n俄罗斯于2022年2月发动了对乌克兰的全规模入侵。目前，约五分之一的乌克兰领土处于俄罗斯占领之下，而基辅拒绝了普京要求其放弃目前仍由其控制的乌克兰东部顿巴斯地区的诉求。\n\n普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“史无前例”的袭击\n\n地标性克里米亚大桥遭到袭击，俄罗斯报告称遭遇了战争中规模最大的乌克兰无人机袭击\n\n乌克兰称执法记录仪视频显示了致命的俄罗斯“双重打击”式轰炸\n\n泽连斯基对美国将欧洲纳入俄乌和平谈判表示欢迎",
-                "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/222d/live/db8315b0-e278-11f1-99a1-253766e7ad8b.png",
+                "source": "France 24",
+                "publisher": "France 24",
+                "title_zh": "塞尔维亚获选的学生支持议员在选举获胜后就职议会",
+                "title_en": "Serbia's student-backed MPs take seats in parliament after election win",
+                "url": "https://www.france24.com/en/video/20261117-serbia-s-student-backed-mps-take-seats-in-parliament-after-election-win",
+                "summary_zh": "塞尔维亚学生支持的议员在选举获胜后进入议会就职\n\n发布日期：2026年11月17日 - 16:48 修改日期：2026年11月17日 - 16:48\n\n在十月的选举取得胜利、结束了塞尔维亚进步党（SNS）长达14年统治之后，塞尔维亚“学生名单”党的立法者们在数百名支持者的欢呼声中于周二进入议会。“学生名单”是一个由学生议会选出的群体，成员包括学者、专业人士、农民、演员和活动家。在10月25日的投票中，该党在拥有250个席位的议会中获得了140个席位，而塞尔维亚进步党获得了104个席位。",
+                "image": "https://s.france24.com/media/display/87a472fc-e29d-11f1-b8c8-7908c4e1a3c7/w:1024/p:16x9/EN-20261117-162342-162539-CS.jpg",
                 "is_primary": true,
-                "summary_en": "Ukraine says the missile and drone attack on the strategic bridge in the Russian-annexed Crimea took weeks to plan."
+                "summary_en": "Serbia's Student ⁠List lawmakers entered parliament ​on Tuesday, cheered on by hundreds of supporters, after their October ​election victory ended 14 years of rule by the Serbian Progressive Party (SNS). The Student List, a group that includes academics, professionals, farmers, actors and activists ​chosen ‌by student assemblies, secured 140 seats in the ⁠250-member parliament in October 25 polls, while the SNS gained 104."
               },
               {
-                "source": "Al Jazeera",
-                "publisher": "Al Jazeera",
-                "title_zh": "乌克兰对克里米亚大桥发动“前所未有”的袭击",
-                "title_en": "‘Unprecedented’ Ukraine attack on Crimean bridge",
-                "url": "https://www.aljazeera.com/video/newsfeed/2026/11/17/unprecedented-ukraine-attack-on-crimean-bridge?traffic_source=rss",
+                "source": "The Guardian",
+                "publisher": "The Guardian",
+                "title_zh": "塞尔维亚“学生名单”党候选人在选举获胜后宣誓就任国会议员",
+                "title_en": "Serbia’s Student List candidates sworn in as MPs after election triumph",
+                "url": "https://www.theguardian.com/world/2026/nov/17/serbia-student-list-mps-sworn-in-election-triumph",
                 "summary_zh": "",
-                "image": "",
+                "image": "https://i.guim.co.uk/img/media/3fd406c80b12642e836ed680f572f9f3958bdec9/516_0_6882_5504/master/6882.jpg?width=1200&quality=85&auto=format&fit=max&s=b1981b6458a3f713bc99944b8605e854",
                 "is_primary": false,
-                "summary_en": "Ukraine has struck the Kerch Bridge linking Russia to Russian-annexed Crimea for a second day."
-              },
-              {
-                "source": "Google News",
-                "publisher": "Google News",
-                "title_zh": "普京的克里米亚大桥部分坍塌，泽连斯基称乌克兰发动了“史无前例”的袭击 - BBC",
-                "title_en": "Putin's Crimea bridge partly collapses as Zelensky hails 'unprecedented' attack by Ukraine - BBC",
-                "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBSRU00UVItWVBVOXhnT1ozc2E0NXk5V3VNTlN4eERVeGVRRlJKc3dHLUMxbTRISm5RbEhoeEJUdEhCbldiU0txRExramJVWF9OcVdIV3dBOEo3czA?oc=5",
-                "summary_zh": "",
-                "image": "",
-                "is_primary": false,
-                "summary_en": "Putin's Crimea bridge partly collapses as Zelensky hails 'unprecedented' attack by Ukraine BBC Ukraine Attacks Kerch Bridge Linking Russia to Occupied Crimea The New York Times Missiles! At the Crimea Bridge Bloomberg.com Russian Offensive Campaign Assessment, November 16, 2026 Institute for the Study of War Ukraine critically damages Kerch bridge linking occupied Crimea with Russia The Guardian"
+                "summary_en": "Inaugural parliamentary session comes as ousted populist Aleksandar Vučić threatens mass protests of his own Candidates for Serbia’s Student List, the grassroots movement of political outsiders that pulled off a spectacular victory in last month’s elections over the party of the populist leader Aleksandar Vučić, have been sworn in as MPs as they begin the process of forming a government. The 140 candidates – among them academics, lawyers, scientists and the odd actor – were sworn in on Tuesday during the inaugural session of the new parliament, bringing 14 years of rule by Vučić and his Serbian Progressive party (SNS) to an end. Continue reading..."
               }
             ]
           },
           {
             "cid": "i3",
-            "zh": "莫桑比克反对党领导人因2024年选举动乱面临审判",
-            "importance": "政局面临考验",
+            "zh": "莫桑比克反对党领导人因选举期间致命抗议涉嫌恐怖主义受审",
+            "importance": "莫桑比克政局动荡",
             "source_count": 2,
             "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/8344/live/da8191f0-e27d-11f1-bd1e-f9c53347c5a6.jpg",
             "cluster": [
               {
                 "source": "BBC",
                 "publisher": "BBC",
-                "title_zh": "莫桑比克反对党领导人因2024年致命选举动乱面临审判",
-                "title_en": "Mozambique opposition leader faces trial over deadly 2024 election unrest",
+                "title_zh": "莫桑比克反对党领导人因选举期间致命抗议活动涉嫌恐怖主义受审",
+                "title_en": "Mozambique opposition leader goes on trial for terrorism over deadly election protests",
                 "url": "https://www.bbc.co.uk/news/articles/crq5vl1l6z2po",
-                "summary_zh": "莫桑比克反对派领导人因2024年致命选举动乱面临审判\n\n维南西奥·蒙德拉内是2024年总统选举的亚军\n\n莫桑比克反对派领导人维南西奥·蒙德拉内已因煽动恐怖主义和公民抗命等罪名接受审判，这些指控与该国2024年存在争议的选举后引发的致命抗议活动有关。\n\n他否认有任何不当行为，而他的政党则称这场审判具有政治动机。\n\n在蒙德拉内前往最高法院之前，安保工作非常严密，当局担心他的支持者会发起新一轮示威活动。\n\n警方已呼吁公民冷静关注诉讼进程，避免采取可能威胁公共秩序的行为。\n\n周二清晨，蒙德拉内带着“平和的心态”抵达最高法院，并受到了数十名支持者的欢迎。\n\n“如你们所见，我心态平和，对我的法律团队的工作充满信心，”他在法院外聚集的记者面前说道，现场有大量警力部署。\n\n莫桑比克反对派领导人因2024年致命选举动乱面临审判\n\n这场审判被广泛视为对莫桑比克政治稳定的一次重大考验。近两年前，一场存在争议的选举引发了该国几十年来最严重的政治动乱之一。\n\n“这场审判对莫桑比克来说是一个真正的考验。这是一个证明法治面前人人平等的重要机会，”政治分析人士路易斯·纳乔特（Luis Nhachote）表示。\n\n蒙德拉内（Mondlane）对宣布执政党“解放阵线”（Frelimo）的丹尼尔·查波（Daniel Chapo）为获胜者的总统选举结果提出质疑，他指责当局存在大规模选举舞弊，并号召在全国范围内进行抗议和罢工。\n\n参与莫桑比克敲锅抗议活动的儿童遭枪杀\n\n示威活动持续了数月，人权组织指责安全部队对抗议者使用了过度武力。\n\n莫桑比克反对派领导人因2024年致命选举动乱面临审判\n\n国际特赦组织援引当地民间社会组织的说法称，动乱期间有超过300人死亡，这是该国独立以来最严重的选举后危机之一。\n\n莫桑比克警方表示死亡人数为96人，其中包括17名警察。\n\n欧盟选举观察员也报告了2024年10月投票中存在的违规行为，引发了对选举结果公信力的质疑。\n\n据警方称，2024年抗议活动期间约有96人死亡。\n\n检察官指控蒙德拉内鼓励举行扰乱公共服务、破坏财产并威胁公共安全的示威活动。\n\n指控罪名包括公开美化犯罪行为、煽动集体不服从、公开煽动犯罪以及与恐怖主义相关的罪行。\n\n如果最严重的指控罪名成立，他可能面临最高24年的监禁。\n\n莫桑比克反对派领导人因2024年致命选举动乱面临审判\n\n蒙德拉内拒绝了这些指控，他坚持认为，他号召示威的目的是要求选举透明度，而非煽动暴力。\n\n在审判开始前，大量警力在马普托最高法院外及主要街道上进行巡逻。\n\n莫桑比克警方在周一发布的一份声明中呼吁公民“保持宽容与和平共处”，并补充称，示威权利必须严格在法律允许的范围内行使。\n\n警方还承诺，在依法采取预防性和适度行动的同时，将保护人民和财产的安全。\n\n法院仅允许选定的媒体机构进入现场，这引发了记者和新闻自由活动人士的批评。\n\n法院官员表示，由于法庭座位容量有限，这些限制是必要的，但批评人士认为，这削弱了一起具有重大公众影响案件的透明度。\n\n莫桑比克反对派领导人因2024年致命选举动乱面临审判\n\n当局以担心引发动乱为由，禁止了庭审的现场直播。\n\n预计将由五名法官进行审理，控辩双方均会传唤证人。\n\n政治观察人士警告称，这场审判可能会重新点燃该国的紧张局势，该国目前仍在努力从2024年大选后引发的暴力和深层政治分歧中恢复。\n\n“奇迹宝宝”出生在莫桑比克洪水之上的树上，享年25岁\n\n莫桑比克选举中的新面孔，独立时代的领导人正逐渐淡出舞台\n\n吸引了莫桑比克自由战士目光的诗人\n\n访问 BBCAfrica.com 获取更多非洲大陆新闻。\n\n在 Twitter 上关注我们 @BBCAfrica，在 Facebook 上关注 BBC Africa，或在 Instagram 上关注 bbcafrica",
+                "summary_zh": "莫桑比克反对派领导人因选举期间致命抗议活动面临恐怖主义审判\n\n文南西奥·蒙德拉内是2024年总统选举的亚军\n\n莫桑比克反对派领导人文南西奥·蒙德拉内（Venâncio Mondlane）已接受审判，他面临的指控包括煽动恐怖主义和公民抗命，起因是该国2024年争议性选举后发生的致命抗议活动。\n\n他否认有任何不当行为，而他的政党则称此次审判具有政治动机。\n\n在蒙德拉内前往最高法院之前，安保工作十分严密，当局担心他的支持者会发起新一轮示威活动。\n\n警方已呼吁公民冷静对待诉讼程序，避免采取可能威胁公共秩序的行为。\n\n周二清晨，蒙德拉内带着“极大的平和心态”抵达最高法院，并受到了数十名支持者的欢迎。\n\n在警察严密部署的情况下，他告诉聚集在法院外的记者：“正如你们所见，我表现得很平静，对我的法律团队的工作充满信心。”\n\n莫桑比克反对党领导人因致命选举抗议活动面临恐怖主义审判\n\n这场审判被广泛视为对莫桑比克政治稳定的一次重大考验。大约两年前，有争议的选举引发了该国几十年来最致命的一些政治动荡。\n\n“这场审判是对莫桑比克的一次真正考验。这是一个证明法治面前人人平等的重要机会，”政治分析人士路易斯·尼亚乔特（Luis Nhachote）说道。\n\n蒙德拉内（Mondlane）对宣布执政党“解放阵线”（Frelimo）的丹尼尔·查波（Daniel Chapo）为获胜者的总统选举结果提出了质疑，他指责当局存在广泛的选举舞弊行为，并呼吁在全国范围内举行抗议活动和停工罢工。\n\n在莫桑比克参加敲锅抗议活动的儿童遭枪杀\n\n示威活动持续了数月之久，人权组织指责安全部队对抗议者使用了过度武力。\n\n莫桑比克反对派领导人因致命选举抗议活动因涉嫌恐怖主义受审\n\n大赦国际援引当地民间社会组织的说法称，动乱期间已有超过300人死亡，这是该国独立以来最严重的选举后危机之一。\n\n莫桑比克警方将死亡人数定为96人，其中包括17名警官。\n\n欧盟选举观察员也报告了2024年10月投票过程中的违规行为，引发了人们对选举结果公信力的质疑。\n\n据警方称，2024年的抗议活动中约有96人死亡。\n\n检察官指控蒙德拉内鼓励进行破坏公共服务、损毁财产并威胁公共安全的示威活动。\n\n指控内容包括公开赞美犯罪行为、煽动集体不服从、公开教唆犯罪以及与恐怖主义相关的罪行。\n\n如果最严重的指控罪名成立，他可能面临最高24年的监禁。\n\n莫桑比克反对派领导人因致命选举抗议活动面临恐怖主义审判\n\n蒙德拉内拒绝了这些指控，他坚持认为，他发起的游行示威旨在要求选举透明度，而非鼓励暴力。\n\n在审判开始前，大量警力在马普托最高法院外及主要街道进行了巡逻。\n\n莫桑比克警方在周一发布的一份声明中呼吁公民“保持宽容与和平共处”，并补充说，示威权利必须严格在法律范围内行使。\n\n警方还承诺，在根据法治原则采取预防性和适度行动的同时，将保护人员和财产安全。\n\n法院仅允许选定的媒体机构进入，这引发了记者和新闻自由活动人士的批评。\n\n法院官员表示，由于法庭座位容量有限，这些限制是必要的，但批评人士认为，这损害了一起具有重大公众影响案件的透明度。\n\n莫桑比克反对党领导人因致命选举抗议活动面临恐怖主义审判\n\n当局以担心引发动乱为由，禁止了该审判的现场直播。\n\n预计审判将由五名法官进行，控方和辩方均会传唤证人。\n\n政治观察人士警告称，这场审判可能会重新点燃该国的紧张局势，该国目前仍在努力从2024年大选后引发的暴力冲突和深刻政治分歧中恢复。\n\n“奇迹婴儿”出生在莫桑比克洪涝灾害之上的树上，现年25岁去世\n\n莫桑比克选举中出现新面孔，独立时代的领导人逐渐退出舞台\n\n吸引了莫桑比克自由战士目光的诗人\n\n访问 BBCAfrica.com 获取更多非洲大陆新闻。\n\n在 Twitter 上关注我们 @BBCAfrica，在 Facebook 上关注 BBC Africa，或在 Instagram 上关注 bbcafrica",
                 "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/8344/live/da8191f0-e27d-11f1-bd1e-f9c53347c5a6.jpg",
                 "is_primary": true,
                 "summary_en": "Venâncio Mondlane faces several charges over 2024 post-election protests that left hundreds of people dead."
@@ -235,73 +195,71 @@
             ]
           },
           {
-            "cid": "i5",
-            "zh": "特朗普抵达菲律宾开启亚洲之行",
-            "importance": "关注其外交动向",
+            "cid": "i9",
+            "zh": "乌克兰严重破坏连接被占领克里米亚与俄罗斯的克尔奇大桥",
+            "importance": "俄乌冲突升级",
             "source_count": 2,
-            "image": "https://s.france24.com/media/display/3bcbaca8-e26e-11f1-a00c-5f54d898a954/w:1024/p:16x9/EN-20261117-101225-101519-CS.jpg",
-            "cluster": [
-              {
-                "source": "France 24",
-                "publisher": "France 24",
-                "title_zh": "特朗普抵达菲律宾开启亚洲之行",
-                "title_en": "Trump arrives in Philippines to kick off Asia trip",
-                "url": "https://www.france24.com/en/video/20261117-trump-arrives-in-philippines-to-kick-off-asia-trip",
-                "summary_zh": "特朗普抵达菲律宾开启亚洲之行\n\n美国总统唐纳德·特朗普于周二抵达菲律宾，此时正值一场东南亚峰会的尾声。在他准备参加印太地区“四方安全对话”（Quad）机制两年来的首次会议之际，抗议活动正等待着他的到来。法国24频道的记者汤米·沃克带来了详细报道。",
-                "image": "https://s.france24.com/media/display/3bcbaca8-e26e-11f1-a00c-5f54d898a954/w:1024/p:16x9/EN-20261117-101225-101519-CS.jpg",
-                "is_primary": true,
-                "summary_en": "US President Donald Trump arrived in the Philippines on Tuesday at the tail end of a Southeast Asian summit, with protests awaiting him as he prepares for the first meeting in two years of the Quad group of Indo-Pacific countries. France 24’s correspondent Tommy Walker has the details."
-              },
-              {
-                "source": "NPR",
-                "publisher": "NPR",
-                "title_zh": "特朗普抵达菲律宾开启亚洲之行",
-                "title_en": "Trump arrives in Philippines to kick off Asia trip",
-                "url": "https://www.npr.org/2026/11/17/nx-s1-6043702/trump-arrives-philippines",
-                "summary_zh": "",
-                "image": "",
-                "is_primary": false,
-                "summary_en": "Manila is President Trump's first stop on a three-day trip that will later take him to China for historic three-way nuclear talks with Chinese President Xi Jinping and Russian President Vladimir Putin."
-              }
-            ]
-          },
-          {
-            "cid": "i7",
-            "zh": "英国遭诈骗的农民工或被视为现代奴役受害者",
-            "importance": "揭露劳工权益问题",
-            "source_count": 1,
-            "image": "https://i.guim.co.uk/img/media/aed8608d4f9e12f5c654ee90a09ae5acdeb8ada0/475_0_4750_3800/master/4750.jpg?width=1200&quality=85&auto=format&fit=max&s=dc5838082cb7d6fdfd095274e55b4103",
+            "image": "https://i.guim.co.uk/img/media/99e6f379e7967f001cc660aae2f7b71f118e92a8/0_0_1500_1200/master/1500.jpg?width=1200&quality=85&auto=format&fit=max&s=34a5e025e259306bc7b9b667b3d11c0e",
             "cluster": [
               {
                 "source": "The Guardian",
                 "publisher": "The Guardian",
-                "title_zh": "英国遭诈骗的农民工或被视为现代奴役的潜在受害者",
-                "title_en": "Scammed migrant workers in UK to be considered possible victims of modern slavery",
-                "url": "https://www.theguardian.com/uk-news/2026/nov/17/scammed-migrant-workers-modern-slavery-home-office",
-                "summary_zh": "",
-                "image": "https://i.guim.co.uk/img/media/aed8608d4f9e12f5c654ee90a09ae5acdeb8ada0/475_0_4750_3800/master/4750.jpg?width=1200&quality=85&auto=format&fit=max&s=dc5838082cb7d6fdfd095274e55b4103",
+                "title_zh": "乌克兰严重破坏连接被占领克里米亚与俄罗斯的克尔奇大桥",
+                "title_en": "Ukraine critically damages Kerch bridge linking occupied Crimea with Russia",
+                "url": "https://www.theguardian.com/world/2026/nov/17/ukraine-strikes-critical-damage-russia-kerch-bridge-crimea",
+                "summary_zh": "乌克兰严重破坏连接被占领克里米亚与俄罗斯的克里米亚大桥\n\n泽连斯基称赞“史无前例的袭击”，但克里姆林宫声称大桥将被修复，且将“比以往任何时候都更好”\n\n在一次夜间的导弹袭击中，乌克兰对连接被占领克里米亚与俄罗斯的克里米亚大桥造成了严重破坏，弗拉基米尔·泽连斯基称这是一场“史无前例”的军事行动。\n\n视频画面显示，一枚乌克兰“火烈鸟”（Flamingo）巡航导弹在击中道路和铁路交叉口前几秒的景象，随后发生了爆炸。此次袭击是在周一早些时候针对该桥中心段拱形结构的袭击之后发生的。\n\n乌克兰总统在社交媒体上写道，这次袭击是“对俄罗斯袭击我们基础设施的回应”。他表示，这是拆除这座大桥的一场长期且复杂的行动的巅峰之作，其中包括使用了国产无人机和弹道导弹。他补充说，“帕利亚尼齐亚”（Palianytsia）无人机击中了桥梁的道路部分，而“海王星”（Neptune）和其他导弹则瞄准了相邻的铁路部分。\n\n乌克兰严重损毁连接被占领克里米亚与俄罗斯的克尔奇大桥\n\n乌克兰总参谋部表示，大桥的一个拱门和一段路面桥跨发生坍塌，切断了公路连接，而铁路轨道虽然仍然屹立，但其拱门已遭到损坏。在短暂暂停后，跨桥列车旅行已于周二恢复。\n\n此前，在无人机和导弹袭击遍布乌克兰之际，俄罗斯军队于周一晚些时候袭击了基辅横跨第聂伯河的两座主要桥梁以及其他一些关键基础设施。\n\n乌克兰已宣布，这座建于八年前（即弗拉基米尔·普京2014年吞并克里米亚之后）、官方名称为“克里米亚大桥”的克尔奇大桥是非法的。乌克兰曾多次尝试摧毁它，分别在2022年使用卡车炸弹以及次年进行海上无人艇袭击。\n\n在经历了数月乌克兰无人系统部队有系统地击溃该半岛多层防空系统的过程后，最新一轮的无人机和导弹齐射似乎取得了成功。\n\n乌克兰严重破坏连接被占领克里米亚与俄罗斯的克钦大桥\n\n克里米亚由克里姆林宫任命的总督谢尔盖·阿克肖诺夫确认，桥上的公路交通已经暂停。“我们请求克里米亚的居民和访客避免向大桥方向行驶，并在规划路线时考虑到这些限制措施，”他在 Telegram 上发帖称。\n\n周二的照片显示，一段长达 227 米的公路拱形跨径已坠入连接亚速海与黑海的克钦海峡。相邻的铁路拱形跨径也遭受了损坏。\n\n乌克兰评论人士表示，巨大的钢制拱形结构无法轻易更换。大桥的关闭意味着来自克里米亚的交通只能通过穿越被占领的乌克兰南部陆地走廊离开半岛，而该走廊极易受到乌克兰无人机的攻击。\n\n碎片似乎已经堵塞了桥下主要的通航航道，该航道供来自亚速海以及别尔江斯克和马里乌波尔港口的海上交通使用。\n\n乌克兰严重破坏了连接被占领的克里米亚与俄罗斯的克尔奇大桥\n\n该水道宽120米，深8.3米。在碎片清理完毕之前，淹没在水下的钢支柱可能会阻碍大型船只通过。\n\n据克里姆林宫发言人德米特里·佩斯科夫称，俄罗斯政府已召开紧急会议以评估此次袭击。佩斯科夫在回应俄罗斯《消息报》时补充说，大桥将会得到修复，并且会“比以前更好”。\n\n但亲俄的战争评论人士承认，修复大桥将非常困难，并警告称，与2022年和2023年不同，乌克兰现在具备打击浮吊和维修人员的能力。\n\n“在这种情况下，即使是安装预制拱桥也将是一个巨大的挑战，”与国防部关系密切、极具影响力的Telegram频道Rybar写道。\n\n乌克兰观察人士对这座大桥期待已久的损毁感到欢欣鼓舞。\n\n乌克兰严重破坏连接被占领克里米亚与俄罗斯的克钦大桥\n\n他们还指出，乌克兰武装部队可能会再次袭击大桥，以阻止维修工作的进行。基辅国防部前顾问谢尔希·斯特嫩科（Serhii Sternenko）写道：“针对你们提出的许多问题。是的，这桥彻底完蛋了。”\n\n乌克兰博主安东·格拉申科（Anton Gerashchenko）指出，普京曾在2018年亲自为大桥剪彩，并驾驶一辆卡玛斯（Kamaz）卡车驶过。他写道：“克钦大桥是俄罗斯占领乌克兰克里米亚的主要象征，也是其非法吞并行为的具体体现。这是普京的旗舰项目。”\n\n他补充道：“多年来，俄罗斯当局一直声称这座大桥是‘世界上防护最严密的设施’。因此，每一次成功的打击都在粉碎俄罗斯防空系统不可战胜的神话——同时也打破了乌克兰无法触及敌后深处关键目标的观念。”\n\n周二，乌克兰人用表情包进行庆祝。\n\n乌克兰严重破坏了连接被占领的克里米亚与俄罗斯的克尔奇大桥\n\n生产“火烈鸟”导弹的公司 Fire Point 发布了一个爆米花的表情符号。其他社交媒体用户则分享了《克尔奇大桥着火了》的视频，这是 Saint Javelin 的一首流行歌曲，现已成为反对莫斯科的赞歌。\n\n俄罗斯军事博主们情绪低落。其中一位名为“俄罗斯工程师”的博主承认，乌克兰瘫痪大桥的军事行动非常“完美”。他表示，在弹道导弹进行精准打击之前，数百架无人机分散了俄罗斯防空系统的注意力。\n\n在克里米亚半岛经历了一个饱受燃料短缺困扰、且乌克兰加强隔离半岛与俄罗斯本土行动的夏天之后，此次袭击将使向克里米亚运送物资变得更加复杂。\n\n几个月来，乌克兰一直将打击重点放在供应克里米亚的关键运输路线上，特别是所谓的“新俄罗斯”公路。这是一条关键的物流走廊，通过被占领的城市将半岛与俄罗斯的罗斯托夫州连接起来。\n\n乌克兰严重破坏连接被占领克里米亚与俄罗斯的克里米亚大桥\n\n梅利托波尔和马里乌波尔。\n\n俄罗斯此前已大幅限制了克里米亚大桥的交通。自2022年乌克兰的袭击破坏了大桥并点燃了一列燃料列车以来，莫斯科已基本停止使用该通道进行铁路燃料运输。\n\nRybar撰文称，最新的袭击将迫使莫斯科“彻底重新调整”其向克里米亚的供应路线，将更多交通转向新俄罗斯公路。Rybar补充道，俄罗斯还必须加强沿线防护网的安装，并感叹这一措施在春季时未能实施。\n\n与此同时在基辅，随着俄罗斯军队袭击第聂伯河上的两座桥梁，可以听到巨大的爆炸声。乌克兰首都市长维塔利·克利奇科在Telegram上写道，根据“初步信息，首都的南北两座桥梁遭到了袭击”。他随后补充称，该市部分地区出现了停水停电的情况。\n\n乌克兰严重破坏连接被占领克里米亚与俄罗斯的克钦桥\n\n本月早些时候及10月，俄罗斯军队对跨河大桥发起了一系列袭击。\n\n当地官员在 Telegram 上表示，俄罗斯的一次导弹袭击造成切尔卡瑟地区三人受伤，并袭击了乌克兰第二大城市哈尔科夫。\n\n俄罗斯国防部周二声称，其部队在夜间对乌克兰的军工设施、基辅和扎波罗热的交通基础设施以及切尔卡瑟和第聂伯罗彼得罗夫斯克地区进行了大规模打击。\n\n该部表示，袭击还针对了能源设施、港口基础设施以及乌克兰武装部队使用的船只。\n\n俄罗斯国防部周一的数据显示，乌克兰在夜间发动的无人机齐射是自2022年全面战争爆发以来规模最大的一次。\n\n乌克兰严重破坏连接被占领克里米亚与俄罗斯的克尔奇大桥\n\n泽连斯基周一还表示，乌克兰已就结束与俄罗斯战争的前景，与美国总统特使史蒂夫·威特科夫（Steve Witkoff）和贾里德·库什纳（Jared Kushner）以及欧洲代表进行了新的在线会谈。\n\n库什纳表示，在达成协议方面已取得进展，尽管结束这场战争仍面临重大挑战。俄罗斯于2022年2月通过入侵乌克兰发起了这场战争。莫斯科于2014年吞并了黑海克里米亚半岛。",
+                "image": "https://i.guim.co.uk/img/media/99e6f379e7967f001cc660aae2f7b71f118e92a8/0_0_1500_1200/master/1500.jpg?width=1200&quality=85&auto=format&fit=max&s=34a5e025e259306bc7b9b667b3d11c0e",
                 "is_primary": true,
-                "summary_en": "Home Office changes policy after legal challenge over case of care worker scammed out of £22,000 Migrant workers who are financially exploited can now be considered victims of modern slavery, after a legal challenge by a care worker who was scammed out of £22,000 to pay an agent for a job in the UK that did not exist. The care worker, Ali*, from Pakistan, was put in contact with an agent who told him he could organise a certificate of sponsorship for him to work in a UK care home. The agent was recommended by a friend who said he had been helped to secure a UK care job. Continue reading..."
+                "summary_en": "Zelenskyy praises ‘unprecedented attack’ but Kremlin claims bridge will be restored and will be ‘better than ever’ Europe live – follow latest Ukraine has critically damaged the Kerch bridge linking occupied Crimea with Russia in an overnight missile attack, in what Volodymyr Zelenskyy hailed as an “unprecedented” military operation. Footage showed a Ukrainian Flamingo cruise missile seconds before it hit the road and railway crossing, followed by an explosion. The strike follows an earlier attack on Monday that targeted an arch across its central section. Continue reading..."
+              },
+              {
+                "source": "France 24",
+                "publisher": "France 24",
+                "title_zh": "🔴 现场直播：乌克兰袭击导致路段坍塌，通往被占领克里米亚的克尔奇大桥关闭",
+                "title_en": "🔴 Live: Kerch Bridge to occupied Crimea closed after Ukrainian strikes collapse road section",
+                "url": "https://www.france24.com/en/europe/20261117-live-russian-attacks-target-bridges-in-kyiv-knocking-out-heating-and-water-ukraine",
+                "summary_zh": "",
+                "image": "",
+                "is_primary": false
               }
             ]
           },
           {
-            "cid": "i9",
-            "zh": "关于伊朗是否策划针对美国的“脏弹”袭击的讨论",
-            "importance": "引发安全担忧",
+            "cid": "i23",
+            "zh": "黄仁勋将于12月1日出席美众议院三委员会问询",
+            "importance": "或影响科技监管",
             "source_count": 1,
-            "image": "https://www.aljazeera.com/wp-content/uploads/2026/11/ap_6afc509a7cabf-1794920602.jpg",
+            "image": "https://s.rfi.fr/media/display/459a65c0-df6d-11f1-a5b5-3f371022a770/w:1024/p:16x9/2026-11-09T115214Z-950371170-RC2AKOA0JNIJ-RTRMADP-3-NVIDIA-PROBE-CEO.jpg",
             "cluster": [
               {
-                "source": "Al Jazeera",
-                "publisher": "Al Jazeera",
-                "title_zh": "伊朗是否在策划针对美国的“脏弹”袭击？我们目前已知的信息",
-                "title_en": "Is Iran plotting a ‘dirty bomb’ attack in the US? What we know",
-                "url": "https://www.aljazeera.com/news/2026/11/17/is-iran-plotting-a-dirty-bomb-attack-in-the-us-what-we-know?traffic_source=rss",
+                "source": "法广RFI",
+                "publisher": "法广RFI",
+                "title_zh": "黄仁勋将于12月1日出席美众议院三委员会问询",
+                "title_en": "",
+                "url": "https://www.rfi.fr/cn/%E6%94%BF%E6%B2%BB/20261117-%E9%BB%84%E4%BB%81%E5%8B%8B%E5%B0%86%E4%BA%8E12%E6%9C%881%E6%97%A5%E5%87%BA%E5%B8%AD%E7%BE%8E%E4%BC%97%E9%99%A2%E4%B8%89%E5%A7%94%E5%91%98%E4%BC%9A%E9%97%AE%E8%AF%A2",
+                "summary_zh": "",
+                "image": "https://s.rfi.fr/media/display/459a65c0-df6d-11f1-a5b5-3f371022a770/w:1024/p:16x9/2026-11-09T115214Z-950371170-RC2AKOA0JNIJ-RTRMADP-3-NVIDIA-PROBE-CEO.jpg",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "cid": "i34",
+            "zh": "中国是否误判了时机？",
+            "importance": "外交事务探讨中国时机",
+            "source_count": 1,
+            "image": "https://lh3.googleusercontent.com/J6_coFbogxhRI9iM864NL_liGXvsQp2AupsKei7z0cNNfDvGUmWUy20nuUhkREQyrpY4bEeIBuc=s0-w300-rw",
+            "cluster": [
+              {
+                "source": "Google News",
+                "publisher": "Google News",
+                "title_zh": "中国是否误判了时机？——《外交事务》",
+                "title_en": "Is China Misreading the Moment? - Foreign Affairs",
+                "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5LNG13RmUxMngyOWF6alpiSjNGTU95VmlwTWVUcXdTd0Q3MUxtUUl3UTRqZFJTNzNLTUhBMDltampZcUpOc05WU0tETXgzM2FweFh5cTFJTTkzalBNeHp4TU9LbXd3WGZiODNCd3BHdTNhWFV6bjRB?oc=5",
                 "summary_zh": "",
                 "image": "",
                 "is_primary": true,
-                "summary_en": "A CNN report quoting unnamed US officials alleges Tehran is developing plans for an attack on officials in Washington."
+                "summary_en": "Is China Misreading the Moment? Foreign Affairs As Trump and Xi Mingle, Their Governments Are Arming Up The New York Times The one thing Trump must remember when he sits down with Xi New York Post Trump and Xi showcase the decline of the UN and the ascendancy of the G2 superpower condominium Atalayar As Trump and Xi Jinping mingle, their governments are arming up Deccan Herald"
               }
             ]
           }
@@ -309,17 +267,33 @@
       },
       "section_notes": {
         "domestic": "",
-        "domestic_available": 171,
+        "domestic_available": 160,
         "international": "",
-        "international_available": 179
+        "international_available": 368
       },
       "raw_news": [
+        {
+          "en": "",
+          "zh": "中国公使：荷兰晶片设备对华长期出口限制将威胁中欧经贸谈判",
+          "url": "https://www.zaobao.com/news/china/story20261117-10014994",
+          "source": "联合早报",
+          "image": "https://cassette.sphdigital.com.sg/image/zaobao/e220fb0cef6e734b614260f47bb2c558d1afc87b87d91924e4ab84624d1c2844",
+          "section": "domestic"
+        },
         {
           "en": "",
           "zh": "乌再袭克里米亚大桥 路面拱门坠海 泽连斯基：战争总将回到初始地",
           "url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261117-%E4%B9%8C%E5%86%8D%E8%A2%AD%E5%85%8B%E9%87%8C%E7%B1%B3%E4%BA%9A%E5%A4%A7%E6%A1%A5-%E8%B7%AF%E9%9D%A2%E6%8B%B1%E9%97%A8%E5%9D%A0%E6%B5%B7-%E6%B3%BD%E8%BF%9E%E6%96%AF%E5%9F%BA-%E6%88%98%E4%BA%89%E6%80%BB%E5%B0%86%E5%9B%9E%E5%88%B0%E5%88%9D%E5%A7%8B%E5%9C%B0",
           "source": "法广RFI",
           "image": "https://s.rfi.fr/media/display/fe16fd1c-e296-11f1-8ef9-1ba7ddfab527/w:1024/p:16x9/2026-11-17T144605Z-1280893353-RC2QPOA5M1CR-RTRMADP-3-UKRAINE-CRISIS-ATTACK-CRIMEA-SBU-1.jpg",
+          "section": "domestic"
+        },
+        {
+          "en": "",
+          "zh": "中加关系迈入稳步修复期 习近平三会卡尼同意扩大关税减免",
+          "url": "https://www.zaobao.com/news/china/story20261117-10014673",
+          "source": "联合早报",
+          "image": "https://cassette.sphdigital.com.sg/image/zaobao/e5a94b81d0c9307793ee1c100b2feafe215fe59633cb1d396c1783536dc9c7d3",
           "section": "domestic"
         },
         {
@@ -844,14 +818,6 @@
         },
         {
           "en": "",
-          "zh": "欧委会初步认定Temu违反《数字服务法》：未能降低平台出现非法产品风险",
-          "url": "https://www.rfi.fr/cn/%E6%AC%A7%E6%B4%B2/20261117-%E6%AC%A7%E5%A7%94%E4%BC%9A%E5%88%9D%E6%AD%A5%E8%AE%A4%E5%AE%9Atemu%E8%BF%9D%E5%8F%8D-%E6%95%B0%E5%AD%97%E6%9C%8D%E5%8A%A1%E6%B3%95-%E6%9C%AA%E8%83%BD%E9%99%8D%E4%BD%8E%E5%B9%B3%E5%8F%B0%E5%87%BA%E7%8E%B0%E9%9D%9E%E6%B3%95%E4%BA%A7%E5%93%81%E9%A3%8E%E9%99%A9",
-          "source": "法广RFI",
-          "image": "https://s.rfi.fr/media/display/8776e8ea-d610-11f0-a80c-005056bfb2b6/w:1024/p:16x9/2025-12-10T183245Z-2073863984-RC2IYAAABR3K-RTRMADP-3-EU-TEMU-SUBSIDIES.jpg",
-          "section": "domestic"
-        },
-        {
-          "en": "",
           "zh": "碰撞基础物理前沿思想 首届上海物理会议启幕",
           "url": "https://www.chinanews.com.cn/sh/2026/11-17/10733667.shtml",
           "source": "中新网·社会",
@@ -1056,14 +1022,6 @@
           "url": "https://www.chinanews.com.cn/gn/2026/11-17/10733606.shtml",
           "source": "中新网·时政",
           "image": "",
-          "section": "domestic"
-        },
-        {
-          "en": "",
-          "zh": "英伟达董事会宣布设立国家安全与出口管制监督委员会",
-          "url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261117-%E8%8B%B1%E4%BC%9F%E8%BE%BE%E8%91%A3%E4%BA%8B%E4%BC%9A%E5%AE%A3%E5%B8%83%E8%AE%BE%E7%AB%8B%E5%9B%BD%E5%AE%B6%E5%AE%89%E5%85%A8%E4%B8%8E%E5%87%BA%E5%8F%A3%E7%AE%A1%E5%88%B6%E7%9B%91%E7%9D%A3%E5%A7%94%E5%91%98%E4%BC%9A",
-          "source": "法广RFI",
-          "image": "https://s.rfi.fr/media/display/a0e32ce2-b1d1-11f1-af9e-53b7617a3a51/w:1024/p:16x9/AP26167767211747.jpg",
           "section": "domestic"
         },
         {
@@ -1396,22 +1354,6 @@
         },
         {
           "en": "",
-          "zh": "男子登富士山失联多日 中驻日使馆提醒公民勿违规登山",
-          "url": "https://www.zaobao.com/news/china/story20261117-10011263",
-          "source": "联合早报",
-          "image": "https://cassette.sphdigital.com.sg/image/zaobao/a36de94f98beec4a6a2b49260fee537ffbc79acf869cb3c8b8c9d4db5b52b293",
-          "section": "domestic"
-        },
-        {
-          "en": "",
-          "zh": "中国大型运投无人机“长鹰-8”完成运输投送试验",
-          "url": "https://www.zaobao.com/news/china/story20261117-10010604",
-          "source": "联合早报",
-          "image": "https://cassette.sphdigital.com.sg/image/zaobao/ab52ef05ca60568d285e0a46014c5f36cf5710b584a0bda8ddc60402109ba005",
-          "section": "domestic"
-        },
-        {
-          "en": "",
           "zh": "中新网评：5个师傅3个虚报故障，谁在逼维修师傅撒谎？",
           "url": "https://www.chinanews.com.cn/cj/2026/11-17/10733335.shtml",
           "source": "中新网·要闻",
@@ -1556,74 +1498,10 @@
         },
         {
           "en": "",
-          "zh": "乌、美和欧谈判团队举行三方协调会谈",
-          "url": "https://www.rfi.fr/cn/%E7%BE%8E%E6%B4%B2/20261116-%E4%B9%8C-%E7%BE%8E%E5%92%8C%E6%AC%A7%E8%B0%88%E5%88%A4%E5%9B%A2%E9%98%9F%E4%B8%BE%E8%A1%8C%E4%B8%89%E6%96%B9%E5%8D%8F%E8%B0%83%E4%BC%9A%E8%B0%88",
-          "source": "法广RFI",
-          "image": "https://s.rfi.fr/media/display/a5105976-e204-11f1-b792-3f371022a770/w:1024/p:16x9/2275-actu-afp-news-9072b4f3-49d3-4802-b845-91eedeff4e28-3.jpg",
-          "section": "domestic"
-        },
-        {
-          "en": "",
-          "zh": "联合国关于杀手机器人的谈判陷入僵局",
-          "url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261116-%E8%81%94%E5%90%88%E5%9B%BD%E5%85%B3%E4%BA%8E%E6%9D%80%E6%89%8B%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%B0%88%E5%88%A4%E9%99%B7%E5%85%A5%E5%83%B5%E5%B1%80",
-          "source": "法广RFI",
-          "image": "https://s.rfi.fr/media/display/f8e36134-e203-11f1-b91f-5f54d898a954/w:1024/p:16x9/field-media-image-3070495-12e9feff3895e78e4c1cde6c07ca5e8d92fce35a.jpg",
-          "section": "domestic"
-        },
-        {
-          "en": "",
-          "zh": "欧盟五国计划将欧洲遣返中心选在卢旺达",
-          "url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261116-%E6%AC%A7%E7%9B%9F%E4%BA%94%E5%9B%BD%E8%AE%A1%E5%88%92%E5%B0%86%E6%AC%A7%E6%B4%B2%E9%81%A3%E8%BF%94%E4%B8%AD%E5%BF%83%E9%80%89%E5%9C%A8%E5%8D%A2%E6%97%BA%E8%BE%BE",
-          "source": "法广RFI",
-          "image": "https://s.rfi.fr/media/display/013e2372-e1d3-11f1-80e8-f71d22e7fea9/w:1024/p:16x9/AP26320558302536.jpg",
-          "section": "domestic"
-        },
-        {
-          "en": "",
-          "zh": "特斯拉宣布将对其德国工厂追加投资30亿欧元",
-          "url": "https://www.rfi.fr/cn/%E6%AC%A7%E6%B4%B2/20261116-%E7%89%B9%E6%96%AF%E6%8B%89%E5%AE%A3%E5%B8%83%E5%B0%86%E5%AF%B9%E5%85%B6%E5%BE%B7%E5%9B%BD%E5%B7%A5%E5%8E%82%E8%BF%BD%E5%8A%A0%E6%8A%95%E8%B5%8430%E4%BA%BF%E6%AC%A7%E5%85%83",
-          "source": "法广RFI",
-          "image": "https://s.rfi.fr/media/display/b0ac9e2e-cd47-11f1-80bb-4da0d2c6855d/w:1024/p:16x9/2026-10-20T210609Z-1387965234-RC26ZNAJQB2F-RTRMADP-3-UKRAINE-CRISIS-STARLINK.jpg",
-          "section": "domestic"
-        },
-        {
-          "en": "",
           "zh": "中电动商用飞机有人驾驶首飞成功 法媒：欧洲震惊",
           "url": "https://www.rfi.fr/cn/%E4%B8%AD%E5%9B%BD/20261116-%E4%B8%AD%E7%94%B5%E5%8A%A8%E5%95%86%E7%94%A8%E9%A3%9E%E6%9C%BA%E6%9C%89%E4%BA%BA%E9%A9%BE%E9%A9%B6%E9%A6%96%E9%A3%9E%E6%88%90%E5%8A%9F-%E6%B3%95%E5%AA%92-%E6%AC%A7%E6%B4%B2%E9%9C%87%E6%83%8A",
           "source": "法广RFI",
           "image": "https://s.rfi.fr/media/display/6f33bd04-e202-11f1-9fed-3f371022a770/w:1024/p:16x9/913240931-1750030923350463-6259787257343959691-n.jpg",
-          "section": "domestic"
-        },
-        {
-          "en": "",
-          "zh": "约旦和伊拉克封禁Telegram 忧散播极端主义",
-          "url": "https://www.rfi.fr/cn/%E4%B8%AD%E4%B8%9C/20261116-%E7%BA%A6%E6%97%A6%E5%92%8C%E4%BC%8A%E6%8B%89%E5%85%8B%E5%B0%81%E7%A6%81telegram-%E5%BF%A7%E6%95%A3%E6%92%AD%E6%9E%81%E7%AB%AF%E4%B8%BB%E4%B9%89",
-          "source": "法广RFI",
-          "image": "https://s.rfi.fr/media/display/4833db54-d18a-11f1-a7ab-bba4eee3dc72/w:1024/p:16x9/000-D4GG3CR.jpg",
-          "section": "domestic"
-        },
-        {
-          "en": "",
-          "zh": "法语国家组织峰会：秘书长选举推迟一年",
-          "url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261116-%E6%B3%95%E8%AF%AD%E5%9B%BD%E5%AE%B6%E7%BB%84%E7%BB%87%E5%B3%B0%E4%BC%9A-%E7%A7%98%E4%B9%A6%E9%95%BF%E9%80%89%E4%B8%BE%E6%8E%A8%E8%BF%9F%E4%B8%80%E5%B9%B4",
-          "source": "法广RFI",
-          "image": "https://s.rfi.fr/media/display/4db85672-e1de-11f1-95a9-5f54d898a954/w:1024/p:16x9/2026-11-16T033506Z-1018486305-RC2QOOAWSXJA-RTRMADP-3-CAMBODIA-FRANCOPHONIE.jpg",
-          "section": "domestic"
-        },
-        {
-          "en": "",
-          "zh": "美国海军第三艘航空母舰“罗斯福号”已抵达中东",
-          "url": "https://www.rfi.fr/cn/%E4%B8%AD%E4%B8%9C/20261116-%E7%BE%8E%E5%9B%BD%E6%B5%B7%E5%86%9B%E7%AC%AC%E4%B8%89%E8%89%98%E8%88%AA%E7%A9%BA%E6%AF%8D%E8%88%B0-%E7%BD%97%E6%96%AF%E7%A6%8F%E5%8F%B7-%E5%B7%B2%E6%8A%B5%E8%BE%BE%E4%B8%AD%E4%B8%9C",
-          "source": "法广RFI",
-          "image": "https://s.rfi.fr/media/display/4b736ac6-8484-11f1-b77e-005056bfb2b6/w:1024/p:16x9/2026-07-14T024123Z-1416644223-RC2ZBMAQ620M-RTRMADP-3-USA-RIMPAC.jpg",
-          "section": "domestic"
-        },
-        {
-          "en": "",
-          "zh": "联邦法官撤销特朗普对外国学生和记者签证限制",
-          "url": "https://www.rfi.fr/cn/%E7%BE%8E%E6%B4%B2/20261116-%E8%81%94%E9%82%A6%E6%B3%95%E5%AE%98%E6%92%A4%E9%94%80%E7%89%B9%E6%9C%97%E6%99%AE%E5%AF%B9%E5%A4%96%E5%9B%BD%E5%AD%A6%E7%94%9F%E5%92%8C%E8%AE%B0%E8%80%85%E7%AD%BE%E8%AF%81%E9%99%90%E5%88%B6",
-          "source": "法广RFI",
-          "image": "https://s.rfi.fr/media/display/8f6e8834-e1cf-11f1-9180-695cb59fade5/w:1024/p:16x9/AP26320532390601.jpg",
           "section": "domestic"
         },
         {
@@ -1675,24 +1553,160 @@
           "section": "domestic"
         },
         {
-          "en": "",
-          "zh": "习近平持续清洗军方、张升民崛起：利好台湾？",
-          "url": "https://cn.nytimes.com/china/20261116/china-military-purge-zhang-shengmin-taiwan/",
-          "source": "纽约时报中文网",
-          "image": "https://static01.nyt.com/images/2026/11/12/multimedia/00int-china-general-01-lbjw/00int-china-general-01-lbjw-articleLarge.jpg",
-          "section": "domestic"
+          "en": "Serbia's student-backed MPs take seats in parliament after election win",
+          "zh": "塞尔维亚获选的学生支持议员在选举获胜后就职议会",
+          "url": "https://www.france24.com/en/video/20261117-serbia-s-student-backed-mps-take-seats-in-parliament-after-election-win",
+          "source": "France 24",
+          "image": "https://s.france24.com/media/display/87a472fc-e29d-11f1-b8c8-7908c4e1a3c7/w:1024/p:16x9/EN-20261117-162342-162539-CS.jpg",
+          "section": "international"
+        },
+        {
+          "en": "Trump says he takes possible Iran bomb threat to Washington 'very seriously'",
+          "zh": "特朗普表示他“非常严肃”对待可能来自伊朗的华盛顿炸弹威胁",
+          "url": "https://www.france24.com/en/americas/20261117-trump-says-he-takes-possible-iran-bomb-threat-to-washington-very-seriously",
+          "source": "France 24",
+          "image": "https://s.france24.com/media/display/33aa0a04-e298-11f1-ba28-1ba7ddfab527/w:1024/p:16x9/AP26321504671499.jpg",
+          "section": "international"
+        },
+        {
+          "en": "Urban Zulu and '100 Reasons to Stay Single in Lagos': Telling African stories on their own terms",
+          "zh": "Urban Zulu 与《在拉各斯保持单身的100个理由》：用非洲自己的方式讲述非洲故事",
+          "url": "https://www.france24.com/en/tv-shows/arts24/20261117-urban-zulu-and-100-reasons-to-stay-single-in-lagos-telling-african-stories-on-their-own-terms",
+          "source": "France 24",
+          "image": "https://s.france24.com/media/display/5aed8f1a-e292-11f1-ad9e-ff16da94d1fe/w:1024/p:16x9/capture-d40612db.jpg",
+          "section": "international"
+        },
+        {
+          "en": "France's Le Pen promises to lower retirement age if she wins election",
+          "zh": "法国勒庞承诺若赢得选举将降低退休年龄",
+          "url": "https://www.france24.com/en/video/20261117-france-s-le-pen-promises-to-lower-retirement-age-if-she-wins-election",
+          "source": "France 24",
+          "image": "https://s.france24.com/media/display/052bc7b8-e283-11f1-b9fa-c5c0357b2a0c/w:1024/p:16x9/EN-20261117-131100-131508-CS.jpg",
+          "section": "international"
+        },
+        {
+          "en": "France hit by fresh nationwide public sector strike",
+          "zh": "法国遭遇新一轮全国公共部门罢工",
+          "url": "https://www.france24.com/en/video/20261117-france-hit-by-fresh-nationwide-public-sector-strike",
+          "source": "France 24",
+          "image": "https://s.france24.com/media/display/33576d30-e29d-11f1-a3d4-1ba7ddfab527/w:1024/p:16x9/EN-20261117-161253-161430-CS.jpg",
+          "section": "international"
+        },
+        {
+          "en": "Burnham makes Milburn head of unit to implement new jobs and welfare approach for young people – live",
+          "zh": "伯纳姆任命米尔本领导部门，旨在为年轻人实施新的就业与福利方案——现场报道",
+          "url": "https://www.theguardian.com/politics/live/2026/nov/17/alan-milburn-youth-unempolyment-neets-economy-welfare-brexit-latest-news-updates",
+          "source": "The Guardian",
+          "image": "https://i.guim.co.uk/img/media/7902cdb79f148d1d0391151d406f13d8457d1446/541_134_3999_3200/master/3999.jpg?width=1200&quality=85&auto=format&fit=max&s=cdf521cc74be3c957f7e6b5764336bab",
+          "section": "international"
+        },
+        {
+          "en": "Calls for cooperation as ASEAN summit awaits Trump",
+          "zh": "东盟峰会等待特朗普，各方呼吁加强合作",
+          "url": "https://www.france24.com/en/video/20261117-calls-for-cooperation-as-asean-summit-awaits-trump",
+          "source": "France 24",
+          "image": "https://s.france24.com/media/display/e6420a4e-e280-11f1-a61d-6d75ed565170/w:1024/p:16x9/EN-20261117-130411-130611-CS.jpg",
+          "section": "international"
+        },
+        {
+          "en": "Palestinian woman, 72, shot dead by Israeli settlers in West Bank, health ministry says",
+          "zh": "巴勒斯坦卫生部称，一名72岁巴勒斯坦女性在约旦河西岸被以色列定居者枪杀",
+          "url": "https://www.bbc.co.uk/news/articles/cqrlg377638yo",
+          "source": "BBC",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/d277/live/17a72100-e286-11f1-a094-5fdc692f3e33.jpg",
+          "section": "international"
+        },
+        {
+          "en": "Ministers vow to create new welfare system for young people as they back Milburn report",
+          "zh": "各国部长支持米尔本报告，誓言为年轻人建立新福利体系",
+          "url": "https://www.theguardian.com/society/2026/nov/17/alan-milburn-report-young-people-work-neets-job-support-savingsalan-milburn-plan-young-people-work-neets-savings-200m-a-year",
+          "source": "The Guardian",
+          "image": "https://i.guim.co.uk/img/media/7902cdb79f148d1d0391151d406f13d8457d1446/541_134_3999_3200/master/3999.jpg?width=1200&quality=85&auto=format&fit=max&s=cdf521cc74be3c957f7e6b5764336bab",
+          "section": "international"
+        },
+        {
+          "en": "Is China Misreading the Moment? - Foreign Affairs",
+          "zh": "中国是否误判了时机？——《外交事务》",
+          "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5LNG13RmUxMngyOWF6alpiSjNGTU95VmlwTWVUcXdTd0Q3MUxtUUl3UTRqZFJTNzNLTUhBMDltampZcUpOc05WU0tETXgzM2FweFh5cTFJTTkzalBNeHp4TU9LbXd3WGZiODNCd3BHdTNhWFV6bjRB?oc=5",
+          "source": "Google News",
+          "image": "",
+          "section": "international"
         },
         {
           "en": "Ukraine hails attack on vital Kerch bridge linking Russia and Crimea – Europe live",
-          "zh": "乌克兰对袭击连接俄罗斯与克里米亚的关键克尔奇大桥表示赞赏 – 欧洲直播",
+          "zh": "乌克兰赞扬针对连接俄罗斯与克里米亚的重要桥梁——克尔奇大桥的袭击——欧洲现场报道",
           "url": "https://www.theguardian.com/world/live/2026/nov/17/europe-ukraine-russia-crimea-kerch-bridge-attack-latest-news-updates",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/a8e16239791b265afdeb075556bd2a025572887c/202_0_875_700/master/875.jpg?width=1200&quality=85&auto=format&fit=max&s=2183c3e7f4fdc520fa9337d5b649de1d",
           "section": "international"
         },
         {
+          "en": "Estonia closes its border with Russia but can it keep Moscow out?",
+          "zh": "爱沙尼亚关闭与俄罗斯的边境，但它能否将莫斯科挡在门外？",
+          "url": "https://www.france24.com/en/europe/20261117-estonia-closes-its-border-with-russia-but-can-it-keep-moscow-out",
+          "source": "France 24",
+          "image": "https://s.france24.com/media/display/638675fe-e1d1-11f1-97ac-5f54d898a954/w:1024/p:16x9/russie-estonie-frontiere.png",
+          "section": "international"
+        },
+        {
+          "en": "Houthi advance on Aden may spur resurgence of Yemen’s southern separatists",
+          "zh": "胡塞武装向亚丁推进，可能刺激也门南部分离主义者的复兴",
+          "url": "https://www.aljazeera.com/news/2026/11/17/houthi-advance-on-aden-sparks-resurgence-of-yemens-southern-separatists?traffic_source=rss",
+          "source": "Al Jazeera",
+          "image": "",
+          "section": "international"
+        },
+        {
+          "en": "Mozambique opposition leader goes on trial for terrorism over deadly election protests",
+          "zh": "莫桑比克反对党领导人因选举期间致命抗议活动涉嫌恐怖主义受审",
+          "url": "https://www.bbc.co.uk/news/articles/crq5vl1l6z2po",
+          "source": "BBC",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/8344/live/da8191f0-e27d-11f1-bd1e-f9c53347c5a6.jpg",
+          "section": "international"
+        },
+        {
+          "en": "Carney eyes 'other options' for embattled Canadian auto sector on China trip",
+          "zh": "卡尼访华期间关注处于困境中的加拿大汽车行业的“其他选择”",
+          "url": "https://www.bbc.co.uk/news/articles/cq98xlz09ye0o",
+          "source": "BBC",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/dab7/live/371458b0-e299-11f1-8dda-8925a81c3da5.jpg",
+          "section": "international"
+        },
+        {
+          "en": "Democrat Mary Peltola closes in on victory in closely watched US Senate race in Alaska – live",
+          "zh": "民主党人玛丽·佩尔托拉在备受瞩目的阿拉斯加州美国参议院选举中接近获胜——现场直播",
+          "url": "https://www.theguardian.com/us-news/live/2026/nov/17/donald-trump-alaska-senate-race-midterms-democrats-republicans-latest-news-updates",
+          "source": "The Guardian",
+          "image": "https://i.guim.co.uk/img/media/e0dd93da6795407f9bbcd9331a16807289493099/238_0_2500_2000/master/2500.jpg?width=1200&quality=85&auto=format&fit=max&s=15d4d3eaeb0e1d1c9b90bb5b3b3a70e7",
+          "section": "international"
+        },
+        {
+          "en": "Trump warns Iran over reported ‘dirty bomb’ threat plans against Washington",
+          "zh": "特朗普就据报针对华盛顿的“脏弹”威胁计划向伊朗发出警告",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/17/trump-warns-iran-over-reported-dirty-bomb-threat-plans-against-washington?traffic_source=rss",
+          "source": "Al Jazeera",
+          "image": "",
+          "section": "international"
+        },
+        {
+          "en": "Ikea ditches plans for new UK stores, blaming high business taxes",
+          "zh": "宜家放弃在英国开设新店的计划，归咎于高额商业税",
+          "url": "https://www.theguardian.com/business/2026/nov/17/ikea-new-uk-stores-business-taxes-john-healey-budget",
+          "source": "The Guardian",
+          "image": "https://i.guim.co.uk/img/media/e48e0a5a868c5cdc153193db0223c51711262589/982_1086_5295_4236/master/5295.jpg?width=1200&quality=85&auto=format&fit=max&s=0fb46c7565e6eb68679c7b5306452d8c",
+          "section": "international"
+        },
+        {
+          "en": "Tracking China’s War of Words Against Japan - The New York Times",
+          "zh": "追踪中国针对日本的言语交锋 - 《纽约时报》",
+          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOV0FLYnFpRHlhX2Zab2lSTHFfM2pWcEVHUW8wSXIxaXNxZFpOQjdlNEg3OHViMTEyWFdoZW40NzRHWFcwTzJhSWVRMmlBeWtpZGJTU1pDY2R2QTlRWjBjaW9oUU9Bc3FUcGlzeTFiNHlEQ0NNd1Y5djdCTnJFWDJ3Y3hOQWE1U2J0SEJadzh3?oc=5",
+          "source": "Google News",
+          "image": "",
+          "section": "international"
+        },
+        {
           "en": "Scammed migrant workers in UK to be considered possible victims of modern slavery",
-          "zh": "英国遭诈骗的农民工或被视为现代奴役的潜在受害者",
+          "zh": "在英国遭遇诈骗的农民工将被视为现代奴役的可能受害者",
           "url": "https://www.theguardian.com/uk-news/2026/nov/17/scammed-migrant-workers-modern-slavery-home-office",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/aed8608d4f9e12f5c654ee90a09ae5acdeb8ada0/475_0_4750_3800/master/4750.jpg?width=1200&quality=85&auto=format&fit=max&s=dc5838082cb7d6fdfd095274e55b4103",
@@ -1708,7 +1722,7 @@
         },
         {
           "en": "Is Iran plotting a ‘dirty bomb’ attack in the US? What we know",
-          "zh": "伊朗是否在策划针对美国的“脏弹”袭击？我们目前已知的信息",
+          "zh": "伊朗是否在策划对美“脏弹”袭击？我们已知的信息",
           "url": "https://www.aljazeera.com/news/2026/11/17/is-iran-plotting-a-dirty-bomb-attack-in-the-us-what-we-know?traffic_source=rss",
           "source": "Al Jazeera",
           "image": "",
@@ -1716,7 +1730,7 @@
         },
         {
           "en": "US senators demand FAA pause upgrades linked to nationwide ground stop",
-          "zh": "美国参议员要求联邦航空管理局暂停与全国性停飞相关的升级工作",
+          "zh": "美国参议员要求联邦航空管理局暂停与全国地面停飞相关的升级工作",
           "url": "https://www.aljazeera.com/news/2026/11/17/us-senators-demand-faa-pause-upgrades-linked-to-nationwide-ground-stop?traffic_source=rss",
           "source": "Al Jazeera",
           "image": "",
@@ -1724,7 +1738,7 @@
         },
         {
           "en": "Jensen Huang’s departure as Nvidia CEO becomes a political proxy war",
-          "zh": "黄仁勋卸任英伟达首席执行官演变为一场政治代理人战争",
+          "zh": "黄仁勋卸任英伟达CEO成为政治代理人战争",
           "url": "https://www.theguardian.com/global/2026/nov/16/jensen-huang-nvidia-ceo-china",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/f74f292bf21b64ac06a24785167573c263947fdc/411_0_3764_3013/master/3764.jpg?width=1200&quality=85&auto=format&fit=max&s=dc6213ac90cd282f90c0e60449deac75",
@@ -1732,7 +1746,7 @@
         },
         {
           "en": "Hundreds protest against ex-border patrol chief Greg Bovino at Rutgers University talk",
-          "zh": "数百人于罗格斯大学演讲现场抗议前边境巡逻局局长格雷格·博维诺",
+          "zh": "数百人于罗格斯大学讲座上抗议前边境巡逻局局长格雷格·博维诺",
           "url": "https://www.theguardian.com/us-news/2026/nov/17/protest-greg-bovino-rutgers-university",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/36635c27ae24d59f8307ce1f76450876a1f4133f/331_0_2501_2000/master/2501.jpg?width=1200&quality=85&auto=format&fit=max&s=58d5d6aa0f0034193b61adb3c430ddbb",
@@ -1740,26 +1754,10 @@
         },
         {
           "en": "'We're kind of at a stalemate': French government and unions 'dancing around each other'",
-          "zh": "“我们陷入了某种僵局”：法国政府与工会陷入“周旋拉锯”",
+          "zh": "“我们陷入了某种僵局”：法国政府与工会“陷入拉锯战”",
           "url": "https://www.france24.com/en/french-government-and-union-dancing-around-each-other-we-re-kind-of-at-a-stalemate",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/1a0e3b72-e286-11f1-b6b3-1ba7ddfab527/w:1024/p:16x9/EN-20261117-130639-131100-CS.jpg",
-          "section": "international"
-        },
-        {
-          "en": "Burnham makes Milburn head of unit to implement new jobs and welfare approach for young people – live",
-          "zh": "伯纳姆任命米尔本负责领导部门，旨在为年轻人实施新的就业与福利方案 – 现场直播",
-          "url": "https://www.theguardian.com/politics/live/2026/nov/17/alan-milburn-youth-unempolyment-neets-economy-welfare-brexit-latest-news-updates",
-          "source": "The Guardian",
-          "image": "https://i.guim.co.uk/img/media/7902cdb79f148d1d0391151d406f13d8457d1446/541_134_3999_3200/master/3999.jpg?width=1200&quality=85&auto=format&fit=max&s=cdf521cc74be3c957f7e6b5764336bab",
-          "section": "international"
-        },
-        {
-          "en": "Democrat Mary Peltola closes in on victory in closely watched US Senate race in Alaska – live",
-          "zh": "民主党人玛丽·佩尔托拉在备受关注的阿拉斯加州美国参议院竞选中接近获胜 – 现场直播",
-          "url": "https://www.theguardian.com/us-news/live/2026/nov/17/donald-trump-alaska-senate-race-midterms-democrats-republicans-latest-news-updates",
-          "source": "The Guardian",
-          "image": "https://i.guim.co.uk/img/media/e0dd93da6795407f9bbcd9331a16807289493099/238_0_2500_2000/master/2500.jpg?width=1200&quality=85&auto=format&fit=max&s=15d4d3eaeb0e1d1c9b90bb5b3b3a70e7",
           "section": "international"
         },
         {
@@ -1772,7 +1770,7 @@
         },
         {
           "en": "Trump arrives just as Southeast Asian summit is ending, but still looms over talks - The Washington Post",
-          "zh": "特朗普抵达时东南亚峰会正值结束，但他仍笼罩在会谈之上 - 《华盛顿邮报》",
+          "zh": "特朗普抵达时东南亚峰会正值结束，但仍笼罩在会议讨论之上——《华盛顿邮报》",
           "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNZzNpMHl4YWlFZVFsYW1qNFZmcEVyV2p5QnNiRzczWlhBa1QxZ2lYV1p2c1gwRUp2VzNaNjl6WkU3Y2tENnJ3N0hRMlhkRHd0cGNGc21vU3hiRlVyZFNBV2JzYUU1UV9lUVJkWWhfVEZRVmJrQWRMY3h5NHhqZDJRYW1aa3otdEhXT25XOHg3M2cwRmt5SzdCNXRrcXVreGJHZF8tRVQ3Ul96dE5GY1k5Mw?oc=5",
           "source": "Google News",
           "image": "",
@@ -1780,10 +1778,18 @@
         },
         {
           "en": "Did the US use ‘blackout bombs’ in Iran? Images reveal mysterious fibres at infrastructure sites",
-          "zh": "美国是否在伊朗使用了“黑障炸弹”？影像揭示了基础设施遗址处神秘的纤维",
+          "zh": "美国是否在伊朗使用了“黑障炸弹”？图像显示基础设施遗址处存在神秘纤维",
           "url": "https://www.france24.com/en/middle-east/20261117-iran-us-graphite-blackout-bombs-infrastructure",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/f0ac6122-e286-11f1-9631-1ba7ddfab527/w:1024/p:16x9/photo-2026-11-17-13-57-17.jpg",
+          "section": "international"
+        },
+        {
+          "en": "Column | How much life could a 10-minute walk buy you? Try our calculator. - The Washington Post",
+          "zh": "专栏 | 10分钟的步行能为你换取多少生命？试试我们的计算器。- 《华盛顿邮报》",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOaGg1eTNRczBCbHpkdEZHeENjM2ZWdlVLY3JFb3AtNm5lWE9GN2N4cFR5T0tENlI5YnZSWlNQdGxTWlA4bWtWaldITmhST2V5elN0SEVFS2pwbE1oNUl1T0RGTUNWX2djV09zaFZ5TDc3cC1NSktvQzYyX3B1TG9oVkl6TzRkRjJkcGhZbmdDc2lWSDEwWGVpWFR3b09heXJnTkt0dTcxdnM4T25zMTFRd1RrTUVBZmpHT0tR?oc=5",
+          "source": "Google News",
+          "image": "",
           "section": "international"
         },
         {
@@ -1796,7 +1802,7 @@
         },
         {
           "en": "How new US chip restrictions on South East Asia will hit China",
-          "zh": "美国对东南亚实施的新芯片限制将如何影响中国",
+          "zh": "美国对东南亚实施的新芯片限制将如何冲击中国",
           "url": "https://www.bbc.co.uk/news/articles/cwq6e2qgvmlgo",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/bfea/live/8fbafe20-e225-11f1-ae7e-97d0d3a43181.jpg",
@@ -1804,7 +1810,7 @@
         },
         {
           "en": "JD Vance blames Democrats for flight stoppage, claiming ‘obsession with men in women’s sports’",
-          "zh": "JD·万斯指责民主党导致航班停运，声称其“痴迷于让男性参加女子体育赛事”",
+          "zh": "JD Vance 指责民主党导致航班停飞，称其“痴迷于让男性参加女性体育赛事”",
           "url": "https://www.theguardian.com/us-news/2026/nov/17/jd-vance-democrats-trans-sports-flight-stoppage",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/45a3e80b32280ef910c9ffc8d0545c4388784260/280_0_6855_5482/master/6855.jpg?width=1200&quality=85&auto=format&fit=max&s=09c754c7934c111bae5e6d8d1900b3ca",
@@ -1812,7 +1818,7 @@
         },
         {
           "en": "Five people injured amid severe turbulence on JetBlue flight to Florida",
-          "zh": "捷蓝航空飞往佛罗里达的航班遭遇严重颠簸，造成5人受伤",
+          "zh": "从佛罗里达飞往目的地的一架捷蓝航空航班遭遇严重颠簸，造成五人受伤",
           "url": "https://www.theguardian.com/us-news/2026/nov/17/five-injured-turbulence-jetblue-flight",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/20015183a99241bfc419f7d3146a8d2e0b8c5cd9/857_453_2579_2064/master/2579.jpg?width=1200&quality=85&auto=format&fit=max&s=5d75020977b5d7b027c0bf5f2305279a",
@@ -1828,7 +1834,7 @@
         },
         {
           "en": "French far-right candidate Le Pen vows to end Macron's pension reform if elected",
-          "zh": "法国极右翼候选人勒庞誓言若当选将终止马克龙的养老金改革",
+          "zh": "法国极右翼候选人勒庞誓言，若当选将废除马克龙的养老金改革",
           "url": "https://www.france24.com/en/france/20261117-french-far-right-candidate-le-pen-vows-end-macron-s-pension-reform-if-elected",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/4f8759d4-e27a-11f1-a6da-6d75ed565170/w:1024/p:16x9/000-D7PL7XE.jpg",
@@ -1836,7 +1842,7 @@
         },
         {
           "en": "Paul Kelly pleads for Albanese to ‘show some backbone’ over AI as creatives campaign for copyright protections",
-          "zh": "随着创意人士争取版权保护，保罗·凯利恳请阿尔巴尼斯在人工智能问题上“展现骨气”",
+          "zh": "在创意人士争取版权保护之际，保罗·凯利恳请阿尔巴尼斯在人工智能问题上“展现出一些骨气”",
           "url": "https://www.theguardian.com/technology/2026/nov/18/paul-kelly-albanese-ai-copyright-protections-creatives-campaign",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/ddddc08ad72395f7299f5323a3c7f7e0de4c7df7/1465_349_5469_4376/master/5469.jpg?width=1200&quality=85&auto=format&fit=max&s=58e5ab3d7858ff2deb8de120c30510be",
@@ -1844,7 +1850,7 @@
         },
         {
           "en": "Chris Minns’ backflips are adding up. Is he ‘clearing the runway’ or panicking?",
-          "zh": "克里斯·明斯的立场转变不断增加。他是在“清理跑道”还是在恐慌？",
+          "zh": "克里斯·明斯的前后反复引发质疑：他是在“清理障碍”还是在恐慌？",
           "url": "https://www.theguardian.com/australia-news/2026/nov/18/chris-minns-labor-backflips-are-adding-up-is-he-clearing-the-runway-or-panicking-nsw-state-election",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/670bda0529fba5c3b226b9497813fc395326eea4/316_0_7857_6286/master/7857.jpg?width=1200&quality=85&auto=format&fit=max&s=3733259f5923a778726f8071ef76dcbd",
@@ -1859,16 +1865,8 @@
           "section": "international"
         },
         {
-          "en": "UK unemployment unexpectedly eases to 4.6% as government releases Milburn report",
-          "zh": "随着政府发布米尔本报告，英国失业率意外降至4.6%",
-          "url": "https://www.theguardian.com/business/2026/nov/17/uk-unemployment-wage-growth-milburn-report",
-          "source": "The Guardian",
-          "image": "https://i.guim.co.uk/img/media/fcacde2d064f282a10c275f3fffebc930491811a/528_156_3303_2643/master/3303.jpg?width=1200&quality=85&auto=format&fit=max&s=52028965ab5e15a0547c89e69e1919f6",
-          "section": "international"
-        },
-        {
           "en": "Rep. Thomas Massie Forces a New Fight for Epstein Survivors",
-          "zh": "国会议员托马斯·马西为爱泼斯坦受害者发起新一轮斗争",
+          "zh": "国会议员托马斯·马西为爱泼斯坦受害者发起新斗争",
           "url": "https://www.aljazeera.com/video/newsfeed/2026/11/17/rep-thomas-massie-forces-a-new-fight-for-epstein-survivors?traffic_source=rss",
           "source": "Al Jazeera",
           "image": "",
@@ -1876,7 +1874,7 @@
         },
         {
           "en": "Deutsche Bank dismissed warnings about dealings with risky clients, reports claim",
-          "zh": "报道称德意志银行无视有关与风险客户往来的警告",
+          "zh": "报道称德意志银行无视了有关与高风险客户交易的警告",
           "url": "https://www.theguardian.com/business/2026/nov/17/deutsche-bank-dimissed-warnings-risky-clients-reports-claim",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/21474d52763b44585b74c4c50325ba4c99235bdd/247_0_2961_2369/master/2961.jpg?width=1200&quality=85&auto=format&fit=max&s=788fab996ab2d7f1de0ae9cee69c3eb8",
@@ -1899,6 +1897,14 @@
           "section": "international"
         },
         {
+          "en": "Glasses and shirt buttons will be examined to stop cheating in South Korea's college entrance exams - AP News",
+          "zh": "美联社：韩国将通过检查眼镜和衬衫纽扣来防止高考作弊",
+          "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNVTJ3S0FpZTVNOFI0djR6ZE5TLVYzYm43Sk9EOWpvd0VuZGI4VWRoV1pPRF9FNUdlWUVBbjVrc19hNHNjdnRrRHd0S1l2b1pZdFQweEZfNUoxMkZUU1hYamZJOXRXT01jYWRIdDhMZGRTaEI1MzMxLXFOVmU5QVVHMTZ4UU8tbjFrYnZsTmFJMGE4dS1TdmozLWJUWGs?oc=5",
+          "source": "Google News",
+          "image": "",
+          "section": "international"
+        },
+        {
           "en": "At the origin of France’s education protests, students refuse to give up",
           "zh": "法国教育抗议活动的源头：学生拒绝放弃",
           "url": "https://www.aljazeera.com/news/2026/11/17/at-the-origin-of-frances-education-protests-students-refuse-to-give-up?traffic_source=rss",
@@ -1907,8 +1913,16 @@
           "section": "international"
         },
         {
+          "en": "UK sanctions firms over Israeli West Bank settlements",
+          "zh": "英国因以色列约旦河西岸定居点问题制裁相关公司",
+          "url": "https://www.bbc.co.uk/news/articles/cvglr977x3z0o",
+          "source": "BBC",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/b109/live/1b3b72b0-e283-11f1-b166-176de21e2352.jpg",
+          "section": "international"
+        },
+        {
           "en": "Singer-songwriter Mélissa Laveaux: 'Women need more positions of power in the music industry'",
-          "zh": "创作歌手梅丽莎·拉沃：“音乐产业需要更多女性担任权力职位”",
+          "zh": "创作歌手梅丽莎·拉沃：“女性在音乐产业中需要更多权力职位”",
           "url": "https://www.france24.com/en/tv-shows/perspective/20261117-singer-songwriter-m%C3%A9lissa-laveaux-women-need-more-positions-of-power-in-the-music-industry",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/582bc328-e283-11f1-9b6b-ff16da94d1fe/w:1024/p:16x9/capture-c20de2d9.jpg",
@@ -1916,23 +1930,15 @@
         },
         {
           "en": "Why do governments switch off the internet?",
-          "zh": "政府为何会切断互联网？",
+          "zh": "政府为何切断互联网？",
           "url": "https://www.aljazeera.com/video/by-the-numbers-3/2026/11/17/why-do-governments-switch-off-the-internet?traffic_source=rss",
           "source": "Al Jazeera",
           "image": "",
           "section": "international"
         },
         {
-          "en": "Palestinian woman, 72, shot dead by Israeli settlers in West Bank, health ministry says",
-          "zh": "巴勒斯坦卫生部称，一名72岁巴勒斯坦女性在约旦河西岸遭以色列定居者枪杀",
-          "url": "https://www.bbc.co.uk/news/articles/cqrlg377638yo",
-          "source": "BBC",
-          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/d277/live/17a72100-e286-11f1-a094-5fdc692f3e33.jpg",
-          "section": "international"
-        },
-        {
           "en": "Putin's Crimea bridge partly collapses as Zelensky hails 'unprecedented' attack by Ukraine",
-          "zh": "普京的克里米亚大桥部分坍塌，泽连斯基赞扬乌克兰发动了“前所未有”的袭击",
+          "zh": "普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“前所未有”的袭击",
           "url": "https://www.bbc.co.uk/news/articles/cw772jk4rvmxo",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/222d/live/db8315b0-e278-11f1-99a1-253766e7ad8b.png",
@@ -1940,18 +1946,10 @@
         },
         {
           "en": "Putin's Crimea bridge partly collapses as Zelensky hails 'unprecedented' attack by Ukraine - BBC",
-          "zh": "普京的克里米亚大桥部分坍塌，泽连斯基称乌克兰发动了“史无前例”的袭击 - BBC",
+          "zh": "普京的克里米亚大桥部分坍塌，泽连斯基称赞乌克兰发动了“前所未有”的袭击 - BBC",
           "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBSRU00UVItWVBVOXhnT1ozc2E0NXk5V3VNTlN4eERVeGVRRlJKc3dHLUMxbTRISm5RbEhoeEJUdEhCbldiU0txRExramJVWF9OcVdIV3dBOEo3czA?oc=5",
           "source": "Google News",
           "image": "",
-          "section": "international"
-        },
-        {
-          "en": "Santander allows staff to count holidays and sick leave as days worked in office",
-          "zh": "桑坦德银行允许员工将休假和病假计入办公室出勤天数",
-          "url": "https://www.theguardian.com/business/2026/nov/17/santander-staff-holidays-sick-leave-days-in-office",
-          "source": "The Guardian",
-          "image": "https://i.guim.co.uk/img/media/48f5af3037791bfd816e5a92bc2f9f88c46a5b32/497_0_4000_3200/master/4000.jpg?width=1200&quality=85&auto=format&fit=max&s=05cc561d70346e66b02fbf38e2a84afd",
           "section": "international"
         },
         {
@@ -1964,7 +1962,7 @@
         },
         {
           "en": "Ukraine: Two bridges in Kyiv heavily damaged by Russian strikes",
-          "zh": "乌克兰：基辅两座桥梁遭俄罗斯袭击严重受损",
+          "zh": "乌克兰：基辅两座大桥在俄罗斯袭击中严重受损",
           "url": "https://www.france24.com/en/video/20261117-ukraine-two-bridges-in-kyiv-heavily-damaged-by-russian-strikes",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/3345e766-e281-11f1-be99-6d75ed565170/w:1024/p:16x9/vignette-Ukraine-bridge0.png",
@@ -1972,7 +1970,7 @@
         },
         {
           "en": "Brazil defeat Singapore 7-0 as Vinicius scores first-half hat-trick",
-          "zh": "巴西队以7-0击败新加坡队，维尼修斯在上半场完成帽子戏法",
+          "zh": "巴西队 7-0 击败新加坡队，维尼修斯在上半场完成帽子戏法",
           "url": "https://www.aljazeera.com/sports/2026/11/17/brazil-defeat-singapore-7-0-as-vinicius-scores-first-half-hat-trick?traffic_source=rss",
           "source": "Al Jazeera",
           "image": "",
@@ -1980,7 +1978,7 @@
         },
         {
           "en": "Iranians fear more civilian infrastructure could be targeted in new US war",
-          "zh": "伊朗人担心在美国发起的新战争中，更多民用基础设施可能成为目标",
+          "zh": "伊朗人担心在美国发动的战争中，更多民用基础设施可能成为目标",
           "url": "https://www.aljazeera.com/news/2026/11/17/iranians-fear-more-civilian-infrastructure-could-be-targeted-in-new-us-war?traffic_source=rss",
           "source": "Al Jazeera",
           "image": "",
@@ -1988,7 +1986,7 @@
         },
         {
           "en": "Prague train crash leaves 46 people injured",
-          "zh": "布拉格火车相撞事故造成46人受伤",
+          "zh": "布拉格火车相撞事故导致46人受伤",
           "url": "https://news.sky.com/story/prague-train-crash-leaves-46-people-injured-13613217",
           "source": "Sky News",
           "image": "https://e3.365dm.com/26/11/1920x1080/skynews-prague-train_7408693.jpg?20261117133824=",
@@ -1996,7 +1994,7 @@
         },
         {
           "en": "Mongolia’s president says he will step down after facing accusations of corruption - AP News",
-          "zh": "面对腐败指控，蒙古国总统表示将辞职 - 美联社",
+          "zh": "蒙古总统称在面临腐败指控后将辞职 - 美联社",
           "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQNjZaTl9iN2I4eHBFUWlkWTNmY29qZndVdUdlUXpfbjJhSllpTnNncTFWcGhzdzliRU9aVkxQOVdGcWxqUWd3NjQtMUtEMlg0NU1uVjljc29aRFBHSDU2NXlIWXRyOTk5MnFJcGtKX0ZKdlo3b2FGRTdsU2ZFdjN2NVpTUXRRei14MUFiUGpaNjJFanBBXzRmR3VqS0FXbW1uTU5r?oc=5",
           "source": "Google News",
           "image": "",
@@ -2012,23 +2010,15 @@
         },
         {
           "en": "UK sanctions firms over Israeli West Bank settlements - BBC",
-          "zh": "英国因以色列约旦河西岸定居点问题制裁相关企业 - BBC",
+          "zh": "英国因以色列约旦河西岸定居点问题制裁相关公司 - BBC",
           "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9obnNFbkotNFRLSk8tb05PUTJwcnJjbVhOSDNuWVpmWmF1bDlBdTRtWjVpY2c4V3BjZnRDOEJqbFFzS3k2TzRYdjBzMHdxZ1kycDliSTBtZVA2U1U?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
         },
         {
-          "en": "Mozambique opposition leader faces trial over deadly 2024 election unrest",
-          "zh": "莫桑比克反对党领导人因2024年致命选举动乱面临审判",
-          "url": "https://www.bbc.co.uk/news/articles/crq5vl1l6z2po",
-          "source": "BBC",
-          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/8344/live/da8191f0-e27d-11f1-bd1e-f9c53347c5a6.jpg",
-          "section": "international"
-        },
-        {
           "en": "Is the US-Israel war on Iran turning into a ‘frozen conflict’?",
-          "zh": "美以针对伊朗的战争是否正演变为“冻结冲突”？",
+          "zh": "美国对伊朗发动的对以战争是否正在演变成“冻结冲突”？",
           "url": "https://www.aljazeera.com/news/2026/11/17/is-the-us-israel-war-on-iran-turning-into-a-frozen-conflict?traffic_source=rss",
           "source": "Al Jazeera",
           "image": "",
@@ -2036,7 +2026,7 @@
         },
         {
           "en": "Serbia’s Student List candidates sworn in as MPs after election triumph",
-          "zh": "塞尔维亚“学生名单”党候选人在选举获胜后宣誓就职议员",
+          "zh": "塞尔维亚“学生名单”党候选人在选举获胜后宣誓就任国会议员",
           "url": "https://www.theguardian.com/world/2026/nov/17/serbia-student-list-mps-sworn-in-election-triumph",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/3fd406c80b12642e836ed680f572f9f3958bdec9/516_0_6882_5504/master/6882.jpg?width=1200&quality=85&auto=format&fit=max&s=b1981b6458a3f713bc99944b8605e854",
@@ -2052,7 +2042,7 @@
         },
         {
           "en": "Trump is in Asia ahead of Xi, Putin summit. And, tech leaders want Huang back at Nvidia",
-          "zh": "特朗普在与习近平、普京举行峰会前抵达亚洲；此外，科技界领袖希望黄仁勋回归英伟达",
+          "zh": "特朗普在与习近平、普京举行峰会前抵达亚洲；科技巨头希望黄仁勋重返英伟达",
           "url": "https://www.npr.org/2026/11/17/g-s1-153950/up-first-newsletter-faa-ground-stop-trump-asia-trip-nvidia-lindsay-clancy",
           "source": "NPR",
           "image": "",
@@ -2060,7 +2050,7 @@
         },
         {
           "en": "Ed Miliband announces first sanctions on Israeli firms working in West Bank",
-          "zh": "埃德·米利班宣布对在约旦河西岸工作的以色列公司实施首批制裁",
+          "zh": "埃德·米利班宣布对在约旦河西岸开展业务的以色列公司实施首批制裁",
           "url": "https://www.theguardian.com/world/2026/nov/17/ed-miliband-israel-west-bank-settlements-sanctions",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/c9523ec5228a42aa647f50bbf3dbb4fc03f57ce3/28_0_3300_2640/master/3300.jpg?width=1200&quality=85&auto=format&fit=max&s=021f9a4119628590d1131a080748867b",
@@ -2068,7 +2058,7 @@
         },
         {
           "en": "Ukraine strikes major Russian bridge in Crimea with drones and missiles",
-          "zh": "乌克兰使用无人机和导弹袭击克里米亚境内的俄罗斯主要桥梁",
+          "zh": "乌克兰利用无人机和导弹袭击克里米亚境内的俄罗斯重要桥梁",
           "url": "https://www.france24.com/en/video/20261117-ukraine-strikes-major-russian-bridge-in-crimea-with-drones-and-missiles",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/3fef4026-e280-11f1-b561-1ba7ddfab527/w:1024/p:16x9/EN-20261117-130150-130338-CS.jpg",
@@ -2084,7 +2074,7 @@
         },
         {
           "en": "Ukraine, Russia hit key bridges ahead of Putin-Xi-Trump summit",
-          "zh": "在普京、习近平与特朗普峰会举行前，乌克兰与俄罗斯袭击了关键桥梁",
+          "zh": "在普京-习近平-特朗普峰会前夕，乌克兰与俄罗斯袭击了关键桥梁",
           "url": "https://www.france24.com/en/video/20261117-ukraine-russia-hit-key-bridges-ahead-of-putin-xi-trump-summit",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/e31c0bb0-e27d-11f1-98b4-c5c0357b2a0c/w:1024/p:16x9/EN-20261117-120243-120556-CS.jpg",
@@ -2100,7 +2090,7 @@
         },
         {
           "en": "Gunmen kill Costa Rican journalist who reported on drugs trade",
-          "zh": "报道毒品贸易的哥斯达黎加记者遭枪手杀害",
+          "zh": "报道毒品交易的哥斯达黎加记者遭枪手杀害",
           "url": "https://www.bbc.co.uk/news/articles/c6ly7g5lx7gyo",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/1bb5/live/140763d0-e26c-11f1-b19c-7b42f37bea48.jpg",
@@ -2108,7 +2098,7 @@
         },
         {
           "en": "Voldemort, Gotham City and the Greens: Victorian election gets a jolt of life as leaders face off in sole debate",
-          "zh": "伏地魔、哥谭市与绿党：随着领导人在唯一一场辩论中对峙，维多利亚州选举注入活力",
+          "zh": "伏地魔、哥谭市与绿党：随着领导人在唯一一场辩论中正面交锋，维多利亚州选举注入新活力",
           "url": "https://www.theguardian.com/australia-news/2026/nov/17/voldemort-gotham-city-greens-liberal-labor-one-nation-victorian-election-leaders-debate-ntwnfb",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/53cb86f3e0f17d0ab957cefe806573c93042cd44/1079_0_6267_5016/master/6267.jpg?width=1200&quality=85&auto=format&fit=max&s=949b8c9d1bf74ecc75496a52c0ca2ef5",
@@ -2116,7 +2106,7 @@
         },
         {
           "en": "Rebeca Grynspan could be the UN’s first woman boss, if she can sway Trump",
-          "zh": "如果雷贝卡·格林斯潘能说服特朗普，她可能成为联合国首位女性掌舵人",
+          "zh": "如果雷贝卡·格林斯潘能争取到特朗普的支持，她可能成为联合国首位女性掌门人",
           "url": "https://www.aljazeera.com/features/2026/11/17/rebeca-grynspans-quest-for-uns-first-woman-chief-amid-trump-sized-hurdle?traffic_source=rss",
           "source": "Al Jazeera",
           "image": "",
@@ -2124,7 +2114,7 @@
         },
         {
           "en": "Pretending to be in New Zealand, booking leave and buying consoles - the lengths fans are going to for GTA 6",
-          "zh": "假装身在纽西兰、请假并购买游戏机——粉丝们为《GTA 6》能达到的极端程度",
+          "zh": "假装在纽西兰、请假、买游戏机——粉丝们为《侠盗猎车手6》能做到什么程度",
           "url": "https://www.bbc.co.uk/news/articles/cm4gn9xnn1ppo",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/eb4c/live/4a003210-e1d0-11f1-b8c8-67fa35f5afdb.jpg",
@@ -2132,7 +2122,7 @@
         },
         {
           "en": "Two Marseille drug traffickers sentenced to life in prison over triple murder",
-          "zh": "两名马赛毒贩因犯下三起谋杀案被判处终身监禁",
+          "zh": "两名马赛毒贩因三起谋杀案被判处终身监禁",
           "url": "https://www.france24.com/en/video/20261117-two-marseille-drug-traffickers-sentenced-to-life-in-prison-over-triple-murder",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/c3f95a9e-e273-11f1-854c-7908c4e1a3c7/w:1024/p:16x9/EN-20261117-111309-111505-CS.jpg",
@@ -2148,7 +2138,7 @@
         },
         {
           "en": "'Weirdo specialist' is the new Bond: Papers react to Robert Pattinson as 007",
-          "zh": "“怪胎专家”是新一代邦德：媒体对罗伯特·帕丁森饰演007反应热烈",
+          "zh": "“怪咖专家”是新任邦德：报纸对罗伯特·帕丁森饰演007做出反应",
           "url": "https://www.france24.com/en/tv-shows/press-review/20261117-weirdo-specialist-is-the-new-bond-papers-react-to-robert-pattinson-as-007",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/d37770b6-e276-11f1-9b0e-ff16da94d1fe/w:1024/p:16x9/capture-daf1d395.jpg",
@@ -2156,7 +2146,7 @@
         },
         {
           "en": "French presidential debate: 'Le Pen exposed xenophobic and authoritarian aspects of her policies'",
-          "zh": "法国总统辩论：“勒庞政策中的排外与独裁倾向被揭露”",
+          "zh": "法国总统辩论：“勒庞政策中的排外与威权倾向被揭露”",
           "url": "https://www.france24.com/en/french-presidential-debate-le-pen-exposed-xenophobic-and-authoritarian-aspects-of-her-policies",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/810c8592-e270-11f1-a2e0-5f54d898a954/w:1024/p:16x9/EN-20261117-081059-081720-CS.jpg",
@@ -2164,7 +2154,7 @@
         },
         {
           "en": "Well-known journalist who reported death threats is gunned down on street in Costa Rica - CBS News",
-          "zh": "哥斯达黎加一名曾报告收到死亡威胁的知名记者在街头遭枪杀 - CBS新闻",
+          "zh": "曾报道过死亡威胁的知名记者在哥斯达黎加街头遭枪杀 - CBS新闻",
           "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPRFE2MExfRjByYWFLNDhKUkJyZEstenJKbDFkRml5MzlYenBBeVlQSEwyc1RlMUZnQS1UV1lzd2tZNmNqZDRMZGR0TDVja2c5U0N2bXhVTUwyMWloaXY3OG5vbnpsMjJfdVIxUWZldTlucHI0SzJ4dlZ6OFRHQmJfMnpJbEVHN1FLWHNkWnQwbTAyNHZYa056VUx3MENtcTg?oc=5",
           "source": "Google News",
           "image": "",
@@ -2172,7 +2162,7 @@
         },
         {
           "en": "Vessels on fire after naval mine hit in Hormuz Strait, Iran says",
-          "zh": "伊朗称霍尔木兹海峡遭遇水雷袭击后多艘船只起火",
+          "zh": "伊朗称：在霍尔木兹海峡遭遇水雷袭击后，有船只起火",
           "url": "https://www.aljazeera.com/video/newsfeed/2026/11/17/vessels-on-fire-after-naval-mine-hit-in-hormuz-strait-iran-says?traffic_source=rss",
           "source": "Al Jazeera",
           "image": "",
@@ -2180,7 +2170,7 @@
         },
         {
           "en": "Hi-tech Shenzhen takes centre stage as Xi sends ‘Chinamaxxing’ message at Apec summit",
-          "zh": "习近平在APEC峰会释放“中国制造极限化”信号，高科技深圳成为焦点",
+          "zh": "习近平在APEC峰会上释放“中国式现代化”信号，高科技深圳成为焦点",
           "url": "https://www.theguardian.com/world/2026/nov/17/hi-tech-shenzhen-chinamaxxing-xi-apec-summit",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/18cb31b71bd7f2b4e57a7b7b8a647067ac239636/537_0_4988_3989/master/4988.jpg?width=1200&quality=85&auto=format&fit=max&s=ed6d728039eaaf2cd4498d9ce9ba4655",
@@ -2188,7 +2178,7 @@
         },
         {
           "en": "Nvidia partner Megaspeed being investigated by US government over chip exports",
-          "zh": "英伟达合作伙伴Megaspeed因芯片出口问题接受美国政府调查",
+          "zh": "英伟达合作伙伴Megaspeed因芯片出口问题正接受美国政府调查",
           "url": "https://www.bbc.co.uk/news/articles/cmn504nq5033o",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/a77e/live/31ebc580-e267-11f1-900c-895604014268.jpg",
@@ -2196,7 +2186,7 @@
         },
         {
           "en": "Is Pakistan about to carve out new provinces? Inside the controversial plan",
-          "zh": "巴基斯坦是否即将划分新省？揭秘这项充满争议的计划",
+          "zh": "巴基斯坦是否即将划分新省份？揭秘这项备受争议的计划",
           "url": "https://www.aljazeera.com/news/2026/11/17/is-pakistan-about-to-carve-out-new-provinces-inside-the-controversial-plan?traffic_source=rss",
           "source": "Al Jazeera",
           "image": "",
@@ -2204,7 +2194,7 @@
         },
         {
           "en": "COP31: Corporate interests gain access to govt delegations participating in climate negotiations",
-          "zh": "COP31：企业利益方获准加入参与气候谈判的政府代表团",
+          "zh": "COP31：企业利益集团获得进入参与气候谈判的政府代表团的渠道",
           "url": "https://www.france24.com/en/cop31-corporate-interests-gain-access-to-govt-delegations-participating-in-climate-negotiations",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/347d5332-e275-11f1-a120-ff16da94d1fe/w:1024/p:16x9/EN-20261116-081001-081659-CS.jpg",
@@ -2220,47 +2210,23 @@
         },
         {
           "en": "Bangladesh police clash with garment workers amid protests over wages",
-          "zh": "孟加拉国警察与因薪资问题举行抗议的服装厂工人发生冲突",
+          "zh": "孟加拉国警察与因薪资抗议活动的服装工人发生冲突",
           "url": "https://www.aljazeera.com/news/2026/11/17/bangladesh-garment-workers-clash-with-police-in-fresh-protests-over-wages?traffic_source=rss",
           "source": "Al Jazeera",
           "image": "",
           "section": "international"
         },
         {
-          "en": "Ukraine updates: Key bridges in Kyiv, Crimea hit in strikes - DW.com",
-          "zh": "乌克兰最新进展：德国之声报道基辅和克里米亚的主要桥梁在袭击中受损",
-          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPSmZDQ1dNVFQzTEtBSVlmMmNCdzBuaGNjVzlfbGlud0FGMTE4S0VETF9FVm1vc2xsSWtKanVZU0wycVhPeVZSU242STBWLWNzTVV2N1dFQW1HQ2UzdVJtbVVIcDhrVHJuOExISHA3cTFoVGplbU5FMkN2d1E2dzNPakxfUHd4QWdqZVJsWnBWZF85TDhYNUhTeQ?oc=5",
-          "source": "Google News",
-          "image": "",
-          "section": "international"
-        },
-        {
           "en": "Hundreds arrested in anti-Trump protests in Philippines amid anger over Iran war and AI pact",
-          "zh": "因对伊朗战争和人工智能协议感到愤怒，菲律宾爆发反特朗普抗议活动，数百人被捕",
+          "zh": "因对伊朗战争和AI协议感到愤怒，菲律宾爆发反特朗普抗议活动导致数百人被捕",
           "url": "https://www.theguardian.com/world/2026/nov/17/hundreds-arrested-manila-anti-trump-protests-philippines",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/75ec4cfc6a89c1babfe1389687fbafa71b3713af/333_0_3333_2666/master/3333.jpg?width=1200&quality=85&auto=format&fit=max&s=d705d30eaf39229da515c775b9c5324e",
           "section": "international"
         },
         {
-          "en": "Tracking China’s War of Words Against Japan - The New York Times",
-          "zh": "追踪中国针对日本的言论交锋 - 《纽约时报》",
-          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOV0FLYnFpRHlhX2Zab2lSTHFfM2pWcEVHUW8wSXIxaXNxZFpOQjdlNEg3OHViMTEyWFdoZW40NzRHWFcwTzJhSWVRMmlBeWtpZGJTU1pDY2R2QTlRWjBjaW9oUU9Bc3FUcGlzeTFiNHlEQ0NNd1Y5djdCTnJFWDJ3Y3hOQWE1U2J0SEJadzh3?oc=5",
-          "source": "Google News",
-          "image": "",
-          "section": "international"
-        },
-        {
-          "en": "Who is behind Habibi UK, an X account that targeted critics of Israel?",
-          "zh": "针对以色列批评者的 X 账号 Habibi UK 背后是谁？",
-          "url": "https://www.aljazeera.com/news/2026/11/17/who-is-behind-habibi-uk-an-x-account-that-targeted-critics-of-israel?traffic_source=rss",
-          "source": "Al Jazeera",
-          "image": "",
-          "section": "international"
-        },
-        {
           "en": "Third US aircraft carrier arrives in the Middle East as Iran targets Bahrain",
-          "zh": "第三艘美国航空母舰抵达中东，之际伊朗正针对巴林",
+          "zh": "在伊朗针对巴林的背景下，第三艘美国航空母舰抵达中东",
           "url": "https://www.france24.com/en/video/20261117-third-us-aircraft-carrier-arrives-in-the-middle-east-as-iran-targets-bahrain",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/9752e8aa-e270-11f1-b650-5f54d898a954/w:1024/p:16x9/EN-20261117-103832-104029-CS.jpg",
@@ -2268,7 +2234,7 @@
         },
         {
           "en": "Saudi Arabia replaces military commander after Yemen setbacks",
-          "zh": "也门战事受挫后，沙特阿拉伯更换军事指挥官",
+          "zh": "也门战事受挫，沙特阿拉伯更换军事指挥官",
           "url": "https://www.france24.com/en/video/20261117-saudi-arabia-replaces-military-commander-after-yemen-setbacks",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/e78c0f28-e26f-11f1-b18f-5f54d898a954/w:1024/p:16x9/EN-20261117-103642-103808-CS.jpg",
@@ -2283,16 +2249,8 @@
           "section": "international"
         },
         {
-          "en": "Fomula One champion Fernando Alonso to race at Dakar Rally 2027",
-          "zh": "一级方程式赛车冠军费尔南多·阿隆索将参加2027年达喀尔拉力赛",
-          "url": "https://www.aljazeera.com/sports/2026/11/17/fomula-one-champion-fernando-alonso-to-race-at-dakar-rally-2027?traffic_source=rss",
-          "source": "Al Jazeera",
-          "image": "",
-          "section": "international"
-        },
-        {
           "en": "5 European countries aim to send rejected asylum seekers to Rwanda",
-          "zh": "五个欧洲国家旨在将拒绝入境的寻求庇护者遣返回卢旺达",
+          "zh": "五个欧洲国家计划将拒绝庇护的寻求者遣返回卢旺达",
           "url": "https://www.france24.com/en/video/20261117-5-european-countries-aim-to-send-rejected-asylum-seekers-to-rwanda",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/c03fe188-e26f-11f1-b5ff-5f54d898a954/w:1024/p:16x9/EN-20261117-103334-103526-CS.jpg",
@@ -2304,6 +2262,14 @@
           "url": "https://www.france24.com/en/video/20261117-trump-arrives-in-philippines-to-kick-off-asia-trip",
           "source": "France 24",
           "image": "https://s.france24.com/media/display/3bcbaca8-e26e-11f1-a00c-5f54d898a954/w:1024/p:16x9/EN-20261117-101225-101519-CS.jpg",
+          "section": "international"
+        },
+        {
+          "en": "Melbourne Cup horse So You Are found dead in a waste facility, sparking an inquiry - CNN",
+          "zh": "墨尔本杯赛马 So You Are 在废弃设施中被发现死亡，引发调查 - CNN",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQd2pmT01zcW9OQ3RYQzU5S3pjd2ZYTUZHcGtGb0JuazlmSWFpOThOWEN0SXgtR0JRUUFFSUlSSlZJU3JnLUtRRVFYakJULWpsNy0xRmxTXzFabDd5STQzLVUwb0paaXBMamdBa21wNUdtcnVaMzlkejdFb3FYVVU0VXEzT1B2bEtCOGQ2TE1EYnk?oc=5",
+          "source": "Google News",
+          "image": "",
           "section": "international"
         },
         {
@@ -2323,32 +2289,8 @@
           "section": "international"
         },
         {
-          "en": "Candidates clash over cost of living in French presidential debate",
-          "zh": "法国总统辩论会上候选人就生活成本问题发生激烈交锋",
-          "url": "https://www.france24.com/en/video/20261117-candidates-clash-over-cost-of-living-in-french-presidential-debate",
-          "source": "France 24",
-          "image": "https://s.france24.com/media/display/b54e088a-e26b-11f1-9490-29048b396e03/w:1024/p:16x9/EN-20261117-101025-101155-CS.jpg",
-          "section": "international"
-        },
-        {
-          "en": "France's far-right presidential candidate Le Pen to set out pension plans",
-          "zh": "法国极右翼总统候选人勒庞将公布其养老金计划",
-          "url": "https://www.france24.com/en/video/20261117-france-s-far-right-presidential-candidate-le-pen-to-set-out-pension-plans",
-          "source": "France 24",
-          "image": "https://s.france24.com/media/display/fdabf3ea-e26a-11f1-8272-29048b396e03/w:1024/p:16x9/EN-20261117-100540-100947-CS.jpg",
-          "section": "international"
-        },
-        {
-          "en": "Russia receiving ‘dozens of missiles per month’ from North Korea, says Kyiv",
-          "zh": "基辅称俄罗斯每月从朝鲜接收“数十枚导弹”",
-          "url": "https://www.france24.com/en/video/20261117-russia-receiving-dozens-of-missiles-per-month-from-north-korea-says-kyiv",
-          "source": "France 24",
-          "image": "https://s.france24.com/media/display/724fc8f8-e26a-11f1-87a1-5f54d898a954/w:1024/p:16x9/EN-20261117-100403-100538-CS.jpg",
-          "section": "international"
-        },
-        {
           "en": "Ukraine strikes major Russian bridge with drones and missiles as aerial attacks escalate",
-          "zh": "随着空中袭击升级，乌克兰利用无人机和导弹袭击俄罗斯重要桥梁",
+          "zh": "随着空袭升级，乌克兰利用无人机和导弹袭击俄罗斯重要桥梁",
           "url": "https://www.npr.org/2026/11/17/g-s1-153946/russia-ukraine-war",
           "source": "NPR",
           "image": "",
@@ -2356,31 +2298,15 @@
         },
         {
           "en": "Trump to meet Chinese leader Xi Jinping and Russia's Vladimir Putin for joint summit",
-          "zh": "特朗普将与中国领导人习近平及俄罗斯总统普京举行联合峰会",
+          "zh": "特朗普将与中国领导人习近平及俄罗斯领导人弗拉基米尔·普京举行联合峰会",
           "url": "https://www.npr.org/2026/11/17/nx-s1-6042448/trump-to-meet-chinese-leader-xi-jinping-and-russias-vladimir-putin-for-joint-summit",
           "source": "NPR",
           "image": "",
           "section": "international"
         },
         {
-          "en": "China, Canada agree to further reduce tariffs at APEC summit in Shenzhen",
-          "zh": "中加两国在深圳举行的APEC峰会上同意进一步降低关税",
-          "url": "https://www.france24.com/en/tv-shows/business/20261117-china-canada-agree-to-further-reduce-tariffs-at-apec-summit-in-shenzhen",
-          "source": "France 24",
-          "image": "https://s.france24.com/media/display/36dae0c6-e267-11f1-b463-695cb59fade5/w:1024/p:16x9/capture-672c7708.jpg",
-          "section": "international"
-        },
-        {
-          "en": "Data leak exposes Deutsche Bank ties to Russian oligarchs, Epstein and Trump",
-          "zh": "数据泄露揭示德意志银行与俄罗斯寡头、爱泼斯坦及特朗普的关系",
-          "url": "https://www.france24.com/en/live-news/20261117-deutsche-bank-shares-drop-after-reports-on-mass-data-leak",
-          "source": "France 24",
-          "image": "https://s.france24.com/media/display/9d39c8d8-e26b-11f1-8a0d-f71d22e7fea9/w:1024/p:16x9/6597867e619fbec5d361e81bac59edcd25bf3247.jpg",
-          "section": "international"
-        },
-        {
           "en": "How stingless bees in Peru became the world’s first insects to be granted legal rights - CNN",
-          "zh": "CNN：秘鲁无刺蜂如何成为世界上首批被授予法律权利的昆虫",
+          "zh": "秘鲁无刺蜂如何成为全球首个被授予法律权利的昆虫 - CNN",
           "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9aaVQ1blNlUWJFTFNEZ2doSTZPMjlHaU1GYm03UlpRdGRTRWlMVnc2SDZxNzhLTTNoZ2QyVnoxRndkOVROVHllcXBDSTRBMUVEVzB1cndPeUVBbkZLVEJMV0lhQVg3Wm1RZm1la1ozaTc1dml1UUhCNQ?oc=5",
           "source": "Google News",
           "image": "",
@@ -2388,7 +2314,7 @@
         },
         {
           "en": "Indian woman gang-raped while pregnant in 2002 'heartbroken' after two perpetrators bailed",
-          "zh": "印度一名女子2002年遭怀孕期间轮奸，两名罪犯保释后她感到“心碎”",
+          "zh": "印度一名女性在2002年怀孕期间遭团伙强奸，两名犯罪嫌疑人获保释后其“心碎不已”",
           "url": "https://www.bbc.co.uk/news/articles/cr868wd2qg18o",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/9c83/live/904d30a0-e1a4-11f1-973a-a76c1b2f887a.jpg",
@@ -2396,79 +2322,31 @@
         },
         {
           "en": "Some Afghan women quietly defy Taliban bans, by opening secret schools and running small businesses - AP News",
-          "zh": "一些阿富汗女性通过开设秘密学校和经营小生意，在暗中违抗塔利班禁令 - 美联社",
+          "zh": "一些阿富汗女性通过开设秘密学校和经营小生意，在悄无声息中反抗塔利班禁令 - AP News",
           "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNMHVkakdlYlBTSDM3eVc5ejF2OThhNjJQYjZmZktVdEZJTG9VM1p1VS11aEJvcENCM3B1OVBqdU1kbmFYRWc5RFZGMXV1ZVkzZW01NzhIazRVRUQzOG51bXQxUDg0OTRLMHVFWF9ZSGthMUVkWlE0TUI1SDJUOWFUdkxJYVhaZU5lOUtnMHVHdm9SVWFyVC1rZ0UtTUY0RmZ4eFJ0aXdBQVNPazhsemhjbElaVXZoYjRvOFl3?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
         },
         {
-          "en": "AFCON 2027 qualifiers: Senegal beat Sudan and close in on qualification",
-          "zh": "2027年非洲国家杯预选赛：塞内加尔击败苏丹，接近获得资格",
-          "url": "https://www.france24.com/en/tv-shows/sports/20261117-2027-afcon-qualifiers-senegal-beat-sudan-and-close-qualification",
-          "source": "France 24",
-          "image": "https://s.france24.com/media/display/00d9550c-e230-11f1-8ffa-3f371022a770/w:1024/p:16x9/senegal-12.jpg",
-          "section": "international"
-        },
-        {
-          "en": "Is China Misreading the Moment? - Foreign Affairs",
-          "zh": "中国是否误判了时机？ - 《外交事务》",
-          "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5LNG13RmUxMngyOWF6alpiSjNGTU95VmlwTWVUcXdTd0Q3MUxtUUl3UTRqZFJTNzNLTUhBMDltampZcUpOc05WU0tETXgzM2FweFh5cTFJTTkzalBNeHp4TU9LbXd3WGZiODNCd3BHdTNhWFV6bjRB?oc=5",
-          "source": "Google News",
-          "image": "",
-          "section": "international"
-        },
-        {
-          "en": "Pope forgives person who nailed him in the eye with a rosary in Peru - AP News",
-          "zh": "教皇原谅在秘鲁用念珠刺伤其眼睛的人 - 美联社",
-          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQb1FSRnFfb1VQS3k5amVFWTJBVGpsbXl1VGM2SU55RThDUVJTS2d2YVUza3hMc0M4OFAtQml1OXh3bkNGSWpGZzNuY014bG5UMjNtT3lpZ3E4U0FSeDVueFpfbjk1d095S3dOdk0zZWJQRDlGb29aQ1M5S25tNmgxZ2ZrU0Y4akYtUUM1RjFxeHg?oc=5",
-          "source": "Google News",
-          "image": "",
-          "section": "international"
-        },
-        {
           "en": "‘Line their own coffers’: independent MPs lambast Labor’s last-minute changes to election funding laws",
-          "zh": "“往自己口袋里塞钱”：独立议员抨击工党对选举资金法的最后时刻修改",
+          "zh": "“填满他们自己的金库”：独立议员严厉抨击工党对选举资金法的最后时刻修改",
           "url": "https://www.theguardian.com/australia-news/2026/nov/17/line-their-own-coffers-independent-mps-lambast-labors-last-minute-changes-to-election-funding-laws",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/a96c54d2157d7d99b1d0f9e10b3de8605acc182b/533_0_5333_4266/master/5333.jpg?width=1200&quality=85&auto=format&fit=max&s=18eb830ced185c00c7937317cc767cdb",
           "section": "international"
         },
         {
-          "en": "South Korea cheating scandal: Are AI smart glasses a threat to exams? - Al Jazeera",
-          "zh": "韩国作弊丑闻：AI智能眼镜会成为考试威胁吗？ - 半岛电视台",
-          "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOUTg0M1FVWGpFbFJWb1phajZkN0lva3k2TW5zZXRhbWZEZlJ5V2VsNXFjQm9PRTl1SjBxcDM4ZlJlc0FQbkZfc0dNdEFqUTkzeWVLZTMtVkl4LUhLNzNFOWhuR3BUMHJfVkZ2eEtJd2xiOG1SU1VSdlExbFZSZEZOQm13NDNNMm5WU0d2UFRxREN2ZWdJdndZdGtyb1MwbzhnYVZDZjJGcjV0R1FkOVHSAbMBQVVfeXFMT3ZaU0Ixc0RZd3FCM3A4ZXM4SzU0STRCenVIdVJmTy1CWXF5ZVZsTWZGbU5Nc1BwaFZlekxLRXF3LUo5YVhwY28wbDViQ09uQ2FjOFpXdDZrYUFxaTk1c05rck9yRzBXQklZOEJBSTAzd0F3N3ZIc1ZuSWJyMl8zWG9reTFjTUE0OV8wN2FReTVxVndnbTNQb0RteHhhdmd1Q1ExU05BR0JmZHpFckI3Y1BYNHM?oc=5",
-          "source": "Google News",
-          "image": "",
-          "section": "international"
-        },
-        {
           "en": "South Korea will suspend all aircraft operation for 35 minutes and markets will open late. Here’s why - CNBC",
-          "zh": "韩国将暂停所有航班运行35分钟且市场将延迟开盘。原因如下 - CNBC",
+          "zh": "韩国将暂停所有飞行作业35分钟，市场将延迟开市。原因如下 - CNBC",
           "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQajhEWFMwa0VteUQtN01OQXdBUjFHd2dGMzhaajBTNnlSa2J1cWNsbEowRGlQWDNWWHdJUmgwU1pWajlqWHZWVURnTUxzbjkxMUpGWU9fMTNwVElCR1VITHBfbjZ1UWxkY0NVTS16dm80V09QUkNYR2o1OVBBbjJVbWl6d3jSAYoBQVVfeXFMUFI3MDMwcnlPUVpNanMyRU9DdFM1NmtFczZRTkFDZXZlQXpUM3ZxWTE1VTRGTkwydGw5SEtqS2tsejg4NW5UaGJNb0VXbDZKbVNvWm5WYjlfSjhqaDlkUXk2Z21EVkxOMXlRY3R6aFEyNl9ld0NBd1psVkZkNjM5WmlOcjlTMkQ5dmZB?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
         },
         {
-          "en": "Nigerians among 12 suspects arrested in $4.5m Canada luxury car theft syndicate",
-          "zh": "12名涉案人员被捕，其中包括尼日利亚人，涉及一起价值450万美元的加拿大豪车盗窃团伙案",
-          "url": "https://www.bbc.co.uk/news/articles/cm5y1wr1535ko",
-          "source": "BBC",
-          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/e5db/live/3bffede0-e252-11f1-876d-1dfc6cf3b709.jpg",
-          "section": "international"
-        },
-        {
-          "en": "Japan sends up jets after alleged Russian incursion of its airspace",
-          "zh": "俄罗斯涉嫌侵入日本领空，日本派遣战机升空应对",
-          "url": "https://www.bbc.co.uk/news/articles/c60evw20qe47o",
-          "source": "BBC",
-          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/af8a/live/92244d70-e25b-11f1-8bed-2b9fd907b22d.jpg",
-          "section": "international"
-        },
-        {
           "en": "Japan scrambles fighters after suspected Russian military planes enter airspace - The Japan Times",
-          "zh": "日本疑似发现俄罗斯军机进入领空后紧急出动战斗机 - 《日本时报》",
+          "zh": "疑似俄罗斯军机进入领空，日本紧急出动战斗机拦截 - The Japan Times",
           "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQYmtCLVRFdzBjenpMLTgyYlNERFZYUHRJdVJxZ1FLcjg0OW5STExmTUtwMkppRU5lY1UycnJHV01jXzBCSWdVOFdpbURCYlNzRWtzeG1KT2JkMEgzbkVxX3cxN0V5bmJ4TUZJbGV0eUxvNTRDNUdEZDJ0YkdLb01ubTBSMDI1UUJGNmh2MFJmNzJnTDVmQWc?oc=5",
           "source": "Google News",
           "image": "",
@@ -2476,7 +2354,7 @@
         },
         {
           "en": "India has been named a ‘destination of the year’ for 2027 – here are insiders’ tips on travelling beyond the tropes",
-          "zh": "印度被评为“2027年度目的地”——以下是避开常规路线的业内旅行建议",
+          "zh": "印度被评为2027年“年度目的地”——以下是避开常规路线的业内旅行建议",
           "url": "https://www.theguardian.com/world/2026/nov/16/is-is-india-travel-boom-travel-and-leisure-women",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/4cdd84133510738974db495a193fc868b59b2361/540_0_4327_3461/master/4327.jpg?width=1200&quality=85&auto=format&fit=max&s=13b5f5a75084a4469af2c2a0171a206e",
@@ -2491,32 +2369,40 @@
           "section": "international"
         },
         {
-          "en": "Live: France braces for new day of protests as unions call for nationwide strike",
-          "zh": "现场直播：法国工会呼吁全国罢工，准备迎接新一轮抗议活动",
-          "url": "https://www.france24.com/en/france/20261117-live-france-braces-for-new-day-protests-unions-call-nationwide-strike",
-          "source": "France 24",
-          "image": "https://s.france24.com/media/display/a1081aa0-e252-11f1-b1a9-695cb59fade5/w:1024/p:16x9/000-D6JM7MR.jpg",
-          "section": "international"
-        },
-        {
           "en": "Body of Melbourne Cup horse found dumped in Sydney skip",
-          "zh": "一匹墨尔本杯赛马尸体在悉尼垃圾箱中被发现",
+          "zh": "墨尔本杯赛马尸体在悉尼垃圾箱内被发现",
           "url": "https://www.bbc.co.uk/news/articles/ck1ewl2zjqgzo",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/632b/live/b9ed96e0-e251-11f1-876d-1dfc6cf3b709.jpg",
           "section": "international"
         },
         {
+          "en": "China and Canada expand tariff relief while Ottawa-Washington relations are strained - AP News",
+          "zh": "在渥太华与华盛顿关系紧张之际，中国与加拿大扩大关税减免 - 美联社",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPOFVFVjI2cU1tdkxwM0ZqcER1eGJfcndIUmt3M1MtZll1X0JKRmlmQno2XzJjQnlYMXZLcVZMWVBXS2xjT3Y5MElNSXIzV1g1RlItV3BTR1k0SHg4dGR6aWRDVVRYWHlnalNRWkpBNmk2d2ZUTlhITE5YVEJvVDZaa2RpS1E3b2F1MkJ3X2JNdU8?oc=5",
+          "source": "Google News",
+          "image": "",
+          "section": "international"
+        },
+        {
           "en": "Inside the Chinese 'AI wonderland' where Xi will host Trump",
-          "zh": "走进中国“人工智能仙境”，习近平将在其间接待特朗普",
+          "zh": "探访中国“人工智能仙境”，习近平将在其接待特朗普",
           "url": "https://www.bbc.co.uk/news/videos/ckjwjl6ywgn9o",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/2905/live/37886bc0-e1df-11f1-99a1-253766e7ad8b.jpg",
           "section": "international"
         },
         {
+          "en": "What to know about Israel's Palestinian citizens, whose political clout grew after the elections - AP News",
+          "zh": "关于以色列巴勒斯坦籍公民你需要了解的事实，其政治影响力在选举后有所提升 - 美联社",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOdVRZWWlRXzNNV3drWkw5S05Cb3l4bDUyYS1NQS1JemhTcXJsaVhsNWdGN2U2eVkxdUpvUHlVVzNtLTRRVHhzOXpCZ3BLVkl6V1N0NFZBRFg3LTFobm1VY2pQNzBqQk1aOXJCampuU2JuNFVjR1NwQXdrSXpCeHBuRVlLQU1QNUgyMFp0SXFaYjFVMFI3N25wYllCRWZhakpqbGwwUWJoR3BsSzNhM2tCNU9BeUFWUGxxU251Mg?oc=5",
+          "source": "Google News",
+          "image": "",
+          "section": "international"
+        },
+        {
           "en": "European-made pesticides named in 1,605 poisoning reports in Brazil last year",
-          "zh": "去年巴西1605份中毒报告中提及欧洲制造的农药",
+          "zh": "去年巴西 1,605 份中毒报告中提及欧洲制造的农药",
           "url": "https://www.theguardian.com/environment/2026/nov/17/european-made-pesticides-named-1605-brazil-poisoning-reports",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/bb1079d7b1b05f3a9af68af148e1b5ef166362d5/584_0_4903_3922/master/4903.jpg?width=1200&quality=85&auto=format&fit=max&s=eda43a93133416061307f9758513ca0d",
@@ -2524,7 +2410,7 @@
         },
         {
           "en": "Ukraine accuses Russia of targeting rescue operation after 'double-tap' strike kills 72",
-          "zh": "乌克兰指责俄罗斯在“双重打击”造成72人死亡后针对救援行动",
+          "zh": "乌克兰指责俄罗斯在“双重打击”导致 72 人死亡后针对救援行动",
           "url": "https://www.bbc.co.uk/news/articles/c30rk8x5g80qo",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/ba46/live/5efa38d0-df84-11f1-a701-fddedf244c16.png",
@@ -2532,7 +2418,7 @@
         },
         {
           "en": "The Death of ‘Keep 1.5 Alive’ - The New York Times",
-          "zh": "“将升温控制在1.5摄氏度”目标的终结 - 《纽约时报》",
+          "zh": "“将升温控制在 1.5 度”目标的终结 - 《纽约时报》",
           "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQeF9uWTE0ZUJrMnB5Z0E1cXlkM1NPTkUxV1E3YTB0YjN6TnQ0aTdUYnNsSXJhbVc4Mnkya0hxQV9XMTFOTmpSdUEzMDREaUJKV0JhMkdMbHlrSTZLTzZFZzQ4cUJhd04ySkFjUElNSWs2TzI3QWFpcEt2M056OURRR0ozZkhqamdzVlc0SVJ3?oc=5",
           "source": "Google News",
           "image": "",
@@ -2540,23 +2426,15 @@
         },
         {
           "en": "EXCLUSIVE: US presses UN agency over Taiwan flight restrictions, China hits back - Reuters",
-          "zh": "独家：美国就台湾飞行限制问题向联合国机构施压，中国予以回击 - 路透社",
+          "zh": "独家：美国就台湾飞行限制问题向联合国机构施压，中国予以反击 - 路透社",
           "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOb01SbktQd3U1ekI4M0szX3R3V1dweUM3SUdLTVQ3LXRzSE5sWEU0UDk3emRBQzVmLUxwX1JkZHNnSHFZTEUtNElQVlc3elkyMGNJYnc3eFpaT240NENvX3dpTjZaT0FUZk9FeC1xR0FYaHRqNzJERFh5M3BGWERQdDBfZzlaWjZNMERfYTRzRDBsNjB4VjVxU1RYb2tZWU9ZTVUyVFViR2tBbHhPMXcwN01nYkwwNVFaQkt4NXpuNl9wR0toSk1hX2RIYw?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
         },
         {
-          "en": "What to know about Israel's Palestinian citizens, whose political clout grew after the elections - AP News",
-          "zh": "关于以色列巴勒斯坦公民的须知：选举后其政治影响力有所增强 - 美联社",
-          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOdVRZWWlRXzNNV3drWkw5S05Cb3l4bDUyYS1NQS1JemhTcXJsaVhsNWdGN2U2eVkxdUpvUHlVVzNtLTRRVHhzOXpCZ3BLVkl6V1N0NFZBRFg3LTFobm1VY2pQNzBqQk1aOXJCampuU2JuNFVjR1NwQXdrSXpCeHBuRVlLQU1QNUgyMFp0SXFaYjFVMFI3N25wYllCRWZhakpqbGwwUWJoR3BsSzNhM2tCNU9BeUFWUGxxU251Mg?oc=5",
-          "source": "Google News",
-          "image": "",
-          "section": "international"
-        },
-        {
           "en": "Trump’s pick for Navy secretary likely to face Iran war questions during confirmation hearing - AP News",
-          "zh": "特朗普提名的海军部长在确认听证会上可能面临有关伊朗战争的问题 - 美联社",
+          "zh": "特朗普提名的海军部长在确认听证会上可能面临关于伊朗战争的质询 - 美联社",
           "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNbllfOXUwUTRNV0hzUWFSeFRyLWZUSHQzaldSWWlxMVRyOXh1c3BCNm1Pa0Y2X0FJTWYzWXRUZ2xHX0ljTndqYmlTWFBFZ2ZpMmdXMWFPWDNXSDB0WFdrRGczUnJyT3BOVUwyeU9hSzhtUVVTNDdhLUlOaWVmcUJLWVpUc1IyUmg5VFNFTWk3TDRyZnVmbVVFbUN6LWc4cXQzUmZjVQ?oc=5",
           "source": "Google News",
           "image": "",
@@ -2564,7 +2442,7 @@
         },
         {
           "en": "Asylum seekers on final ‘one in, one out’ UK-France flight feel they are being ‘punished’",
-          "zh": "在英法之间最后的“一进一出”航班上的寻求庇护者感到正受到“惩罚”",
+          "zh": "英国与法国之间最后一班“一进一出”航班上的寻求庇护者感到自己正在“受罚”",
           "url": "https://www.theguardian.com/uk-news/2026/nov/17/asylum-seekers-one-in-one-out-uk-france-smugglers",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/dac37f478ef7d47640a3bc5acc16af3f65584177/1000_0_5000_4000/master/5000.jpg?width=1200&quality=85&auto=format&fit=max&s=86d660e1f5fa7613d61ac99d005c909c",
@@ -2588,7 +2466,7 @@
         },
         {
           "en": "Top Trump aides to meet with Europeans, Ukrainians on peace plan - Axios",
-          "zh": "Axios：特朗普高级助手将与欧洲人及乌克兰人会面商讨和平计划",
+          "zh": "特朗普的高级助手将与欧洲人及乌克兰人会面商讨和平计划 - Axios",
           "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPMWNEbnVkS3ROcjFHa3lVNFRvQ29IWk1TaUpFUkl6Y2hYaEpBOUprcm5nRGtkbFptS2VGVVo2X0dacDljcHRIMnV5bmVQNjVjcTE5NC1NbDl6NUl6U2RIRlNlakNNNDdsMnd1QTdxMFRwcmg0ejZWQ1hpbVFIN2pIdC1hV2VtazQ1Sk90c2d3?oc=5",
           "source": "Google News",
           "image": "",
@@ -2596,7 +2474,7 @@
         },
         {
           "en": "Trump says Alaska voters chose the wrong Dan Sullivan. What does the data show?",
-          "zh": "特朗普称阿拉斯加选民选错了丹·沙利文。数据表明了什么？",
+          "zh": "特朗普称阿拉斯加选民选错了“丹·沙利文”。数据表明了什么？",
           "url": "https://www.bbc.co.uk/news/articles/cxnv4jlr269eo",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/8eff/live/0fbc83f0-e11d-11f1-93e1-3b657b665bcf.jpg",
@@ -2604,7 +2482,7 @@
         },
         {
           "en": "Rio Tinto agrees to pay US$250m to begin repairing ‘devastation’ left by Panguna mine",
-          "zh": "力拓公司同意支付2.5亿美元，开始修复庞古纳矿场留下的“破坏”",
+          "zh": "力拓集团同意支付2.5亿美元，以开始修复庞古纳矿场留下的“破坏”",
           "url": "https://www.theguardian.com/world/2026/nov/17/rio-tinto-250m-panguna-mine-clean-up-bougainville-png",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/8b6e5cb5abf829af76f5ebcfe3c864c525dd5235/500_0_5000_4000/master/5000.jpg?width=1200&quality=85&auto=format&fit=max&s=3f50df09a317aa88ccdc9d333e1f80a8",
@@ -2612,7 +2490,7 @@
         },
         {
           "en": "Jared Kushner’s $500M Trump Hotel Dream Officially Crumbles - The Daily Beast",
-          "zh": "《每日野兽》：贾里德·库什纳价值5亿美元的特朗普酒店梦想正式破灭",
+          "zh": "贾里德·库什纳价值5亿美元的特朗普酒店梦正式破灭 - 《每日野兽》",
           "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNY2RyYzk1RkhFaU04VWo5LUFOZGNFR19JVm8yR3otT3ZKSUMxR0htMlluR1kwQWJ1VVZTR1BjNWNzamx5RDRJUWxTekR5cmRHU0Vma002SkMwb09XQXZTRDJsSG4wcFJRcnNtekNtelZEdXliMGVsMVFLbUlIZmlHZU1MbFVqaVhGekJsSEx6ZXBJQ1gtZDhqQTdxUmpGdw?oc=5",
           "source": "Google News",
           "image": "",
@@ -2620,7 +2498,7 @@
         },
         {
           "en": "Imran Khan seeks urgent medical care fearing he 'may not return alive'",
-          "zh": "伊姆兰·汗因担心“可能无法活着回来”而寻求紧急医疗救治",
+          "zh": "伊姆兰·汗担心自己“可能无法活着回来”寻求紧急医疗救治",
           "url": "https://www.bbc.co.uk/news/articles/cr894xq5yeyko",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/34cb/live/06da8400-e224-11f1-91de-bf87f3de9484.jpg",
@@ -2628,7 +2506,7 @@
         },
         {
           "en": "Five EU states announce plans for immigration ‘return hubs’ in Rwanda",
-          "zh": "五个欧盟国家宣布在卢旺达建立移民“回流中心”的计划",
+          "zh": "五个欧盟国家宣布在卢旺达建立移民“遣返中心”的计划",
           "url": "https://www.theguardian.com/world/2026/nov/16/eu-states-immigration-return-hubs-rwanda",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/d668e44ea9f6f3fb2d88cfee76bb772cccada10f/456_0_4053_3243/master/4053.jpg?width=1200&quality=85&auto=format&fit=max&s=7839a06430930a2378822738556852d7",
@@ -2636,7 +2514,7 @@
         },
         {
           "en": "Paraguay’s ousted president moved to military prison after reports of gym and suite in custody - AP News",
-          "zh": "美联社：在有报告称其在押期间享有健身房和套房后，巴拉圭被罢免的前总统被移送至军用监狱",
+          "zh": "巴拉圭被罢免总统在被曝看守期间享有健身房和套房后被移送至军用监狱 - 美联社",
           "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPVXkwZmZJNmF0OHZTVnFYa014aXhTZTREaTNqYkpkVXVuNzNuakk4QnJVb2pHbElIRWQ1dkFWeHNsRW4tZVBZTmNqWW1kYmhxWXpwdDlYNUZPSF92NEZqSWR0dzVWZlhWNlVYNHVqbGpWSmNmMmpZLV9YZFdhZ3pIZGUwVGJxYWthenhpaEpUT24zNzlFR1F0Undoc1pwTG8?oc=5",
           "source": "Google News",
           "image": "",
@@ -2644,7 +2522,7 @@
         },
         {
           "en": "BBC launches programme for children forced from school by bandits and poverty in West Africa",
-          "zh": "BBC为因土匪和贫困被迫辍学的西非儿童启动项目",
+          "zh": "BBC为西非因匪徒和贫困而被迫辍学的儿童推出节目",
           "url": "https://www.bbc.co.uk/news/articles/c3pw450ndyjqo",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/f550/live/94dd3480-e1ae-11f1-b0a4-450a350911f4.jpg",
@@ -2652,7 +2530,7 @@
         },
         {
           "en": "Africa: Trading in yuan",
-          "zh": "非洲：人民币贸易",
+          "zh": "非洲：使用人民币进行贸易",
           "url": "https://www.npr.org/2026/11/16/nx-s1-6035000/africa-trading-in-yuan",
           "source": "NPR",
           "image": "",
@@ -2660,7 +2538,7 @@
         },
         {
           "en": "Taking Korea's toughest exam from behind bars",
-          "zh": "在监狱中参加韩国最难的考试",
+          "zh": "在铁窗后参加韩国最难的考试",
           "url": "https://www.bbc.co.uk/news/articles/cmewvxg855yno",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/a2ce/live/66eb6250-e1ad-11f1-8ee3-23d0d09d2796.png",
@@ -2675,16 +2553,8 @@
           "section": "international"
         },
         {
-          "en": "After claiming election stolen, Netanyahu allies face their own meddling allegations - The Washington Post",
-          "zh": "在声称选举被窃取后，内塔尼亚胡的盟友们面临自身的干预指控 - 《华盛顿邮报》",
-          "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNdktHdXhWbTM3UkltdmYzS3UtR1IydUwtRi1jWXFYRkJsekx0aC1vbWJXT19yczROcDdqZWRtNExQeGo4UGI4eFllOHA2SmpRd052TFBRMmZFZTJ6UjBfcmt4VmxfTnFud09EaFZNUlR6T3c0ZXVqWmpjNTluR3YzbGNuSnQtcHNYeVlfT1dPT19PX3c1eGhWQkJOc25Sai1YaFE2c2prZjZUc1NjZG40VE5fUHFDcC00eWxVQmNlYkd4a0NwdFk3ZjROdHU?oc=5",
-          "source": "Google News",
-          "image": "",
-          "section": "international"
-        },
-        {
           "en": "Brexit diminished us, Burnham says as he tees up closer EU ties - POLITICO.eu",
-          "zh": "伯纳姆为加强与欧盟关系做准备，称脱欧削弱了我们 - POLITICO.eu",
+          "zh": "伯纳姆旨在加强与欧盟关系，称脱欧削弱了我们 - POLITICO.eu",
           "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQeDk0RllKODNYcWtIaDhfZlltaVYwd2toNEtDaC1sY1FrMHBaOUJaWE0wdU1xSVA3NEhTTF9zWjZ2SkYzY0xGWUJRUUwxU1psY3lWQm1XN28zR2lNOU1GcWUtZXRmNjJlUVZoNDYwbW1QSlhRTEJoczBXR0szc2lUd0RpSUdLcVlkdm5oWHkzMmZ3LTRyRU1IdURaSmx0ZlcyUjQ1MnJfZnlLNWt5TFEtai1R?oc=5",
           "source": "Google News",
           "image": "",
@@ -2692,7 +2562,7 @@
         },
         {
           "en": "French troops secretly deployed inside Ukraine as ex-NATO chief praises Macron's 'guts' - Fox News",
-          "zh": "前北约负责人赞扬马克龙“有胆识”，法军秘密部署至乌克兰境内 - 福克斯新闻",
+          "zh": "前北约负责人称赞马克龙“有胆识”，法军秘密部署至乌克兰境内 - Fox News",
           "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOZkstQjduVHlCOU1PcC1Say1wOVRxd2I5RmhnV2ZhTkNqdmpHMWFuRU5JbHhUWlR2UzRRb2RWUE12am9iaUlrUTJUNy1QQXd4amxycHdXR2RQUV9xVU8yaV9haURXSkhDeThIOEFtM3lyZ3BFVkpGYUg2Uy1acVhQMllaZGMya3ctajVqc1FKSUxKbWpBOFVCb01EdzJOUXBWM1NWRlpud9IBrAFBVV95cUxNaV8xMzAweXgzcVZsaFhvZWtxQW14R2NvbmVhWFZmQ2UwZUVDUTRmVkVtTC0wVjY0cXZKZkZhc2lJQmlyYkFrNjZFNk04MXcxeWNOQnpIdkZQWWVlUzdSbW9PaTZMLXJvamtud3ZNaWotVFRZREZHTU1tNGkxT1lvUXV2eXh1UHBlSFRSbC1yZUhNWlRiWThqQnpZVHF5ekZBek93aUhMRDE0LXpQ?oc=5",
           "source": "Google News",
           "image": "",
@@ -2700,7 +2570,7 @@
         },
         {
           "en": "Children dropping out of school: What can politicians do about it? - BBC",
-          "zh": "儿童辍学问题：政客们能做些什么？ - BBC",
+          "zh": "儿童辍学问题：政界人士可以做些什么？ - BBC",
           "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9RLTRWS0UtRnpRLW9fTXZIcGd2bGtSRkRLa1NYZGFQRkYzaGZoSEJqZTJjOU53eGxWMzcwdUFYaVJuZDA0aHlIenlEMTBsSmhCbEhtMXU0ZlB3VjQ?oc=5",
           "source": "Google News",
           "image": "",
@@ -2708,8 +2578,16 @@
         },
         {
           "en": "North Korea's Kim inspects Samjiyon tourism zone amid speculation over China trip - Reuters",
-          "zh": "因访华传闻，朝鲜金正恩视察三地旅游区 - 路透社",
+          "zh": "中方访华传闻不断，朝鲜金正恩视察三地旅游区 - 路透社",
           "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNWVIwQmdMSUg3WG5LNS1oa0VlMjFNU1dTTG1oT3B6ZllCeHRUS2lDeXpneDduNVYxUHY2dk8yZzBJWEp5dlFpaUNLS0FjaVhHa1hzVE9EN3ByTWkwS3BDSFVqN3hQSkc3ajA2aHJheGVna2JqUVgtYkJOZnhfdVQtTlpYZ2l0czBEWVdCdTAzRF9SLUJKNkUteWFKLWxZVUxsa0JSUVJhX3lkUW43ekN1MVh3UWpocE0?oc=5",
+          "source": "Google News",
+          "image": "",
+          "section": "international"
+        },
+        {
+          "en": "2 key bridges in Kyiv struck in massive Russian ballistic missile attack across Ukraine - The Kyiv Independent",
+          "zh": "俄罗斯对全乌克兰发动大规模弹道导弹袭击，基辅两座关键桥梁中弹 - 《基辅独立报》",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNN19iSlJyallMZlZCWmp3NlFWRWlYa3FIcVVZM2hPMzU2MVI0TnVlZ0hSZFI2N2RZLUQySGdpTmJlaG13X1FpZjU3enhtT2p6RkNuVjN1SllNRzZSYXBYcU9SbkwwOVdPLTRnamFubWVYX19JU2pCVXZLRkd1TVFSSnNRbEY1Q3ZFbnJEUlZSemp0a3RGc2o4UUhTb2dhRVk0ZWd1MF85VHk0d2IwZW93dThfQTA?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
@@ -2723,16 +2601,8 @@
           "section": "international"
         },
         {
-          "en": "Zelensky warns of imminent Russian attacks, 'extremely dangerous' North Korean missile development - The Kyiv Independent",
-          "zh": "泽连斯基警告俄罗斯袭击迫在眉睫，并称朝鲜导弹开发“极其危险” - 《基辅独立报》",
-          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNdzhfNmhQb1EzcVB3YWdhNVRmRDVHSzAxdnBqLWZpY0xYNVB6UnAxX005aU5wQnpzeGdrTmt3dDRwWWVkVGRyNkgzMTE0QjRjQzJId240RjdCQ3dOWGIxNzZFLVdxbW5majJiZ0xCa3I4amt3WHVKWDVQTk5fWWtfRFkyVFAyeWxTTlFwZVd1V2lyQU5PR1p4N2QtUHpxcDU3c3lZdnA1eTJXRkhOWVFlVGVXOHgwRDBkTllvMHFTLU5Gdw?oc=5",
-          "source": "Google News",
-          "image": "",
-          "section": "international"
-        },
-        {
           "en": "Third US aircraft carrier brings thousands more troops to Middle East",
-          "zh": "美国第三艘航母为中东增派数千名士兵",
+          "zh": "第三艘美国航母为中东带来数千名更多士兵",
           "url": "https://www.theguardian.com/us-news/2026/nov/16/aircraft-middle-east-trump-military",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/f8920d7c62e46771a24c52857d1e30a2b7a5ef2d/494_0_4935_3948/master/4935.jpg?width=1200&quality=85&auto=format&fit=max&s=e5f5afca13cfe9bfc8bbfadae70fd1db",
@@ -2740,7 +2610,7 @@
         },
         {
           "en": "Pope Leo hit by flying rosary while waving to crowds in Peru",
-          "zh": "教皇利奥在秘鲁向人群挥手时被飞过的念珠击中",
+          "zh": "教皇利奥在秘鲁向人群挥手时被飞来的念珠击中",
           "url": "https://www.bbc.co.uk/news/videos/ckpdwn23j5j8o",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/0861/live/f40b1380-e200-11f1-ba8d-01314a590f72.jpg",
@@ -2748,7 +2618,7 @@
         },
         {
           "en": "What’s waiting in Leo XIV’s in-tray back in Rome? - The Pillar",
-          "zh": "利奥十四世回到罗马后，办公桌里等待着什么？ - The Pillar",
+          "zh": "列奥十四世回到罗马后，案头正等待着什么？ - The Pillar",
           "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5OYWhQSWF0cm9jVTJfMHBlQm84WTlZR2w4OG55LW5Vdk5GZ1VIbG1TQ0VXck1Wd1RLSHlDQ1J5TjFiamJsU05PUUplWjN1eFBsd2pGZE5LeTBkY2FvdTk3a0tvZUpwQ1J5aDlMWGNOM013em5W?oc=5",
           "source": "Google News",
           "image": "",
@@ -2756,15 +2626,23 @@
         },
         {
           "en": "Europe Terror Alert: Americans Urged to Stay Vigilant in Broad Warning - Newsweek",
-          "zh": "欧洲恐怖袭击警报：美国人在广泛警告中被敦促保持警惕 - 《新闻周刊》",
+          "zh": "欧洲恐怖袭击警报：广泛警告中敦促美国人保持警惕 - Newsweek",
           "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOSFdQNXRBTVVQU0hsd2VBZGxnQk9UaVl1TVgyektBMzViREp3T18wMVlWTERacUJEQ0xtNGp1T3ZaZ3RadExmYkNWVDVwclBZb3d0eUtmWU5kdFp4dkd2OENHd2lvRkV3NWJkcmFMeUcyVTJzT3BuSmNyMVhaaDdFQ04xc093Z2hfYzEtVG51TjJ2UWIwcUpIWW1GY1kxTnRBLTFNRzJn?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
         },
         {
+          "en": "Pope Leo misses the catch as rosary from crowd hits his eye in Peru - Reuters",
+          "zh": "教皇列奥在秘鲁错失接球，人群投掷的念珠击中其眼睛 - 路透社",
+          "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPd2FLd3hqa2NhZzVyWkNPMXhZWlZ0NGZzcUJoNmlOOGlCSnNtVXlfbGgwdWxYb0hpbWVCc1dtLTc2Mmt0MzJTUjRkRVpqWWNBa1g1bV9JYmU1N19XSDk0eVk3elJOY0p6cWZnSVpMd2JSajNZRHR4THJ0MjZSVkFXM1NZdE1RVmhONGhHVUNidG5USmxNbUVBRHFHZnh2VWJ1NlIyVVp3?oc=5",
+          "source": "Google News",
+          "image": "",
+          "section": "international"
+        },
+        {
           "en": "Germany, EU states open talks on Rwanda deportation scheme - DW.com",
-          "zh": "德国与欧盟国家就向卢旺达驱逐计划展开谈判 - DW.com",
+          "zh": "德国与欧盟国家就向卢旺达遣返计划展开谈判 - DW.com",
           "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQVVBHUVNoRWJuS19ORGc1dmVPV0V2a3JEODV6cjl5clhZVkh1Q1AxYms0MkVQMlU4T3YxUkZ2QlV3Y3E2RkV4LVJwc2pnYi1wNjNYX2xqS3BSU1ZWT1R1UzhaRkU0SEdOaEJGRFRXc3RoWnc0aFNGREo2LUpVREJVVS02WTJKWF9lNEZ0VmtOUW01OFJRa2I4bUhoMF9rUdIBngFBVV95cUxQLXFfSzdfdXFvZGtNMWpURE01QWo5dS1Wc2x5Y2VSR3hQa0lma2pWYzlRLUpWa2dJSVZkSWN2ZVAyMGtIV1ZIZmM5U25MTVRDZzJna2NXQkExci0xTG1pbGxjaldXOTJ3Z0pNdEw3X3lKSndkTXFHNUFOLXdyaENyeTFuSTMxM2FmMVc0SzBjOWdNUFB5UlVDTjB5Nmg3QQ?oc=5",
           "source": "Google News",
           "image": "",
@@ -2772,7 +2650,7 @@
         },
         {
           "en": "EU sanctions Wildberries CEO Tatyana Kim as well as enablers of Moscow's shadow fleet - DW.com",
-          "zh": "欧盟制裁 Wildberries 首席执行官塔季扬娜·金及莫斯科影子船队的协助者 - DW.com",
+          "zh": "欧盟制裁 Wildberries 首席执行官塔蒂亚娜·金以及莫斯科影子船队的协助者 - DW.com",
           "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPdzZBcEdvRi1rcGExb0xsLXFROG5GbU5KNk5udUE0ekxFWEpBR0hGbWVaWTk4OW9JcE1CN1FJeGFMZ0FXbWpDZGxPT3Yyb01mMGFGQXZIUGZBdGhUWTYwdzVyWmF4TFowODZDU0JibWNVcDhVS2wtb01NNnZQQXZta21VUDVnVkNYS0RxOUFXR3dTeDlFU2h1OVc5VdIBmwFBVV95cUxOMTRrOGlrSmlITERaV2V0TXVqUmpEMnVxY21rRXZ4U0djSENwejBveEdfbTJtclJxVEdYXzlEYlNYTEVsbDEzWmU5cUt5NV9ua0FFc3JRSnVVSWIzWFRqVkZKZjhMd2FJd0ZZUks4cEdzaHh3WVkyVXFmOC1TTFpETDlRVFVvQ0tSSkYtdWN5VzFkdUwwRG5MNUZNSQ?oc=5",
           "source": "Google News",
           "image": "",
@@ -2780,7 +2658,7 @@
         },
         {
           "en": "France cannot support Kyiv 'financially', Le Pen tells ambassador - Euronews.com",
-          "zh": "勒庞告诉大使：法国无法在“财政”上支持基辅 - Euronews.com",
+          "zh": "勒庞告诉大使，法国无法在“财政”上支持基辅 - Euronews.com",
           "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQZjhid1cwUE1HQzFpcURMQWFBQm5Yc2p1TzNmd056SW4zcXZ2b0dLRHZvNGxMWEFSdDVDc3NXRnp1RlJKQUtjLTRyN0lRVE52d0p5R0xtWURrTFdjTWE5c0xMSllWdjlQVGRBMjdrNFExTWhQVlYtQlphUjloQzkwSXJsNy10TnpUQWZmNlVRUXBZbUFtVmdyNnFibHFuUU5vM1pQS25FWUN3OU1xMlh3MkUwZnREUQ?oc=5",
           "source": "Google News",
           "image": "",
@@ -2788,7 +2666,7 @@
         },
         {
           "en": "Map shows how rainfall stacked up across the Bay Area ahead of incoming storm - SFGATE",
-          "zh": "地图显示暴风雨来临前旧金山湾区各地的降雨分布情况 - SFGATE",
+          "zh": "地图显示风暴来临前旧金山湾区的降雨分布情况 - SFGATE",
           "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPbmEtcUxDc2ltS1lOQWpTNUloMW1YR3VtZzVsR0lXUld2NTgydWtvTUdMV2ZqS1lMS2FVVU5ZWC1NMDQ0eE5CaWlPOEthTTNTNWotRlpKbW9KMnRQazJKUFF1c0htd3lGWHFqMVR6SDlPQ0Z3Y2V5UUo0a0hTLVNZYWtB?oc=5",
           "source": "Google News",
           "image": "",
@@ -2796,7 +2674,7 @@
         },
         {
           "en": "Is Israel’s Eisenkot bloc less right wing than Netanyahu? - Al Jazeera",
-          "zh": "以色列埃辛科特派系是否比内塔尼亚胡派系更不偏右？ - Al Jazeera",
+          "zh": "以色列的艾森科特阵营是否比内塔尼亚胡阵营没那么右翼？ - 半岛电视台",
           "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNQ0hqZThKRWxUZTZBWWltRHYyblhXbHVpZElNZnQ3ZHg0dkN5blVMSk43UmMxRWlxUHVGVVpsZDlkQUpHd1ltek5nWHd5bk1HaVdwRnJQTGtyT1JnbzFCY09ZQUpGYmhrTk04SnBGZklOZGE1bVlLLWVyQnFvM2dqbW0wQjl3cFA5VTFYNFZfUy04WG5wRzZXMF9n0gGfAUFVX3lxTFB1UFRRdTRwSnZaQkpfdFIzRWZFT3Z3dEIyOUNQd3d5VzlBVXpUdTUtU21MZWFscElPWkxPcFJBWnhCXzRhYlpkc1pqQkdwOHNpREhQYk1JWWo0NUFXcmtQY2VIVExLaVZ4MHYwRlVmSFZPLWRDbnYzUDRkOGgyazFHX0htRVVWa1VSN1NzR0ttdEV5T192cm0yTHFqMmhXWQ?oc=5",
           "source": "Google News",
           "image": "",
@@ -2804,7 +2682,7 @@
         },
         {
           "en": "Magnitude 5.4 earthquake rattles Peru, with tremors reported in Lima - FOX Weather",
-          "zh": "秘鲁发生5.4级地震，利马也有震感报告 - FOX Weather",
+          "zh": "秘鲁发生5.4级地震，利马也有震感 - FOX Weather",
           "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOMG1ZM2Z4Uk9OTVplQ1BiVmhLeUV1OGgyRkRxLUxJYTZERUg3eDloYTdQUEJKbkluQW1Rci1NTl8wdTdiQk8zMGY4N2dIeEk5NzdKclRkbmR3SnlsTGVxMHJKNHhnY1dMWDNaRG5UNFdfQTZmeXdhaDZ0ZGNfNVRjR0U5RdIBiAFBVV95cUxNY1JvUi04NHcxVzRVSURJT1QxQ0VmNnB3T0hpUGtGS1FnU2pKV1gtbnFjbW50YUUtVElYMVREUFR4eUFRaFpkbjF6RGFKRWVYOEVPWDhETGFSZWFyeUZ4bDNuUUdsdFRPMWRia213RC1jUmRacEVPbzEtM21FVExhOUJudFZkYVhR?oc=5",
           "source": "Google News",
           "image": "",
@@ -2820,23 +2698,15 @@
         },
         {
           "en": "Russia fends off swarms of Ukrainian drones a day across its vast territory. But some get through - AP News",
-          "zh": "俄罗斯在其广袤领土上全天抵御了大量乌克兰无人机袭击，但仍有部分无人机突破防线 - AP News",
+          "zh": "俄罗斯全境在一天内击退大量乌克兰无人机，但仍有部分突防 - AP News",
           "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPZDlCTW56NHdBOFAzbUhTYmlMckVwejlHR2E0cmtaN0tQbHY1ekdBR0o4VnA1dWdyRlMyVVJfajM0dUVXWVlrMHpDNnNFUHVqR09PMVZTYy0yX1FQejg5QVFvX2FRQWpkTWZUMGg4RnFSMVVwRmtjMTdZMkFNQTVOWmVKU1h2YmN0Zjl1ZGtZcy1ubVI5cDBqTDhBNjJXTUU?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
         },
         {
-          "en": "Russell Brand prison message 'appalling' and being investigated, No 10 says - BBC",
-          "zh": "唐宁街10号表示，拉塞尔·布兰德在监狱传出的信息“令人震惊”，目前正在接受调查 - BBC",
-          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE80d0NNd3BqaXd0cTR5dklDU19sLWJJUGlZUG1jWUlnV3VKYWtqVmZkUE9SNFNGT2hlTmt6cVdWaHlZdWVhVnhsb00zQ2ZLOWVVRzJuUXU1V1k5N1k?oc=5",
-          "source": "Google News",
-          "image": "",
-          "section": "international"
-        },
-        {
           "en": "U.N. talks seek to rein in 'killer robots' as fears over AI weapons grow",
-          "zh": "随着对人工智能武器的担忧增加，联合国会议寻求遏制“杀手机器人”",
+          "zh": "随着对人工智能武器的担忧增加，联合国会议寻求遏制“杀人机器人”",
           "url": "https://www.npr.org/2026/11/16/nx-s1-6042548/un-killer-robots-ai-weapons-drones",
           "source": "NPR",
           "image": "",
@@ -2844,7 +2714,7 @@
         },
         {
           "en": "U.N. talks seek to rein in 'killer robots' as fears over AI weapons grow - NPR",
-          "zh": "随着对人工智能武器的担忧增加，联合国会议寻求遏制“杀手机器人” - NPR",
+          "zh": "随着对人工智能武器的担忧增加，联合国会议寻求遏制“杀人机器人” - NPR",
           "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxORjVjenZkdk1vNVNjSTR1UklRSHZCMGllZVR5N2lfRXo2MXg0MzBnQjBxekctUk5RZWJQaGRxYTRyekJvSzAzM0piT0I2dVhlcmVUalpyV2FxQVQtMVNLdGZpWjFBUUY4bGVBbldicWVnZ0MtWnNoQmhMYmVYWllHY3pHcUc4Zw?oc=5",
           "source": "Google News",
           "image": "",
@@ -2852,7 +2722,7 @@
         },
         {
           "en": "Cargo ship capsizes off Bulgaria’s Black Sea coast - Al Jazeera",
-          "zh": "一艘货轮在保加利亚黑海海岸附近倾覆 - 半岛电视台",
+          "zh": "一艘货轮在保加利亚黑海海岸附近倾覆 - Al Jazeera",
           "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOdm42c29LOXNVREw1dWxnRVo5WlpBalQ1Q2N0a3NvYjVaNkRiVXA4NG9YZGx3X0drT2FVT3I1SGFMNmhaOExDbnhrWks2TXZDck1RRk1Hd3hRYlhReUxZOVhOeWppQmIxclBwZGM2SE9pTFZ2Rmc0ZkRsd3FTT3hvb2xjdFFzcWVJaEl3dUQ0WGUxME1XNWfSAZsBQVVfeXFMUGJ4VHFwbTd2OXhPRlFOUG5nVks4S0o2ckQyd2hTRnZ0cW8xR2xOVHFQVFZ0R0xQcVp3aFloWDZELVhPT2ZzcVJZdERud2R2R0kxMW44TmlPQ09QVU51WTF3aXQtR1RQc2JoMGdMWk1ZaWdSN3JYUHVLZk9BSDBUR0thaGZZbWVwbUVFUTRheDNYUkh0dVRBQmRKNFU?oc=5",
           "source": "Google News",
           "image": "",
@@ -2860,7 +2730,7 @@
         },
         {
           "en": "U.K. considers changing laws on age for sexual consent in wake of Russell Brand case - CBS News",
-          "zh": "在拉塞尔·布兰德案件引发关注后，英国正考虑修改性同意年龄相关法律 - CBS新闻",
+          "zh": "在拉塞尔·布兰德案引发关注后，英国正考虑修改性同意年龄法律 - CBS News",
           "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxNdzRRaFBuSk9TS3lsM3BFWlBTbS1JdllRcWdPY3JPVUUyRG9SWkFIMnBBaXg0RkFjZllCZ2JYdGYwRlplaHRGNmlrY1phUmhfX1NMSFI2SE5rdU5PREZsX1Z3VzBTUWI5XzVCUnRWd013M0lJR0FFN2tqeDBSdUl1MjlWYTlQcUhjNDUtYlhEMXNOQm1s?oc=5",
           "source": "Google News",
           "image": "",
@@ -2868,7 +2738,7 @@
         },
         {
           "en": "Airstrikes on Iran Missile Sites May Shed Light on Justification for Dams - The New York Times",
-          "zh": "对伊朗导弹场地的空袭可能为大坝辩护提供依据 - 《纽约时报》",
+          "zh": "针对伊朗导弹阵地的空袭可能为大坝的合理性提供依据 - The New York Times",
           "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQM3RSb255WmtXVzRseHpHdk5tT1ZLTlYzRzJudFZKZHVaR2taQzdOcmQzWGF1b3hwTmZodTV6TWRvM1pyX2JtVVNlMVI3NUtyQlRVQXhQS3FJR2lhN1ZZcFZ4WU5fRHlsLXZEXzN2aDItSUppYmt0YzdVMXg4dHRHYUZrVzhRejZYcGZxRVlSMVJxN1paNGV6MzhfaS1sNTg?oc=5",
           "source": "Google News",
           "image": "",
@@ -2876,7 +2746,7 @@
         },
         {
           "en": "Europeans court China’s help to keep climate action on track - POLITICO.eu",
-          "zh": "欧洲人寻求中国帮助以确保气候行动不偏离轨道 - POLITICO.eu",
+          "zh": "欧洲寻求中国帮助以确保气候行动按计划推进 - POLITICO.eu",
           "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBJcDVGekd3eGdqMFRxUTNPWGVhalVmZFJ0S0hsaUxuSEdMVTZxb3RZTFNZUnZJVVkxaDVWckpQbXRnSGxicDlQMjJaUVFmankyekN6LXVEMHBScS1DWjFzUTAzVEF0QkJzQ0VCeW9ydEY2TVRsbG9nWGd5Tzk?oc=5",
           "source": "Google News",
           "image": "",
@@ -2884,7 +2754,7 @@
         },
         {
           "en": "Retrial date set for Lindsay Clancy over killing of her three children",
-          "zh": "林赛·克兰西因杀害三个孩子一案被定于重新审判",
+          "zh": "林赛·克兰西杀害三个孩子案定于重审日期",
           "url": "https://news.sky.com/story/lindsay-clancy-retrial-date-set-over-killing-of-her-three-children-13612927",
           "source": "Sky News",
           "image": "https://e3.365dm.com/26/11/1920x1080/skynews-lindsay-clancy-clancy-retrial_7407912.jpg?20261116221146=",
@@ -2892,7 +2762,7 @@
         },
         {
           "en": "AI models ‘weak and fallible’ on climate science, UN-backed study reports - The Guardian",
-          "zh": "联合国支持的一项研究报告称，人工智能模型在气候科学方面“薄弱且易出错” - 《卫报》",
+          "zh": "联合国支持的研究报告称：人工智能模型在气候科学方面“薄弱且易出错” - The Guardian",
           "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPdmhlRldOOXBrTGdmcG51endOeHM0dWRObFJYNUZ0cU5LRDl4dG9pQm1xbWxHcjhZSGc1VGRPYjJ3ek9WeFUtbDVtTDVGMm05VmxnY044WDcwcUlWZE9WMDZNcDFLWkZVLTBRQnFLMkZtdkZ1RlFXMEtXWEl6NWE3SGJRT1FkR0R1c3MzYVlyeDNPTzUtaFZWMVUyVWpOMDZiVlQyODUyd2FfZw?oc=5",
           "source": "Google News",
           "image": "",
@@ -2900,15 +2770,23 @@
         },
         {
           "en": "Photos: Highlights from Pope Leo’s historic, 12-day tour of South America - NBC News",
-          "zh": "图片集：教皇利奥南美12天历史性访问亮点回顾 - NBC News",
+          "zh": "图片：教皇利奥历史性南美洲12日巡游亮点回顾 - NBC News",
           "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNaDZUanZ5VHY1clo3UlZyOURxV2pBb2dTUnRXZHRfdVZzLU5sc0NyVENBeTdDN3ByVmZIak1UQ1A2d0dOTUFGcGstNHp4clNWLUp2M2U3TUVscFp5YnR6U2JtYkV1U2VDU1VQeDhILUVMQ1V5SzFIS1hBZkJicjk4cXhsYnJWUlY0eGlFbGJJMXhuTmFSNVFmTlRmZ2lsYmRFUDdYVGhhWE95ZnBkV21nVVB3aks3bXItLVE?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
         },
         {
+          "en": "Meddling Stephen Miller Blamed for ICE Barbie Kirstie Noem's Final $300M DHS Contracting Disaster - The Daily Beast",
+          "zh": "斯蒂芬·米勒被指干预，导致“ICE芭比”科斯蒂·诺姆面临3亿美元国土安全部合同灾难 - The Daily Beast",
+          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQN0U5dm5sUlhnNGdmZHkxWE8tc002dV80OGdGckJadlcwVXhBU3hJcFRWZjFuZFRmVHFLeTBza0Nnb0JpbFVsZTlaODF0eTJQYjhtS3FSRzlLT09MVFhmNW5HRDMzdWVQWjdrUmM3em1PQTI1aWl3U2Z5ckhIWjhSaTdmRUlEZFR4VzBLQ0dkb2IzT0pNTWdIUEZwVXluQWVtcE5XUWtzZlY3cmxFNjdLM2hrVTFiQkpTZlpSUWpwT0hLcDQ?oc=5",
+          "source": "Google News",
+          "image": "",
+          "section": "international"
+        },
+        {
           "en": "At least 17 killed in two South Africa mass shootings - Al Jazeera",
-          "zh": "南非两起大规模枪击案致至少17人死亡 - 半岛电视台",
+          "zh": "南非两起大规模枪击事件导致至少17人死亡 - 半岛电视台",
           "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQLXFCOFItM0FpeS1UOXcycm5Pa1JrdDhOcnVadGh5YklZekFFUVdpRUR1SkZIUDFuV081MUpHWlZ0N2x6UVdnMHp4bDF3TThHd0k4bjZOWUtTSUIzOE1kanZ6Qm9yNVJnTHM3VUxYR3o3Z3RoTWszbTZTbGhPYWZpRVRnMU42M3N5OGJ5Qnhxc1NKX3hLVHlkZUR0VdIBoAFBVV95cUxOczZvMzRwTlZmQjVaYXFyQ19KSmlCd3VyNmwzQnFxMDR2bWo5enJvU3dBQWxCYVhhV1VIOG9OSkRDaHNUUmJ0Q0xoT200M1NJaTY1ZWRzQk8xX3BORUwxajB1T0xkSGdmSE1EVFk2RDBtZFlZSUFndjd0ZmxjRmoyYWVLb05JdlFJdmVpTVNkbm5QVEFTSzhGWEdQXzJJMzFW?oc=5",
           "source": "Google News",
           "image": "",
@@ -2924,7 +2802,7 @@
         },
         {
           "en": "China’s star bodyguard steals the show as Mexican leader arrives for Apec - South China Morning Post",
-          "zh": "墨西哥领导人出席APEC期间，中国明星保镖成为瞩目焦点 - 南华早报",
+          "zh": "随着墨西哥领导人抵达APEC会议，中国明星保镖成为焦点 - 南华早报",
           "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPcWcxZTltMzQxRURrUVlwbGRaNUdCTXZTWm5tcHczZmNVdVRKRnV1dkVveDlxVlNwbUctYWlPQ21NcDRTcU51SEF2WXV3Q0tpYVBuNzN5cHFfbVB1Ujdwc2ItQUtSSFpFQTZVaXlZQUhFYkFBeU1DMGROR0lLNFdZMkRlUF9MNU41b3dVZ0RNZUNKbkNRd3NPemVHU2RpazlEang2S0NDT2hsczI5T0JBdzJMaFI3VkpxenBHOTlrTFo4bWxjc1hEUi05ei1KUdIBzgFBVV95cUxObUFXOUtTMlJNZ2VpY0dfU1hmX2tNbmw1czZoR0VoNXBKN2RSTlBlV2VDZmZOY2FWT21NbWdHeEdlYm5UN01Dd19vdTFqQXp3MVRqRlpweUJNWnM5RnZnWnF1MGtPTmVkMTk0R3JsUTNfTl81Rmoxb0xGY0EtblB3emJqX2liQm5ja0hEdzRwaTRFLTViaWhyRkYtcFlpa29GUnpPMkVxaUplME9zLW5IVmRrcnJ5VUNqRzdJaXE0bFgyUTV1bTNsWjJaQ3FZUQ?oc=5",
           "source": "Google News",
           "image": "",
@@ -2932,39 +2810,23 @@
         },
         {
           "en": "2 Americans dead after swimmers swept away in the Bahamas - USA Today",
-          "zh": "两名美国人在巴哈马被浪卷走后遇难 - 今日美国",
+          "zh": "两名美国人在巴哈马被浪卷走后死亡 - 美国今日报",
           "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOcEZfSklfNjlMSWtvT1RSVDNLdWJCZUc2VkUycjRTaGJyczh3SDZQOFFLbEkzRkNaZV9lR0VpUG5pS2t2c3dBRlpua3hKQ1hpN1dVLVdGSlQyNTZMVktMbno2SjFDbzlWWkhVaVpIWEVmZGIwbXVKWDhvd2F2a24wLU1vMGdyanZ1d3pOblNoMDd3TUJKV0lzdm5waWU4akdOZGxIV1FSaUE?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
         },
         {
-          "en": "Nvidia saga making some US CEOs reluctant to attend Apec summit: sources - South China Morning Post",
-          "zh": "消息人士：英伟达风波令部分美国CEO不愿出席APEC峰会 - 南华早报",
-          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOS2tSWnF0dTBqS2M1U2NNeTA4N2Y5dndsVmhfbmdRN0VucU84UndPS0hveWQtYmJSSXZueG05a0NweXdnUGkxdWZLRmY4Z2tPYTIxYl9LNWtsampSY1BieEtiWlJYVkFNeXFaWktoMXpBMWgtUEtqQkpvLTdxUFNleDFrbmlWNzhBQkRVeWZuM0E1amNydXBhUkpnX0t4MFUxY0gxaXAwQy03VVc1M01oVXROQ21aMmxGaG1XdVVvd0VNeEF0LXBwenhuRnZFd9IBzgFBVV95cUxOb3BuMlhtYmdjRVNPM1gwanZTQ0RtOWY3QnQxRXI3Z0lvaC10RTVpNXFfUlZWNHNrTnJvM0xJd08wQ3haTEN6anJwUG50X3YxcDdWajZuclRIbktiUkpXRWt0VHVOVjVnVERxTjZ6MU1QcDVRQUxEaE9EZ1dGXzRwSy1LdllxQ2RzSlo5enQyY0xGWU5XVkN3MlpKTzFWZl9VNFRUdEVtMGdUY1JnNU9UNERMeGIySjNtV09kNlpzYlAzaGR2RF92YjJHZ1V3dw?oc=5",
-          "source": "Google News",
-          "image": "",
-          "section": "international"
-        },
-        {
           "en": "EXCLUSIVE: Risk of nuclear accident in Ukraine increasing this winter, atomic safety regulators say - Reuters",
-          "zh": "独家：原子安全监管机构称，今年冬天乌克兰发生核事故的风险正在增加 - 路透社",
+          "zh": "路透社独家：原子安全监管机构表示，今年冬天乌克兰发生核事故的风险正在增加",
           "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNRjlIbUpKS3NfVi1Oai13Y213OWJ4S0FkU0RIa1hDU1o2ZHBBN05zUXRKQnFZUDlXZ1hhbUxGS2wwUUJIbEVRSmNsSXFRNk10dEhIS0NuWVFHSHBPRFNxUUluT0ZZRlByUVhGajRMcWUxQlBkazFwU0hvYUthYlZGRzdEQTdrNnl4cDJWeEIzZWtaYnc0UUFMTk03QldsOHZiZGNTRTlmRWNrcVpIWHg5UGMzcDRINkF4cG1ZTExsZktQSjlTNm91Vg?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
         },
         {
-          "en": "Spain's Canary Islands flooded by thousands of migrants as country declares emergency - Fox News",
-          "zh": "数千名移民涌入西班牙加那利群岛，该国宣布进入紧急状态 - 福克斯新闻",
-          "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOR1B0YXFkZHNoMUNLR2N1NjRMNWxNYjZ6VzFwNUtPSTRqUW5iLWFEVGs4UTdPcnk1VFkyR0xDS053OUN6ZlZPVnVVX05iM1JoMWFsLUFwNnFJX0ZDOGFranY1TEFsOVJ2MjMzLXZsZ29xTHpRc3ZfV2Z0YVVQZW5RTmI4eXk2cVdDcFA3REVqeTJSUW9iamE5RU5OekZwOEFDb3U3bjgzc9IBrAFBVV95cUxQOUcyUnNZVjhhSEZESzR5ckxFeVVHQ3ctdlU5T19BQXYyQ0tJU1VpbUd4UTA1YncxdExFM0k2dXpTbzBSbTZtaFlBeTBRLTJVV2NwR19JM2lZQnNBVlYyYVVSV1htQi1kMTN5b3hhQ0haeW5aMDJrZy1NUlBveEl1R3Q5Mm5sOTJxNm05dC1SR3hTRjVTX0UtNTVGOTRjUFFreEJaZjZsM0tzWnNp?oc=5",
-          "source": "Google News",
-          "image": "",
-          "section": "international"
-        },
-        {
           "en": "Russian Wholesale Gasoline Sales Fall 31% After Refinery Strikes - The Moscow Times",
-          "zh": "精炼厂遭袭后俄罗斯批发汽油销量下降31% - 《莫斯科时报》",
+          "zh": "精炼厂遭袭后，俄罗斯批发汽油销量下降31% - 《莫斯科时报》",
           "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPYjR1ZnhfYTRzbWRLY3V2QWhVQ1Y4ZllvckQ3UHkwTnhuSDVycHBEZ2hpU0ZUVmFVX3ZNQ0JCZXlTSkZLNkNHcmFGaDFHNXZUSHpnajRBSnlYSlhTVHRpZGwzRHlGTVZ0WG8wRFFYWlZWVmFYQ215VWp0aXJxZEFoYzZuWjRXZ0FnN0p2dlNmWnYyMFI3YzVSZWxCNzhDWml5dGtocmtDRjF5Z1RycXVDLTln?oc=5",
           "source": "Google News",
           "image": "",
@@ -2980,7 +2842,7 @@
         },
         {
           "en": "FAA ground stop still affecting thousands of flights. And, Trump meets Xi, Putin in Asia",
-          "zh": "美国联邦航空管理局（FAA）停飞令仍影响数千架次航班；特朗普在亚洲会晤习近平与普京",
+          "zh": "美国联邦航空管理局暂停飞行仍影响数千架航班；特朗普在亚洲会见习近平与普京",
           "url": "https://www.npr.org/2026/11/16/g-s1-153841/up-first-newsletter-faa-ground-stop-democratic-leaders-congress-trump-asia-trip",
           "source": "NPR",
           "image": "",
@@ -2988,15 +2850,23 @@
         },
         {
           "en": "‘I saw a picture of a two-year-old girl buried in mud. I knew we had to do something’ – This is climate breakdown",
-          "zh": "“我看到一张两岁女童被埋在泥土里的照片。我知道我们必须采取行动”——这就是气候崩溃",
+          "zh": "“我看到一张两岁女孩被埋在泥土里的照片，我知道我们必须采取行动”——这就是气候崩溃",
           "url": "https://www.theguardian.com/environment/ng-interactive/2026/nov/16/when-the-sun-came-out-it-felt-like-it-opened-a-scar-this-is-climate-breakdown",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/03df085cea47ca4df586d23872f7663cb2637137/320_0_1600_1280/master/1600.jpg?width=1200&quality=85&auto=format&fit=max&s=be9cf0165f7c1947cf79549d974164c6",
           "section": "international"
         },
         {
+          "en": "Israel under pressure as winter rains lash Gaza - Financial Times",
+          "zh": "冬季降雨袭击加沙，以色列面临压力 - 《金融时报》",
+          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNdWZySm5MTUxYYV9CNW5GaElTTDZHeHdNN0dmVUg3aXRueHNFXzlVS1dIR0pySkxkOGhUNHVkWDNJYzduR3UyVXNtNElaYWpTbnliSUNsb3NaQnd2d3NSSTUwazRhYmplVmRuUE5yQU9OLW9CZUlnTDJBOGY5VmwwY1Z5SzE?oc=5",
+          "source": "Google News",
+          "image": "",
+          "section": "international"
+        },
+        {
           "en": "Women's criminal records wiped for abortion offences - BBC",
-          "zh": "因堕胎罪而被抹除的女性犯罪记录 - BBC",
+          "zh": "因堕胎罪行而留下的女性犯罪记录被抹除 - BBC",
           "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5LcmlWUU4yNkhURmNNOXFaX3UzUUdTZmxnQVJaRGFKLWZ0dnB2X0J4NmM0UlBrY3p0Zk5KVkRneHdITC00d2tOdFY2d25LV0lFUE4tenVCSmtQb3M?oc=5",
           "source": "Google News",
           "image": "",
@@ -3004,7 +2874,7 @@
         },
         {
           "en": "Chris Van Hollen says he can beat Chuck Schumer. Here's his case",
-          "zh": "克里斯·范霍伦称自己能击败查克·舒默，以下是他的理由",
+          "zh": "克里斯·范霍伦称他能击败查克·舒默，以下是他的理由",
           "url": "https://www.npr.org/2026/11/16/nx-s1-6041687/chris-van-hollen-chuck-schumer-senate-leader",
           "source": "NPR",
           "image": "",
@@ -3012,7 +2882,7 @@
         },
         {
           "en": "Trump to embark on Asia trip in apparent foreign policy push before end of term",
-          "zh": "特朗普将在任期结束前展开亚洲之行，显然是在推动外交政策",
+          "zh": "特朗普将在任期结束前开启亚洲之行，显然是在推动外交政策",
           "url": "https://www.theguardian.com/us-news/2026/nov/16/trump-asia-foreign-domestic-policy",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/a079ab0a449ab532375e30c24aa3a9afc3fa2d2d/131_0_1307_1045/master/1307.jpg?width=1200&quality=85&auto=format&fit=max&s=8bded43e353fe0508c8852e7a6576d5e",
@@ -3020,7 +2890,7 @@
         },
         {
           "en": "Revealed: Israel uploaded millions of photos to Amazon’s facial recognition platform to track Palestinians",
-          "zh": "揭秘：以色列向亚马逊面部识别平台上传了数百万张照片以追踪巴勒斯坦人",
+          "zh": "揭秘：以色列向亚马逊人脸识别平台上传数百万张照片以追踪巴勒斯坦人",
           "url": "https://www.theguardian.com/world/2026/nov/16/israel-amazon-facial-recognition-palestinians",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/bc01b369b562e3e2bf256cd5482bab9f368d5175/1_0_2999_2400/master/2999.jpg?width=1200&quality=85&auto=format&fit=max&s=d4fd5266aa44369a3472db45234f5224",
@@ -3036,7 +2906,7 @@
         },
         {
           "en": "EU chief diplomat Kallas blasts Russian peace demands as ‘absurd’ - POLITICO.eu",
-          "zh": "欧盟外交负责人卡拉斯痛斥俄罗斯的和平要求“荒谬” - POLITICO.eu",
+          "zh": "欧盟外交负责人卡拉斯抨击俄罗斯的和平要求“荒谬” - POLITICO.eu",
           "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPOVFwY29fOUdxSm9rUGpjQzB4MlVGVFJLbFZwdEpRSkdqMl9jOUJydHpXRTN2U0o3bW9MbDJtOHJaUXhiN3BlY1RGSWdQd3VxTjFmRDVSdkNxYmt6NldBdGsyWkRZQU9VSVhTUE14VXg3Q0Ztd0R4SzNBc2RpMjVHUGlYYTFPcFlPQlJ6QzFiTmUtYmczcEh0NlU3eTI?oc=5",
           "source": "Google News",
           "image": "",
@@ -3044,10 +2914,18 @@
         },
         {
           "en": "Relocation of Cape Town baboons to sanctuary ignites heated protests",
-          "zh": "开普敦狒狒迁往保护区的计划引发激烈抗议",
+          "zh": "开普敦狒狒迁往保护区引发激烈抗议",
           "url": "https://www.theguardian.com/world/2026/nov/16/cape-town-baboons-relocation-protests",
           "source": "The Guardian",
           "image": "https://i.guim.co.uk/img/media/2d86a054583a1a5d541606f7e702b5f03c426653/770_0_4580_3666/master/4580.jpg?width=1200&quality=85&auto=format&fit=max&s=3225fd899e48e3305f15e48965e30afe",
+          "section": "international"
+        },
+        {
+          "en": "‘NATO will collapse’: Russia stalls Ukraine talks, seeks to divide Europe - Al Jazeera",
+          "zh": "“北约将会崩溃”：俄罗斯拖延乌克兰谈判，试图分裂欧洲 - 半岛电视台",
+          "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNOTdwQ0doWjlyZXNRZEVpOGd6aVVCNmFQTkdNT3lBOU9kY1d1YlZJSWRldWFDTUFoWjQ4TUE1TEpwbTlWTkJ6ckszT1g2RmJENVQzZ01lMVRScG1UQk1ZbHR1OHRaUWJLUWxGdmxYQnlGclFiU1FRLXNSZTF2ZUcwbGM2bk5OdDh2aGctWUhkdjlBU3pFVzhZRW9aSG5ob3cwVVFGc1dIV0pZbGZsQTBHUNIBtgFBVV95cUxPVEJNajdIOXd2dzZfTmxhZ2dZT2RuTXVNY2tRSDNQNlBPVFBFMXJJbmhIMEpnT0VlNl9ET1FpNHB4dDZYVDAwZERCdlNuZ0VmLUI0dmpueDRBM1dQckI1azNtNF81a0JPMlBUd1o0RVJ6Y3h1SldrZkZjd1Y5NldYZnR3SGVSVzZrV1hiZ1Vob1Y1dThRZjI2TmxHTUhNQzdQcUdfM3FDZjFjT18zbGdzc1VQZWNWZw?oc=5",
+          "source": "Google News",
+          "image": "",
           "section": "international"
         },
         {
@@ -3075,43 +2953,115 @@
           "section": "international"
         },
         {
-          "en": "A fire in a building in southern Thailand kills 11 people - AP News",
-          "zh": "泰国南部一栋建筑发生火灾致11人死亡 - AP News",
-          "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPcm1QcDhvNnh1RXdfNkE4dy1pekxwSTN0dWpIRFJaRkZ6Q0tQc3QzWjYxdERjOGxrWDNJeVRnRGNVYnJBUGFMRmNtOGdfNklXVVRpTEhnaTE5R09JVVBXanV0QlBKbjJKcnV0RTZBTDk1XzlncmdHYms5NEpQd1F3cVNRM21ENU0?oc=5",
+          "en": "Israeli opposition chiefs denounce Netanyahu over 'attempted coup' - Euronews.com",
+          "zh": "以色列反对派领袖谴责内塔尼亚胡“企图政变” - Euronews.com",
+          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOVUhvanVZNWx0emdPa0h1MzZzek41alg3NlIwLUgwQlcwVnRTTERHbHdOcnNNeXY3NHQ5V1RYazBSeTNFcXJFMTZxWVF0Y2dvMzNYaEtxT29nOUl0UnVjamFMOVdwVHBRUlhhaFY3aDZMUklfSW1EemZLNVBTYzJEc3lzamNPZ05KRm10bFI2QXZNRFliZFp3TmFFMjFVX2ZtN2c?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
         },
         {
-          "en": "Australian MP Helen Haines leaves hospital after losing both legs in alleged car attack - Euronews.com",
-          "zh": "澳大利亚议员海伦·海恩斯在遭遇疑似汽车袭击导致双腿截肢后出院 - Euronews.com",
-          "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOOXJTQmx5a18zN1JYUGtIc1NQWG1xUjNTQ1dlZW1pNDZLaE1Hb1FWY0d0dDN3X214TjFWV0tyWndzQ3lBX2ZaMDloMmx5TF9jc2p3c1Rtdm0yMEJqbmdyNWh6WWN3ZGZrcnNwT2loMnVKampZM2lISzFNSERCUzVXTXRYb2VOTElNdGRzM1RJbUFJeEFFdHBKZW9oWkc4MTJVamp1UExQb2NoUzBOVmNtX2RzcG5MUzlEcDZBUlJMRnY?oc=5",
-          "source": "Google News",
-          "image": "",
+          "en": "At least 17 people killed in two separate shootings in South Africa",
+          "zh": "南非两起独立枪击事件造成至少17人死亡",
+          "url": "https://news.sky.com/story/at-least-17-people-killed-in-two-separate-shootings-in-south-africa-13612711",
+          "source": "Sky News",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-jeffsville-forensic_7407791.jpg?20261116140353=",
           "section": "international"
         },
         {
           "en": "New York teen reunites with cat missing after building collapse",
-          "zh": "纽约青少年与大楼倒塌后失踪的猫重逢",
+          "zh": "纽约青少年与建筑坍塌后失踪的猫重逢",
           "url": "https://www.bbc.co.uk/news/videos/cm3wgeqnppljo",
           "source": "BBC",
           "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/de04/live/9f9bf490-e174-11f1-93e1-3b657b665bcf.jpg",
           "section": "international"
         },
         {
-          "en": "Southeast Asian leaders kick-start summit, with South China Sea and energy on agenda - The Washington Post",
-          "zh": "东南亚领导人启动峰会，议程涵盖南海与能源问题 - 《华盛顿邮报》",
-          "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQb2NaMlQ5bGZaZlBnVnpWQWVxYjhXdjhZS0NBM054Zm5BbXRyX19DRDBrd2xXVEx0Z2VQX1h5YzNpMWRQM1BrWEJmeVBaRHNRTF9xRkNiYkZ5SVhRNkhkcmVSb1BnY3VZRVlTZHBlTGpvNXhMU2ZDdDBfdGdGQWswd2NXMjRPVEIxcnFlaUs2YUlUc0RJNU9YTjJFUWptemxxeElOc0xFQ3dubTcwYTBBbFBtaTZROS14MVhxWFMyWHV4cW8?oc=5",
+          "en": "APEC China: 5 things to know about Xi Jinping's diplomatic show - Nikkei Asia",
+          "zh": "中国主办APEC会议：关于习近平外交亮相需了解的5件事 - Nikkei Asia",
+          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNbEViUDQzcFdETnRGN0JzUmk1V29oMmVPUHlrOE5LUVhlRDRHTGNmLVl0b05jZ1doNm1aTlBFNTFwTWFESnpoZ1FTYlVTaDRicV9DWnJORWtHakt6WGZVR09JUENsUlFxMlFDSFp2c3I3WFVzSDROaDIyeGZaWjdsdjVZYVFSbDF4RzdZVmJlV0dYOHhpTXRvbFFJdXVmU3hRdjVveHlMSGllSG5HR0tieGFzVjJsTnlDVUZaajZsSFZaUQ?oc=5",
           "source": "Google News",
           "image": "",
           "section": "international"
         },
         {
-          "en": "APEC China: 5 things to know about Xi Jinping's diplomatic show - Nikkei Asia",
-          "zh": "中国主办APEC：关于习近平外交活动需了解的5件事 - 《日经亚洲》",
-          "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNbEViUDQzcFdETnRGN0JzUmk1V29oMmVPUHlrOE5LUVhlRDRHTGNmLVl0b05jZ1doNm1aTlBFNTFwTWFESnpoZ1FTYlVTaDRicV9DWnJORWtHakt6WGZVR09JUENsUlFxMlFDSFp2c3I3WFVzSDROaDIyeGZaWjdsdjVZYVFSbDF4RzdZVmJlV0dYOHhpTXRvbFFJdXVmU3hRdjVveHlMSGllSG5HR0tieGFzVjJsTnlDVUZaajZsSFZaUQ?oc=5",
-          "source": "Google News",
-          "image": "",
+          "en": "",
+          "zh": "黄仁勋将于12月1日出席美众议院三委员会问询",
+          "url": "https://www.rfi.fr/cn/%E6%94%BF%E6%B2%BB/20261117-%E9%BB%84%E4%BB%81%E5%8B%8B%E5%B0%86%E4%BA%8E12%E6%9C%881%E6%97%A5%E5%87%BA%E5%B8%AD%E7%BE%8E%E4%BC%97%E9%99%A2%E4%B8%89%E5%A7%94%E5%91%98%E4%BC%9A%E9%97%AE%E8%AF%A2",
+          "source": "法广RFI",
+          "image": "https://s.rfi.fr/media/display/459a65c0-df6d-11f1-a5b5-3f371022a770/w:1024/p:16x9/2026-11-09T115214Z-950371170-RC2AKOA0JNIJ-RTRMADP-3-NVIDIA-PROBE-CEO.jpg",
+          "section": "international"
+        },
+        {
+          "en": "",
+          "zh": "欧委会初步认定Temu违反《数字服务法》：未能降低平台出现非法产品风险",
+          "url": "https://www.rfi.fr/cn/%E6%AC%A7%E6%B4%B2/20261117-%E6%AC%A7%E5%A7%94%E4%BC%9A%E5%88%9D%E6%AD%A5%E8%AE%A4%E5%AE%9Atemu%E8%BF%9D%E5%8F%8D-%E6%95%B0%E5%AD%97%E6%9C%8D%E5%8A%A1%E6%B3%95-%E6%9C%AA%E8%83%BD%E9%99%8D%E4%BD%8E%E5%B9%B3%E5%8F%B0%E5%87%BA%E7%8E%B0%E9%9D%9E%E6%B3%95%E4%BA%A7%E5%93%81%E9%A3%8E%E9%99%A9",
+          "source": "法广RFI",
+          "image": "https://s.rfi.fr/media/display/8776e8ea-d610-11f0-a80c-005056bfb2b6/w:1024/p:16x9/2025-12-10T183245Z-2073863984-RC2IYAAABR3K-RTRMADP-3-EU-TEMU-SUBSIDIES.jpg",
+          "section": "international"
+        },
+        {
+          "en": "",
+          "zh": "英伟达董事会宣布设立国家安全与出口管制监督委员会",
+          "url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261117-%E8%8B%B1%E4%BC%9F%E8%BE%BE%E8%91%A3%E4%BA%8B%E4%BC%9A%E5%AE%A3%E5%B8%83%E8%AE%BE%E7%AB%8B%E5%9B%BD%E5%AE%B6%E5%AE%89%E5%85%A8%E4%B8%8E%E5%87%BA%E5%8F%A3%E7%AE%A1%E5%88%B6%E7%9B%91%E7%9D%A3%E5%A7%94%E5%91%98%E4%BC%9A",
+          "source": "法广RFI",
+          "image": "https://s.rfi.fr/media/display/a0e32ce2-b1d1-11f1-af9e-53b7617a3a51/w:1024/p:16x9/AP26167767211747.jpg",
+          "section": "international"
+        },
+        {
+          "en": "",
+          "zh": "乌、美和欧谈判团队举行三方协调会谈",
+          "url": "https://www.rfi.fr/cn/%E7%BE%8E%E6%B4%B2/20261116-%E4%B9%8C-%E7%BE%8E%E5%92%8C%E6%AC%A7%E8%B0%88%E5%88%A4%E5%9B%A2%E9%98%9F%E4%B8%BE%E8%A1%8C%E4%B8%89%E6%96%B9%E5%8D%8F%E8%B0%83%E4%BC%9A%E8%B0%88",
+          "source": "法广RFI",
+          "image": "https://s.rfi.fr/media/display/a5105976-e204-11f1-b792-3f371022a770/w:1024/p:16x9/2275-actu-afp-news-9072b4f3-49d3-4802-b845-91eedeff4e28-3.jpg",
+          "section": "international"
+        },
+        {
+          "en": "",
+          "zh": "联合国关于杀手机器人的谈判陷入僵局",
+          "url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261116-%E8%81%94%E5%90%88%E5%9B%BD%E5%85%B3%E4%BA%8E%E6%9D%80%E6%89%8B%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%B0%88%E5%88%A4%E9%99%B7%E5%85%A5%E5%83%B5%E5%B1%80",
+          "source": "法广RFI",
+          "image": "https://s.rfi.fr/media/display/f8e36134-e203-11f1-b91f-5f54d898a954/w:1024/p:16x9/field-media-image-3070495-12e9feff3895e78e4c1cde6c07ca5e8d92fce35a.jpg",
+          "section": "international"
+        },
+        {
+          "en": "",
+          "zh": "欧盟五国计划将欧洲遣返中心选在卢旺达",
+          "url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261116-%E6%AC%A7%E7%9B%9F%E4%BA%94%E5%9B%BD%E8%AE%A1%E5%88%92%E5%B0%86%E6%AC%A7%E6%B4%B2%E9%81%A3%E8%BF%94%E4%B8%AD%E5%BF%83%E9%80%89%E5%9C%A8%E5%8D%A2%E6%97%BA%E8%BE%BE",
+          "source": "法广RFI",
+          "image": "https://s.rfi.fr/media/display/013e2372-e1d3-11f1-80e8-f71d22e7fea9/w:1024/p:16x9/AP26320558302536.jpg",
+          "section": "international"
+        },
+        {
+          "en": "",
+          "zh": "特斯拉宣布将对其德国工厂追加投资30亿欧元",
+          "url": "https://www.rfi.fr/cn/%E6%AC%A7%E6%B4%B2/20261116-%E7%89%B9%E6%96%AF%E6%8B%89%E5%AE%A3%E5%B8%83%E5%B0%86%E5%AF%B9%E5%85%B6%E5%BE%B7%E5%9B%BD%E5%B7%A5%E5%8E%82%E8%BF%BD%E5%8A%A0%E6%8A%95%E8%B5%8430%E4%BA%BF%E6%AC%A7%E5%85%83",
+          "source": "法广RFI",
+          "image": "https://s.rfi.fr/media/display/b0ac9e2e-cd47-11f1-80bb-4da0d2c6855d/w:1024/p:16x9/2026-10-20T210609Z-1387965234-RC26ZNAJQB2F-RTRMADP-3-UKRAINE-CRISIS-STARLINK.jpg",
+          "section": "international"
+        },
+        {
+          "en": "",
+          "zh": "约旦和伊拉克封禁Telegram 忧散播极端主义",
+          "url": "https://www.rfi.fr/cn/%E4%B8%AD%E4%B8%9C/20261116-%E7%BA%A6%E6%97%A6%E5%92%8C%E4%BC%8A%E6%8B%89%E5%85%8B%E5%B0%81%E7%A6%81telegram-%E5%BF%A7%E6%95%A3%E6%92%AD%E6%9E%81%E7%AB%AF%E4%B8%BB%E4%B9%89",
+          "source": "法广RFI",
+          "image": "https://s.rfi.fr/media/display/4833db54-d18a-11f1-a7ab-bba4eee3dc72/w:1024/p:16x9/000-D4GG3CR.jpg",
+          "section": "international"
+        },
+        {
+          "en": "",
+          "zh": "法语国家组织峰会：秘书长选举推迟一年",
+          "url": "https://www.rfi.fr/cn/%E5%9B%BD%E9%99%85/20261116-%E6%B3%95%E8%AF%AD%E5%9B%BD%E5%AE%B6%E7%BB%84%E7%BB%87%E5%B3%B0%E4%BC%9A-%E7%A7%98%E4%B9%A6%E9%95%BF%E9%80%89%E4%B8%BE%E6%8E%A8%E8%BF%9F%E4%B8%80%E5%B9%B4",
+          "source": "法广RFI",
+          "image": "https://s.rfi.fr/media/display/4db85672-e1de-11f1-95a9-5f54d898a954/w:1024/p:16x9/2026-11-16T033506Z-1018486305-RC2QOOAWSXJA-RTRMADP-3-CAMBODIA-FRANCOPHONIE.jpg",
+          "section": "international"
+        },
+        {
+          "en": "",
+          "zh": "美国海军第三艘航空母舰“罗斯福号”已抵达中东",
+          "url": "https://www.rfi.fr/cn/%E4%B8%AD%E4%B8%9C/20261116-%E7%BE%8E%E5%9B%BD%E6%B5%B7%E5%86%9B%E7%AC%AC%E4%B8%89%E8%89%98%E8%88%AA%E7%A9%BA%E6%AF%8D%E8%88%B0-%E7%BD%97%E6%96%AF%E7%A6%8F%E5%8F%B7-%E5%B7%B2%E6%8A%B5%E8%BE%BE%E4%B8%AD%E4%B8%9C",
+          "source": "法广RFI",
+          "image": "https://s.rfi.fr/media/display/4b736ac6-8484-11f1-b77e-005056bfb2b6/w:1024/p:16x9/2026-07-14T024123Z-1416644223-RC2ZBMAQ620M-RTRMADP-3-USA-RIMPAC.jpg",
           "section": "international"
         }
       ]
