@@ -160,22 +160,51 @@ SITE_URL = os.environ.get("SITE_URL", "https://daily-news.pages.dev").rstrip("/"
 # ----------------------------------------------------------------------------
 # 国际源：观点各异，保留原始多元化，全部实测可用。
 # ❌ 勿添加：CBC（经常超时）、NHK（HTTP 错误）、UN News（XML 解析失败）。
+# scope="intl" 表示这个源整源都是国际新闻，抓到的条目一律进国际版块。
 INTL_FEEDS = [
-    {"name": "BBC", "url": "https://feeds.bbci.co.uk/news/world/rss.xml"},
-    {"name": "The Guardian", "url": "https://www.theguardian.com/world/rss"},
+    {"name": "BBC", "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+     "scope": "intl"},
+    {"name": "The Guardian", "url": "https://www.theguardian.com/world/rss",
+     "scope": "intl"},
     # 半岛电视台：提供与非西方媒体不同的视角，重点保留
-    {"name": "Al Jazeera", "url": "https://www.aljazeera.com/xml/rss/all.xml"},
-    {"name": "France 24", "url": "https://www.france24.com/en/rss"},
-    {"name": "NPR", "url": "https://feeds.npr.org/1004/rss.xml"},
-    {"name": "Sky News", "url": "https://feeds.skynews.com/feeds/rss/world.xml"},
+    {"name": "Al Jazeera", "url": "https://www.aljazeera.com/xml/rss/all.xml",
+     "scope": "intl"},
+    {"name": "France 24", "url": "https://www.france24.com/en/rss",
+     "scope": "intl"},
+    {"name": "NPR", "url": "https://feeds.npr.org/1004/rss.xml",
+     "scope": "intl"},
+    {"name": "Sky News", "url": "https://feeds.skynews.com/feeds/rss/world.xml",
+     "scope": "intl"},
     {
         "name": "Google News",
         "url": (
             "https://news.google.com/rss/headlines/section/topic/WORLD"
             "?hl=en-US&gl=US&ceid=US:en"
         ),
+        "scope": "intl",
     },
 ]
+
+# ----------------------------------------------------------------------------
+# 源级分类声明（这是「国内版块混进国外新闻」的根本解法）
+# ----------------------------------------------------------------------------
+# 问题根源：
+#   中新网的「即时」「要闻」「社会」频道**不是纯国内新闻**——它把国际稿
+#   混在里面。实测 106 条中新网条目里有 38 条完全不涉华
+#   （「韩国高考防作弊升级」「日本隼鸟2号探测器」「欧盟经济增长好于预期」）。
+#   只靠「源属于谁」决定版块，必然泄漏。
+#
+# 两种解法，本方案用第二种：
+#   ❌ 事后按内容猜（is_china_related）——猜错就泄漏，且中新网条目从来
+#      不在「需要检查」的名单里，根本没被检查过。
+#   ✅ 源级声明 scope，再对 scope="mixed" 的源做内容判定。
+#
+# scope 取值：
+#   "domestic" 整源都是国内新闻（理论上不该混国际新闻）
+#   "intl"     整源都是国际新闻
+#   "mixed"    综合媒体，需要按内容逐条判定（中新网各频道、法广、纽时中文）
+#
+# 每条源都必须声明 scope，smoke_test 会强制检查，漏写会直接失败。
 
 # 国内热点源：中文，零翻译成本。
 # 写成配置项而不是硬编码在逻辑里，某个源哪天挂了，改这里就行，不用动逻辑。
@@ -183,6 +212,7 @@ INTL_FEEDS = [
 # 本表为 2026-11 实测结论（境外出口 + 中国大陆直连双向实测），改源前请先读这几条：
 #   ✅ 中新网系列：唯一「境外可访问 + 稳定 200 + 条目新鲜 + 时间字段齐全」的官方源。
 #      各频道互不重复，合计约 150 条/轮，足以撑起国内版块。
+#      ⚠️ 但它们是 **mixed**：各频道都混有国际新闻，必须逐条判定。
 #   ❌ 联合早报官方 RSS 已下线（.sg 域名返回 SPA 网页，直连 404），不要再用。
 #   ❌ 人民网 / 新华网 / 新浪 RSS 全部停更（最新条目停在 2016–2025 年），
 #      形式上是合法 RSS、bozo=False、条目上百条，会静默喂进一堆旧闻——这是本项目最大的坑。
@@ -193,14 +223,15 @@ DOMESTIC_FEEDS = [
     # 中新网：官方源，境外实测畅通、0.1s 级响应、30 条/源、时间字段完整。
     # publisher 字段是关键：这些频道同属「中新网」一家媒体，
     # 同一家媒体的不同频道绝不能互相充数成「多家媒体报道」。
+    # scope="mixed"：频道内容里混有国际新闻，需逐条判定是否涉华。
     {"name": "中新网·即时", "url": "https://www.chinanews.com.cn/rss/scroll-news.xml",
-     "publisher": "中新网"},
+     "publisher": "中新网", "scope": "mixed"},
     {"name": "中新网·要闻", "url": "https://www.chinanews.com.cn/rss/importnews.xml",
-     "publisher": "中新网"},
+     "publisher": "中新网", "scope": "mixed"},
     {"name": "中新网·时政", "url": "https://www.chinanews.com.cn/rss/china.xml",
-     "publisher": "中新网"},
+     "publisher": "中新网", "scope": "mixed"},
     {"name": "中新网·社会", "url": "https://www.chinanews.com.cn/rss/society.xml",
-     "publisher": "中新网"},
+     "publisher": "中新网", "scope": "mixed"},
     # ⚠️ 注意：`中新网·国际`（world.xml）**刻意不放在这里**。
     # 它是国际新闻频道，放进国内源会导致「伊朗油轮触雷」这类新闻出现在
     # 「国内热点」版块里（线上真的发生过）。若需要中文国际新闻，
@@ -208,7 +239,7 @@ DOMESTIC_FEEDS = [
     # 联合早报（第三方镜像，非官方）：唯一实测「有图 + 有全文」的中文源，用来给卡片配图。
     # 它是公益镜像，随时可能变慢或失效，所以只做补充；失败会被静默跳过，不影响主流程。
     {"name": "联合早报", "url": "https://plink.anyfeeder.com/zaobao/realtime/china",
-     "publisher": "联合早报"},
+     "publisher": "联合早报", "scope": "mixed"},
 ]
 
 # 海外中文媒体：用中文报道中国与世界的媒体，是补充「不同观点」的主力。
@@ -230,13 +261,16 @@ DOMESTIC_FEEDS = [
 # ⚠️ 德国之声中文可用（55 条、简体、当天）但 **0/15 没有任何配图**，
 #    卡片会变成纯文字，与其他版块观感不一致，故暂不加入。
 #    若以后能接受无图卡片，可以打开下面被注释的那一行。
+# ⚠️ 这两个源都是 **mixed**：它们用中文报道中国与世界，
+#    既有涉华深度报道，也有纯国际新闻（「乌克兰袭击克里米亚大桥」）。
+#    必须逐条判定，不能整源归入国内版块。
 OVERSEAS_ZH_FEEDS = [
     {"name": "纽约时报中文网", "url": "https://cn.nytimes.com/rss/",
-     "publisher": "纽约时报中文网"},
+     "publisher": "纽约时报中文网", "scope": "mixed"},
     {"name": "法广RFI", "url": "https://www.rfi.fr/cn/rss",
-     "publisher": "法广RFI"},
+     "publisher": "法广RFI", "scope": "mixed"},
     # {"name": "德国之声中文", "url": "https://rss.dw.com/rdf/rss-chi-all",
-    #  "publisher": "德国之声"},
+    #  "publisher": "德国之声", "scope": "mixed"},
 ]
 
 # ----------------------------------------------------------------------------
@@ -291,11 +325,45 @@ CHINA_KEYWORDS_EN = [
 ]
 
 CHINA_KEYWORDS_ZH = [
-    "中国", "中方", "北京", "上海", "习近平", "中共", "国务院", "全国",
-    "香港", "台湾", "深圳", "广州", "内地", "大陆", "人民币", "对外",
-    "外交部", "商务部", "工信部", "发改委", "央行", "解放军",
+    # ---- 国家与官方机构 ----
+    "中国", "中方", "我国", "北京", "上海", "习近平", "中共", "国务院",
+    "内地", "大陆", "人民币", "对外",
+    # 部委与官方身份（「王毅会见加拿大外长」这种必须算中国新闻）
+    "外交部", "商务部", "工信部", "发改委", "央行", "解放军", "国防部",
+    "教育部", "文旅部", "财政部", "农业农村部", "生态环境部", "交通运输部",
+    "外长", "副总理", "国务委员", "发言人", "主席", "总理", "人大代表", "政协",
+    # 常见中国领导人/高官姓名
+    "王毅", "李强", "赵乐际", "丁薛祥", "韩正", "王沪宁", "蔡奇", "李希",
+    # ---- 港澳台 ----
+    "香港", "台湾", "澳门",
+    # ---- 重要城市与省份（中新网大量地方新闻）----
+    "深圳", "广州", "天津", "重庆", "杭州", "南京", "武汉", "成都", "西安",
+    "昆明", "长春", "哈尔滨", "沈阳", "济南", "郑州", "长沙", "合肥",
+    "福州", "厦门", "南昌", "贵阳", "南宁", "海口", "兰州", "西宁",
+    "云南", "广东", "江苏", "浙江", "山东", "河南", "河北", "湖南", "湖北",
+    "四川", "福建", "安徽", "江西", "陕西", "甘肃", "青海", "贵州", "广西",
+    "辽宁", "吉林", "黑龙江", "山西", "海南", "宁夏", "新疆", "西藏", "内蒙古",
+    # ---- 对华关系简称 ----
     "涉华", "访华", "中加", "中美", "中俄", "中欧", "中日", "中韩",
     "中印", "中澳", "中英", "中法", "中德", "中越", "中菲", "中拉",
+    "中印尼", "中新", "中泰", "中马", "中巴", "中以", "中伊", "中沙",
+    # ---- 中国主办/深度参与的国际场合 ----
+    "APEC", "亚太经合", "二十国集团", "G20", "金砖", "上合组织", "博鳌",
+    "进博会", "广交会", "服贸会", "共建“一带一路”", "一带一路",
+    # ---- 中国特有议题 ----
+    # 注意：不要放「高考」「春运」「全国」这类词——
+    #   别国也有高考（实测「韩国高考防作弊」因含「高考」被误判成中国新闻）；
+    #   「全国」过于宽泛，任何国家新闻都可能用。
+    # 只保留真正中国独有的表述。
+    "脱贫", "乡村振兴", "十四五", "十五五", "两会", "双一流",
+    "国企", "央企", "A股", "沪深", "港股", "人民币汇率",
+    # ---- 中国航天/重大科技工程（实测「神舟二十四号」因不含地名被误判）----
+    "神舟", "嫦娥", "天宫", "天问", "北斗", "长征五号", "长征二号",
+    "空间站", "航天员", "载人航天", "探月工程", "火星探测",
+    "国家航天局", "中国航天", "酒泉", "西昌", "文昌", "太原卫星",
+    # ---- 中国特有文化/社会现象（中新网大量此类稿件）----
+    "妈祖", "长征胜利", "抗战胜利", "非遗", "中医药", "紫禁城", "故宫",
+    "兵马俑", "敦煌", "长城", "春节", "中秋", "端午", "元宵",
 ]
 
 # 兼容旧名字（退化方案那处代码在用）
@@ -1117,6 +1185,10 @@ def fetch_source(source, section, http_get=http_get_bytes, timeout=SOURCE_TIMEOU
             # 实测教训：中新网 5 个频道都是「中新网」，不分 publisher 会
             # 把同一家媒体的两篇稿子算成「2 家媒体报道」，直接违反多源计票规则。
             "publisher": publisher,
+            # scope 在抓取阶段就带上，供后续按源属性分流
+            "scope": source.get("scope") or "",
+            # section 是「源声明的版块」，不等于最终归属；
+            # 最终归属由 assign_sections() 按 scope + 内容判定。
             "section": section,
             "title": title,
             "summary": entry_summary(entry),
@@ -1269,31 +1341,54 @@ def is_china_related(item):
     return False
 
 
-def route_overseas_items(items, overseas_publishers):
-    """把综合媒体的条目按「是否涉华」分流到国内/国际版块。
+def assign_sections(items):
+    """按「源声明的 scope + 内容判定」把条目分到国内/国际版块。
 
-    只对海外中文媒体生效——中新网这类国内媒体整源都是国内新闻，不必分流。
+    这是「国内版块混进国外新闻」的根本解法。
 
-    返回 (国内条目, 国际条目)，两者合起来**恰好**等于输入的每一条（一一对应），
-    调用方应当直接用这两个结果替换原列表，不要再做追加拼接。
+    为什么必须按 scope 而不是按 publisher 白名单：
+        早期实现维护一份「哪些 publisher 是综合媒体」的名单，
+        结果中新网根本不在名单里——而中新网的「即时/要闻/社会」频道
+        恰恰混着大量国际新闻（实测 106 条里 38 条不涉华）。
+        只要漏掉一个源就泄漏，这是名单式方案的必然缺陷。
+
+    规则（按 scope）：
+        scope == "intl"      整源国际新闻 → 一律进国际版块
+        scope == "domestic"  整源国内新闻 → 一律进国内版块
+        scope == "mixed"     综合媒体 → 逐条判断是否涉华
+        其他/缺失            保守按内容判断（宁可多判一次，也不放国际新闻进国内）
+
+    返回 (国内条目, 国际条目)，一一对应输入，不重不漏。
     """
     domestic = []
     international = []
     for item in items:
-        publisher = item_publisher(item)
-        if publisher not in overseas_publishers:
-            # 非综合媒体：保持原版块不变
-            (domestic if item.get("section") == "domestic"
-             else international).append(item)
-            continue
+        scope = (item.get("scope") or "").strip()
         clone = dict(item)
-        if is_china_related(item):
+
+        if scope == "intl":
+            clone["section"] = "international"
+            international.append(clone)
+        elif scope == "domestic":
             clone["section"] = "domestic"
             domestic.append(clone)
         else:
-            clone["section"] = "international"
-            international.append(clone)
+            # mixed 或未声明：按内容判定
+            if is_china_related(item):
+                clone["section"] = "domestic"
+                domestic.append(clone)
+            else:
+                clone["section"] = "international"
+                international.append(clone)
     return domestic, international
+
+
+def route_overseas_items(items, overseas_publishers):
+    """兼容旧接口：等价于 assign_sections（后者不再依赖 publisher 名单）。
+
+    保留这个函数是为了不破坏已有调用与测试；新代码请直接用 assign_sections。
+    """
+    return assign_sections(items)
 
 
 def filter_china_related(items):
@@ -3601,27 +3696,33 @@ def run(dry_run=False, dry_run_tts_ok=False, root=None):
     #    `intl_items = intl_items + intl_extra` —— 因为 route_overseas_items
     #    返回的 intl 是「输入里所有国际条目」，不是「本次新增的国际条目」，
     #    拼接会让国际条目整体翻倍（线上日志实测出现 189 → 392 条）。
-    overseas_publishers = {f.get("publisher") for f in OVERSEAS_ZH_FEEDS if f.get("publisher")}
-    if overseas_publishers and (dom_items or intl_items):
-        before_dom = len(dom_items)
-        dom_routed, intl_routed = route_overseas_items(
-            dom_items + intl_items, overseas_publishers)
-        moved_out = before_dom - len(dom_routed)
-        dom_items = dom_routed
-        intl_items = intl_routed
-        if moved_out > 0:
-            log("海外中文媒体分流：%d 条非涉华新闻已移到国际版块" % moved_out)
-        # 分流本身可能把国际新闻误放进国内（或反之），这里做一次自检并纠正
-        leaked = [
-            it for it in dom_items
-            if item_publisher(it) in overseas_publishers and not is_china_related(it)
-        ]
-        if leaked:
-            warn("分流后国内版块仍有 %d 条非涉华新闻，已强制移到国际" % len(leaked))
-            for it in leaked:
-                dom_items.remove(it)
-                it["section"] = "international"
-                intl_items.append(it)
+    # 按「源 scope + 内容」统一分流到国内/国际版块。
+    #
+    # 这是「国内版块混进国外新闻」的根本修复：
+    #   早期实现只对「海外中文媒体白名单」做内容判定，而中新网不在名单里——
+    #   但中新网的即时/要闻/社会频道恰恰混着大量国际新闻
+    #   （实测 106 条里 38 条不涉华：「韩国高考防作弊」「日本隼鸟2号探测器」
+    #    「欧盟经济增长好于预期」）。名单式方案漏一个源就泄漏。
+    #   现在改为：每个源在配置里声明 scope，mixed 源逐条判定，不依赖任何白名单。
+    before_dom = len(dom_items)
+    dom_items, intl_items = assign_sections(dom_items + intl_items)
+    moved_out = before_dom - len(dom_items)
+    if moved_out:
+        log("版块分流：%d 条非涉华新闻已从国内版块移到国际版块" % moved_out)
+
+    # 自检：国内版块里绝不允许出现「mixed/intl 源且明确不涉华」的条目
+    leaked = [
+        it for it in dom_items
+        if (it.get("scope") == "intl")
+        or (it.get("scope") == "mixed" and not is_china_related(it))
+    ]
+    if leaked:
+        warn("分流自检发现国内版块仍有 %d 条国外新闻，已强制移除" % len(leaked))
+        leaked_ids = {id(it) for it in leaked}
+        dom_items = [it for it in dom_items if id(it) not in leaked_ids]
+        for it in leaked:
+            it["section"] = "international"
+            intl_items.append(it)
 
     # 国内源全挂 → 退化为从国际源筛选涉华报道，并在页面注明
     domestic_fallback = False

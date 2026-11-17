@@ -2125,6 +2125,110 @@ def test_theme_grouping():
           "实际=%r" % (theme_fail[0]["zh"] if theme_fail else None))
 
 
+def test_source_scope_routing():
+    group("源级分类分流（国内版块混进国外新闻的根本修复）")
+
+    # ---- 1. 每个源都必须声明 scope ----
+    all_feeds = list(generate.INTL_FEEDS) + list(generate.DOMESTIC_FEEDS) \
+        + list(generate.OVERSEAS_ZH_FEEDS)
+    missing = [f["name"] for f in all_feeds if not f.get("scope")]
+    check("所有源都声明了 scope（漏写会导致分类泄漏）",
+          not missing, "缺 scope 的源：%r" % missing)
+
+    valid_scopes = {"domestic", "intl", "mixed"}
+    bad_scope = [f["name"] for f in all_feeds if f.get("scope") not in valid_scopes]
+    check("scope 取值合法", not bad_scope,
+          "非法取值：%r" % [(f["name"], f.get("scope")) for f in all_feeds
+                         if f.get("scope") not in valid_scopes])
+
+    check("国际源全部标为 intl",
+          all(f.get("scope") == "intl" for f in generate.INTL_FEEDS))
+    # 中新网各频道混有国际稿，必须标 mixed 而不能标 domestic
+    cn_feeds = [f for f in generate.DOMESTIC_FEEDS if f["name"].startswith("中新网")]
+    check("中新网各频道标为 mixed（它们混有国际新闻）",
+          all(f.get("scope") == "mixed" for f in cn_feeds),
+          "实际=%r" % [(f["name"], f.get("scope")) for f in cn_feeds])
+    check("海外中文媒体标为 mixed",
+          all(f.get("scope") == "mixed" for f in generate.OVERSEAS_ZH_FEEDS))
+
+    # ---- 2. 分流行为 ----
+    def item(title, scope, publisher="某媒体", section="domestic"):
+        return {
+            "source": publisher, "publisher": publisher, "scope": scope,
+            "section": section, "title": title, "title_zh": title,
+            "summary": "", "url": "https://www.chinanews.com.cn/x",
+            "image": "", "published": datetime.now(BJ), "lang": "zh",
+        }
+
+    # intl 源：无论内容如何都进国际
+    dom, intl = generate.assign_sections([
+        item("中国经济增长超出预期", "intl"),
+    ])
+    expect_eq("intl 源一律进国际", (len(dom), len(intl)), (0, 1))
+
+    # domestic 源：一律进国内
+    dom, intl = generate.assign_sections([
+        item("某国发生地震", "domestic"),
+    ])
+    expect_eq("domestic 源一律进国内", (len(dom), len(intl)), (1, 0))
+
+    # mixed 源：按内容判定
+    dom, intl = generate.assign_sections([
+        item("习近平会见加拿大总理卡尼", "mixed"),
+        item("韩国高考防作弊措施升级", "mixed"),
+    ])
+    expect_eq("mixed 源涉华的进国内", len(dom), 1)
+    expect_eq("mixed 源不涉华的进国际", len(intl), 1)
+
+    # 不重不漏
+    mixed_items = [
+        item("中国商务部发布新规", "mixed"),
+        item("乌克兰袭击克里米亚大桥", "mixed"),
+        item("北京冬奥会场馆开放", "mixed"),
+        item("日本探测器变更目标", "mixed"),
+    ]
+    dom, intl = generate.assign_sections(mixed_items)
+    expect_eq("分流后总数不变", len(dom) + len(intl), len(mixed_items))
+
+    # ---- 3. 真实误判样本（线上抓到的真实标题）----
+    group("分流准确度（真实线上标题）")
+
+    should_be_domestic = [
+        ("王毅会见加拿大外长阿南德", "中国重大外交活动"),
+        ("APEC与会各经济体领导人将共商亚太发展大计", "中国主办国际会议"),
+        ("文莱苏丹哈桑纳尔抵达深圳 将出席APEC领导人非正式会议", "APEC"),
+        ("神舟二十四号计划近日择机实施发射", "中国航天"),
+        ("21条硬核措施 云南省七部门联合推进“云南”建设", "中国地方新闻"),
+        ("中国贡献为亚太发展注入新动能", "涉华评论"),
+    ]
+    for title, why in should_be_domestic:
+        check("判为国内：%s（%s）" % (title[:22], why),
+              generate.is_china_related(
+                  {"title": title, "title_zh": title, "summary": ""}) is True,
+              "被判成国外了")
+
+    should_be_intl = [
+        ("韩国高考防作弊“升级” 李在明称作弊行为是严重犯罪", "韩国"),
+        ("日本“隼鸟2”号小行星探测器因发动机故障变更探测目标", "日本"),
+        ("欧盟称今年前三季度经济增长好于预期", "欧盟"),
+        ("一名驻日美军涉嫌酒后损坏财物被捕", "驻日美军"),
+        ("乌克兰再次袭击克里米亚大桥导致路面拱门坠海", "乌克兰"),
+        ("美国两部门声明对Megaspeed展开调查，印尼警方搜查当地分支", "美国/印尼"),
+    ]
+    for title, why in should_be_intl:
+        check("判为国际：%s（%s）" % (title[:22], why),
+              generate.is_china_related(
+                  {"title": title, "title_zh": title, "summary": ""}) is False,
+              "被留在中国版块了")
+
+    # 关键陷阱：「高考」不能作为中国特征词（别国也有高考）
+    check("「高考」不是中国特征词（韩国也有高考）",
+          "高考" not in generate.CHINA_KEYWORDS_ZH)
+    # 「全国」过于宽泛
+    check("「全国」不是中国特征词（过于宽泛）",
+          "全国" not in generate.CHINA_KEYWORDS_ZH)
+
+
 def test_dry_run_end_to_end():
     group("端到端 dry-run（零网络、零 CF 调用、只写 _dryrun/）")
 
@@ -2383,6 +2487,7 @@ ALL_TESTS = [
     test_backfill_images,
     test_overseas_chinese_feeds,
     test_theme_grouping,
+    test_source_scope_routing,
     test_dry_run_end_to_end,
     test_dry_run_tts_ok_branch,
     test_workflow_guard,
