@@ -1,0 +1,17 @@
+# 依赖约束（用范围而不是精确版本号）
+#
+# 为什么不写死精确版本：
+#   精确版本号一旦在 PyPI 上被 yank，或上游发了新版本，安装就会失败，
+#   整条流水线还没开始抓新闻就先挂了。范围约束能兼顾稳定与可维护。
+#
+# 为什么固定 Python 3.11（见 .github/workflows/daily.yml）：
+#   3.13 下 feedparser 有兼容风险，3.11 是实测最稳的版本。
+
+# 语音合成：微软 edge-tts，纯免费、无需密钥，中文音色 zh-CN-XiaoxiaoNeural
+edge-tts>=6.1,<7
+
+# RSS 解析：命名空间（media:thumbnail 等）处理可靠，不要手写正则硬解 XML
+feedparser>=6.0,<7
+
+# 正文提取：从 HTML 里取正文段落与 description 内嵌的 <img src>
+beautifulsoup4>=4.12,<5

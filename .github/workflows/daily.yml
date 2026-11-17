@@ -1,0 +1,127 @@
+# 每日新闻自动更新工作流
+#
+# 作用：每天定时（或手动）抓取新闻 → 翻译 → 聚类 → 生成静态站点 → 提交数据 → 部署到 Cloudflare Pages
+#
+# 设计要点（每一条都是踩过坑之后定下来的，改动前请先读完）：
+#   1. 仓库名守卫放在最前面，杜绝误在主页仓库 tyuecode/tyuecode.github.io 上运行。
+#   2. 生成与部署必须在同一个 workflow 里：用 GITHUB_TOKEN 推送的提交不会触发另一个工作流，
+#      拆成两个文件就会出现「数据提交了但页面不更新」。
+#   3. 托管用 Cloudflare Pages + 用户自有域名，不用 GitHub Pages（国内访问 github.io 不稳）。
+#   4. smoke_test.py 必须排在 generate.py 之前：py_compile 只查语法不查 NameError。
+#   5. 密钥只从 GitHub Secrets 读取，任何步骤都不 echo 密钥内容。
+name: 每日新闻自动更新
+
+on:
+  # 定时触发：UTC 0:00，即北京时间 8:00
+  schedule:
+    - cron: '0 0 * * *'
+  # 手动触发，便于首次验证与临时补跑
+  workflow_dispatch:
+
+# 与 Pages 部署共用一个并发组，避免多次部署互相覆盖；不取消进行中的任务，保证一次完整跑完
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+# 权限：只需要写仓库（提交数据历史）。
+# 不再使用 GitHub Pages，因此不需要 pages / id-token 权限。
+permissions:
+  contents: write
+
+jobs:
+  daily:
+    name: 每日播报生成与部署
+    runs-on: ubuntu-latest
+    # 防止任务卡死（抓取 + 翻译 + 语音 + 部署的总时长上限）
+    timeout-minutes: 30
+    steps:
+      # 第 1 步：仓库名守卫
+      # 只在 tyuecode/daily-news 运行，绝不碰用户的其它仓库（尤其是主页仓库）
+      - name: 校验仓库名（守卫）
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${GITHUB_REPOSITORY}" != "tyuecode/daily-news" ]; then
+            echo "::error::当前仓库为 ${GITHUB_REPOSITORY}，并非 tyuecode/daily-news。已拒绝运行，防止污染其他仓库（尤其是主页仓库）。"
+            exit 1
+          fi
+          echo "仓库校验通过：${GITHUB_REPOSITORY}"
+
+      # 检出仓库代码
+      - name: 检出仓库代码
+        uses: actions/checkout@v4
+
+      # 安装 Python 3.11（3.13 下 feedparser 有兼容风险）并启用 pip 依赖缓存
+      - name: 配置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      # 安装依赖（edge-tts / feedparser / beautifulsoup4，版本范围由 requirements.txt 约束）
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+
+      # 运行时冒烟测试：实际调用每个关键函数，失败则立即中止后续所有步骤
+      - name: 运行冒烟测试
+        run: python smoke_test.py
+
+      # 抓取新闻 → 翻译 → 聚类 → 语音 → 渲染 index.html / archive/*.html
+      # 密钥通过环境变量注入，由脚本从 os.environ 读取；此处不做任何 echo，避免泄漏到日志
+      - name: 抓取并生成今日播报
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          # 站点根地址，用于页面 canonical 链接；可在仓库 Variables 里改
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: python scripts/generate.py
+
+      # 配置提交者身份
+      - name: 配置 Git 提交者
+        shell: bash
+        run: |
+          git config user.name "daily-news-bot"
+          git config user.email "bot@users.noreply.github.com"
+
+      # 仅在确实有变更时才提交并推送；提交信息带北京日期
+      # 发布闸门不通过时脚本自己不会写文件，这里自然也是零变更、直接跳过
+      - name: 提交并推送生成结果
+        shell: bash
+        run: |
+          set -euo pipefail
+          DATE=$(TZ=Asia/Shanghai date +%Y-%m-%d)
+          git add -A
+          if git diff --cached --quiet; then
+            echo "本次生成没有产生文件变更，跳过提交。"
+          else
+            git commit -m "每日播报 ${DATE}"
+            git push
+            echo "已提交并推送：每日播报 ${DATE}"
+          fi
+
+      # 准备 Cloudflare Pages 发布目录 _site/
+      # 只放对外可见的站点文件：不复制 scripts/、smoke_test.py、requirements.txt、.github/
+      - name: 准备发布目录
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+          if [ -f index.html ]; then cp index.html _site/; else echo "::warning::没有 index.html（生成可能被闸门拦下），仍继续部署上一版校验"; fi
+          if [ -d archive ]; then cp -r archive _site/; fi
+          if [ -d data ]; then cp -r data _site/; fi
+          if [ -f audio/daily.mp3 ]; then
+            mkdir -p _site/audio
+            cp audio/daily.mp3 _site/audio/daily.mp3
+          fi
+          echo "已准备 _site/ 内容："
+          find _site -maxdepth 2 -type f | sort
+
+      # 部署到 Cloudflare Pages
+      # 首次部署时 wrangler 会自动创建项目（若 CF_PAGES_PROJECT 指定的项目尚不存在）
+      - name: 部署到 Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy _site --project-name=${{ secrets.CF_PAGES_PROJECT }} --branch=main
