@@ -70,6 +70,29 @@ RECENT_DAYS = 7
 # 深挖全文翻译的文章数量
 DEEP_DIVE_COUNT = 6
 
+# ----------------------------------------------------------------------------
+# 播报稿字数上限与选材条数
+# ----------------------------------------------------------------------------
+# 历史故障：原本提示词写「600 字以内」，代码却 return text[:900] 硬切。
+# 线上实际出现了 32 条事件（国内 12 + 国际 20），光罗列就需约 885 字，
+# 模型只能写到 900+，再被硬切，句子断在「追踪巴勒」——页面文字和 mp3 音频同时残缺。
+#
+# 现在的做法：
+#   1. 播报只挑最重要的若干条（不需要覆盖全部事件），保证能在字数内讲完
+#   2. 提示词与代码共用同一个字数上限，不再各写各的
+#   3. 万一还是超长，按句子边界截断，绝不切断词
+BROADCAST_CHAR_LIMIT = 900
+
+# 结束语预留字数：截断时要先扣掉这么多，否则「截到 900 + 追加 18 字结束语」会超限
+BROADCAST_ENDING_RESERVE = 24
+
+# 播报稿最多覆盖多少条事件（每个版块各取前 N 条，按家数/时间排序后的顺序）
+BROADCAST_MAX_EVENTS_PER_SECTION = 6
+
+# 每个版块最多保留几条大事。契约写的是 5–8 条，但实测 AI 会返回 12–20 条，
+# 这里做硬性上限，避免页面和播报稿被稀释。
+MAX_EVENTS_PER_SECTION = 8
+
 # 每批翻译的标题数量：一次给 20 条模型只会翻前 5 条（实测），必须分批 8 条
 TRANSLATE_BATCH = 8
 
@@ -355,10 +378,13 @@ BROADCAST_PROMPT = """你是一名电台早间新闻主播。请把下面这些�
 - 把要点串联成连贯的段落，不要用 1.2.3. 编号
 - 口语化、句子短、便于朗读，不要出现括号、破折号等符号
 - 不要添加要点里没有的信息
-- 总长度控制在 600 字以内
+- 总长度控制在 {max_chars} 字以内
+- **必须在字数上限内写完整，最后一句话要有完整结尾**（比如「以上就是今天的要闻」），
+  绝对不能写到一半停住
+- 要点很多时，只需覆盖最重要的事，不必逐条罗列
 - 只输出播报稿正文，不要任何说明
 
-新闻要点：
+新闻要点（共 {point_count} 条，不必全部覆盖）：
 {points}
 """
 
@@ -1361,11 +1387,47 @@ def split_summary_importance(body):
 
 
 def truncate_zh(text, limit):
-    """按汉字长度截断（保留完整句子感觉，不硬切半个词）。"""
+    """按汉字长度截断（用于事件概括/重要性这类有硬字数契约的短字段）。"""
     text = (text or "").strip()
     if len(text) <= limit:
         return text
     return text[:limit].rstrip("，、。；：,.;:")
+
+
+def truncate_at_sentence(text, limit):
+    """在句子边界截断，绝不把词切断。
+
+    为什么不能用 text[:limit]：
+        线上真实故障——播报稿被硬切在「追踪巴勒」，后面「斯坦」没了，
+        既读不通，edge-tts 还会把「巴勒」当成完整的词念出来。
+    策略（按优先级，宁可短一点也不切词）：
+        1. 不足上限 → 原样返回
+        2. 在 [limit*0.5, limit] 区间内从后往前找**句末标点**（。！？…）
+        3. 找不到句末标点，才退到分号
+        4. 再找不到才退到逗号（此时至少词是完整的）
+        5. 实在没有任何标点边界，硬切并去掉半截标点
+    """
+    text = (text or "").strip()
+    if len(text) <= limit:
+        return text
+
+    # 从宽到窄试，优先保证句子完整。关键顺序：
+    #   第一轮只找句末标点（句号/问号/感叹号），只要窗口里有句号就用它；
+    #   找不到句末标点，才在更宽的窗口里退到分号、逗号。
+    # 这样「第一句结束。第二句还没说完」会断在句号后，而不是断在第二句的逗号上。
+    for marks in ("。！？…!?", "；;", "，,、 "):
+        for low_ratio in (0.5, 0.3):
+            low = max(1, int(limit * low_ratio))
+            window = text[low:limit]
+            for index in range(len(window) - 1, -1, -1):
+                if window[index] in marks:
+                    cut = text[:low + index + 1].strip()
+                    # 不能整段都是标点（例如「，，，，」），那样截出来毫无意义
+                    if re.search(r"[\u4e00-\u9fffA-Za-z0-9]", cut):
+                        return cut
+
+    # 完全没有边界可退：硬切，并去掉结尾的半截标点与空白
+    return text[:limit].rstrip("，、,；;：:—-– 。！？…!? ").strip()
 
 
 def fallback_event(cluster):
@@ -1543,11 +1605,18 @@ def build_section_events(clusters, section_label, client, max_retry=2):
                 "详情": {"原因": "AI 返回条数不足，用簇标题兜底"},
             })
 
-    # 按簇的排序输出（家数多、时间新的在前）
+    # 按簇的排序输出（家数多、时间新的在前），并做硬性条数上限。
+    # AI 实测会返回 12–20 条（契约明明写的是 5–8 条），不截断会让页面被稀释、
+    # 播报稿也塞不进字数预算。按排序结果（家数优先）截断，保留最靠前的。
     ordered = [
         (cluster["cid"], events[cluster["cid"]])
         for cluster in clusters if cluster["cid"] in events
     ]
+    if len(ordered) > MAX_EVENTS_PER_SECTION:
+        dropped = len(ordered) - MAX_EVENTS_PER_SECTION
+        log("  %s版块事件过多（%d 条），按重要性只保留前 %d 条，舍去 %d 条" % (
+            section_label, len(ordered), MAX_EVENTS_PER_SECTION, dropped))
+        ordered = ordered[:MAX_EVENTS_PER_SECTION]
     return ordered, gate_log
 
 
@@ -1727,19 +1796,26 @@ def deep_dive(clusters, client, limit=DEEP_DIVE_COUNT, http_get=None):
 # ============================================================================
 
 def build_broadcast(events_by_section, client, today):
-    """AI 改写 600 字以内的播报稿（与 TTS 同源）。
+    """AI 改写播报稿（与 TTS 同源）。
 
     events_by_section 形如 [("国内", [event, ...]), ("国际", [event, ...])]，
     其中 event 是数据契约里的那条大事（含 zh / importance）。
+
+    关键约束（都是线上故障换来的）：
+      - 只挑每个版块最前面的若干条要点，不把全部事件塞给模型。
+        实测 32 条全塞进去，光罗列就要 885 字，模型只能写超，最后被硬切。
+      - 字数上限由 BROADCAST_CHAR_LIMIT 统一控制，提示词和截断共用同一个值。
+      - 截断走 truncate_at_sentence，绝不切断词。
     """
     points = []
     summary_only = []
     for section_label, events in events_by_section:
-        for event in events or []:
+        # 只取靠前的若干条：调用方已按（家数, 时间）排序，靠前的就是最重要的
+        picked = [e for e in (events or []) if (e.get("zh") or "").strip()]
+        picked = picked[:BROADCAST_MAX_EVENTS_PER_SECTION]
+        for event in picked:
             summary = (event.get("zh") or "").strip()
             importance = (event.get("importance") or "").strip()
-            if not summary:
-                continue
             line = summary
             if importance:
                 line += "，" + importance
@@ -1752,7 +1828,12 @@ def build_broadcast(events_by_section, client, today):
     if not points:
         return "各位好，今天是%s，欢迎收听今日国际大事。" % date_text
 
-    prompt = BROADCAST_PROMPT.format(date=date_text, points="\n".join(points))
+    prompt = BROADCAST_PROMPT.format(
+        date=date_text,
+        max_chars=BROADCAST_CHAR_LIMIT,
+        point_count=len(points),
+        points="\n".join(points),
+    )
 
     try:
         text = strip_wrapping(client.complete(prompt))
@@ -1764,7 +1845,50 @@ def build_broadcast(events_by_section, client, today):
         # 降级：手工拼一段能直接朗读的稿子，绝不空着
         text = "各位好，今天是%s，欢迎收听今日国际大事。" % date_text
         text += "".join(s + "。" for s in summary_only)
-    return text[:900]
+
+    # 统一在句子边界收尾，绝不再用 text[:900] 硬切。
+    # 必须先给结束语预留字数，否则「截断到 900 + 追加结束语 18 字」会变成 918 超限。
+    text = truncate_at_sentence(text, BROADCAST_CHAR_LIMIT - BROADCAST_ENDING_RESERVE)
+    return ensure_broadcast_ending(text, date_text, BROADCAST_CHAR_LIMIT)
+
+
+def ensure_broadcast_ending(text, date_text, limit=None):
+    """确保播报稿有完整的收尾句，避免突然停住。
+
+    即使截断发生在句子边界，整篇也可能停在某条新闻中间，
+    听感上仍然是「话没说完」。这里补一句结束语，顺便清掉重复的结束语。
+    补完后若超过 limit，就回退到「只保证句子完整、不加结束语」。
+    """
+    text = (text or "").strip()
+    if not text:
+        return "各位好，今天是%s，欢迎收听今日国际大事。" % date_text
+
+    ending = "以上就是今天的要闻，明天同一时间再见。"
+
+    # 已经自然收尾的就不动（模型自己写了完整结尾）
+    for natural in ("明天同一时间再见", "感谢收听", "我们明天再见"):
+        if natural in text[-40:]:
+            return text
+
+    # 模型写了半截结束语（如「以上就是今天的要闻。」）→ 补全，而不是再加一整句
+    for half in ("以上就是今天的要闻", "以上就是今天的播报", "以上就是今天的内容"):
+        if half in text[-40:]:
+            full = half + "，明天同一时间再见。"
+            if limit is None or len(text) - len(half) + len(full) <= limit:
+                # 把结尾的半截版替换成完整版
+                head = text[:text.rfind(half)]
+                return (head + full).strip()
+            return text
+
+    # 结尾不是句末标点，补个句号再接收尾语
+    if text[-1] not in "。！？…!?":
+        text += "。"
+
+    candidate = text + ending
+    if limit is not None and len(candidate) > limit:
+        # 加结束语会超限：退而求其次，只保证以完整句子收尾
+        return text
+    return candidate
 
 
 def is_valid_mp3(path):

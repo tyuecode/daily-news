@@ -1078,8 +1078,9 @@ def test_prompts():
           "禁止编造" in generate.EVENTS_SUMMARY_PROMPT)
     check("全文翻译提示词要求完整翻译",
           "完整翻译，不省略" in generate.FULLTEXT_TRANSLATE_PROMPT)
-    check("播报稿提示词限 600 字",
-          "600 字以内" in generate.BROADCAST_PROMPT)
+    check("播报稿提示词的字数上限由常量统一控制",
+          "{max_chars} 字以内" in generate.BROADCAST_PROMPT,
+          "提示词没有使用 max_chars 占位符")
     check("播报稿提示词给了固定开头",
           "欢迎收听今日国际大事" in generate.BROADCAST_PROMPT)
     check("系统提示词禁止思考过程",
@@ -1090,7 +1091,8 @@ def test_prompts():
         generate.TITLE_TRANSLATE_PROMPT.format(count=1, items="1. a")
         generate.EVENTS_SUMMARY_PROMPT.format(scope="国际", count=1, items="[c1] a")
         generate.FULLTEXT_TRANSLATE_PROMPT.format(title="t", body="b")
-        generate.BROADCAST_PROMPT.format(date="2026年11月18日", points="1. a")
+        generate.BROADCAST_PROMPT.format(
+            date="2026年11月18日", max_chars=900, point_count=3, points="1. a")
         generate.EVENT_REDO_PROMPT.format(cid="c1", items="- a")
         check("所有提示词模板都能安全 format", True)
     except KeyError as exc:
@@ -1577,6 +1579,171 @@ def test_requirements_pins():
           "<" not in tts_line, "实际=%r" % tts_line)
 
 
+def test_broadcast_not_truncated():
+    group("播报稿完整性（线上故障：硬切在「追踪巴勒」，页面和音频同时残缺）")
+
+    # ---- 1. 句子边界截断，绝不切断词 ----
+    # 直接复现线上那段被切断的文本
+    real = (
+        "此外，在南非两起大规模枪击案导致17人死亡，"
+        "以色列在打击恐怖势力行动的同时，因利用面部识别平台追踪巴勒斯坦人的行动引发争议。"
+    )
+    old_style = real[:51]  # 「巴勒」在第 49–50 位，切到 51 正好停在半个词上
+    check("旧逻辑 text[:51] 确实会切断词（故障复现）",
+          old_style.endswith("巴勒"), "实际=%r" % old_style[-8:])
+
+    new_style = generate.truncate_at_sentence(real, 51)
+    check("新逻辑不会停在半个词上",
+          not new_style.endswith(("巴勒", "巴", "勒")), "实际=%r" % new_style[-8:])
+    check("新逻辑结果不比硬切长", len(new_style) <= 51, "实际=%d" % len(new_style))
+    check("新逻辑保留了实质内容",
+          bool(re.search(r"[\u4e00-\u9fff]", new_style)))
+
+    # 短于上限时原样返回
+    short = "各位好，今天没有新闻。"
+    expect_eq("短文本原样返回", generate.truncate_at_sentence(short, 900), short)
+
+    # 优先在句号处断开（而不是逗号）
+    multi = "第一句话结束。第二句话也很长，但是还没说完就超了上限了。"
+    cut = generate.truncate_at_sentence(multi, 20)
+    check("优先在句号处断开", cut.endswith("。"), "实际=%r" % cut[-10:])
+    check("优先断开时保留了第一句",
+          cut.startswith("第一句话结束"), "实际=%r" % cut)
+
+    # 全是标点不能截出空内容
+    expect_eq("全标点输入返回空串", generate.truncate_at_sentence("，" * 300, 100), "")
+
+    # ---- 2. 播报稿绝不超字数、且必定完整收尾 ----
+    class OverlongAI:
+        """模拟线上模型：要求 900 字以内，实际狂写几千字。"""
+
+        def complete(self, prompt, system_prompt=None, max_tokens=4096):
+            return "国内经济运行稳健，国际局势持续紧张，各方保持关注。" * 60
+
+    def make_events(count, prefix):
+        return [
+            {"cid": "%s%d" % (prefix, i),
+             "zh": "第%d条事件概括内容大约二十个字左右" % i,
+             "importance": "重要性说明", "source_count": 3, "image": "", "cluster": []}
+            for i in range(1, count + 1)
+        ]
+
+    sections = [("国内", make_events(6, "c")), ("国际", make_events(6, "i"))]
+    text = generate.build_broadcast(sections, OverlongAI(), generate.today_bj())
+
+    check("播报稿不超字数上限",
+          len(text) <= generate.BROADCAST_CHAR_LIMIT,
+          "实际=%d 上限=%d" % (len(text), generate.BROADCAST_CHAR_LIMIT))
+    check("播报稿以完整句子收尾",
+          text[-1] in "。！？…!?", "实际结尾=%r" % text[-6:])
+    check("播报稿带完整结束语（含『明天同一时间再见』）",
+          "明天同一时间再见" in text[-40:], "实际结尾=%r" % text[-30:])
+    check("结束语不重复",
+          text.count("明天同一时间再见") == 1,
+          "出现 %d 次" % text.count("明天同一时间再见"))
+
+    # ---- 2b. 模型自己写了半截结束语时，要补全而不是再加一整句 ----
+    half_ended = generate.ensure_broadcast_ending(
+        "各位好，今天有新闻。以上就是今天的要闻。", "2026年11月17日", 900)
+    check("半截结束语被补全为完整版",
+          half_ended.endswith("以上就是今天的要闻，明天同一时间再见。"),
+          "实际=%r" % half_ended[-30:])
+    expect_eq("补全后不重复出现『以上就是今天的要闻』",
+              half_ended.count("以上就是今天的要闻"), 1)
+
+    # 模型写了完整结束语时保持不变
+    full_ended = "各位好，今天有新闻。以上就是今天的要闻，明天同一时间再见。"
+    expect_eq("完整结束语原样保留",
+              generate.ensure_broadcast_ending(full_ended, "d", 900), full_ended)
+
+    # ---- 3. 模型自己收尾时不重复加结束语 ----
+    class NaturalAI:
+        def complete(self, prompt, system_prompt=None, max_tokens=4096):
+            return ("各位好，今天是2026年11月17日，欢迎收听今日国际大事。"
+                    "国内经济稳健，国际局势紧张。以上就是今天的要闻，明天同一时间再见。")
+
+    natural = generate.build_broadcast(sections, NaturalAI(), generate.today_bj())
+    expect_eq("模型已收尾时不重复加结束语",
+              natural.count("明天同一时间再见"), 1)
+
+    # ---- 4. AI 失败降级稿同样完整 ----
+    class FailAI:
+        def complete(self, prompt, system_prompt=None, max_tokens=4096):
+            raise ai_client.AIError("演练：AI 失败")
+
+    fallback = generate.build_broadcast(sections, FailAI(), generate.today_bj())
+    check("降级稿也完整收尾",
+          fallback[-1] in "。！？…!?" and "明天同一时间再见" in fallback[-40:],
+          "实际结尾=%r" % fallback[-30:])
+    check("降级稿不超字数", len(fallback) <= generate.BROADCAST_CHAR_LIMIT)
+
+    # ---- 5. 字数契约：提示词与代码共用同一个常量 ----
+    captured = {}
+
+    class CaptureAI:
+        def complete(self, prompt, system_prompt=None, max_tokens=4096):
+            captured["prompt"] = prompt
+            return "各位好，今天的播报到此结束。以上就是今天的要闻，明天同一时间再见。"
+
+    generate.build_broadcast(sections, CaptureAI(), generate.today_bj())
+    prompt = captured.get("prompt", "")
+    check("提示词里的字数上限与代码常量一致",
+          ("%d 字以内" % generate.BROADCAST_CHAR_LIMIT) in prompt,
+          "提示词里没找到『%d 字以内』" % generate.BROADCAST_CHAR_LIMIT)
+    check("提示词明确要求写完、不能停一半",
+          "必须" in prompt and "完整结尾" in prompt,
+          "提示词缺少『必须写完』的约束")
+    check("提示词说明不必覆盖全部要点",
+          "不必全部覆盖" in prompt)
+    check("旧的不一致文案已移除（不再写死 600 字）",
+          "600 字以内" not in prompt)
+
+    # ---- 6. 事件过多时只挑最重要的几条进播报 ----
+    many = [("国内", make_events(12, "c")), ("国际", make_events(20, "i"))]
+    captured.clear()
+    generate.build_broadcast(many, CaptureAI(), generate.today_bj())
+    lines = [l for l in captured.get("prompt", "").splitlines()
+             if re.match(r"^\d+\. ", l.strip())]
+    limit = generate.BROADCAST_MAX_EVENTS_PER_SECTION * 2
+    check("32 条事件时只选材不超过上限",
+          len(lines) <= limit, "实际选了 %d 条，上限 %d" % (len(lines), limit))
+    check("选材数量大于 0", len(lines) > 0)
+
+    # ---- 7. 版块事件数硬上限 ----
+    check("每版块保留事件数不超过 8 条（契约 5–8）",
+          generate.MAX_EVENTS_PER_SECTION <= 8,
+          "实际=%d" % generate.MAX_EVENTS_PER_SECTION)
+
+    def make_cluster(cid, title, count):
+        return {
+            "cid": cid, "section": "international", "source_count": count,
+            "image": "", "primary_title_zh": title,
+            "published": datetime.now(BJ),
+            "items": [{
+                "source": "BBC", "publisher": "BBC", "title_zh": title, "title": title,
+                "title_en": "", "summary": "",
+                "url": "https://www.bbc.com/news/%s" % cid,
+                "image": "", "published": datetime.now(BJ), "lang": "zh",
+            }],
+        }
+
+    class ManyEventsAI:
+        """模拟线上：AI 返回的条数远超 5–8 条契约。"""
+
+        def complete(self, prompt, system_prompt=None, max_tokens=4096):
+            cids = re.findall(r"^\[(i\d+)\]", prompt, re.MULTILINE)
+            return "\n".join("[%s] 事件概括%d——重要性" % (cid, i)
+                             for i, cid in enumerate(cids, 1))
+
+    big = [make_cluster("i%d" % i, "互不相同的事件标题编号%d好多个字" % i, 1)
+           for i in range(1, 21)]
+    events, _log = generate.build_section_events(big, "国际", ManyEventsAI())
+    check("AI 返回 20 条时被截到上限内",
+          len(events) <= generate.MAX_EVENTS_PER_SECTION,
+          "实际保留 %d 条" % len(events))
+    check("截断后仍有足够条数（≥3）", len(events) >= 3)
+
+
 def test_dry_run_end_to_end():
     group("端到端 dry-run（零网络、零 CF 调用、只写 _dryrun/）")
 
@@ -1821,6 +1988,7 @@ ALL_TESTS = [
     test_cluster_threshold_calibration,
     test_tts_retry_behaviour,
     test_requirements_pins,
+    test_broadcast_not_truncated,
     test_dry_run_end_to_end,
     test_dry_run_tts_ok_branch,
     test_workflow_guard,
