@@ -1,0 +1,487 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>每日热点简报 · 2026-11-19</title>
+<meta name="description" content="习近平出席亚太经合组织工商领导人峰会开幕式并发表主旨演讲，并会见俄罗斯总统普京，国际上：🔴 美国民主党提名哈基姆·杰弗里斯为首位黑人众议院议长">
+
+<style>
+:root{
+  --bg:#f4f5f7;--card:#fff;--text:#1a1a1a;--muted:#8a8f98;--accent:#e64340;
+  --accent-soft:#fff0ef;--line:#eceef1;--shadow:0 2px 10px rgba(20,30,50,.06);
+  --headline-bg:linear-gradient(135deg,#fff 0%,#fff8f7 100%);
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14161a;--card:#1e2126;--text:#e8eaed;--muted:#9aa0aa;--accent:#ff6b66;
+    --accent-soft:#3a2424;--line:#2d3138;--shadow:0 2px 10px rgba(0,0,0,.3);
+    --headline-bg:linear-gradient(135deg,#1e2126 0%,#2a2020 100%);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:16px 14px 40px}
+header{padding:8px 2px 0}
+header h1{font-size:27px;margin:6px 0 2px;letter-spacing:.5px}
+.sub{color:var(--muted);font-size:13px;margin:0}
+
+/* A1 今日一句话摘要 */
+.brief{margin-top:14px;background:var(--accent-soft);border:1px solid var(--accent);
+  border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:baseline}
+.brief-label{flex:0 0 auto;background:var(--accent);color:#fff;font-size:12px;
+  font-weight:700;padding:2px 8px;border-radius:5px}
+.brief-text{font-size:15px;font-weight:600;line-height:1.5}
+
+/* B5 概览数字条 */
+.overview{margin-top:10px;color:var(--muted);font-size:13px;display:flex;gap:8px;flex-wrap:wrap}
+.overview b{color:var(--text);font-size:15px}
+.overview .sep{opacity:.5}
+
+/* B6 版块跳转 */
+.jump{margin-top:14px;display:flex;gap:10px}
+.jump a{flex:1;text-align:center;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:11px 6px;color:var(--text);font-size:14px;
+  text-decoration:none;min-height:44px;line-height:22px}
+.jump a:active{background:var(--accent-soft)}
+
+h2{font-size:20px;margin:30px 0 12px;padding-left:11px;border-left:4px solid var(--accent);
+  scroll-margin-top:16px}
+
+/* 今日播报 */
+.broadcast{background:var(--card);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+.broadcast #audioEl{display:none}
+/* 统一播报控制条 */
+.player{background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;
+  padding:12px;margin-bottom:10px}
+.player-row{display:flex;align-items:center;gap:12px}
+.play-btn{flex:0 0 52px;width:52px;height:52px;border-radius:50%;background:var(--accent);
+  color:#fff;border:0;font-size:20px;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;box-shadow:0 3px 10px rgba(230,67,64,.3)}
+.play-btn:active{transform:scale(.94)}
+.player-info{flex:1;min-width:0}
+.player-title{font-size:15px;font-weight:600}
+.player-status{font-size:12px;color:var(--muted);margin-top:2px}
+.stop-btn{flex:0 0 44px;width:44px;height:44px;border-radius:10px;background:var(--card);
+  color:var(--muted);border:1px solid var(--line);font-size:14px;cursor:pointer}
+.rate-row{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap}
+.rate-row span{font-size:12px;color:var(--muted);margin-right:2px}
+.rate-btn{background:var(--card);color:var(--muted);border:1px solid var(--line);
+  border-radius:16px;padding:5px 11px;font-size:12px;cursor:pointer;min-height:30px}
+.rate-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* 进度条与时间 */
+.seek-row{display:flex;align-items:center;gap:8px;margin-top:10px}
+.time{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;flex:0 0 34px}
+.time:last-child{text-align:right}
+.seek{flex:1;accent-color:var(--accent);height:24px;cursor:pointer}
+/* 音色选择 */
+.voice-row{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap}
+.voice-row>span{font-size:12px;color:var(--muted);margin-right:2px}
+.voice-btn{background:var(--card);color:var(--muted);border:1px solid var(--line);
+  border-radius:16px;padding:5px 12px;font-size:12px;cursor:pointer;min-height:30px}
+.voice-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.voice-select{flex:1;min-width:120px;background:var(--card);color:var(--text);
+  border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:13px;min-height:32px}
+.script{white-space:pre-wrap;color:var(--text);font-size:15px;margin:10px 0 0}
+summary{cursor:pointer;min-height:44px;line-height:44px;color:var(--accent);font-weight:600}
+
+/* 卡片 */
+.cards{display:flex;flex-direction:column;gap:10px}
+.card{display:flex;background:var(--card);border-radius:13px;padding:14px;
+  box-shadow:var(--shadow);border-left:3px solid transparent}
+/* A2 头条样式分级 */
+.card.headline{background:var(--headline-bg);border-left-color:var(--accent);
+  box-shadow:0 4px 16px rgba(230,67,64,.10)}
+.card.headline h3{font-size:19px;line-height:1.45}
+.card.headline .rank{width:40px;height:40px;font-size:17px}
+.rank{flex:0 0 34px;width:34px;height:34px;border-radius:9px;background:var(--accent);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;
+  font-size:15px;margin-right:12px}
+.headline .rank{background:linear-gradient(135deg,#ff7a5c,#e64340)}
+.body{flex:1;min-width:0}
+h3{font-size:16px;margin:1px 0 7px;line-height:1.5}
+
+/* A3 英文原标题弱化 */
+.en{color:var(--muted);font-size:12px;margin:2px 0;opacity:.75;transition:opacity .2s}
+.card:hover .en{opacity:1}
+
+/* A4 热点标记徽章 */
+.meta-line{margin:7px 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.source{color:var(--muted);font-size:12px}
+/* 国际卡片来源更醒目：让读者明确知道观点来自哪家媒体 */
+.card:has(.en) .source{color:var(--accent);font-weight:600;font-size:13px}
+.badge{font-size:11px;padding:2px 7px;border-radius:20px;font-weight:600;white-space:nowrap}
+.badge.new{background:#e8f5e9;color:#2e7d32}
+.badge.hot{background:#fff3e0;color:#e65100}
+.badge.multi{background:var(--accent-soft);color:var(--accent)}
+@media(prefers-color-scheme:dark){
+  .badge.new{background:#1b3320;color:#81c784}
+  .badge.hot{background:#3a2a15;color:#ffb74d}
+}
+.link{color:var(--accent);font-size:13px;text-decoration:none}
+.views{margin-top:9px;border-top:1px solid var(--line);padding-top:4px}
+.hint{color:var(--muted);font-size:12px;background:var(--accent-soft);
+  padding:8px 10px;border-radius:7px;margin:6px 0}
+.view{display:flex;flex-direction:column;gap:2px;padding:9px 0;
+  border-bottom:1px solid var(--line);font-size:14px}
+.view a{color:var(--text);text-decoration:none}
+/* C8 展开区图片 */
+.view-img{width:100%;max-height:160px;object-fit:cover;border-radius:8px;margin-bottom:4px}
+.empty,.note{color:var(--muted);padding:12px;background:var(--card);border-radius:10px}
+
+/* B7 往期回顾时间线 */
+.recent ul.timeline{list-style:none;margin:0;padding:0 0 0 6px}
+.recent li{border-left:2px solid var(--line);padding:0 0 14px 18px;position:relative}
+.recent li:last-child{border-left-color:transparent}
+.recent .dot{position:absolute;left:-6px;top:4px;width:10px;height:10px;
+  border-radius:50%;background:var(--accent)}
+.recent .day-line{font-size:15px;font-weight:600}
+.recent a{color:var(--text);text-decoration:none}
+.recent .day-sum{color:var(--muted);font-size:13px;margin-top:2px}
+
+/* B6 悬浮回到顶部 */
+.to-top{position:fixed;right:18px;bottom:24px;width:44px;height:44px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:22px;
+  display:flex;align-items:center;justify-content:center;text-decoration:none;
+  box-shadow:0 4px 14px rgba(230,67,64,.35);z-index:99}
+@media(min-width:700px){.wrap{padding:24px 16px 60px}}
+</style>
+
+</head><body><div class="wrap">
+<header><h1>每日热点简报</h1>
+<p class="sub">更新于 2026-11-19T03:54:24.680784+08:00</p></header>
+<div class="brief"><span class="brief-label">今日焦点</span><span class="brief-text">习近平出席亚太经合组织工商领导人峰会开幕式并发表主旨演讲，并会见俄罗斯总统普京，国际上：🔴 美国民主党提名哈基姆·杰弗里斯为首位黑人众议院议长</span></div>
+<div class="overview"><span><b>8</b> 条国内热点</span><span class="sep">·</span><span><b>15</b> 条国际热点</span><span class="sep">·</span><span>来自 <b>6</b> 个热榜平台</span></div>
+<nav class="jump"><a href="#domestic">国内热点 ↓</a><a href="#international">国际热点 ↓</a></nav>
+<section class="broadcast" id="broadcast"><h2>今日播报</h2>
+<details><summary>展开播报稿</summary>
+<p class="script">各位好，今天是11月19日，欢迎收听今日热点。
+
+首先来看国内新闻。习近平出席了亚太经合组织工商领导人峰会开幕式，并发表了主旨演讲。此外，习近平还分别会见了俄罗斯总统普京，以及美国总统特朗普。与此同时，普京也到访了深圳的高校并发表了演讲。在商业领域，英伟达在电话会议中表示，公司不打算请回黄仁勋，并计划将2028财年的增速预期上调至百分之七十五，同时表示未来的人工智能投资将更加克制与挑剔。
+
+国际方面，美国民主党提名哈基姆·杰弗里斯为首位黑人众议院议长。在特朗普于华举行历史性会谈前，他与普京以及习近平进行了握手。在国际司法与政治动态上，外界担忧美国可能会对涉及缅甸种族灭绝裁决的诺贝尔奖获得者实施制裁。欧盟方面，欧盟委员会被指控通过粉饰数据来向埃及释放资金，另外有五个欧盟国家宣布了在卢旺达建立移民遣返中心的计划。此外，有消息称一名美国篮球运动员因在尼日利亚机场携带大量大麻被捕。
+
+以上就是今天的要闻，明天同一时间再见。</p></details>
+</section>
+<section id="domestic"><h2>国内热点</h2>
+<div class="cards">
+<article class="card headline">
+<div class="rank">1</div>
+<div class="body">
+<h3>详讯丨习近平出席亚太经合组织工商领导人峰会开幕式并发表主旨演讲</h3>
+<div class="meta-line">
+<span class="source">澎湃新闻</span>
+<span class="badge hot">持续 8 次</span>
+<span class="badge multi">2 家媒体报道</span>
+</div>
+<a class="link" href="https://www.thepaper.cn/newsDetail_forward_34502089" target="_blank" rel="noopener">查看原文 ›</a>
+<details class="views"><summary>查看各家报道 ▸</summary>
+<p class="hint">以下报道来自 2 家媒体，观点可能不同，请自行判断</p>
+<div class="view">
+<a href="https://www.thepaper.cn/newsDetail_forward_34502089" target="_blank" rel="noopener">澎湃新闻：详讯丨习近平出席亚太经合组织工商领导人峰会开幕式并发表主旨演讲</a>
+</div>
+<div class="view">
+<a href="https://wallstreetcn.com/articles/3786157" target="_blank" rel="noopener">华尔街见闻：习近平在亚太经合组织工商领导人峰会上的主旨演讲（全文）</a>
+</div>
+</details>
+</div></article>
+<article class="card headline">
+<div class="rank">2</div>
+<div class="body">
+<h3>详讯丨习近平会见俄罗斯总统普京</h3>
+<div class="meta-line">
+<span class="source">澎湃新闻</span>
+<span class="badge hot">持续 8 次</span>
+<span class="badge multi">2 家媒体报道</span>
+</div>
+<a class="link" href="https://www.thepaper.cn/newsDetail_forward_34503686" target="_blank" rel="noopener">查看原文 ›</a>
+<details class="views"><summary>查看各家报道 ▸</summary>
+<p class="hint">以下报道来自 2 家媒体，观点可能不同，请自行判断</p>
+<div class="view">
+<a href="https://www.thepaper.cn/newsDetail_forward_34503686" target="_blank" rel="noopener">澎湃新闻：详讯丨习近平会见俄罗斯总统普京</a>
+</div>
+<div class="view">
+<a href="https://www.cls.cn/detail/2537902" target="_blank" rel="noopener">财联社：习近平会见俄罗斯总统普京</a>
+</div>
+</details>
+</div></article>
+<article class="card headline">
+<div class="rank">1</div>
+<div class="body">
+<h3>英伟达电话会：“不打算请回黄仁勋”，2028财年增速预期上调至75%，AI投资将更加“克制与挑剔”</h3>
+<div class="meta-line">
+<span class="source">华尔街见闻</span>
+<span class="badge hot">持续 8 次</span>
+</div>
+<a class="link" href="https://wallstreetcn.com/articles/3786136" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">2</div>
+<div class="body">
+<h3>习近平迎接美国总统特朗普</h3>
+<div class="meta-line">
+<span class="source">B站热搜</span>
+<span class="badge hot">持续 6 次</span>
+<span class="badge multi">2 家媒体报道</span>
+</div>
+<a class="link" href="https://search.bilibili.com/all?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E8%BF%8E%E6%8E%A5%E7%BE%8E%E5%9B%BD%E6%80%BB%E7%BB%9F%E7%89%B9%E6%9C%97%E6%99%AE" target="_blank" rel="noopener">查看原文 ›</a>
+<details class="views"><summary>查看各家报道 ▸</summary>
+<p class="hint">以下报道来自 3 家媒体，观点可能不同，请自行判断</p>
+<div class="view">
+<a href="https://search.bilibili.com/all?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E8%BF%8E%E6%8E%A5%E7%BE%8E%E5%9B%BD%E6%80%BB%E7%BB%9F%E7%89%B9%E6%9C%97%E6%99%AE" target="_blank" rel="noopener">B站热搜：习近平迎接美国总统特朗普</a>
+</div>
+<div class="view">
+<a href="https://www.thepaper.cn/newsDetail_forward_34504062" target="_blank" rel="noopener">澎湃新闻：详讯丨习近平迎接美国总统特朗普</a>
+</div>
+<div class="view">
+<a href="https://search.bilibili.com/all?keyword=%E7%BE%8E%E5%9B%BD%E6%80%BB%E7%BB%9F%E7%89%B9%E6%9C%97%E6%99%AE%E6%8A%B5%E8%BE%BE%E6%B7%B1%E5%9C%B3" target="_blank" rel="noopener">B站热搜：美国总统特朗普抵达深圳</a>
+</div>
+</details>
+</div></article>
+<article class="card">
+<div class="rank">2</div>
+<div class="body">
+<h3>普京到访深圳高校发表演讲</h3>
+<div class="meta-line">
+<span class="source">抖音热榜</span>
+<span class="badge hot">持续 6 次</span>
+</div>
+<a class="link" href="https://www.douyin.com/hot/2752490" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">3</div>
+<div class="body">
+<h3>APEC工商领导人峰会什么话题最热</h3>
+<div class="meta-line">
+<span class="source">百度热搜</span>
+<span class="badge hot">持续 7 次</span>
+</div>
+<a class="link" href="https://www.baidu.com/s?wd=APEC%E5%B7%A5%E5%95%86%E9%A2%86%E5%AF%BC%E4%BA%BA%E5%B3%B0%E4%BC%9A%E4%BB%80%E4%B9%88%E8%AF%9D%E9%A2%98%E6%9C%80%E7%83%AD" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">2</div>
+<div class="body">
+<h3>普京和特朗普互动握手</h3>
+<div class="meta-line">
+<span class="source">今日头条</span>
+<span class="badge hot">持续 2 次</span>
+<span class="badge multi">3 家媒体报道</span>
+</div>
+<a class="link" href="https://www.toutiao.com/trending/7709016121017434153/" target="_blank" rel="noopener">查看原文 ›</a>
+<details class="views"><summary>查看各家报道 ▸</summary>
+<p class="hint">以下报道来自 3 家媒体，观点可能不同，请自行判断</p>
+<div class="view">
+<a href="https://www.toutiao.com/trending/7709016121017434153/" target="_blank" rel="noopener">今日头条：普京和特朗普互动握手</a>
+</div>
+<div class="view">
+<a href="https://www.baidu.com/s?wd=%E6%99%AE%E4%BA%AC%E5%92%8C%E7%89%B9%E6%9C%97%E6%99%AE%E4%BA%92%E5%8A%A8%E6%8F%A1%E6%89%8B" target="_blank" rel="noopener">百度热搜：普京和特朗普互动握手</a>
+</div>
+<div class="view">
+<a href="https://s.weibo.com/weibo?q=%23%E6%99%AE%E4%BA%AC%E5%92%8C%E7%89%B9%E6%9C%97%E6%99%AE%E4%BA%92%E5%8A%A8%E6%8F%A1%E6%89%8B%23&amp;t=31&amp;band_rank=10&amp;Refer=top" target="_blank" rel="noopener">微博热搜：普京和特朗普互动握手</a>
+</div>
+</details>
+</div></article>
+<article class="card">
+<div class="rank">1</div>
+<div class="body">
+<h3>习近平同APEC各经济体领导人合影</h3>
+<div class="meta-line">
+<span class="source">今日头条</span>
+<span class="badge hot">持续 3 次</span>
+</div>
+<a class="link" href="https://www.toutiao.com/trending/7709445844642250762/" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+</div>
+</section>
+<section id="international"><h2>国际热点</h2>
+<div class="cards">
+<article class="card headline">
+<div class="rank">—</div>
+<div class="body">
+<h3>🔴 美国民主党提名哈基姆·杰弗里斯为首位黑人众议院议长</h3>
+<p class="en">🔴 US Democrats nominate Hakeem Jeffries to be first Black speaker of the House</p>
+<div class="meta-line">
+<span class="source">France 24</span>
+<span class="badge multi">3 家媒体报道</span>
+</div>
+<a class="link" href="https://www.france24.com/en/americas/20261118-us-democrats-nominate-hakeem-jeffries-to-be-first-black-speaker-of-the-house" target="_blank" rel="noopener">查看原文 ›</a>
+<details class="views"><summary>查看各家报道 ▸</summary>
+<p class="hint">以下报道来自 3 家媒体，观点可能不同，请自行判断</p>
+<div class="view">
+<a href="https://www.france24.com/en/americas/20261118-us-democrats-nominate-hakeem-jeffries-to-be-first-black-speaker-of-the-house" target="_blank" rel="noopener">France 24：🔴 美国民主党提名哈基姆·杰弗里斯为首位黑人众议院议长</a>
+<span class="en">🔴 US Democrats nominate Hakeem Jeffries to be first Black speaker of the House</span>
+</div>
+<div class="view">
+<a href="https://www.aljazeera.com/news/2026/11/18/hakeem-jeffries-becomes-first-black-nominee-for-us-house-speaker?traffic_source=rss" target="_blank" rel="noopener">Al Jazeera：哈基姆·杰弗里斯正式被提名为首位黑人美国众议院议长</a>
+<span class="en">Hakeem Jeffries formally nominated as first Black US House speaker</span>
+</div>
+<div class="view">
+<img class="view-img" src="https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/128f/live/04ac0df0-e366-11f1-9f51-4bfc31543510.jpg" loading="lazy" onerror="this.style.display='none'">
+<a href="https://www.bbc.co.uk/news/articles/cmy49873dn95o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">BBC：民主党提名哈基姆·杰弗里斯为美国众议院议长候选人</a>
+<span class="en">Democrats nominate Hakeem Jeffries to be US Speaker of the House</span>
+</div>
+</details>
+</div></article>
+<article class="card headline">
+<div class="rank">—</div>
+<div class="body">
+<h3>特朗普在华举行历史性会谈前与普京及习近平握手</h3>
+<p class="en">Trump shakes hands with Putin and Xi ahead of historic talks in China</p>
+<div class="meta-line">
+<span class="source">BBC</span>
+<span class="badge multi">2 家媒体报道</span>
+</div>
+<a class="link" href="https://www.bbc.co.uk/news/articles/ck9d75x5wwwwo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<details class="views"><summary>查看各家报道 ▸</summary>
+<p class="hint">以下报道来自 2 家媒体，观点可能不同，请自行判断</p>
+<div class="view">
+<img class="view-img" src="https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/a9fb/live/b2707bf0-e349-11f1-99aa-0f40b013ad11.jpg" loading="lazy" onerror="this.style.display='none'">
+<a href="https://www.bbc.co.uk/news/articles/ck9d75x5wwwwo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">BBC：特朗普在华举行历史性会谈前与普京及习近平握手</a>
+<span class="en">Trump shakes hands with Putin and Xi ahead of historic talks in China</span>
+</div>
+<div class="view">
+<a href="https://news.google.com/rss/articles/CBMiW0FVX3lxTE1FNVg3ME1zb05FTlVhMmw5SXQ4eGlxRF9hYUo3bGhVNlMyTjEyeFBMT29tMDM1WjY4QUxONVVjSkp4VFVlZFZrNkNxU0ZDR0c1LWU3cmE1c0lDeTQ?oc=5" target="_blank" rel="noopener">Google News：特朗普在中国的历史性会谈前与普京和习近平握手 - BBC</a>
+<span class="en">Trump shakes hands with Putin and Xi ahead of historic talks in China - BBC</span>
+</div>
+</details>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>缅甸种族灭绝裁决后，外界担忧美国将对获得诺贝尔奖的法官实施制裁</h3>
+<p class="en">Fears grow that US will put Nobel-winning judge under sanctions after Myanmar genocide ruling</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/world/2026/nov/18/us-sanctions-icj-judges-myanmar-genocide-ruling-israel-gaza-court" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>欧盟委员会被指控粉饰数据以向埃及释放资金</h3>
+<p class="en">European Commission accused of sugarcoating figures to release funds to Egypt</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/world/2026/nov/18/european-commission-accused-sugarcoating-figures-egypt-loans" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>五个欧盟国家宣布在卢旺达建立移民“遣返中心”的计划</h3>
+<p class="en">Five EU states announce plans for immigration ‘return hubs’ in Rwanda</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/world/2026/nov/16/eu-states-immigration-return-hubs-rwanda" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>当局称一名美国篮球运动员在尼日利亚机场因携带75磅大麻被捕</h3>
+<p class="en">US basketball player arrested with 75lb of marijuana at Nigerian airport, say authorities</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/sport/2026/nov/16/us-basketball-player-arrested-with-75lb-of-marijuana-at-nigerian-airport-say-authorities" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>开普敦狒狒迁往保护区引发激烈抗议</h3>
+<p class="en">Relocation of Cape Town baboons to sanctuary ignites heated protests</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/world/2026/nov/16/cape-town-baboons-relocation-protests" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>在欧盟发出威胁后，加勒比国家担心关闭公民身份计划会带来经济影响</h3>
+<p class="en">Caribbean nations fear economic impact of shuttering citizenship program after EU threats</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/world/2026/nov/17/st-kitts-nevis-citizenship-investment" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>在该部落生活方式面临威胁的警报中，一个偏远的巴西部落现身</h3>
+<p class="en">Isolated Brazilian tribe emerges amid alarm over threats to group’s way of life</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/world/2026/nov/17/brazil-amazon-isolated-indigenous-people" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>一名八岁海地男孩在从美国移民海关执法局（ICE）拘留中获释后回到家中</h3>
+<p class="en">Eight-year-old Haitian boy returns home after release from ICE custody</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/us-news/2026/nov/17/haitian-child-ice-custody-release" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>哥斯达黎加记者遭枪杀，系25年来首起此类命案</h3>
+<p class="en">Costa Rican journalist shot dead in first such killing in 25 years</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/world/2026/nov/17/costa-rica-journalist-camilo-rodriguez-shot-dead" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>去年巴西1605份中毒报告涉及欧洲制造农药</h3>
+<p class="en">European-made pesticides named in 1,605 poisoning reports in Brazil last year</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/environment/2026/nov/17/european-made-pesticides-named-1605-brazil-poisoning-reports" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>亚太经合组织峰会实况：习近平欢迎特朗普访华，普京称欧洲正处于“屈辱性衰落”</h3>
+<p class="en">Apec summit as it happened: Xi welcomes Trump on China visit as Putin claims Europe in ‘humiliating decline’</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/world/live/2026/nov/18/apec-summit-live-updates-xi-putin-trump-world-leaders-gather-in-china" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>AI作弊丑闻扰乱韩国高压大学考试</h3>
+<p class="en">South Korea’s high-stakes university exams upended by AI cheating scandal</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/world/2026/nov/18/south-korea-university-entrace-exams-ai-cheating-measures" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>黄仁勋将就“潜在危害国家安全问题”出庭作证</h3>
+<p class="en">Jensen Huang to testify before Congress on ‘potential breach of national security’</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+</div>
+<a class="link" href="https://www.theguardian.com/technology/2026/nov/17/jensen-huang-testify-congress-nvidia-affair-spy" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+</div>
+</section>
+<p class="note">本页为归档，音频仅当日有效。</p>
+<p><a href="../index.html">返回首页</a></p>
+<section class="recent"><h2>其他日期</h2><ul class="timeline">
+<li><div class="day-line"><span class="dot"></span><a href="2026-11-18.html">2026-11-18</a></div><div class="day-sum">详讯丨习近平出席亚太经合组织工商领导人峰会开幕式并发表主旨演讲｜五个欧盟国家宣布计划在卢旺达设立移民“遣返中心”</div></li>
+</ul></section>
+</div><a class="to-top" href="#" aria-label="回到顶部">↑</a>
+<script>(function(){var player=document.getElementById('player');if(!player)return;var mode=player.getAttribute('data-mode');var audio=document.getElementById('audioEl');var playBtn=document.getElementById('playBtn');var stopBtn=document.getElementById('stopBtn');var statusEl=document.getElementById('playerStatus');var seekBar=document.getElementById('seekBar');var curTime=document.getElementById('curTime');var durTime=document.getElementById('durTime');var rateBtns=document.querySelectorAll('.rate-btn');var voiceBtns=document.querySelectorAll('.voice-btn');var voiceSelect=document.getElementById('browserVoice');var text="各位好，今天是11月19日，欢迎收听今日热点。\n\n首先来看国内新闻。习近平出席了亚太经合组织工商领导人峰会开幕式，并发表了主旨演讲。此外，习近平还分别会见了俄罗斯总统普京，以及美国总统特朗普。与此同时，普京也到访了深圳的高校并发表了演讲。在商业领域，英伟达在电话会议中表示，公司不打算请回黄仁勋，并计划将2028财年的增速预期上调至百分之七十五，同时表示未来的人工智能投资将更加克制与挑剔。\n\n国际方面，美国民主党提名哈基姆·杰弗里斯为首位黑人众议院议长。在特朗普于华举行历史性会谈前，他与普京以及习近平进行了握手。在国际司法与政治动态上，外界担忧美国可能会对涉及缅甸种族灭绝裁决的诺贝尔奖获得者实施制裁。欧盟方面，欧盟委员会被指控通过粉饰数据来向埃及释放资金，另外有五个欧盟国家宣布了在卢旺达建立移民遣返中心的计划。此外，有消息称一名美国篮球运动员因在尼日利亚机场携带大量大麻被捕。\n\n以上就是今天的要闻，明天同一时间再见。";var rate=1,playing=false,utterance=null,startedAt=0,elapsed=0,seeking=false;function fmt(t){t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2);}function setStatus(s){statusEl.textContent=s;}function applyRate(){if(mode==='mp3'){audio.playbackRate=rate;}else if(utterance){utterance.rate=rate;}}function zhVoices(){var vs=(window.speechSynthesis&&speechSynthesis.getVoices())||[];return vs.filter(function(v){return v.lang&&v.lang.toLowerCase().indexOf('zh')===0;});}function fillVoiceSelect(){if(!voiceSelect)return;var z=zhVoices();if(!z.length){voiceSelect.innerHTML='<option>浏览器默认中文</option>';return;}voiceSelect.innerHTML=z.map(function(v,i){return '<option value="'+i+'">'+v.name+'</option>';}).join('');}if('speechSynthesis' in window){fillVoiceSelect();speechSynthesis.onvoiceschanged=fillVoiceSelect;}function ttsElapsed(){return elapsed+(startedAt?((Date.now()-startedAt)/1000):0);}function ttsDuration(){return Math.max(1,text.length/4.5);}function updateProgress(cur,dur){if(!isFinite(dur)||dur<=0){dur=ttsDuration();}if(!seeking)seekBar.value=Math.round(cur/dur*1000);curTime.textContent=fmt(cur);durTime.textContent=fmt(dur);}function start(){if(mode==='mp3'){applyRate();var p=audio.play();if(p&&p.catch){p.catch(function(){setStatus('播放失败，可点“展开播报稿”阅读');});}playing=true;playBtn.textContent='❚❚';setStatus('正在播放…');}else{if(!('speechSynthesis' in window)){setStatus('当前浏览器不支持朗读，请阅读播报稿');return;}if(speechSynthesis.paused){speechSynthesis.resume();playing=true;playBtn.textContent='❚❚';startedAt=Date.now();setStatus('继续朗读…');return;}speechSynthesis.cancel();utterance=new SpeechSynthesisUtterance(text);utterance.lang='zh-CN';utterance.rate=rate;var z=zhVoices();if(voiceSelect&&z[parseInt(voiceSelect.value,10)])utterance.voice=z[parseInt(voiceSelect.value,10)];else if(z[0])utterance.voice=z[0];utterance.onend=function(){playing=false;playBtn.textContent='▶';setStatus('朗读结束');elapsed=ttsDuration();startedAt=0;updateProgress(ttsDuration(),ttsDuration());};utterance.onerror=function(){playing=false;playBtn.textContent='▶';setStatus('朗读失败，请阅读播报稿');};speechSynthesis.speak(utterance);playing=true;playBtn.textContent='❚❚';startedAt=Date.now();setStatus('正在朗读…');}}function pause(){if(mode==='mp3'){audio.pause();}else if('speechSynthesis' in window){elapsed=ttsElapsed();startedAt=0;speechSynthesis.pause();}playing=false;playBtn.textContent='▶';setStatus('已暂停');}function stop(){if(mode==='mp3'){audio.pause();audio.currentTime=0;}else if('speechSynthesis' in window){speechSynthesis.cancel();}playing=false;startedAt=0;elapsed=0;playBtn.textContent='▶';seekBar.value=0;curTime.textContent='0:00';setStatus('已停止');}playBtn.addEventListener('click',function(){if(playing)pause();else start();});stopBtn.addEventListener('click',stop);audio.addEventListener('timeupdate',function(){updateProgress(audio.currentTime,audio.duration);});audio.addEventListener('loadedmetadata',function(){updateProgress(0,audio.duration);});audio.addEventListener('ended',function(){playing=false;playBtn.textContent='▶';setStatus('播放结束');});seekBar.addEventListener('input',function(){seeking=true;var dur=(mode==='mp3')?audio.duration:ttsDuration();var t=dur*(parseInt(seekBar.value,10)/1000);updateProgress(t,dur);});seekBar.addEventListener('change',function(){var dur=(mode==='mp3')?audio.duration:ttsDuration();var t=dur*(parseInt(seekBar.value,10)/1000);if(mode==='mp3'){audio.currentTime=t;}else{elapsed=t;startedAt=playing?Date.now():0;}seeking=false;});rateBtns.forEach(function(b){b.addEventListener('click',function(){rate=parseFloat(b.getAttribute('data-rate'));rateBtns.forEach(function(x){x.classList.remove('active');});b.classList.add('active');applyRate();setStatus('语速 '+rate+'x');});});voiceBtns.forEach(function(b){b.addEventListener('click',function(){voiceBtns.forEach(function(x){x.classList.remove('active');});b.classList.add('active');var wasPlaying=playing;audio.pause();audio.src=b.getAttribute('data-src');audio.load();playing=false;playBtn.textContent='▶';setStatus('已切换音色：'+b.textContent+(wasPlaying?'，点播放收听':''));});});if(mode==='tts'){setInterval(function(){if(playing&&!seeking)updateProgress(ttsElapsed(),ttsDuration());},1000);}})();</script>
+</body></html>

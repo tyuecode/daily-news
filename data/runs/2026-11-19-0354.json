@@ -1,0 +1,15 @@
+{
+  "run_id": "20261119-035424",
+  "date": "2026-11-19",
+  "rss_count": 117,
+  "hot_count": 205,
+  "domestic_count": 8,
+  "international_count": 15,
+  "tts_ok": true,
+  "voice_status": {
+    "xiaoxiao": true,
+    "yunyang": true,
+    "yunxi": true
+  },
+  "gate": "通过"
+}
