@@ -80,6 +80,7 @@ class Paths:
         self.archive = base / "archive"
         self.audio = base / "audio"
         self.index = base / "index.html"
+        self.robots = base / "robots.txt"
         self.entries = self.data / "entries.json"
         self.audio_mp3 = self.audio / "daily.mp3"
         self.audio_backup = self.audio / "daily.mp3.bak"
@@ -379,15 +380,27 @@ def cluster_international(items: list[dict], threshold: float = 0.35) -> list[di
 
 # ── L5/L6 播报稿与语音 ─────────────────────────────────────────────
 
+def _clean_broadcast_point(title: str) -> str:
+    """播报要点清理：剥掉栏目前缀，去首尾空白（不硬切，避免切断词）。"""
+    text = re.sub(r"\s+", " ", (title or "").strip())
+    for _ in range(2):
+        text = re.sub(r"^[\u4e00-\u9fff]{1,4}[丨|]\s*", "", text).strip()
+    return text
+
+
 def build_broadcast(domestic: list[dict], international: list[dict],
                     now: datetime, ai_text: Callable | None = None) -> str:
-    """用国内外排名靠前的条目改写播报稿。"""
+    """用国内外排名靠前的条目改写播报稿（要点二次过滤 + 前缀清理）。"""
     points = []
     for item in domestic[:6]:
-        points.append(f"国内：{item['title']}")
+        title = _clean_broadcast_point(item.get("title", ""))
+        # 二次质量过滤：花絮/到场/盘点类不进口播
+        if title and not hot_client.is_low_quality_title(title):
+            points.append(f"国内：{title}")
     for item in international[:6]:
-        title = item.get("title_zh") or item.get("title_en", "")
-        points.append(f"国际：{title}")
+        title = _clean_broadcast_point(item.get("title_zh") or item.get("title_en", ""))
+        if title:
+            points.append(f"国际：{title}")
     date_str = f"{now.month}月{now.day}日"
     return ai_client.generate_broadcast(points[:BROADCAST_POINTS], date_str, ai_text=ai_text, logger=log)
 
@@ -488,10 +501,14 @@ def render_day(day: dict, is_today: bool, site_url: str = "") -> str:
     international = sections.get("international", [])
     updated = day.get("updated_at", "")
 
+    brief_text = build_today_brief(day)
+    description = brief_text[:78] or f"{date} 国内外热点简报"
+
     parts = []
     parts.append("<!DOCTYPE html><html lang=\"zh-CN\"><head><meta charset=\"UTF-8\">")
     parts.append("<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">")
     parts.append(f"<title>每日热点简报 · {html.escape(date)}</title>")
+    parts.append(f"<meta name=\"description\" content=\"{html.escape(description, quote=True)}\">")
     parts.append(_CSS)
     parts.append("</head><body><div class=\"wrap\">")
 
@@ -558,6 +575,18 @@ def render_day(day: dict, is_today: bool, site_url: str = "") -> str:
         # 否则会解析成 /archive/index.html 死链。site_url 为空时使用相对路径。
         home_href = html.escape(site_url) if site_url else "../index.html"
         parts.append(f"<p><a href=\"{home_href}\">返回首页</a></p>")
+        # 最近几天归档导航（P4）：归档页之间也能互相跳转
+        recent = day.get("recent_days", [])
+        if recent:
+            parts.append("<section class=\"recent\"><h2>其他日期</h2><ul class=\"timeline\">")
+            for item in recent:
+                parts.append(
+                    "<li><div class=\"day-line\">"
+                    f"<span class=\"dot\"></span><a href=\"{html.escape(item['date'])}.html\">"
+                    f"{html.escape(item['date'])}</a></div>"
+                    f"<div class=\"day-sum\">{html.escape(item.get('summary', ''))}</div></li>"
+                )
+            parts.append("</ul></section>")
 
     # 悬浮回到顶部（放在 div 外，避免被 wrap 的层级裁剪）
     parts.append("</div><a class=\"to-top\" href=\"#\" aria-label=\"回到顶部\">↑</a>")
@@ -712,6 +741,8 @@ h3{font-size:16px;margin:1px 0 7px;line-height:1.5}
 /* A4 热点标记徽章 */
 .meta-line{margin:7px 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 .source{color:var(--muted);font-size:12px}
+/* 国际卡片来源更醒目：让读者明确知道观点来自哪家媒体 */
+.card:has(.en) .source{color:var(--accent);font-weight:600;font-size:13px}
 .badge{font-size:11px;padding:2px 7px;border-radius:20px;font-weight:600;white-space:nowrap}
 .badge.new{background:#e8f5e9;color:#2e7d32}
 .badge.hot{background:#fff3e0;color:#e65100}
@@ -787,7 +818,9 @@ def build_today_brief(day: dict) -> str:
         for subject in _BRIEF_SUBJECTS:
             if title.startswith(subject):
                 if subject in seen_subjects:
-                    title = title[len(subject):].lstrip("，, ")
+                    # 省略主语后补「并」连接，避免「，迎接特朗普」这类突兀短语
+                    remainder = title[len(subject):].lstrip("，, ")
+                    title = ("并" + remainder) if remainder else ""
                 else:
                     seen_subjects.add(subject)
                 break
@@ -960,10 +993,16 @@ def generate(dry_run: bool = False, ai_text_fn: Callable | None = None,
     with open(paths.index, "w", encoding="utf-8") as fh:
         fh.write(render_day(day_view, is_today=True, site_url=site_url))
 
-    # 归档页（不放播放器）
+    # robots.txt：允许搜索引擎收录（利于国内用户搜索到本站）
+    with open(paths.robots, "w", encoding="utf-8") as fh:
+        fh.write("User-agent: *\nAllow: /\n")
+
+    # 归档页（不放播放器，但带最近几天导航）
+    archive_view = dict(day)
+    archive_view["recent_days"] = recent[:RECENT_DAYS]
     archive_path = paths.archive / f"{date_str}.html"
     with open(archive_path, "w", encoding="utf-8") as fh:
-        fh.write(render_day(day, is_today=False, site_url=site_url))
+        fh.write(render_day(archive_view, is_today=False, site_url=site_url))
 
     cleanup_old(paths, now, log)
     write_run_report(paths, now, {

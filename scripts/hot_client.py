@@ -345,6 +345,7 @@ _TRIVIA_PATTERNS = [
     # 注意：用具体短语而非「等候」「看点」这类宽泛词，避免误杀真新闻。
     "下榻", "记者等候", "记者守候", "大批记者", "酒店外",
     "有哪些", "一览", "有何看点", "你知道吗", "这些知识点", "名单出炉",
+    "官宣嘉宾", "嘉宾名单", "欢迎宴会", "举行欢迎", "举行宴请",
 ]
 
 # 「流水账」到场叙事模式：谁抵达哪里、机场停满专机等。
@@ -417,4 +418,6 @@ def refine_domestic(items: list[dict], top_n: int = 8) -> list[dict]:
     for item in kept:
         item["score"] = round(item.get("score", 0) + major_event_boost(item.get("title", "")), 4)
     kept.sort(key=lambda x: (x.get("score", 0), -x.get("rank", 999)), reverse=True)
+    # 注：不做同主题归并 —— 跨平台同一事件已在 merge_platform_clusters 按 0.35 合并；
+    # 剩下的「会见普京 / 会见李在明」是不同事件，强行去重会误杀真新闻，违背热点准确性。
     return kept[:top_n]

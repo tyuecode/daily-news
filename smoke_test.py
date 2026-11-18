@@ -416,12 +416,37 @@ brief = generate.build_today_brief({
 })
 check("brief 剥掉栏目前缀「详讯丨」", "详讯" not in brief, f"实际={brief}")
 check("brief 不硬切在词中间（完整「发表主旨演讲」）", "发表主旨演讲" in brief, f"实际={brief}")
-check("brief 省略重复主语（首个习近平保留，第二个省略）",
-      brief.count("习近平") == 1 and "，会见俄罗斯" in brief, f"实际={brief}")
+check("brief 省略重复主语并补「并」连接",
+      brief.count("习近平") == 1 and "，并会见俄罗斯" in brief, f"实际={brief}")
 check("brief 含国际前缀", "国际上：" in brief)
 
 archive_design = generate.render_day(design_day, is_today=False)
 check("归档页也有今日焦点/概览", 'class="brief"' in archive_design and 'class="overview"' in archive_design)
+
+
+# ── 17. 本轮优化（P1–P5）────────────────────────────────────────────
+print("\n[17] 本轮优化 P1–P5")
+# P1 播报要点清理与二次过滤
+check("播报要点剥掉栏目前缀",
+      generate._clean_broadcast_point("详讯丨习近平会见普京") == "习近平会见普京")
+check("官宣嘉宾/欢迎宴会花絮被剔除",
+      hot_client.is_low_quality_title("国创发布会官宣嘉宾")
+      and hot_client.is_low_quality_title("习近平和彭丽媛将为来宾举行欢迎宴会"))
+check("播报提示词含事实性约束", "跳过花絮" in ai_client.BROADCAST_PROMPT_TEMPLATE)
+
+# P3 国际来源醒目 CSS
+check("国际来源醒目样式存在", ".card:has(.en) .source" in design_html)
+
+# P4 归档页其他日期导航
+archive_with_recent = generate.render_day(
+    {**design_day, "recent_days": [{"date": "2026-11-17", "summary": "17日头条"}]},
+    is_today=False,
+)
+check("归档页有「其他日期」导航", "其他日期" in archive_with_recent and 'href="2026-11-17.html"' in archive_with_recent)
+
+# P5 SEO meta description 与 robots.txt
+check("页面有 meta description", '<meta name="description"' in design_html)
+check("meta description 来自焦点内容", "国内大事件第1条" in design_html)
 
 
 # ── 汇总 ────────────────────────────────────────────────────────────
