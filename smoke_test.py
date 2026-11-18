@@ -354,6 +354,56 @@ with tempfile.TemporaryDirectory() as tmp:
     check("运行报告按分钟分别保留", len(names) == 2, f"实际={names}")
 
 
+# ── 16. 页面观感与设计 ──────────────────────────────────────────────
+print("\n[16] 页面观感与设计")
+design_day = {
+    "date": "2026-11-18", "updated_at": "2026-11-18T14:00:00+08:00",
+    "broadcast": "各位好，欢迎收听。", "tts_ok": True,
+    "sections": {
+        "domestic": [
+            {"rank": i, "title": f"国内大事件第{i}条", "url": f"https://baidu.com/{i}",
+             "platform": "百度热搜", "is_new": i == 1, "frequency": i + 1,
+             "source_count": i + 2, "cluster": []}
+            for i in range(1, 5)
+        ],
+        "international": [
+            {"title_zh": f"国际译文第{i}条", "title_en": f"English headline {i}",
+             "url": f"https://bbc.co.uk/{i}", "publisher": "BBC", "source_count": 1,
+             "cluster": [
+                 {"source": src, "title_zh": f"国际译文第{i}条", "title_en": f"English headline {i}",
+                  "url": f"https://bbc.co.uk/{i}", "image": "https://example.com/pic.jpg"}
+                 for src in ("BBC", "Sky News")
+             ]}
+            for i in range(1, 4)
+        ],
+    },
+    "recent_days": [{"date": "2026-11-17", "summary": "昨日头条摘要"}],
+}
+design_html = generate.render_day(design_day, is_today=True)
+check("A1 今日焦点摘要横条", 'class="brief"' in design_html and "今日焦点" in design_html)
+check("B5 概览数字条含平台数", 'class="overview"' in design_html and "热榜平台" in design_html)
+check("B6 版块跳转锚点", 'href="#domestic"' in design_html and 'href="#international"' in design_html)
+check("B6 悬浮回到顶部", 'class="to-top"' in design_html)
+headline_count = design_html.count('class="card headline"')
+normal_count = design_html.count('class="card"')
+# 国内前 3 + 国际前 2 = 5 张头条卡；国内第 4 + 国际第 3 = 2 张普通卡
+check("A2 头条样式分级（国内3+国际2=5条）",
+      headline_count == 5, f"实际={headline_count}")
+check("A2 普通卡片数为 2", normal_count == 2, f"实际={normal_count}")
+check("A3 英文标题弱化 class", 'class="en"' in design_html)
+check("A4 热点徽章（新增/持续/多源）",
+      'badge new' in design_html and 'badge hot' in design_html and 'badge multi' in design_html)
+check("C8 展开区图片 lazy + onerror",
+      'class="view-img"' in design_html and 'loading="lazy"' in design_html
+      and "this.style.display='none'" in design_html)
+check("B7 往期时间线样式", 'class="timeline"' in design_html and "昨日头条摘要" in design_html)
+check("C9 暗色模式 media query", "prefers-color-scheme:dark" in design_html)
+check("今日焦点内容来自标题", "国内大事件第1条" in design_html)
+
+archive_design = generate.render_day(design_day, is_today=False)
+check("归档页也有今日焦点/概览", 'class="brief"' in archive_design and 'class="overview"' in archive_design)
+
+
 # ── 汇总 ────────────────────────────────────────────────────────────
 print(f"\n{'=' * 50}")
 print(f"冒烟测试完成：通过 {PASS} 项，失败 {FAIL} 项")

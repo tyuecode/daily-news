@@ -494,11 +494,29 @@ def render_day(day: dict, is_today: bool, site_url: str = "") -> str:
     parts.append(f"<title>每日热点简报 · {html.escape(date)}</title>")
     parts.append(_CSS)
     parts.append("</head><body><div class=\"wrap\">")
+
+    # ── 顶部：标题 + 今日一句话摘要 + 概览数字条 ──
     parts.append("<header><h1>每日热点简报</h1>")
-    parts.append(f"<p class=\"sub\">中文 · 国内外热点 · 更新于 {html.escape(updated)}</p></header>")
+    parts.append(f"<p class=\"sub\">更新于 {html.escape(updated)}</p></header>")
+
+    brief = build_today_brief(day)
+    if brief:
+        parts.append(f"<div class=\"brief\"><span class=\"brief-label\">今日焦点</span>"
+                     f"<span class=\"brief-text\">{html.escape(brief)}</span></div>")
+
+    platform_count = len({x.get("platform") for x in domestic if x.get("platform")})
+    parts.append(
+        f"<div class=\"overview\"><span><b>{len(domestic)}</b> 条国内热点</span>"
+        f"<span class=\"sep\">·</span><span><b>{len(international)}</b> 条国际热点</span>"
+        f"<span class=\"sep\">·</span><span>来自 <b>{platform_count}</b> 个热榜平台</span></div>"
+    )
+
+    # 版块快速跳转（手机上一键到国内/国际）
+    parts.append("<nav class=\"jump\"><a href=\"#domestic\">国内热点 ↓</a>"
+                 "<a href=\"#international\">国际热点 ↓</a></nav>")
 
     # 今日播报
-    parts.append("<section class=\"broadcast\"><h2>今日播报</h2>")
+    parts.append("<section class=\"broadcast\" id=\"broadcast\"><h2>今日播报</h2>")
     broadcast = day.get("broadcast", "")
     if is_today and day.get("tts_ok") and broadcast:
         parts.append("<audio controls preload=\"none\" src=\"audio/daily.mp3\"></audio>")
@@ -511,25 +529,27 @@ def render_day(day: dict, is_today: bool, site_url: str = "") -> str:
         parts.append("<p class=\"empty\">暂无播报稿</p>")
     parts.append("</section>")
 
-    # 国内热点
-    parts.append("<section><h2>国内热点</h2>")
-    parts.append(_render_cards(domestic, kind="domestic"))
+    # 国内热点（前 3 条头条样式）
+    parts.append("<section id=\"domestic\"><h2>国内热点</h2>")
+    parts.append(_render_cards(domestic, kind="domestic", headline_count=3))
     parts.append("</section>")
 
-    # 国际热点
-    parts.append("<section><h2>国际热点</h2>")
-    parts.append(_render_cards(international, kind="international"))
+    # 国际热点（前 2 条头条样式）
+    parts.append("<section id=\"international\"><h2>国际热点</h2>")
+    parts.append(_render_cards(international, kind="international", headline_count=2))
     parts.append("</section>")
 
-    # 首页：最近 7 天摘要
+    # 首页：最近 7 天摘要（时间线样式）
     if is_today:
         recent = day.get("recent_days", [])
         if recent:
-            parts.append("<section class=\"recent\"><h2>往期回顾</h2><ul>")
+            parts.append("<section class=\"recent\"><h2>往期回顾</h2><ul class=\"timeline\">")
             for item in recent:
                 parts.append(
-                    f"<li><a href=\"archive/{html.escape(item['date'])}.html\">"
-                    f"{html.escape(item['date'])}</a>　{html.escape(item.get('summary', ''))}</li>"
+                    "<li><div class=\"day-line\">"
+                    f"<span class=\"dot\"></span><a href=\"archive/{html.escape(item['date'])}.html\">"
+                    f"{html.escape(item['date'])}</a></div>"
+                    f"<div class=\"day-sum\">{html.escape(item.get('summary', ''))}</div></li>"
                 )
             parts.append("</ul></section>")
     else:
@@ -538,6 +558,9 @@ def render_day(day: dict, is_today: bool, site_url: str = "") -> str:
         # 否则会解析成 /archive/index.html 死链。site_url 为空时使用相对路径。
         home_href = html.escape(site_url) if site_url else "../index.html"
         parts.append(f"<p><a href=\"{home_href}\">返回首页</a></p>")
+
+    # 悬浮回到顶部（放在 div 外，避免被 wrap 的层级裁剪）
+    parts.append("</div><a class=\"to-top\" href=\"#\" aria-label=\"回到顶部\">↑</a>")
 
     # 播报降级脚本（放在末尾，JSON 中把 < > & 转成 Unicode 转义，杜绝任何标签注入）
     safe_json = (json.dumps(broadcast, ensure_ascii=False)
@@ -549,56 +572,62 @@ def render_day(day: dict, is_today: bool, site_url: str = "") -> str:
         "else{alert('当前浏览器不支持朗读');}}</script>"
     )
     parts.append(script)
-    parts.append("</div></body></html>")
+    parts.append("</body></html>")
     return "\n".join(parts)
 
 
-def _render_cards(items: list[dict], kind: str) -> str:
+def _render_cards(items: list[dict], kind: str, headline_count: int = 3) -> str:
     if not items:
         return "<p class=\"empty\">暂无数据，请稍后再看。</p>"
     out = ["<div class=\"cards\">"]
-    for item in items:
+    for index, item in enumerate(items):
+        is_headline = index < headline_count
         rank = item.get("rank", 0)
         rank_label = str(rank) if rank else "—"  # 国际条目无榜单排名，显示破折号
         title = item.get("title") if kind == "domestic" else (item.get("title_zh") or item.get("title_en", ""))
-        out.append("<article class=\"card\">")
+        card_class = "card headline" if is_headline else "card"
+        out.append(f"<article class=\"{card_class}\">")
         out.append(f"<div class=\"rank\">{html.escape(rank_label)}</div>")
         out.append("<div class=\"body\">")
         out.append(f"<h3>{html.escape(str(title))}</h3>")
-        if kind == "international":
-            out.append(f"<p class=\"en\">{html.escape(item.get('title_en', ''))}</p>")
+        if kind == "international" and item.get("title_en"):
+            # 英文原标题弱化：小字灰色，hover 才稍明显
+            out.append(f"<p class=\"en\">{html.escape(item['title_en'])}</p>")
 
-        # 来源与热点标记
-        meta = []
+        # 来源与热点标记（徽章化）
+        out.append("<div class=\"meta-line\">")
         if item.get("platform"):
-            meta.append(html.escape(item["platform"]))
+            out.append(f"<span class=\"source\">{html.escape(item['platform'])}</span>")
         elif item.get("publisher"):
-            meta.append(html.escape(item["publisher"]))
+            out.append(f"<span class=\"source\">{html.escape(item['publisher'])}</span>")
         if item.get("is_new"):
-            meta.append("🆕 新增")
+            out.append("<span class=\"badge new\">🆕 新增</span>")
         elif item.get("frequency", 0) > 1:
-            meta.append(f"持续 {item['frequency']} 次")
+            out.append(f"<span class=\"badge hot\">持续 {item['frequency']} 次</span>")
         if item.get("source_count", 0) > 1:
-            meta.append(f"{item['source_count']} 家媒体报道")
-        if meta:
-            out.append(f"<p class=\"meta\">{' · '.join(meta)}</p>")
+            out.append(f"<span class=\"badge multi\">{item['source_count']} 家媒体报道</span>")
+        out.append("</div>")
 
         url = item.get("url", "")
         if url:
             out.append(f"<a class=\"link\" href=\"{html.escape(url)}\" target=\"_blank\" rel=\"noopener\">查看原文 ›</a>")
 
-        # 多家媒体报道：默认折叠
+        # 多家媒体报道：默认折叠；展开区才显示图片
         cluster = item.get("cluster", [])
         if len(cluster) > 1:
             out.append("<details class=\"views\"><summary>查看各家报道 ▸</summary>")
             out.append(f"<p class=\"hint\">以下报道来自 {len(cluster)} 家媒体，观点可能不同，请自行判断</p>")
             for member in cluster:
-                member_title = member.get("title_zh") or member.get("title", "")
-                if member.get("title_en"):
-                    member_title += f"<br><span class=\"en\">{html.escape(member['title_en'])}</span>"
                 out.append("<div class=\"view\">")
+                # 图片只在展开区显示，不进默认视图（避免拖慢 30 秒速读）
+                if member.get("image"):
+                    out.append(f"<img class=\"view-img\" src=\"{html.escape(member['image'])}\" "
+                               "loading=\"lazy\" onerror=\"this.style.display='none'\">")
                 out.append(f"<a href=\"{html.escape(member.get('url', ''))}\" target=\"_blank\" rel=\"noopener\">"
-                           f"{html.escape(member.get('source', ''))}：{html.escape(member.get('title_zh') or member.get('title', ''))}</a>")
+                           f"{html.escape(member.get('source', ''))}："
+                           f"{html.escape(member.get('title_zh') or member.get('title', ''))}</a>")
+                if member.get("title_en"):
+                    out.append(f"<span class=\"en\">{html.escape(member['title_en'])}</span>")
                 out.append("</div>")
             out.append("</details>")
         out.append("</div></article>")
@@ -608,37 +637,139 @@ def _render_cards(items: list[dict], kind: str) -> str:
 
 _CSS = """
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--text:#1a1a1a;--muted:#888;--accent:#e64340;--line:#eee}
+:root{
+  --bg:#f4f5f7;--card:#fff;--text:#1a1a1a;--muted:#8a8f98;--accent:#e64340;
+  --accent-soft:#fff0ef;--line:#eceef1;--shadow:0 2px 10px rgba(20,30,50,.06);
+  --headline-bg:linear-gradient(135deg,#fff 0%,#fff8f7 100%);
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14161a;--card:#1e2126;--text:#e8eaed;--muted:#9aa0aa;--accent:#ff6b66;
+    --accent-soft:#3a2424;--line:#2d3138;--shadow:0 2px 10px rgba(0,0,0,.3);
+    --headline-bg:linear-gradient(135deg,#1e2126 0%,#2a2020 100%);
+  }
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6}
-.wrap{max-width:760px;margin:0 auto;padding:16px}
-header h1{font-size:26px;margin:8px 0 4px}
-.sub{color:var(--muted);font-size:14px;margin:0 0 16px}
-h2{font-size:20px;margin:28px 0 12px;padding-left:10px;border-left:4px solid var(--accent)}
-.broadcast{background:var(--card);border-radius:12px;padding:16px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:16px 14px 40px}
+header{padding:8px 2px 0}
+header h1{font-size:27px;margin:6px 0 2px;letter-spacing:.5px}
+.sub{color:var(--muted);font-size:13px;margin:0}
+
+/* A1 今日一句话摘要 */
+.brief{margin-top:14px;background:var(--accent-soft);border:1px solid var(--accent);
+  border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:baseline}
+.brief-label{flex:0 0 auto;background:var(--accent);color:#fff;font-size:12px;
+  font-weight:700;padding:2px 8px;border-radius:5px}
+.brief-text{font-size:15px;font-weight:600;line-height:1.5}
+
+/* B5 概览数字条 */
+.overview{margin-top:10px;color:var(--muted);font-size:13px;display:flex;gap:8px;flex-wrap:wrap}
+.overview b{color:var(--text);font-size:15px}
+.overview .sep{opacity:.5}
+
+/* B6 版块跳转 */
+.jump{margin-top:14px;display:flex;gap:10px}
+.jump a{flex:1;text-align:center;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:11px 6px;color:var(--text);font-size:14px;
+  text-decoration:none;min-height:44px;line-height:22px}
+.jump a:active{background:var(--accent-soft)}
+
+h2{font-size:20px;margin:30px 0 12px;padding-left:11px;border-left:4px solid var(--accent);
+  scroll-margin-top:16px}
+
+/* 今日播报 */
+.broadcast{background:var(--card);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
 .broadcast audio{width:100%;margin-bottom:8px}
-.broadcast button{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:12px 20px;font-size:16px;min-height:44px;cursor:pointer}
-.script{white-space:pre-wrap;color:#444}
+.broadcast button{background:var(--accent);color:#fff;border:0;border-radius:9px;
+  padding:12px 20px;font-size:16px;min-height:44px;cursor:pointer}
+.script{white-space:pre-wrap;color:var(--text);font-size:15px;margin:10px 0 0}
 summary{cursor:pointer;min-height:44px;line-height:44px;color:var(--accent);font-weight:600}
+
+/* 卡片 */
 .cards{display:flex;flex-direction:column;gap:10px}
-.card{display:flex;background:var(--card);border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.rank{flex:0 0 36px;height:36px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-right:12px}
+.card{display:flex;background:var(--card);border-radius:13px;padding:14px;
+  box-shadow:var(--shadow);border-left:3px solid transparent}
+/* A2 头条样式分级 */
+.card.headline{background:var(--headline-bg);border-left-color:var(--accent);
+  box-shadow:0 4px 16px rgba(230,67,64,.10)}
+.card.headline h3{font-size:19px;line-height:1.45}
+.card.headline .rank{width:40px;height:40px;font-size:17px}
+.rank{flex:0 0 34px;width:34px;height:34px;border-radius:9px;background:var(--accent);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;
+  font-size:15px;margin-right:12px}
+.headline .rank{background:linear-gradient(135deg,#ff7a5c,#e64340)}
 .body{flex:1;min-width:0}
-h3{font-size:17px;margin:0 0 6px}
-.en{color:var(--muted);font-size:13px;margin:2px 0}
-.meta{color:var(--muted);font-size:13px;margin:6px 0}
-.link{color:var(--accent);font-size:14px;text-decoration:none}
-.views{margin-top:8px;border-top:1px solid var(--line);padding-top:4px}
-.hint{color:var(--muted);font-size:12px;background:#fff8f8;padding:8px;border-radius:6px}
-.view{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
-.view a{color:#333;text-decoration:none}
+h3{font-size:16px;margin:1px 0 7px;line-height:1.5}
+
+/* A3 英文原标题弱化 */
+.en{color:var(--muted);font-size:12px;margin:2px 0;opacity:.75;transition:opacity .2s}
+.card:hover .en{opacity:1}
+
+/* A4 热点标记徽章 */
+.meta-line{margin:7px 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.source{color:var(--muted);font-size:12px}
+.badge{font-size:11px;padding:2px 7px;border-radius:20px;font-weight:600;white-space:nowrap}
+.badge.new{background:#e8f5e9;color:#2e7d32}
+.badge.hot{background:#fff3e0;color:#e65100}
+.badge.multi{background:var(--accent-soft);color:var(--accent)}
+@media(prefers-color-scheme:dark){
+  .badge.new{background:#1b3320;color:#81c784}
+  .badge.hot{background:#3a2a15;color:#ffb74d}
+}
+.link{color:var(--accent);font-size:13px;text-decoration:none}
+.views{margin-top:9px;border-top:1px solid var(--line);padding-top:4px}
+.hint{color:var(--muted);font-size:12px;background:var(--accent-soft);
+  padding:8px 10px;border-radius:7px;margin:6px 0}
+.view{display:flex;flex-direction:column;gap:2px;padding:9px 0;
+  border-bottom:1px solid var(--line);font-size:14px}
+.view a{color:var(--text);text-decoration:none}
+/* C8 展开区图片 */
+.view-img{width:100%;max-height:160px;object-fit:cover;border-radius:8px;margin-bottom:4px}
 .empty,.note{color:var(--muted);padding:12px;background:var(--card);border-radius:10px}
-.recent ul{list-style:none;padding:0}
-.recent li{background:var(--card);margin-bottom:8px;padding:12px;border-radius:10px}
-.recent a{color:var(--accent);text-decoration:none}
-@media(min-width:700px){.wrap{padding:24px}}
+
+/* B7 往期回顾时间线 */
+.recent ul.timeline{list-style:none;margin:0;padding:0 0 0 6px}
+.recent li{border-left:2px solid var(--line);padding:0 0 14px 18px;position:relative}
+.recent li:last-child{border-left-color:transparent}
+.recent .dot{position:absolute;left:-6px;top:4px;width:10px;height:10px;
+  border-radius:50%;background:var(--accent)}
+.recent .day-line{font-size:15px;font-weight:600}
+.recent a{color:var(--text);text-decoration:none}
+.recent .day-sum{color:var(--muted);font-size:13px;margin-top:2px}
+
+/* B6 悬浮回到顶部 */
+.to-top{position:fixed;right:18px;bottom:24px;width:44px;height:44px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:22px;
+  display:flex;align-items:center;justify-content:center;text-decoration:none;
+  box-shadow:0 4px 14px rgba(230,67,64,.35);z-index:99}
+@media(min-width:700px){.wrap{padding:24px 16px 60px}}
 </style>
 """
+
+
+def build_today_brief(day: dict) -> str:
+    """首页「今日一句话摘要」：取国内前两条 + 国际第一条，拼成简短焦点句。
+
+    例：「习近平会见普京，APEC 峰会开幕；国际上特朗普访问亚洲」。
+    只取标题，不做 AI 总结，避免编造。
+    """
+    domestic = day.get("sections", {}).get("domestic", [])
+    international = day.get("sections", {}).get("international", [])
+    parts = []
+    for item in domestic[:2]:
+        title = str(item.get("title", "") or "").strip()
+        if title:
+            parts.append(title[:26])
+    if international:
+        first = international[0]
+        title = str(first.get("title_zh") or first.get("title_en", "") or "").strip()
+        if title:
+            parts.append("国际上：" + title[:26])
+    return "，".join(parts)[:80]
 
 
 def truncate_title_for_summary(day: dict) -> str:
