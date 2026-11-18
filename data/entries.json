@@ -1,0 +1,1928 @@
+{
+  "days": [
+    {
+      "date": "2026-11-18",
+      "updated_at": "2026-11-18T15:11:58.348648+08:00",
+      "broadcast": "各位好，今天是11月18日，欢迎收听今日热点。\n\n首先来看国内新闻。亚太经合组织工商领导人峰会开幕式正式举行，习近平出席了开幕式并发表了主旨演讲。在峰会期间，习近平会见了俄罗斯总统普京，普京对中国表示了感谢。此外，在相关的外交场合中，文莱领导人在与中方握手时，仅一秒钟就摘下了手套。\n\n接下来关注国际动态。在APEC峰会的直播中，可以看到习近平与普京开始了会谈。与此同时，特朗普在与俄罗斯及中国总统会谈之前，先行访问了亚洲。针对朝鲜问题，卢比奥表示特朗普对会见金正恩持认真态度。在外交制裁方面，英国因为以色列在约旦河西岸的定居点问题，决定对相关公司实施制裁。\n\n其他新闻方面，韩国的高风险大学考试目前正陷入混乱，原因是一场人工智能作弊丑闻。在科技安全领域，随着人们对人工智能武器的担忧日益增加，联合国正在召开会议，寻求遏制杀手机器人的发展。最后，威廉王子与凯特王妃在孟买出席活动，为地球奖的获奖者们举行了庆祝活动。\n\n以上就是今天的要闻，明天同一时间再见。",
+      "tts_ok": true,
+      "sections": {
+        "domestic": [
+          {
+            "id": "B站热搜-1",
+            "title": "习近平会见俄罗斯总统普京",
+            "url": "https://search.bilibili.com/all?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E4%BC%9A%E8%A7%81%E4%BF%84%E7%BD%97%E6%96%AF%E6%80%BB%E7%BB%9F%E6%99%AE%E4%BA%AC",
+            "rank": 1,
+            "platform": "B站热搜",
+            "platform_id": "bilibili-hot-search",
+            "rank_total": 30,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 4,
+            "score": 0.6942857142857142,
+            "source_count": 4,
+            "cluster": [
+              {
+                "source": "B站热搜",
+                "title_zh": "习近平会见俄罗斯总统普京",
+                "title_en": "",
+                "url": "https://search.bilibili.com/all?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E4%BC%9A%E8%A7%81%E4%BF%84%E7%BD%97%E6%96%AF%E6%80%BB%E7%BB%9F%E6%99%AE%E4%BA%AC",
+                "is_primary": true,
+                "rank": 1
+              },
+              {
+                "source": "今日头条",
+                "title_zh": "习近平会见普京",
+                "title_en": "",
+                "url": "https://www.toutiao.com/trending/7709346040930910235/",
+                "is_primary": false,
+                "rank": 1
+              },
+              {
+                "source": "百度热搜",
+                "title_zh": "习近平会见俄罗斯总统普京",
+                "title_en": "",
+                "url": "https://www.baidu.com/s?wd=%E4%B9%A0%E8%BF%91%E5%B9%B3%E4%BC%9A%E8%A7%81%E4%BF%84%E7%BD%97%E6%96%AF%E6%80%BB%E7%BB%9F%E6%99%AE%E4%BA%AC",
+                "is_primary": false,
+                "rank": 1
+              },
+              {
+                "source": "澎湃新闻",
+                "title_zh": "习近平会见俄罗斯总统普京",
+                "title_en": "",
+                "url": "https://www.thepaper.cn/newsDetail_forward_34502280",
+                "is_primary": false,
+                "rank": 2
+              }
+            ]
+          },
+          {
+            "id": "今日头条-2",
+            "title": "普京说感谢中国",
+            "url": "https://www.toutiao.com/trending/7708956473186930218/",
+            "rank": 2,
+            "platform": "今日头条",
+            "platform_id": "toutiao",
+            "rank_total": 30,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 3,
+            "score": 0.6542857142857141,
+            "source_count": 3,
+            "cluster": [
+              {
+                "source": "今日头条",
+                "title_zh": "普京说感谢中国",
+                "title_en": "",
+                "url": "https://www.toutiao.com/trending/7708956473186930218/",
+                "is_primary": true,
+                "rank": 2
+              },
+              {
+                "source": "百度热搜",
+                "title_zh": "普京：感谢中国",
+                "title_en": "",
+                "url": "https://www.baidu.com/s?wd=%E6%99%AE%E4%BA%AC%EF%BC%9A%E6%84%9F%E8%B0%A2%E4%B8%AD%E5%9B%BD",
+                "is_primary": false,
+                "rank": 4
+              },
+              {
+                "source": "微博热搜",
+                "title_zh": "普京说感谢中国",
+                "title_en": "",
+                "url": "https://s.weibo.com/weibo?q=%23%E6%99%AE%E4%BA%AC%E8%AF%B4%E6%84%9F%E8%B0%A2%E4%B8%AD%E5%9B%BD%23&t=31&band_rank=5&Refer=top",
+                "is_primary": false,
+                "rank": 5
+              }
+            ]
+          },
+          {
+            "id": "微博热搜-2",
+            "title": "文莱领导人握手中方安保1秒摘手套",
+            "url": "https://s.weibo.com/weibo?q=%23%E6%96%87%E8%8E%B1%E9%A2%86%E5%AF%BC%E4%BA%BA%E6%8F%A1%E6%89%8B%E4%B8%AD%E6%96%B9%E5%AE%89%E4%BF%9D1%E7%A7%92%E6%91%98%E6%89%8B%E5%A5%97%23&t=31&band_rank=2&Refer=top",
+            "rank": 2,
+            "platform": "微博热搜",
+            "platform_id": "weibo",
+            "rank_total": 30,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 3,
+            "score": 0.6542857142857141,
+            "source_count": 3,
+            "cluster": [
+              {
+                "source": "微博热搜",
+                "title_zh": "文莱领导人握手中方安保1秒摘手套",
+                "title_en": "",
+                "url": "https://s.weibo.com/weibo?q=%23%E6%96%87%E8%8E%B1%E9%A2%86%E5%AF%BC%E4%BA%BA%E6%8F%A1%E6%89%8B%E4%B8%AD%E6%96%B9%E5%AE%89%E4%BF%9D1%E7%A7%92%E6%91%98%E6%89%8B%E5%A5%97%23&t=31&band_rank=2&Refer=top",
+                "is_primary": true,
+                "rank": 2
+              },
+              {
+                "source": "百度热搜",
+                "title_zh": "文莱领导人握手前 中方安保1秒摘手套",
+                "title_en": "",
+                "url": "https://www.baidu.com/s?wd=%E6%96%87%E8%8E%B1%E9%A2%86%E5%AF%BC%E4%BA%BA%E6%8F%A1%E6%89%8B%E5%89%8D+%E4%B8%AD%E6%96%B9%E5%AE%89%E4%BF%9D1%E7%A7%92%E6%91%98%E6%89%8B%E5%A5%97",
+                "is_primary": false,
+                "rank": 13
+              },
+              {
+                "source": "今日头条",
+                "title_zh": "文莱领导人握手前中方安保1秒摘手套",
+                "title_en": "",
+                "url": "https://www.toutiao.com/trending/7709211203091972150/",
+                "is_primary": false,
+                "rank": 19
+              }
+            ]
+          },
+          {
+            "id": "澎湃新闻-1",
+            "title": "详讯丨习近平出席亚太经合组织工商领导人峰会开幕式并发表主旨演讲",
+            "url": "https://www.thepaper.cn/newsDetail_forward_34502089",
+            "rank": 1,
+            "platform": "澎湃新闻",
+            "platform_id": "thepaper",
+            "rank_total": 20,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.6342857142857142,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "澎湃新闻",
+                "title_zh": "详讯丨习近平出席亚太经合组织工商领导人峰会开幕式并发表主旨演讲",
+                "title_en": "",
+                "url": "https://www.thepaper.cn/newsDetail_forward_34502089",
+                "is_primary": true,
+                "rank": 1
+              }
+            ]
+          },
+          {
+            "id": "微博热搜-1",
+            "title": "APEC",
+            "url": "https://s.weibo.com/weibo?q=APEC&t=31&band_rank=1&Refer=top",
+            "rank": 1,
+            "platform": "微博热搜",
+            "platform_id": "weibo",
+            "rank_total": 30,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.6342857142857142,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "微博热搜",
+                "title_zh": "APEC",
+                "title_en": "",
+                "url": "https://s.weibo.com/weibo?q=APEC&t=31&band_rank=1&Refer=top",
+                "is_primary": true,
+                "rank": 1
+              }
+            ]
+          },
+          {
+            "id": "抖音热榜-1",
+            "title": "APEC工商领导人峰会开幕式举行",
+            "url": "https://www.douyin.com/hot/2750072",
+            "rank": 1,
+            "platform": "抖音热榜",
+            "platform_id": "douyin",
+            "rank_total": 30,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.6342857142857142,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "抖音热榜",
+                "title_zh": "APEC工商领导人峰会开幕式举行",
+                "title_en": "",
+                "url": "https://www.douyin.com/hot/2750072",
+                "is_primary": true,
+                "rank": 1
+              }
+            ]
+          },
+          {
+            "id": "财联社-1",
+            "title": "【早报】英伟达业绩全线超预期，临时CEO最新发声；标普500指数，创9月以来最长连跌；荣盛发展、*ST华幸拉响退市警报",
+            "url": "https://www.cls.cn/detail/2537296",
+            "rank": 1,
+            "platform": "财联社",
+            "platform_id": "cls-hot",
+            "rank_total": 13,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.6342857142857142,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "财联社",
+                "title_zh": "【早报】英伟达业绩全线超预期，临时CEO最新发声；标普500指数，创9月以来最长连跌；荣盛发展、*ST华幸拉响退市警报",
+                "title_en": "",
+                "url": "https://www.cls.cn/detail/2537296",
+                "is_primary": true,
+                "rank": 1
+              }
+            ]
+          },
+          {
+            "id": "凤凰网-1",
+            "title": "黄仁勋事件，美国政府突然回过味来",
+            "url": "https://news.ifeng.com/c/8y95PZrEwaQ",
+            "rank": 1,
+            "platform": "凤凰网",
+            "platform_id": "ifeng",
+            "rank_total": 12,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.6342857142857142,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "凤凰网",
+                "title_zh": "黄仁勋事件，美国政府突然回过味来",
+                "title_en": "",
+                "url": "https://news.ifeng.com/c/8y95PZrEwaQ",
+                "is_primary": true,
+                "rank": 1
+              }
+            ]
+          },
+          {
+            "id": "华尔街见闻-1",
+            "title": "系统中断密集爆发，标普、纳指四连跌，软件股重挫，盘后英伟达涨3%，美元结束五连涨",
+            "url": "https://wallstreetcn.com/articles/3786084",
+            "rank": 1,
+            "platform": "华尔街见闻",
+            "platform_id": "wallstreetcn-hot",
+            "rank_total": 10,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.6342857142857142,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "华尔街见闻",
+                "title_zh": "系统中断密集爆发，标普、纳指四连跌，软件股重挫，盘后英伟达涨3%，美元结束五连涨",
+                "title_en": "",
+                "url": "https://wallstreetcn.com/articles/3786084",
+                "is_primary": true,
+                "rank": 1
+              }
+            ]
+          },
+          {
+            "id": "百度热搜-2",
+            "title": "李在明随行人员开启“拍拍拍”模式",
+            "url": "https://www.baidu.com/s?wd=%E6%9D%8E%E5%9C%A8%E6%98%8E%E9%9A%8F%E8%A1%8C%E4%BA%BA%E5%91%98%E5%BC%80%E5%90%AF%E2%80%9C%E6%8B%8D%E6%8B%8D%E6%8B%8D%E2%80%9D%E6%A8%A1%E5%BC%8F",
+            "rank": 2,
+            "platform": "百度热搜",
+            "platform_id": "baidu",
+            "rank_total": 30,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.6142857142857142,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "百度热搜",
+                "title_zh": "李在明随行人员开启“拍拍拍”模式",
+                "title_en": "",
+                "url": "https://www.baidu.com/s?wd=%E6%9D%8E%E5%9C%A8%E6%98%8E%E9%9A%8F%E8%A1%8C%E4%BA%BA%E5%91%98%E5%BC%80%E5%90%AF%E2%80%9C%E6%8B%8D%E6%8B%8D%E6%8B%8D%E2%80%9D%E6%A8%A1%E5%BC%8F",
+                "is_primary": true,
+                "rank": 2
+              }
+            ]
+          },
+          {
+            "id": "抖音热榜-2",
+            "title": "普京抵达深圳",
+            "url": "https://www.douyin.com/hot/2751526",
+            "rank": 2,
+            "platform": "抖音热榜",
+            "platform_id": "douyin",
+            "rank_total": 30,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.6142857142857142,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "抖音热榜",
+                "title_zh": "普京抵达深圳",
+                "title_en": "",
+                "url": "https://www.douyin.com/hot/2751526",
+                "is_primary": true,
+                "rank": 2
+              }
+            ]
+          },
+          {
+            "id": "B站热搜-2",
+            "title": "十五五规划是面向全球工商界的合作邀约",
+            "url": "https://search.bilibili.com/all?keyword=%E5%8D%81%E4%BA%94%E4%BA%94%E8%A7%84%E5%88%92%E6%98%AF%E9%9D%A2%E5%90%91%E5%85%A8%E7%90%83%E5%B7%A5%E5%95%86%E7%95%8C%E7%9A%84%E5%90%88%E4%BD%9C%E9%82%80%E7%BA%A6",
+            "rank": 2,
+            "platform": "B站热搜",
+            "platform_id": "bilibili-hot-search",
+            "rank_total": 30,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.6142857142857142,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "B站热搜",
+                "title_zh": "十五五规划是面向全球工商界的合作邀约",
+                "title_en": "",
+                "url": "https://search.bilibili.com/all?keyword=%E5%8D%81%E4%BA%94%E4%BA%94%E8%A7%84%E5%88%92%E6%98%AF%E9%9D%A2%E5%90%91%E5%85%A8%E7%90%83%E5%B7%A5%E5%95%86%E7%95%8C%E7%9A%84%E5%90%88%E4%BD%9C%E9%82%80%E7%BA%A6",
+                "is_primary": true,
+                "rank": 2
+              }
+            ]
+          },
+          {
+            "id": "微博热搜-3",
+            "title": "APEC中国年这些知识点不容错过",
+            "url": "https://s.weibo.com/weibo?q=%23APEC%E4%B8%AD%E5%9B%BD%E5%B9%B4%E8%BF%99%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%E4%B8%8D%E5%AE%B9%E9%94%99%E8%BF%87%23&t=31&band_rank=3&Refer=top",
+            "rank": 3,
+            "platform": "微博热搜",
+            "platform_id": "weibo",
+            "rank_total": 30,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 2,
+            "score": 0.6142857142857142,
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "微博热搜",
+                "title_zh": "APEC中国年这些知识点不容错过",
+                "title_en": "",
+                "url": "https://s.weibo.com/weibo?q=%23APEC%E4%B8%AD%E5%9B%BD%E5%B9%B4%E8%BF%99%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9%E4%B8%8D%E5%AE%B9%E9%94%99%E8%BF%87%23&t=31&band_rank=3&Refer=top",
+                "is_primary": true,
+                "rank": 3
+              },
+              {
+                "source": "今日头条",
+                "title_zh": "APEC“中国年”这些知识点不容错过",
+                "title_en": "",
+                "url": "https://www.toutiao.com/trending/7708956473186864682/",
+                "is_primary": false,
+                "rank": 9
+              }
+            ]
+          },
+          {
+            "id": "B站热搜-3",
+            "title": "习近平会见韩国总统李在明",
+            "url": "https://search.bilibili.com/all?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E4%BC%9A%E8%A7%81%E9%9F%A9%E5%9B%BD%E6%80%BB%E7%BB%9F%E6%9D%8E%E5%9C%A8%E6%98%8E",
+            "rank": 3,
+            "platform": "B站热搜",
+            "platform_id": "bilibili-hot-search",
+            "rank_total": 30,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 2,
+            "score": 0.6142857142857142,
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "B站热搜",
+                "title_zh": "习近平会见韩国总统李在明",
+                "title_en": "",
+                "url": "https://search.bilibili.com/all?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E4%BC%9A%E8%A7%81%E9%9F%A9%E5%9B%BD%E6%80%BB%E7%BB%9F%E6%9D%8E%E5%9C%A8%E6%98%8E",
+                "is_primary": true,
+                "rank": 3
+              },
+              {
+                "source": "抖音热榜",
+                "title_zh": "韩国总统李在明抵达深圳",
+                "title_en": "",
+                "url": "https://www.douyin.com/hot/2751532",
+                "is_primary": false,
+                "rank": 5
+              }
+            ]
+          },
+          {
+            "id": "今日头条-3",
+            "title": "APEC“中国年”取得丰硕成果",
+            "url": "https://www.toutiao.com/trending/7709333074814848550/",
+            "rank": 3,
+            "platform": "今日头条",
+            "platform_id": "toutiao",
+            "rank_total": 30,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.5942857142857142,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "今日头条",
+                "title_zh": "APEC“中国年”取得丰硕成果",
+                "title_en": "",
+                "url": "https://www.toutiao.com/trending/7709333074814848550/",
+                "is_primary": true,
+                "rank": 3
+              }
+            ]
+          }
+        ],
+        "international": [
+          {
+            "title_en": "Apec summit live: Xi and Putin start talks; Rubio says Trump serious about meeting Kim Jong-un",
+            "title_zh": "APEC 峰会直播：习近平与普京开始会谈；卢比奥称特朗普对会见金正恩持认真态度",
+            "url": "https://www.theguardian.com/world/live/2026/nov/18/apec-summit-live-updates-xi-putin-trump-world-leaders-gather-in-china",
+            "source": "The Guardian",
+            "publisher": "The Guardian",
+            "summary_en": "Summit in Chinese tech hub Shenzhen set to include highly anticipated meeting between Xi, Trump and Putin Shenzhen takes centre stage as Xi sends ‘Chinamaxxing’ message at Apec summit What is Apec? Explained in 30 seconds Yalta became a byword for betrayal. Will Trump, Xi and Putin enact another car",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "The Guardian",
+                "title_zh": "APEC 峰会直播：习近平与普京开始会谈；卢比奥称特朗普对会见金正恩持认真态度",
+                "title_en": "Apec summit live: Xi and Putin start talks; Rubio says Trump serious about meeting Kim Jong-un",
+                "url": "https://www.theguardian.com/world/live/2026/nov/18/apec-summit-live-updates-xi-putin-trump-world-leaders-gather-in-china",
+                "image": "",
+                "is_primary": true
+              },
+              {
+                "source": "Google News",
+                "title_zh": "《卫报》：亚太经合组织峰会直播：习近平与普京开始会谈；鲁比奥称特朗普对会见金正恩持认真态度",
+                "title_en": "Apec summit live: Xi and Putin start talks; Rubio says Trump serious about meeting Kim Jong-un - The Guardian",
+                "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPOGlCUHJNQVF3R3BkMURkZ1E4TDNXWXhSYWZDc0lNUmlQUmpqSlBCTWNLaUp5V3BpVGJoSjMyalV5MlM5XzJ5YnZvai1iS0xVai1UNmlBUDkwX3NHVUgtZ3BJQ2FKOHNEZlpyUERMT3JrdHZJZXEtaHJfMmxybVJ3N0dOeExSZ0hTOFprZUxlVnFZdkxPa2hsNlNWMVluc1VrVEJhaUpDeWtncTRqVE5HWkYyUTRqQW1ZU2FwUQ?oc=5",
+                "image": "",
+                "is_primary": false
+              }
+            ]
+          },
+          {
+            "title_en": "South Korea’s high-stakes university exams upended by AI cheating scandal",
+            "title_zh": "韩国高风险大学考试因 AI 作弊丑闻而陷入混乱",
+            "url": "https://www.theguardian.com/world/2026/nov/18/south-korea-university-entrace-exams-ai-cheating-measures",
+            "source": "The Guardian",
+            "publisher": "The Guardian",
+            "summary_en": "South Korea has been gripped by revelations of AI-aided cheating, just days before more than half a million students are to sit high-stakes entrance exams The integrity of South Korea’s career-defining university entrance exam has been thrown into doubt after the top scorer in a recent professional ",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "The Guardian",
+                "title_zh": "韩国高风险大学考试因 AI 作弊丑闻而陷入混乱",
+                "title_en": "South Korea’s high-stakes university exams upended by AI cheating scandal",
+                "url": "https://www.theguardian.com/world/2026/nov/18/south-korea-university-entrace-exams-ai-cheating-measures",
+                "image": "",
+                "is_primary": true
+              },
+              {
+                "source": "Google News",
+                "title_zh": "韩国高风险大学考试因AI作弊丑闻而陷入混乱 - 卫报",
+                "title_en": "South Korea’s high-stakes university exams upended by AI cheating scandal - The Guardian",
+                "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNYXB1QXdiejZGZmxwSzk1ZHZMVS1NbE9CV0JkUHVxS0pEQTd3MlluNEN3eEdrcThRaHNra0JBM0x5RjZoR2VmcnZKOV9sUEZnRnRBOExWU2t2WHFNeHFTV0pnZDlXMDVGT0JVVUJqTFpUNE80R0NmTTdocWxVX0lGMjhxWUtSSG5Xbm9QaGpkWDI4NW42V2h3QkxZVW5sX1RMTTdySzd3?oc=5",
+                "image": "",
+                "is_primary": false
+              }
+            ]
+          },
+          {
+            "title_en": "William and Kate celebrate Earthshot Prize winners in Mumbai",
+            "title_zh": "威廉与凯特在孟买为“地球奖”获奖者庆祝",
+            "url": "https://www.bbc.co.uk/news/articles/cqlykve012d1o?at_medium=RSS&at_campaign=rss",
+            "source": "BBC",
+            "publisher": "BBC",
+            "summary_en": "The Prince and Princess of Wales were joined by sporting and acting stars for the annual environmental awards ceremony.",
+            "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/7619/live/c9b38b90-e2ae-11f1-99b6-a35a62fa4264.jpg",
+            "published": "2026-11-17",
+            "section": "international",
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "BBC",
+                "title_zh": "威廉与凯特在孟买为“地球奖”获奖者庆祝",
+                "title_en": "William and Kate celebrate Earthshot Prize winners in Mumbai",
+                "url": "https://www.bbc.co.uk/news/articles/cqlykve012d1o?at_medium=RSS&at_campaign=rss",
+                "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/7619/live/c9b38b90-e2ae-11f1-99b6-a35a62fa4264.jpg",
+                "is_primary": true
+              },
+              {
+                "source": "Sky News",
+                "title_zh": "威廉与凯特在孟买主持璀璨的“地球奖”颁奖典礼",
+                "title_en": "William and Kate host glittering Earthshot Prize ceremony in Mumbai",
+                "url": "https://news.sky.com/story/william-and-kate-host-glittering-earthshot-prize-ceremony-in-mumbai-13613397",
+                "image": "https://e3.365dm.com/26/11/1920x1080/skynews-india-mumbai-earthshot_7408760.jpg?20261117143813",
+                "is_primary": false
+              }
+            ]
+          },
+          {
+            "title_en": "Trump in Asia ahead of talks with Russian and Chinese presidents",
+            "title_zh": "特朗普在与俄罗斯及中国总统会谈前访问亚洲",
+            "url": "https://www.bbc.co.uk/news/articles/crq5vlxxx32no?at_medium=RSS&at_campaign=rss",
+            "source": "BBC",
+            "publisher": "BBC",
+            "summary_en": "The US president said he would be open to a one-on-one meeting with Russia's Vladimir Putin \"if it's available\".",
+            "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/b939/live/dca6f2e0-e291-11f1-99b6-a35a62fa4264.jpg",
+            "published": "2026-11-17",
+            "section": "international",
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "BBC",
+                "title_zh": "特朗普在与俄罗斯及中国总统会谈前访问亚洲",
+                "title_en": "Trump in Asia ahead of talks with Russian and Chinese presidents",
+                "url": "https://www.bbc.co.uk/news/articles/crq5vlxxx32no?at_medium=RSS&at_campaign=rss",
+                "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/b939/live/dca6f2e0-e291-11f1-99b6-a35a62fa4264.jpg",
+                "is_primary": true
+              },
+              {
+                "source": "Google News",
+                "title_zh": "特朗普在与俄罗斯和中国总统会谈前访问亚洲 - BBC",
+                "title_en": "Trump in Asia ahead of talks with Russian and Chinese presidents - BBC",
+                "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE43eTNySUF6Qk5WeER2eTkzNGpTb3JpZFBpZGppak80Q25WYm9LMlVLRVZ3UGJIVDN4aXZsX2N4c2l2ZFBQV2xBdDlySTgwZENrNzhybW82djVGYlE?oc=5",
+                "image": "",
+                "is_primary": false
+              }
+            ]
+          },
+          {
+            "title_en": "UK sanctions firms over Israeli West Bank settlements",
+            "title_zh": "英国因以色列在约旦河西岸的定居点问题制裁相关公司",
+            "url": "https://www.bbc.co.uk/news/articles/cvglr977x3z0o?at_medium=RSS&at_campaign=rss",
+            "source": "BBC",
+            "publisher": "BBC",
+            "summary_en": "It marks the first sanctions since the UK announced a tougher approach to Israeli actions in the territory.",
+            "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/b109/live/1b3b72b0-e283-11f1-b166-176de21e2352.jpg",
+            "published": "2026-11-17",
+            "section": "international",
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "BBC",
+                "title_zh": "英国因以色列在约旦河西岸的定居点问题制裁相关公司",
+                "title_en": "UK sanctions firms over Israeli West Bank settlements",
+                "url": "https://www.bbc.co.uk/news/articles/cvglr977x3z0o?at_medium=RSS&at_campaign=rss",
+                "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/b109/live/1b3b72b0-e283-11f1-b166-176de21e2352.jpg",
+                "is_primary": true
+              },
+              {
+                "source": "Sky News",
+                "title_zh": "英国制裁八家在约旦河西岸建设以色列定居点的公司",
+                "title_en": "UK sanctions eight firms building Israeli settlements in the West Bank",
+                "url": "https://news.sky.com/story/uk-sanctions-eight-firms-building-israeli-settlements-in-the-west-bank-13612666",
+                "image": "https://e3.365dm.com/26/11/1920x1080/skynews-west-bank-israeli_7408558.jpg?20261117114538",
+                "is_primary": false
+              }
+            ]
+          },
+          {
+            "title_en": "U.N. talks seek to rein in 'killer robots' as fears over AI weapons grow - NPR",
+            "title_zh": "随着对人工智能武器的担忧增加，联合国会议寻求遏制“杀手机器人” - NPR",
+            "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxORjVjenZkdk1vNVNjSTR1UklRSHZCMGllZVR5N2lfRXo2MXg0MzBnQjBxekctUk5RZWJQaGRxYTRyekJvSzAzM0piT0I2dVhlcmVUalpyV2FxQVQtMVNLdGZpWjFBUUY4bGVBbldicWVnZ0MtWnNoQmhMYmVYWllHY3pHcUc4Zw?oc=5",
+            "source": "Google News",
+            "publisher": "Google News",
+            "summary_en": "U.N. talks seek to rein in 'killer robots' as fears over AI weapons grow NPR U.N. Starts Uncertain Effort to Regulate Lethal Autonomous Weapons The New York Times Automated warfare is already here. Now governments must restrain it | Helen Clark The Guardian US and Russia to oppose talks on limiting ",
+            "image": "",
+            "published": "2026-11-16",
+            "section": "international",
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "Google News",
+                "title_zh": "随着对人工智能武器的担忧增加，联合国会议寻求遏制“杀手机器人” - NPR",
+                "title_en": "U.N. talks seek to rein in 'killer robots' as fears over AI weapons grow - NPR",
+                "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxORjVjenZkdk1vNVNjSTR1UklRSHZCMGllZVR5N2lfRXo2MXg0MzBnQjBxekctUk5RZWJQaGRxYTRyekJvSzAzM0piT0I2dVhlcmVUalpyV2FxQVQtMVNLdGZpWjFBUUY4bGVBbldicWVnZ0MtWnNoQmhMYmVYWllHY3pHcUc4Zw?oc=5",
+                "image": "",
+                "is_primary": true
+              },
+              {
+                "source": "NPR",
+                "title_zh": "随着对人工智能武器的担忧增加，联合国会议寻求遏制“杀手机器人”",
+                "title_en": "U.N. talks seek to rein in 'killer robots' as fears over AI weapons grow",
+                "url": "https://www.npr.org/2026/11/16/nx-s1-6042548/un-killer-robots-ai-weapons-drones",
+                "image": "",
+                "is_primary": false
+              }
+            ]
+          },
+          {
+            "title_en": "Africa’s economic future cannot depend on Washington",
+            "title_zh": "非洲的经济未来不能依赖华盛顿",
+            "url": "https://www.aljazeera.com/opinions/2026/11/18/africas-economic-future-cannot-depend-on-washington?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "Trump's move to exclude South Africa and Rwanda from AGOA shows why Africa must accelerate its own economic integration.",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "非洲的经济未来不能依赖华盛顿",
+                "title_en": "Africa’s economic future cannot depend on Washington",
+                "url": "https://www.aljazeera.com/opinions/2026/11/18/africas-economic-future-cannot-depend-on-washington?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "How the Houthis fund war effort and tighten grip on Yemen",
+            "title_zh": "胡塞武装如何资助战争行动并加强对也门的控制",
+            "url": "https://www.aljazeera.com/news/2026/11/18/how-the-houthis-fund-war-effort-and-tighten-grip-on-yemen?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "The Houthis’ expanding war economy fuels military recruitment while poverty deepens and public services deteriorate.",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "胡塞武装如何资助战争行动并加强对也门的控制",
+                "title_en": "How the Houthis fund war effort and tighten grip on Yemen",
+                "url": "https://www.aljazeera.com/news/2026/11/18/how-the-houthis-fund-war-effort-and-tighten-grip-on-yemen?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "What’s in the air you breathe? How to stay safe during smog season",
+            "title_zh": "你呼吸的空气中含有什么？雾霾季节如何保持安全",
+            "url": "https://www.aljazeera.com/news/2026/11/18/whats-in-the-air-you-breathe-how-to-stay-safe-during-smog-season-2?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "India and Pakistan had 42 of the world’s 50 most polluted cities in 2025. Millions now face another toxic winter.",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "你呼吸的空气中含有什么？雾霾季节如何保持安全",
+                "title_en": "What’s in the air you breathe? How to stay safe during smog season",
+                "url": "https://www.aljazeera.com/news/2026/11/18/whats-in-the-air-you-breathe-how-to-stay-safe-during-smog-season-2?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Rafael Grossi wants to be UN chief. Will Trump’s support nuke his chances?",
+            "title_zh": "拉斐尔·格罗西想竞选联合国秘书长。特朗普的支持会摧毁他的机会吗？",
+            "url": "https://www.aljazeera.com/news/2026/11/18/rafael-grossi-wants-to-be-un-chief-will-trumps-support-nuke-his-chances?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "The nuclear watchdog chief is seen as technically competent, but questions remain about his plans for UN reform.",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "拉斐尔·格罗西想竞选联合国秘书长。特朗普的支持会摧毁他的机会吗？",
+                "title_en": "Rafael Grossi wants to be UN chief. Will Trump’s support nuke his chances?",
+                "url": "https://www.aljazeera.com/news/2026/11/18/rafael-grossi-wants-to-be-un-chief-will-trumps-support-nuke-his-chances?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "FIFA election: Who are Infantino’s challengers, and will he be re-elected?",
+            "title_zh": "国际足联选举：谁是因凡蒂诺的挑战者，他能否连任？",
+            "url": "https://www.aljazeera.com/sports/2026/11/18/fifa-president-election-nomination-infantino-diallo-tashima-vega?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "A look at FIFA's presidential election process, the challengers and key dates, as Gianni Infantino seeks a fourth term.",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "国际足联选举：谁是因凡蒂诺的挑战者，他能否连任？",
+                "title_en": "FIFA election: Who are Infantino’s challengers, and will he be re-elected?",
+                "url": "https://www.aljazeera.com/sports/2026/11/18/fifa-president-election-nomination-infantino-diallo-tashima-vega?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Rare video of Brazilian Amazon tribe",
+            "title_zh": "巴西亚马逊部落的罕见视频",
+            "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/rare-video-of-brazilian-amazon-tribe?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "A new video has emerged showing members of the isolated Awa tribe who live in the remote part of Brazil’s Amazon forest.",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "巴西亚马逊部落的罕见视频",
+                "title_en": "Rare video of Brazilian Amazon tribe",
+                "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/rare-video-of-brazilian-amazon-tribe?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Waymo suspends driverless freeway rides across US after California ban",
+            "title_zh": "在加州禁令生效后，Waymo暂停了在美国全境进行的无人驾驶高速公路行程",
+            "url": "https://www.aljazeera.com/news/2026/11/18/waymo-suspends-driverless-freeway-rides-across-us-after-california-ban?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "California authorities have declared self-driving cars an 'imminent hazard to public safety' after traffic incidents.",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "在加州禁令生效后，Waymo暂停了在美国全境进行的无人驾驶高速公路行程",
+                "title_en": "Waymo suspends driverless freeway rides across US after California ban",
+                "url": "https://www.aljazeera.com/news/2026/11/18/waymo-suspends-driverless-freeway-rides-across-us-after-california-ban?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Australia issues sanctions targeting Israeli settlers",
+            "title_zh": "澳大利亚对以色列定居者实施制裁",
+            "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/australia-issues-sanctions-targeting-israeli-settlers?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "Australia has imposed sanctions on three Israeli individuals and four organisations for illegal settlement expansion.",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "澳大利亚对以色列定居者实施制裁",
+                "title_en": "Australia issues sanctions targeting Israeli settlers",
+                "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/australia-issues-sanctions-targeting-israeli-settlers?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Rubio rules out cyberattacks or links between tech outages",
+            "title_zh": "卢比奥排除技术故障与网络攻击或两者之间存在关联",
+            "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/rubio-rules-out-cyberattacks-or-links-between-tech-outages?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "US Secretary of State Marco Rubio said there is no evidence linking technical outages to each other or to cyberattacks.",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "卢比奥排除技术故障与网络攻击或两者之间存在关联",
+                "title_en": "Rubio rules out cyberattacks or links between tech outages",
+                "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/rubio-rules-out-cyberattacks-or-links-between-tech-outages?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          }
+        ]
+      },
+      "raw_news": [
+        {
+          "title_en": "Africa’s economic future cannot depend on Washington",
+          "title_zh": "非洲的经济未来不能依赖华盛顿",
+          "url": "https://www.aljazeera.com/opinions/2026/11/18/africas-economic-future-cannot-depend-on-washington?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Trump's move to exclude South Africa and Rwanda from AGOA shows why Africa must accelerate its own economic integration.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "How the Houthis fund war effort and tighten grip on Yemen",
+          "title_zh": "胡塞武装如何资助战争行动并加强对也门的控制",
+          "url": "https://www.aljazeera.com/news/2026/11/18/how-the-houthis-fund-war-effort-and-tighten-grip-on-yemen?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "The Houthis’ expanding war economy fuels military recruitment while poverty deepens and public services deteriorate.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "What’s in the air you breathe? How to stay safe during smog season",
+          "title_zh": "你呼吸的空气中含有什么？雾霾季节如何保持安全",
+          "url": "https://www.aljazeera.com/news/2026/11/18/whats-in-the-air-you-breathe-how-to-stay-safe-during-smog-season-2?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "India and Pakistan had 42 of the world’s 50 most polluted cities in 2025. Millions now face another toxic winter.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Rafael Grossi wants to be UN chief. Will Trump’s support nuke his chances?",
+          "title_zh": "拉斐尔·格罗西想竞选联合国秘书长。特朗普的支持会摧毁他的机会吗？",
+          "url": "https://www.aljazeera.com/news/2026/11/18/rafael-grossi-wants-to-be-un-chief-will-trumps-support-nuke-his-chances?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "The nuclear watchdog chief is seen as technically competent, but questions remain about his plans for UN reform.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "FIFA election: Who are Infantino’s challengers, and will he be re-elected?",
+          "title_zh": "国际足联选举：谁是因凡蒂诺的挑战者，他能否连任？",
+          "url": "https://www.aljazeera.com/sports/2026/11/18/fifa-president-election-nomination-infantino-diallo-tashima-vega?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "A look at FIFA's presidential election process, the challengers and key dates, as Gianni Infantino seeks a fourth term.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Rare video of Brazilian Amazon tribe",
+          "title_zh": "巴西亚马逊部落的罕见视频",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/rare-video-of-brazilian-amazon-tribe?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "A new video has emerged showing members of the isolated Awa tribe who live in the remote part of Brazil’s Amazon forest.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Waymo suspends driverless freeway rides across US after California ban",
+          "title_zh": "在加州禁令生效后，Waymo暂停了在美国全境进行的无人驾驶高速公路行程",
+          "url": "https://www.aljazeera.com/news/2026/11/18/waymo-suspends-driverless-freeway-rides-across-us-after-california-ban?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "California authorities have declared self-driving cars an 'imminent hazard to public safety' after traffic incidents.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Australia issues sanctions targeting Israeli settlers",
+          "title_zh": "澳大利亚对以色列定居者实施制裁",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/australia-issues-sanctions-targeting-israeli-settlers?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Australia has imposed sanctions on three Israeli individuals and four organisations for illegal settlement expansion.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Rubio rules out cyberattacks or links between tech outages",
+          "title_zh": "卢比奥排除技术故障与网络攻击或两者之间存在关联",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/rubio-rules-out-cyberattacks-or-links-between-tech-outages?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "US Secretary of State Marco Rubio said there is no evidence linking technical outages to each other or to cyberattacks.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Mary Peltola flips Alaska Senate seat in another Democratic win",
+          "title_zh": "玛丽·佩尔托拉赢得阿拉斯加参议院席位，民主党再获胜",
+          "url": "https://www.aljazeera.com/news/2026/11/18/mary-peltola-wins-alaska-senate-seat-in-another-democratic-win?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "The hard-fought contest is the last to be called for the US Senate and likely faces legal challenges.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Nvidia dismisses calls to reinstate Jensen Huang amid blockbuster earnings",
+          "title_zh": "英伟达业绩表现强劲，驳回恢复黄仁勋相关呼吁",
+          "url": "https://www.aljazeera.com/economy/2026/11/18/nvidia-shoots-down-calls-for-jensen-huangs-return-amid-strong-earnings?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Nvidia board chair says chip giant 'does not intend' to reinstate Huang as it projects revenues of $130bn in Q4.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Rare images of Indigenous group in Amazon highlight threats, advocates say",
+          "title_zh": "倡导者称，亚马逊原住民群体的罕见影像凸显了其面临的威胁",
+          "url": "https://www.aljazeera.com/news/2026/11/18/rare-images-of-indigenous-group-in-amazon-highlight-threats-advocates-say?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Illegal activities in the Amazon pose grave risks to uncontacted Indigenous groups like Brazil’s Awa,.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Hungary on the hunt for a football hero",
+          "title_zh": "匈牙利正在寻找足球英雄",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/hungary-on-the-hunt-for-a-football-hero?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Northern Ireland has secured a Nations League promotion, drawing with Hungary 1-1.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "ICE agents shove and pepper-spray pregnant woman",
+          "title_zh": "美国移民海关执法局特工推搡并向孕妇喷射胡椒喷雾",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/ice-agents-shove-and-pepper-spray-pregnant-woman?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "An American woman was shoved to the ground and pepper-sprayed by ICE agents despite telling them she was pregnant.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "What is Trump hoping to achieve at APEC meeting in China?",
+          "title_zh": "特朗普希望在中国举行的APEC会议上取得什么成果？",
+          "url": "https://www.aljazeera.com/news/2026/11/18/what-is-trump-hoping-to-achieve-at-apec-meeting-in-china?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "US president expected to meet with Chinese leader for third time this year; hold trilateral summit with Putin.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Prosecutors allege man ‘destroyed’ US military plane at Irish airport",
+          "title_zh": "检察官指控一名男子在爱尔兰机场“摧毁”了美国军用飞机",
+          "url": "https://www.aljazeera.com/news/2026/11/18/prosecutors-allege-man-destroyed-us-military-plane-at-irish-airport?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Daithi O'Corrain, 48, has been charged with damaging a US military C-130 aircraft while it was parked overnight.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Man charged over ‘brutal attack’ on Somali-American in Minnesota",
+          "title_zh": "一名男子因在明尼苏达州“残忍袭击”一名索马里裔美国人而面临指控",
+          "url": "https://www.aljazeera.com/news/2026/11/18/man-charged-over-brutal-attack-on-somali-american-in-minnesota?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Rideshare driver Mohamed Yusuf is in a critical condition after he was allegedly assaulted by a passenger.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Protests as Jason Arday’s accuser speaks at Oxford University",
+          "title_zh": "杰森·阿代指控者在牛津大学发表演说引发抗议",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/18/protests-as-jason-ardays-accuser-speaks-at-oxford-university?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Hundreds protested outside Oxford University as Nathan Cofnas, who accused Jason Arday of plagiarism, spoke at an event.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Board of Peace warns Gaza ceasefire faces imminent collapse without action",
+          "title_zh": "和平委员会警告称，若不采取行动，加沙停火协议面临立即崩溃的风险",
+          "url": "https://www.aljazeera.com/news/2026/11/18/board-of-peace-warns-gaza-ceasefire-faces-imminent-collapse-without-action?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "The US-led board has decried continued fighting in Gaza and delays in implementing the terms of a 2025 ceasefire deal.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Ecuadorian fishermen sue Trump administration over drone strike",
+          "title_zh": "厄瓜多尔渔民就无人机袭击事件起诉特朗普政府",
+          "url": "https://www.aljazeera.com/news/2026/11/18/ecuadorian-fishermen-sue-trump-administration-over-drone-strike?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Crew say their boat was attacked by drones launched from US-operated vessel as part of 'manifestly unlawful' campaign.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "European Commission accused of sugarcoating figures to release funds to Egypt",
+          "title_zh": "欧盟委员会被指控粉饰数据以向埃及发放资金",
+          "url": "https://www.theguardian.com/world/2026/nov/18/european-commission-accused-sugarcoating-figures-egypt-loans",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Leaked documents raise questions about claims Egypt met welfare targets to qualify for €2.5bn in loans The European Commission has been accused of sugarcoating figures to enable it to release funds to Egypt under a landmark pact with the authoritarian government of Abdel Fatah al-Sisi. The charge re",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Five EU states announce plans for immigration ‘return hubs’ in Rwanda",
+          "title_zh": "五个欧盟国家宣布在卢旺达设立移民“遣返中心”的计划",
+          "url": "https://www.theguardian.com/world/2026/nov/16/eu-states-immigration-return-hubs-rwanda",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Germany, Austria, Netherlands, Denmark and Greece likely to face challenges to policy criticised as ‘grave moral failing’ Five EU member states have announced plans to set up an offshore centre in Rwanda for people with no legal right to stay in Europe, in a pilot scheme that is expected to face leg",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "US basketball player arrested with 75lb of marijuana at Nigerian airport, say authorities",
+          "title_zh": "当局称一名美国篮球运动员在尼日利亚机场因携带75磅大麻被捕",
+          "url": "https://www.theguardian.com/sport/2026/nov/16/us-basketball-player-arrested-with-75lb-of-marijuana-at-nigerian-airport-say-authorities",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Suspect named as Greene Da’monte Khiree Drug smuggling carries life sentence in Nigeria An American basketball player has been arrested in Nigeria for allegedly attempting to smuggle 33.95kg (75lb) of marijuana into the country. Nigeria’s National Drug Law Enforcement Agency (NDLEA) said a 28-year-o",
+          "image": "",
+          "published": "2026-11-16",
+          "section": "international"
+        },
+        {
+          "title_en": "Relocation of Cape Town baboons to sanctuary ignites heated protests",
+          "title_zh": "开普敦狒狒迁往保护区的计划引发激烈抗议",
+          "url": "https://www.theguardian.com/world/2026/nov/16/cape-town-baboons-relocation-protests",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Demonstrators tried to block vehicle carrying the baboons, whose capture authorities say is needed to protect both primate and human The relocation of a troop of baboons in Cape Town to a wildlife sanctuary has triggered furious protests by local people opposed to their capture, which officials argu",
+          "image": "",
+          "published": "2026-11-16",
+          "section": "international"
+        },
+        {
+          "title_en": "Zimbabwean author Simbarashe Kundizeza cleared of using AI to write prize-winning story",
+          "title_zh": "津巴布韦作家 Simbarashe Kundizeza 被判定未使用 AI 创作获奖故事",
+          "url": "https://www.theguardian.com/books/2026/nov/12/zimbabwean-author-simbarashe-kundizeza-cleared-ai-caine-prize-winning-story",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "After a month-long investigation it was concluded that Kundizeza’s story The Blue Fighter, which won the £10,000 Caine prize, was ‘human-written’ The Zimbabwean author Simbarashe Kundizeza has been cleared of using AI to write a prize-winning short story, after the prestigious Caine prize for Africa",
+          "image": "",
+          "published": "2026-11-12",
+          "section": "international"
+        },
+        {
+          "title_en": "Caribbean nations fear economic impact of shuttering citizenship program after EU threats",
+          "title_zh": "在欧盟发出威胁后，加勒比国家担心关闭公民身份计划将带来经济影响",
+          "url": "https://www.theguardian.com/world/2026/nov/17/st-kitts-nevis-citizenship-investment",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "St Kitts and Nevis to wind down citizenship-by-investment program after EU warns of end to visa-free access The decision by St Kitts and Nevis to end a lucrative programme offering citizenship to wealthy foreigners in exchange for investment threatens its economy and ability to support people in nee",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Isolated Brazilian tribe emerges amid alarm over threats to group’s way of life",
+          "title_zh": "巴西一个偏远部落现身，引发对其生活方式遭受威胁的担忧",
+          "url": "https://www.theguardian.com/world/2026/nov/17/brazil-amazon-isolated-indigenous-people",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Indigenous Awá people of Amazon make contact with villagers and accept food to take back to territory About 20 Indigenous people emerged from isolation in Brazil’s Amazon rainforest, several organizations reported on Tuesday, raising the alarm about increased invasions into the tribe’s territory. Ac",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Eight-year-old Haitian boy returns home after release from ICE custody",
+          "title_zh": "一名 8 岁海地男孩在被美国移民海关执法局（ICE）拘留后返回家园",
+          "url": "https://www.theguardian.com/us-news/2026/nov/17/haitian-child-ice-custody-release",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Child reunited with family after he was detained by immigration agents in San Diego and transferred to Texas An eight-year-old Haitian boy who was put into restraints and detained by immigration agents in San Diego on 4 November and transferred to a facility in Texas has been reunited with his famil",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Costa Rican journalist shot dead in first such killing in 25 years",
+          "title_zh": "哥斯达黎加一名记者遭枪杀，这是当地 25 年来首起此类谋杀案",
+          "url": "https://www.theguardian.com/world/2026/nov/17/costa-rica-journalist-camilo-rodriguez-shot-dead",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Camilo Rodriguez’s death comes as the country grapples with a surge in drug violence The Costa Rican journalist Camilo Rodríguez, who gained prominence for publishing allegations against ⁠suspected drug traffickers and politicians, was shot dead on Monday, authorities said. The first known killing o",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "European-made pesticides named in 1,605 poisoning reports in Brazil last year",
+          "title_zh": "去年巴西 1,605 份中毒报告中涉及欧洲制造的杀虫剂",
+          "url": "https://www.theguardian.com/environment/2026/nov/17/european-made-pesticides-named-1605-brazil-poisoning-reports",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "About a third of cases involved chemicals banned for use on EU farms, according to investigation by Unearthed and Public Eye Pesticides sold by European chemical companies were named in more than 1,600 poisoning reports in Brazil last year, an investigation has found. About a third of the cases invo",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Apec summit live: Xi and Putin start talks; Rubio says Trump serious about meeting Kim Jong-un",
+          "title_zh": "APEC 峰会直播：习近平与普京开始会谈；卢比奥称特朗普对会见金正恩持认真态度",
+          "url": "https://www.theguardian.com/world/live/2026/nov/18/apec-summit-live-updates-xi-putin-trump-world-leaders-gather-in-china",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Summit in Chinese tech hub Shenzhen set to include highly anticipated meeting between Xi, Trump and Putin Shenzhen takes centre stage as Xi sends ‘Chinamaxxing’ message at Apec summit What is Apec? Explained in 30 seconds Yalta became a byword for betrayal. Will Trump, Xi and Putin enact another car",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "South Korea’s high-stakes university exams upended by AI cheating scandal",
+          "title_zh": "韩国高风险大学考试因 AI 作弊丑闻而陷入混乱",
+          "url": "https://www.theguardian.com/world/2026/nov/18/south-korea-university-entrace-exams-ai-cheating-measures",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "South Korea has been gripped by revelations of AI-aided cheating, just days before more than half a million students are to sit high-stakes entrance exams The integrity of South Korea’s career-defining university entrance exam has been thrown into doubt after the top scorer in a recent professional ",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Jensen Huang to testify before Congress on ‘potential breach of national security’",
+          "title_zh": "黄仁勋将就“潜在国家安全漏洞”问题向国会作证",
+          "url": "https://www.theguardian.com/technology/2026/nov/17/jensen-huang-testify-congress-nvidia-affair-spy",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "High-stakes hearing comes in wake of resignation from Nvidia after alleged affair with suspected Chinese spy Nvidia’s former CEO Jensen Huang will testify before several congressional committees on 1 December, setting the stage for a high-stakes hearing in the wake of his resignation following an af",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Hi-tech Shenzhen takes centre stage as Xi sends ‘Chinamaxxing’ message at Apec summit",
+          "title_zh": "习近平在APEC峰会传递“中国式规模化”信号，高科技深圳成为焦点",
+          "url": "https://www.theguardian.com/world/2026/nov/17/hi-tech-shenzhen-chinamaxxing-xi-apec-summit",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Host city offers showcase of China’s rise into a confident and innovative power central to global economy In a Shenzhen square on a balmy evening, locals and tourists watched the dozens of glinting towers that make up the city’s skyline ripple through the colour spectrum – cyan and violet, cyber gre",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Hundreds arrested in anti-Trump protests in Philippines amid anger over Iran war and AI pact",
+          "title_zh": "因不满伊朗战争及人工智能协议，菲律宾反特朗普抗议活动导致数百人被捕",
+          "url": "https://www.theguardian.com/world/2026/nov/17/hundreds-arrested-manila-anti-trump-protests-philippines",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Organisers say up to 10,000 people could join next round of demonstrations as US president arrives for Asean summit Asean and Apec summits – as it happened Hundreds of people have been arrested in heated demonstrations against Donald Trump in Manila, as the US president arrived in the city for a lea",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Bikie ‘not surprised’ if he used fake $20,000 souvlaki invoice to pocket thousands on Big Build site, inquiry hears",
+          "title_zh": "调查听证会称，若机车党成员在大型建设项目中使用虚假2万美元苏夫拉基发票中饱私囊，其表示“并不意外”",
+          "url": "https://www.theguardian.com/australia-news/2026/nov/18/bandidos-bikie-joel-leavitt-cfmeu-big-build-inquiry-ntwnfb",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Royal commission sees text message where Bandidos member Joel Leavitt says ‘just make up a quote that hits 20K’ while working on site for CFMEU Get our breaking news email , free app or daily news podcast A Bandidos gang member says it is possible he used a fake $20,000 invoice for souvlaki to pocke",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "‘Devastating consequences’: One Nation plan to slash Australia’s refugee program denounced",
+          "title_zh": "“毁灭性后果”：一国党削减澳大利亚难民计划的提议遭到谴责",
+          "url": "https://www.theguardian.com/australia-news/2026/nov/18/one-nation-refugee-intake-immigration-ntwnfb",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Amid widespread condemnation of the proposal, Pauline Hanson also wants to scrap existing parent and aged parent visa program Get our daily political email , free app or daily news podcast One Nation has vowed to cut Australia’s refugee intake by 90% and scrap the permanent parent visa program under",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Australian wages grow at fastest pace since 2023 – but prices are climbing even more quickly",
+          "title_zh": "澳大利亚工资增速创2023年以来最快，但物价上涨速度更快",
+          "url": "https://www.theguardian.com/australia-news/2026/nov/18/wages-grow-at-fastest-pace-since-2023-but-prices-are-climbing-even-more-quickly",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Wage rates climb about 1 percentage point faster than before pandemic, triggering warnings of a sixth RBA rate rise Get our daily political email , free app or daily news podcast Wages grew at their fastest pace since late 2023 over the three months to September, buoyed up by this year’s boost to mi",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Australia’s ‘problematic’ surrogacy laws could be transformed under proposed changes",
+          "title_zh": "拟议的变革可能改变澳大利亚“存在问题”的代孕法",
+          "url": "https://www.theguardian.com/law/2026/nov/18/australias-strict-surrogacy-laws-could-be-relaxed-under-proposed-changes",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Law reform body recommends ongoing ban on commercial surrogacy, but greater compensation for surrogates, and safeguards around who the child’s legal parents are Get our breaking news email , free app or daily news podcast Surrogates would be entitled to full compensation, with a nationally consisten",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "The ‘moon landing’ of gaming: Australians, some of the first to play GTA VI, prepare to descend on Vice City",
+          "title_zh": "游戏界的“登月时刻”：首批体验《GTA VI》的澳大利亚玩家正准备涌入罪恶都市",
+          "url": "https://www.theguardian.com/australia-news/2026/nov/18/gta-6-biggest-gaming-event-australians-prepare-for-global-release",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "After a 13-year wait for the latest Grand Theft Auto instalment, Thursday’s launch is shaping up to be ‘the biggest gaming event that’s ever been’ Gamers across Australia are preparing for the once-in-a-generation release of Grand Theft Auto VI, a day acolytes of the franchise say will be bigger tha",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "2027 AFCON qualifiers: Senegal and 5 other nations secure spot",
+          "title_zh": "2027年非洲国家杯预选赛：塞内加尔等6国锁定参赛资格",
+          "url": "https://www.france24.com/en/tv-shows/sports/20261118-2027-afcon-qualifiers-senegal-and-5-other-nations-secure-spot",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "The first teams to qualify for the 2027 AFCON have been decided. Senegal, Cameroon and Morocco are among them.",
+          "image": "https://s.france24.com/media/display/00d9550c-e230-11f1-8ffa-3f371022a770/w:1024/p:16x9/senegal-12.jpg",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Peltola defeats Sullivan in Alaska Senate race, expanding Democratic majority",
+          "title_zh": "佩尔托拉在阿拉斯加参议院选举中击败沙利文，扩大民主党多数优势",
+          "url": "https://www.france24.com/en/americas/20261118-peltola-defeats-sullivan-in-alaska-senate-race-expanding-democratic-majority",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Peltola defeats Sullivan in Alaska Senate race, expanding Democratic majority",
+          "title_zh": "佩尔托拉在阿拉斯加参议院选举中击败沙利文，扩大民主党多数优势",
+          "url": "https://www.france24.com/en/americas/20261118-peltola-defeats-sullivan-in-alaska-senate-race-expanding-democratic-majority",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Democrat Mary Peltola defeated Republican Sen. Dan Sullivan in Alaska on Tuesday, completing a political comeback in a state that US President Donald Trump has repeatedly won by wide margins. Her victory gives Democrats a 56-44 Senate majority, marking their biggest net gain in Senate seats since 19",
+          "image": "https://s.france24.com/media/display/90f6b112-e301-11f1-8d0c-7908c4e1a3c7/w:1024/p:16x9/AP26308242860566.jpg",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Xi Jinping calls for global cooperation on AI and free trade at APEC summit",
+          "title_zh": "习近平在APEC峰会上呼吁人工智能与自由贸易领域的全球合作",
+          "url": "https://www.france24.com/en/asia-pacific/20261118-xi-jinping-calls-for-global-cooperation-on-ai-and-free-trade-at-apec-summit",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Chinese President Xi Jinping called on Wednesday for stronger global cooperation on artificial intelligence and free trade, as he opened the APEC summit in Shenzhen ahead of an expected meeting with US President Donald Trump. Trade tensions and new US chip export restrictions are set to feature prom",
+          "image": "https://s.france24.com/media/display/6c27aea8-e2f8-11f1-acc5-ff16da94d1fe/w:1024/p:16x9/b8a39c56a6822b99f0824e38b60014e799bb99fe.jpg",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "'Taylor Swift of games': Grand Theft Auto is back after 13-year wait",
+          "title_zh": "“游戏界的泰勒·斯威夫特”：《侠盗猎车手》在等待13年后回归",
+          "url": "https://www.france24.com/en/culture/20261118-taylor-swift-of-games-grand-theft-auto-is-back-after-13-year-wait",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "\"Grand Theft Auto\" will be available on PlayStation 5 and Xbox Series consoles on Thursday after 13 years of waiting, two delays and several leaks. The global gaming phenomenon – dubbed the \"Taylor Swift of games\" – is the most expensive video game ever developed, and it is on track to break sales r",
+          "image": "https://s.france24.com/media/display/38ad0c78-e2fb-11f1-9ec3-1ba7ddfab527/w:1024/p:16x9/257ba2ae666325eb03f24a67f10e2b7e3d6cf861.jpg",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Haitians rally behind Bukele as Salvadoran troops battle gangs",
+          "title_zh": "萨尔瓦多军队与帮派作战，海地人支持布克尔",
+          "url": "https://www.france24.com/en/americas/20261118-haitians-rally-behind-bukele-as-salvadoran-troops-battle-gangs",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Thousands of Haitians took to the streets on Tuesday to urge El Salvador's President Nayib Bukele to keep fighting gangs, as his troops bolster security forces in the Caribbean nation. But experts warn that growing public support could turn to anger without a long-term plan to tackle violence and st",
+          "image": "https://s.france24.com/media/display/5f68d9ac-e2f4-11f1-88c9-c5c0357b2a0c/w:1024/p:16x9/AP26321814589361.jpg",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Xi, Putin meet ahead of Trump's arrival in China for historic trilateral summit",
+          "title_zh": "习近平与普京在特朗普抵达中国参加历史性三边峰会前举行会晤",
+          "url": "https://www.france24.com/en/asia-pacific/20261118-xi-putin-meet-ahead-of-historic-trump-trilateral-summit",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "China's leader Xi Jinping and his Russian counterpart Vladimir Putin met on Wednesday ahead of US President Donald Trump's arrival in Shenzhen for a high-stakes trilateral meeting. Trump has said Ukraine will be on the agenda, despite Xi vehemently seeing the war as not China's problem, stoking fear",
+          "image": "https://s.france24.com/media/display/fce06848-e2ff-11f1-aa91-1ba7ddfab527/w:1024/p:16x9/097279e047c5a028371b570beb9f5b24972dd3ef.jpg",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Middle East live: Kuwait, Bahrain report drone and missile attacks",
+          "title_zh": "中东直播：科威特、巴林报告遭遇无人机及导弹袭击",
+          "url": "https://www.france24.com/en/middle-east/20261118-middle-east-live-kuwait-bahrain-report-drone-and-missile-attacks",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Kuwait said Wednesday it was countering hostile drone attacks, while Bahrain reported intercepting Iranian strikes, as US allies in the Gulf remained on alert following an American attack on Iran's Qeshm Island. The incidents came amid a standoff over the Strait of Hormuz. Follow our liveblog for th",
+          "image": "https://s.france24.com/media/display/849fa83a-e2f0-11f1-83e1-c5c0357b2a0c/w:1024/p:16x9/AP26117545379836.jpg",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Nvidia board rules that co-founder Jensen Huang will not return as CEO",
+          "title_zh": "英伟达董事会裁定联合创始人黄仁勋将不再回归担任 CEO",
+          "url": "https://www.france24.com/en/technology/20261117-nvidia-board-rules-that-co-founder-jensen-huang-will-not-return-as-ceo",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Nvidia's board chairman ruled out bringing back co-founder Jensen Huang as CEO on Tuesday, as the chipmaker forecast stronger-than-expected quarterly sales but faced growing questions over its leadership, national security exposure and long-term strategy following his abrupt departure.",
+          "image": "https://s.france24.com/media/display/e899ca7c-e2b0-11f1-9dea-1ba7ddfab527/w:1024/p:16x9/2026-11-16T182243Z-119858112-RC2O2LA29X51-RTRMADP-3-NVIDIA-CEO.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "WHO sounds the alarm on antimicrobial resistance threat",
+          "title_zh": "世卫组织就抗生素耐药性威胁发出警报",
+          "url": "https://www.france24.com/en/tv-shows/a-propos/20261117-who-sounds-the-alarm-on-antimicrobial-resistance-threat",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "The spread of antimicrobial resistance (AMR) is threatening modern medicine despite progress in combating drug-resistant bacteria, senior World Health Organization officials said Monday. WHO officials said countries had expanded efforts to tackle AMR, but warned that progress in prevention, diagnosi",
+          "image": "https://s.france24.com/media/display/8c63b72e-e2d1-11f1-b56b-c5c0357b2a0c/w:1024/p:16x9/EN-20261117-223111-224233-CS.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "WHO sounds the alarm on antimicrobial resistance threat",
+          "title_zh": "世卫组织就抗生素耐药性威胁发出警报",
+          "url": "https://www.france24.com/en/who-sounds-the-alarm-on-antimicrobial-resistance-threat",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "The spread of antimicrobial resistance (AMR) is threatening modern medicine despite progress in combating drug-resistant bacteria, senior World Health Organization officials said Monday. WHO officials said countries had expanded efforts to tackle AMR, but warned that progress in prevention, diagnosi",
+          "image": "https://s.france24.com/media/display/8c63b72e-e2d1-11f1-b56b-c5c0357b2a0c/w:1024/p:16x9/EN-20261117-223111-224233-CS.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "US, Mexico and Bolivia lose measles-free status as deaths mount",
+          "title_zh": "随着死亡人数上升，美国、墨西哥和玻利维亚失去无麻疹状态",
+          "url": "https://www.france24.com/en/americas/20261117-us-mexico-and-bolivia-lose-measles-free-status-as-deaths-mount",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "The US has lost its measles-free status, international health officials said Tuesday, as the highly contagious virus has spread at the fastest rate in more than 30 years, while Mexico and Bolivia also lost their measles-elimination status. Vaccination rates have been falling against a number of dise",
+          "image": "https://s.france24.com/media/display/74a1392a-3f8b-11f1-af77-005056bf30b7/w:1024/p:16x9/AP26096555305099.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "🔴Israeli parliament elects Eisenkot ally Matan Kahana as new Knesset speaker",
+          "title_zh": "🔴以色列议会选举埃森科特盟友马坦·卡哈纳为新任议长",
+          "url": "https://www.france24.com/en/middle-east/20261117-%F0%9F%94%B4-israeli-parliament-elects-eisenkot-ally-matan-kahana-as-speaker",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Israeli parliament elects Eisenkot ally Matan Kahana as speaker in blow for Netanyahu",
+          "title_zh": "以色列议会选举埃森科特盟友马坦·卡哈纳为议长，对内塔尼亚胡构成打击",
+          "url": "https://www.france24.com/en/middle-east/20261117-%F0%9F%94%B4-israeli-parliament-elects-eisenkot-ally-matan-kahana-as-speaker",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "The Israeli parliament on Tuesday elected as new speaker an ally of Gadi Eisenkot, the party leader currently working to form the next government and replace current Israeli Prime Minister Benjamin Netanyahu. Matan Kahana, a former special forces soldier, is expected as soon as Wednesday to start th",
+          "image": "https://s.france24.com/media/display/855e62f8-e290-11f1-bec3-6d75ed565170/w:1024/p:16x9/AP26321467242182.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "AI imagery complicates Nigeria's election prep",
+          "title_zh": "AI 生成图像令尼日利亚选举筹备工作复杂化",
+          "url": "https://www.france24.com/en/ai-imagery-complicates-nigeria-s-election-prep",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "In tonight's edition, concerns emerge that AI has been used to generate fake voting profiles ahead of Nigeria's high-stakes general election in January. Also, Nigeria's mining marshal heads underground to unearth some of the people and organizations behind the vast illegal mining industries. And a g",
+          "image": "https://s.france24.com/media/display/8b70b296-e2cb-11f1-9a43-1ba7ddfab527/w:1024/p:16x9/DL00006280-VOD-00023668-01.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Major setbacks for Netanyahu ahead of vote to name new Knesset speaker",
+          "title_zh": "在确定新任议长投票前，内塔尼亚胡遭遇重大挫折",
+          "url": "https://www.france24.com/en/major-setbacks-for-netanyahu-ahead-of-vote-to-name-new-knesset-speaker",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Since suffering heavy losses in Israel’s Oct. 27 election, Prime Minister Benjamin Netanyahu's party has repeatedly claimed the vote was “stolen” by Arab-led parties, possibly with foreign assistance. Those claims appear to be crumbling as he tries to cling to power, as the Israeli parliament is set",
+          "image": "https://s.france24.com/media/display/5e0651c4-e2c8-11f1-a84f-ff16da94d1fe/w:1024/p:16x9/EN-20261117-213508-213905-CS.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Jensen Huang says he'd be honoured to return to Nvidia as CEO",
+          "title_zh": "黄仁勋表示若能重返英伟达担任 CEO 将深感荣幸",
+          "url": "https://www.france24.com/en/tv-shows/business/20261117-jensen-huang-says-he-d-be-honoured-to-return-to-nvidia-as-ceo",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Jensen Huang makes his first public statement since resigning from Nvidia, saying he'd be honoured to return to his job amid support from the tech world. It comes ahead of a much anticipated earnings call this Tuesday, with analysts expecting the group to report a 90% jump in revenue to about $109 b",
+          "image": "https://s.france24.com/media/display/d6c722b0-e2c7-11f1-94bc-c5c0357b2a0c/w:1024/p:16x9/capture-78a98eba.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Nvidia's Jensen Huang: Targeted by the AI misinformation he helped create",
+          "title_zh": "英伟达黄仁勋：正成为他参与创造的 AI 虚假信息的攻击目标",
+          "url": "https://www.france24.com/en/tv-shows/truth-or-fake/20261117-deepfakes-memes-and-misinformation-ai-turns-against-nvidia-s-jensen-huang",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Nvidia co-founder Jensen Huang has become the target of a wave of AI-generated misinformation, in a striking twist for one of the men behind the AI revolution. From a fake audio recording supposedly featuring his wife to fabricated LinkedIn profiles, false claims linking him to the Chinese Communist",
+          "image": "https://s.france24.com/media/display/1e5eb9f6-e2c5-11f1-b78e-1ba7ddfab527/w:1024/p:16x9/nvidia-3.png",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Iran 'playing mind games with the United States', expert says",
+          "title_zh": "专家称：伊朗正在对美国“玩弄心理战”",
+          "url": "https://www.france24.com/en/iran-playing-mind-games-with-the-united-states-expert-says",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "President Donald Trump said Tuesday that US authorities take \"very seriously\" any possible threat to Washington, following reports Iran was planning to target officials, possibly with a radioactive bomb. Speaking with FRANCE 24's Monte Francis, Barbara Slavin, Distinguished Fellow at the Stimson Cen",
+          "image": "https://s.france24.com/media/display/a63cda5c-e2c4-11f1-8f15-7908c4e1a3c7/w:1024/p:16x9/EN-20261117-210522-211625-CS.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Authorities take over Turkey's last pro-opposition broadcaster Sozcu TV",
+          "title_zh": "当局接管土耳其最后一家亲反对派的广播电视台 Sozcu TV",
+          "url": "https://www.france24.com/en/authorities-take-over-turkey-s-last-pro-opposition-broadcaster-sozcu-tv",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Police raided the Istanbul headquarters of Sozcu TV on Tuesday, dealing another significant blow to Turkey's pro-opposition media. This is the third such seizure of pro-opposition media in just over a year. It comes amid public uproar over a multi-billion investment fund scandal that has affected th",
+          "image": "https://s.france24.com/media/display/b6178ba6-e2c0-11f1-ac75-7908c4e1a3c7/w:1024/p:16x9/EN-20261117-203821-204220-CS.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Putin's Crimean Bridge partly collapses as Zelensky hails 'unprecedented' attack by Ukraine",
+          "title_zh": "普京的克里米亚大桥部分坍塌，泽连斯基称乌克兰发动了“史无前例”的袭击",
+          "url": "https://www.bbc.co.uk/news/articles/cw772jk4rvmxo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "Ukraine says the missile and drone attack on the strategic bridge in the Russian-annexed Crimea took weeks to plan.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/222d/live/db8315b0-e278-11f1-99a1-253766e7ad8b.png",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "How the attack on Crimean Bridge unfolded",
+          "title_zh": "克里米亚大桥袭击事件是如何展开的",
+          "url": "https://www.bbc.co.uk/news/articles/crz9dgz28zwdo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "One of the key symbols of Russia's occupation of Ukraine has suffered major damage after a seven-stage attack by Kyiv.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/82dd/live/f7995500-e29d-11f1-99a1-253766e7ad8b.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Nvidia says it won't reinstate Huang as it reports soaring sales",
+          "title_zh": "英伟达报告销售额激增，表示不会恢复黄仁勋的职位",
+          "url": "https://www.bbc.co.uk/news/articles/cm2kl50vkwkdo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "The AI chip giant reported strong quarterly earnings on Tuesday after the dramatic exit of Jensen Huang.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/2e48/live/58880030-e2d7-11f1-99a1-253766e7ad8b.jpg",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Philippines police ask prosecutors to charge Thomas Markle over child sex abuse material",
+          "title_zh": "菲律宾警方要求检察官就儿童性虐待材料起诉托马斯·马克尔",
+          "url": "https://www.bbc.co.uk/news/articles/ckg5ry8m49ggo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "Markle is being held in custody in the US after one charge and has previously denied all of the allegations.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/5b0e/live/040fc640-dd79-11f1-93e1-3b657b665bcf.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "'It was really scary': Mother describes sheltering during Russia strikes on Kyiv bridge",
+          "title_zh": "“真的很可怕”：母亲描述在俄罗斯袭击基辅大桥期间躲避的过程",
+          "url": "https://www.bbc.co.uk/news/articles/cq7825234lgmo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "Moscow has targeted bridges in Kyiv, while Ukraine severely damaged a critical bridge linking Russia to occupied Crimea.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/f084/live/ab522920-e29c-11f1-8dda-8925a81c3da5.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Russian military plane crashes, killing all 19 on board",
+          "title_zh": "俄罗斯军用飞机坠毁，机上19人全部遇难",
+          "url": "https://www.bbc.co.uk/news/articles/cw8085rykkmgo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "Russia's defence ministry says it preliminarily believes a technical malfunction was the cause of the crash in the Kemerovo region.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/3ead/live/4d71a050-e2bb-11f1-b083-69f1e69220f8.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Palestinian woman, 72, shot dead by Israeli settlers in West Bank, health ministry says",
+          "title_zh": "巴勒斯坦卫生部称，一名72岁巴勒斯坦女性在约旦河西岸遭以色列定居者枪杀",
+          "url": "https://www.bbc.co.uk/news/articles/cqrlg377638yo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "Palestinians say there was an attack by settlers in al-Duyuk al-Tahta, while the Israeli military says the settlers fired after being attacked.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/d277/live/17a72100-e286-11f1-a094-5fdc692f3e33.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "US loses measles elimination status after 26 years amid record case numbers",
+          "title_zh": "在病例数创纪录的情况下，美国在时隔26年后失去消除麻疹地位",
+          "url": "https://www.bbc.co.uk/news/articles/c977p71jx0xxo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "States have reported over 5,400 cases and 10 measles-related deaths for the first time since the early 1990s.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/0b33/live/4927cca0-dfd1-11f1-8c90-4fc10fbf9142.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "American soldier arrested by UK police on suspicion of spying taken into US military custody",
+          "title_zh": "一名因涉嫌间谍活动被英国警方逮捕的美国士兵已被移交给美国军方监管",
+          "url": "https://www.bbc.co.uk/news/articles/c6x284ez38vdo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "The Metropolitan Police say he has been taken into custody by the US Military over suspected national security and espionage allegations.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/42be/live/81981920-e2db-11f1-950d-ffe0c8f51f90.png",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "William and Kate celebrate Earthshot Prize winners in Mumbai",
+          "title_zh": "威廉与凯特在孟买为“地球奖”获奖者庆祝",
+          "url": "https://www.bbc.co.uk/news/articles/cqlykve012d1o?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "The Prince and Princess of Wales were joined by sporting and acting stars for the annual environmental awards ceremony.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/7619/live/c9b38b90-e2ae-11f1-99b6-a35a62fa4264.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Trump in Asia ahead of talks with Russian and Chinese presidents",
+          "title_zh": "特朗普在与俄罗斯及中国总统会谈前访问亚洲",
+          "url": "https://www.bbc.co.uk/news/articles/crq5vlxxx32no?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "The US president said he would be open to a one-on-one meeting with Russia's Vladimir Putin \"if it's available\".",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/b939/live/dca6f2e0-e291-11f1-99b6-a35a62fa4264.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Indian woman gang-raped while pregnant in 2002 'heartbroken' after two perpetrators bailed",
+          "title_zh": "印度一名女性在2002年怀孕期间遭团伙强奸，两名犯罪嫌疑人获保释后其深感“心碎”",
+          "url": "https://www.bbc.co.uk/news/articles/cr868wd2qg18o?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "Bilkis Bano has spoken of her \"pain, shock and disbelief\" at the top court order and vowed to fight back.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/9c83/live/904d30a0-e1a4-11f1-973a-a76c1b2f887a.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Nvidia partner Megaspeed being investigated by US government over chip exports",
+          "title_zh": "英伟达合作伙伴 Megaspeed 因芯片出口问题正接受美国政府调查",
+          "url": "https://www.bbc.co.uk/news/articles/cmn504nq5033o?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "The Singapore-based company is suspected of helping to ship high-end AI chips from tech giant Nvidia to China, violating US export rules.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/a77e/live/31ebc580-e267-11f1-900c-895604014268.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Trump says US taking 'very seriously' any Iranian plot against Washington",
+          "title_zh": "特朗普表示美国将“非常严肃地”对待任何针对华盛顿的伊朗阴谋",
+          "url": "https://www.bbc.co.uk/news/articles/cq808vzd3nnpo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "Tehran rejects any suggestion it was plotting a so-called dirty bomb attack on the US capital as \"baseless\".",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/a331/live/4e364d80-e287-11f1-b166-176de21e2352.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "UK sanctions firms over Israeli West Bank settlements",
+          "title_zh": "英国因以色列在约旦河西岸的定居点问题制裁相关公司",
+          "url": "https://www.bbc.co.uk/news/articles/cvglr977x3z0o?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "It marks the first sanctions since the UK announced a tougher approach to Israeli actions in the territory.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/b109/live/1b3b72b0-e283-11f1-b166-176de21e2352.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Carney looks to China as Trump tariffs squeeze Canada's car industry",
+          "title_zh": "特朗普关税挤压加拿大汽车业，卡尼将目光转向中国",
+          "url": "https://www.bbc.co.uk/news/articles/cq98xlz09ye0o?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "The PM has suggested Chinese automakers could replace American ones in Canada - but some say that would not be easy.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/dab7/live/371458b0-e299-11f1-8dda-8925a81c3da5.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Gunmen kill Costa Rican journalist who reported on drugs trade",
+          "title_zh": "报道毒品贸易的哥斯达黎加记者遭枪手杀害",
+          "url": "https://www.bbc.co.uk/news/articles/c6ly7g5lx7gyo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "Rodríguez had denounced alleged links between criminal organisations and powerful figures in Costa Rica.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/1bb5/live/140763d0-e26c-11f1-b19c-7b42f37bea48.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "BBC reports from Kyiv bridge hit by Russian attack",
+          "title_zh": "BBC 报道称基辅大桥遭俄罗斯袭击",
+          "url": "https://www.bbc.co.uk/news/videos/cmlywvww3pzlo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "The BBC's Sarah Rainsford spoke to residents near the site of the overnight strike.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/5a20/live/d8ac30b0-e2b4-11f1-a094-5fdc692f3e33.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Inside the Chinese 'AI wonderland' where Xi will host Trump",
+          "title_zh": "走进中国“AI 仙境”，习近平将在此接待特朗普",
+          "url": "https://www.bbc.co.uk/news/videos/ckjwjl6ywgn9o?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "The meeting will take place as Trump attends the Asia-Pacific Economic Co-operation (Apec) summit in the southern city of Shenzhen.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/2905/live/37886bc0-e1df-11f1-99a1-253766e7ad8b.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Will President Trump meet Kim Jong Un?",
+          "title_zh": "特朗普总统会见金正恩吗？",
+          "url": "https://www.bbc.co.uk/news/videos/c6grew79p7qdo?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "President Trump says he would be keen to meet the North Korea leader in China.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/4583/live/99273800-e263-11f1-a094-5fdc692f3e33.jpg",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Police in Philippines pursue three charges against Thomas Markle Sr",
+          "title_zh": "菲律宾警方对托马斯·马克尔之父提出三项指控",
+          "url": "https://news.sky.com/story/police-in-philippines-pursue-three-charges-against-thomas-markle-sr-over-child-sex-abuse-images-13613346",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "Filipino police are pursuing three charges against Thomas Markle Sr relating to child sexual abuse images, Sky News understands.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-thomas-markle-mugshot_7403623.jpg?20261111090436",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Prague train crash leaves 46 people injured",
+          "title_zh": "布拉格火车相撞事故导致46人受伤",
+          "url": "https://news.sky.com/story/prague-train-crash-leaves-46-people-injured-13613217",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "Two trains have collided into each other near the main railway station in Prague, injuring 46 people.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-prague-train_7408693.jpg?20261117133824",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "UK sanctions eight firms building Israeli settlements in the West Bank",
+          "title_zh": "英国制裁八家在约旦河西岸建设以色列定居点的公司",
+          "url": "https://news.sky.com/story/uk-sanctions-eight-firms-building-israeli-settlements-in-the-west-bank-13612666",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "The UK has sanctioned eight firms building Israeli settlements in the West Bank.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-west-bank-israeli_7408558.jpg?20261117114538",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "William and Kate host glittering Earthshot Prize ceremony in Mumbai",
+          "title_zh": "威廉与凯特在孟买主持璀璨的“地球奖”颁奖典礼",
+          "url": "https://news.sky.com/story/william-and-kate-host-glittering-earthshot-prize-ceremony-in-mumbai-13613397",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "The Prince and Princess of Wales have hosted a star-studded event in Mumbai to celebrate the winners of the Earthshot Prize.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-india-mumbai-earthshot_7408760.jpg?20261117143813",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Three Melbourne Cup trophies worth £500k each stolen",
+          "title_zh": "三座价值各50万英镑的墨尔本杯奖杯被盗",
+          "url": "https://news.sky.com/story/police-searching-for-three-stolen-melbourne-cup-trophies-worth-500k-each-13613066",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "Police are searching for three Melbourne Cup trophies collectively worth more than £1.5m after they were stolen from a display cabinet at a racecourse in Melbourne.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-melbourne-cup-makybe-diva_7408286.jpg?20261117045039",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Iran Attacks Kuwait and Bahrain, Further Escalating Fight Over Strait - WSJ",
+          "title_zh": "《华尔街日报》：伊朗袭击科威特和巴林，进一步升级了围绕海峡的冲突",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNcGVKcXlHY1EycS1qaFBrcVduLWwzS1B4RmhJeDg5eFlxR0FIeVNFclFqZVczdXFBVGVLa0xpcHZXZkVWa3JEeHJxVXA5YWxVa3YtejhlaHd1T1JmWDd1NHp3V1E1SEdsS0tkOEc2bVpZNER2elNveGdNTk9xanNjSDZZM2NwSXhULUVPSk84TW1JRFJUbkRRZVBYN2JHd0NnQkYxN0hhVDhVaVYzUEtlTGUwUUpuZw?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Iran Attacks Kuwait and Bahrain, Further Escalating Fight Over Strait WSJ Iran war live: Bahrain, Kuwait intercept attacks, Manama blames Iran Al Jazeera US carries out ‘self-defense’ strikes on Iranian missile launch site CNN Iran says army targets U.S. drone and missile sites in Kuwait as Gulf att",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Apec summit live: Xi and Putin start talks; Rubio says Trump serious about meeting Kim Jong-un - The Guardian",
+          "title_zh": "《卫报》：亚太经合组织峰会直播：习近平与普京开始会谈；鲁比奥称特朗普对会见金正恩持认真态度",
+          "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPOGlCUHJNQVF3R3BkMURkZ1E4TDNXWXhSYWZDc0lNUmlQUmpqSlBCTWNLaUp5V3BpVGJoSjMyalV5MlM5XzJ5YnZvai1iS0xVai1UNmlBUDkwX3NHVUgtZ3BJQ2FKOHNEZlpyUERMT3JrdHZJZXEtaHJfMmxybVJ3N0dOeExSZ0hTOFprZUxlVnFZdkxPa2hsNlNWMVluc1VrVEJhaUpDeWtncTRqVE5HWkYyUTRqQW1ZU2FwUQ?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Apec summit live: Xi and Putin start talks; Rubio says Trump serious about meeting Kim Jong-un The Guardian Xi meets with 'old friend' Putin ahead of Trump's arrival in China BBC Trump, Xi and Putin have a shared vision of global power – with no place for Europe | Rafael Behr The Guardian The incred",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "'The symbol of the occupation': Ukraine destroys span of Kerch Bridge linking Russia with Crimea - PBS",
+          "title_zh": "PBS： “占领的象征”：乌克兰摧毁了连接俄罗斯与克里米亚的克尔奇大桥桥段",
+          "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPMUJGYi1BUlk3RkRNekw2VHFXa2JfaTVZV1NsOW5Lc0FFQTh6NnFLYTVvNXUzS0FjajlOT3g2Q1JQVVo0T3R1UDdtVE9kNTdzQ2d2SE8xWjZYUjgtekZyaHNhdEFtajQ5WlNoYVU4RG9FSDhEWmpLa3llQUpWMjRhRWlZSF9Mb2dGeTYzSEt4OUtUSGlGcmo3VzlzU1BMVmgySDViTmZlUDVvV2Z5RFJjQW9GMkZVRnZvTjNnVmdvbjZUdEJBMkhN0gHMAUFVX3lxTE4xSkxST25fc3NYSEltalZFSFRiZTI4MFB1Y0x1cDFBM2N3ZVJoeV9ILTUxRTVtdzR5bGtzTkNWTlJDMjY2SEF3Tm1hUVpJR3RGRGtvRlIzYVhyZVhVU0NJTl8zX18wbEhVLWxlSnFJa3lxcjlxQmZCM0tDV29YeHE2azNOMEFNNjgxMzFmSkFuTkRCUWd3R1RZZDVPMG9PSkpCNzV6TEwyTi1HRTRBQXFuUzNjaE8wRGNQRTRtbXJyc2JKYmxmaUFwREc1MQ?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "'The symbol of the occupation': Ukraine destroys span of Kerch Bridge linking Russia with Crimea PBS Russian Offensive Campaign Assessment, November 17, 2026 Institute for the Study of War How Ukraine gave Putin a bloody nose on eve of Trump summit The Telegraph Ukraine Attacks Kerch Bridge Linking ",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "UK hands NATO-assigned US soldier accused of Russia spying to US military - Al Jazeera",
+          "title_zh": "半岛电视台：英国已将涉嫌为俄罗斯从事间谍活动的北约指派美军士兵移交美军",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNeG1nTVJCSWdrQ3ZnTVhwRTVwSnM4QmRpQkg3bnpLMC11ODR1c0hvQXl2c010MWlvekoxMWdkWGhyeDVNZTNteHJpalE1a1Qxdk1BTF9jeHMyNFNhRWJ1cm02RzFWSTV5Y1RtcEVncWFDTVJfRHJhTnJLYzNPaEk3ZElCZkZRbkF4YXE2dnNrak9WdzZha1BCRFlyaWVJYWIxMEg4YkM3eVdydFJkNzFCUl9UbXVJd9IBuwFBVV95cUxOM2c1Y3h6ckFMeEdkQm5Xd2J2X19lQ1VEWTZNVk1kX3E4QjVpV2VwMVloSnhtWjBnc3JTMlVFaGV3dFRJRU5WM2F0dER4bW9acFhSM3EtRjdpeVktRjA4T09LQjJLTjF1VTlVeGZ2RUdOcFVBOEZZMjUyRHZwQUZJVW5iaUFFOWVybVh5WG1lYzdTazZTS25BNkdLUV9TR2dMZWJnM2p6M0I3YVpSMl80eUN4QnNEWkwtY2NR?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "UK hands NATO-assigned US soldier accused of Russia spying to US military Al Jazeera American soldier arrested in UK taken into US military custody BBC Army Officer Accused of Trying to Spy for Russia Is Afghan War Veteran The New York Times American soldier accused of spying now in U.S. military cu",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Home secretary plans to tackle 'perception of two-tier policing' - BBC",
+          "title_zh": "BBC：内政大臣计划解决“两极化执法感知”问题",
+          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBUWk5ZTXF0Y0hLWnY5TjhMcU9QeGhDNG5PUXdxeW52T0ZFZjkzVFg1cVVqNjdpTnNOWWtIb24xMExCeEt5NC1ZMkswb3J1S0RKZUprRDBkVmtNOEE?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Home secretary plans to tackle 'perception of two-tier policing' BBC See more headlines & perspectives on Google News",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "The EU that Burnham is eyeing up is very different to the one Britain left - BBC",
+          "title_zh": "BBC：伯纳姆所觊觎的欧盟与英国脱欧时的欧盟截然不同",
+          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5mZjNZNjNuTFNXeTd6SnppWFd0ekk2YlJEdVJPU1V1Nnk0WlJqZWNBN1Fyck1TSVdTWm45U1FtZnJ6eE9OWDdzaVY0WFc1YW9EYjQ5dXl3cGIxckk?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "The EU that Burnham is eyeing up is very different to the one Britain left BBC UK leader Andy Burnham says Brexit hasn’t worked ahead of a reset summit with the EU AP News Britain sets out scope of UK-EU summit package ahead of Friday talks Reuters Burnham delays announcement about options for close",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Knesset votes 66-52 to elect Yashar’s Matan Kahana as speaker, in boost to Eisenkot bloc - The Times of Israel",
+          "title_zh": "《以色列时报》：议会以66票对52票通过选举马坦·卡哈纳为议长，这为艾森科特阵营注入动力",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOSzRVLVJmR1BsTTNKazc2dXZMOUlvX2xBdVcxbVROcmd5cXpLcW5hdktyTlFjNThuTmIwX2U4SkRmWW1VbHdxY0o0dlFPNGFaaUg5OWFXQ3FKX3oycmpaa002LXNON25TbGQzYTBWVDE5VjVrTkU0S2FfdkxHbVpoTW93Y3g0VndwemNnT1FCTktOeC1NQ2VybHd4OGg3YjY2VFJSeVY5bUh4bW1kNko0SEFESG1rWHhK0gG-AUFVX3lxTE5oYmNVYlM3bFNuaXJuWlpCV295N29WT2QwVDktaFpueS1IOURmdndFb0I1X0NRMF9QQlVoVTBDRklSU0lzbjNpQkZCcXZQMVI1czQ3ZjZoQnZ1MFRDaURFQlJnWDhlNFVMdFJXcHdnaVY2OFRjNDZaQ1VTUzhSdXJOTy1kNU9NRFZObGRuc1l5SUJ3dnBSY2pUa2UzeG1udVJzckg4eVFuczdHM2p4Qjd2VmRaVV9faU4zeE1LMGc?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Knesset votes 66-52 to elect Yashar’s Matan Kahana as speaker, in boost to Eisenkot bloc The Times of Israel Israel’s parliament elects new Knesset speaker, weakening Netanyahu’s grip on power CNN Matan Kahana Elected Speaker of Israel’s Parliament The New York Times Israeli parliament elects new sp",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Putin says EU is losing industry, falling behind competition ahead of meeting with Trump, Xi - CNBC",
+          "title_zh": "CNBC：普京在会见特朗普和习近平前表示，欧盟正失去工业并在竞争中落后",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE43MjJzamdYck4wb3Y3cGFVbjB5OHNKQUlKRlE5Mmo0OVpRdXNSZ0FWcktLNlNFTlZMdXlfWFVzRWstT3V1RGNPTzZVV0ZKTkdhOG50UU1iMHNkSVZnTmtSZ0VoMnAxTkFBdVFUSVBBbU9pWHpkX1HSAXtBVV95cUxPT2szZ1N1VHFiMzJ3VWE1N1dSRWM0T3B4WU9oSXBMdldUeXBOLWp3U0NiTGVlQ2NjTUZ5RzBvXzJwV05LX29oVFZ5eFlnRHV2WVUwaFA1OE5DNVdKVllDTXNFQmp1OWRva0ktazFoYkd4YnVpVmZGZmdJZlk?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Putin says EU is losing industry, falling behind competition ahead of meeting with Trump, Xi CNBC See more headlines & perspectives on Google News",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Modi Tries to End Photo-Op With Trump in Awkward Quad Briefing - Bloomberg",
+          "title_zh": "彭博社：莫迪在尴尬的四方会议简报会上试图结束与特朗普的合影环节",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQRXpEU0doZ3owNEhTcVh6aDJHNlBjX0h6NXo3Q3Qtbm5XTUxFNEd3WThTUVREU2lzZHIzRWhXMWxFakRXNTZ5ZFdJSm03TEZKRUxJNFg4LXFmTmJIaXVwSWVfdFUxcmpBWUpMYjh4SHdMa3ZwSWJ4eUR3U28tem1LWWpPblI2aWo2TWFkQkx3YjFENHV6SzZwQnNvek1iT1lLSmxud2pJMHdFSXpZVERfYThSZw?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Modi Tries to End Photo-Op With Trump in Awkward Quad Briefing Bloomberg Trump announces critical minerals agreements at Quad meeting in Manila Al Jazeera Quad leaders flag 'economic coercion', oppose unilateral actions undermining peace Reuters Trump touts multicountry AI push in Manila Politico Tr",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Australia sanctions Israeli settlers, organisations over West Bank expansion - Reuters",
+          "title_zh": "路透社：澳大利亚因约旦河西岸扩张问题制裁以色列定居者及相关组织",
+          "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQVlFrYWNBX1NLTHhNc00ycmhVV0dFNlRNX0xOcGFKcUhaYmNSU093YzlyTm9xOVlGRGlxblJhajk5ME5HMy0zeXFHc2FQUGFBd3lvUGtaNENWMTB2YVV6eHJ4NzZ1N3pHcjJqam9sQ2kxRk4wNUU4Z1NLbDA4bWQyUVpMakxVa0Q3S2UxeUE1Nm92RmhKUFVHMVl3UUVETHQxMVk4QlYwS0ZhNXRPSGVsUGRQX0F6OFJiZ1N5WGIyb1l5TkliTkhwT2NB?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Australia sanctions Israeli settlers, organisations over West Bank expansion Reuters Editorial | Last call for Israel before the world cuts it off Haaretz Australia declares sanctions over settlement expansion, violence against Palestinians The Times of Israel Ed Miliband announces first sanctions o",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Houthi advance on Aden may spur resurgence of Yemen’s southern separatists - Al Jazeera",
+          "title_zh": "半岛电视台：胡塞武装向亚丁推进可能促使也门南部分裂主义者重新抬头",
+          "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNb1hZRnZtQ2Z2ZTQ5SmpDWnVlZmhieU94Uy1TY2U4aUdFa0gzQkRJTVRIWmlYU2dnZlRuaE4wclF3Zy0ydjdxeVl4eXFacHZ5N21JLUpxeHBZa09NanFVejRHa2JTTEVnZ3dkMDNfNVkybUFuNHRKQ3g0ZVRSSTBoM0tYTEJKQ1NDendZcWNDZGcwcTNWR1dMcHRPNUZ6bmtrcUc1ci14SC11SDk1a25GcHNUUdIBuAFBVV95cUxNWGtCckJsSk85VnRCMlY5R1dJWVhNLXV5UGNkT2hyT0Vrck45eHVRckMyRHFheFpGMWZ5aFF3eU4xNXFuR3BQTXZBTDd6eGJWanBFcGU3eUtEMlVDT1dzMnNtODdORG1LbGpwQVNuOUlVQ0Z5aEUzVERTdWtHNTNvNzlnTml5Vzh5X19YWmRXUktFTzdqTC1nN1U5U2FIZENtUFBlY2J5YmRic3ZRSkZ6S19aVm00XzU3?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Houthi advance on Aden may spur resurgence of Yemen’s southern separatists Al Jazeera Houthi rebel advance in Yemen may further destabilise global economy BBC Saudi-backed forces in Yemen bolster defenses near Aden to deter Houthis, and other Mideast news AP News Anti-Houthi forces retreat in Yemen ",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Zelensky calls on allies to exchange missiles, provide 40 more F-16 jets for Ukraine - The Kyiv Independent",
+          "title_zh": "泽连斯基呼吁盟友交换导弹，并为乌克兰提供另外40架F-16战斗机 - 基辅独立报",
+          "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOX3pkNXJTQVdKTXVrRllUOE9TOS1CdHJZTkxmamg2V3BJS2xUYWUyQ3pyQlN6V19zUGoxN01IVjl6WUl0UDl2M2NXdUhhcmU1M3ZqX0ZGVVVING9id3ZLNjlhYVVBN2VZTTB0akFfRDh2TTBCTWwtektQN1huYXhzbzE1U0dVQlN1N0ZSYXM0QzB1WjdsZGlTUlFZYTJDU184WktYSTFIQjlRcVIzR3YtN2NR?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Zelensky calls on allies to exchange missiles, provide 40 more F-16 jets for Ukraine The Kyiv Independent Zelenskyy urges allies to send air defence deliveries without delay as Russia intensifies attacks – as it happened The Guardian Britain to supply Ukraine with more than 1,000 short-range missile",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Pope Leo departs from Peru, thanks God for ‘abundant graces’ of journey - Vatican News",
+          "title_zh": "教皇利奥离开秘鲁，感谢上帝赐予旅途的“丰厚恩典” - 梵蒂冈新闻",
+          "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQeHB3LTQ0a0puTDFKVFJ4clk5NGE2d0tkeUN5bGVicmNEczF4WmYtOVhSRWhjQXQzbXUzVHhxLUJtczlkcW5scVFoUFVoLUxqUkFQVGRtOXhQQ2FIUkVMUnlMZXpabXF0Uk03U0lfWUJRRndYZXVTNlpLUUlmaG5ybDlnR3NmdW9xdFE4Q3ZFR3ZSSzNkT3NYLWJCSlc5YlhMekhSNW9WcHY2RjdCdXM1MUNYS2M?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Pope Leo departs from Peru, thanks God for ‘abundant graces’ of journey Vatican News Pope Leo’s return to Latin America reveals the missionary message of his papacy CNN Pope in Peruvian rainforest demands justice for environmental defenders killed for protecting Amazon Politico Pope Endures Grueling",
+          "image": "",
+          "published": "2026-11-16",
+          "section": "international"
+        },
+        {
+          "title_en": "Trump in Asia ahead of talks with Russian and Chinese presidents - BBC",
+          "title_zh": "特朗普在与俄罗斯和中国总统会谈前访问亚洲 - BBC",
+          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE43eTNySUF6Qk5WeER2eTkzNGpTb3JpZFBpZGppak80Q25WYm9LMlVLRVZ3UGJIVDN4aXZsX2N4c2l2ZFBQV2xBdDlySTgwZENrNzhybW82djVGYlE?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Trump in Asia ahead of talks with Russian and Chinese presidents BBC Trump Will Miss Most of the ASEAN Summit The New York Times Trump Asia trip live updates: Trump meets Philippine president for bilateral meeting ABC News - Breaking News, Latest News and Videos In Manila, Trump praises Marcos famil",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "What does China’s massive warplane build-up say about its combat readiness? - South China Morning Post",
+          "title_zh": "中国大规模战机部署对其战斗准备状态意味着什么？ - 南华早报",
+          "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQOWp4RXhWOHBFV3pJVjlmdURwVmREMnpwWGhVQnJFazhBM2xDTzdnVEY4aUw2TC1wWmF3Y3Rwd2poaE5vNjJIMi1NNFFYYWlfWDB2a1pnVFJlNzFFRGwzZVh6UW82QmlBelRNalhVd2s1YkFIb3BneDhQOGFuc1JPZDRkVDlrZU5BeEpTckh2dHkzNnhhVS14d1NxMS1fUnVEeHVONFo0d2xUTGI4VnlHbGJkUjl3ZTJMSEpfcW03aUFPVVdNUkHSAcYBQVVfeXFMTmlDdVNwZ1h3QmFwdEs4aEVzX3lFcjBxUmRMLUNfLUVKV1d5c2wyY3ZZbGFRUEpiYXI3aUhqenQ3U2ZrZXJWQndMMWxZeThxeWJZZll5RS11VUxUcUtHZUowOEVBOVJlclY0cFg5blQ0dkljN3ZMMWUxSGRCY1NBZkdoU1FGRE9TS1I4M3FuTGVnX05Hb3c4eEp6RVhudHd2MldIaHNfeUYyVVV4eEoxUFBMRVhYR09xaVZLQWJ4V3ZSbXhIREtn?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "What does China’s massive warplane build-up say about its combat readiness? South China Morning Post See more headlines & perspectives on Google News",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        }
+      ]
+    }
+  ]
+}
