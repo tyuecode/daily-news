@@ -1,25 +1,5 @@
-# 依赖约束（用范围而不是精确版本号）
-#
-# 为什么不写死精确版本：
-#   精确版本号一旦在 PyPI 上被 yank，或上游发了新版本，安装就会失败，
-#   整条流水线还没开始抓新闻就先挂了。范围约束能兼顾稳定与可维护。
-#
-# 为什么固定 Python 3.11（见 .github/workflows/daily.yml）：
-#   3.13 下 feedparser 有兼容风险，3.11 是实测最稳的版本。
-
-# 语音合成：微软 edge-tts，纯免费、无需密钥，中文音色 zh-CN-XiaoxiaoNeural
-#
-# ⚠️ 版本上下限至关重要，改动前先看这段：
-#   edge-tts 6.1.19 会在 websocket 握手时被微软返回 403
-#   （WSServerHandshakeError: 403 Invalid response status），
-#   原因是它内置的 Chromium 130 / Sec-MS-GEC token 已过期。
-#   7.x 分支修复了握手，因此下限必须是 7.0。
-#   这里刻意**不写上界**：微软一旦再次收紧 token，通常只有最新版才跟得上，
-#   被上界锁死在旧版就会突然全线失败。
-edge-tts>=7.0
-
-# RSS 解析：命名空间（media:thumbnail 等）处理可靠，不要手写正则硬解 XML
-feedparser>=6.0,<7
-
-# 正文提取：从 HTML 里取正文段落与 description 内嵌的 <img src>
-beautifulsoup4>=4.12,<5
+# 每日热点简报站 v2 依赖（全部为免费开源包）
+# 范围约束：避免精确版本号失效导致安装失败
+edge-tts>=7.0          # 语音合成；6.1.x 会因 token 过期返回 403，禁止降级
+feedparser>=6.0,<7     # RSS 解析；3.13 下有兼容风险，故 workflow 固定 Python 3.11
+beautifulsoup4>=4.12,<5  # 从 RSS 摘要中提取图片与纯文本

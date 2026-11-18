@@ -1,16 +1,10 @@
-# 演练产物（generate.py --dry-run 的输出目录）
-# 绝对不能提交：里面是假数据，进了仓库会覆盖真实站点
-_dryrun/
-
-# Python 运行产物
+# Python 缓存
 __pycache__/
 *.py[cod]
-*.egg-info/
-.venv/
-venv/
 
-# 编辑器与系统文件
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
+# dry-run 产物（独立目录，不进仓库）
+_dryrun/
+
+# 本地临时文件
+.tmp/
+*.log

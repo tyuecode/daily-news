@@ -1,28 +1,3 @@
-# 统一换行符与编码处理
-#
-# 为什么要这个文件：
-#   仓库在 Windows 上编辑，但代码实际运行在 GitHub Actions 的 Ubuntu 上。
-#   如果 workflow 的 YAML 或任何 shell 片段带上 CRLF 换行，
-#   在 Linux 上会变成「#!/bin/bash\r」这种致命错误，整个任务莫名失败。
-#   这里强制文本文件在仓库里一律用 LF，跨平台行为才可预期。
-
-# 默认：所有文本文件用 LF，检出时不做转换
+# 强制 LF 换行：Windows 上编辑的 workflow 到 Ubuntu 上若带 CRLF 会执行失败
 * text=auto eol=lf
-
-# 明确指定类型的文件
-*.py        text eol=lf
-*.md        text eol=lf
-*.txt       text eol=lf
-*.yml       text eol=lf
-*.yaml      text eol=lf
-*.json      text eol=lf
-*.html      text eol=lf
-.gitignore  text eol=lf
-
-# 二进制文件不做任何换行符处理
-*.mp3       binary
-*.png       binary
-*.jpg       binary
-*.jpeg      binary
-*.webp      binary
-*.ico       binary
+*.mp3 binary
