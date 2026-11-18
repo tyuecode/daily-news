@@ -458,23 +458,60 @@ check("段落空行归一化（不留长停顿）", "\n" not in normalized and "
 check("空白折叠", generate.normalize_tts_text("  多余   空格  ") == "多余 空格")
 check("重复句号折叠", "。。" not in generate.normalize_tts_text("你好。。。世界"))
 check("空文本返回空串", generate.normalize_tts_text("") == "")
-# TTS 配置
-check("主音色配置正确", generate.TTS_VOICE == "zh-CN-XiaoxiaoNeural")
-check("备用音色已配置", generate.TTS_FALLBACK_VOICE == "zh-CN-YunxiNeural")
+# 多音色配置
+check("配置了 3 种音色", len(generate.TTS_VOICES) == 3)
+check("每种音色都有 id/name/voice/fallback",
+      all(v.get("id") and v.get("name") and v.get("voice") and v.get("fallback")
+          for v in generate.TTS_VOICES))
+check("默认音色有效", any(v["id"] == generate.DEFAULT_VOICE_ID for v in generate.TTS_VOICES))
 check("语速配置已设置", generate.TTS_RATE.endswith("%"))
 # 播放器两种模式
 mp3_player = generate._render_audio_player("各位好，欢迎收听。", mode="mp3")
 tts_player = generate._render_audio_player("各位好，欢迎收听。", mode="tts")
-check("MP3 模式含 audio 源", 'data-mode="mp3"' in mp3_player and 'src="audio/daily.mp3"' in mp3_player)
+check("MP3 模式含默认音色音源",
+      'data-mode="mp3"' in mp3_player and 'audio/voice-xiaoxiao.mp3' in mp3_player)
 check("TTS 降级模式含文本", 'data-mode="tts"' in tts_player and "各位好" in tts_player)
 check("播放器有播放/停止按钮", 'id="playBtn"' in mp3_player and 'id="stopBtn"' in mp3_player)
+check("播放器有进度条与时间", 'id="seekBar"' in mp3_player
+      and 'id="curTime"' in mp3_player and 'id="durTime"' in mp3_player)
 check("播放器有 4 档语速", all(f'data-rate="{r}"' in mp3_player for r in ("0.85", "1", "1.25", "1.5")))
-check("脚本含中文语音挑选", "getVoices" in generate._build_audio_script("测试") and "zh" in generate._build_audio_script("测试"))
-check("脚本含暂停/继续/停止", "pause()" in generate._build_audio_script("测试")
-      and "resume()" in generate._build_audio_script("测试")
-      and "cancel()" in generate._build_audio_script("测试"))
+# 多音色切换
+voice_button_count = mp3_player.count('class="voice-btn')
+check("MP3 模式有 3 个音色按钮", voice_button_count == 3, f"实际={voice_button_count}")
+check("音色按钮带音源路径", 'data-src="audio/voice-yunyang.mp3"' in mp3_player)
+check("TTS 模式有浏览器音色下拉", 'id="browserVoice"' in tts_player and 'voice-select' in tts_player)
+# 脚本功能
+audio_script = generate._build_audio_script("测试")
+check("脚本含中文语音挑选", "getVoices" in audio_script and "indexOf('zh')" in audio_script)
+check("脚本含暂停/继续/停止", "pause()" in audio_script
+      and "resume()" in audio_script and "cancel()" in audio_script)
+check("脚本含音色切换逻辑", "voiceBtns" in audio_script and "voiceSelect" in audio_script)
+check("脚本含进度拖拽", "seekBar.addEventListener" in audio_script and "currentTime" in audio_script)
 check("脚本文本已 Unicode 转义", "\\u003c" in generate._build_audio_script("<script>"))
 check("MP3 播放器状态提示存在", "playerStatus" in mp3_player)
+
+# 多音色文件管理
+class _FakePaths:
+    def __init__(self, root):
+        self.audio = root
+        self.audio_mp3 = root / "daily.mp3"
+        self.audio_backup = root / "daily.mp3.bak"
+    def voice_mp3(self, vid): return self.audio / f"voice-{vid}.mp3"
+    def voice_backup(self, vid): return self.audio / f"voice-{vid}.mp3.bak"
+
+with tempfile.TemporaryDirectory() as tmp:
+    root = Path(tmp)
+    root.mkdir(exist_ok=True)
+    vp = _FakePaths(root)
+    for v in generate.TTS_VOICES:
+        vp.voice_mp3(v["id"]).write_bytes(b"old")
+    generate.prepare_audio(vp, lambda _: None)
+    check("准备阶段挪走所有音色旧音频",
+          all(not vp.voice_mp3(v["id"]).exists() and vp.voice_backup(v["id"]).exists()
+              for v in generate.TTS_VOICES))
+    generate.restore_audio(vp, lambda _: None)
+    check("还原阶段恢复所有音色旧音频",
+          all(vp.voice_mp3(v["id"]).exists() for v in generate.TTS_VOICES))
 
 
 # ── 汇总 ────────────────────────────────────────────────────────────

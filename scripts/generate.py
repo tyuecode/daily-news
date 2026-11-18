@@ -59,10 +59,20 @@ SNAPSHOT_KEEP_DAYS = 7          # 快照只留 7 天（frequency 只看 7 天）
 BROADCAST_POINTS = 12           # 播报稿要点数
 MIN_SECTION_ITEMS = 3           # 闸门：每个版块至少条数
 MIN_CHINESE_RATIO = 0.60        # 闸门：中文占比下限
-TTS_RETRIES = 8                 # edge-tts 重试次数（服务端随机抖动，3 次不够）
-TTS_VOICE = "zh-CN-XiaoxiaoNeural"           # 主音色：女声，清晰亲和
-TTS_FALLBACK_VOICE = "zh-CN-YunxiNeural"     # 备用音色：男声，主音色多次失败时切换
+TTS_RETRIES = 8                 # edge-tts 单个音色重试次数（服务端随机抖动，3 次不够）
 TTS_RATE = "-5%"                # 新闻播报语速略慢，提升清晰度
+
+# 可选音色（edge-tts 免费，无需额度）。每个音色独立生成 MP3，读者可自行切换。
+# fallback：该音色连续失败过半后临时切换的备用音色。
+TTS_VOICES = [
+    {"id": "xiaoxiao", "name": "晓晓", "desc": "女声 · 亲和自然",
+     "voice": "zh-CN-XiaoxiaoNeural", "fallback": "zh-CN-XiaoyiNeural"},
+    {"id": "yunyang", "name": "云扬", "desc": "男声 · 新闻主播",
+     "voice": "zh-CN-YunyangNeural", "fallback": "zh-CN-YunjianNeural"},
+    {"id": "yunxi", "name": "云希", "desc": "男声 · 年轻清晰",
+     "voice": "zh-CN-YunxiNeural", "fallback": "zh-CN-XiaoxiaoNeural"},
+]
+DEFAULT_VOICE_ID = "xiaoxiao"
 RSS_TIMEOUT = 20
 FETCH_WORKERS = 4
 BEIJING_TZ = hot_client.BEIJING_TZ
@@ -84,8 +94,15 @@ class Paths:
         self.index = base / "index.html"
         self.robots = base / "robots.txt"
         self.entries = self.data / "entries.json"
-        self.audio_mp3 = self.audio / "daily.mp3"
+        self.audio_mp3 = self.audio / "daily.mp3"  # 兼容旧文件名（主音色）
         self.audio_backup = self.audio / "daily.mp3.bak"
+
+    def voice_mp3(self, voice_id: str) -> Path:
+        """某个音色的音频文件路径：audio/voice-{id}.mp3。"""
+        return self.audio / f"voice-{voice_id}.mp3"
+
+    def voice_backup(self, voice_id: str) -> Path:
+        return self.audio / f"voice-{voice_id}.mp3.bak"
 
     def ensure_dirs(self):
         for path in (self.data, self.snapshots, self.runs, self.archive, self.audio):
@@ -102,20 +119,35 @@ def beijing_now() -> datetime:
 
 # ── L0 准备 ─────────────────────────────────────────────────────────
 
-def prepare_audio(audio_mp3: Path, backup: Path, logger: Callable = log):
-    """先把旧 mp3 挪走（不是删），闸门不通过时还原，避免旧音频配新稿。"""
-    if audio_mp3.exists():
+def prepare_audio(paths, logger: Callable = log):
+    """先把所有音色的旧 mp3 挪走（不是删），闸门不通过时还原，避免旧音频配新稿。"""
+    count = 0
+    for voice in TTS_VOICES:
+        mp3 = paths.voice_mp3(voice["id"])
+        backup = paths.voice_backup(voice["id"])
+        if mp3.exists():
+            if backup.exists():
+                backup.unlink()
+            mp3.rename(backup)
+            count += 1
+    logger(f"已把 {count} 个旧音频挪到备份位置")
+
+
+def restore_audio(paths, logger: Callable = log):
+    """闸门失败时还原所有音色的旧音频。"""
+    for voice in TTS_VOICES:
+        mp3 = paths.voice_mp3(voice["id"])
+        backup = paths.voice_backup(voice["id"])
         if backup.exists():
-            backup.unlink()
-        audio_mp3.rename(backup)
-        logger("已把旧音频挪到备份位置")
-
-
-def restore_audio(audio_mp3: Path, backup: Path):
-    if backup.exists():
-        if audio_mp3.exists():
-            audio_mp3.unlink()
-        backup.rename(audio_mp3)
+            if mp3.exists():
+                mp3.unlink()
+            backup.rename(mp3)
+    # 兼容旧文件 daily.mp3
+    legacy_backup = paths.audio_backup
+    if legacy_backup.exists():
+        if paths.audio_mp3.exists():
+            paths.audio_mp3.unlink()
+        legacy_backup.rename(paths.audio_mp3)
 
 
 def load_entries(entries_path: Path) -> dict:
@@ -442,26 +474,31 @@ def normalize_tts_text(text: str) -> str:
     return text.strip()
 
 
-def generate_tts(text: str, target: Path, retries: int = TTS_RETRIES) -> bool:
-    """edge-tts 7.x 生成语音：文本归一化 + 语速控制 + 备用音色 + 8 次线性退避。
+def generate_tts(text: str, target: Path, voice_config: dict | None = None,
+                 retries: int = TTS_RETRIES) -> bool:
+    """edge-tts 7.x 生成语音：文本归一化 + 语速控制 + 备用音色 + 线性退避。
 
-    主音色连续失败过半（第 5 次起）切换到备用音色，提高整体成功率。
+    voice_config：TTS_VOICES 中的一项；省略时用默认音色。
+    主音色连续失败过半（第 5 次起）切换到该音色的备用音色，提高成功率。
     成功写文件并返回 True。
     """
     import edge_tts
 
+    voice_config = voice_config or TTS_VOICES[0]
     clean_text = normalize_tts_text(text)
+    primary = voice_config["voice"]
+    fallback = voice_config.get("fallback") or TTS_VOICES[0]["voice"]
 
     async def _save(voice: str):
         communicate = edge_tts.Communicate(clean_text, voice=voice, rate=TTS_RATE)
         await communicate.save(str(target))
 
     for attempt in range(retries):
-        voice = TTS_VOICE if attempt < retries // 2 else TTS_FALLBACK_VOICE
+        voice = primary if attempt < retries // 2 else fallback
         try:
             asyncio.run(_save(voice))
             if is_valid_mp3(target):
-                log(f"TTS 成功（第 {attempt + 1} 次，音色 {voice}）")
+                log(f"TTS 成功（{voice_config['name']}，第 {attempt + 1} 次，音色 {voice}）")
                 return True
             log(f"TTS 第 {attempt + 1} 次返回非音频内容，重试")
         except Exception as exc:
@@ -470,7 +507,8 @@ def generate_tts(text: str, target: Path, retries: int = TTS_RETRIES) -> bool:
     return False
 
 
-def generate_tts_fake(text: str, target: Path, retries: int = TTS_RETRIES) -> bool:
+def generate_tts_fake(text: str, target: Path, voice_config: dict | None = None,
+                      retries: int = TTS_RETRIES) -> bool:
     """dry-run 用的假 TTS：写一个合法的 MP3 文件头，零网络。"""
     target.parent.mkdir(parents=True, exist_ok=True)
     with open(target, "wb") as fh:
@@ -566,10 +604,16 @@ def render_day(day: dict, is_today: bool, site_url: str = "") -> str:
     # 今日播报
     parts.append("<section class=\"broadcast\" id=\"broadcast\"><h2>今日播报</h2>")
     broadcast = day.get("broadcast", "")
+    voices = day.get("voices") or [
+        {"id": v["id"], "name": v["name"], "desc": v["desc"], "ok": True}
+        for v in TTS_VOICES
+    ]
+    # 只有生成成功的音色才可切换
+    available_voices = [v for v in voices if v.get("ok", True)]
     if is_today and day.get("tts_ok") and broadcast:
-        parts.append(_render_audio_player(broadcast, mode="mp3"))
+        parts.append(_render_audio_player(broadcast, mode="mp3", voices=available_voices))
     elif is_today and broadcast:
-        parts.append(_render_audio_player(broadcast, mode="tts"))
+        parts.append(_render_audio_player(broadcast, mode="tts", voices=available_voices))
     if broadcast:
         parts.append("<details><summary>展开播报稿</summary>")
         parts.append(f"<p class=\"script\">{html.escape(broadcast)}</p></details>")
@@ -628,19 +672,38 @@ def render_day(day: dict, is_today: bool, site_url: str = "") -> str:
     return "\n".join(parts)
 
 
-def _render_audio_player(broadcast: str, mode: str = "mp3") -> str:
-    """统一的播报控制条：大播放/暂停按钮 + 语速切换 + 停止。
+def _render_audio_player(broadcast: str, mode: str = "mp3",
+                         voices: list[dict] | None = None) -> str:
+    """完善的播报播放器：音色选择 + 播放/暂停/停止 + 进度条 + 时间显示 + 语速。
 
-    mode='mp3'：用 <audio> 播放 audio/daily.mp3；
-    mode='tts'：TTS 失败降级，用浏览器 SpeechSynthesis 朗读。
-    两种模式共用同一套按钮，由 _build_audio_script 统一驱动。
+    mode='mp3'：切换音色即换 audio 源（audio/voice-{id}.mp3）；
+    mode='tts'：TTS 全部失败时用浏览器 SpeechSynthesis，音色下拉列出可用中文语音。
     """
     safe_text = html.escape(broadcast, quote=True)
-    sourced = 'data-src="audio/daily.mp3"' if mode == "mp3" else f'data-text="{safe_text}"'
+    voices = voices or [{"id": v["id"], "name": v["name"], "desc": v["desc"], "ok": True}
+                        for v in TTS_VOICES]
     label = "播放今日播报" if mode == "mp3" else "朗读今日播报（语音合成）"
+
+    # 音色选择器：MP3 模式用音色按钮；TTS 降级用浏览器语音下拉
+    if mode == "mp3":
+        voice_buttons = "".join(
+            f'<button type="button" class="voice-btn'
+            f'{" active" if v["id"] == DEFAULT_VOICE_ID else ""}"'
+            f' data-voice="{html.escape(v["id"])}"'
+            f' data-src="audio/voice-{html.escape(v["id"])}.mp3"'
+            f' title="{html.escape(v.get("desc", ""))}">{html.escape(v["name"])}</button>'
+            for v in voices
+        )
+        source_attr = f"audio/voice-{DEFAULT_VOICE_ID}.mp3"
+        voice_ui = f'<div class="voice-row"><span>音色</span>{voice_buttons}</div>'
+    else:
+        voice_ui = '<div class="voice-row"><span>音色</span>' \
+                   '<select id="browserVoice" class="voice-select" aria-label="选择朗读音色"></select></div>'
+        source_attr = ""
+
     return (
-        f'<div class="player" id="player" {sourced} data-mode="{mode}">'
-        '<audio id="audioEl" preload="none" src="audio/daily.mp3"></audio>'
+        f'<div class="player" id="player" data-mode="{mode}" data-text="{safe_text}">'
+        f'<audio id="audioEl" preload="metadata" src="{source_attr}"></audio>'
         '<div class="player-row">'
         '<button type="button" class="play-btn" id="playBtn" aria-label="播放/暂停">▶</button>'
         '<div class="player-info">'
@@ -649,21 +712,26 @@ def _render_audio_player(broadcast: str, mode: str = "mp3") -> str:
         '</div>'
         '<button type="button" class="stop-btn" id="stopBtn" aria-label="停止">■</button>'
         '</div>'
+        '<div class="seek-row">'
+        '<span class="time" id="curTime">0:00</span>'
+        '<input type="range" class="seek" id="seekBar" min="0" max="1000" value="0" aria-label="播放进度">'
+        '<span class="time" id="durTime">0:00</span>'
+        '</div>'
         '<div class="rate-row"><span>语速</span>'
         '<button type="button" class="rate-btn" data-rate="0.85">0.85x</button>'
         '<button type="button" class="rate-btn active" data-rate="1">1x</button>'
         '<button type="button" class="rate-btn" data-rate="1.25">1.25x</button>'
         '<button type="button" class="rate-btn" data-rate="1.5">1.5x</button>'
-        '</div></div>'
+        '</div>'
+        f'{voice_ui}'
+        '</div>'
     )
 
 
 def _build_audio_script(broadcast: str) -> str:
-    """生成播放器交互脚本：同时支持 MP3 播放与浏览器朗读降级。
+    """生成播放器交互脚本：MP3 多音色切换 + 进度/时间 + 语速 + 浏览器朗读音色选择。
 
-    - 中文语音自动挑选（监听 voiceschanged，优先 zh-CN）；
-    - 播放/暂停/停止、语速切换、状态提示；
-    - 所有外部文本已 Unicode 转义，防止标签注入。
+    所有外部文本已 Unicode 转义，防止标签注入。
     """
     safe_json = (json.dumps(broadcast, ensure_ascii=False)
                  .replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026"))
@@ -676,16 +744,30 @@ def _build_audio_script(broadcast: str) -> str:
         "var playBtn=document.getElementById('playBtn');"
         "var stopBtn=document.getElementById('stopBtn');"
         "var statusEl=document.getElementById('playerStatus');"
+        "var seekBar=document.getElementById('seekBar');"
+        "var curTime=document.getElementById('curTime');"
+        "var durTime=document.getElementById('durTime');"
         "var rateBtns=document.querySelectorAll('.rate-btn');"
+        "var voiceBtns=document.querySelectorAll('.voice-btn');"
+        "var voiceSelect=document.getElementById('browserVoice');"
         "var text=" + safe_json + ";"
-        "var rate=1,playing=false,utterance=null,zhVoice=null;"
-        "function pickVoice(){var vs=speechSynthesis.getVoices()||[];"
-        "for(var i=0;i<vs.length;i++){if(vs[i].lang&&vs[i].lang.toLowerCase().indexOf('zh')===0)"
-        "{zhVoice=vs[i];break;}}}"
-        "if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}"
+        "var rate=1,playing=false,utterance=null,startedAt=0,elapsed=0,seeking=false;"
+        "function fmt(t){t=Math.max(0,Math.floor(t||0));return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2);}"
         "function setStatus(s){statusEl.textContent=s;}"
         "function applyRate(){if(mode==='mp3'){audio.playbackRate=rate;}"
         "else if(utterance){utterance.rate=rate;}}"
+        "function zhVoices(){var vs=(window.speechSynthesis&&speechSynthesis.getVoices())||[];"
+        "return vs.filter(function(v){return v.lang&&v.lang.toLowerCase().indexOf('zh')===0;});}"
+        "function fillVoiceSelect(){if(!voiceSelect)return;var z=zhVoices();"
+        "if(!z.length){voiceSelect.innerHTML='<option>浏览器默认中文</option>';return;}"
+        "voiceSelect.innerHTML=z.map(function(v,i){return '<option value=\"'+i+'\">'+v.name+'</option>';}).join('');}"
+        "if('speechSynthesis' in window){fillVoiceSelect();speechSynthesis.onvoiceschanged=fillVoiceSelect;}"
+        "function ttsElapsed(){return elapsed+(startedAt?((Date.now()-startedAt)/1000):0);}"
+        "function ttsDuration(){return Math.max(1,text.length/4.5);}"
+        "function updateProgress(cur,dur){"
+        "if(!isFinite(dur)||dur<=0){dur=ttsDuration();}"
+        "if(!seeking)seekBar.value=Math.round(cur/dur*1000);"
+        "curTime.textContent=fmt(cur);durTime.textContent=fmt(dur);}"
         "function start(){"
         "if(mode==='mp3'){applyRate();var p=audio.play();"
         "if(p&&p.catch){p.catch(function(){setStatus('播放失败，可点“展开播报稿”阅读');});}"
@@ -693,29 +775,53 @@ def _build_audio_script(broadcast: str) -> str:
         "}else{"
         "if(!('speechSynthesis' in window)){setStatus('当前浏览器不支持朗读，请阅读播报稿');return;}"
         "if(speechSynthesis.paused){speechSynthesis.resume();playing=true;playBtn.textContent='❚❚';"
-        "setStatus('继续朗读…');return;}"
+        "startedAt=Date.now();setStatus('继续朗读…');return;}"
         "speechSynthesis.cancel();utterance=new SpeechSynthesisUtterance(text);"
-        "utterance.lang='zh-CN';utterance.rate=rate;if(zhVoice)utterance.voice=zhVoice;"
-        "utterance.onend=function(){playing=false;playBtn.textContent='▶';setStatus('朗读结束');};"
+        "utterance.lang='zh-CN';utterance.rate=rate;"
+        "var z=zhVoices();if(voiceSelect&&z[parseInt(voiceSelect.value,10)])utterance.voice=z[parseInt(voiceSelect.value,10)];"
+        "else if(z[0])utterance.voice=z[0];"
+        "utterance.onend=function(){playing=false;playBtn.textContent='▶';setStatus('朗读结束');"
+        "elapsed=ttsDuration();startedAt=0;updateProgress(ttsDuration(),ttsDuration());};"
         "utterance.onerror=function(){playing=false;playBtn.textContent='▶';setStatus('朗读失败，请阅读播报稿');};"
-        "speechSynthesis.speak(utterance);playing=true;playBtn.textContent='❚❚';setStatus('正在朗读…');"
+        "speechSynthesis.speak(utterance);playing=true;playBtn.textContent='❚❚';"
+        "startedAt=Date.now();setStatus('正在朗读…');"
         "}}"
         "function pause(){"
-        "if(mode==='mp3'){audio.pause();}else if('speechSynthesis' in window){speechSynthesis.pause();}"
+        "if(mode==='mp3'){audio.pause();}else if('speechSynthesis' in window){"
+        "elapsed=ttsElapsed();startedAt=0;speechSynthesis.pause();}"
         "playing=false;playBtn.textContent='▶';setStatus('已暂停');"
         "}"
         "function stop(){"
         "if(mode==='mp3'){audio.pause();audio.currentTime=0;}else if('speechSynthesis' in window){speechSynthesis.cancel();}"
-        "playing=false;playBtn.textContent='▶';setStatus('已停止');"
+        "playing=false;startedAt=0;elapsed=0;playBtn.textContent='▶';"
+        "seekBar.value=0;curTime.textContent='0:00';setStatus('已停止');"
         "}"
         "playBtn.addEventListener('click',function(){if(playing)pause();else start();});"
         "stopBtn.addEventListener('click',stop);"
+        "audio.addEventListener('timeupdate',function(){updateProgress(audio.currentTime,audio.duration);});"
+        "audio.addEventListener('loadedmetadata',function(){updateProgress(0,audio.duration);});"
         "audio.addEventListener('ended',function(){playing=false;playBtn.textContent='▶';setStatus('播放结束');});"
+        "seekBar.addEventListener('input',function(){seeking=true;"
+        "var dur=(mode==='mp3')?audio.duration:ttsDuration();"
+        "var t=dur*(parseInt(seekBar.value,10)/1000);updateProgress(t,dur);});"
+        "seekBar.addEventListener('change',function(){"
+        "var dur=(mode==='mp3')?audio.duration:ttsDuration();"
+        "var t=dur*(parseInt(seekBar.value,10)/1000);"
+        "if(mode==='mp3'){audio.currentTime=t;}else{elapsed=t;startedAt=playing?Date.now():0;}"
+        "seeking=false;});"
         "rateBtns.forEach(function(b){b.addEventListener('click',function(){"
         "rate=parseFloat(b.getAttribute('data-rate'));"
         "rateBtns.forEach(function(x){x.classList.remove('active');});b.classList.add('active');"
         "applyRate();setStatus('语速 '+rate+'x');"
         "});});"
+        "voiceBtns.forEach(function(b){b.addEventListener('click',function(){"
+        "voiceBtns.forEach(function(x){x.classList.remove('active');});b.classList.add('active');"
+        "var wasPlaying=playing;audio.pause();audio.src=b.getAttribute('data-src');audio.load();"
+        "playing=false;playBtn.textContent='▶';"
+        "setStatus('已切换音色：'+b.textContent+(wasPlaying?'，点播放收听':''));"
+        "});});"
+        "if(mode==='tts'){setInterval(function(){"
+        "if(playing&&!seeking)updateProgress(ttsElapsed(),ttsDuration());},1000);}"
         "})();"
         "</script>"
     )
@@ -847,6 +953,19 @@ h2{font-size:20px;margin:30px 0 12px;padding-left:11px;border-left:4px solid var
 .rate-btn{background:var(--card);color:var(--muted);border:1px solid var(--line);
   border-radius:16px;padding:5px 11px;font-size:12px;cursor:pointer;min-height:30px}
 .rate-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* 进度条与时间 */
+.seek-row{display:flex;align-items:center;gap:8px;margin-top:10px}
+.time{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;flex:0 0 34px}
+.time:last-child{text-align:right}
+.seek{flex:1;accent-color:var(--accent);height:24px;cursor:pointer}
+/* 音色选择 */
+.voice-row{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap}
+.voice-row>span{font-size:12px;color:var(--muted);margin-right:2px}
+.voice-btn{background:var(--card);color:var(--muted);border:1px solid var(--line);
+  border-radius:16px;padding:5px 12px;font-size:12px;cursor:pointer;min-height:30px}
+.voice-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.voice-select{flex:1;min-width:120px;background:var(--card);color:var(--text);
+  border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-size:13px;min-height:32px}
 .script{white-space:pre-wrap;color:var(--text);font-size:15px;margin:10px 0 0}
 summary{cursor:pointer;min-height:44px;line-height:44px;color:var(--accent);font-weight:600}
 
@@ -1042,7 +1161,7 @@ def generate(dry_run: bool = False, ai_text_fn: Callable | None = None,
     log(f"开始生成：run_id={rid}，日期={date_str}")
 
     # L0
-    prepare_audio(paths.audio_mp3, paths.audio_backup, log)
+    prepare_audio(paths, log)
     load_entries(paths.entries)
 
     # L1
@@ -1054,7 +1173,7 @@ def generate(dry_run: bool = False, ai_text_fn: Callable | None = None,
     # 空数据守卫
     if not international_raw and not hot_raw:
         log("警告：热榜与 RSS 全部为 0 条，不写任何文件，保留上一版页面")
-        restore_audio(paths.audio_mp3, paths.audio_backup)
+        restore_audio(paths, log)
         return False
 
     # L2
@@ -1075,26 +1194,35 @@ def generate(dry_run: bool = False, ai_text_fn: Callable | None = None,
     # 空版块守卫（闸门前先兜底）
     if len(domestic) < MIN_SECTION_ITEMS or len(international) < MIN_SECTION_ITEMS:
         log("警告：某个版块条数不足，不写任何文件，保留上一版页面")
-        restore_audio(paths.audio_mp3, paths.audio_backup)
+        restore_audio(paths, log)
         return False
 
     # L5
     log("L5 改写播报稿")
     broadcast = build_broadcast(domestic, international, now, ai_text=ai_text_fn)
 
-    # L6
-    log("L6 生成语音")
+    # L6：为每种音色生成一份音频
+    log(f"L6 生成语音（{len(TTS_VOICES)} 种音色）")
     tts_fn = tts_fn or generate_tts
-    tts_ok = tts_fn(broadcast, paths.audio_mp3)
-    log(f"语音生成{'成功' if tts_ok else '失败，页面将降级为浏览器朗读'}")
+    voice_status: dict[str, bool] = {}
+    for voice in TTS_VOICES:
+        voice_status[voice["id"]] = tts_fn(broadcast, paths.voice_mp3(voice["id"]), voice)
+    # 至少一种音色成功即可启用 MP3 播放器
+    tts_ok = any(voice_status.values())
+    log(f"语音生成完成：{voice_status}；"
+        f"{'播放器可用' if tts_ok else '全部失败，页面降级为浏览器朗读'}")
 
     # L7
     log("L7 发布闸门")
+    # 闸门校验默认音色的音频头；若默认音色失败但其他音色成功，改用成功的那个
+    primary_ok = voice_status.get(DEFAULT_VOICE_ID, False)
+    gate_voice_id = DEFAULT_VOICE_ID if primary_ok else next(
+        (k for k, v in voice_status.items() if v), None)
     ok, reason = passes_gate(domestic, international, tts_ok,
-                             paths.audio_mp3 if tts_ok else None, log)
+                             paths.voice_mp3(gate_voice_id) if gate_voice_id else None, log)
     if not ok:
         log(f"闸门未通过：{reason}；不写任何文件，保留上一版页面")
-        restore_audio(paths.audio_mp3, paths.audio_backup)
+        restore_audio(paths, log)
         return False
 
     # L8
@@ -1104,6 +1232,8 @@ def generate(dry_run: bool = False, ai_text_fn: Callable | None = None,
         "updated_at": now.astimezone(BEIJING_TZ).isoformat(),
         "broadcast": broadcast,
         "tts_ok": tts_ok,
+        "voices": [{"id": v["id"], "name": v["name"], "desc": v["desc"],
+                    "ok": voice_status.get(v["id"], False)} for v in TTS_VOICES],
         "sections": {"domestic": domestic, "international": international},
         "raw_news": (international_raw + hot_raw)[:MAX_RAW_NEWS],
     }
@@ -1145,8 +1275,14 @@ def generate(dry_run: bool = False, ai_text_fn: Callable | None = None,
         "domestic_count": len(domestic),
         "international_count": len(international),
         "tts_ok": tts_ok,
+        "voice_status": voice_status,
         "gate": reason,
     })
+    # 清理所有音色的备份文件
+    for voice in TTS_VOICES:
+        backup = paths.voice_backup(voice["id"])
+        if backup.exists():
+            backup.unlink()
     if paths.audio_backup.exists():
         paths.audio_backup.unlink()
     log(f"生成完成：首页 {paths.index}")
@@ -1312,11 +1448,15 @@ def run_dry_run():
         assert all(not hot_client.is_low_quality_title(x["title"]) for x in domestic), "低质量标题未过滤"
         assert max(x["frequency"] for x in domestic) >= 3, "frequency 计算失败（应至少出现 3 次）"
         assert any(not x["is_new"] for x in domestic), "持续热点未标注为新增=false"
-        assert paths.index.exists() and paths.audio_mp3.exists(), "首页或音频未生成"
+        assert paths.index.exists(), "首页未生成"
+        assert all(paths.voice_mp3(v["id"]).exists() for v in TTS_VOICES), "多音色音频未全部生成"
+        assert len(today.get("voices", [])) == len(TTS_VOICES), "数据契约缺少音色状态"
         html_text = paths.index.read_text(encoding="utf-8")
         assert "查看各家报道 ▸" in html_text and "观点可能不同" in html_text, "折叠观点区缺失"
-        assert "<audio" in html_text, "播放器缺失"
-        log("dry-run 自检通过：30 天清理、frequency≥3、双版块、折叠观点区、播放器均正常")
+        assert 'class="player"' in html_text, "播放器缺失"
+        assert 'data-voice=' in html_text, "音色切换按钮缺失"
+        assert 'id="seekBar"' in html_text, "进度条缺失"
+        log("dry-run 自检通过：30 天清理、frequency≥3、多音色音频、音色切换、进度条均正常")
     return ok
 
 

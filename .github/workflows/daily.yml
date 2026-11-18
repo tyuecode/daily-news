@@ -80,7 +80,7 @@ jobs:
           if [ -f robots.txt ]; then cp robots.txt _site/; fi
           cp -r archive/. _site/archive/
           cp -r data/. _site/data/
-          if [ -f audio/daily.mp3 ]; then cp audio/daily.mp3 _site/audio/; fi
+          if compgen -G "audio/*.mp3" > /dev/null; then cp audio/*.mp3 _site/audio/; fi
 
       # ── 部署到 Cloudflare Pages ──
       - name: 部署到 Cloudflare Pages
