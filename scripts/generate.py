@@ -274,6 +274,37 @@ OVERSEAS_ZH_FEEDS = [
 ]
 
 # ----------------------------------------------------------------------------
+# 热榜源：让「热度」而不是「发布时间」驱动排序
+# ----------------------------------------------------------------------------
+# 为什么需要热榜源（项目最核心的错配）：
+#   普通 RSS 告诉你「媒体按时间发了什么」，是流水账；
+#   用户要的是「大家此刻在关注什么」，是热点。
+#   实测国内版块常年是「某国领导人抵达深圳」这类流水账，
+#   因为排序只看发布时间，谁发得新谁排前面。
+#
+# 实测结论（2026-11-18，美国出口代理，连续 3 次全部成功）：
+#   ✅ 澎湃精选 rsshub.ktachibana.party/thepaper/featured
+#       21 条、编辑精选的真正热点（习近平会见普京、APEC、社会案件），质量最高
+#   ✅ 虎嗅精选 20 条（商业科技为主，标题带大段正文，质量中等）
+#   ✅ 36氪快讯 20 条（纯财经快讯）
+#   ❌ 百度/微博/头条热搜：rsshub.app 403、其他实例 404/503/SSL 错误
+#   ❌ 知乎热榜：虽然能通，但是问答形式且娱乐化（NBA/仅退款/游戏），不适合新闻站
+#
+# 所以只加澎湃精选一个热榜源，作为「热度信号」——它的条目在排序时获得加权。
+# ⚠️ 它是 RSSHub 公共实例，有严格限流：并发请求会 429，
+#    抓取时必须串行 + 间隔（collect_all 对 HOT_FEEDS 单独串行处理）。
+HOT_FEEDS = [
+    {"name": "澎湃精选", "url": "https://rsshub.ktachibana.party/thepaper/featured",
+     "publisher": "澎湃新闻", "scope": "mixed", "is_hot": True},
+]
+
+# 热榜条目在排序时获得的加权分（相当于「多 2 家媒体报道」的分量）
+HOT_BOOST = 2
+
+# RSSHub 公共实例限流：每次请求后的等待秒数
+HOT_FEED_DELAY = 4
+
+# ----------------------------------------------------------------------------
 # 中文源探测结论（2026-11 第二轮实测，中国大陆直连，20 秒超时）
 # ----------------------------------------------------------------------------
 # 为什么记在这：国内版块只有中新网一家是当前最大的产品短板，但补源时反复踩坑。
@@ -1188,6 +1219,8 @@ def fetch_source(source, section, http_get=http_get_bytes, timeout=SOURCE_TIMEOU
             "publisher": publisher,
             # scope 在抓取阶段就带上，供后续按源属性分流
             "scope": source.get("scope") or "",
+            # 热榜源标记：排序时获得热度加权
+            "is_hot": bool(source.get("is_hot")),
             # section 是「源声明的版块」，不等于最终归属；
             # 最终归属由 assign_sections() 按 scope + 内容判定。
             "section": section,
@@ -1602,10 +1635,17 @@ def build_clusters(raw_items, section_prefix):
     for cluster in clusters:
         primary = pick_primary(cluster)
         count = vote_count(cluster["items"])
+        # 热度分：热榜源（澎湃精选）的条目给加权，让它排在流水账前面
+        hot = any(it.get("is_hot") for it in cluster["items"])
+        # 跨来源印证 + 热榜信号，两者相加作为「重要度」
+        importance = count + (HOT_BOOST if hot else 0)
         built.append({
             "cid": "",  # 稍后按排序结果统一分配，保证稳定
             "section": primary.get("section"),
             "source_count": count,
+            # 重要度用于排序（含热榜加权），source_count 仍表示真实家数
+            "importance_score": importance,
+            "is_hot": hot,
             "image": primary.get("image") or "",
             "is_primary_source": primary.get("source"),
             # 媒体名：席位配额按这个字段计数（同一媒体的多频道算一家）
@@ -1625,8 +1665,9 @@ def build_clusters(raw_items, section_prefix):
             ),
         })
 
-    # 排序：家数多的优先，其次时间新的优先
-    built.sort(key=lambda c: (c["source_count"], c["published"]), reverse=True)
+    # 排序：重要度（家数 + 热榜加权）高的优先，其次时间新的优先。
+    # 这样澎湃精选的热点能压过中新网的流水账，直接对准「了解今日热点」的需求。
+    built.sort(key=lambda c: (c["importance_score"], c["published"]), reverse=True)
 
     # 分配稳定 cid（i1/i2… 国际榜，c1/c2… 国内榜）
     for index, cluster in enumerate(built, start=1):
@@ -3692,8 +3733,30 @@ def run(dry_run=False, dry_run_tts_ok=False, root=None):
     # 没有海外中文源时国内版块就只有中新网一家（线上真实发生过）。
     dom_sources = list(DOMESTIC_FEEDS) + list(OVERSEAS_ZH_FEEDS)
     dom_raw, dom_status = collect_all(dom_sources, "domestic", http_get=http_get)
-    log("采集结果：国际 %d 条、国内 %d 条（国内源含 %d 个海外中文媒体）" % (
-        len(intl_raw), len(dom_raw), len(OVERSEAS_ZH_FEEDS)))
+
+    # 热榜源（澎湃精选）单独串行抓取：RSSHub 公共实例有严格限流，
+    # 和上面的并发抓取混在一起会 429。串行 + 间隔才稳定（实测 3/3 成功）。
+    hot_raw, hot_status = [], []
+    for source in HOT_FEEDS:
+        items, error = fetch_source(source, "domestic", http_get=http_get)
+        hot_status.append({
+            "源": source["name"],
+            "版块": "domestic",
+            "条目数": len(items),
+            "状态": "正常" if items else "失败",
+            "说明": error,
+        })
+        if items:
+            hot_raw.extend(items)
+            log("热榜源 %s 抓到 %d 条（排序时加权）" % (source["name"], len(items)))
+        else:
+            warn("热榜源 %s 抓取失败：%s（不影响其它源）" % (source["name"], error))
+        time.sleep(HOT_FEED_DELAY)
+    dom_raw.extend(hot_raw)
+    dom_status.extend(hot_status)
+
+    log("采集结果：国际 %d 条、国内 %d 条（含 %d 个热榜源、%d 个海外中文媒体）" % (
+        len(intl_raw), len(dom_raw), len(HOT_FEEDS), len(OVERSEAS_ZH_FEEDS)))
 
     # ---------------- L2 规范化 ----------------
     log("L2 规范化：近 %d 小时过滤、去重、软新闻过滤、图片归一" % WINDOW_HOURS)
@@ -4203,6 +4266,13 @@ def _dry_run_fixture(today):
              "气象部门提醒民众注意防寒保暖。",
              "https://s.rfi.fr/media/display/cold-wave-photo.jpg", older),
         ],
+        # 热榜源：一条明显的热点，验证热度加权能把它排到前面
+        "澎湃精选": [
+            ("中国三季度经济增速超出市场预期，A股大涨",
+             "https://www.thepaper.cn/newsDetail_forward_hot001",
+             "国家统计局公布数据，市场反应积极。",
+             "https://img.thepaper.cn/hot-economy.jpg", older),
+        ],
     }
 
     feeds = {}
@@ -4228,7 +4298,7 @@ def make_fake_http(today):
     feeds = _dry_run_fixture(today)
 
     def fake_http_get(url, timeout=SOURCE_TIMEOUT):
-        for source in INTL_FEEDS + DOMESTIC_FEEDS + OVERSEAS_ZH_FEEDS:
+        for source in INTL_FEEDS + DOMESTIC_FEEDS + OVERSEAS_ZH_FEEDS + HOT_FEEDS:
             if source["url"] == url:
                 name = source["name"]
                 payload = feeds.get(name)

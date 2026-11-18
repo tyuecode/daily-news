@@ -2268,6 +2268,70 @@ def test_source_scope_routing():
           "全国" not in generate.CHINA_KEYWORDS_ZH)
 
 
+def test_hot_feed_boost():
+    group("热榜源与热度加权（让「大家关注什么」替代「谁发得最新」）")
+
+    # ---- 1. 热榜源配置 ----
+    check("HOT_FEEDS 非空", isinstance(generate.HOT_FEEDS, list)
+          and len(generate.HOT_FEEDS) >= 1)
+    for feed in generate.HOT_FEEDS:
+        check("热榜源 %s 标记 is_hot" % feed.get("name"),
+              feed.get("is_hot") is True)
+        check("热榜源 %s 声明了 scope" % feed.get("name"),
+              feed.get("scope") in ("mixed", "domestic", "intl"))
+        check("热榜源 %s 的 URL 合法" % feed.get("name"),
+              generate.is_valid_url(feed["url"]))
+    check("HOT_BOOST 为正数", generate.HOT_BOOST > 0,
+          "实际=%s" % generate.HOT_BOOST)
+    check("HOT_FEED_DELAY 设置了限流间隔", generate.HOT_FEED_DELAY >= 3,
+          "实际=%s" % generate.HOT_FEED_DELAY)
+
+    # ---- 2. 热度加权改变排序 ----
+    now = datetime.now(BJ)
+
+    def mk(title, publisher, hot, hours_ago=6, image=""):
+        return {
+            "source": publisher, "publisher": publisher, "scope": "mixed",
+            "section": "domestic", "is_hot": hot,
+            "title": title, "title_zh": title, "title_en": "",
+            "summary": "", "url": "https://www.chinanews.com.cn/" + title[:8],
+            "image": image, "published": now - timedelta(hours=hours_ago),
+            "lang": "zh",
+        }
+
+    # 热榜条目更旧（6 小时前），普通流水账更新（1 小时前）
+    items = [
+        mk("中国三季度经济增速超出市场预期", "澎湃新闻", True, hours_ago=6),
+        mk("马来西亚总理抵达深圳出席APEC", "中新网", False, hours_ago=1),
+        mk("文莱苏丹抵达深圳出席APEC", "中新网", False, hours_ago=2),
+    ]
+    clusters = generate.build_clusters(items, "c")
+    hot_cluster = [c for c in clusters if c["is_hot"]]
+    normal_clusters = [c for c in clusters if not c["is_hot"]]
+
+    expect_eq("识别出 1 个热榜簇", len(hot_cluster), 1)
+    check("热榜簇的重要度更高",
+          hot_cluster[0]["importance_score"] > normal_clusters[0]["importance_score"],
+          "热榜=%d 普通=%d" % (
+              hot_cluster[0]["importance_score"],
+              normal_clusters[0]["importance_score"]))
+    expect_eq("热榜簇排在第一位", clusters[0]["is_hot"], True)
+
+    # ---- 3. 热榜条目也走涉华分流 ----
+    dom, intl = generate.assign_sections([
+        mk("习近平会见俄罗斯总统普京", "澎湃新闻", True),
+        mk("羽毛球业余爱好者的球场观察", "澎湃新闻", True),
+    ])
+    expect_eq("热榜涉华新闻进国内", len(dom), 1)
+    expect_eq("热榜非涉华内容不进国内", len(intl), 1)
+
+    # ---- 4. 热榜条目不改变「家数」的真实含义 ----
+    # 热度加权只影响排序，source_count 仍是真实的媒体家数
+    check("热榜单源事件的 source_count 仍是 1",
+          hot_cluster[0]["source_count"] == 1,
+          "实际=%s" % hot_cluster[0]["source_count"])
+
+
 def test_dry_run_end_to_end():
     group("端到端 dry-run（零网络、零 CF 调用、只写 _dryrun/）")
 
@@ -2527,6 +2591,7 @@ ALL_TESTS = [
     test_overseas_chinese_feeds,
     test_theme_grouping,
     test_source_scope_routing,
+    test_hot_feed_boost,
     test_dry_run_end_to_end,
     test_dry_run_tts_ok_branch,
     test_workflow_guard,
