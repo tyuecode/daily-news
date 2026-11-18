@@ -295,6 +295,13 @@ check("拍拍拍花絮被剔除", hot_client.is_low_quality_title("李在明随�
 check("知识点标题被剔除", hot_client.is_low_quality_title("APEC中国年这些知识点不容错过"))
 check("重大新闻保留", not hot_client.is_low_quality_title("习近平会见俄罗斯总统普京"))
 check("财经新闻保留", not hot_client.is_low_quality_title("英伟达业绩超预期股价大涨"))
+# 流水账到场叙事（实测残留的两条）
+check("将抵达流水账被剔除", hot_client.is_low_quality_title("特朗普将抵达深圳"))
+check("专机流水账被剔除", hot_client.is_low_quality_title("深圳机场停满各国领导人专机"))
+check("莅临流水账被剔除", hot_client.is_low_quality_title("法国总统莅临考察"))
+check("救援抵达不误杀", not hot_client.is_low_quality_title("救援物资抵达地震灾区"))
+check("医疗队抵达不误杀", not hot_client.is_low_quality_title("医疗队抵达洪水前线开展援助"))
+check("峰会出席不误杀", not hot_client.is_low_quality_title("习近平出席APEC开幕式"))
 check("大事件信号加分", hot_client.major_event_boost("习近平会见普京并出席峰会开幕") >= 0.08)
 check("无信号不加分", hot_client.major_event_boost("某地今日天气晴") == 0.0)
 

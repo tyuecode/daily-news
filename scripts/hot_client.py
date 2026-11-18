@@ -343,6 +343,19 @@ _TRIVIA_PATTERNS = [
     "reaction", " Reaction", "围观", "可爱", "萌", "搞笑", "盘点",
 ]
 
+# 「流水账」到场叙事模式：谁抵达哪里、机场停满专机等。
+# 这类标题讲的是「到场」而非「发生了什么」，是旧版被批评的流水账。
+# 用正则匹配，比裸子串精确（避免误杀「救援物资抵达灾区」这类真新闻）。
+_ARRIVAL_PATTERNS = [
+    r"将抵达",           # 特朗普将抵达深圳
+    r"抵达.{0,6}(深圳|北京|上海|机场|会场|驻地)",
+    r"专机",             # 机场停满各国领导人专机
+    r"停满",             # 深圳机场停满…
+    r"莅临",             # 莅临考察
+    r"现身(机场|车站|会场)",
+    r"机场.{0,6}迎接",
+]
+
 # 重大事件信号词：命中越多，越可能是「今天的大事」
 _MAJOR_SIGNALS = [
     "习近平", "普京", "李在明", "会见", "会谈", "峰会", "开幕", "出席",
@@ -357,7 +370,8 @@ def is_low_quality_title(title: str) -> bool:
     规则保守，宁可放过也不误杀真新闻：
     - 纯英文缩写（APEC / G20 等）或与之一致的短标题；
     - 标题长度 < 4 个汉字；
-    - 命中明确的花絮关键词（摘手套、拍拍拍、知识点等）。
+    - 命中明确的花絮关键词（摘手套、拍拍拍、知识点等）；
+    - 命中「流水账」到场模式（将抵达、专机、停满等），但排除救援等真新闻。
     """
     text = (title or "").strip()
     if not text:
@@ -370,6 +384,12 @@ def is_low_quality_title(title: str) -> bool:
     for keyword in _TRIVIA_PATTERNS:
         if keyword in text:
             return True
+    # 救援/救灾类「抵达」是真新闻，不按流水账过滤
+    rescue = any(k in text for k in ("救援", "救灾", "物资", "援助", "医疗队", "地震", "洪水"))
+    if not rescue:
+        for pattern in _ARRIVAL_PATTERNS:
+            if re.search(pattern, text):
+                return True
     return False
 
 
