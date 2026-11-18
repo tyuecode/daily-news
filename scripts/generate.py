@@ -60,7 +60,9 @@ BROADCAST_POINTS = 12           # 播报稿要点数
 MIN_SECTION_ITEMS = 3           # 闸门：每个版块至少条数
 MIN_CHINESE_RATIO = 0.60        # 闸门：中文占比下限
 TTS_RETRIES = 8                 # edge-tts 重试次数（服务端随机抖动，3 次不够）
-TTS_VOICE = "zh-CN-XiaoxiaoNeural"
+TTS_VOICE = "zh-CN-XiaoxiaoNeural"           # 主音色：女声，清晰亲和
+TTS_FALLBACK_VOICE = "zh-CN-YunxiNeural"     # 备用音色：男声，主音色多次失败时切换
+TTS_RATE = "-5%"                # 新闻播报语速略慢，提升清晰度
 RSS_TIMEOUT = 20
 FETCH_WORKERS = 4
 BEIJING_TZ = hot_client.BEIJING_TZ
@@ -419,22 +421,51 @@ def is_valid_mp3(path: Path) -> bool:
     return header[0] == 0xFF and (header[1] & 0xE0) == 0xE0
 
 
+def normalize_tts_text(text: str) -> str:
+    """播报稿转语音前的文本归一化，避免机器朗读卡顿或怪异停顿。
+
+    - 段落空行 → 单个句号停顿（中文朗读不需要长静音）；
+    - 连续换行/空白 → 单个空格；
+    - 去掉行首行尾空白、折叠重复标点。
+    """
+    if not text:
+        return ""
+    text = text.replace("\r", "")
+    # 段落分隔：把「。\n\n」或「\n\n」归一为一个句号 + 空格
+    text = re.sub(r"[。]?\s*\n\s*\n\s*", "。", text)
+    # 剩余单换行 → 空格
+    text = re.sub(r"\s*\n\s*", " ", text)
+    # 折叠空白与重复标点
+    text = re.sub(r"[ \t]{2,}", " ", text)
+    text = re.sub(r"_{2,}|={2,}|-{2,}", " ", text)
+    text = re.sub(r"。{2,}", "。", text)
+    return text.strip()
+
+
 def generate_tts(text: str, target: Path, retries: int = TTS_RETRIES) -> bool:
-    """edge-tts 7.x 生成语音，8 次重试 + 线性退避；成功写文件并返回 True。"""
+    """edge-tts 7.x 生成语音：文本归一化 + 语速控制 + 备用音色 + 8 次线性退避。
+
+    主音色连续失败过半（第 5 次起）切换到备用音色，提高整体成功率。
+    成功写文件并返回 True。
+    """
     import edge_tts
 
-    async def _save():
-        communicate = edge_tts.Communicate(text, voice=TTS_VOICE)
+    clean_text = normalize_tts_text(text)
+
+    async def _save(voice: str):
+        communicate = edge_tts.Communicate(clean_text, voice=voice, rate=TTS_RATE)
         await communicate.save(str(target))
 
     for attempt in range(retries):
+        voice = TTS_VOICE if attempt < retries // 2 else TTS_FALLBACK_VOICE
         try:
-            asyncio.run(_save())
+            asyncio.run(_save(voice))
             if is_valid_mp3(target):
+                log(f"TTS 成功（第 {attempt + 1} 次，音色 {voice}）")
                 return True
             log(f"TTS 第 {attempt + 1} 次返回非音频内容，重试")
         except Exception as exc:
-            log(f"TTS 第 {attempt + 1} 次失败：{type(exc).__name__}")
+            log(f"TTS 第 {attempt + 1} 次失败（{voice}）：{type(exc).__name__}")
         time.sleep(attempt + 1)  # 线性退避 1s, 2s, 3s ...
     return False
 
@@ -536,9 +567,9 @@ def render_day(day: dict, is_today: bool, site_url: str = "") -> str:
     parts.append("<section class=\"broadcast\" id=\"broadcast\"><h2>今日播报</h2>")
     broadcast = day.get("broadcast", "")
     if is_today and day.get("tts_ok") and broadcast:
-        parts.append("<audio controls preload=\"none\" src=\"audio/daily.mp3\"></audio>")
+        parts.append(_render_audio_player(broadcast, mode="mp3"))
     elif is_today and broadcast:
-        parts.append("<button type=\"button\" onclick=\"speak()\">朗读播报</button>")
+        parts.append(_render_audio_player(broadcast, mode="tts"))
     if broadcast:
         parts.append("<details><summary>展开播报稿</summary>")
         parts.append(f"<p class=\"script\">{html.escape(broadcast)}</p></details>")
@@ -591,18 +622,103 @@ def render_day(day: dict, is_today: bool, site_url: str = "") -> str:
     # 悬浮回到顶部（放在 div 外，避免被 wrap 的层级裁剪）
     parts.append("</div><a class=\"to-top\" href=\"#\" aria-label=\"回到顶部\">↑</a>")
 
-    # 播报降级脚本（放在末尾，JSON 中把 < > & 转成 Unicode 转义，杜绝任何标签注入）
-    safe_json = (json.dumps(broadcast, ensure_ascii=False)
-                 .replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026"))
-    script = (
-        "<script>function speak(){if('speechSynthesis' in window){"
-        "var u=new SpeechSynthesisUtterance(" + safe_json + ");"
-        "u.lang='zh-CN';window.speechSynthesis.speak(u);}"
-        "else{alert('当前浏览器不支持朗读');}}</script>"
-    )
-    parts.append(script)
+    # 播报脚本（放在末尾，JSON 中把 < > & 转成 Unicode 转义，杜绝任何标签注入）
+    parts.append(_build_audio_script(broadcast))
     parts.append("</body></html>")
     return "\n".join(parts)
+
+
+def _render_audio_player(broadcast: str, mode: str = "mp3") -> str:
+    """统一的播报控制条：大播放/暂停按钮 + 语速切换 + 停止。
+
+    mode='mp3'：用 <audio> 播放 audio/daily.mp3；
+    mode='tts'：TTS 失败降级，用浏览器 SpeechSynthesis 朗读。
+    两种模式共用同一套按钮，由 _build_audio_script 统一驱动。
+    """
+    safe_text = html.escape(broadcast, quote=True)
+    sourced = 'data-src="audio/daily.mp3"' if mode == "mp3" else f'data-text="{safe_text}"'
+    label = "播放今日播报" if mode == "mp3" else "朗读今日播报（语音合成）"
+    return (
+        f'<div class="player" id="player" {sourced} data-mode="{mode}">'
+        '<audio id="audioEl" preload="none" src="audio/daily.mp3"></audio>'
+        '<div class="player-row">'
+        '<button type="button" class="play-btn" id="playBtn" aria-label="播放/暂停">▶</button>'
+        '<div class="player-info">'
+        f'<div class="player-title">{label}</div>'
+        '<div class="player-status" id="playerStatus">点按即可收听，约 2 分钟</div>'
+        '</div>'
+        '<button type="button" class="stop-btn" id="stopBtn" aria-label="停止">■</button>'
+        '</div>'
+        '<div class="rate-row"><span>语速</span>'
+        '<button type="button" class="rate-btn" data-rate="0.85">0.85x</button>'
+        '<button type="button" class="rate-btn active" data-rate="1">1x</button>'
+        '<button type="button" class="rate-btn" data-rate="1.25">1.25x</button>'
+        '<button type="button" class="rate-btn" data-rate="1.5">1.5x</button>'
+        '</div></div>'
+    )
+
+
+def _build_audio_script(broadcast: str) -> str:
+    """生成播放器交互脚本：同时支持 MP3 播放与浏览器朗读降级。
+
+    - 中文语音自动挑选（监听 voiceschanged，优先 zh-CN）；
+    - 播放/暂停/停止、语速切换、状态提示；
+    - 所有外部文本已 Unicode 转义，防止标签注入。
+    """
+    safe_json = (json.dumps(broadcast, ensure_ascii=False)
+                 .replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026"))
+    return (
+        "<script>"
+        "(function(){"
+        "var player=document.getElementById('player');if(!player)return;"
+        "var mode=player.getAttribute('data-mode');"
+        "var audio=document.getElementById('audioEl');"
+        "var playBtn=document.getElementById('playBtn');"
+        "var stopBtn=document.getElementById('stopBtn');"
+        "var statusEl=document.getElementById('playerStatus');"
+        "var rateBtns=document.querySelectorAll('.rate-btn');"
+        "var text=" + safe_json + ";"
+        "var rate=1,playing=false,utterance=null,zhVoice=null;"
+        "function pickVoice(){var vs=speechSynthesis.getVoices()||[];"
+        "for(var i=0;i<vs.length;i++){if(vs[i].lang&&vs[i].lang.toLowerCase().indexOf('zh')===0)"
+        "{zhVoice=vs[i];break;}}}"
+        "if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}"
+        "function setStatus(s){statusEl.textContent=s;}"
+        "function applyRate(){if(mode==='mp3'){audio.playbackRate=rate;}"
+        "else if(utterance){utterance.rate=rate;}}"
+        "function start(){"
+        "if(mode==='mp3'){applyRate();var p=audio.play();"
+        "if(p&&p.catch){p.catch(function(){setStatus('播放失败，可点“展开播报稿”阅读');});}"
+        "playing=true;playBtn.textContent='❚❚';setStatus('正在播放…');"
+        "}else{"
+        "if(!('speechSynthesis' in window)){setStatus('当前浏览器不支持朗读，请阅读播报稿');return;}"
+        "if(speechSynthesis.paused){speechSynthesis.resume();playing=true;playBtn.textContent='❚❚';"
+        "setStatus('继续朗读…');return;}"
+        "speechSynthesis.cancel();utterance=new SpeechSynthesisUtterance(text);"
+        "utterance.lang='zh-CN';utterance.rate=rate;if(zhVoice)utterance.voice=zhVoice;"
+        "utterance.onend=function(){playing=false;playBtn.textContent='▶';setStatus('朗读结束');};"
+        "utterance.onerror=function(){playing=false;playBtn.textContent='▶';setStatus('朗读失败，请阅读播报稿');};"
+        "speechSynthesis.speak(utterance);playing=true;playBtn.textContent='❚❚';setStatus('正在朗读…');"
+        "}}"
+        "function pause(){"
+        "if(mode==='mp3'){audio.pause();}else if('speechSynthesis' in window){speechSynthesis.pause();}"
+        "playing=false;playBtn.textContent='▶';setStatus('已暂停');"
+        "}"
+        "function stop(){"
+        "if(mode==='mp3'){audio.pause();audio.currentTime=0;}else if('speechSynthesis' in window){speechSynthesis.cancel();}"
+        "playing=false;playBtn.textContent='▶';setStatus('已停止');"
+        "}"
+        "playBtn.addEventListener('click',function(){if(playing)pause();else start();});"
+        "stopBtn.addEventListener('click',stop);"
+        "audio.addEventListener('ended',function(){playing=false;playBtn.textContent='▶';setStatus('播放结束');});"
+        "rateBtns.forEach(function(b){b.addEventListener('click',function(){"
+        "rate=parseFloat(b.getAttribute('data-rate'));"
+        "rateBtns.forEach(function(x){x.classList.remove('active');});b.classList.add('active');"
+        "applyRate();setStatus('语速 '+rate+'x');"
+        "});});"
+        "})();"
+        "</script>"
+    )
 
 
 def _render_cards(items: list[dict], kind: str, headline_count: int = 3) -> str:
@@ -712,9 +828,25 @@ h2{font-size:20px;margin:30px 0 12px;padding-left:11px;border-left:4px solid var
 
 /* 今日播报 */
 .broadcast{background:var(--card);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
-.broadcast audio{width:100%;margin-bottom:8px}
-.broadcast button{background:var(--accent);color:#fff;border:0;border-radius:9px;
-  padding:12px 20px;font-size:16px;min-height:44px;cursor:pointer}
+.broadcast #audioEl{display:none}
+/* 统一播报控制条 */
+.player{background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;
+  padding:12px;margin-bottom:10px}
+.player-row{display:flex;align-items:center;gap:12px}
+.play-btn{flex:0 0 52px;width:52px;height:52px;border-radius:50%;background:var(--accent);
+  color:#fff;border:0;font-size:20px;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;box-shadow:0 3px 10px rgba(230,67,64,.3)}
+.play-btn:active{transform:scale(.94)}
+.player-info{flex:1;min-width:0}
+.player-title{font-size:15px;font-weight:600}
+.player-status{font-size:12px;color:var(--muted);margin-top:2px}
+.stop-btn{flex:0 0 44px;width:44px;height:44px;border-radius:10px;background:var(--card);
+  color:var(--muted);border:1px solid var(--line);font-size:14px;cursor:pointer}
+.rate-row{display:flex;align-items:center;gap:6px;margin-top:10px;flex-wrap:wrap}
+.rate-row span{font-size:12px;color:var(--muted);margin-right:2px}
+.rate-btn{background:var(--card);color:var(--muted);border:1px solid var(--line);
+  border-radius:16px;padding:5px 11px;font-size:12px;cursor:pointer;min-height:30px}
+.rate-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .script{white-space:pre-wrap;color:var(--text);font-size:15px;margin:10px 0 0}
 summary{cursor:pointer;min-height:44px;line-height:44px;color:var(--accent);font-weight:600}
 

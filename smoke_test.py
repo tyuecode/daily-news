@@ -231,8 +231,8 @@ with_audio = generate.render_day({**day, "tts_ok": True}, is_today=True)
 without_audio = generate.render_day({**day, "tts_ok": False}, is_today=True)
 archive = generate.render_day({**day, "tts_ok": True}, is_today=False)
 check("有音频输出 audio 标签", '<audio' in with_audio)
-check("无音频输出朗读按钮", 'onclick="speak()"' in without_audio)
-check("归档页无播放器", '<audio' not in archive and '朗读播报' not in archive)
+check("降级朗读用浏览器语音合成", 'data-mode="tts"' in without_audio and 'SpeechSynthesisUtterance' in without_audio)
+check("归档页无播报控制条", 'class="player"' not in archive)
 check("归档页注明音频仅当日", "音频仅当日有效" in archive)
 
 
@@ -447,6 +447,34 @@ check("归档页有「其他日期」导航", "其他日期" in archive_with_rec
 # P5 SEO meta description 与 robots.txt
 check("页面有 meta description", '<meta name="description"' in design_html)
 check("meta description 来自焦点内容", "国内大事件第1条" in design_html)
+
+
+# ── 18. 语音播报改进 ────────────────────────────────────────────────
+print("\n[18] 语音播报改进")
+# 文本归一化
+normalized = generate.normalize_tts_text("第一段。\n\n第二段内容。\n第三段。")
+check("段落空行归一化（不留长停顿）", "\n" not in normalized and "。。" not in normalized,
+      f"实际={normalized!r}")
+check("空白折叠", generate.normalize_tts_text("  多余   空格  ") == "多余 空格")
+check("重复句号折叠", "。。" not in generate.normalize_tts_text("你好。。。世界"))
+check("空文本返回空串", generate.normalize_tts_text("") == "")
+# TTS 配置
+check("主音色配置正确", generate.TTS_VOICE == "zh-CN-XiaoxiaoNeural")
+check("备用音色已配置", generate.TTS_FALLBACK_VOICE == "zh-CN-YunxiNeural")
+check("语速配置已设置", generate.TTS_RATE.endswith("%"))
+# 播放器两种模式
+mp3_player = generate._render_audio_player("各位好，欢迎收听。", mode="mp3")
+tts_player = generate._render_audio_player("各位好，欢迎收听。", mode="tts")
+check("MP3 模式含 audio 源", 'data-mode="mp3"' in mp3_player and 'src="audio/daily.mp3"' in mp3_player)
+check("TTS 降级模式含文本", 'data-mode="tts"' in tts_player and "各位好" in tts_player)
+check("播放器有播放/停止按钮", 'id="playBtn"' in mp3_player and 'id="stopBtn"' in mp3_player)
+check("播放器有 4 档语速", all(f'data-rate="{r}"' in mp3_player for r in ("0.85", "1", "1.25", "1.5")))
+check("脚本含中文语音挑选", "getVoices" in generate._build_audio_script("测试") and "zh" in generate._build_audio_script("测试"))
+check("脚本含暂停/继续/停止", "pause()" in generate._build_audio_script("测试")
+      and "resume()" in generate._build_audio_script("测试")
+      and "cancel()" in generate._build_audio_script("测试"))
+check("脚本文本已 Unicode 转义", "\\u003c" in generate._build_audio_script("<script>"))
+check("MP3 播放器状态提示存在", "playerStatus" in mp3_player)
 
 
 # ── 汇总 ────────────────────────────────────────────────────────────
