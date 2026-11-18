@@ -344,7 +344,8 @@ CHINA_KEYWORDS_ZH = [
     "四川", "福建", "安徽", "江西", "陕西", "甘肃", "青海", "贵州", "广西",
     "辽宁", "吉林", "黑龙江", "山西", "海南", "宁夏", "新疆", "西藏", "内蒙古",
     # ---- 对华关系简称 ----
-    "涉华", "访华", "中加", "中美", "中俄", "中欧", "中日", "中韩",
+    "涉华", "访华", "对华", "在华", "赴华", "来华", "对华政策",
+    "中加", "中美", "中俄", "中欧", "中日", "中韩",
     "中印", "中澳", "中英", "中法", "中德", "中越", "中菲", "中拉",
     "中印尼", "中新", "中泰", "中马", "中巴", "中以", "中伊", "中沙",
     # ---- 中国主办/深度参与的国际场合 ----
@@ -1313,21 +1314,32 @@ def normalize_items(items, now=None, window_hours=WINDOW_HOURS):
     return kept, stats
 
 
-def is_china_related(item):
+def is_china_related(item, include_summary=True):
     """判断一条新闻是否与中国相关（用于把综合媒体的条目分到正确版块）。
 
     背景：法广RFI、纽约时报中文网是**综合媒体**，RSS 里既有中国新闻
     也有纯国际新闻。如果把整个源都塞进「国内热点」，就会出现
     「乌克兰再次袭击克里米亚大桥」出现在国内版块这种荒谬情况
-    （线上真实发生过）。
+    （线上真实发生过两次）。
 
     判定依据：标题或摘要里出现中国相关关键词。
+
+    ⚠️ include_summary 参数很重要（线上第二次泄漏的根因）：
+        2026-11-18 线上又出现「乌克兰再次袭击克里米亚大桥」在国内版块。
+        追查发现：分流时标题判定正确（False），但该条经过 L5 深挖后
+        回填了中文译文 summary_zh，其中顺带提到
+        「普京即将与**中美**两国领导人会晤」——「中美」命中关键词，
+        使这条乌克兰新闻被误判为涉华。
+        实际上「这条新闻讲什么」看标题就够了，摘要里的顺带提及不代表主题。
+        所以分流调用必须传 include_summary=False，只看标题。
     """
-    blob = " ".join([
+    parts = [
         item.get("title") or "",
         item.get("title_zh") or "",
-        item.get("summary") or "",
-    ])
+    ]
+    if include_summary:
+        parts.append(item.get("summary") or "")
+    blob = " ".join(parts)
     if not blob.strip():
         return False
     # 中文关键词直接子串匹配
@@ -1373,8 +1385,10 @@ def assign_sections(items):
             clone["section"] = "domestic"
             domestic.append(clone)
         else:
-            # mixed 或未声明：按内容判定
-            if is_china_related(item):
+            # mixed 或未声明：按内容判定。
+            # include_summary=False：只看标题，不看摘要——摘要里的顺带提及
+            # 不代表新闻主题（线上泄漏根因，见 is_china_related 的注释）
+            if is_china_related(item, include_summary=False):
                 clone["section"] = "domestic"
                 domestic.append(clone)
             else:
@@ -3714,7 +3728,8 @@ def run(dry_run=False, dry_run_tts_ok=False, root=None):
     leaked = [
         it for it in dom_items
         if (it.get("scope") == "intl")
-        or (it.get("scope") == "mixed" and not is_china_related(it))
+        or (it.get("scope") == "mixed"
+            and not is_china_related(it, include_summary=False))
     ]
     if leaked:
         warn("分流自检发现国内版块仍有 %d 条国外新闻，已强制移除" % len(leaked))

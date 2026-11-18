@@ -2190,7 +2190,46 @@ def test_source_scope_routing():
     dom, intl = generate.assign_sections(mixed_items)
     expect_eq("分流后总数不变", len(dom) + len(intl), len(mixed_items))
 
-    # ---- 3. 真实误判样本（线上抓到的真实标题）----
+    # ---- 4. 线上第二次泄漏的根因：摘要里的顺带提及 ----
+    group("摘要误命中（线上真实故障：乌克兰大桥新闻因摘要提到「中美」留在国内）")
+
+    leak_title = "乌克兰再次袭击克里米亚大桥"
+    poison_summary = (
+        "周二，乌克兰的无人机和导弹摧毁了连接俄罗斯与克里米亚半岛的大桥。"
+        "在俄总统普京即将与中美两国领导人会晤的前两天，这一事件对他造成打击。"
+    )
+    # 含摘要会误判（这就是线上 bug 的复现）
+    check("含摘要时「中美」确实会误命中（故障复现）",
+          generate.is_china_related({
+              "title": leak_title, "title_zh": leak_title,
+              "summary": poison_summary,
+          }, include_summary=True) is True)
+    # 只看标题判定正确
+    check("只看标题时正确判为国际",
+          generate.is_china_related({
+              "title": leak_title, "title_zh": leak_title,
+              "summary": poison_summary,
+          }, include_summary=False) is False)
+
+    # 分流函数必须用「只看标题」模式
+    item_leak = {
+        "source": "法广RFI", "publisher": "法广RFI", "scope": "mixed",
+        "section": "domestic", "title": leak_title, "title_zh": leak_title,
+        "summary": poison_summary, "url": "https://www.rfi.fr/cn/x",
+        "image": "", "published": datetime.now(BJ), "lang": "zh",
+    }
+    dom, intl = generate.assign_sections([item_leak])
+    expect_eq("分流后乌克兰新闻不进国内", len(dom), 0)
+    expect_eq("分流后乌克兰新闻进了国际", len(intl), 1)
+
+    # 「对华政策」这类标题必须判国内（补了「对华」关键词）
+    check("「白宫对华政策分歧」判为涉华",
+          generate.is_china_related({
+              "title": "白宫内部对华政策分歧公开化，贝森特日趋鹰派",
+              "title_zh": "白宫内部对华政策分歧公开化，贝森特日趋鹰派",
+          }, include_summary=False) is True)
+
+    # ---- 5. 真实误判样本（线上抓到的真实标题）----
     group("分流准确度（真实线上标题）")
 
     should_be_domestic = [
