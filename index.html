@@ -3,79 +3,148 @@
 <title>每日热点简报 · 2026-11-18</title>
 
 <style>
-:root{--bg:#f6f7f9;--card:#fff;--text:#1a1a1a;--muted:#888;--accent:#e64340;--line:#eee}
+:root{
+  --bg:#f4f5f7;--card:#fff;--text:#1a1a1a;--muted:#8a8f98;--accent:#e64340;
+  --accent-soft:#fff0ef;--line:#eceef1;--shadow:0 2px 10px rgba(20,30,50,.06);
+  --headline-bg:linear-gradient(135deg,#fff 0%,#fff8f7 100%);
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#14161a;--card:#1e2126;--text:#e8eaed;--muted:#9aa0aa;--accent:#ff6b66;
+    --accent-soft:#3a2424;--line:#2d3138;--shadow:0 2px 10px rgba(0,0,0,.3);
+    --headline-bg:linear-gradient(135deg,#1e2126 0%,#2a2020 100%);
+  }
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6}
-.wrap{max-width:760px;margin:0 auto;padding:16px}
-header h1{font-size:26px;margin:8px 0 4px}
-.sub{color:var(--muted);font-size:14px;margin:0 0 16px}
-h2{font-size:20px;margin:28px 0 12px;padding-left:10px;border-left:4px solid var(--accent)}
-.broadcast{background:var(--card);border-radius:12px;padding:16px;margin-bottom:8px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:720px;margin:0 auto;padding:16px 14px 40px}
+header{padding:8px 2px 0}
+header h1{font-size:27px;margin:6px 0 2px;letter-spacing:.5px}
+.sub{color:var(--muted);font-size:13px;margin:0}
+
+/* A1 今日一句话摘要 */
+.brief{margin-top:14px;background:var(--accent-soft);border:1px solid var(--accent);
+  border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:baseline}
+.brief-label{flex:0 0 auto;background:var(--accent);color:#fff;font-size:12px;
+  font-weight:700;padding:2px 8px;border-radius:5px}
+.brief-text{font-size:15px;font-weight:600;line-height:1.5}
+
+/* B5 概览数字条 */
+.overview{margin-top:10px;color:var(--muted);font-size:13px;display:flex;gap:8px;flex-wrap:wrap}
+.overview b{color:var(--text);font-size:15px}
+.overview .sep{opacity:.5}
+
+/* B6 版块跳转 */
+.jump{margin-top:14px;display:flex;gap:10px}
+.jump a{flex:1;text-align:center;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:11px 6px;color:var(--text);font-size:14px;
+  text-decoration:none;min-height:44px;line-height:22px}
+.jump a:active{background:var(--accent-soft)}
+
+h2{font-size:20px;margin:30px 0 12px;padding-left:11px;border-left:4px solid var(--accent);
+  scroll-margin-top:16px}
+
+/* 今日播报 */
+.broadcast{background:var(--card);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
 .broadcast audio{width:100%;margin-bottom:8px}
-.broadcast button{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:12px 20px;font-size:16px;min-height:44px;cursor:pointer}
-.script{white-space:pre-wrap;color:#444}
+.broadcast button{background:var(--accent);color:#fff;border:0;border-radius:9px;
+  padding:12px 20px;font-size:16px;min-height:44px;cursor:pointer}
+.script{white-space:pre-wrap;color:var(--text);font-size:15px;margin:10px 0 0}
 summary{cursor:pointer;min-height:44px;line-height:44px;color:var(--accent);font-weight:600}
+
+/* 卡片 */
 .cards{display:flex;flex-direction:column;gap:10px}
-.card{display:flex;background:var(--card);border-radius:12px;padding:14px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.rank{flex:0 0 36px;height:36px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;margin-right:12px}
+.card{display:flex;background:var(--card);border-radius:13px;padding:14px;
+  box-shadow:var(--shadow);border-left:3px solid transparent}
+/* A2 头条样式分级 */
+.card.headline{background:var(--headline-bg);border-left-color:var(--accent);
+  box-shadow:0 4px 16px rgba(230,67,64,.10)}
+.card.headline h3{font-size:19px;line-height:1.45}
+.card.headline .rank{width:40px;height:40px;font-size:17px}
+.rank{flex:0 0 34px;width:34px;height:34px;border-radius:9px;background:var(--accent);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;
+  font-size:15px;margin-right:12px}
+.headline .rank{background:linear-gradient(135deg,#ff7a5c,#e64340)}
 .body{flex:1;min-width:0}
-h3{font-size:17px;margin:0 0 6px}
-.en{color:var(--muted);font-size:13px;margin:2px 0}
-.meta{color:var(--muted);font-size:13px;margin:6px 0}
-.link{color:var(--accent);font-size:14px;text-decoration:none}
-.views{margin-top:8px;border-top:1px solid var(--line);padding-top:4px}
-.hint{color:var(--muted);font-size:12px;background:#fff8f8;padding:8px;border-radius:6px}
-.view{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
-.view a{color:#333;text-decoration:none}
+h3{font-size:16px;margin:1px 0 7px;line-height:1.5}
+
+/* A3 英文原标题弱化 */
+.en{color:var(--muted);font-size:12px;margin:2px 0;opacity:.75;transition:opacity .2s}
+.card:hover .en{opacity:1}
+
+/* A4 热点标记徽章 */
+.meta-line{margin:7px 0;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.source{color:var(--muted);font-size:12px}
+.badge{font-size:11px;padding:2px 7px;border-radius:20px;font-weight:600;white-space:nowrap}
+.badge.new{background:#e8f5e9;color:#2e7d32}
+.badge.hot{background:#fff3e0;color:#e65100}
+.badge.multi{background:var(--accent-soft);color:var(--accent)}
+@media(prefers-color-scheme:dark){
+  .badge.new{background:#1b3320;color:#81c784}
+  .badge.hot{background:#3a2a15;color:#ffb74d}
+}
+.link{color:var(--accent);font-size:13px;text-decoration:none}
+.views{margin-top:9px;border-top:1px solid var(--line);padding-top:4px}
+.hint{color:var(--muted);font-size:12px;background:var(--accent-soft);
+  padding:8px 10px;border-radius:7px;margin:6px 0}
+.view{display:flex;flex-direction:column;gap:2px;padding:9px 0;
+  border-bottom:1px solid var(--line);font-size:14px}
+.view a{color:var(--text);text-decoration:none}
+/* C8 展开区图片 */
+.view-img{width:100%;max-height:160px;object-fit:cover;border-radius:8px;margin-bottom:4px}
 .empty,.note{color:var(--muted);padding:12px;background:var(--card);border-radius:10px}
-.recent ul{list-style:none;padding:0}
-.recent li{background:var(--card);margin-bottom:8px;padding:12px;border-radius:10px}
-.recent a{color:var(--accent);text-decoration:none}
-@media(min-width:700px){.wrap{padding:24px}}
+
+/* B7 往期回顾时间线 */
+.recent ul.timeline{list-style:none;margin:0;padding:0 0 0 6px}
+.recent li{border-left:2px solid var(--line);padding:0 0 14px 18px;position:relative}
+.recent li:last-child{border-left-color:transparent}
+.recent .dot{position:absolute;left:-6px;top:4px;width:10px;height:10px;
+  border-radius:50%;background:var(--accent)}
+.recent .day-line{font-size:15px;font-weight:600}
+.recent a{color:var(--text);text-decoration:none}
+.recent .day-sum{color:var(--muted);font-size:13px;margin-top:2px}
+
+/* B6 悬浮回到顶部 */
+.to-top{position:fixed;right:18px;bottom:24px;width:44px;height:44px;
+  border-radius:50%;background:var(--accent);color:#fff;font-size:22px;
+  display:flex;align-items:center;justify-content:center;text-decoration:none;
+  box-shadow:0 4px 14px rgba(230,67,64,.35);z-index:99}
+@media(min-width:700px){.wrap{padding:24px 16px 60px}}
 </style>
 
 </head><body><div class="wrap">
 <header><h1>每日热点简报</h1>
-<p class="sub">中文 · 国内外热点 · 更新于 2026-11-18T16:33:28.057399+08:00</p></header>
-<section class="broadcast"><h2>今日播报</h2>
+<p class="sub">更新于 2026-11-18T18:05:02.977677+08:00</p></header>
+<div class="brief"><span class="brief-label">今日焦点</span><span class="brief-text">详讯丨习近平出席亚太经合组织工商领导人峰会开幕式并发，详讯丨习近平会见俄罗斯总统普京，国际上：韩国高风险大学入学考试因AI作弊丑闻陷入混乱</span></div>
+<div class="overview"><span><b>8</b> 条国内热点</span><span class="sep">·</span><span><b>15</b> 条国际热点</span><span class="sep">·</span><span>来自 <b>7</b> 个热榜平台</span></div>
+<nav class="jump"><a href="#domestic">国内热点 ↓</a><a href="#international">国际热点 ↓</a></nav>
+<section class="broadcast" id="broadcast"><h2>今日播报</h2>
 <audio controls preload="none" src="audio/daily.mp3"></audio>
 <details><summary>展开播报稿</summary>
 <p class="script">各位好，今天是11月18日，欢迎收听今日热点。
 
-我们先来看国内的消息。近日，习近平会见了俄罗斯总统普京。同时，亚太经合组织工商领导人峰会开幕式正式举行，习近平出席了开幕式并发表了主旨演讲。在相关外交活动期间，习近平还会见了韩国总统李在明。目前，深圳机场停满了各国领导人的专机，特朗普也将抵达深圳。
+首先来看国内新闻。习近平出席了亚太经合组织工商领导人峰会开幕式，并发表了主旨演讲，他表示十五五规划是面向全球工商界的合作邀约。随后，习近平会见了俄罗斯总统普京，普京对此表达了感谢。在科技贸易方面，英伟达宣布停止向中国供应H200芯片，外交部对此作出了回应。此外，近期市场出现系统中断密集爆发的情况，导致标普指数和纳斯达克指数出现四连跌，软件股遭遇重挫，不过英伟达在盘后上涨了3%，美元也结束了五连涨的势头。
 
-在国际方面，巴西一个偏远部落在生活方式面临威胁的警示下重见天日。韩国的高风险大学入学考试，因为遭遇了人工智能作弊丑闻，目前正陷入混乱。此外，澳大利亚已经宣布对以色列定居者实施制裁。
+接下来关注国际动态。在韩国，高风险大学入学考试因为人工智能作弊丑闻陷入了混乱。与此同时，随着人们对人工智能武器的担忧不断增加，联合国正在召开会议，寻求遏制杀手机器人的发展。在德国方面，德意志银行的泄密文件揭示了特朗普、爱泼斯坦与俄罗斯之间的相关联系。
 
-随着对人工智能武器的担忧不断增加，联合国正在开展对话，寻求遏制杀手机器人的发展。与此同时，在特朗普与习近平会晤之际，中国的人工智能梦想也面临着意外阻碍，这主要源于英伟达的间谍丑闻。而在企业动态方面，英伟达报告销售额大幅飙升，并表示不会恢复黄仁勋的职务。
+在政治与局势方面，民主党人玛丽·佩尔托拉在阿拉斯加赢得参议院选举显得至关重要。而在国际局势上，有观点认为零星战争这种新型世界大战已经在进行之中。另外，在特朗普抵达中国之际，各界对于中美竞争能够取得突破的预期普遍较低。
 
 以上就是今天的要闻，明天同一时间再见。</p></details>
 </section>
-<section><h2>国内热点</h2>
+<section id="domestic"><h2>国内热点</h2>
 <div class="cards">
-<article class="card">
-<div class="rank">1</div>
-<div class="body">
-<h3>习近平会见俄罗斯总统普京</h3>
-<p class="meta">B站热搜 · 持续 2 次 · 3 家媒体报道</p>
-<a class="link" href="https://search.bilibili.com/all?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E4%BC%9A%E8%A7%81%E4%BF%84%E7%BD%97%E6%96%AF%E6%80%BB%E7%BB%9F%E6%99%AE%E4%BA%AC" target="_blank" rel="noopener">查看原文 ›</a>
-<details class="views"><summary>查看各家报道 ▸</summary>
-<p class="hint">以下报道来自 3 家媒体，观点可能不同，请自行判断</p>
-<div class="view">
-<a href="https://search.bilibili.com/all?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E4%BC%9A%E8%A7%81%E4%BF%84%E7%BD%97%E6%96%AF%E6%80%BB%E7%BB%9F%E6%99%AE%E4%BA%AC" target="_blank" rel="noopener">B站热搜：习近平会见俄罗斯总统普京</a>
-</div>
-<div class="view">
-<a href="https://www.thepaper.cn/newsDetail_forward_34502280" target="_blank" rel="noopener">澎湃新闻：习近平会见俄罗斯总统普京</a>
-</div>
-<div class="view">
-<a href="https://www.baidu.com/s?wd=%E4%B9%A0%E8%BF%91%E5%B9%B3%E4%BC%9A%E8%A7%81%E4%BF%84%E7%BD%97%E6%96%AF%E6%80%BB%E7%BB%9F%E6%99%AE%E4%BA%AC" target="_blank" rel="noopener">百度热搜：习近平会见俄罗斯总统普京</a>
-</div>
-</details>
-</div></article>
-<article class="card">
+<article class="card headline">
 <div class="rank">1</div>
 <div class="body">
 <h3>详讯丨习近平出席亚太经合组织工商领导人峰会开幕式并发表主旨演讲</h3>
-<p class="meta">澎湃新闻 · 持续 2 次 · 2 家媒体报道</p>
+<div class="meta-line">
+<span class="source">澎湃新闻</span>
+<span class="badge hot">持续 3 次</span>
+<span class="badge multi">2 家媒体报道</span>
+</div>
 <a class="link" href="https://www.thepaper.cn/newsDetail_forward_34502089" target="_blank" rel="noopener">查看原文 ›</a>
 <details class="views"><summary>查看各家报道 ▸</summary>
 <p class="hint">以下报道来自 2 家媒体，观点可能不同，请自行判断</p>
@@ -87,58 +156,43 @@ h3{font-size:17px;margin:0 0 6px}
 </div>
 </details>
 </div></article>
-<article class="card">
-<div class="rank">1</div>
+<article class="card headline">
+<div class="rank">2</div>
 <div class="body">
-<h3>APEC工商领导人峰会开幕式举行</h3>
-<p class="meta">抖音热榜 · 持续 2 次</p>
-<a class="link" href="https://www.douyin.com/hot/2750072" target="_blank" rel="noopener">查看原文 ›</a>
-</div></article>
-<article class="card">
-<div class="rank">3</div>
-<div class="body">
-<h3>习近平会见韩国总统李在明</h3>
-<p class="meta">B站热搜 · 持续 2 次 · 2 家媒体报道</p>
-<a class="link" href="https://search.bilibili.com/all?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E4%BC%9A%E8%A7%81%E9%9F%A9%E5%9B%BD%E6%80%BB%E7%BB%9F%E6%9D%8E%E5%9C%A8%E6%98%8E" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>详讯丨习近平会见俄罗斯总统普京</h3>
+<div class="meta-line">
+<span class="source">澎湃新闻</span>
+<span class="badge hot">持续 3 次</span>
+<span class="badge multi">2 家媒体报道</span>
+</div>
+<a class="link" href="https://www.thepaper.cn/newsDetail_forward_34503686" target="_blank" rel="noopener">查看原文 ›</a>
 <details class="views"><summary>查看各家报道 ▸</summary>
 <p class="hint">以下报道来自 2 家媒体，观点可能不同，请自行判断</p>
 <div class="view">
-<a href="https://search.bilibili.com/all?keyword=%E4%B9%A0%E8%BF%91%E5%B9%B3%E4%BC%9A%E8%A7%81%E9%9F%A9%E5%9B%BD%E6%80%BB%E7%BB%9F%E6%9D%8E%E5%9C%A8%E6%98%8E" target="_blank" rel="noopener">B站热搜：习近平会见韩国总统李在明</a>
+<a href="https://www.thepaper.cn/newsDetail_forward_34503686" target="_blank" rel="noopener">澎湃新闻：详讯丨习近平会见俄罗斯总统普京</a>
 </div>
 <div class="view">
-<a href="https://www.douyin.com/hot/2751532" target="_blank" rel="noopener">抖音热榜：韩国总统李在明抵达深圳</a>
+<a href="https://www.cls.cn/detail/2537902" target="_blank" rel="noopener">财联社：习近平会见俄罗斯总统普京</a>
 </div>
 </details>
 </div></article>
-<article class="card">
+<article class="card headline">
 <div class="rank">1</div>
 <div class="body">
-<h3>深圳机场停满各国领导人专机</h3>
-<p class="meta">今日头条 · 持续 2 次 · 2 家媒体报道</p>
-<a class="link" href="https://www.toutiao.com/trending/7709090624632327721/" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>英伟达停止向中国供应H200芯片，外交部回应</h3>
+<div class="meta-line">
+<span class="source">财联社</span>
+<span class="badge hot">持续 2 次</span>
+<span class="badge multi">2 家媒体报道</span>
+</div>
+<a class="link" href="https://www.cls.cn/detail/2537828" target="_blank" rel="noopener">查看原文 ›</a>
 <details class="views"><summary>查看各家报道 ▸</summary>
 <p class="hint">以下报道来自 2 家媒体，观点可能不同，请自行判断</p>
 <div class="view">
-<a href="https://www.toutiao.com/trending/7709090624632327721/" target="_blank" rel="noopener">今日头条：深圳机场停满各国领导人专机</a>
+<a href="https://www.cls.cn/detail/2537828" target="_blank" rel="noopener">财联社：英伟达停止向中国供应H200芯片，外交部回应</a>
 </div>
 <div class="view">
-<a href="https://www.baidu.com/s?wd=%E6%B7%B1%E5%9C%B3%E5%AE%9D%E5%AE%89%E6%9C%BA%E5%9C%BA%E5%81%9C%E6%BB%A1%E9%A2%86%E5%AF%BC%E4%BA%BA%E4%B8%93%E6%9C%BA" target="_blank" rel="noopener">百度热搜：深圳宝安机场停满领导人专机</a>
-</div>
-</details>
-</div></article>
-<article class="card">
-<div class="rank">1</div>
-<div class="body">
-<h3>特朗普将抵达深圳</h3>
-<p class="meta">百度热搜 · 持续 2 次 · 2 家媒体报道</p>
-<a class="link" href="https://www.baidu.com/s?wd=%E7%89%B9%E6%9C%97%E6%99%AE%E5%B0%86%E6%8A%B5%E8%BE%BE%E6%B7%B1%E5%9C%B3" target="_blank" rel="noopener">查看原文 ›</a>
-<details class="views"><summary>查看各家报道 ▸</summary>
-<p class="hint">以下报道来自 2 家媒体，观点可能不同，请自行判断</p>
-<div class="view">
-<a href="https://www.baidu.com/s?wd=%E7%89%B9%E6%9C%97%E6%99%AE%E5%B0%86%E6%8A%B5%E8%BE%BE%E6%B7%B1%E5%9C%B3" target="_blank" rel="noopener">百度热搜：特朗普将抵达深圳</a>
-</div>
-<div class="view">
-<a href="https://www.douyin.com/hot/2752379" target="_blank" rel="noopener">抖音热榜：特朗普将抵达深圳</a>
+<a href="https://www.toutiao.com/trending/7709409012864781866/" target="_blank" rel="noopener">今日头条：中方回应英伟达停止向华供应H200芯片</a>
 </div>
 </details>
 </div></article>
@@ -146,177 +200,242 @@ h3{font-size:17px;margin:0 0 6px}
 <div class="rank">1</div>
 <div class="body">
 <h3>系统中断密集爆发，标普、纳指四连跌，软件股重挫，盘后英伟达涨3%，美元结束五连涨</h3>
-<p class="meta">华尔街见闻 · 持续 2 次</p>
+<div class="meta-line">
+<span class="source">华尔街见闻</span>
+<span class="badge hot">持续 3 次</span>
+</div>
 <a class="link" href="https://wallstreetcn.com/articles/3786084" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
-<div class="rank">1</div>
+<div class="rank">2</div>
 <div class="body">
-<h3>黄仁勋事件，美国政府突然回过味来</h3>
-<p class="meta">凤凰网 · 持续 2 次</p>
-<a class="link" href="https://news.ifeng.com/c/8y95PZrEwaQ" target="_blank" rel="noopener">查看原文 ›</a>
-</div></article>
+<h3>十五五规划是面向全球工商界的合作邀约</h3>
+<div class="meta-line">
+<span class="source">B站热搜</span>
+<span class="badge hot">持续 3 次</span>
 </div>
-</section>
-<section><h2>国际热点</h2>
-<div class="cards">
+<a class="link" href="https://search.bilibili.com/all?keyword=%E5%8D%81%E4%BA%94%E4%BA%94%E8%A7%84%E5%88%92%E6%98%AF%E9%9D%A2%E5%90%91%E5%85%A8%E7%90%83%E5%B7%A5%E5%95%86%E7%95%8C%E7%9A%84%E5%90%88%E4%BD%9C%E9%82%80%E7%BA%A6" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
 <article class="card">
-<div class="rank">—</div>
+<div class="rank">4</div>
 <div class="body">
-<h3>在生活方式面临威胁的警示下，巴西一个偏远部落重见天日</h3>
-<p class="en">Isolated Brazilian tribe emerges amid alarm over threats to group’s way of life</p>
-<p class="meta">The Guardian · 2 家媒体报道</p>
-<a class="link" href="https://www.theguardian.com/world/2026/nov/17/brazil-amazon-isolated-indigenous-people" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>普京：感谢中国</h3>
+<div class="meta-line">
+<span class="source">百度热搜</span>
+<span class="badge hot">持续 3 次</span>
+<span class="badge multi">2 家媒体报道</span>
+</div>
+<a class="link" href="https://www.baidu.com/s?wd=%E6%99%AE%E4%BA%AC%EF%BC%9A%E6%84%9F%E8%B0%A2%E4%B8%AD%E5%9B%BD" target="_blank" rel="noopener">查看原文 ›</a>
 <details class="views"><summary>查看各家报道 ▸</summary>
 <p class="hint">以下报道来自 2 家媒体，观点可能不同，请自行判断</p>
 <div class="view">
-<a href="https://www.theguardian.com/world/2026/nov/17/brazil-amazon-isolated-indigenous-people" target="_blank" rel="noopener">The Guardian：在生活方式面临威胁的警示下，巴西一个偏远部落重见天日</a>
+<a href="https://www.baidu.com/s?wd=%E6%99%AE%E4%BA%AC%EF%BC%9A%E6%84%9F%E8%B0%A2%E4%B8%AD%E5%9B%BD" target="_blank" rel="noopener">百度热搜：普京：感谢中国</a>
 </div>
 <div class="view">
-<a href="https://news.google.com/rss/articles/CBMijwFBVV95cUxPVEpLSHpCSFNpV1RtVUNpNXNyOGRzQmQ0ajNqVVlvVDI1V3d3RzE2ellzeTlXb3B5M2R2Nmd3bnZCZ2pPbm95NXFUZlJ2S1A0aVFXMVlqT1RBQ0pLR09pSzlyTTZTT1FqUG9neVhCWG93VnV3Ti1FSFJlU3F2bjZhZVlmRkhpczJkV0d2bkQ4QQ?oc=5" target="_blank" rel="noopener">Google News：在生活方式面临威胁的担忧中，巴西一个隔离部落现身 - 卫报</a>
+<a href="https://www.toutiao.com/trending/7708956473186930218/" target="_blank" rel="noopener">今日头条：普京说感谢中国</a>
 </div>
 </details>
 </div></article>
 <article class="card">
+<div class="rank">1</div>
+<div class="body">
+<h3>特朗普下榻酒店外大批记者等候</h3>
+<div class="meta-line">
+<span class="source">凤凰网</span>
+<span class="badge new">🆕 新增</span>
+</div>
+<a class="link" href="https://original.ifeng.com/c/8y9hRnx03h5" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">4</div>
+<div class="body">
+<h3>APEC峰会有哪些领导人参加</h3>
+<div class="meta-line">
+<span class="source">抖音热榜</span>
+<span class="badge hot">持续 3 次</span>
+</div>
+<a class="link" href="https://www.douyin.com/hot/2750628" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+</div>
+</section>
+<section id="international"><h2>国际热点</h2>
+<div class="cards">
+<article class="card headline">
 <div class="rank">—</div>
 <div class="body">
 <h3>韩国高风险大学入学考试因AI作弊丑闻陷入混乱</h3>
 <p class="en">South Korea’s high-stakes university exams upended by AI cheating scandal</p>
-<p class="meta">The Guardian · 2 家媒体报道</p>
+<div class="meta-line">
+<span class="source">The Guardian</span>
+<span class="badge multi">2 家媒体报道</span>
+</div>
 <a class="link" href="https://www.theguardian.com/world/2026/nov/18/south-korea-university-entrace-exams-ai-cheating-measures" target="_blank" rel="noopener">查看原文 ›</a>
 <details class="views"><summary>查看各家报道 ▸</summary>
 <p class="hint">以下报道来自 2 家媒体，观点可能不同，请自行判断</p>
 <div class="view">
 <a href="https://www.theguardian.com/world/2026/nov/18/south-korea-university-entrace-exams-ai-cheating-measures" target="_blank" rel="noopener">The Guardian：韩国高风险大学入学考试因AI作弊丑闻陷入混乱</a>
+<span class="en">South Korea’s high-stakes university exams upended by AI cheating scandal</span>
 </div>
 <div class="view">
-<a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxNYXB1QXdiejZGZmxwSzk1ZHZMVS1NbE9CV0JkUHVxS0pEQTd3MlluNEN3eEdrcThRaHNra0JBM0x5RjZoR2VmcnZKOV9sUEZnRnRBOExWU2t2WHFNeHFTV0pnZDlXMDVGT0JVVUJqTFpUNE80R0NmTTdocWxVX0lGMjhxWUtSSG5Xbm9QaGpkWDI4NW42V2h3QkxZVW5sX1RMTTdySzd3?oc=5" target="_blank" rel="noopener">Google News：韩国高风险大学考试因AI作弊丑闻陷入混乱 - 卫报</a>
+<a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxNYXB1QXdiejZGZmxwSzk1ZHZMVS1NbE9CV0JkUHVxS0pEQTd3MlluNEN3eEdrcThRaHNra0JBM0x5RjZoR2VmcnZKOV9sUEZnRnRBOExWU2t2WHFNeHFTV0pnZDlXMDVGT0JVVUJqTFpUNE80R0NmTTdocWxVX0lGMjhxWUtSSG5Xbm9QaGpkWDI4NW42V2h3QkxZVW5sX1RMTTdySzd3?oc=5" target="_blank" rel="noopener">Google News：韩国高风险大学考试因AI作弊丑闻陷入混乱 - 《卫报》</a>
+<span class="en">South Korea’s high-stakes university exams upended by AI cheating scandal - The Guardian</span>
 </div>
 </details>
 </div></article>
-<article class="card">
+<article class="card headline">
 <div class="rank">—</div>
 <div class="body">
-<h3>澳大利亚对以色列定居者实施制裁</h3>
-<p class="en">Australia issues sanctions targeting Israeli settlers</p>
-<p class="meta">Al Jazeera · 2 家媒体报道</p>
-<a class="link" href="https://www.aljazeera.com/video/newsfeed/2026/11/18/australia-issues-sanctions-targeting-israeli-settlers?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>随着对人工智能武器的担忧增加，联合国会议寻求遏制“杀手机器人”</h3>
+<p class="en">U.N. talks seek to rein in &#x27;killer robots&#x27; as fears over AI weapons grow</p>
+<div class="meta-line">
+<span class="source">NPR</span>
+<span class="badge multi">2 家媒体报道</span>
+</div>
+<a class="link" href="https://www.npr.org/2026/11/16/nx-s1-6042548/un-killer-robots-ai-weapons-drones" target="_blank" rel="noopener">查看原文 ›</a>
 <details class="views"><summary>查看各家报道 ▸</summary>
 <p class="hint">以下报道来自 2 家媒体，观点可能不同，请自行判断</p>
 <div class="view">
-<a href="https://www.aljazeera.com/video/newsfeed/2026/11/18/australia-issues-sanctions-targeting-israeli-settlers?traffic_source=rss" target="_blank" rel="noopener">Al Jazeera：澳大利亚对以色列定居者实施制裁</a>
+<a href="https://www.npr.org/2026/11/16/nx-s1-6042548/un-killer-robots-ai-weapons-drones" target="_blank" rel="noopener">NPR：随着对人工智能武器的担忧增加，联合国会议寻求遏制“杀手机器人”</a>
+<span class="en">U.N. talks seek to rein in &#x27;killer robots&#x27; as fears over AI weapons grow</span>
 </div>
 <div class="view">
-<a href="https://news.google.com/rss/articles/CBMiygFBVV95cUxQVlFrYWNBX1NLTHhNc00ycmhVV0dFNlRNX0xOcGFKcUhaYmNSU093YzlyTm9xOVlGRGlxblJhajk5ME5HMy0zeXFHc2FQUGFBd3lvUGtaNENWMTB2YVV6eHJ4NzZ1N3pHcjJqam9sQ2kxRk4wNUU4Z1NLbDA4bWQyUVpMakxVa0Q3S2UxeUE1Nm92RmhKUFVHMVl3UUVETHQxMVk4QlYwS0ZhNXRPSGVsUGRQX0F6OFJiZ1N5WGIyb1l5TkliTkhwT2NB?oc=5" target="_blank" rel="noopener">Google News：澳大利亚因以色列定居者在约旦河西岸扩张行为实施制裁 - 路透社</a>
+<a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxORjVjenZkdk1vNVNjSTR1UklRSHZCMGllZVR5N2lfRXo2MXg0MzBnQjBxekctUk5RZWJQaGRxYTRyekJvSzAzM0piT0I2dVhlcmVUalpyV2FxQVQtMVNLdGZpWjFBUUY4bGVBbldicWVnZ0MtWnNoQmhMYmVYWllHY3pHcUc4Zw?oc=5" target="_blank" rel="noopener">Google News：随着对AI武器的担忧增加，联合国会议寻求遏制“杀人机器人” - NPR</a>
+<span class="en">U.N. talks seek to rein in &#x27;killer robots&#x27; as fears over AI weapons grow - NPR</span>
 </div>
 </details>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>随着对AI武器的担忧增加，联合国开展对话寻求遏制“杀手机器人” - NPR</h3>
-<p class="en">U.N. talks seek to rein in &#x27;killer robots&#x27; as fears over AI weapons grow - NPR</p>
-<p class="meta">Google News · 2 家媒体报道</p>
-<a class="link" href="https://news.google.com/rss/articles/CBMihgFBVV95cUxORjVjenZkdk1vNVNjSTR1UklRSHZCMGllZVR5N2lfRXo2MXg0MzBnQjBxekctUk5RZWJQaGRxYTRyekJvSzAzM0piT0I2dVhlcmVUalpyV2FxQVQtMVNLdGZpWjFBUUY4bGVBbldicWVnZ0MtWnNoQmhMYmVYWllHY3pHcUc4Zw?oc=5" target="_blank" rel="noopener">查看原文 ›</a>
-<details class="views"><summary>查看各家报道 ▸</summary>
-<p class="hint">以下报道来自 2 家媒体，观点可能不同，请自行判断</p>
-<div class="view">
-<a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxORjVjenZkdk1vNVNjSTR1UklRSHZCMGllZVR5N2lfRXo2MXg0MzBnQjBxekctUk5RZWJQaGRxYTRyekJvSzAzM0piT0I2dVhlcmVUalpyV2FxQVQtMVNLdGZpWjFBUUY4bGVBbldicWVnZ0MtWnNoQmhMYmVYWllHY3pHcUc4Zw?oc=5" target="_blank" rel="noopener">Google News：随着对AI武器的担忧增加，联合国开展对话寻求遏制“杀手机器人” - NPR</a>
+<h3>德意志银行泄密文件揭示了特朗普、爱泼斯坦与俄罗斯之间的哪些联系？</h3>
+<p class="en">What do Deutsche Bank leaks reveal about Trump, Epstein and Russia?</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
 </div>
-<div class="view">
-<a href="https://www.npr.org/2026/11/16/nx-s1-6042548/un-killer-robots-ai-weapons-drones" target="_blank" rel="noopener">NPR：随着对人工智能武器的担忧日益增长，联合国会议寻求遏制“杀手机器人”</a>
+<a class="link" href="https://www.aljazeera.com/news/2026/11/18/what-do-deutsche-bank-leaks-reveal-about-trump-epstein-and-russia?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
+</div></article>
+<article class="card">
+<div class="rank">—</div>
+<div class="body">
+<h3>民主党人玛丽·佩尔托拉在阿拉斯加赢得参议院选举为何至关重要</h3>
+<p class="en">Why Democrat Mary Peltola’s US Senate win in Alaska matters</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
 </div>
-</details>
+<a class="link" href="https://www.aljazeera.com/news/2026/11/18/why-democrat-mary-peltolas-us-senate-win-in-alaska-matters?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>特朗普与习近平会晤之际，中国的AI梦想面临意外阻碍：英伟达间谍丑闻</h3>
-<p class="en">As Trump and Xi meet, China&#x27;s AI dreams face an unexpected hurdle: the Nvidia spy scandal</p>
-<p class="meta">BBC</p>
-<a class="link" href="https://www.bbc.co.uk/news/articles/c5vg23g92rj4o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>零星战争：一种新型世界大战已经在进行中</h3>
+<p class="en">Piecemeal wars: A new kind of world war is already under way</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
+</div>
+<a class="link" href="https://www.aljazeera.com/opinions/2026/11/18/piecemeal-wars-a-new-kind-of-world-war-is-already-under-way?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>英伟达报告销售额飙升，并表示不会恢复黄仁勋（职务/地位）</h3>
-<p class="en">Nvidia says it won&#x27;t reinstate Huang as it reports soaring sales</p>
-<p class="meta">BBC</p>
-<a class="link" href="https://www.bbc.co.uk/news/articles/cm2kl50vkwkdo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>特朗普抵达中国之际，各界对中美竞争取得突破的预期较低</h3>
+<p class="en">As Trump arrives in China, low expectations for breakthroughs in rivalry</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
+</div>
+<a class="link" href="https://www.aljazeera.com/economy/2026/11/18/as-trump-arrives-in-china-low-expectations-for-breakthroughs-in-rivalry?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>卢比奥称在系列技术故障发生后，美国并未“受到系统性攻击”</h3>
-<p class="en">Rubio says US not &#x27;under systemic attack&#x27; after series of tech outages</p>
-<p class="meta">BBC</p>
-<a class="link" href="https://www.bbc.co.uk/news/articles/crkgvxxwpwz2o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>图片：数千人在海地游行，支持萨尔瓦多军队</h3>
+<p class="en">Photos: Thousands march in Haiti in support of Salvadoran troops</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
+</div>
+<a class="link" href="https://www.aljazeera.com/gallery/2026/11/18/photos-thousands-march-in-haiti-in-support-of-salvadoran-troops?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>中期选举计票开始两周后，民主党赢得阿拉斯加州参议院选举</h3>
-<p class="en">Democrats win Alaska Senate race two weeks after midterms counting began</p>
-<p class="meta">BBC</p>
-<a class="link" href="https://www.bbc.co.uk/news/articles/cqev3v2ygzlvo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>“砂纸门”事件：澳大利亚板球协会将为球员开设论坛，并排除调查可能</h3>
+<p class="en">Sandpapergate: Cricket Australia to open forum for players, rules out probe</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
+</div>
+<a class="link" href="https://www.aljazeera.com/sports/2026/11/18/sandpapergate-cricket-australia-to-open-forum-for-players-rules-out-probe?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>克里米亚大桥部分坍塌，泽连斯基称乌克兰发动了“史无前例”的袭击</h3>
-<p class="en">Putin&#x27;s Crimean Bridge partly collapses as Zelensky hails &#x27;unprecedented&#x27; attack by Ukraine</p>
-<p class="meta">BBC</p>
-<a class="link" href="https://www.bbc.co.uk/news/articles/cw772jk4rvmxo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>印英关系超越了莫迪的“去殖民化”修辞</h3>
+<p class="en">India-UK ties outride Modi’s ‘decolonisation’ rhetoric</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
+</div>
+<a class="link" href="https://www.aljazeera.com/news/2026/11/18/india-uk-ties-outride-modis-decolonisation-rhetoric?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>菲律宾警方请求检察官就儿童性虐待材料起诉托马斯·马克尔</h3>
-<p class="en">Philippines police ask prosecutors to charge Thomas Markle over child sex abuse material</p>
-<p class="meta">BBC</p>
-<a class="link" href="https://www.bbc.co.uk/news/articles/ckg5ry8m49ggo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>涉及缅甸的砷污染引发泰国对清洁水的争夺</h3>
+<p class="en">Myanmar-linked arsenic pollution prompts clean water scramble in Thailand</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
+</div>
+<a class="link" href="https://www.aljazeera.com/news/2026/11/18/arsenic-pollution-linked-to-myanmar-mining-prompts-water-alert-in-thailand?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>“真的很可怕”：母亲描述在俄罗斯袭击基辅大桥期间躲避的过程</h3>
-<p class="en">&#x27;It was really scary&#x27;: Mother describes sheltering during Russia strikes on Kyiv bridge</p>
-<p class="meta">BBC</p>
-<a class="link" href="https://www.bbc.co.uk/news/articles/cq7825234lgmo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>帕丽斯·希尔顿与AOC共同发声反对AI生成的深度伪造内容</h3>
+<p class="en">Paris Hilton and AOC speak against AI-generated deepfakes</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
+</div>
+<a class="link" href="https://www.aljazeera.com/video/newsfeed/2026/11/18/paris-hilton-and-aoc-speak-against-ai-generated-deepfakes?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>巴勒斯坦卫生部称，一名72岁巴勒斯坦妇女在约旦河西岸被以色列定居者枪杀</h3>
-<p class="en">Palestinian woman, 72, shot dead by Israeli settlers in West Bank, health ministry says</p>
-<p class="meta">BBC</p>
-<a class="link" href="https://www.bbc.co.uk/news/articles/cqrlg377638yo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>美国移民与海关执法局证实，委内瑞拉拳击手利纳雷斯在美国被捕并面临驱逐出境</h3>
+<p class="en">Venezuelan boxer Linares arrested in US and faces deportation, ICE confirms</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
+</div>
+<a class="link" href="https://www.aljazeera.com/sports/2026/11/18/venezuelan-boxer-linares-detained-in-us-and-faces-deportation-ice-confirms?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>俄罗斯一架军用飞机坠毁，机上19人全部遇难</h3>
-<p class="en">Russian military plane crashes, killing all 19 on board</p>
-<p class="meta">BBC</p>
-<a class="link" href="https://www.bbc.co.uk/news/articles/cw8085rykkmgo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>“我们想回去”：罗兴亚难民将希望寄托于国际法院的种族灭绝裁决</h3>
+<p class="en">‘We want to go back’: Rohingya refugees pin hopes on ICJ genocide verdict</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
+</div>
+<a class="link" href="https://www.aljazeera.com/features/2026/11/18/we-want-to-go-back-rohingya-refugees-pin-hopes-on-icj-genocide-verdict?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>由于病例数创纪录，美国在时隔26年后失去消除麻疹地位</h3>
-<p class="en">US loses measles elimination status after 26 years amid record case numbers</p>
-<p class="meta">BBC</p>
-<a class="link" href="https://www.bbc.co.uk/news/articles/c977p71jx0xxo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>海地人举行集会，庆祝萨尔瓦多部署部队打击帮派</h3>
+<p class="en">Haitians rally in celebration of El Salvador’s anti-gang troop deployment</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
+</div>
+<a class="link" href="https://www.aljazeera.com/video/newsfeed/2026/11/18/haitians-rally-in-celebration-of-el-salvadors-anti-gang-troop-deployment?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 <article class="card">
 <div class="rank">—</div>
 <div class="body">
-<h3>一名因涉嫌间谍活动被英国警方逮捕的美国士兵已被移交给美军监管</h3>
-<p class="en">American soldier arrested by UK police on suspicion of spying taken into US military custody</p>
-<p class="meta">BBC</p>
-<a class="link" href="https://www.bbc.co.uk/news/articles/c6x284ez38vdo?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">查看原文 ›</a>
+<h3>法医专家称，爱泼斯坦之死更有可能是谋杀而非自杀</h3>
+<p class="en">Epstein’s death more likely homicide than suicide, forensic expert says</p>
+<div class="meta-line">
+<span class="source">Al Jazeera</span>
+</div>
+<a class="link" href="https://www.aljazeera.com/news/2026/11/18/forensic-experts-says-jeffrey-epstein-was-killed-casts-doubt-over-suicide?traffic_source=rss" target="_blank" rel="noopener">查看原文 ›</a>
 </div></article>
 </div>
 </section>
-<script>function speak(){if('speechSynthesis' in window){var u=new SpeechSynthesisUtterance("各位好，今天是11月18日，欢迎收听今日热点。\n\n我们先来看国内的消息。近日，习近平会见了俄罗斯总统普京。同时，亚太经合组织工商领导人峰会开幕式正式举行，习近平出席了开幕式并发表了主旨演讲。在相关外交活动期间，习近平还会见了韩国总统李在明。目前，深圳机场停满了各国领导人的专机，特朗普也将抵达深圳。\n\n在国际方面，巴西一个偏远部落在生活方式面临威胁的警示下重见天日。韩国的高风险大学入学考试，因为遭遇了人工智能作弊丑闻，目前正陷入混乱。此外，澳大利亚已经宣布对以色列定居者实施制裁。\n\n随着对人工智能武器的担忧不断增加，联合国正在开展对话，寻求遏制杀手机器人的发展。与此同时，在特朗普与习近平会晤之际，中国的人工智能梦想也面临着意外阻碍，这主要源于英伟达的间谍丑闻。而在企业动态方面，英伟达报告销售额大幅飙升，并表示不会恢复黄仁勋的职务。\n\n以上就是今天的要闻，明天同一时间再见。");u.lang='zh-CN';window.speechSynthesis.speak(u);}else{alert('当前浏览器不支持朗读');}}</script>
-</div></body></html>
+</div><a class="to-top" href="#" aria-label="回到顶部">↑</a>
+<script>function speak(){if('speechSynthesis' in window){var u=new SpeechSynthesisUtterance("各位好，今天是11月18日，欢迎收听今日热点。\n\n首先来看国内新闻。习近平出席了亚太经合组织工商领导人峰会开幕式，并发表了主旨演讲，他表示十五五规划是面向全球工商界的合作邀约。随后，习近平会见了俄罗斯总统普京，普京对此表达了感谢。在科技贸易方面，英伟达宣布停止向中国供应H200芯片，外交部对此作出了回应。此外，近期市场出现系统中断密集爆发的情况，导致标普指数和纳斯达克指数出现四连跌，软件股遭遇重挫，不过英伟达在盘后上涨了3%，美元也结束了五连涨的势头。\n\n接下来关注国际动态。在韩国，高风险大学入学考试因为人工智能作弊丑闻陷入了混乱。与此同时，随着人们对人工智能武器的担忧不断增加，联合国正在召开会议，寻求遏制杀手机器人的发展。在德国方面，德意志银行的泄密文件揭示了特朗普、爱泼斯坦与俄罗斯之间的相关联系。\n\n在政治与局势方面，民主党人玛丽·佩尔托拉在阿拉斯加赢得参议院选举显得至关重要。而在国际局势上，有观点认为零星战争这种新型世界大战已经在进行之中。另外，在特朗普抵达中国之际，各界对于中美竞争能够取得突破的预期普遍较低。\n\n以上就是今天的要闻，明天同一时间再见。");u.lang='zh-CN';window.speechSynthesis.speak(u);}else{alert('当前浏览器不支持朗读');}}</script>
+</body></html>
