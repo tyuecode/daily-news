@@ -33,9 +33,10 @@ daily-news-v2/
 │   ├── generate.py               # 核心 L0–L8 流程，支持 --dry-run
 │   ├── ai_client.py              # Workers AI 封装（双返回兼容 / 退避 / 分批翻译）
 │   └── hot_client.py             # newsnow 热榜 API 封装 + 热度算法 + 链接校验
-├── smoke_test.py                 # 运行时冒烟测试（79 项，实际调用函数）
+├── smoke_test.py                 # 运行时冒烟测试（114 项，实际调用函数）
 ├── index.html                    # 首页（由脚本生成）
-├── archive/YYYY-MM-DD.html       # 每日归档（保留 30 天）
+├── robots.txt                    # 搜索引擎收录许可（利于国内用户搜索到本站）
+├── archive/YYYY-MM-DD.html       # 每日归档（保留 30 天，带最近日期导航）
 ├── data/
 │   ├── entries.json              # 结构化数据，唯一真相源（保留 30 天）
 │   ├── snapshots/*.json          # 热榜快照（保留 7 天，用于计算 frequency）
