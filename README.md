@@ -33,13 +33,13 @@ daily-news-v2/
 │   ├── generate.py               # 核心 L0–L8 流程，支持 --dry-run
 │   ├── ai_client.py              # Workers AI 封装（双返回兼容 / 退避 / 分批翻译）
 │   └── hot_client.py             # newsnow 热榜 API 封装 + 热度算法 + 链接校验
-├── smoke_test.py                 # 运行时冒烟测试（61 项，实际调用函数）
+├── smoke_test.py                 # 运行时冒烟测试（79 项，实际调用函数）
 ├── index.html                    # 首页（由脚本生成）
 ├── archive/YYYY-MM-DD.html       # 每日归档（保留 30 天）
 ├── data/
 │   ├── entries.json              # 结构化数据，唯一真相源（保留 30 天）
-│   ├── snapshots/*.json          # 热榜快照（用于计算 frequency）
-│   └── runs/YYYY-MM-DD.json      # 运行报告
+│   ├── snapshots/*.json          # 热榜快照（保留 7 天，用于计算 frequency）
+│   └── runs/YYYY-MM-DD-HHMM.json # 运行报告（每次运行独立保留，不覆盖）
 ├── audio/daily.mp3               # 每日播报音频（只留最新一天）
 ├── requirements.txt
 ├── .gitattributes                # 强制 LF，防止 workflow 在 Ubuntu 上炸
@@ -60,6 +60,18 @@ daily-news-v2/
 
 - 卡片显示：排名徽章、来源平台、🆕 新增 / 持续 N 次、N 家媒体报道。
 - 链接安全：只接受 `https://` 且域名与平台预期匹配的链接，防链接劫持。
+
+### 国内热点质量筛选（大事件优先，不凑数）
+
+国内版块**只要 8 条精品卡**，不追求数量：
+
+1. **剔除低信息量标题**：纯缩写（APEC / G20）、过短标题（<4 汉字）、
+   花絮八卦（「握手摘手套」「拍拍拍」「知识点」等）。
+2. **大事件加权**：含「习近平 / 会见 / 峰会 / 国务院 / 发布 / 政策 / 首次」等
+   信号词的标题，每条 +0.02（最多 +0.12），重新排序后置顶。
+3. **兜底**：若过滤后不足 8 条，退回未过滤列表补足，保证闸门不会误伤。
+
+国际版块维持 15 条，多源卡继续置顶（按方案 B，不设媒体配额）。
 
 ---
 

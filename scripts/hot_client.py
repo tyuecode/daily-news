@@ -329,3 +329,68 @@ def merge_platform_clusters(items: list[dict],
 
     merged.sort(key=lambda x: (x.get("score", 0), -x.get("rank", 999)), reverse=True)
     return merged
+
+
+# ── 国内热点质量筛选（大事件优先，不要求数量）────────────────────────
+
+# 纯缩写/过短标题：看不出发生了什么，如「APEC」「G20」
+_LOW_INFO_EXACT = {"APEC", "G20", "G7", "GDP", "AI", "CEO", "IPO"}
+
+# 花絮/八卦/知识点类模式：不是「大事件」，命中即淘汰。
+# 用 contains_keyword 的词边界逻辑，中文按子串匹配。
+_TRIVIA_PATTERNS = [
+    "摘手套", "握手时", "拍拍拍", "知识点", "随行人员", "表情包", "同款",
+    "reaction", " Reaction", "围观", "可爱", "萌", "搞笑", "盘点",
+]
+
+# 重大事件信号词：命中越多，越可能是「今天的大事」
+_MAJOR_SIGNALS = [
+    "习近平", "普京", "李在明", "会见", "会谈", "峰会", "开幕", "出席",
+    "国务院", "中央", "发布", "宣布", "推出", "实施", "通过", "启动",
+    "规划", "政策", "重大", "首次", "全面", "国务院常务会议", "新闻发布会",
+]
+
+
+def is_low_quality_title(title: str) -> bool:
+    """判断是否为低信息量/花絮类标题，应当从国内热点主列表中剔除。
+
+    规则保守，宁可放过也不误杀真新闻：
+    - 纯英文缩写（APEC / G20 等）或与之一致的短标题；
+    - 标题长度 < 4 个汉字；
+    - 命中明确的花絮关键词（摘手套、拍拍拍、知识点等）。
+    """
+    text = (title or "").strip()
+    if not text:
+        return True
+    if text.upper() in _LOW_INFO_EXACT:
+        return True
+    chinese_count = len(re.findall(r"[\u4e00-\u9fff]", text))
+    if chinese_count < 4:
+        return True
+    for keyword in _TRIVIA_PATTERNS:
+        if keyword in text:
+            return True
+    return False
+
+
+def major_event_boost(title: str) -> float:
+    """大事件信号加分：每命中一个信号词 +0.02，最多 +0.12（封顶）。"""
+    return min(0.12, sum(1 for k in _MAJOR_SIGNALS if k in (title or "")) * 0.02)
+
+
+def refine_domestic(items: list[dict], top_n: int = 8) -> list[dict]:
+    """国内热点质量筛选：淘汰低信息量标题，大事件加权，取前 N 条精品。
+
+    - 过滤：is_low_quality_title 命中的条目直接丢弃。
+    - 加权：score += major_event_boost(title)，重新排序。
+    - 限量：只取前 top_n 条（默认 8），质量优先、不要求数量。
+    - 安全兜底：若过滤后不足 top_n 条，放宽到不过滤的原始列表补足，
+      保证发布闸门（>=3 条）不会因过滤过度而误伤。
+    """
+    kept = [x for x in items if not is_low_quality_title(x.get("title", ""))]
+    if not kept:
+        kept = list(items)  # 极端情况全被过滤时退回原始列表
+    for item in kept:
+        item["score"] = round(item.get("score", 0) + major_event_boost(item.get("title", "")), 4)
+    kept.sort(key=lambda x: (x.get("score", 0), -x.get("rank", 999)), reverse=True)
+    return kept[:top_n]

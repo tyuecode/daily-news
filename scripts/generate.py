@@ -54,7 +54,8 @@ KEEP_DAYS = 30                  # entries 与归档保留天数
 RECENT_DAYS = 7                 # 首页最近几天摘要列表
 MAX_RAW_NEWS = 100              # raw_news 最多条数
 INTL_TOP_N = 15                 # 国际热点展示条数
-DOMESTIC_TOP_N = 15             # 国内热点展示条数
+DOMESTIC_TOP_N = 8              # 国内热点展示条数：大事件优先，质量优先不凑数
+SNAPSHOT_KEEP_DAYS = 7          # 快照只留 7 天（frequency 只看 7 天）
 BROADCAST_POINTS = 12           # 播报稿要点数
 MIN_SECTION_ITEMS = 3           # 闸门：每个版块至少条数
 MIN_CHINESE_RATIO = 0.60        # 闸门：中文占比下限
@@ -533,7 +534,10 @@ def render_day(day: dict, is_today: bool, site_url: str = "") -> str:
             parts.append("</ul></section>")
     else:
         parts.append("<p class=\"note\">本页为归档，音频仅当日有效。</p>")
-        parts.append(f"<p><a href=\"{html.escape(site_url)}index.html\">返回首页</a></p>")
+        # 归档页在 /archive/ 下，返回首页必须是 ../index.html（相对路径），
+        # 否则会解析成 /archive/index.html 死链。site_url 为空时使用相对路径。
+        home_href = html.escape(site_url) if site_url else "../index.html"
+        parts.append(f"<p><a href=\"{home_href}\">返回首页</a></p>")
 
     # 播报降级脚本（放在末尾，JSON 中把 < > & 转成 Unicode 转义，杜绝任何标签注入）
     safe_json = (json.dumps(broadcast, ensure_ascii=False)
@@ -650,16 +654,26 @@ def truncate_title_for_summary(day: dict) -> str:
 
 
 def cleanup_old(paths: Paths, now: datetime, logger: Callable = log):
-    """清理 30 天前的归档与 entries 记录。"""
+    """清理 30 天前的归档/entries/运行报告，以及 7 天前的热榜快照。
+
+    frequency 只回溯 7 天快照，更早的快照无用，必须清掉，否则每天 3 份无限累积。
+    """
     cutoff = (now - timedelta(days=KEEP_DAYS)).strftime("%Y-%m-%d")
+    snapshot_cutoff = (now - timedelta(days=SNAPSHOT_KEEP_DAYS)).strftime("%Y-%m-%d")
     count = 0
     for archive in paths.archive.glob("*.html"):
         if archive.stem < cutoff:
             archive.unlink()
             count += 1
     for run in paths.runs.glob("*.json"):
-        if run.stem < cutoff:
+        if run.stem[:10] < cutoff:
             run.unlink()
+    snapshot_count = 0
+    for snapshot in paths.snapshots.glob("*.json"):
+        # 快照文件名格式 YYYY-MM-DD-HHMM.json，前 10 位是日期
+        if snapshot.stem[:10] < snapshot_cutoff:
+            snapshot.unlink()
+            snapshot_count += 1
 
     entries = load_entries(paths.entries)
     before = len(entries["days"])
@@ -667,12 +681,14 @@ def cleanup_old(paths: Paths, now: datetime, logger: Callable = log):
     entries["days"].sort(key=lambda d: d.get("date", ""), reverse=True)
     with open(paths.entries, "w", encoding="utf-8") as fh:
         json.dump(entries, fh, ensure_ascii=False, indent=2)
-    if count or before != len(entries["days"]):
-        logger(f"已清理 {count} 个过期归档，{before - len(entries['days'])} 条过期数据")
+    if count or snapshot_count or before != len(entries["days"]):
+        logger(f"已清理 {count} 个过期归档，{snapshot_count} 个过期快照，"
+               f"{before - len(entries['days'])} 条过期数据")
 
 
 def write_run_report(paths: Paths, now: datetime, report: dict):
-    path = paths.runs / f"{now.strftime('%Y-%m-%d')}.json"
+    """运行报告按「日期-时分」命名，每天 3 次运行各自保留，不再互相覆盖。"""
+    path = paths.runs / f"{now.strftime('%Y-%m-%d-%H%M')}.json"
     with open(path, "w", encoding="utf-8") as fh:
         json.dump(report, fh, ensure_ascii=False, indent=2)
 
@@ -711,7 +727,9 @@ def generate(dry_run: bool = False, ai_text_fn: Callable | None = None,
     # L2
     log("L2 快照与热度计算")
     domestic = score_hot_items(hot_raw, paths, now)
-    domestic = domestic[:DOMESTIC_TOP_N]
+    # 国内热点质量筛选：过滤花絮/缩写，大事件加权，只取 8 条精品
+    domestic = hot_client.refine_domestic(domestic, top_n=DOMESTIC_TOP_N)
+    log(f"国内热点质量筛选后保留 {len(domestic)} 条（大事件优先）")
 
     # L3
     log("L3 翻译国际标题（每批 8 条）")
@@ -951,6 +969,8 @@ def run_dry_run():
         domestic = today["sections"]["domestic"]
         international = today["sections"]["international"]
         assert domestic and international, "国内/国际版块不能为空"
+        assert len(domestic) <= DOMESTIC_TOP_N, "国内热点未限量到 8 条精品"
+        assert all(not hot_client.is_low_quality_title(x["title"]) for x in domestic), "低质量标题未过滤"
         assert max(x["frequency"] for x in domestic) >= 3, "frequency 计算失败（应至少出现 3 次）"
         assert any(not x["is_new"] for x in domestic), "持续热点未标注为新增=false"
         assert paths.index.exists() and paths.audio_mp3.exists(), "首页或音频未生成"

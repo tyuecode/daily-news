@@ -285,6 +285,68 @@ gate_ok, _ = generate.passes_gate(
 check("闸门通过（各 3 条 + 中文占比达标）", gate_ok)
 
 
+# ── 14. 国内热点质量筛选 ────────────────────────────────────────────
+print("\n[14] 国内热点质量筛选（大事件优先）")
+check("纯缩写 APEC 被剔除", hot_client.is_low_quality_title("APEC"))
+check("G20 被剔除", hot_client.is_low_quality_title("G20"))
+check("过短标题被剔除", hot_client.is_low_quality_title("开会"))
+check("花絮标题被剔除", hot_client.is_low_quality_title("文莱领导人握手中方安保1秒摘手套"))
+check("拍拍拍花絮被剔除", hot_client.is_low_quality_title("李在明随行人员开启拍拍拍模式"))
+check("知识点标题被剔除", hot_client.is_low_quality_title("APEC中国年这些知识点不容错过"))
+check("重大新闻保留", not hot_client.is_low_quality_title("习近平会见俄罗斯总统普京"))
+check("财经新闻保留", not hot_client.is_low_quality_title("英伟达业绩超预期股价大涨"))
+check("大事件信号加分", hot_client.major_event_boost("习近平会见普京并出席峰会开幕") >= 0.08)
+check("无信号不加分", hot_client.major_event_boost("某地今日天气晴") == 0.0)
+
+quality_items = [
+    {"title": "习近平会见俄罗斯总统普京", "rank": 1, "score": 0.60, "url": "https://baidu.com/1", "cluster": []},
+    {"title": "APEC", "rank": 1, "score": 0.62, "url": "https://weibo.com/1", "cluster": []},
+    {"title": "文莱领导人握手中方安保1秒摘手套", "rank": 2, "score": 0.65, "url": "https://weibo.com/2", "cluster": []},
+    {"title": "国务院发布新的经济刺激政策", "rank": 1, "score": 0.58, "url": "https://thepaper.cn/1", "cluster": []},
+] + [
+    {"title": f"国内重要新闻事件第{i}条", "rank": 2, "score": 0.55, "url": f"https://baidu.com/{i}", "cluster": []}
+    for i in range(3, 12)
+]
+refined = hot_client.refine_domestic([dict(x) for x in quality_items], top_n=8)
+check("筛选后只保留 8 条", len(refined) == 8, f"实际={len(refined)}")
+check("APEC 与花絮被剔除", all("APEC" != x["title"] and "手套" not in x["title"] for x in refined))
+check("大事件加分后排首位", refined[0]["title"] == "习近平会见俄罗斯总统普京",
+      f"实际首位={refined[0]['title']}")
+check("全被过滤时兜底返回原列表",
+      len(hot_client.refine_domestic([{"title": "APEC", "rank": 1, "score": 0.5, "url": "https://x.com/1"}])) >= 1)
+
+
+# ── 15. 归档页返回首页链接与快照清理 ────────────────────────────────
+print("\n[15] 归档链接与快照清理")
+archive_html = generate.render_day({
+    "date": "2026-11-18", "updated_at": "2026-11-18T14:00:00+08:00",
+    "broadcast": "", "tts_ok": False,
+    "sections": {"domestic": [], "international": []},
+}, is_today=False)
+check("归档页返回首页用 ../index.html", 'href="../index.html"' in archive_html,
+      "归档页链接仍可能死链")
+
+with tempfile.TemporaryDirectory() as tmp:
+    root = Path(tmp)
+    paths = generate.Paths(root)
+    paths.ensure_dirs()
+    old_snap = (generate.beijing_now() - timedelta(days=9)).strftime("%Y-%m-%d") + "-1200.json"
+    new_snap = (generate.beijing_now() - timedelta(days=2)).strftime("%Y-%m-%d") + "-1200.json"
+    (paths.snapshots / old_snap).write_text("{}", encoding="utf-8")
+    (paths.snapshots / new_snap).write_text("{}", encoding="utf-8")
+    (paths.entries).write_text('{"days": []}', encoding="utf-8")
+    generate.cleanup_old(paths, generate.beijing_now(), lambda _: None)
+    check("7 天前快照被清理", not (paths.snapshots / old_snap).exists())
+    check("2 天前快照保留", (paths.snapshots / new_snap).exists())
+
+    # 运行报告按分钟命名，不覆盖
+    moment = datetime(2026, 11, 18, 15, 11, tzinfo=generate.BEIJING_TZ)
+    generate.write_run_report(paths, moment, {"run_id": "test"})
+    generate.write_run_report(paths, moment.replace(minute=12), {"run_id": "test2"})
+    names = sorted(p.name for p in paths.runs.glob("*.json"))
+    check("运行报告按分钟分别保留", len(names) == 2, f"实际={names}")
+
+
 # ── 汇总 ────────────────────────────────────────────────────────────
 print(f"\n{'=' * 50}")
 print(f"冒烟测试完成：通过 {PASS} 项，失败 {FAIL} 项")
