@@ -302,6 +302,11 @@ check("莅临流水账被剔除", hot_client.is_low_quality_title("法国总统�
 check("救援抵达不误杀", not hot_client.is_low_quality_title("救援物资抵达地震灾区"))
 check("医疗队抵达不误杀", not hot_client.is_low_quality_title("医疗队抵达洪水前线开展援助"))
 check("峰会出席不误杀", not hot_client.is_low_quality_title("习近平出席APEC开幕式"))
+check("下榻花絮被剔除", hot_client.is_low_quality_title("特朗普下榻酒店外大批记者等候"))
+check("有哪些盘点被剔除", hot_client.is_low_quality_title("APEC峰会有哪些领导人参加"))
+check("看点一览被剔除", hot_client.is_low_quality_title("G20峰会看点一览"))
+check("等候救援不误杀", not hot_client.is_low_quality_title("被困群众等候救援物资抵达"))
+check("制裁名单不误杀", not hot_client.is_low_quality_title("美国公布制裁名单"))
 check("大事件信号加分", hot_client.major_event_boost("习近平会见普京并出席峰会开幕") >= 0.08)
 check("无信号不加分", hot_client.major_event_boost("某地今日天气晴") == 0.0)
 
@@ -399,6 +404,21 @@ check("C8 展开区图片 lazy + onerror",
 check("B7 往期时间线样式", 'class="timeline"' in design_html and "昨日头条摘要" in design_html)
 check("C9 暗色模式 media query", "prefers-color-scheme:dark" in design_html)
 check("今日焦点内容来自标题", "国内大事件第1条" in design_html)
+
+brief = generate.build_today_brief({
+    "sections": {
+        "domestic": [
+            {"title": "详讯丨习近平出席亚太经合组织工商领导人峰会开幕式并发表主旨演讲"},
+            {"title": "详讯丨习近平会见俄罗斯总统普京"},
+        ],
+        "international": [{"title_zh": "韩国大学入学考试因AI作弊丑闻陷入混乱"}],
+    }
+})
+check("brief 剥掉栏目前缀「详讯丨」", "详讯" not in brief, f"实际={brief}")
+check("brief 不硬切在词中间（完整「发表主旨演讲」）", "发表主旨演讲" in brief, f"实际={brief}")
+check("brief 省略重复主语（首个习近平保留，第二个省略）",
+      brief.count("习近平") == 1 and "，会见俄罗斯" in brief, f"实际={brief}")
+check("brief 含国际前缀", "国际上：" in brief)
 
 archive_design = generate.render_day(design_day, is_today=False)
 check("归档页也有今日焦点/概览", 'class="brief"' in archive_design and 'class="overview"' in archive_design)

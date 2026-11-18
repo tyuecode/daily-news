@@ -751,25 +751,62 @@ h3{font-size:16px;margin:1px 0 7px;line-height:1.5}
 """
 
 
-def build_today_brief(day: dict) -> str:
-    """首页「今日一句话摘要」：取国内前两条 + 国际第一条，拼成简短焦点句。
+# 新闻编辑部栏目前缀（如「详讯丨」「独家|」），摘要里应剥掉
+_BRIEF_NEWSROOM_PREFIX = re.compile(r"^[\u4e00-\u9fff]{1,4}[丨|]\s*")
+# 已知人物主语：连续多条以同一人物开头时，后续不再重复其名字
+_BRIEF_SUBJECTS = ("习近平", "普京", "特朗普", "李在明", "拜登")
 
-    例：「习近平会见普京，APEC 峰会开幕；国际上特朗普访问亚洲」。
+
+def _clean_brief_title(title: str) -> str:
+    """剥掉栏目前缀与空白，不做硬截断（避免切断词）。"""
+    text = re.sub(r"\s+", " ", (title or "").strip())
+    # 最多剥两层（如「详讯丨独家丨…」）
+    for _ in range(2):
+        text = _BRIEF_NEWSROOM_PREFIX.sub("", text).strip()
+    return text
+
+
+def build_today_brief(day: dict) -> str:
+    """首页「今日一句话摘要」：取国内前两条 + 国际第一条，拼成焦点句。
+
     只取标题，不做 AI 总结，避免编造。
+    - 剥掉「详讯丨」等栏目前缀，避免重复啰嗦；
+    - 不在词中间硬切（坑 #7）：必要时只在标点边界截断；
+    - 同一人物主语连续出现时，后续省略其名字。
     """
     domestic = day.get("sections", {}).get("domestic", [])
     international = day.get("sections", {}).get("international", [])
-    parts = []
+    parts: list[str] = []
+    seen_subjects: set[str] = set()
+
     for item in domestic[:2]:
-        title = str(item.get("title", "") or "").strip()
+        title = _clean_brief_title(item.get("title", ""))
+        if not title:
+            continue
+        # 主语去重：若与前面已出现的人物相同，剥掉开头的人名
+        for subject in _BRIEF_SUBJECTS:
+            if title.startswith(subject):
+                if subject in seen_subjects:
+                    title = title[len(subject):].lstrip("，, ")
+                else:
+                    seen_subjects.add(subject)
+                break
         if title:
-            parts.append(title[:26])
+            parts.append(title)
+
     if international:
         first = international[0]
-        title = str(first.get("title_zh") or first.get("title_en", "") or "").strip()
+        title = _clean_brief_title(first.get("title_zh") or first.get("title_en", ""))
         if title:
-            parts.append("国际上：" + title[:26])
-    return "，".join(parts)[:80]
+            parts.append("国际上：" + title)
+
+    result = "，".join(parts)
+    # 仅在明显过长时于标点边界收尾，绝不切在词中间
+    if len(result) > 100:
+        window = result[:100]
+        cut = max(window.rfind(m) for m in ("，", "。", "；", "、", "："))
+        result = window[:cut + 1].rstrip("，。；、：") + "…" if cut > 40 else window[:97] + "…"
+    return result
 
 
 def truncate_title_for_summary(day: dict) -> str:
