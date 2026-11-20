@@ -1,6 +1,1766 @@
 {
   "days": [
     {
+      "date": "2026-11-20",
+      "updated_at": "2026-11-20T13:32:37.779496+08:00",
+      "broadcast": "各位好，今天是11月20日，欢迎收听今日热点。\n\n首先来看国内新闻。习近平主持了中俄美元首会晤，并发表了中俄美元首和平宣言。普京对此次会晤给予了高度评价，而特朗普也为中俄美元首的会晤打了12分。此外，习近平还会见了美国总统特朗普。在亚太经合组织第三十三次领导人非正式会议上，习近平也主持了会议并发表了重要讲话。\n\n接下来关注国际动态。联合国最高法院做出裁定，认定缅甸对罗兴亚人犯下种族灭绝罪。在美国方面，上诉法院允许特朗普终止对委内瑞拉人的临时保护身份驱逐保护。另外，一名佛罗里达州牧师被判对2021年海地总统遇刺案负有罪责。在中东地区，沙特最高摩天大楼在胡塞武装的袭击中受损。\n\n最后来看俄乌局势的相关消息。欧洲领导人表示，欧洲已经准备好就结束乌克兰战争与俄罗斯进行谈判。库什纳对此表示，特朗普对于为乌克兰提供类似北约的安全保障持开放态度。\n\n以上就是今天的要闻，明天同一时间再见。",
+      "tts_ok": true,
+      "voices": [
+        {
+          "id": "xiaoxiao",
+          "name": "晓晓",
+          "desc": "女声 · 亲和自然",
+          "ok": true
+        },
+        {
+          "id": "yunyang",
+          "name": "云扬",
+          "desc": "男声 · 新闻主播",
+          "ok": true
+        },
+        {
+          "id": "yunxi",
+          "name": "云希",
+          "desc": "男声 · 年轻清晰",
+          "ok": true
+        }
+      ],
+      "sections": {
+        "domestic": [
+          {
+            "id": "今日头条-1",
+            "title": "中俄美元首和平宣言",
+            "url": "https://www.toutiao.com/trending/7709805042211209235/",
+            "rank": 1,
+            "platform": "今日头条",
+            "platform_id": "toutiao",
+            "rank_total": 30,
+            "frequency": 4,
+            "is_new": false,
+            "hotness": 4,
+            "score": 0.7371,
+            "source_count": 4,
+            "cluster": [
+              {
+                "source": "今日头条",
+                "title_zh": "中俄美元首和平宣言",
+                "title_en": "",
+                "url": "https://www.toutiao.com/trending/7709805042211209235/",
+                "is_primary": true,
+                "rank": 1
+              },
+              {
+                "source": "抖音热榜",
+                "title_zh": "中俄美元首和平宣言",
+                "title_en": "",
+                "url": "https://www.douyin.com/hot/2754857",
+                "is_primary": false,
+                "rank": 1
+              },
+              {
+                "source": "澎湃新闻",
+                "title_zh": "中俄美元首和平宣言",
+                "title_en": "",
+                "url": "https://www.thepaper.cn/newsDetail_forward_34512539",
+                "is_primary": false,
+                "rank": 3
+              },
+              {
+                "source": "华尔街见闻",
+                "title_zh": "中俄美元首和平宣言",
+                "title_en": "",
+                "url": "https://wallstreetcn.com/articles/3786290",
+                "is_primary": false,
+                "rank": 4
+              }
+            ]
+          },
+          {
+            "id": "凤凰网-1",
+            "title": "普京评价中俄美元首会晤",
+            "url": "https://original.ifeng.com/c/8yCXaxy8GRy",
+            "rank": 1,
+            "platform": "凤凰网",
+            "platform_id": "ifeng",
+            "rank_total": 12,
+            "frequency": 2,
+            "is_new": false,
+            "hotness": 3,
+            "score": 0.7086,
+            "source_count": 3,
+            "cluster": [
+              {
+                "source": "凤凰网",
+                "title_zh": "普京评价中俄美元首会晤",
+                "title_en": "",
+                "url": "https://original.ifeng.com/c/8yCXaxy8GRy",
+                "is_primary": true,
+                "rank": 1
+              },
+              {
+                "source": "今日头条",
+                "title_zh": "普京：中俄美元首会晤前所未有",
+                "title_en": "",
+                "url": "https://www.toutiao.com/trending/7709098220517064746/",
+                "is_primary": false,
+                "rank": 2
+              },
+              {
+                "source": "凤凰网",
+                "title_zh": "中方如何评价中俄美元首会晤，王毅回应",
+                "title_en": "",
+                "url": "https://news.ifeng.com/c/8yCDPTgbVhN",
+                "is_primary": false,
+                "rank": 2
+              },
+              {
+                "source": "B站热搜",
+                "title_zh": "中俄美元首会晤传递哪些信息",
+                "title_en": "",
+                "url": "https://search.bilibili.com/all?keyword=%E4%B8%AD%E4%BF%84%E7%BE%8E%E5%85%83%E9%A6%96%E4%BC%9A%E6%99%A4%E4%BC%A0%E9%80%92%E5%93%AA%E4%BA%9B%E4%BF%A1%E6%81%AF",
+                "is_primary": false,
+                "rank": 4
+              }
+            ]
+          },
+          {
+            "id": "澎湃新闻-4",
+            "title": "详讯丨习近平会见美国总统特朗普",
+            "url": "https://www.thepaper.cn/newsDetail_forward_34511524",
+            "rank": 4,
+            "platform": "澎湃新闻",
+            "platform_id": "thepaper",
+            "rank_total": 20,
+            "frequency": 9,
+            "is_new": false,
+            "hotness": 1,
+            "score": 0.6986,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "澎湃新闻",
+                "title_zh": "详讯丨习近平会见美国总统特朗普",
+                "title_en": "",
+                "url": "https://www.thepaper.cn/newsDetail_forward_34511524",
+                "is_primary": true,
+                "rank": 4
+              }
+            ]
+          },
+          {
+            "id": "澎湃新闻-1",
+            "title": "详讯丨习近平主持亚太经合组织第三十三次领导人非正式会议并发表重要讲话",
+            "url": "https://www.thepaper.cn/newsDetail_forward_34509808",
+            "rank": 1,
+            "platform": "澎湃新闻",
+            "platform_id": "thepaper",
+            "rank_total": 20,
+            "frequency": 3,
+            "is_new": false,
+            "hotness": 1,
+            "score": 0.6829,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "澎湃新闻",
+                "title_zh": "详讯丨习近平主持亚太经合组织第三十三次领导人非正式会议并发表重要讲话",
+                "title_en": "",
+                "url": "https://www.thepaper.cn/newsDetail_forward_34509808",
+                "is_primary": true,
+                "rank": 1
+              }
+            ]
+          },
+          {
+            "id": "微博热搜-1",
+            "title": "特朗普给中俄美元首会晤打12分",
+            "url": "https://s.weibo.com/weibo?q=%23%E7%89%B9%E6%9C%97%E6%99%AE%E7%BB%99%E4%B8%AD%E4%BF%84%E7%BE%8E%E5%85%83%E9%A6%96%E4%BC%9A%E6%99%A4%E6%89%9312%E5%88%86%23&t=31&band_rank=1&Refer=top",
+            "rank": 1,
+            "platform": "微博热搜",
+            "platform_id": "weibo",
+            "rank_total": 30,
+            "frequency": 2,
+            "is_new": false,
+            "hotness": 2,
+            "score": 0.6686,
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "微博热搜",
+                "title_zh": "特朗普给中俄美元首会晤打12分",
+                "title_en": "",
+                "url": "https://s.weibo.com/weibo?q=%23%E7%89%B9%E6%9C%97%E6%99%AE%E7%BB%99%E4%B8%AD%E4%BF%84%E7%BE%8E%E5%85%83%E9%A6%96%E4%BC%9A%E6%99%A4%E6%89%9312%E5%88%86%23&t=31&band_rank=1&Refer=top",
+                "is_primary": true,
+                "rank": 1
+              },
+              {
+                "source": "百度热搜",
+                "title_zh": "特朗普给中俄美元首会晤打12分",
+                "title_en": "",
+                "url": "https://www.baidu.com/s?wd=%E7%89%B9%E6%9C%97%E6%99%AE%E7%BB%99%E4%B8%AD%E4%BF%84%E7%BE%8E%E5%85%83%E9%A6%96%E4%BC%9A%E6%99%A4%E6%89%9312%E5%88%86",
+                "is_primary": false,
+                "rank": 1
+              }
+            ]
+          },
+          {
+            "id": "澎湃新闻-2",
+            "title": "详讯丨习近平主持中俄美元首会晤",
+            "url": "https://www.thepaper.cn/newsDetail_forward_34513086",
+            "rank": 2,
+            "platform": "澎湃新闻",
+            "platform_id": "thepaper",
+            "rank_total": 20,
+            "frequency": 2,
+            "is_new": false,
+            "hotness": 1,
+            "score": 0.6386,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "澎湃新闻",
+                "title_zh": "详讯丨习近平主持中俄美元首会晤",
+                "title_en": "",
+                "url": "https://www.thepaper.cn/newsDetail_forward_34513086",
+                "is_primary": true,
+                "rank": 2
+              }
+            ]
+          },
+          {
+            "id": "华尔街见闻-1",
+            "title": "史上最大IPO首日冲高回落，标普、英伟达六连跌，道指跌破5万点，黄金再跌3%",
+            "url": "https://wallstreetcn.com/articles/3786267",
+            "rank": 1,
+            "platform": "华尔街见闻",
+            "platform_id": "wallstreetcn-hot",
+            "rank_total": 10,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.6343,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "华尔街见闻",
+                "title_zh": "史上最大IPO首日冲高回落，标普、英伟达六连跌，道指跌破5万点，黄金再跌3%",
+                "title_en": "",
+                "url": "https://wallstreetcn.com/articles/3786267",
+                "is_primary": true,
+                "rank": 1
+              }
+            ]
+          },
+          {
+            "id": "财联社-1",
+            "title": "【早报】高开低走，深夜美股大跳水；Anthropic上市首秀收涨17%；黄金、白银，大幅走弱",
+            "url": "https://www.cls.cn/detail/2539556",
+            "rank": 1,
+            "platform": "财联社",
+            "platform_id": "cls-hot",
+            "rank_total": 13,
+            "frequency": 1,
+            "is_new": true,
+            "hotness": 1,
+            "score": 0.6343,
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "财联社",
+                "title_zh": "【早报】高开低走，深夜美股大跳水；Anthropic上市首秀收涨17%；黄金、白银，大幅走弱",
+                "title_en": "",
+                "url": "https://www.cls.cn/detail/2539556",
+                "is_primary": true,
+                "rank": 1
+              }
+            ]
+          }
+        ],
+        "international": [
+          {
+            "title_en": "The U.N.'s top court rules Myanmar committed genocide against the Rohingya",
+            "title_zh": "联合国最高法院裁定缅甸对罗兴亚人犯下种族灭绝罪",
+            "url": "https://www.npr.org/2026/11/19/g-s1-154340/un-court-myanmar-genocide-rohingya",
+            "source": "NPR",
+            "publisher": "NPR",
+            "summary_en": "The International Court of Justice found that Myanmar security forces \"acted with genocidal intent\" against the Rohingya during military operations in the northern Rakhine state in 2017.",
+            "image": "",
+            "published": "2026-11-19",
+            "section": "international",
+            "source_count": 3,
+            "cluster": [
+              {
+                "source": "NPR",
+                "title_zh": "联合国最高法院裁定缅甸对罗兴亚人犯下种族灭绝罪",
+                "title_en": "The U.N.'s top court rules Myanmar committed genocide against the Rohingya",
+                "url": "https://www.npr.org/2026/11/19/g-s1-154340/un-court-myanmar-genocide-rohingya",
+                "image": "",
+                "is_primary": true
+              },
+              {
+                "source": "Google News",
+                "title_zh": "实时更新：联合国法院裁定缅甸对罗兴亚人实施种族灭绝 - 《纽约时报》",
+                "title_en": "Live Updates: U.N. Court Rules Myanmar Committed Genocide Against Rohingya - The New York Times",
+                "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5qLUhZWS1IeE93REZvbWFfdUpvcnEyOG1kZjU5M2dMV3N2TFFtZEZsVll5eUx4MWxhcTRaWFlqSndxaVhtRWNrel94QVVCcWgtSGdvd2xvRHZNdm9rNDhJbmhpeWNmSW41bnRZaHo1a0xuRTZmODVXc3Yxemh3QQ?oc=5",
+                "image": "",
+                "is_primary": false
+              },
+              {
+                "source": "BBC",
+                "title_zh": "联合国最高法院裁定，缅甸对罗兴亚少数民族实施了种族灭绝",
+                "title_en": "Myanmar committed genocide against Rohingya minority, top UN court rules",
+                "url": "https://www.bbc.co.uk/news/articles/c804wzp20ddvo?at_medium=RSS&at_campaign=rss",
+                "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/d789/live/7c1a8b30-e435-11f1-99b6-a35a62fa4264.jpg",
+                "is_primary": false
+              }
+            ]
+          },
+          {
+            "title_en": "US appeals court lets Trump end TPS deportation protections for Venezuelans",
+            "title_zh": "美国上诉法院允许特朗普终止对委内瑞拉人的临时保护身份（TPS）驱逐保护",
+            "url": "https://www.aljazeera.com/news/2026/11/19/us-appeals-court-lets-trump-end-tps-deportation-protections-for-venezuelans?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "The appeals court's ruling prevents a lower-court decision from taking effect, which would block Trump from lifting TPS.",
+            "image": "",
+            "published": "2026-11-19",
+            "section": "international",
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "美国上诉法院允许特朗普终止对委内瑞拉人的临时保护身份（TPS）驱逐保护",
+                "title_en": "US appeals court lets Trump end TPS deportation protections for Venezuelans",
+                "url": "https://www.aljazeera.com/news/2026/11/19/us-appeals-court-lets-trump-end-tps-deportation-protections-for-venezuelans?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              },
+              {
+                "source": "Google News",
+                "title_zh": "上诉法院批准特朗普停止恢复委内瑞拉临时保护身份（TPS）命令的请求 - 美联社",
+                "title_en": "Appeals court grants Trump request to halt order restoring Venezuelan TPS - AP News",
+                "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQZGpZSEt0YktGbGc2VUV5RndhWmQwV01HYnlsMlpNQUNVUEFkbV8tSnpxcGVlaGpkU21jbGxrYUJFbU9LV0syaVU3YllOYU0yRzFOZjlXQ0lXdUN5NlZGc2FJSkxEMEFhTkRHVlByZjVOaU94azNwaml5d1ZQWmlxeDVzWnZHTnFCNkhHbEhsQTFJZHREQnc?oc=5",
+                "image": "",
+                "is_primary": false
+              }
+            ]
+          },
+          {
+            "title_en": "Florida pastor found guilty over 2021 assassination of Haitian president",
+            "title_zh": "佛罗里达州牧师被判对2021年海地总统遇刺案负有罪责",
+            "url": "https://www.theguardian.com/us-news/2026/nov/18/florida-pastor-guilty-haiti-president-assassination",
+            "source": "The Guardian",
+            "publisher": "The Guardian",
+            "summary_en": "Christian Emmanuel Sanon faces life in prison after conviction on charges arising from killing of Jovenel Moïse A Florida pastor with dual Haitian-American citizenship was convicted on Wednesday of US charges arising from the 2021 assassination of the Haitian president Jovenel Moïse. Christian Emman",
+            "image": "",
+            "published": "2026-11-18",
+            "section": "international",
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "The Guardian",
+                "title_zh": "佛罗里达州牧师被判对2021年海地总统遇刺案负有罪责",
+                "title_en": "Florida pastor found guilty over 2021 assassination of Haitian president",
+                "url": "https://www.theguardian.com/us-news/2026/nov/18/florida-pastor-guilty-haiti-president-assassination",
+                "image": "",
+                "is_primary": true
+              },
+              {
+                "source": "BBC",
+                "title_zh": "佛罗里达州牧师被判在海地总统暗杀案中负有责任",
+                "title_en": "Florida pastor found guilty over role in assassination of Haitian president",
+                "url": "https://www.bbc.co.uk/news/articles/cm702q0lg50po?at_medium=RSS&at_campaign=rss",
+                "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/e31d/live/a9425010-e409-11f1-ab35-e1af93fa5cce.jpg",
+                "is_primary": false
+              }
+            ]
+          },
+          {
+            "title_en": "Saudi's tallest skyscraper damaged in Houthi attack",
+            "title_zh": "沙特最高摩天大楼在胡塞武装袭击中受损",
+            "url": "https://news.sky.com/story/saudis-tallest-skyscraper-damaged-in-houthi-attack-13614147",
+            "source": "Sky News",
+            "publisher": "Sky News",
+            "summary_en": "Saudi Arabia's tallest skyscraper, the headquarters of the Saudi sovereign wealth fund, was struck in ​a Houthi attack in the latest in a series of strikes on the Gulf state, Riyadh said.",
+            "image": "https://e3.365dm.com/26/11/1920x1080/skynews-houthi-attack-riyadh_7410746.jpg?20261119211843",
+            "published": "2026-11-19",
+            "section": "international",
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "Sky News",
+                "title_zh": "沙特最高摩天大楼在胡塞武装袭击中受损",
+                "title_en": "Saudi's tallest skyscraper damaged in Houthi attack",
+                "url": "https://news.sky.com/story/saudis-tallest-skyscraper-damaged-in-houthi-attack-13614147",
+                "image": "https://e3.365dm.com/26/11/1920x1080/skynews-houthi-attack-riyadh_7410746.jpg?20261119211843",
+                "is_primary": true
+              },
+              {
+                "source": "Google News",
+                "title_zh": "利雅得最高摩天大楼在胡塞武装袭击沙特主权财富基金总部期间受损 - NBC News",
+                "title_en": "Riyadh’s tallest skyscraper hit in Houthi strike on Saudi wealth fund HQ - NBC News",
+                "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOa2VHNWZ0cC16RTRrem5TYWkxMFYxMlVTb1JwM0xuTGdtS2pidkhEdkxjTGNHdjVzX1pyejhVRlAybFk2UndOcWw2VWdUcl9veFcySVF3RkZuNXBSbVlSTG40eUlDNHd5UU42MDNqWXpBM3FaLVIxYjZHYlZ2MmxXTVo5d0VMUmdSLWRILWRFYWFkSU9YSnpBbDBEUFRxMlhsX3pXM0ZYWGhLOG42NnFNR2tEVDJOdzMzWm93?oc=5",
+                "image": "",
+                "is_primary": false
+              }
+            ]
+          },
+          {
+            "title_en": "Europe ready for talks with Russia on ending war in Ukraine, leaders say - BBC",
+            "title_zh": "欧洲领导人表示，欧洲已准备好就结束乌克兰战争与俄罗斯进行谈判 - BBC",
+            "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA4akxXcHFqbTV0dzV2MnZpTVFTc21SSGhVM3dCbnVpNlNpYUhWdHhWdWZlanlQQzdYOXdaLXVHdC1ZWHdzWkFDa2piREFkZ3cwS0IwV2d4X2JnbW8?oc=5",
+            "source": "Google News",
+            "publisher": "Google News",
+            "summary_en": "Europe ready for talks with Russia on ending war in Ukraine, leaders say BBC Ukraine's allies attend 'Coalition of the Willing' summit in Berlin DW.com Top Trump aides to meet with Europeans, Ukrainians on peace plan Axios Kushner says Russia ‘comfortable’ with NATO-like guarantees for Ukraine Al Ja",
+            "image": "",
+            "published": "2026-11-20",
+            "section": "international",
+            "source_count": 2,
+            "cluster": [
+              {
+                "source": "Google News",
+                "title_zh": "欧洲领导人表示，欧洲已准备好就结束乌克兰战争与俄罗斯进行谈判 - BBC",
+                "title_en": "Europe ready for talks with Russia on ending war in Ukraine, leaders say - BBC",
+                "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA4akxXcHFqbTV0dzV2MnZpTVFTc21SSGhVM3dCbnVpNlNpYUhWdHhWdWZlanlQQzdYOXdaLXVHdC1ZWHdzWkFDa2piREFkZ3cwS0IwV2d4X2JnbW8?oc=5",
+                "image": "",
+                "is_primary": true
+              },
+              {
+                "source": "BBC",
+                "title_zh": "各国领导人表示，欧洲已准备好与俄罗斯就结束乌克兰战争进行谈判",
+                "title_en": "Europe ready for talks with Russia on ending war in Ukraine, leaders say",
+                "url": "https://www.bbc.co.uk/news/articles/ckzd9nln5e6go?at_medium=RSS&at_campaign=rss",
+                "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/1fd8/live/5c168a90-e44a-11f1-a094-5fdc692f3e33.jpg",
+                "is_primary": false
+              }
+            ]
+          },
+          {
+            "title_en": "Kushner: Trump open to NATO-like security guarantees for Ukraine",
+            "title_zh": "库什纳：特朗普对为乌克兰提供类似北约的安全保障持开放态度",
+            "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/kushner-trump-open-to-nato-like-security-guarantees-for-ukraine?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "US President Donald Trump is open to offering NATO-like security guarantees to Ukraine, envoy Jared Kushner has said.",
+            "image": "",
+            "published": "2026-11-20",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "库什纳：特朗普对为乌克兰提供类似北约的安全保障持开放态度",
+                "title_en": "Kushner: Trump open to NATO-like security guarantees for Ukraine",
+                "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/kushner-trump-open-to-nato-like-security-guarantees-for-ukraine?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Canada’s beloved Tim Hortons brews ire over ‘excessive’ Israeli data deal",
+            "title_zh": "加拿大深受喜爱的 Tim Hortons 因与以色列达成的“过度”数据交易引发愤怒",
+            "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/canadas-beloved-tim-hortons-brews-ire-over-excessive-israeli-data-deal-2?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "Advocates raised concerns about the Tim Horton’s app and consumer privacy and data-sharing.",
+            "image": "",
+            "published": "2026-11-20",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "加拿大深受喜爱的 Tim Hortons 因与以色列达成的“过度”数据交易引发愤怒",
+                "title_en": "Canada’s beloved Tim Hortons brews ire over ‘excessive’ Israeli data deal",
+                "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/canadas-beloved-tim-hortons-brews-ire-over-excessive-israeli-data-deal-2?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Thousands protest Colombia’s tax plans amid row over US military role",
+            "title_zh": "面对美国军事角色引发的争议，数千人抗议哥伦比亚的税收计划",
+            "url": "https://www.aljazeera.com/news/2026/11/20/thousands-protest-colombias-tax-plans-amid-row-over-us-military-role?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "Trade unions, students and opposition groups demonstrated in Bogota and other major cities on Thursday.",
+            "image": "",
+            "published": "2026-11-20",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "面对美国军事角色引发的争议，数千人抗议哥伦比亚的税收计划",
+                "title_en": "Thousands protest Colombia’s tax plans amid row over US military role",
+                "url": "https://www.aljazeera.com/news/2026/11/20/thousands-protest-colombias-tax-plans-amid-row-over-us-military-role?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Lula visits ailing Chief Raoni as Brazil recognises Indigenous land",
+            "title_zh": "巴西承认原住民土地权，卢拉探望病重的劳尼酋长",
+            "url": "https://www.aljazeera.com/news/2026/11/20/lula-visits-ailing-chief-raoni-as-brazil-recognises-indigenous-land?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "Lula honours Raoni in Mato Grosso, celebrating his legacy and advancing protection for Kayapo and Yudja ancestral lands.",
+            "image": "",
+            "published": "2026-11-20",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "巴西承认原住民土地权，卢拉探望病重的劳尼酋长",
+                "title_en": "Lula visits ailing Chief Raoni as Brazil recognises Indigenous land",
+                "url": "https://www.aljazeera.com/news/2026/11/20/lula-visits-ailing-chief-raoni-as-brazil-recognises-indigenous-land?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Asia’s stock markets dive as Anthropic debut fails to allay AI bubble fears",
+            "title_zh": "Anthropic 首秀未能缓解 AI 泡沫担忧，亚洲股市大跌",
+            "url": "https://www.aljazeera.com/economy/2026/11/20/asias-stock-markets-dive-as-anthropic-debut-fails-to-allay-ai-bubble-fears?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "Indexes in Japan, South Korea, Taiwan and Hong Kong fall amid tech sell-off.",
+            "image": "",
+            "published": "2026-11-20",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "Anthropic 首秀未能缓解 AI 泡沫担忧，亚洲股市大跌",
+                "title_en": "Asia’s stock markets dive as Anthropic debut fails to allay AI bubble fears",
+                "url": "https://www.aljazeera.com/economy/2026/11/20/asias-stock-markets-dive-as-anthropic-debut-fails-to-allay-ai-bubble-fears?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Hippo Fiona dies days after swallowing visitor’s hat",
+            "title_zh": "河马菲奥娜在吞下游客帽子几天后死亡",
+            "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/beloved-hippo-fiona-dies-days-after-swallowing-visitors-hat?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "Hippo Fiona, who became a global sensation after being born six weeks premature in 2017, has died at Cincinnati Zoo.",
+            "image": "",
+            "published": "2026-11-20",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "河马菲奥娜在吞下游客帽子几天后死亡",
+                "title_en": "Hippo Fiona dies days after swallowing visitor’s hat",
+                "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/beloved-hippo-fiona-dies-days-after-swallowing-visitors-hat?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Trump nominee refuses to call Jan 6 an ‘attack’ at Senate hearing",
+            "title_zh": "特朗普提名人在参议院听证会上拒绝称 1 月 6 日事件为“袭击”",
+            "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/trump-nominee-refuses-to-call-jan-6-an-attack-at-senate-hearing?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "Trump’s nominee to lead the US agency responsible for election security, refused to call the insurrection an attack.",
+            "image": "",
+            "published": "2026-11-20",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "特朗普提名人在参议院听证会上拒绝称 1 月 6 日事件为“袭击”",
+                "title_en": "Trump nominee refuses to call Jan 6 an ‘attack’ at Senate hearing",
+                "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/trump-nominee-refuses-to-call-jan-6-an-attack-at-senate-hearing?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Meta rethinks 2030 climate goals as AI data centres drive emissions up",
+            "title_zh": "随着 AI 数据中心推高排放量，Meta 重新思考 2030 年气候目标",
+            "url": "https://www.aljazeera.com/news/2026/11/20/meta-rethinks-2030-climate-goals-as-ai-data-centres-drive-emissions-up?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "Rising data centre energy needs force Meta to review sustainability targets amid growing corporate climate retreat.",
+            "image": "",
+            "published": "2026-11-20",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "随着 AI 数据中心推高排放量，Meta 重新思考 2030 年气候目标",
+                "title_en": "Meta rethinks 2030 climate goals as AI data centres drive emissions up",
+                "url": "https://www.aljazeera.com/news/2026/11/20/meta-rethinks-2030-climate-goals-as-ai-data-centres-drive-emissions-up?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "Democrats say law firm gave $11.8m in free services to Trump administration",
+            "title_zh": "民主党人称某律师事务所向特朗普政府提供了价值1180万美元的免费服务",
+            "url": "https://www.aljazeera.com/news/2026/11/20/democrats-say-law-firm-gave-11-8m-worth-of-service-to-trump-administration?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "Three top Democrats called Trump's dealings with law firms a case of 'official coercion' and pledged investigations.",
+            "image": "",
+            "published": "2026-11-20",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "民主党人称某律师事务所向特朗普政府提供了价值1180万美元的免费服务",
+                "title_en": "Democrats say law firm gave $11.8m in free services to Trump administration",
+                "url": "https://www.aljazeera.com/news/2026/11/20/democrats-say-law-firm-gave-11-8m-worth-of-service-to-trump-administration?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          },
+          {
+            "title_en": "‘Completely messed up everything’: Malawi’s fuel crisis causes chaos",
+            "title_zh": "“把一切都搞砸了”：马拉维燃料危机引发混乱",
+            "url": "https://www.aljazeera.com/news/2026/11/20/completely-messed-up-everything-malawis-fuel-crisis-causes-chaos?traffic_source=rss",
+            "source": "Al Jazeera",
+            "publisher": "Al Jazeera",
+            "summary_en": "Motorists and businesses struggle as shortages disrupt daily life.",
+            "image": "",
+            "published": "2026-11-20",
+            "section": "international",
+            "source_count": 1,
+            "cluster": [
+              {
+                "source": "Al Jazeera",
+                "title_zh": "“把一切都搞砸了”：马拉维燃料危机引发混乱",
+                "title_en": "‘Completely messed up everything’: Malawi’s fuel crisis causes chaos",
+                "url": "https://www.aljazeera.com/news/2026/11/20/completely-messed-up-everything-malawis-fuel-crisis-causes-chaos?traffic_source=rss",
+                "image": "",
+                "is_primary": true
+              }
+            ]
+          }
+        ]
+      },
+      "raw_news": [
+        {
+          "title_en": "Kushner: Trump open to NATO-like security guarantees for Ukraine",
+          "title_zh": "库什纳：特朗普对为乌克兰提供类似北约的安全保障持开放态度",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/kushner-trump-open-to-nato-like-security-guarantees-for-ukraine?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "US President Donald Trump is open to offering NATO-like security guarantees to Ukraine, envoy Jared Kushner has said.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Canada’s beloved Tim Hortons brews ire over ‘excessive’ Israeli data deal",
+          "title_zh": "加拿大深受喜爱的 Tim Hortons 因与以色列达成的“过度”数据交易引发愤怒",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/canadas-beloved-tim-hortons-brews-ire-over-excessive-israeli-data-deal-2?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Advocates raised concerns about the Tim Horton’s app and consumer privacy and data-sharing.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Thousands protest Colombia’s tax plans amid row over US military role",
+          "title_zh": "面对美国军事角色引发的争议，数千人抗议哥伦比亚的税收计划",
+          "url": "https://www.aljazeera.com/news/2026/11/20/thousands-protest-colombias-tax-plans-amid-row-over-us-military-role?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Trade unions, students and opposition groups demonstrated in Bogota and other major cities on Thursday.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Lula visits ailing Chief Raoni as Brazil recognises Indigenous land",
+          "title_zh": "巴西承认原住民土地权，卢拉探望病重的劳尼酋长",
+          "url": "https://www.aljazeera.com/news/2026/11/20/lula-visits-ailing-chief-raoni-as-brazil-recognises-indigenous-land?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Lula honours Raoni in Mato Grosso, celebrating his legacy and advancing protection for Kayapo and Yudja ancestral lands.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Asia’s stock markets dive as Anthropic debut fails to allay AI bubble fears",
+          "title_zh": "Anthropic 首秀未能缓解 AI 泡沫担忧，亚洲股市大跌",
+          "url": "https://www.aljazeera.com/economy/2026/11/20/asias-stock-markets-dive-as-anthropic-debut-fails-to-allay-ai-bubble-fears?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Indexes in Japan, South Korea, Taiwan and Hong Kong fall amid tech sell-off.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Hippo Fiona dies days after swallowing visitor’s hat",
+          "title_zh": "河马菲奥娜在吞下游客帽子几天后死亡",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/beloved-hippo-fiona-dies-days-after-swallowing-visitors-hat?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Hippo Fiona, who became a global sensation after being born six weeks premature in 2017, has died at Cincinnati Zoo.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Trump nominee refuses to call Jan 6 an ‘attack’ at Senate hearing",
+          "title_zh": "特朗普提名人在参议院听证会上拒绝称 1 月 6 日事件为“袭击”",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/trump-nominee-refuses-to-call-jan-6-an-attack-at-senate-hearing?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Trump’s nominee to lead the US agency responsible for election security, refused to call the insurrection an attack.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Meta rethinks 2030 climate goals as AI data centres drive emissions up",
+          "title_zh": "随着 AI 数据中心推高排放量，Meta 重新思考 2030 年气候目标",
+          "url": "https://www.aljazeera.com/news/2026/11/20/meta-rethinks-2030-climate-goals-as-ai-data-centres-drive-emissions-up?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Rising data centre energy needs force Meta to review sustainability targets amid growing corporate climate retreat.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Democrats say law firm gave $11.8m in free services to Trump administration",
+          "title_zh": "民主党人称某律师事务所向特朗普政府提供了价值1180万美元的免费服务",
+          "url": "https://www.aljazeera.com/news/2026/11/20/democrats-say-law-firm-gave-11-8m-worth-of-service-to-trump-administration?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Three top Democrats called Trump's dealings with law firms a case of 'official coercion' and pledged investigations.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "‘Completely messed up everything’: Malawi’s fuel crisis causes chaos",
+          "title_zh": "“把一切都搞砸了”：马拉维燃料危机引发混乱",
+          "url": "https://www.aljazeera.com/news/2026/11/20/completely-messed-up-everything-malawis-fuel-crisis-causes-chaos?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Motorists and businesses struggle as shortages disrupt daily life.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Haiti police say 34 gang members killed in capital raid",
+          "title_zh": "海地警方表示，在首都的一次突袭行动中，34名帮派成员被击毙",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/20/haiti-police-say-34-gang-members-killed-in-capital-raid?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Haitian police say at least 34 gang members were killed in an operation in the capital city of Port-au-Prince.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "El Salvador’s Bukele expected to formalise bid for third presidential term",
+          "title_zh": "萨尔瓦多总统布克尔预计将正式提交竞选第三个总统任期的申请",
+          "url": "https://www.aljazeera.com/news/2026/11/20/el-salvadors-bukele-expected-to-formalise-bid-for-third-presidential-term?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "The Salvadoran president has won popularity through a crime crackdown that has granted the state enormous power.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Four bodies recovered after Senegal boat capsizes amid migration surge",
+          "title_zh": "随着移民潮涌现，塞内加尔一艘船只翻沉，搜救出4具尸体",
+          "url": "https://www.aljazeera.com/news/2026/11/20/four-bodies-recovered-after-senegal-boat-capsizes-amid-migration-surge?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Search for survivors continues near Yenne as migrant arrivals in Spain's Canary Islands surge by nearly two-thirds.",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Iran war live: Houthis escalate attacks on Saudi capital",
+          "title_zh": "伊朗战争直播：胡塞武装升级对沙特首都的袭击",
+          "url": "https://www.aljazeera.com/news/liveblog/2026/11/19/iran-war-live-houthis-escalate-attacks-on-saudi-capital?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Houthi missile fire has rocked Riyadh's financial centre as the Iran war leaves 'lasting marks' on global energy.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Six killed in suspected gas explosion at Georgia apartment building",
+          "title_zh": "佐治亚州一栋公寓楼疑似发生燃气爆炸，造成6人死亡",
+          "url": "https://www.aljazeera.com/news/2026/11/19/six-killed-in-suspected-gas-explosion-at-georgia-apartment-building?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Georgian Interior Minister Sulkhan Tamazashvili said rescuers had recovered six bodies from the wreckage.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Mosque torched in Israel sparks political backlash against Netanyahu",
+          "title_zh": "以色列清真寺遭纵火，引发针对内塔尼亚胡的政治反弹",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/19/aje-onl-nf_mosque-torched-in-israel-sparks-political-backlash-191126?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "A mosque in al-Dahi, a Palestinian Arab village in northern Israel, was set on fire in a suspected arson attack.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "US signed off on sales of nearly 900,000 AI chips to China in six months",
+          "title_zh": "美国在半年内批准了向中国销售近90万颗AI芯片的交易",
+          "url": "https://www.aljazeera.com/economy/2026/11/19/us-signed-off-on-sales-of-nearly-900000-ai-chips-to-china-in-six-months?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "US House committee releases chip export data amid scrutiny of former Nvidia CEO's alleged links to a Chinese spy.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Haiti police say at least 34 suspected gang members killed in raid",
+          "title_zh": "海地警方称突袭行动中至少34名疑似帮派成员被击毙",
+          "url": "https://www.aljazeera.com/news/2026/11/19/haiti-police-say-at-least-34-suspected-gang-members-killed-in-raid?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Police say the raid targeted the Martissant area, located on a key route out of Port-au-Prince held by gangs since 2021.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "US appeals court lets Trump end TPS deportation protections for Venezuelans",
+          "title_zh": "美国上诉法院允许特朗普终止对委内瑞拉人的临时保护身份（TPS）驱逐保护",
+          "url": "https://www.aljazeera.com/news/2026/11/19/us-appeals-court-lets-trump-end-tps-deportation-protections-for-venezuelans?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "The appeals court's ruling prevents a lower-court decision from taking effect, which would block Trump from lifting TPS.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Ten killed in Pakistan as bus crashes into gas tanker",
+          "title_zh": "巴基斯坦发生巴士撞上油罐车事故导致10人死亡",
+          "url": "https://www.aljazeera.com/video/newsfeed/2026/11/19/ten-killed-in-pakistan-as-bus-crashes-into-gas-tanker?traffic_source=rss",
+          "source": "Al Jazeera",
+          "publisher": "Al Jazeera",
+          "summary_en": "Ten people were killed and at least 27 more injured after a passenger bus collided with an LPG tanker in Pakistan.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "White House fires national cyber director over widespread outages",
+          "title_zh": "白宫因大规模停网事件解雇国家网络安全主任",
+          "url": "https://www.france24.com/en/americas/20261120-white-house-fires-national-cyber-director-over-widespread-outages",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "The White House fired national cyber director Sean Cairncross on Thursday following a week of technology disruptions affecting US air travel, email services and national security systems. The departure comes as the Trump administration faces criticism over its response to the outages, which official",
+          "image": "https://s.france24.com/media/display/e56edbae-d878-11f1-8aa8-bf1914cabd52/w:1024/p:16x9/AP26294693498447.jpg",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "PM Sánchez admits 'mistakes' in key debate ahead of Spain's election",
+          "title_zh": "西班牙首相桑切斯在选举前的重要辩论中承认存在“错误”",
+          "url": "https://www.france24.com/en/europe/20261120-pm-s%C3%A1nchez-admits-mistakes-in-key-debate-ahead-of-spain-election",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Spain's Prime Minister Pedro Sánchez acknowledged shortcomings in his government on Thursday as he faced conservative rival Alberto Núñez Feijóo in the campaign's only televised debate. The November 29 election could leave the far-right Vox party in a position to enter government.",
+          "image": "https://s.france24.com/media/display/adb0ecfc-e435-11f1-9ff1-13439ca2fe89/w:1024/p:16x9/bfcd4adc17d0c1b4d4952e5c826ecffd1efc0af3.jpg",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Voyager 1 spacecraft reaches one light-day milestone",
+          "title_zh": "旅行者1号航天器达到一光日里程碑",
+          "url": "https://www.france24.com/en/voyager-1-spacecraft-reaches-one-light-day-milestone",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "NASA's Voyager 1 probe, which has been traveling through space for nearly 50 years, hit a milestone distance of one light-day away from Earth on Wednesday. Already the most distant man-made object in the universe, the spacecraft is now about 26 billion kilometers (16 billion miles) away, according t",
+          "image": "https://s.france24.com/media/display/b60de9c0-e469-11f1-bc67-e56ab3dc0809/w:1024/p:16x9/EN-20261119-231241-231429-CS.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Major anti-gang offensive in Haiti kills 34 suspected gang members",
+          "title_zh": "海地开展大规模反帮派行动，击毙34名疑似帮派成员",
+          "url": "https://www.france24.com/en/americas/20261119-major-anti-gang-offensive-in-haiti-kills-34-suspected-gang-members",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Haitian security forces launched a major offensive on Thursday to retake Martissant, a strategic corridor linking Port-au-Prince with the country's western and southern regions that gangs have controlled for five years. Police said at least 34 suspected gang members were killed in clashes involving ",
+          "image": "https://s.france24.com/media/display/181d54d6-e1f7-11f1-a490-f71d22e7fea9/w:1024/p:16x9/2026-11-12T233346Z-695546907-RC24MOACBCCE-RTRMADP-3-HAITI-VIOLENCE-EL-SALVADOR.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Anthropic goes public after blockbuster IPO but fails to revive AI trade",
+          "title_zh": "Anthropic 在轰动性的 IPO 后上市，但未能重振 AI 概念股交易",
+          "url": "https://www.france24.com/en/tv-shows/business/20261119-anthropic-goes-public-after-blockbuster-ipo-but-fails-to-revive-ai-trade",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Anthropic has become the first pure-play AI developer to be publicly traded on the stock market, following a record-setting IPO. The stock opened 34% higher, briefly valuing the company at more than $2 trillion, before ending its first day of trading up 17%. However, Wall Street indexes closed sharp",
+          "image": "https://s.france24.com/media/display/fe47626a-e465-11f1-a3ac-ebb478925cf0/w:1024/p:16x9/4699281-US-Anthropic-IPO-Explainer-0-1080i50ESSENCE-23792.png",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "French far-left candidate Mélenchon opens door to alliance with rival Greens candidate",
+          "title_zh": "法国极左翼候选人梅朗雄为与竞争对手绿党候选人结盟开启大门",
+          "url": "https://www.france24.com/en/france/20261119-melenchon-opens-door-to-alliance-with-french-greens-after-presidential-rival-overture-tondelier",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "French far-left leader Jean-Luc Mélenchon opened the door to an alliance with France's Greens on Thursday after their presidential candidate Marine Tondelier said she was ready to \"work on a coalition around\" the veteran leftist. Tondelier's overture has further boosted Mélenchon's campaign for the ",
+          "image": "https://s.france24.com/media/display/2fab2b82-e3a0-11f1-9252-c5c0357b2a0c/w:1024/p:16x9/000-D7ED2CR.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Kenyan marathon champion banned for doping",
+          "title_zh": "肯尼亚马拉松冠军因服用违禁药物被禁赛",
+          "url": "https://www.france24.com/en/tv-shows/eye-on-africa/20261119-kenyan-marathon-champion-banned-for-doping",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "In tonight's edition, Kenyan athletics superstar and reigning marathon world champion Peres Jepchirchir is banned for three years for doping. Also, South African judges leave the courtroom behind and tour a repatriation centre before handing down judgment in 33 emergency asylum applications. And Gha",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Russian strikes on Kyiv kill one, damage Dutch and Austrian embassies",
+          "title_zh": "俄罗斯袭击基辅造成一人死亡，并损坏荷兰与奥地利大使馆",
+          "url": "https://www.france24.com/en/russian-strikes-on-kyiv-kill-one-damage-dutch-and-austrian-embassies",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "A wave of daytime Russian strikes on Kyiv on Thursday killed one person and damaged a historic cathedral as well as the embassies of Austria and the Netherlands. Loud explosions erupted across the Ukraine capital throughout the day as the leaders of Russia, China and the United States held a histori",
+          "image": "https://s.france24.com/media/display/58fdce58-e45f-11f1-99b5-1bac47ab2f5d/w:1024/p:16x9/EN-20261119-203931-204127-CS.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "'We're seeing in real time the effects that AI is going to have on cybersecurity', expert says",
+          "title_zh": "专家表示：“我们正实时目睹人工智能将给网络安全带来的影响”",
+          "url": "https://www.france24.com/en/we-re-seeing-in-real-time-the-effects-that-ai-is-going-to-have-on-cybersecurity-expert-says",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "FRANCE 24's Monte Francis speaks with Dr. R. David Edelman, Senior Fellow at the Brookings Institution, also former Director for Cybersecurity on the National Security Council under the Obama administration. He explains that the latest spate of network outages shows \"in real time the effects that AI",
+          "image": "https://s.france24.com/media/display/bed7beae-e45b-11f1-9cd8-ebb478925cf0/w:1024/p:16x9/EN-20261119-210356-211312-CS-01.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Kushner says Trump 'open' to extend NATO mutual defense-type clause to Ukraine",
+          "title_zh": "库什纳称特朗普“乐于”将北约性质的共同防御条款扩大至乌克兰",
+          "url": "https://www.france24.com/en/kushner-says-trump-open-to-extend-nato-mutual-defense-type-clause-to-ukraine",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "US envoy Jared Kushner said Thursday that President Donald Trump was open to extending to Ukraine a security guarantee similar to NATO's mutual defense clause, but stressed that Washington has to protect its interests too. The comments came as German Chancellor Friedrich Merz qualified the summit be",
+          "image": "https://s.france24.com/media/display/25b84e6c-e444-11f1-a13d-ebb478925cf0/w:1024/p:16x9/2026-11-19T175030Z-1149809636-RC24ROAX76LX-RTRMADP-3-UKRAINE-CRISIS-GERMANY-BRITAIN.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Macron urges Ukraine's allies to 'reopen the question' of NATO membership",
+          "title_zh": "马克龙敦促乌克兰盟友“重新讨论”北约成员国身份问题",
+          "url": "https://www.france24.com/en/europe/20261119-macron-urges-ukraine-allies-reopen-question-nato-membership",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "French President Emmanuel Macron on Thursday called for Ukraine's allies to speed up the delivery of urgently needed air defence systems and urged them to \"reopen the question\" of Ukraine's NATO membership after talks in Berlin aimed at reaffirming European support for Kyiv.",
+          "image": "https://s.france24.com/media/display/1caca7f6-e44d-11f1-80ec-e56ab3dc0809/w:1024/p:16x9/2026-11-19T181939Z-2056306323-RC23ROA5DSK2-RTRMADP-3-UKRAINE-CRISIS-GERMANY-BRITAIN.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "A president among body bags: Photo ops spark outrage in Colombia",
+          "title_zh": "尸袋中的总统：摆拍照片引发哥伦比亚民众愤怒",
+          "url": "https://www.france24.com/en/tv-shows/the-observers/20261119-president-body-bags-photo-ops-sparking-outrage-colombia",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Since taking office in August, Colombia's far-right President Abelardo de la Espriella has regularly posted videos that show him walking among body bags supposedly holding the remains of rebel fighters – a communications strategy that has sparked widespread criticism.",
+          "image": "https://s.france24.com/media/display/7aa71908-d878-11f1-b19e-695cb59fade5/w:1024/p:16x9/2-Colombie-pst-sacs-mortuaires-2septembre.png",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Three of a kind? Xi hosts Trump and Putin as Ukraine war grinds on",
+          "title_zh": "三足鼎立？乌克兰战争陷入胶着之际，习近平会见特朗普与普京",
+          "url": "https://www.france24.com/en/tv-shows/the-debate/20261119-three-of-a-kind-xi-hosts-trump-and-putin-as-ukraine-war-grinds-on",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Gang of three or glorified photo op? Xi Jinping hosting Donald Trump and Vladimir Putin on the sidelines of the APEC summit. Already, our Monday panel rejected attempts to paint the three-way meeting as a new Yalta, as in the 1945 sit-down on the Black Sea that defined the post-war security architec",
+          "image": "https://s.france24.com/media/display/1cf1dff8-e44b-11f1-81ed-ebb478925cf0/w:1024/p:16x9/2026-11-19T112415Z-149699658-RC2ZQOAH0BR6-RTRMADP-3-APEC-SUMMIT.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Xi-Trump-Putin trilateral meeting: Trump's recognition of China and Russia as 'peers of the US'",
+          "title_zh": "习特普三方会晤：特朗普承认中俄为“美国的对等国家”",
+          "url": "https://www.france24.com/en/xi-trump-putin-trilateral-meeting-trump-s-recognition-of-china-and-russia-as-peers-of-the-us",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Genie Godula is pleased to welcome Olivia Cheung. The trilateral meeting between Donald Trump, Xi Jinping and Vladimir Putin at the APEC summit was significant despite the absence of concrete agreements, according to Cheung. “The significance is seen in the precedence of the United States seeing and",
+          "image": "https://s.france24.com/media/display/61a7631a-e447-11f1-ad61-e56ab3dc0809/w:1024/p:16x9/EN-20261119-130423-130957-CS.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "NASA's Voyager 1 phones home from record one light-day away, 49 years after launch",
+          "title_zh": "航行49年后，NASA的旅行者1号在创纪录的单光日距离传回信号",
+          "url": "https://www.france24.com/en/nasa-voyager-1-phones-home-from-record-one-light-day-away-49-years-after-launch",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "The Voyager 1 probe launched by NASA nearly a half century ago has reached a distance from Earth of one light day (more than 26 billion kilometres), the farthest any human artifact has ever ventured from our planet. The space agency received a signal from the spacecraft Thursday, exactly 24 hours af",
+          "image": "https://s.france24.com/media/display/667c80bc-e444-11f1-afff-13439ca2fe89/w:1024/p:16x9/AP24166764529324.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "French media regulator says it will monitor top YouTubers for bias in election coverage",
+          "title_zh": "法国媒体监管机构表示将监督顶级YouTube博主在选举报道中的偏见问题",
+          "url": "https://www.france24.com/en/france/20261119-french-regulator-warns-influential-youtubers-respect-pluralism-rules-election-coverage",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Rules designed to safeguard media pluralism during elections campaigns will apply to France's most influential YouTubers in the run-up to next year's presidential contest, media regulator Arcom warned on Thursday, reflecting the growing influence of content creators whose audiences often outstrip th",
+          "image": "https://s.france24.com/media/display/1246ec08-e430-11f1-b9da-1bac47ab2f5d/w:1024/p:16x9/000-32687U6.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "What impact will the Shenzhen summit have on the US-China trade war?",
+          "title_zh": "深圳峰会对美中贸易战将产生何种影响？",
+          "url": "https://www.france24.com/en/asia-pacific/20261119-what-impact-will-shenzhen-summit-us-china-trade-war",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Despite warm words between US President Donald Trump and Chinese President Xi Jinping at three-way talks with Russian President Vladimir Putin in Shenzhen Thursday, the simmering trade war between Washington and Beijing still looks to be no closer to resolution.",
+          "image": "https://s.france24.com/media/display/e19cd550-e42e-11f1-8850-ebb478925cf0/w:1024/p:16x9/2026-11-19T103254Z-1184575046-RC2XQOAUVE6M-RTRMADP-3-APEC-SUMMIT.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Bangladesh: Hasina supporters vandalise ruling party office",
+          "title_zh": "孟加拉国：哈西娜的支持者破坏执政党办公室",
+          "url": "https://www.france24.com/en/video/20261119-bangladesh-hasina-supporters-vandalise-ruling-party-office",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "Hundreds of supporters of ousted Bangladesh premier Sheikh Hasina staged street protests on Thursday, as a wave of arson attacks escalated tensions ahead of her planned return from exile next month.",
+          "image": "https://s.france24.com/media/display/5276727a-e43b-11f1-a52f-13439ca2fe89/w:1024/p:16x9/Bangladesh-protests-Hasina0.png",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "US has 'unbalanced approach' on DR Congo deal, Rwanda's foreign minister says",
+          "title_zh": "卢旺达外长称美国在刚果民主共和国问题上的处理方式“失衡”",
+          "url": "https://www.france24.com/en/tv-shows/t%C3%AAte-%C3%A0-t%C3%AAte/20261119-us-has-unbalanced-approach-on-dr-congo-deal-rwanda-s-foreign-minister-says",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "In an interview with FRANCE 24, Rwandan Foreign Minister Olivier Nduhungirehe said the Trump administration had \"an unbalanced approach\" in implementing the DR Congo peace deal it brokered. He also said that the recent row over the Organisation Internationale de la Francophonie's top job was \"manufa",
+          "image": "https://s.france24.com/media/display/1da1c348-e417-11f1-91e2-1bac47ab2f5d/w:1024/p:16x9/FR-NW-PKG-CLEAN-EN-TETE-A-TETE-Olivier-J-P-Nduhungirehe-AUBIN-Sophian.jpg",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "🔴Anthropic soars more than 30% to $2 trillion valuation on first day of trading",
+          "title_zh": "🔴Anthropic首日交易估值飙升逾30%，达2万亿美元",
+          "url": "https://www.france24.com/en/business/20261119-anthropic-begins-trading-1-5-trillion-company-biggest-ipo-record-ai",
+          "source": "France 24",
+          "publisher": "France 24",
+          "summary_en": "",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Race to replant five South African baobabs after export blocked",
+          "title_zh": "出口受阻后，人们正竞相重新种植五棵南非猴面包树",
+          "url": "https://www.theguardian.com/environment/2026/nov/19/baobab-five-trees-south-africa-dug-up-export-blocked-georgia-aoe",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "The trees, intended for an unnamed buyer in Georgia, were reportedly dug up without the necessary permits Environmentalists in South Africa are racing to replant five centuries-old baobabs after the 20-tonne trees were dug up by an exporter, who tried to ship them thousands of miles to Georgia. The ",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "One in four women globally unable to refuse sex within marriage, says UN",
+          "title_zh": "联合国称，全球四分之一的女性无法在婚姻中拒绝性行为",
+          "url": "https://www.theguardian.com/global-development/2026/nov/19/women-girls-rights-rape-sexual-violence-africa-marriage-unfpa",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Almost half of women in west and central Africa cannot withhold consent, with girls worst affected, UNFPA finds One in four women around the world have no power of consent if their husband or partner demands sex, according to a UN report. In west and central Africa, almost half of women (45%) are no",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Fears grow that US will put Nobel-winning judge under sanctions after Myanmar genocide ruling",
+          "title_zh": "担忧情绪升温：缅甸种族灭绝裁决后，美国或将对诺贝尔奖得主法官实施制裁",
+          "url": "https://www.theguardian.com/world/2026/nov/18/us-sanctions-icj-judges-myanmar-genocide-ruling-israel-gaza-court",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "A ruling against Myanmar could set precedent for court’s judgment on Israel’s actions in Gaza Fears are growing that the US could impose sanctions on judges at the international court of justice, including this year’s Nobel peace prize winner, Navi Pillay , if the court rules on Thursday that the My",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "European Commission accused of sugarcoating figures to release funds to Egypt",
+          "title_zh": "欧盟委员会被指控粉饰数据，以向埃及释放资金",
+          "url": "https://www.theguardian.com/world/2026/nov/18/european-commission-accused-sugarcoating-figures-egypt-loans",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Leaked documents raise questions about claims Egypt met welfare targets to qualify for €2.5bn in loans The European Commission has been accused of sugarcoating figures to enable it to release funds to Egypt under a landmark pact with the authoritarian government of Abdel Fatah al-Sisi. The charge re",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Five EU states announce plans for immigration ‘return hubs’ in Rwanda",
+          "title_zh": "五个欧盟国家宣布在卢旺达建立移民“遣返中心”的计划",
+          "url": "https://www.theguardian.com/world/2026/nov/16/eu-states-immigration-return-hubs-rwanda",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Germany, Austria, Netherlands, Denmark and Greece likely to face challenges to policy criticised as ‘grave moral failing’ Five EU member states have announced plans to set up an offshore centre in Rwanda for people with no legal right to stay in Europe, in a pilot scheme that is expected to face leg",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Race to be next UN secretary general exposes divisions among world powers",
+          "title_zh": "下届联合国秘书长竞选暴露了大国间的分歧",
+          "url": "https://www.theguardian.com/world/2026/nov/20/race-to-be-next-un-secretary-general-exposes-divisions-among-world-powers",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Debate about dominance of permanent five members could reignite if major powers block Costa Rican frontrunner The race to become the next UN secretary general could reach a decisive moment on Friday when a UN security council vote is likely to reveal whether the Costa Rican frontrunner for the post ",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Florida pastor found guilty over 2021 assassination of Haitian president",
+          "title_zh": "佛罗里达州牧师被判对2021年海地总统遇刺案负有罪责",
+          "url": "https://www.theguardian.com/us-news/2026/nov/18/florida-pastor-guilty-haiti-president-assassination",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Christian Emmanuel Sanon faces life in prison after conviction on charges arising from killing of Jovenel Moïse A Florida pastor with dual Haitian-American citizenship was convicted on Wednesday of US charges arising from the 2021 assassination of the Haitian president Jovenel Moïse. Christian Emman",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Hegseth uses Venezuela visit to boast of Maduro’s capture by US military",
+          "title_zh": "赫格塞斯利用访问委内瑞拉的机会，吹嘘美国军方抓获马杜罗",
+          "url": "https://www.theguardian.com/world/2026/nov/18/pete-hegseth-venezuela-nicolas-maduro-military",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Defense secretary asserts US dominance on trip that would have seemed ‘impossible, almost unbelievable’ a year ago Pete Hegseth has used his first visit to Venezuela since US special forces abducted its former president, Nicolás Maduro, to boast of the dictator’s capture during what he called “the s",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Caribbean nations fear economic impact of shuttering citizenship program after EU threats",
+          "title_zh": "欧盟发出威胁后，加勒比国家担忧关闭公民身份计划将带来经济影响",
+          "url": "https://www.theguardian.com/world/2026/nov/17/st-kitts-nevis-citizenship-investment",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "St Kitts and Nevis to wind down citizenship-by-investment program after EU warns of end to visa-free access The decision by St Kitts and Nevis to end a lucrative programme offering citizenship to wealthy foreigners in exchange for investment threatens its economy and ability to support people in nee",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "Isolated Brazilian tribe emerges amid alarm over threats to group’s way of life",
+          "title_zh": "在生活方式面临威胁的担忧中，巴西一个孤立部落首次现身",
+          "url": "https://www.theguardian.com/world/2026/nov/17/brazil-amazon-isolated-indigenous-people",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Indigenous Awá people of Amazon make contact with villagers and accept food to take back to territory About 20 Indigenous people emerged from isolation in Brazil’s Amazon rainforest, several organizations reported on Tuesday, raising the alarm about increased invasions into the tribe’s territory. Ac",
+          "image": "",
+          "published": "2026-11-17",
+          "section": "international"
+        },
+        {
+          "title_en": "China, Russia and US agree peace declaration with no mention of Ukraine and Iran wars",
+          "title_zh": "中、俄、美达成和平宣言，未提及乌克兰和伊朗战争",
+          "url": "https://www.theguardian.com/world/2026/nov/19/china-russia-us-agree-peace-statement-no-mention-ukraine-iran-wars",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Xi, Putin and Trump outline priorities that include UN reform, boosting oil supplies and ‘protection of diplomatic immunity’ China, Russia and the US say they have agreed a peace statement after an unprecedented trilateral summit, but the declaration made no mention of the wars in Ukraine and Iran c",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Trump accused of falling asleep during Xi Jinping speech at Apec summit in China",
+          "title_zh": "特朗普被指在中国的APEC峰会上习近平发表讲话时睡着",
+          "url": "https://www.theguardian.com/us-news/2026/nov/19/trump-apec-asleep-china",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "US president appeared to doze off while Chinese leader made speech, but White House insisted he was awake Donald Trump was, again, accused of falling asleep during a televised event, this time during the speech of the Chinese president, Xi Jinping, at the Asia-Pacific Economic Cooperation (Apec) sum",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "New page in history? Xi, Trump and Putin summit was more of a footnote",
+          "title_zh": "历史的新篇章？习近平、特朗普与普京的峰会更像是一个注脚",
+          "url": "https://www.theguardian.com/world/2026/nov/19/new-page-in-history-xi-trump-and-putin-summit-was-more-of-a-footnote",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Far from the grand ambitions declared in Yalta in 1945, Shenzhen felt like a meeting in search of an agenda It is arguably true, given it was the first such meeting of the leaders of China, Russia and the US, that Thursday’s gathering in Shenzhen deserved the description of “historic”. But in terms ",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Datacentres to create 70% more carbon emissions by 2030, IEA report warns",
+          "title_zh": "国际能源署报告警告：到2030年数据中心碳排放量将增加70%",
+          "url": "https://www.theguardian.com/world/2026/nov/19/datacentres-to-create-70-more-carbon-emissions-by-2030-iea-report-warns",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Global energy watchdog forecasts huge rise as US and China turn to fossil fuels to power AI growth agendas The world’s datacentres will create 70% more carbon emissions within the next four years as the US and China turn to fossil fuels to power their AI growth agendas, according to the world’s ener",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Apec summit as it happened: Xi welcomes Trump on China visit as Putin claims Europe in ‘humiliating decline’",
+          "title_zh": "APEC峰会实时直击：习近平欢迎特朗普访华，普京称欧洲正处于“屈辱的衰落”中",
+          "url": "https://www.theguardian.com/world/live/2026/nov/18/apec-summit-live-updates-xi-putin-trump-world-leaders-gather-in-china",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "This blog is now closed, you can read more on this story here Yalta became a byword for betrayal. Will Trump, Xi and Putin enact another carve-up? That is the question the Guardian’s diplomatic correspondent Patrick Wintour seeks to address in his piece about the expected, Putin, Trump and Xi, meeti",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Kellie Sloane says she’s ‘pretty sure’ NSW Liberals exodus is over after Mark Speakman resigns",
+          "title_zh": "在马克·斯皮克曼辞职后，凯莉·斯隆表示“相当确定”新南威尔士州自由党的人员流失已经结束",
+          "url": "https://www.theguardian.com/australia-news/2026/nov/19/mark-speakman-resigns-and-says-liberals-face-existential-threat-as-nsw-exodus-continues",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Former NSW opposition leader warns party against being ‘One Nation lite’ as he became eighth out of 24 Liberal MPs not to recontest seat in March Get our breaking news email , free app or daily news podcast The New South Wales opposition leader, Kellie Sloane, says she is “pretty sure” the exodus of",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Beau Lamarre-Condon’s explanations of body disposal ‘ring hollow’, court hears",
+          "title_zh": "法庭获悉 Beau Lamarre-Condon 关于处置尸体的解释“听起来很空洞”",
+          "url": "https://www.theguardian.com/australia-news/2026/nov/20/beau-lamarre-condons-attempts-to-explain-disposal-alleged-victims-bodies-ring-hollow-court-hears-ntwnfb",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Former police officer has pleaded not guilty to murdering Jesse Baird and Luke Davies in Paddington in February 2024 Get our breaking news email , free app or daily news podcast Beau Lamarre-Condon knew he had murdered two men and his attempts to explain the disposal of their bodies “ring completely",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "NextDC vows to keep future datacentres away from homes after community backlash in Melbourne",
+          "title_zh": "在墨尔本遭遇社区抵制后，NextDC 誓言未来的数据中心将远离居民区",
+          "url": "https://www.theguardian.com/australia-news/2026/nov/20/nextdc-vows-to-keep-future-datacentres-away-from-homes-after-community-backlash-in-melbourne",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Public expectations around datacentres have changed in the age of AI, chief executive Craig Scroggie says Get our breaking news email , free app or daily news podcast Community backlash to a datacentre expansion in inner Melbourne that resulted in NextDC’s share price dropping 40% will change the wa",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "‘Perfect weapon’: diabetic woman found guilty of murdering her 94-year-old parents with insulin",
+          "title_zh": "“完美的武器”：一名糖尿病女性被裁定利用胰岛素谋杀其 94 岁的父母",
+          "url": "https://www.theguardian.com/australia-news/2026/nov/20/diabetic-woman-found-guilty-murdering-94-year-old-parents-with-insulin-ntwnfb",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Jury convicts Raelene Polymiadis after four-month trial in South Australian supreme court Get our breaking news email , free app or daily news podcast A jury has convicted a diabetic woman of murdering both her elderly parents with insulin after a marathon criminal trial. Raelene Polymiadis, 66, wil",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Religion should be removed from terrorism definition under Australian law as it gives ‘false credibility’, watchdog says",
+          "title_zh": "监督机构称，澳大利亚法律中的恐怖主义定义应剔除宗教因素，因为这会带来“虚假的公信力”",
+          "url": "https://www.theguardian.com/law/2026/nov/20/religion-should-removed-from-terrorism-definition-australian-law-gives-false-credibility-watchdog-ntwnfb",
+          "source": "The Guardian",
+          "publisher": "The Guardian",
+          "summary_en": "Independent National Security Legislation Monitor says reference to religion has ‘contributed to discrimination and violence against religious minorities’ Get our breaking news email , free app or daily news podcast Religion should be removed from Australia’s terrorism definition and making bomb thr",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "The U.N.'s top court rules Myanmar committed genocide against the Rohingya",
+          "title_zh": "联合国最高法院裁定缅甸对罗兴亚人犯下种族灭绝罪",
+          "url": "https://www.npr.org/2026/11/19/g-s1-154340/un-court-myanmar-genocide-rohingya",
+          "source": "NPR",
+          "publisher": "NPR",
+          "summary_en": "The International Court of Justice found that Myanmar security forces \"acted with genocidal intent\" against the Rohingya during military operations in the northern Rakhine state in 2017.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Anthropic raises more than $100B in IPO. And, Dems nominate Jeffries for House speaker",
+          "title_zh": "Anthropic 通过 IPO 筹集超过 1000 亿美元。此外，民主党提名 Jeffries 为众议院议长",
+          "url": "https://www.npr.org/2026/11/19/g-s1-154344/up-first-newsletter-house-democrats-trump-xi-putin-anthropic",
+          "source": "NPR",
+          "publisher": "NPR",
+          "summary_en": "Despite growing concern over a possible AI bubble, Anthropic had a record-breaking initial public offering. And, Hakeem Jeffries could become the first Black Speaker of the House.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Top House Democrat questions what Trump accomplished in Xi-Putin summit",
+          "title_zh": "民主党众议院领袖质疑特朗普在习特、普特会晤中的成就",
+          "url": "https://www.npr.org/2026/11/19/nx-s1-6046487/gregory-meeks-trump-xi-putin-summit",
+          "source": "NPR",
+          "publisher": "NPR",
+          "summary_en": "Rep. Gregory Meeks raises concerns about U.S. alliances after Trump's summit with Xi and Putin. He also discusses Chinese espionage amid the Nvidia scandal.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Iran's attacks on ships in the Strait of Hormuz escalate",
+          "title_zh": "伊朗在霍尔木兹海峡对船只的袭击升级",
+          "url": "https://www.npr.org/2026/11/19/nx-s1-6044206/irans-attacks-on-ships-in-the-strait-of-hormuz-escalate",
+          "source": "NPR",
+          "publisher": "NPR",
+          "summary_en": "Iran takes the offensive with attacks on ships in the Strait of Hormuz and airstrikes on several countries around the Persian Gulf.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Trump, Xi and Putin meet as global alliances hang in the balance",
+          "title_zh": "特朗普、习近平与普京会面，全球联盟面临考验",
+          "url": "https://www.npr.org/2026/11/18/nx-s1-6040432/trump-xi-and-putin-shenzhen-china-russia-usa",
+          "source": "NPR",
+          "publisher": "NPR",
+          "summary_en": "President Trump, China's Xi Jinping and Russia's Vladimir Putin have gathered in Shenzhen, China, for a historic trilateral meeting, with Ukraine, Iran and nuclear disarmament on the agenda.",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Karl Kani dressed hip-hop royalty for decades. Now he's telling his own story",
+          "title_zh": "卡尔·卡尼数十年来一直为嘻哈界名流提供着装，现在他正在讲述自己的故事",
+          "url": "https://www.npr.org/2026/11/18/g-s1-154227/karl-kani-a-life-by-design",
+          "source": "NPR",
+          "publisher": "NPR",
+          "summary_en": "On NPR's Morning Edition , fashion designer Karl Kani talks about his new memoir, dressing some of hip-hop's biggest stars and why skinny jeans aren't for everyone.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Mary Peltola flips Alaska's Senate seat. And, Nvidia won't reinstate Jensen Huang",
+          "title_zh": "玛丽·佩特拉夺取阿拉斯加参议院席位；英伟达不会恢复黄仁勋职务",
+          "url": "https://www.npr.org/2026/11/18/g-s1-154145/up-first-newsletter-mary-peltola-alaska-trump-asia-nvidia-tech-issues-ai",
+          "source": "NPR",
+          "publisher": "NPR",
+          "summary_en": "Former Democratic Rep. Mary Peltola has won one of the U.S.' most watched Senate races. And, Nvidia's board says it doesn't plan to reinstate former CEO Jensen Huang despite pressure from his allies.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Trump to meet with Russia's Putin and China's Xi for historic joint meeting",
+          "title_zh": "特朗普将与俄罗斯总统普京及中国国家主席习近平举行历史性的会晤",
+          "url": "https://www.npr.org/2026/11/18/nx-s1-6027645/trump-to-meet-with-russias-putin-and-chinas-xi-for-historic-joint-meeting",
+          "source": "NPR",
+          "publisher": "NPR",
+          "summary_en": "President Trump will meet with Russian President Vladimir Putin and Chinese President Xi on Thursday for a historic three-way meeting.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Former U.S. ambassador on Trump's joint summit with leaders of China and Russia",
+          "title_zh": "前美国大使谈特朗普与中俄领导人的联合峰会",
+          "url": "https://www.npr.org/2026/11/18/nx-s1-6044067/former-u-s-ambassador-on-trumps-joint-summit-with-leaders-of-china-and-russia",
+          "source": "NPR",
+          "publisher": "NPR",
+          "summary_en": "NPR's Leila Fadel speaks to Nicholas Burns, former U.S. ambassador to China and NATO, about President Trump's planned meeting with the leaders of China and Russia.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Greetings from a Berlin square, where an artist's statue watches over children at play",
+          "title_zh": "来自柏林广场的问候：一位艺术家的雕像守护着嬉戏的孩子们",
+          "url": "https://www.npr.org/2026/11/18/nx-s1-6043021/berlin-kollwitzplatz-statue",
+          "source": "NPR",
+          "publisher": "NPR",
+          "summary_en": "Children frolic around the ever-watchful and calm Käthe Kollwitz cast in bronze, in a square named after the German artist, whose work often depicted children in the wake of World War I.",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "UK conducting offensive cyber ops against Russia, China, Iran and North Korea, says top commander",
+          "title_zh": "最高指挥官称英国正对俄罗斯、中国、伊朗和朝鲜进行进攻性网络行动",
+          "url": "https://news.sky.com/story/uk-conducting-offensive-cyber-ops-against-russia-china-iran-and-north-korea-top-commander-reveals-13614163",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "The UK is conducting offensive cyber operations against Russia, China, Iran and North Korea, a top military commander has for the first time revealed.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-soldier-cyber-ops_7410955.jpg?20261119214131",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Saudi's tallest skyscraper damaged in Houthi attack",
+          "title_zh": "沙特最高摩天大楼在胡塞武装袭击中受损",
+          "url": "https://news.sky.com/story/saudis-tallest-skyscraper-damaged-in-houthi-attack-13614147",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "Saudi Arabia's tallest skyscraper, the headquarters of the Saudi sovereign wealth fund, was struck in ​a Houthi attack in the latest in a series of strikes on the Gulf state, Riyadh said.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-houthi-attack-riyadh_7410746.jpg?20261119211843",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Thomas Markle fit to stand trial over child abuse images, US court rules",
+          "title_zh": "美国法院裁定托马斯·马克尔具备因儿童虐待图像受审的资格",
+          "url": "https://news.sky.com/story/thomas-markle-fit-to-stand-trial-over-child-abuse-images-us-court-rules-13614172",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "Thomas Markle is fit to stand trial on charges of possessing child sexual abuse material, a US court has ruled.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-thomas-markle-us_7411020.jpg?20261119231423",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Burnham says Europe 'ready to enter negotiations' to help end Russia's war in Ukraine",
+          "title_zh": "伯纳姆表示欧洲“已准备好进行谈判”以帮助结束俄罗斯在乌克兰的战争",
+          "url": "https://news.sky.com/story/putin-vows-to-retaliate-as-ukraine-hits-prized-crimea-bridge-for-third-time-in-four-days-13613963",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "Europe is ready to enter negotiations to help end Russia's war in Ukraine, Andy Burnham has said.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-andy-burnham-volodymyr-zelenskyy_7410778.jpg?20261119175118",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "England handed suspended away ticket ban for fans' chants during Spain win",
+          "title_zh": "英格兰队因在战胜西班牙时球迷的口号声被处以暂停执行的客场球迷禁令",
+          "url": "https://news.sky.com/story/england-given-suspended-away-ticket-ban-by-uefa-for-fans-chants-during-spain-win-13614181",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "England have been given a suspended away ticket ban by UEFA for \"racist and/or discriminatory behaviour\" by their fans during a match with Spain in Madrid on Sunday.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-england-nations-league_7411014.jpg?20261119230418",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "EU reveals it suffered 'AI-powered' cyber attack",
+          "title_zh": "欧盟透露遭受了“人工智能驱动”的网络攻击",
+          "url": "https://news.sky.com/story/eu-reveals-it-suffered-ai-powered-cyber-attack-13613970",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "The EU has revealed it suffered a cyber attack powered by AI last month and some of its digital tools are still offline as a result.",
+          "image": "https://e3.365dm.com/24/01/1920x1080/skynews-hacker-cyberattack_6439404.jpg?20240131153309",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "UEFA challenges FIFA over access to Infantino World Cup sell-off papers - as presidency rivals revealed",
+          "title_zh": "随着欧足联主席竞选对手曝光，欧足联就获取因法蒂诺世界杯销售文件一事向国际足联提出质疑",
+          "url": "https://news.sky.com/story/fifa-confirms-candidates-to-stand-against-gianni-infantino-in-presidential-election-13613862",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "FIFA has confirmed which candidates will stand in next year's presidential election - as UEFA challenges restrictions placed on documents relating to the World Cup sell-off scandal.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-philippe-diallo-gianni-infantino_7410244.jpg?20261119095059",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Israeli troops launch ground operation in central Gaza",
+          "title_zh": "以色列军队在加沙中部发起地面行动",
+          "url": "https://news.sky.com/story/israeli-troops-launch-ground-operation-in-central-gaza-13613724",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "Dozens of displaced Palestinians have fled their tents and shelters in central ‌Gaza after Israel launched a rare ground operation in an area it had left under a ceasefire last year.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-palestinians-gaza_7409882.jpg?20261118205348",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "William and Kate meet India's PM as they wrap up royal visit",
+          "title_zh": "威廉与凯特在结束王室访问之际会见印度总理",
+          "url": "https://news.sky.com/story/prince-william-and-kate-meet-indias-pm-narendra-modi-as-they-wrap-up-royal-visit-13613699",
+          "source": "Sky News",
+          "publisher": "Sky News",
+          "summary_en": "The Prince and Princess of Wales met the prime minister of India on Wednesday to discuss trade and bilateral ‌ties at the end of their three-day visit to the country.",
+          "image": "https://e3.365dm.com/26/11/1920x1080/skynews-modi-william-kate_7409824.jpg?20261118192123",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Live Updates: U.N. Court Rules Myanmar Committed Genocide Against Rohingya - The New York Times",
+          "title_zh": "实时更新：联合国法院裁定缅甸对罗兴亚人实施种族灭绝 - 《纽约时报》",
+          "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5qLUhZWS1IeE93REZvbWFfdUpvcnEyOG1kZjU5M2dMV3N2TFFtZEZsVll5eUx4MWxhcTRaWFlqSndxaVhtRWNrel94QVVCcWgtSGdvd2xvRHZNdm9rNDhJbmhpeWNmSW41bnRZaHo1a0xuRTZmODVXc3Yxemh3QQ?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Live Updates: U.N. Court Rules Myanmar Committed Genocide Against Rohingya The New York Times Jeremy Bowen: Myanmar genocide verdict is historic and could have far-reaching implications BBC Genocide must be proven, not proclaimed, the ICJ ruling on Myanmar shows - editorial The Jerusalem Post In his",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "3 takeaways from Trump, Xi and Putin's historic summit - PBS",
+          "title_zh": "特朗普、习近平与普京历史性峰会的三个要点 - PBS",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNOUxsOWdFb2pKYzNvbzR5cklRbnhFaXdMMENBek1VVVlkLVdSazdBWmxjUWI5TWxrNGIxTmFuLUZxMjRTc0k0Wk9idWxtcEZKR2xrTTRJV05oT0xkX3laSVBzcnd6aUtud085VUNyc0VwU202SkJPN1JMOEw4Rnlfa3c3dTdTc25GM2stUVBWa3DSAZYBQVVfeXFMTmR1OXdhNFBkZEdLQ1c0VXg3MFo3c0FPV0lHV2l3WWNISFZDNF9aN0VNWG02NWJxSG9ydHVZUWY5TzdmQUNwTHRtbkJ1VU5qUWZ5bFJzVG1vOURTczVLTkFkX2phaDhra0pkbER4S20wb1pIS1NBSlAxbmZ6SnpQN19nNlNpUl95RlVVdWs0Qng3M1hlX093?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "3 takeaways from Trump, Xi and Putin's historic summit PBS Strongman ‘friends,’ AI’s potential and other takeaways from Trump’s China trip and sitdown with Putin and Xi CNN A Summit Gives Putin the Win He Craves: Equal Stature With Superpowers The New York Times Trump, Xi and Putin sit down for a ra",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Riyadh’s tallest skyscraper hit in Houthi strike on Saudi wealth fund HQ - NBC News",
+          "title_zh": "利雅得最高摩天大楼在胡塞武装袭击沙特主权财富基金总部期间受损 - NBC News",
+          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOa2VHNWZ0cC16RTRrem5TYWkxMFYxMlVTb1JwM0xuTGdtS2pidkhEdkxjTGNHdjVzX1pyejhVRlAybFk2UndOcWw2VWdUcl9veFcySVF3RkZuNXBSbVlSTG40eUlDNHd5UU42MDNqWXpBM3FaLVIxYjZHYlZ2MmxXTVo5d0VMUmdSLWRILWRFYWFkSU9YSnpBbDBEUFRxMlhsX3pXM0ZYWGhLOG42NnFNR2tEVDJOdzMzWm93?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Riyadh’s tallest skyscraper hit in Houthi strike on Saudi wealth fund HQ NBC News Houthi Attack Damages Saudi Capital’s Tallest Tower WSJ Iran war live: Houthis escalate attacks on Saudi capital Al Jazeera Saudi's tallest skyscraper damaged in Houthi attack Sky News Houthi attacks on Saudi Arabia Re",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Putin says Russia won't negotiate limited ceasefire with Ukraine after bridge strike - CBS News",
+          "title_zh": "普京在桥梁遭袭后表示，俄罗斯不会与乌克兰进行有限停火谈判 - CBS News",
+          "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE0yNHJ2ekFIeGFSWktPUmVMSF85amtLLV9kQ1RRSXRBUVNVZDFndHRFcUd1aDByY0VQeG91TzFlMDVJdU85aWJ6V2g5cDBQaGg3Q0JUTjhlMkt3a2c0S1Q3UHZURkZWcHFZZGVGM1NoLURSQQ?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Putin says Russia won't negotiate limited ceasefire with Ukraine after bridge strike CBS News See How Ukraine Hit Putin’s Showpiece Bridge WSJ Kerch attack: Bridge connecting Russia to occupied Crimea has been hit again CNN Russian Offensive Campaign Assessment, November 17, 2026 Institute for the S",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Australia PM and China’s Xi Jinping hail ‘turnaround’ despite iron ore tensions - Financial Times",
+          "title_zh": "尽管存在铁矿石紧张局势，澳大利亚总理与中国国家主席习近平仍赞扬关系“好转” - 金融时报",
+          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOWkRjb0Rma1lqX0xiWEJGMGNfWXpZaEJPR0pkQmI5WTdJek50SkpSTm80S0ljN0tGaG80R0ZZZXU1bktzLXVMeDg1ZW5KNTR5bDV1YmdlM2VsSmF3RFZmdF9FTGJuVnBOalFwcUp0QXV1TU5ycVJ5REp1cWladVlFRjdpa0E?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Australia PM and China’s Xi Jinping hail ‘turnaround’ despite iron ore tensions Financial Times Xi Jinping declares 'complete turnaround' in China's relations with Australia ABC News & Headlines – Australian Broadcasting Corporation Xi Jinping says a ‘full turnaround’ has been achieved in Australia-",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Islam to surpass Christianity as world’s largest religion by 2035, Pew data shows - The Times of Israel",
+          "title_zh": "皮尤研究数据显示，到2035年伊斯兰教将超过基督教成为世界第一大宗教 - 《以色列时报》",
+          "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPd29hOUZvZ2xqZDVnd2poNnpkb1V2WGNKbHU1a0JPaV9MMzkxb3VZTWtMUENmVlQ1OEdPYzlzTVpOWWNKRnR2NjRFWk90SGQwOE02WEZ1bGJqYk8yNzVEdWRrSkhzb1JRaTFxUjhzR1d3aXgzWXgwNFBTcGg4WWhyWjlJWm1FelEyaWUwajBobXRlTUNibmdETm9HUlhBelRpUFhCZHFlN1ljMnNFWlkw0gG0AUFVX3lxTFBXMWYyUXhPY0d3bzhGbnd4TDBiOWU5TUdXMW9GRDhHWFZBMWJPTFNwYlJvcjQwT0RLWkgyZkhsQ0xkNU5lTUVDM25KRjhJMXFUdTdtYzV1U2s5ZGtRV3NvYXV2VWJUeFlMSE1SSGZCZ0gxRVhqendHNndHYVZ6WVNtOUo1RGJkX1RZSWdUMm9uemgtTUdhNEpMRGZYTHNqelNKQ0Ryb0JKeURheVBTR09qeXZNMw?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Islam to surpass Christianity as world’s largest religion by 2035, Pew data shows The Times of Israel The Future of World Religions: Population Growth Projections, 2020-2070 Pew Research Center Islam is expected to surpass Christianity as the world’s largest religion by 2035 The Catholic Thing Musli",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Everyone is a friend: Trump's meetings in Asia show his varied approaches to shifting world order - AP News",
+          "title_zh": "每个人都是朋友：特朗普在亚洲的会晤展示了他应对动荡世界秩序的多样化手段 - 美联社",
+          "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNUzNUZ054aWcxUXBpUmpxaXRRY0ZfTE9ydE54WFNzR2ladXF0Y2xQYzZONHprYTVfTEFzcjA3UUNUTEJtQWpJSjZ5MURIUmdXTGZPYW0zbG1tYkFfT1FPNW55eHdIUTNXZHpBLUYwLTU4bnZUMUJsSUlSMENtR2tiVGdYUGlhYzllLV9VMy1JWFNuRzdiRzNuLQ?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Everyone is a friend: Trump's meetings in Asia show his varied approaches to shifting world order AP News Chip tensions loom over Trump-Xi summit, as US and China push AI safety steps Reuters Trump Escapes Turmoil at Home by Seeking Out a Friendlier Audience Abroad WSJ A Diminished Trump Could Get P",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Climate talks drop fossil fuel phaseout and pivot to carbon capture - Financial Times",
+          "title_zh": "气候谈判放弃逐步淘汰化石燃料，转而转向碳捕集 - 金融时报",
+          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQU3BWdzJYX3pyUm1XeE1sRlZsMm5BZGQ2clNzNjlfWlNXZmctME0yTnV0a3RBSVFoUVlSd0xPSHd3NVVMNXRLdzBISFV6QmNoazhIem01dUk5d0xJb2ZTYTVMa0x1aTdaZks2MHlldHZ6Qm5xTHdGaDk2QVBkRFJHekZpQjI?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Climate talks drop fossil fuel phaseout and pivot to carbon capture Financial Times Cop31 as it happened: Fossil fuels dumped from latest draft deal at climate summit The Guardian There’s a New Push at Climate Talks: Wire the World for Electricity The New York Times Making Sense of the Changes Comin",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Europe ready for talks with Russia on ending war in Ukraine, leaders say - BBC",
+          "title_zh": "欧洲领导人表示，欧洲已准备好就结束乌克兰战争与俄罗斯进行谈判 - BBC",
+          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA4akxXcHFqbTV0dzV2MnZpTVFTc21SSGhVM3dCbnVpNlNpYUhWdHhWdWZlanlQQzdYOXdaLXVHdC1ZWHdzWkFDa2piREFkZ3cwS0IwV2d4X2JnbW8?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Europe ready for talks with Russia on ending war in Ukraine, leaders say BBC Ukraine's allies attend 'Coalition of the Willing' summit in Berlin DW.com Top Trump aides to meet with Europeans, Ukrainians on peace plan Axios Kushner says Russia ‘comfortable’ with NATO-like guarantees for Ukraine Al Ja",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "Appeals court grants Trump request to halt order restoring Venezuelan TPS - AP News",
+          "title_zh": "上诉法院批准特朗普停止恢复委内瑞拉临时保护身份（TPS）命令的请求 - 美联社",
+          "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQZGpZSEt0YktGbGc2VUV5RndhWmQwV01HYnlsMlpNQUNVUEFkbV8tSnpxcGVlaGpkU21jbGxrYUJFbU9LV0syaVU3YllOYU0yRzFOZjlXQ0lXdUN5NlZGc2FJSkxEMEFhTkRHVlByZjVOaU94azNwaml5d1ZQWmlxeDVzWnZHTnFCNkhHbEhsQTFJZHREQnc?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Appeals court grants Trump request to halt order restoring Venezuelan TPS AP News See more headlines & perspectives on Google News",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Iran widens Gulf attacks by targeting U.S. air base in Kuwait and sites in Bahrain - PBS",
+          "title_zh": "伊朗扩大在海湾地区的袭击范围，目标指向科威特的美国空军基地和巴林的相关地点 - PBS",
+          "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNaW9yLUs5SFJFWmk1NUp3aUpBc0lfYl95MEJsUl83dUs2ck9rT1ctbllHMFU0bWpseVFKSG01MV9ueV9LNW9EazJ2M2xla19qSzBPWklsM0F6ZHhDd3h1TzRxTFhSMm5aamtzN3AtZnFORWlNVk1yM0tTY0phUXRORmJwUmFIbU1BZ3ZyanlTVkg0TDMzekV3V0ZkVEl2MTNENkQyOTNSWjVsZGhVNWhZZHpFdjNDTUnSAbwBQVVfeXFMT2g5NGpZdnN5R1R2QXVsV2txeXQzYWhVdllQa1NrY2RSM2JsSHNvNmNWRnNzSGk2UlpoRnlJVFdGbGNQZnJwd0M2S2FDdEdRWmRDTEJ6UFdMUXp0d040UjlHdWFLLVROcjdmRHhCNzdySDNvWFdfWWRsS1BNVkNVYUYybnFmX2RaTFh3TmQxeFFqb2VvUnVxbWlpM3E5Y1Q0dWRPNVBJMzFGSDZZQnltTlQyYTlNUllQa09WZWw?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Iran widens Gulf attacks by targeting U.S. air base in Kuwait and sites in Bahrain PBS Iran widens Gulf attacks after US strikes missile launch site CNN Opinion | Shock and Dread in the Gulf The New York Times Iran Attacks Kuwait and Bahrain, Further Escalating Fight Over Strait WSJ Iran war updates",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Trump tells 97-year-old Imelda Marcos ‘we love you’ in greeting with flamboyant dictator’s wife - New York Post",
+          "title_zh": "特朗普在问候这位华丽独裁者之妻时对97岁的伊梅尔达·马科斯说“我们爱你” - 《纽约邮报》",
+          "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQMTF6S2hJak5ROGhyQ1RaVEwxcG1PQlZvRnZfVzBVRkhEak83R2lHUDRYSURKSVdLRDNMZV9nWkNpRE9JQXh5ZFlZaFhDbHBGRS02Sk5CVWpVaVdnZlNLRmVaWG01YlZPSnlpNjZFZXkzM2RVMVlnazQ1NS11aGpza2xTaVhkd21ZOXZTcVhqejJpLXFmVFB4c2dsSnNLQUV5ZDB0MDQyLWxxeDZaODRTdlRsc096enBVTVd1T0Y0N2lSOXVnSjdBNDJMQVRpN3JZVzZjNXE4VkVTaGZvbFVB?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Trump tells 97-year-old Imelda Marcos ‘we love you’ in greeting with flamboyant dictator’s wife New York Post Donald Trump gets a warm welcome in the Philippines The Economist Trump Briefly Met an Old Friend in Manila: Imelda Marcos The New York Times Why Did Trump Attend ASEAN? Foreign Policy Trump",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Men guilty of abusing Joanne Young, who was drugged and advertised for sex by husband - BBC",
+          "title_zh": "几名男子被判虐待乔安·杨，该女性曾被其丈夫下药并作为性服务进行广告宣传 - BBC",
+          "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5DWnhPbnJGdUpWNkRnUkdBU2hMLTZ3Q0lEZWFrNW9yZmVWaC0tTlVMY3JPZXZFb3F3aDNWZjczbzZLQlFIMlp2bWpvTy1wbjlveFBuV1NyTkpIanM?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Men guilty of abusing Joanne Young, who was drugged and advertised for sex by husband BBC Joanne Young case: Four men guilty of sex crimes against UK woman drugged by husband CNN 4 British Men Convicted of Sexually Assaulting Joanne Young The New York Times No one asked for my consent, woman in UK d",
+          "image": "",
+          "published": "2026-11-20",
+          "section": "international"
+        },
+        {
+          "title_en": "The UK and EU are holding a summit to patch up ties after their bitter Brexit divorce - AP News",
+          "title_zh": "英国与欧盟在经历痛苦的脱欧“离婚”后，正举行峰会以修复关系 - 美联社",
+          "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNT1k5cTV4b0QxYUc0QVZMampZWHJXUXo0QWlaLThQMjBMa3gySXVHN2diWUJDT2VQRmZ4MXB1WnR5eUZXdnozZFZIenVQX2gwOGZDRWxnSlFPVmFtZzZDWURlRFRHXzZKOFlCN2pucW9zNzdZcG9GeGcwa1JBNTJHOEtNMk5LYW41WkE5eTFqd3A?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "The UK and EU are holding a summit to patch up ties after their bitter Brexit divorce AP News Ten years on, is the UK preparing to undo Brexit? CNN Jason White on Andy Burnham’s overtures to the EU – cartoon The Guardian The Brexit debate is back – and there are nerves about what happens next BBC Un",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "From tarmac to APEC summit table, Japan's PM cuts a lonely figure - Reuters",
+          "title_zh": "从停机坪到APEC峰会谈判桌，日本首相显得形单影只 - 路透社",
+          "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQV2lFRzhLTFFzUDAyQlFERWhQTjQwbzExSnlMaEVMYnhnOEdTRm9yNTJxWWgwRjluUHkxZVFWUnJYTXVOaVhoRGtGRE5PRXhiRF9WX3RtVVJGTkVIV3BLRDZPWVJQUFN0RjY3UXBpUktQSlNHQzlmS1N5Q0lCQkpLSjU4c29PQTM3bXI1cDlzSjAwTG95Vkt1Sk90NGlid0ptUG1v?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "From tarmac to APEC summit table, Japan's PM cuts a lonely figure Reuters Takaichi gets chilly reception in China on first Japan leader visit since 2019 CNBC China gives Japan PM frosty welcome at Apec amid fanfare for other leaders The Guardian Japanese PM Takaichi tries to break ice with Xi by tha",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Ukraine Wants More Mirage 2000 Fighters. Where Could They Come From? - TWZ",
+          "title_zh": "乌克兰希望获得更多幻影2000战斗机。这些战机可以从哪里来？ - TWZ",
+          "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPZjU4MmJMeXRET29FR3lUNFFhTFNGNk9EOFRzMEFWaVB6NVBud08zc2ItYWFQYlhfbXNMVmNEYzFMTlpzUGxzVUxWMnI5RHBiY0JFdWV4azBxTXhISXpTWnpGUEYzaUtGbG1Ndkx6d2YtOWVrbFlpdVMtMXZUT1VLa0NOVk1uRDdrWnl1cUlaOE9lZ3Fi?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Ukraine Wants More Mirage 2000 Fighters. Where Could They Come From? TWZ Ukraine plans to double drone supplies, triple deep strikes Defense News Zelenskyy urges allies to send air defence deliveries without delay as Russia intensifies attacks – as it happened The Guardian Contributions to air defen",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Bukele confirms airstrike on Haitian gang leader Jeff's luxury mansion - Euronews.com",
+          "title_zh": "布克尔确认对海地帮派头目杰夫的豪华豪宅进行了空袭 - Euronews.com",
+          "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPYnhrSGJNNjBvSzFyWnZEd1hmZ2JLYkdlcFVDRGtvN1E0d2t3UVlKY1BlQ3psR00yTDhKc1lXYXRDVEVyNmRWNk1uakxyeHN0NHQ3ZW14TEhQZkJEY2ZaV29CWFZWaHo4X2xQaGdpSUVHdTRLU3pFT3VoRWdEY2NpSzRGMFhZbFNHN2VkVUEzbEJQY2g5bG8xVkMzckF6S1FIUW1hREluQXE?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Bukele confirms airstrike on Haitian gang leader Jeff's luxury mansion Euronews.com Why are Bukele’s Salvadoran troops in Haiti and what have they achieved? Al Jazeera El Salvador’s president confirms and celebrates attack on home of key Haitian gang leader AP News El Salvador Destroys Another Gang ",
+          "image": "",
+          "published": "2026-11-18",
+          "section": "international"
+        },
+        {
+          "title_en": "Iraqi forces strike compromise with powerful pro-Iran militia, security officials say - Reuters",
+          "title_zh": "路透社：伊拉克安全官员称伊拉克军队与强大的亲伊朗民兵达成妥协",
+          "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOVE54c3Eza3gxMTYwRmh4U0tZR0ZvWmctdm1OV1dkN1BzZXNXdFFiTjZkZlc5Mk01YVQzN2ZkZFZzUVVPdmMtc3ZzRjJZY28wdFE3ejFtcnlkbWZmUkZicXFKMU1ydEJZalZwZlFnQkhWSGVaMXFUUkt5T0pVaUp1WUxJMjdiVDhCWnlOLXRKaFh2UXhvQnNNQnNnZVBkWEdwMFBPOEEtc1ZzOTFIOHNfZklhZWJuQVVJaDBpU3hPNk4ycllOcTg4WmZoRG5zaDg?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Iraqi forces strike compromise with powerful pro-Iran militia, security officials say Reuters Iraq reaches compromise with Kataib Hezbollah over armed group’s stronghold Al Jazeera Iran-backed group warns Iraqi forces against entering its stronghold near Baghdad AP News Iraq says it will take over I",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "Palestinians flee and Gaza ceasefire tested as Israeli tanks cross ‘yellow line’ - NBC News",
+          "title_zh": "NBC新闻：随着以色列坦克越过“黄线”，巴勒斯坦人纷纷逃离，加沙停火协议面临考验",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQQlFQR2JVMWMxT3FraFpJclVpTUsyVDFvQzJFTTZSbmJiY3VCQW5peEJWaC1JUngtRFVxaGdfSEJBdlgwRzhzUUR2NWY0LWg0bXo4eWh2NVJtS2FfZ2xsQ3pQa25IeWxhMFZXeFpNWFc1ZkFzZ0lUUlVTWFV6VXNtWW9Id3hRX3cxaWVTRnJoZDJ4OElPaTFDM2R0ZXpSdThJSFBCMUpBemlIUTFRU19DbFNDVUFSZXpo?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "Palestinians flee and Gaza ceasefire tested as Israeli tanks cross ‘yellow line’ NBC News What does Israel’s new ground offensive mean for Palestinians in Gaza? Al Jazeera Israeli tanks cross ‘yellow line’ boundary into Hamas-controlled central Gaza The Guardian Gazans return to battered camp after ",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "“Putin Posed as a Global Leader”: Austrian Embassy Damaged in Russian Strike on Kyiv - UNITED24 Media",
+          "title_zh": "UNITED24媒体：“普京伪装成全球领导人”：奥地利驻基辅大使馆在俄罗斯袭击中受损",
+          "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQcXk4NmppUEk5elN4Ml9qM1pmcjUyOWZhekdXdWFad21KQVlxRFRVMVZKbVNXbG1RZmtSR3ozU2JKcmpQZFY0WnVoM09XbS0yR3EtcVBmV2hXZHRCWWtfWnF0ckpmWmhnVV92OFJSNWtHb0k0RXhQaWU1RnUyT0JGVTNfRGM2dktiNFp0VERqYzN6SV9ndTliSjBLZDQ0WHZVbkE5SUZlakFpY0lSTlBRTnQ2MlJDMlpkUWhhd2hjOXlEVVh4TmVhWldLb3U3UQ?oc=5",
+          "source": "Google News",
+          "publisher": "Google News",
+          "summary_en": "“Putin Posed as a Global Leader”: Austrian Embassy Damaged in Russian Strike on Kyiv UNITED24 Media Dutch and Austrian Embassies Are Damaged as Russian Drones Swarm Kyiv The New York Times Netherlands summons Russian ambassador as Kyiv embassy hit Reuters Russian attack damages St Volodymyr's Cathed",
+          "image": "",
+          "published": "2026-11-19",
+          "section": "international"
+        },
+        {
+          "title_en": "UK and EU to agree youth mobility scheme, BBC understands",
+          "title_zh": "据BBC了解，英国与欧盟将就青年流动计划达成一致",
+          "url": "https://www.bbc.co.uk/news/articles/c623j4kpg94go?at_medium=RSS&at_campaign=rss",
+          "source": "BBC",
+          "publisher": "BBC",
+          "summary_en": "The scheme is expected to be approved at Friday's UK-EU summit, with new deals on food trade and carbon emissions also on the table.",
+          "image": "https://ichef.bbci.co.uk/ace/standard/1024/cpsprodpb/e07f/live/98894190-e498-11f1-9cd2-85bef55939bc.jpg",
+          "published": "2026-11-20",
+          "section": "international"
+        }
+      ]
+    },
+    {
       "date": "2026-11-19",
       "updated_at": "2026-11-19T23:10:22.202045+08:00",
       "broadcast": "各位好，今天是11月19日，欢迎收听今日热点。\n\n首先来看国内新闻。习近平会见了美国总统特朗普，特朗普表示双方今天创造了历史。同时，习近平还主持了中俄美元首会晤，普京对中方表示感谢。在科技领域，腾讯旗下的WorkBuddy已成为中国使用量最大的AI应用，其“小微”功能未来有望媲美Muse，而元宝的表现则不及预期。\n\n接下来关注国际动态。国际法院关于种族灭绝的裁决，引发了外界对罗兴亚人处境的关注。在司法方面，一名佛罗里达州牧师被判犯有2021年暗杀海地总统罪。军事局势方面，普京誓言将对乌克兰袭击克里米亚大桥的行为作出“痛苦得多”的回应，与此同时，以色列军队已完成加沙“黄线”以外的地面行动。此外，土耳其与黎巴嫩正携手共建黎凡特。在外交纠纷方面，索马里指责阿联酋侵犯其主权，并已决定驱逐阿联酋大使。\n\n以上就是今天的要闻，明天同一时间再见。",
