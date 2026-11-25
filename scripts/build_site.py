@@ -278,6 +278,19 @@ def collect_items(briefing: dict) -> list[dict]:
 # --------------------------------------------------------------------------
 # 组件渲染
 # --------------------------------------------------------------------------
+
+# 站内链接一律输出 Cloudflare Pages 的「美化 URL」（不带 .html）。
+# 原因：Pages 会把 /news/xxx.html 以 308 跳到 /news/xxx。若页面里仍写
+# .html，每个内链都多一跳；canonical 与 sitemap 指向被重定向的地址也不利
+# 于收录。生成时直接写最终地址，磁盘上仍保留 xxx.html（Pages 自己映射）。
+def news_url(date_str: str) -> str:
+    return f"/news/{date_str}"
+
+
+def archive_url() -> str:
+    return "/archive"
+
+
 def render_head(
     title: str, description: str, canonical: str, base_url: str
 ) -> str:
@@ -302,7 +315,7 @@ def render_head(
     <a class="brand" href="/"><span class="dot"></span>{esc(SITE_TITLE)}</a>
     <nav class="nav-links">
       <a href="/">今日</a>
-      <a href="/archive.html">归档</a>
+      <a href="{esc(archive_url())}">归档</a>
       <a href="https://github.com/tyuecode/daily-news" target="_blank" rel="noopener noreferrer">源码</a>
     </nav>
   </div>
@@ -324,7 +337,7 @@ def render_foot(generated_at: str = "") -> str:
     <p>{esc(SITE_TITLE)}｜每日北京时间 08:00 采集，覆盖前一日 08:00 至当日 08:00。</p>
     <p>内容来自公开信息源，已标注报道机构与原始链接；分析判断与客观事实分开陈述，不构成投资建议。</p>
     <p><a href="https://github.com/tyuecode/daily-news" target="_blank" rel="noopener noreferrer">GitHub 仓库</a>
-       ｜ <a href="/archive.html">全部归档</a></p>
+       ｜ <a href="{esc(archive_url())}">全部归档</a></p>
   </div>
 </footer>
 </body>
@@ -779,7 +792,7 @@ def render_briefing_page(
     read_min = max(1, round(cn_chars / 400))
 
     title = f"{fmt_date_cn(dt)}｜{SITE_TITLE}"
-    canonical = f"/news/{date_str}.html"
+    canonical = news_url(date_str)
 
     page = [render_head(title, headline, canonical, base_url)]
     page.append('      <p class="page-kicker">每日早报</p>\n')
@@ -823,7 +836,7 @@ def render_briefing_page(
 
     page.append(
         '      <p class="reading-time" style="margin-top:26px">'
-        f'<a href="/archive.html">← 查看全部归档</a></p>\n'
+        f'<a href="{esc(archive_url())}">← 查看全部归档</a></p>\n'
     )
     page.append(render_foot(as_text(config.get("generated_at"))))
     return "".join(page)
@@ -861,13 +874,13 @@ def render_index_page(
     page.append(f"        <h1>{esc(headline)}</h1>\n")
     page.append(
         '        <div class="hero-actions">\n'
-        f'          <a class="btn btn-primary" href="/news/{esc(latest["date_str"])}.html">阅读本期全文</a>\n'
+        f'          <a class="btn btn-primary" href="{esc(news_url(latest["date_str"]))}">阅读本期全文</a>\n'
     )
     if audio_map.get(latest["date_str"]):
         page.append(
             f'          <a class="btn" href="/audio/{esc(latest["date_str"])}.mp3">收听语音播报</a>\n'
         )
-    page.append('          <a class="btn" href="/archive.html">全部归档</a>\n')
+    page.append('          <a class="btn" href="{esc(archive_url())}">全部归档</a>\n')
     page.append("        </div>\n      </div>\n")
 
     page.append(render_audio_box(latest["date_str"], audio_map.get(latest["date_str"], {})))
@@ -897,7 +910,7 @@ def render_index_page(
                 page.append(f"          <li>{esc(t)}{sc_html}</li>\n")
             page.append("        </ul>\n")
             page.append(
-                f'        <p style="margin-top:14px"><a href="/news/{esc(latest["date_str"])}.html">'
+                f'        <p style="margin-top:14px"><a href="{esc(news_url(latest["date_str"]))}">'
                 "查看全部详情（含影响分析与信息来源）→</a></p>\n"
             )
             page.append("      </div>\n")
@@ -914,13 +927,13 @@ def render_index_page(
             raw_head = as_text(bo.get("headline"))
             bhead = truncate_cn(raw_head, 46) or SITE_TITLE
             page.append(
-                f'          <li><a href="/news/{esc(b["date_str"])}.html">'
+                f'          <li><a href="{esc(news_url(b["date_str"]))}">'
                 f'<span class="a-date">{esc(b["date_str"])}</span>'
                 f'<span class="a-title">{esc(bhead)}</span></a></li>\n'
             )
         page.append("        </ul>\n")
         page.append(
-            f'        <p style="margin-top:14px"><a href="/archive.html">全部 {len(briefings)} 期 →</a></p>\n'
+            f'        <p style="margin-top:14px"><a href="{esc(archive_url())}">全部 {len(briefings)} 期 →</a></p>\n'
         )
         page.append("      </div>\n")
 
@@ -931,7 +944,7 @@ def render_index_page(
 def render_archive_page(
     briefings: list[dict], audio_map: dict, base_url: str
 ) -> str:
-    page = [render_head(f"全部归档｜{SITE_TITLE}", SITE_DESC, "/archive.html", base_url)]
+    page = [render_head(f"全部归档｜{SITE_TITLE}", SITE_DESC, archive_url(), base_url)]
     page.append('      <p class="page-kicker">归档</p>\n')
     page.append('      <h1 class="page-title">全部归档</h1>\n')
     page.append(
@@ -968,7 +981,7 @@ def render_archive_page(
                     continue
             audio_tag = " · 含语音" if audio_map.get(b["date_str"]) else ""
             page.append(
-                f'          <li><a href="/news/{esc(b["date_str"])}.html">'
+                f'          <li><a href="{esc(news_url(b["date_str"]))}">'
                 f'<span class="a-date">{esc(fmt_date_cn(b["date"], True))}</span>'
                 f'<span class="a-title">{esc(head)}{esc(audio_tag)}</span>'
                 f'<span class="a-score">{esc(top_score)}</span></a></li>\n'
@@ -1081,7 +1094,7 @@ def main() -> int:
             ),
             "news_count": len(collect_items(b["data"])),
             "has_audio": b["date_str"] in audio_map,
-            "url": f"/news/{b['date_str']}.html",
+            "url": news_url(b["date_str"]),
         }
         for b in briefings
     ]
@@ -1105,9 +1118,9 @@ def main() -> int:
         sitemap.append("  </url>")
 
     add_url("/", briefings[0]["date_str"] if briefings else "", "1.0")
-    add_url("/archive.html", briefings[0]["date_str"] if briefings else "", "0.8")
+    add_url(archive_url(), briefings[0]["date_str"] if briefings else "", "0.8")
     for b in briefings:
-        add_url(f"/news/{b['date_str']}.html", b["date_str"], "0.7")
+        add_url(news_url(b["date_str"]), b["date_str"], "0.7")
 
     sitemap.append("</urlset>")
     (out_dir / "sitemap.xml").write_text("\n".join(sitemap) + "\n", encoding="utf-8")
