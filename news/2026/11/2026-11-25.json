@@ -2,57 +2,57 @@
   "briefing_config": {
     "title": "每日国际与中国热点新闻早报",
     "news_date": "2026-11-25",
-    "generated_at": "2026-11-25T15:16:21+08:00",
+    "generated_at": "2026-11-25T16:13:35+08:00",
     "timezone": "Asia/Shanghai",
-    "coverage_period": "2026-11-24T08:00:00+08:00 至 2026-11-25T08:00:00+08:00；因本次执行时间晚于预定采集截止点，另以“窗口后补充”标注截至2026-11-25T15:16:21+08:00已确认的重要更新。"
+    "coverage_period": "标准窗口：2026-11-24 08:00:00至2026-11-25 08:00:00（北京时间）；窗口后重大更新补充截至2026-11-25 16:13:35（北京时间）。本次执行晚于标准窗口结束时间，所有窗口后内容均单独标注。"
   },
   "daily_overview": {
-    "headline": "中美关键矿产出口管制暂停延长，上海市委书记陈吉宁接受审查调查；窗口后突发更新：神舟二十四号与天宫空间站对接，迎来首位外籍航天员。",
-    "international_overview": "俄乌冲突出现向地中海和波罗的海航运外溢的迹象；AI资产在短暂反弹后再度回调，市场转向检验算力投资回报；联合国粮食署警告航运瓶颈可能加剧全球粮食援助压力。",
-    "china_overview": "国内政务方面，中央纪委国家监委公布对陈吉宁审查调查；经贸方面，商务部延长对美部分关键矿产两用物项出口管制暂停期，中美农业工作组完成首次会议；航天方面，神舟二十四号任务实现中外航天员联合飞行。",
+    "headline": "中美关键矿产出口管制暂停期延长，上海市委书记陈吉宁接受审查调查；窗口后重大更新：神舟二十四号完成发射和空间站对接，迎来首位外籍航天员。",
+    "international_overview": "俄乌冲突的海上外溢风险扩展至地中海，俄罗斯与爱沙尼亚边境争端升温；也门战事逼近亚丁；全球AI资产回调，市场等待美国通胀和增长数据；联合国报告凸显地雷和性别暴力等长期人道问题。",
+    "china_overview": "国内重点是陈吉宁接受审查调查、商务部延长对美部分两用物项出口管制暂停期，以及数字产业、AI和6G政策进展。窗口后，神舟二十四号与天宫空间站完成对接，巴基斯坦航天员成为首位到访中国空间站的外籍航天员。",
     "key_takeaways": [
-      "窗口内最重要的国内政策信号是商务部公告2026年第59号：对美部分两用物项出口管制暂停期延长至2027年1月27日，但并非全面取消管制。",
-      "中央纪委国家监委于11月24日19:35公布陈吉宁接受审查调查。官方未披露具体案情，调查不等同于定罪。",
-      "俄乌战事出现新的海上外溢风险：乌克兰承认袭击利比亚班加西的俄方舰船，亦确认袭击芬兰湾俄籍货船，相关国家开始关注主权和航运安全。",
-      "AI板块估值压力重新显现。英伟达、Anthropic等相关股票波动说明市场正从追逐增长转向检验投资回报、融资成本与公司治理。",
-      "窗口后补充：神舟二十四号于11月25日08:18发射、11:56与天宫对接，巴基斯坦航天员成为首位到访中国空间站的外籍航天员。",
-      "窗口后补充：中美农业工作组于11月23日至24日举行首次会议，商务部通报在11月25日12:52发布，故标注为迟到信息。"
+      "商务部公告2026年第59号将对美部分两用物项出口管制暂停期延长至2027年1月27日；这是限期暂停，不是全面取消管制。",
+      "陈吉宁接受审查调查由中央纪委国家监委官方公布，具体案情尚未披露，调查不等于定罪。",
+      "乌克兰承认袭击利比亚班加西俄方舰船，利比亚方面否认事先授权；舰艇损毁程度仍有不同说法。",
+      "美国科技股回吐前一日涨幅，Anthropic跌破IPO发行价，市场更加关注AI资本开支回报、融资成本和商业收入。",
+      "工信部公布前三季度数字产业收入32.41万亿元、同比增长14.8%；AI核心产业规模为上半年预计值，超过7500亿元。",
+      "窗口后重大更新：神舟二十四号于11月25日08:18发射、11:56完成对接，首次有外籍航天员参与中国载人飞行任务。"
     ]
   },
   "top_5_headlines": [
     {
       "id": "C01",
-      "title": "中央纪委国家监委对上海市委书记陈吉宁立案审查调查",
+      "title": "中央纪委国家监委对上海市委书记陈吉宁审查调查",
       "importance_score": 9.2,
-      "reason": "涉及中央政治局委员和直辖市主要负责人，政治层级高。",
+      "reason": "涉及中央政治局委员和上海主要负责人，政治层级高。",
       "window_status": "窗口内"
     },
     {
       "id": "C02",
-      "title": "中国延长对美部分关键矿产及超硬材料两用物项出口管制暂停期",
+      "title": "商务部延长对美部分两用物项出口管制暂停期至2027年1月27日",
       "importance_score": 8.9,
-      "reason": "影响中美经贸缓和、半导体及新能源材料供应链。",
+      "reason": "影响中美经贸沟通及半导体、新能源材料供应链。",
       "window_status": "窗口内"
     },
     {
-      "id": "C05",
-      "title": "神舟二十四号与天宫空间站对接，迎来首位外籍航天员",
+      "id": "C06",
+      "title": "神舟二十四号与天宫空间站完成对接，巴基斯坦航天员成为首位到访中国空间站的外籍航天员",
       "importance_score": 9,
-      "reason": "中国空间站首次迎来外籍航天员，是重大航天合作里程碑。",
-      "window_status": "窗口后突发重大更新"
+      "reason": "中国空间站首次迎来外籍航天员，是重大国际合作里程碑。",
+      "window_status": "窗口后重大更新"
     },
     {
       "id": "I01",
-      "title": "乌克兰无人艇袭击利比亚班加西俄方舰船，利比亚政府要求说明",
+      "title": "乌克兰承认袭击利比亚班加西俄方舰船，的黎波里政府否认曾授权",
       "importance_score": 8.7,
       "reason": "俄乌冲突远程打击触及第三国主权和地中海航运安全。",
       "window_status": "窗口内重大进展；袭击发生于窗口前"
     },
     {
-      "id": "I04",
-      "title": "AI股回吐前一日涨幅，美股科技板块承压，美元与大宗商品波动",
+      "id": "I05",
+      "title": "美股科技板块回吐前一日涨幅，美元与黄金同步波动",
       "importance_score": 8.1,
-      "reason": "AI估值和全球风险偏好出现新一轮调整。",
+      "reason": "AI估值、美元和利率预期共同变化，可能影响全球风险偏好。",
       "window_status": "窗口内"
     }
   ],
@@ -60,309 +60,466 @@
     "politics_and_diplomacy": [
       {
         "id": "I01",
-        "title": "乌克兰无人艇袭击利比亚班加西俄方舰船，利比亚政府要求说明",
-        "category": "国际安全与外交",
-        "location": "利比亚班加西",
-        "event_time": "袭击发生于2026-11-22（当地时间，具体时刻未披露）；利比亚方面于11月23日至24日提出抗议",
-        "publish_time": "《卫报》2026-11-24 09:08（北京时间）；美联社2026-11-24（页面未显示具体时刻）",
-        "summary": "乌克兰承认使用海上无人艇袭击停靠在利比亚班加西港的俄罗斯舰船。乌方称目标包括俄海军轻型护卫舰“水星”号和货船“安加拉”号；利比亚国际承认政府谴责未经授权的外国军事行动，联合国利比亚支助特派团也强调必须尊重利比亚主权。舰艇是否完全沉没，各方说法不一。",
+        "title": "乌克兰承认袭击利比亚班加西俄方舰船，的黎波里政府否认曾授权",
+        "category": "国际政治与安全",
+        "location": "利比亚班加西、地中海",
+        "event_time": "袭击发生于2026-11-22；乌方公开说明及利比亚方面回应集中在11月23日至24日。",
+        "publish_time": "《卫报》首发于2026-11-24 03:32 EST（折合北京时间16:32）；美联社于11月24日发布，网页未显示精确时分；土耳其阿纳多卢通讯社于11月24日更新。",
+        "summary": "乌克兰承认使用海上无人艇袭击停靠在利比亚班加西港的俄罗斯舰船。乌方称俄海军轻型护卫舰“水星”号被击沉，并称另有货船遭袭；利比亚的黎波里政府否认与乌方事先达成行动安排，强调不得将利比亚领土和设施作为敌对行动发射点。关于舰艇最终损毁程度，各方表述仍有差异。",
         "key_facts": [
-          "乌克兰安全局称行动使用7艘海上无人艇，并发布攻击画面。",
-          "乌克兰总统泽连斯基称“水星”号被击沉；美联社引述利比亚东部官员称舰艇严重受损，至少10人受伤。",
-          "利比亚的黎波里政府表示未授权在其领土或领海内开展外国军事行动；联合国利比亚支助特派团表达关切。"
+          "乌方称行动使用7艘自制海上无人艇，并公开了攻击影像。",
+          "乌方称“水星”号沉没；美联社及利比亚方面报道则强调舰艇受损和人员伤亡，损毁程度尚未形成一致结论。",
+          "利比亚的黎波里政府于11月24日否认曾与乌方就袭击达成谅解；联合国利比亚支助特派团呼吁尊重利比亚主权。"
         ],
         "importance_score": 8.7,
-        "importance_reason": "俄乌战争的远程打击范围延伸至北非地中海沿岸，牵涉第三国主权与俄方海外海军后勤，可能扩大地区安全外溢。",
+        "importance_reason": "俄乌战争的远程打击触及北非港口和地中海，牵涉第三国主权、俄方海外海军活动及商业航运安全。",
         "impact_assessment": {
           "degree": "高",
           "horizon": "中期",
           "confidence": "中",
-          "details": "若此类远程海上打击持续，地中海港口、航运保险和区域安全风险溢价可能上升；目前尚不足以判断会形成持续战线。"
+          "details": "若类似远程打击反复发生，地中海港口、船舶保险和地区安全风险溢价可能上升；目前尚无证据表明地中海主要航道已被关闭。"
         },
         "china_impact_analysis": {
           "degree": "中",
           "horizon": "短期至中期",
           "confidence": "中",
           "channels": {
-            "trade": "地中海航线风险溢价可能边际上升，但尚无中国航线受阻证据。",
-            "finance": "避险情绪或短时影响风险资产，影响取决于冲突是否扩散。",
-            "technology": "海上无人系统的侦察、协同和远程打击能力受到关注。",
-            "energy": "若地中海航运受扰，能源运输保险成本可能上升；暂无供给中断证据。",
-            "industry": "中国船舶、无人系统和海事安防产业可能获得更多需求关注。",
-            "livelihood": "暂未见对中国居民物价的直接冲击。",
-            "policy": "需关注中国在利比亚及地中海相关人员、项目和航运安全提示。"
+            "trade": "当前未见中国商船航线因该事件中断；若港口安全风险上升，相关航运保险和绕航成本可能边际增加。",
+            "finance": "若冲突扩散，避险情绪可能短时压制风险资产，但影响取决于后续升级程度。",
+            "technology": "海上无人系统、侦察与反无人艇技术的实战应用值得中国海防和海事产业关注。",
+            "energy": "暂无能源供应中断证据；若地中海航运风险上升，运输保险费用可能增加。",
+            "industry": "船舶、海事安防、无人系统产业的市场关注度可能上升。",
+            "livelihood": "对中国居民物价和就业暂未见直接影响。",
+            "policy": "需关注中国在利比亚项目、人员及相关航运的安全提醒。"
           }
         },
-        "verification_status": "部分确认：乌方承认实施袭击且公开画面；利比亚方面确认发生爆炸和损伤；舰艇沉没程度及伤亡数字存在不同来源说法。",
+        "verification_status": "部分确认。乌方已承认实施袭击，利比亚方面确认事件并作出回应；舰艇是否完全沉没、伤亡及行动是否获得第三方协助仍有不同说法，未作单方定论。",
         "developing_details": [
-          "袭击发生在本简报窗口开始前，但利比亚政府抗议、乌方说明及联合国表态在窗口内形成重大进展。",
-          "是否造成“水星”号完全沉没，乌方与利比亚官员说法不一致，不作确定表述。"
+          "袭击发生在标准采集窗口开始前；本期纳入的是11月23日至24日的乌方说明、利比亚政府回应及联合国关切。",
+          "利比亚政府否认事先授权乌方使用其领土或设施；有关无人艇具体发射地点的说法尚未得到独立核实。"
         ],
         "sources": [
           {
             "organization": "The Guardian",
             "title": "Ukraine war briefing: Kyiv’s strike on Russian ships in Benghazi condemned by Libya’s UN-backed government",
-            "url": "https://www.theguardian.com/world/2026/nov/24/ukraine-war-briefing-kyiv-strike-on-russian-ships-in-benghazi-condemned-by-libya-un-backed-government",
-            "publish_time": "2026-11-24 09:08（北京时间，页面时间为02:08 CET）"
+            "url": "https://www.theguardian.com/world/2026/nov/24/ukraine-war-briefing-kyiv-strike-on-russian-ships-in-benghazi-condemned-by-un-backed-libya-government",
+            "publish_time": "2026-11-24 03:32 EST首发（北京时间16:32）；之后滚动更新"
           },
           {
             "organization": "美联社 AP",
-            "title": "A Russian strike on Ukraine kills 2 and wounds 48 as Kyiv explains its attack in Libya",
-            "url": "https://apnews.com/article/bfff959fb4c7415f9473b34e78a4f750",
-            "publish_time": "2026-11-24（页面未显示具体时刻）"
+            "title": "Ukraine's attack on Russian vessel in Libya opens new theater in broader confrontation",
+            "url": "https://apnews.com/article/cbd82b965a111dcf4605b8b2d0493780",
+            "publish_time": "2026-11-24（网页未显示精确时分）"
+          },
+          {
+            "organization": "阿纳多卢通讯社",
+            "title": "Libya's Tripoli-based government denies any prior agreement with Ukraine on Benghazi attacks",
+            "url": "https://www.aa.com.tr/en/middle-east/-libyas-tripoli-based-government-denies-any-prior-agreement-with-ukraine-on-benghazi-attacks/4135992",
+            "publish_time": "2026-11-24（网页未显示精确时分）"
           }
         ],
         "follow_up": [
-          "关注利比亚政府是否向联合国安理会正式提出调查请求，以及俄方是否采取报复行动。",
-          "关注地中海港口对军用及商用船舶的安全限制。"
+          "关注利比亚政府是否向联合国提出正式调查请求，以及俄方是否采取外交或军事回应。",
+          "关注班加西港及周边商船的安全通告和保险费率变化。"
         ],
         "tags": [
           "俄乌冲突",
-          "无人艇",
+          "海上无人艇",
           "利比亚",
           "地中海",
-          "主权安全"
+          "航运安全"
         ]
       },
       {
         "id": "I02",
-        "title": "泽连斯基确认乌方袭击芬兰湾俄籍货船，挪威提醒遵守国际法",
-        "category": "国际安全与外交",
-        "location": "芬兰湾、俄罗斯与北欧",
-        "event_time": "袭击发生于2026-11-21；乌克兰总统于11月23日受访确认，挪威于11月24日回应",
-        "publish_time": "路透社2026-11-24 18:14（北京时间）",
-        "summary": "乌克兰总统泽连斯基确认，乌方对俄罗斯货船“斯巴达二号”实施无人机袭击。该船起火后由芬兰、爱沙尼亚和俄罗斯船只参与救援，随后被拖至圣彼得堡。挪威国防部长表示已就行动与乌方沟通，强调乌克兰必须遵守国际法并考虑邻近国家的安全稳定。",
-        "key_facts": [
-          "袭击发生于11月21日，泽连斯基于11月24日首次公开确认乌方责任。",
-          "泽连斯基称该船与俄罗斯国防部后勤有关；船舶所有方资料显示其为俄方国有后勤体系服务。",
-          "挪威与乌克兰同期签署扩大反无人机系统合作的协议。"
-        ],
-        "importance_score": 7.8,
-        "importance_reason": "俄乌战事影响扩展至波罗的海航运与北欧安全协调，乌克兰盟友对行动边界的分歧开始公开化。",
-        "impact_assessment": {
-          "degree": "中",
-          "horizon": "短期",
-          "confidence": "中",
-          "details": "若波罗的海商船和港口被更多卷入，欧洲航运保险及能源物流风险可能上升。"
-        },
-        "china_impact_analysis": {
-          "degree": "低至中",
-          "horizon": "短期",
-          "confidence": "中",
-          "channels": {
-            "trade": "中国与欧洲间海运暂未出现新增受阻证据，需观察保险和绕航成本。",
-            "finance": "欧洲风险情绪变化可能影响外需和风险偏好。",
-            "technology": "反无人机系统与海上监视技术需求上升。",
-            "energy": "波罗的海能源运输安全需持续观察。",
-            "industry": "中国船舶、通信和反无人机供应链可能受到间接关注。",
-            "livelihood": "短期对中国居民生活影响有限。",
-            "policy": "关注中国船舶在波罗的海航行通告与领事安全提示。"
-          }
-        },
-        "verification_status": "已确认乌方责任；船舶受损及救援情况获路透社报道。对袭击是否合法，各方立场不同，尚无国际司法结论。",
-        "developing_details": [
-          "挪威并未宣布停止对乌支持，而是要求乌方兼顾国际法和地区稳定。",
-          "船舶被拖回俄罗斯水域；目前没有证据显示该事件已导致波罗的海航道关闭。"
-        ],
-        "sources": [
-          {
-            "organization": "路透社 Reuters",
-            "title": "Zelenskiy confirms Ukraine hit Russian ship in Gulf of Finland, ally Norway urges caution",
-            "url": "https://www.reuters.com/world/europe/norway-says-there-is-dialogue-with-ukraine-regarding-need-stability-our-near-2026-11-24/",
-            "publish_time": "2026-11-24 10:14 UTC（18:14 北京时间）"
-          },
-          {
-            "organization": "The Guardian",
-            "title": "Italy expresses concern to Ukraine over Libya ship attacks - as it happened",
-            "url": "https://www.theguardian.com/world/live/2026/nov/24/russia-ukraine-poland-drone-patriots-latest-news-updates",
-            "publish_time": "2026-11-24（滚动更新，具体条目时刻未显示）"
-          }
-        ],
-        "follow_up": [
-          "关注北约成员国是否进一步发布波罗的海航行警告。",
-          "关注挪威与乌克兰后续沟通及反无人机合作。"
-        ],
-        "tags": [
-          "俄乌冲突",
-          "波罗的海",
-          "商船安全",
-          "北约"
-        ]
-      },
-      {
-        "id": "I03",
-        "title": "俄方警告爱沙尼亚边境政策可能引发“公开战争”，北约称正密切关注",
+        "title": "俄方警告爱沙尼亚边境政策可能引发“公开战争”，北约称正监测局势",
         "category": "国际政治与外交",
-        "location": "俄罗斯、爱沙尼亚",
-        "event_time": "俄罗斯外交部于2026-11-23召见爱沙尼亚外交官并提出抗议；相关报道于11月24日发布",
-        "publish_time": "TIME 2026-11-24 18:30（北京时间）",
-        "summary": "俄罗斯外交部就爱沙尼亚计划自12月1日起关闭全部陆路口岸至少六个月提出正式抗议，并称相关举措可能将两国推向公开战争边缘。爱沙尼亚否认允许乌克兰使用其领空，并称关闭边境是出于安全与反破坏活动考虑。北约秘书长表示正在监测局势并拥有应对选项。",
+        "location": "俄罗斯、爱沙尼亚、北约东翼",
+        "event_time": "俄罗斯外交部于2026-11-23召见爱沙尼亚外交官并提出抗议；爱沙尼亚计划自12月1日起关闭全部陆路口岸至少6个月。",
+        "publish_time": "TIME于2026-11-24 10:30 UTC（北京时间18:30）发布；《日本时报》于11月24日刊发路透社报道。",
+        "summary": "俄罗斯外交部就爱沙尼亚计划关闭对俄陆路口岸提出正式抗议，称相关举措及其他政策将两国关系推向“公开战争边缘”。爱沙尼亚称关闭口岸是出于边境安全和反破坏活动考虑，并否认俄方关于其允许乌克兰无人机使用爱沙尼亚领空的指控。北约表示正在监测局势。",
         "key_facts": [
-          "爱沙尼亚宣布计划自12月1日起关闭与俄罗斯的陆路口岸。",
-          "俄方指责爱沙尼亚纵容乌克兰无人机使用其领空；爱沙尼亚明确否认。",
-          "北约称正在关注爱沙尼亚安全局势；报道未显示存在俄方即将发动常规入侵的证据。"
+          "爱沙尼亚计划从12月1日起关闭五处陆路口岸至少6个月，铁路货运不在此次关闭范围内。",
+          "俄方的“公开战争”表述属于外交警告，不代表已经发生军事冲突。",
+          "北约秘书长表示联盟正在关注爱沙尼亚安全状况；爱沙尼亚是北约和欧盟成员国。"
         ],
-        "importance_score": 6.8,
-        "importance_reason": "俄欧边境摩擦升温，但目前主要表现为外交抗议和安全指控，不能等同于战争即将爆发。",
+        "importance_score": 7.4,
+        "importance_reason": "俄与北约成员国的边境摩擦和安全指控升级，增加波罗的海地区误判风险，但目前没有直接军事冲突证据。",
         "impact_assessment": {
           "degree": "中",
-          "horizon": "中期",
+          "horizon": "短期至中期",
           "confidence": "中",
-          "details": "若边境摩擦升级，可能影响欧洲安全预算、能源与贸易风险偏好，但目前没有直接证据表明冲突将扩大为北约与俄罗斯全面战争。"
+          "details": "边境管控、外交抗议和安全部署可能增加波罗的海地区紧张度；直接战争风险不能仅凭强硬措辞判断。"
         },
         "china_impact_analysis": {
           "degree": "低至中",
-          "horizon": "中期",
+          "horizon": "短期",
           "confidence": "中",
           "channels": {
-            "trade": "欧洲风险溢价可能影响订单和物流成本，短期尚无实际中断。",
-            "finance": "避险情绪可能影响欧元及全球风险资产。",
-            "technology": "无人机、电子战与边境监视技术受到关注。",
-            "energy": "未见新增能源供应中断证据。",
-            "industry": "欧洲防务和安全投入可能继续增加。",
-            "livelihood": "中国居民短期生活影响有限。",
-            "policy": "关注中国驻波罗的海国家使领馆安全提示。"
+            "trade": "中欧陆路与海运贸易未见直接中断；若地区紧张持续，欧洲物流保险和风险成本可能上升。",
+            "finance": "可能加剧欧洲风险资产波动，但对人民币和中国市场的传导取决于后续升级。",
+            "technology": "边境监控、无人机侦测和反破坏技术成为欧洲安全议题。",
+            "energy": "暂无对欧洲能源供应的直接冲击。",
+            "industry": "中国对欧出口企业应关注口岸关闭对区域物流的间接影响。",
+            "livelihood": "对中国居民生活短期影响低。",
+            "policy": "关注中国驻当地机构及企业发布的出行和安全提醒。"
           }
         },
-        "verification_status": "多方报道确认俄方抗议及爱沙尼亚否认；关于乌方使用爱沙尼亚领空的指控未获独立证实。",
+        "verification_status": "俄方抗议、爱沙尼亚关闭口岸计划及北约监测表态均有媒体报道；俄方关于爱沙尼亚允许乌克兰使用领空的指控遭爱方否认，未获独立证实。",
         "developing_details": [
-          "俄方警告属于外交表态，不应被解读为已发生军事冲突。",
-          "爱沙尼亚关闭口岸计划尚待12月1日实施，后续执行范围仍需观察。"
+          "爱沙尼亚的口岸关闭计划早于本次报道提出；本期新增进展是俄方召见外交官并发出强硬警告。",
+          "目前未见北约启动集体防御条款或俄爱之间发生直接交火的证据。"
         ],
         "sources": [
           {
             "organization": "TIME",
-            "title": "Russia Accuses Estonia of Hostilities ‘On the Verge of Triggering Open War’",
+            "title": "Russia Accuses Estonia of Hostilities 'On the Verge of Triggering Open War'",
             "url": "https://time.com/article/2026/11/24/russia-estonia-conflict-open-war-border-nato-ukraine-eu/",
-            "publish_time": "2026-11-24 10:30 UTC（18:30 北京时间）"
+            "publish_time": "2026-11-24 10:30 UTC（18:30北京时间）"
           },
           {
-            "organization": "The Guardian",
-            "title": "Moscow accuses Estonia of acting ‘on verge of unleashing open war with Russia’",
-            "url": "https://www.theguardian.com/world/live/2026/nov/23/russia-ukraine-war-zelenskyy-libya-benghazi-drone-attack-ship-merkury-un-nato-europe-latest-news-updates?page=with%3Ablock-6b0450918f08cb9a9051555b",
-            "publish_time": "2026-11-24（滚动报道，具体时刻未显示）"
+            "organization": "The Japan Times（路透社稿）",
+            "title": "Moscow accuses Estonia of hostile actions on ‘verge of triggering open war’",
+            "url": "https://www.japantimes.co.jp/news/2026/11/24/world/moscow-estonia-open-war/",
+            "publish_time": "2026-11-24（网页未显示精确时分）"
+          },
+          {
+            "organization": "爱沙尼亚外交部",
+            "title": "Foreign Minister Tsahkna: Estonia to close road border crossings with Russia",
+            "url": "https://vm.ee/en/news/foreign-minister-tsahkna-estonia-close-road-border-crossings-russia",
+            "publish_time": "2026-11-15 17:18（背景政策公告）"
           }
         ],
         "follow_up": [
-          "关注爱沙尼亚12月1日边境措施是否如期实施。",
-          "关注北约是否发布新的边境安全声明。"
+          "关注12月1日口岸关闭是否按计划实施，以及俄方是否采取对等措施。",
+          "关注北约是否公布新的边境监测或防空部署安排。"
         ],
         "tags": [
           "俄罗斯",
           "爱沙尼亚",
           "北约",
+          "波罗的海",
           "边境安全"
+        ]
+      },
+      {
+        "id": "I03",
+        "title": "也门胡塞武装推进至距亚丁约60公里，政府军称已加强防线",
+        "category": "国际政治与安全",
+        "location": "也门亚丁及周边",
+        "event_time": "也门政府军方发言人于2026-11-24说明胡塞武装推进情况；前线部署和推进发生于此前数日。",
+        "publish_time": "美联社于2026-11-24 05:34 EST（北京时间18:34）发布；路透社于2026-11-24 17:35 UTC（北京时间11月25日01:35）更新。",
+        "summary": "也门国际承认政府军方称，胡塞武装已推进至临时首都亚丁以北约60公里，但政府军已在城市外围设置检查站、战壕和路障。政府军承认局势严峻，但否认亚丁即将失守。冲突自7月重燃以来，已造成大规模流离失所。",
+        "key_facts": [
+          "政府军方发言人称胡塞武装距亚丁约60公里，并表示政府仍将留在亚丁。",
+          "政府军称已调入增援并构筑防线；胡塞武装可能继续向亚丁或马里卜、舍卜沃方向开辟战线。",
+          "报道中的军事距离和态势主要来自政府军方表述，尚无独立战场核查。"
+        ],
+        "importance_score": 7.6,
+        "importance_reason": "亚丁是也门政府的重要政治和后勤中心，若战线继续南移，红海与亚丁湾周边安全和人道局势可能恶化。",
+        "impact_assessment": {
+          "degree": "高",
+          "horizon": "短期至中期",
+          "confidence": "中",
+          "details": "若亚丁周边战事升级，可能扰动亚丁湾、曼德海峡附近航运，并进一步推高人道援助和物流成本。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短期至中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "红海和亚丁湾风险若上升，亚欧航线绕航与保险成本可能增加。",
+            "finance": "油价和航运风险溢价可能受地缘消息影响，方向取决于实际运输受阻程度。",
+            "technology": "无人机、导弹与防空系统在区域冲突中的使用值得关注。",
+            "energy": "曼德海峡是能源运输通道之一，持续冲突可能增加运输成本，但尚无本轮航道关闭证据。",
+            "industry": "外贸、航运和保险企业需更新风险评估。",
+            "livelihood": "若运输成本持续上升，可能间接影响部分进口商品价格。",
+            "policy": "关注中国商船航行警告及在也门周边人员安全安排。"
+          }
+        },
+        "verification_status": "路透社和美联社均报道政府军方关于胡塞武装距亚丁约60公里的说法；该距离及前线控制情况仍以交战方信息为主。",
+        "developing_details": [
+          "政府军方否认亚丁即将失守，但承认前线有挫折和通信安全问题。",
+          "胡塞武装是否会发动针对亚丁的大规模攻势，尚无已确认时间表。"
+        ],
+        "sources": [
+          {
+            "organization": "路透社 Reuters",
+            "title": "Houthis won't seize Aden, Yemeni government forces say",
+            "url": "https://www.reuters.com/world/middle-east/houthis-wont-seize-aden-yemeni-government-forces-say-2026-11-24/",
+            "publish_time": "2026-11-24 17:35 UTC（11月25日01:35北京时间）"
+          },
+          {
+            "organization": "美联社 AP（ABC News转载）",
+            "title": "Houthi rebels close in on Aden as Yemeni forces dig in behind a fortified line",
+            "url": "https://abcnews.com/International/wireStory/houthi-rebels-close-aden-yemeni-forces-dig-fortified-138404636",
+            "publish_time": "2026-11-24 05:34 EST（18:34北京时间）"
+          }
+        ],
+        "follow_up": [
+          "关注亚丁周边是否出现大规模交火、城市封锁或新的难民潮。",
+          "关注曼德海峡和红海航运安全通告。"
+        ],
+        "tags": [
+          "也门",
+          "胡塞武装",
+          "亚丁",
+          "红海",
+          "人道危机"
+        ]
+      },
+      {
+        "id": "I04",
+        "title": "俄罗斯空袭乌克兰扎波罗热造成平民死伤，双方远程打击持续",
+        "category": "国际政治与安全",
+        "location": "乌克兰扎波罗热",
+        "event_time": "袭击发生于2026-11-24凌晨（当地时间）。",
+        "publish_time": "路透社于2026-11-24 04:18 UTC（北京时间12:18）发布；美联社于11月24日发布，网页未显示精确时分。",
+        "summary": "乌克兰地方官员称，俄罗斯夜间对扎波罗热发动滑翔炸弹袭击，造成2人死亡、至少40人受伤，住宅建筑受损。美联社后续报道的伤者数字为48人，显示统计可能随救援进展更新。路透社称相关伤亡信息来自地方官员，无法独立核实全部战损。",
+        "key_facts": [
+          "扎波罗热州地方官员报告2人死亡、40人受伤，其中包括4名儿童。",
+          "美联社报道伤者为48人，和路透社较早数字不同；本简报保留数字差异，不将其合并成确定值。",
+          "住宅建筑、私人住宅及交通设施受损；俄乌双方均否认故意攻击平民。"
+        ],
+        "importance_score": 7.7,
+        "importance_reason": "持续袭击平民居住区，反映俄乌战争仍未降温，也增加乌克兰能源、住房和人道救援压力。",
+        "impact_assessment": {
+          "degree": "中高",
+          "horizon": "短期",
+          "confidence": "中",
+          "details": "持续空袭将增加乌克兰基础设施修复和外部援助需求，并影响欧洲安全预期。"
+        },
+        "china_impact_analysis": {
+          "degree": "低至中",
+          "horizon": "短期",
+          "confidence": "中",
+          "channels": {
+            "trade": "对中国与乌克兰直接贸易影响有限；欧洲整体风险可能影响外需和物流。",
+            "finance": "若战事升级，避险需求可能增加，短期影响全球风险偏好。",
+            "technology": "滑翔炸弹、无人机和防空拦截技术仍是战场关键变量。",
+            "energy": "若能源基础设施遭到进一步破坏，可能影响欧洲能源价格预期。",
+            "industry": "对中国制造业直接影响有限，需关注欧洲能源成本变化。",
+            "livelihood": "乌克兰平民伤亡与住房损毁加重人道压力。",
+            "policy": "中国对外表态和人道援助政策需关注冲突持续性。"
+          }
+        },
+        "verification_status": "路透社和美联社均报道袭击及平民伤亡；具体伤者人数在40至48人之间，统计时点和口径不同，尚未独立核实全部伤亡。",
+        "developing_details": [
+          "伤亡数字仍可能随着医院和救援部门更新而变化。",
+          "本条只采信地方官员关于伤亡和损毁的报告，不把俄方关于乌方军事目标的说法作为独立确认事实。"
+        ],
+        "sources": [
+          {
+            "organization": "路透社 Reuters",
+            "title": "Russian attack kills 2 people in Ukraine's Zaporizhzhia, governor says",
+            "url": "https://www.reuters.com/world/russian-attack-kills-2-people-wounds-22-ukraines-zaporizhzhia-official-says-2026-11-24/",
+            "publish_time": "2026-11-24 04:18 UTC（12:18北京时间）"
+          },
+          {
+            "organization": "美联社 AP",
+            "title": "A Russian strike on Ukraine kills 2 and wounds 48 as Kyiv explains its attack in Libya",
+            "url": "https://apnews.com/article/bfff959fb4c7415f9473b34e78a4f750",
+            "publish_time": "2026-11-24（网页未显示精确时分）"
+          }
+        ],
+        "follow_up": [
+          "关注扎波罗热地方政府更新的伤亡人数和住宅修复安排。",
+          "关注俄罗斯是否继续对乌克兰南部城市实施远程空袭。"
+        ],
+        "tags": [
+          "俄乌冲突",
+          "扎波罗热",
+          "平民伤亡",
+          "空袭",
+          "乌克兰"
         ]
       }
     ],
     "economy_and_markets": [
       {
-        "id": "I04",
-        "title": "AI股回吐前一日涨幅，美股科技板块承压，美元与大宗商品波动",
+        "id": "I05",
+        "title": "美股科技板块回吐前一日涨幅，美元与黄金同步波动",
         "category": "全球经济与金融市场",
-        "location": "美国、欧洲及亚洲市场",
-        "event_time": "美国市场交易日为2026-11-23（美东）；亚洲市场后续交易于11月24日展开",
-        "publish_time": "路透社2026-11-24 09:29（北京时间，1:29 UTC）",
-        "summary": "英伟达股价在前一交易日大涨后回落超过6%，纳斯达克指数下跌约1.4%，标普500指数下跌0.5%，道指上涨0.85%。投资者重新评估AI资本开支回报、融资成本和科技公司治理风险。路透社报道布伦特原油结算价上涨2.27%至每桶91.40美元，黄金期货下跌约2.67%，美元指数回落0.44%，美国十年期国债收益率约4.93%。",
+        "location": "美国、全球金融市场",
+        "event_time": "美国市场2026-11-24交易时段；市场数据为当日交易快照或收盘数据。",
+        "publish_time": "路透社全球市场报道页面标注2026-11-24 01:29 UTC（北京时间09:29）；路透社黄金报道于2026-11-24 00:57 UTC（北京时间08:57）发布；其他市场报道于11月24日更新。",
+        "summary": "在前一交易日人工智能概念股大幅反弹后，市场出现获利回吐。路透社报道，纳斯达克指数下跌约1.4%，标普500指数下跌0.5%，道琼斯指数上涨0.85%；英伟达下跌超过6%，美元从阶段高位回落。黄金现货一度下跌约2%，市场等待美国通胀数据并重新评估美联储利率路径。",
         "key_facts": [
-          "纳斯达克下跌1.4%，标普500下跌0.50%，道指上涨0.85%。",
-          "英伟达股价下跌超过6%，此前一日曾上涨31.5%。",
-          "布伦特原油结算价每桶91.40美元；黄金期货下跌2.67%；美元指数下跌0.44%。",
-          "投资者等待11月25日美国个人消费支出通胀数据，以评估美联储12月政策路径。"
+          "路透社报道纳斯达克下跌约1.4%、标普500下跌0.5%、道琼斯上涨0.85%，科技股表现明显弱于传统板块。",
+          "英伟达下跌超过6%；Anthropic也跌破83美元IPO发行价，显示AI资产波动加大。",
+          "路透社另一篇报道显示，黄金现货当时约为每盎司3558美元，跌幅约2%；这是报道时点价格，不是当前实时报价。",
+          "市场关注美国个人消费支出价格指数和美联储12月利率决策。"
         ],
         "importance_score": 8.1,
-        "importance_reason": "AI投资主题从单边乐观转向估值和盈利验证，市场波动可能通过全球科技供应链与风险偏好传导。",
+        "importance_reason": "AI估值、利率预期和美元方向同时变化，可能影响全球成长股估值和跨境资金风险偏好。",
         "impact_assessment": {
           "degree": "高",
-          "horizon": "短期至中期",
+          "horizon": "短期",
           "confidence": "中",
-          "details": "AI估值回调可能影响全球半导体和云服务投资情绪；若美国通胀数据偏高，利率预期可能进一步压制高估值资产。"
+          "details": "若美国通胀数据强化加息预期，高估值科技股和黄金可能继续承压；若数据低于预期，市场也可能快速反向调整。"
         },
         "china_impact_analysis": {
-          "degree": "中至高",
-          "horizon": "短期至中期",
+          "degree": "中高",
+          "horizon": "短期",
           "confidence": "中",
           "channels": {
-            "trade": "若全球科技企业放缓资本开支，可能影响中国电子零部件、服务器和设备出口订单。",
-            "finance": "美元、美国国债收益率及全球风险偏好变化可能影响人民币、港股和A股科技板块估值。",
-            "technology": "市场开始要求AI投资证明商业回报，国产算力和模型应用需以实际收入与效率验证。",
-            "energy": "油价上涨会抬高进口能源成本；若后续回落则有缓冲。",
-            "industry": "云计算、数据中心、芯片设备和电力基础设施的投资节奏可能更分化。",
-            "livelihood": "能源价格波动可能传导至交通和部分商品成本，但当前不能据此推断国内零售价格将上行。",
-            "policy": "需关注宏观流动性、资本市场稳定及AI产业投资质量。"
+            "trade": "美国增长和消费预期变化会影响中国电子、机械及消费品出口订单。",
+            "finance": "美元和美债收益率变化可能影响人民币汇率、港股和A股成长板块的风险偏好。",
+            "technology": "全球市场开始更重视AI资本开支回报率、模型商业化和算力利用率。",
+            "energy": "油价在报道中上涨至每桶91.40美元，能源进口成本预期可能受中东航运风险影响。",
+            "industry": "中国AI企业的估值也可能受到全球科技股风险偏好变化传导。",
+            "livelihood": "若美元、能源和运输成本持续波动，可能间接影响进口商品和企业经营成本。",
+            "policy": "关注稳市场政策与科技产业融资环境，但不应据单日行情推断政策转向。"
           }
         },
-        "verification_status": "路透社提供主要市场收盘数据；部分价格为期货结算值，非实时现价。",
+        "verification_status": "路透社提供主要指数、美元及黄金价格数据；其他媒体报道对AI股回调方向相符。价格均为特定交易时点或收盘数据，不代表实时行情。",
         "developing_details": [
-          "11月25日亚洲盘出现更大幅度的AI股回落：美联社报道台湾加权指数跌逾6%、韩国综合指数跌5.6%、日经指数跌3.6%；这是窗口结束后的补充更新。",
-          "市场波动并不等同于AI需求趋势已经逆转，后续需观察企业订单、现金流和数据中心利用率。"
+          "路透社页面所列发布时间与其描述的交易时段存在跨时区显示差异；本条以报道所述2026-11-24交易表现为事件时间，并保留网页标注的发布时间。",
+          "市场对12月加息的定价属于期货隐含概率和市场预期，不是美联储已经作出的决定。"
         ],
         "sources": [
           {
             "organization": "路透社 Reuters",
             "title": "US stocks slide as Nvidia rally fizzles out, dollar falls",
             "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-11-24/",
-            "publish_time": "2026-11-24 01:29 UTC（09:29 北京时间）"
+            "publish_time": "2026-11-24 01:29 UTC（09:29北京时间，网页标注）"
           },
           {
-            "organization": "美联社 AP",
-            "title": "Selling of AI shares drags most Asian stocks lower",
-            "url": "https://apnews.com/article/stock-markets-ai-earnings-oil-10044b4fb55d3ff20fde9ba9e9acaab1",
-            "publish_time": "2026-11-25（亚洲盘后报道，具体时刻未显示；窗口外补充）"
+            "organization": "路透社 Reuters",
+            "title": "Gold falls 2% on hawkish Fed bets, US inflation data in focus",
+            "url": "https://www.reuters.com/world/india/gold-edges-up-bargain-buying-after-selloff-us-inflation-data-awaited-2026-11-24/",
+            "publish_time": "2026-11-24 00:57 UTC（08:57北京时间）"
+          },
+          {
+            "organization": "Barron's",
+            "title": "Nvidia, Anthropic, Micron, HPE, Analog Devices, Insmed, Dollar Tree, and More Stocks That Explain Today's Market",
+            "url": "https://www.barrons.com/articles/stock-movers-0853c431",
+            "publish_time": "2026-11-24（网页未显示精确时分）"
           }
         ],
         "follow_up": [
-          "关注11月25日美国PCE通胀、GDP二次估值及耐用品订单。",
-          "关注英伟达、云服务商和半导体企业对资本开支的最新表态。"
+          "关注北京时间11月25日21:30美国GDP和PCE数据公布后，美元、美债收益率及纳指期货的变化。",
+          "关注AI企业是否下调数据中心资本开支或调整盈利指引。"
         ],
         "tags": [
-          "AI估值",
           "美股",
-          "美联储",
-          "油价",
+          "AI估值",
+          "英伟达",
+          "美元",
           "黄金",
-          "人民币"
+          "美联储"
         ]
-      },
+      }
+    ],
+    "technology_and_ai": [
       {
-        "id": "I05",
-        "title": "联合国粮食署警告战争航运瓶颈或使更多粮食援助对象失去保障",
-        "category": "全球人道主义与粮食安全",
-        "location": "黑海、霍尔木兹海峡、曼德海峡及受援国家",
-        "event_time": "世界粮食计划署负责人于2026-11-23向联合国安理会通报",
-        "publish_time": "路透社2026-11-24 00:51（北京时间，11月23日16:51 UTC）",
-        "summary": "世界粮食计划署负责人警告，黑海、霍尔木兹海峡和曼德海峡的战争相关航运瓶颈，可能使该机构到2027年年中额外增加7.27亿美元成本，并使730万人的粮食援助面临风险。该机构已将2027年援助目标从今年的1.1亿人下调至9100万人。",
+        "id": "I06",
+        "title": "Anthropic股价跌破IPO发行价，AI基础设施投入回报受到市场检验",
+        "category": "国际科技与人工智能",
+        "location": "美国、全球AI产业",
+        "event_time": "Anthropic股价于2026-11-24交易时段跌破每股83美元IPO发行价。",
+        "publish_time": "路透社于2026-11-24发布，网页摘录未显示精确时分；《卫报》于11月24日滚动报道。",
+        "summary": "人工智能公司Anthropic股价跌破每股83美元的IPO发行价，路透社报道其盘中一度下跌12.6%至76.60美元。市场担忧高估值、数据中心建设成本、利率水平和开源模型竞争。股价跌破发行价并不等于公司经营已经恶化，但显示投资者正在从追逐AI增长转向要求更清晰的收入和现金流证明。",
         "key_facts": [
-          "粮食署负责人称，黑海小麦和玉米船舶流量较去年同期明显下降。",
-          "约1000万吨俄乌粮食可能无法进入全球市场；这是粮食署负责人的估算，不是已确认的最终缺口。",
-          "全球已有约2.66亿人面临严重粮食不安全，苏丹、南苏丹和索马里部分地区存在饥荒风险。"
+          "Anthropic于11月19日上市，发行价为每股83美元，首日开盘价为111.50美元。",
+          "路透社报道11月24日盘中股价约76.60美元，跌幅约12.6%。",
+          "路透社指出，数据中心投资放缓、内部人士出售股份以及更低成本的开放权重模型都可能影响市场估值。"
         ],
-        "importance_score": 7.5,
-        "importance_reason": "航运安全与粮食、化肥、能源供应交织，可能抬高脆弱经济体食品价格和国际援助成本。",
+        "importance_score": 7.8,
+        "importance_reason": "Anthropic是大型AI模型开发商，其股价波动成为市场衡量前沿模型公司估值和基础设施支出的重要信号。",
         "impact_assessment": {
-          "degree": "中至高",
-          "horizon": "中期",
+          "degree": "中高",
+          "horizon": "短期至中期",
           "confidence": "中",
-          "details": "若航运瓶颈持续，粮食与化肥成本可能上行，进口依赖较高的低收入国家承压。"
+          "details": "若AI融资成本上升或数据中心建设节奏放缓，可能改变全球算力投资和芯片订单预期；单日股价不能直接证明产业需求见顶。"
         },
         "china_impact_analysis": {
           "degree": "中",
           "horizon": "中期",
           "confidence": "中",
           "channels": {
-            "trade": "全球粮食和化肥物流成本上升可能影响中国农产品进口成本，但中国粮食供应体系与进口来源较多元。",
-            "finance": "农产品期货和航运保险风险溢价可能上升。",
-            "technology": "精准农业、粮食储运和供应链追踪的重要性提高。",
-            "energy": "霍尔木兹航运风险也可能抬高能源与化肥运输成本。",
-            "industry": "化肥、粮食加工、港口和航运服务企业成本结构可能变化。",
-            "livelihood": "国际粮价波动对国内食品价格的传导取决于进口占比、库存和政策调节。",
-            "policy": "关注粮食储备、进口来源多元化和国际粮食援助合作。"
+            "trade": "全球AI资本开支变化可能影响中国服务器、光模块、电源和数据中心相关供应链的外需。",
+            "finance": "海外AI资产回调可能传导至港股和A股科技板块估值。",
+            "technology": "市场更加重视模型推理成本、商业收入、客户留存及开源生态竞争力。",
+            "energy": "数据中心投资节奏变化会影响中长期电力需求预期。",
+            "industry": "中国模型厂商若在成本和场景落地上形成优势，可能获得相对机会，但仍需以真实收入验证。",
+            "livelihood": "AI产业投资变化对就业结构的影响偏中长期，短期居民消费影响有限。",
+            "policy": "继续关注算力基础设施投资效率、数据中心能耗约束和AI治理标准。"
           }
         },
-        "verification_status": "路透社报道了粮食署负责人在联合国安理会的发言；数字属于机构风险估算，不是已发生的援助中断总量。",
+        "verification_status": "股价和IPO价格由路透社报道；关于未来估值、数据中心建设和竞争格局的判断属于分析，不是确定结论。",
         "developing_details": [
-          "粮食署呼吁恢复类似2022年至2023年黑海粮食倡议的安全通道，但目前尚无新的正式协议。",
-          "报告中的成本和受影响人数是情景警示，不能视为确定结果。"
+          "IPO发行价下方交易不等于公司财务违约或产品竞争力下降。",
+          "市场后续将关注公司财报、锁定期安排、指数纳入及主要客户采购计划。"
+        ],
+        "sources": [
+          {
+            "organization": "路透社 Reuters",
+            "title": "Anthropic shares tumble below $83 IPO price, on track to lose nearly $200 billion in value",
+            "url": "https://www.reuters.com/business/anthropic-breaks-below-83-ipo-price-debut-rally-unravels-2026-11-24/",
+            "publish_time": "2026-11-24（网页摘录未显示精确时分）"
+          },
+          {
+            "organization": "The Guardian",
+            "title": "Tech sell-off resumes as Nvidia shares drop 5% and Anthropic tumbles below IPO price",
+            "url": "https://www.theguardian.com/business/live/2026/nov/24/jensen-huang-nvidia-stock-markets-ai-trade-us-political-backlash-donald-trump-latest-news-updates",
+            "publish_time": "2026-11-24（滚动更新，具体条目时分以页面为准）"
+          }
+        ],
+        "follow_up": [
+          "关注Anthropic上市后首份业绩和管理层对算力成本的说明。",
+          "关注美国大型云厂商是否调整AI数据中心资本开支计划。"
+        ],
+        "tags": [
+          "Anthropic",
+          "生成式AI",
+          "IPO",
+          "数据中心",
+          "开源模型",
+          "科技股"
+        ]
+      }
+    ],
+    "major_social_events": [
+      {
+        "id": "I07",
+        "title": "联合国粮食署警告战争航运瓶颈可能使730万人面临粮食援助缺口",
+        "category": "国际重大社会与人道事件",
+        "location": "联合国、黑海、霍尔木兹海峡、曼德海峡",
+        "event_time": "世界粮食计划署执行主任于2026-11-23向联合国安理会通报。",
+        "publish_time": "路透社于2026-11-23 16:51 UTC发布（11月24日00:51北京时间）；《卫报》于11月24日跟进。",
+        "summary": "世界粮食计划署负责人警告，乌克兰战争和中东冲突造成的航运瓶颈，可能使该机构到2027年年中额外增加约7.27亿美元成本，并威胁到约730万人的粮食援助。该数字是机构对风险情景的估算，并非已经发生的援助中断人数。",
+        "key_facts": [
+          "粮食署负责人称，霍尔木兹海峡、曼德海峡和黑海的运输限制影响粮食出口和农业投入品运输。",
+          "机构估算额外成本可能达到7.27亿美元，可能使730万人的粮食援助面临风险。",
+          "报告还提到气候冲击和厄尔尼诺风险叠加，可能进一步影响粮食供应。"
+        ],
+        "importance_score": 7.5,
+        "importance_reason": "航运瓶颈把地缘冲突传导至粮食、农业投入品和人道援助成本，影响面超出战区本身。",
+        "impact_assessment": {
+          "degree": "高",
+          "horizon": "中期",
+          "confidence": "中",
+          "details": "若航运受阻持续，粮食援助和农业投入品成本可能上升，脆弱国家的食品安全风险加剧。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "粮食和化肥运输成本上升可能影响全球贸易流向，但目前没有中国粮食进口中断证据。",
+            "finance": "粮食和能源价格波动可能影响大宗商品风险偏好。",
+            "technology": "对中国农业数字化、储运效率和粮食减损技术的需求具有长期意义。",
+            "energy": "霍尔木兹和曼德海峡风险可能推高能源运输保险成本。",
+            "industry": "航运、粮食加工和化肥产业需关注国际物流成本。",
+            "livelihood": "若全球粮价和运输成本持续上升，低收入国家食品负担可能加重；中国居民端影响需看进口价格传导。",
+            "policy": "关注粮食安全储备、国际粮食合作和海上运输风险管理。"
+          }
+        },
+        "verification_status": "路透社和《卫报》均报道粮食署负责人在安理会的发言；7.27亿美元和730万人均为机构风险估算，不是已发生损失。",
+        "developing_details": [
+          "该预测覆盖至2027年年中，属于未来情景估算。",
+          "实际影响取决于黑海、霍尔木兹和曼德海峡运输状况及气候变化。"
         ],
         "sources": [
           {
@@ -374,274 +531,159 @@
           {
             "organization": "The Guardian",
             "title": "Ukraine war briefing: Kyiv’s strike on Russian ships in Benghazi condemned by Libya’s UN-backed government",
-            "url": "https://www.theguardian.com/world/2026/nov/24/ukraine-war-briefing-kyiv-strike-on-russian-ships-in-benghazi-condemned-by-libya-un-backed-government",
-            "publish_time": "2026-11-24 09:08（北京时间）"
+            "url": "https://www.theguardian.com/world/2026/nov/24/ukraine-war-briefing-kyiv-strike-on-russian-ships-in-benghazi-condemned-by-un-backed-libya-government",
+            "publish_time": "2026-11-24（滚动报道）"
           }
         ],
         "follow_up": [
-          "关注黑海是否恢复人道主义粮食运输安排。",
-          "关注国际粮农组织后续粮价和化肥供应评估。"
+          "关注世界粮食计划署后续是否调整援助预算或发布具体国家的援助缺口。",
+          "关注黑海粮食运输、霍尔木兹和曼德海峡的航运安全信息。"
         ],
         "tags": [
+          "联合国粮食署",
           "粮食安全",
-          "航运",
+          "航运瓶颈",
+          "人道援助",
           "黑海",
-          "化肥",
-          "人道主义"
-        ]
-      }
-    ],
-    "technology_and_ai": [
-      {
-        "id": "I06",
-        "title": "英伟达董事会恢复黄仁勋CEO职务，特朗普介入引发公司治理与出口审查争议",
-        "category": "国际科技与人工智能",
-        "location": "美国",
-        "event_time": "英伟达董事会于2026-11-23决定恢复黄仁勋职务；美国总统公开承认曾向董事会表达意见",
-        "publish_time": "英伟达向美国证券交易委员会提交公告：2026-11-23；路透社相关报道：2026-11-23",
-        "summary": "英伟达宣布恢复黄仁勋担任总裁、首席执行官及董事。公司公告称董事会在与黄仁勋沟通并听取美国政府高级官员意见后，认为其复职不存在国家安全风险。特朗普公开支持这一决定。此举缓解了短期领导层不确定性，但也引发国会对董事会独立性、政府干预企业和对华芯片出口合规的质疑。",
-        "key_facts": [
-          "英伟达SEC公告确认董事会一致通过恢复黄仁勋职务。",
-          "公司称董事会听取了美国政府高级官员意见。",
-          "美国国会议员要求说明政府向董事会提供了何种意见，黄仁勋预计于12月初接受国会问询。"
-        ],
-        "importance_score": 7.8,
-        "importance_reason": "英伟达处于全球AI算力供应链核心位置，其治理和出口合规争议可能影响全球AI产业预期及中美科技关系。",
-        "impact_assessment": {
-          "degree": "高",
-          "horizon": "中期",
-          "confidence": "中",
-          "details": "董事会治理和出口合规审查可能持续影响英伟达对华业务、全球供应安排和市场估值。"
-        },
-        "china_impact_analysis": {
-          "degree": "高",
-          "horizon": "中期",
-          "confidence": "中",
-          "channels": {
-            "trade": "美国对先进芯片出口和转售审查仍是中国企业获取高端算力的重要外部约束。",
-            "finance": "英伟达股价及其供应链估值波动可能传导至港股和A股半导体板块。",
-            "technology": "国产AI芯片、先进封装、互连和软件生态的自主可控价值上升。",
-            "energy": "数据中心投资节奏变化将影响电力设备和能源需求预期。",
-            "industry": "全球AI服务器、云平台和芯片供应链可能重新评估客户与合规风险。",
-            "livelihood": "短期对居民直接影响较小，长期影响AI服务价格与产业就业结构。",
-            "policy": "需持续关注美国出口管制规则、许可证和国会调查结果。"
-          }
-        },
-        "verification_status": "公司SEC公告确认人事变动；路透社报道特朗普介入及国会质疑。涉及所谓情报关联的指控仍属调查事项，不作为已证实事实。",
-        "developing_details": [
-          "英伟达股价在恢复职务消息后先大涨，随后在11月24日回落，反映市场仍在评估治理与盈利风险。",
-          "公司及监管机构仍在审查出口合规与潜在国家安全问题。"
-        ],
-        "sources": [
-          {
-            "organization": "英伟达向美国SEC提交的公告",
-            "title": "NVIDIA Board Reinstates Jensen Huang as President, CEO and Board Director",
-            "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000090/nov23pressrelease.htm",
-            "publish_time": "2026-11-23（公司公告）"
-          },
-          {
-            "organization": "路透社 Reuters",
-            "title": "Huang returns as Nvidia CEO after Trump intervention in abrupt board reversal",
-            "url": "https://www.reuters.com/technology/nvidia-reinstates-jensen-huang-ceo-2026-11-23/",
-            "publish_time": "2026-11-23（报道页面未显示精确时刻）"
-          }
-        ],
-        "follow_up": [
-          "关注12月初黄仁勋国会问询及美国对先进芯片出口规则的后续说明。",
-          "关注英伟达是否公布新的合规审查结果。"
-        ],
-        "tags": [
-          "英伟达",
-          "黄仁勋",
-          "AI芯片",
-          "出口管制",
-          "公司治理"
+          "红海"
         ]
       },
       {
-        "id": "I07",
-        "title": "Anthropic股价跌破IPO发行价，AI企业估值与数据中心投资回报受到检验",
-        "category": "国际科技与人工智能",
-        "location": "美国资本市场",
-        "event_time": "Anthropic股价于2026-11-24交易时段跌破每股83美元发行价",
-        "publish_time": "路透社2026-11-24 19:17（北京时间，11:17 UTC）",
-        "summary": "AI公司Anthropic股价在上市数日后跌破每股83美元的IPO发行价，盘中一度下跌12.6%至76.60美元。市场担忧AI企业估值过高、数据中心投入巨大、利率偏高以及商业化回报尚未充分兑现。路透社还报道，公司高管向承销商出售部分股份，进一步加剧市场对短期供需的关注。",
-        "key_facts": [
-          "股价一度跌至76.60美元，低于83美元发行价。",
-          "路透社称公司上市首日曾触及约2万亿美元估值，报道时估值约1.5万亿美元；该估值随股价变化。",
-          "开源模型及低成本模型竞争也被分析师视为商业化压力来源。"
-        ],
-        "importance_score": 7.4,
-        "importance_reason": "前沿AI公司上市后的快速估值回调，显示市场开始要求算力投入转化为可持续收入和利润。",
-        "impact_assessment": {
-          "degree": "中",
-          "horizon": "中期",
-          "confidence": "中",
-          "details": "若AI融资成本上升、数据中心扩张放缓，可能改变全球算力采购节奏；但个股波动不能直接代表行业需求全面转弱。"
-        },
-        "china_impact_analysis": {
-          "degree": "中",
-          "horizon": "中期",
-          "confidence": "中",
-          "channels": {
-            "trade": "海外算力采购和服务器投资若放缓，可能影响中国相关硬件供应商订单。",
-            "finance": "AI概念股估值波动可能影响中国科技资产风险偏好。",
-            "technology": "开源模型和推理成本优化可能成为竞争重点，国产模型在性价比方面有机会。",
-            "energy": "数据中心投资变化会影响电力、冷却和储能需求。",
-            "industry": "产业竞争从模型参数转向单位推理成本、客户留存和收入兑现。",
-            "livelihood": "AI服务价格与应用普及速度可能受到商业模式影响。",
-            "policy": "关注AI产业融资质量、数据中心能耗效率和应用落地政策。"
-          }
-        },
-        "verification_status": "股价和发行价数据来自路透社；对估值压力和未来投资节奏的解释属于市场分析。",
-        "developing_details": [
-          "路透社报道MSCI计划自11月30日收盘起将Anthropic纳入全球标准指数，可能带来被动资金配置，但不能保证股价反弹。",
-          "开源模型竞争、内部人士减持及数据中心资本开支均是后续观察变量。"
-        ],
-        "sources": [
-          {
-            "organization": "路透社 Reuters",
-            "title": "Anthropic shares tumble below $83 IPO price, on track to lose nearly $200 billion in value",
-            "url": "https://www.reuters.com/business/anthropic-breaks-below-83-ipo-price-debut-rally-unravels-2026-11-24/",
-            "publish_time": "2026-11-24 11:17 UTC（19:17 北京时间）"
-          }
-        ],
-        "follow_up": [
-          "关注11月30日指数调整及公司下一次财报、订单和现金流披露。",
-          "关注开源模型竞争是否进一步压低推理服务价格。"
-        ],
-        "tags": [
-          "Anthropic",
-          "IPO",
-          "AI估值",
-          "数据中心",
-          "开源模型"
-        ]
-      }
-    ],
-    "major_social_events": [
-      {
         "id": "I08",
-        "title": "加沙地带空袭造成至少6人死亡，脆弱停火持续承压",
-        "category": "重大社会与人道事件",
-        "location": "巴勒斯坦加沙地带",
-        "event_time": "空袭发生于2026-11-24；具体时刻未披露",
-        "publish_time": "Reuters经Al-Monitor转载：2026-11-24（页面未显示具体时刻）",
-        "summary": "当地医疗和警务人员称，以色列空袭在加沙造成至少6名巴勒斯坦人死亡，其中包括两名警察；另有5人受伤。以色列军方对路透社表示，两处打击目标均为武装人员，但未提供更多细节。2025年10月生效的美国支持停火协议未能完全阻止空袭。",
+        "title": "联合国报告估算2025年约4.7万名女性和女孩死于亲密伴侣或家庭成员暴力",
+        "category": "国际重大社会事件",
+        "location": "全球",
+        "event_time": "报告统计对象为2025年；UNODC与联合国妇女署于2026-11-24发布报告。",
+        "publish_time": "联合国于2026-11-24发布；Ahram Online于11月24日跟进，具体时分未显示。",
+        "summary": "联合国毒品和犯罪问题办公室与联合国妇女署公布的报告估算，2025年约有4.7万名女性和女孩被亲密伴侣或家庭成员故意杀害，平均每天约129人、每小时约5人。该数字约占当年女性和女孩故意杀人总数的六成。",
         "key_facts": [
-          "汗尤尼斯一处警务点遭袭，医护人员称3人死亡、5人受伤。",
-          "加沙北部Netzarim走廊附近另有3人死亡。",
-          "伤亡数字来自当地医疗和警务机构；以军确认实施打击并称目标为武装人员。"
+          "报告估算2025年约47,000名女性和女孩死于亲密伴侣或家庭成员之手。",
+          "按全年折算，平均每天约129人、每小时约5人。",
+          "报告基于122个国家和地区的数据，跨国统计存在资料可得性差异。"
         ],
-        "importance_score": 6.9,
-        "importance_reason": "停火持续受损，平民伤亡和人道压力仍然突出，地区局势可能影响中东外交与航运风险。",
+        "importance_score": 6.8,
+        "importance_reason": "报告反映性别暴力和家庭暴力仍是全球公共安全与人权问题，具有广泛社会影响。",
         "impact_assessment": {
           "degree": "中",
-          "horizon": "短期至中期",
-          "confidence": "中",
-          "details": "若停火进一步恶化，可能推升中东地区风险溢价并影响外交议程；当前尚无新的区域性全面升级证据。"
+          "horizon": "长期",
+          "confidence": "高",
+          "details": "数据强化各国完善家暴预防、庇护服务、司法保护和统计体系的政策压力。"
         },
         "china_impact_analysis": {
           "degree": "低至中",
-          "horizon": "短期",
+          "horizon": "中长期",
           "confidence": "中",
           "channels": {
-            "trade": "暂未发现对中国贸易航线的直接新增影响。",
-            "finance": "地缘风险情绪可能影响油价和避险资产。",
-            "technology": "无直接科技产业影响。",
-            "energy": "若冲突扩展至更广区域，能源风险溢价可能上升。",
-            "industry": "中东项目和人员安全需持续关注。",
-            "livelihood": "对中国居民食品、能源价格的直接传导取决于地区冲突是否扩大。",
-            "policy": "关注中国外交部及驻外机构对地区安全的后续表态。"
+            "trade": "无直接贸易影响。",
+            "finance": "对金融市场直接影响有限。",
+            "technology": "可关注数字化求助、风险识别和公共服务平台的隐私保护。",
+            "energy": "无直接能源影响。",
+            "industry": "妇女就业保障、社会服务和心理支持体系可能需要更多公共资源。",
+            "livelihood": "家庭暴力防治、法律援助和庇护服务与居民安全直接相关。",
+            "policy": "对中国而言，相关议题与反家暴法律执行、基层服务和数据统计能力建设有关。"
           }
         },
-        "verification_status": "伤亡人数来自加沙当地医疗和警务部门；以色列军方确认打击行动但对具体目标未作详细说明。",
+        "verification_status": "联合国官方发布及多家媒体报道一致；4.7万为报告估算值，统计覆盖122个国家和地区。",
         "developing_details": [
-          "相关报道未显示停火协议已正式终止。",
-          "不同来源对死者身份的描述存在差异，简报仅采用可核实的最低伤亡口径。"
+          "报告统计的是2025年发生的案件，新闻增量是2026年11月24日发布的最新全球估算。",
+          "各地区数据质量不同，不能将估算数字理解为所有国家都已完整登记。"
         ],
         "sources": [
           {
-            "organization": "Al-Monitor（Reuters供稿）",
-            "title": "Israeli airstrikes kill at least six Palestinians in Gaza, medics say",
-            "url": "https://www.al-monitor.com/originals/2026/11/israeli-airstrikes-kill-least-six-palestinians-gaza-medics-say",
-            "publish_time": "2026-11-24（页面未显示具体时刻）"
+            "organization": "联合国",
+            "title": "Five women and girls killed every hour by partners or relatives in 2025",
+            "url": "https://www.un.org/en/five-women-killed-every-hour-partners-or-family-members",
+            "publish_time": "2026-11-24（网页未显示精确时分）"
           },
           {
-            "organization": "Free Malaysia Today（Reuters供稿）",
-            "title": "Israeli airstrikes kill at least six Palestinians in Gaza, say medics",
-            "url": "https://www.freemalaysiatoday.com/category/world/2026/11/24/israeli-airstrikes-kill-at-least-six-palestinians-in-gaza-say-medics",
-            "publish_time": "2026-11-24 17:10（页面当地时间，转载Reuters）"
+            "organization": "Ahram Online",
+            "title": "Five women and girls killed every hour by partners or relatives in 2025: UN",
+            "url": "https://english.ahram.org.eg/NewsContent/2/9/583235/World/International/Five-women-and-girls-killed-every-hour-by-partners.aspx",
+            "publish_time": "2026-11-24（网页未显示精确时分）"
           }
         ],
         "follow_up": [
-          "关注停火监督机制及人道物资进入情况。",
-          "关注联合国机构是否发布新的平民伤亡与医疗系统评估。"
+          "关注各国是否据此增加家暴预防、庇护和法律援助预算。",
+          "关注联合国后续发布的区域分布和数据质量说明。"
         ],
         "tags": [
-          "加沙",
-          "停火",
-          "平民保护",
-          "中东"
+          "联合国",
+          "女性安全",
+          "家庭暴力",
+          "公共卫生",
+          "人权"
         ]
       },
       {
         "id": "I09",
-        "title": "世卫组织总干事呼吁美国解除对古巴燃料限制，警告医疗与儿童健康风险",
-        "category": "公共卫生与人道议题",
-        "location": "古巴",
-        "event_time": "世卫组织总干事于2026-11-24在访问古巴期间公开呼吁",
-        "publish_time": "路透社2026-11-25 03:26（北京时间，11月24日19:26 UTC）",
-        "summary": "世界卫生组织总干事谭德塞呼吁美国立即解除对古巴的燃料限制，称能源限制和制裁正在损害古巴民众，尤其是儿童和弱势群体。世卫组织表示将提供200万美元，用于支持古巴免疫规划和医疗设备。古巴政府称停电、药品及手术物资短缺加剧；美国则称食品和药品出口依法豁免。",
+        "title": "《地雷监测2026》报告称2025年全球地雷及战争遗留爆炸物伤亡达6929人",
+        "category": "国际重大社会与人道事件",
+        "location": "全球，重点涉及缅甸和叙利亚",
+        "event_time": "报告统计对象为2025年；《地雷监测2026》于2026-11-24发布。",
+        "publish_time": "人权观察于2026-11-24 03:00 EST（北京时间16:00）发布新闻稿；美联社于11月24日发布报道。",
+        "summary": "国际禁雷运动发布的《地雷监测2026》报告记录，2025年全球至少有6,929人因地雷和战争遗留爆炸物死亡或受伤，为2020年以来最高水平。平民占已知身份伤亡者的84%，儿童占已记录年龄平民伤亡者的一半。缅甸连续第三年成为伤亡人数最高的国家。",
         "key_facts": [
-          "世卫组织宣布提供200万美元支持免疫项目和医疗设备。",
-          "古巴政府称部分地区每日停电可达20小时以上；该数字为古巴政府说法。",
-          "美国政府表示食品和药品出口适用法律豁免。"
+          "2025年全球记录6,929名地雷及战争遗留爆炸物伤亡者，比2024年增加约10%。",
+          "平民占已知身份伤亡者的84%；在有年龄资料的平民伤亡者中，儿童约占一半。",
+          "缅甸记录1,891人伤亡，连续第三年居全球首位；叙利亚也因居民返回污染地区而出现明显上升。"
         ],
-        "importance_score": 6.5,
-        "importance_reason": "能源制裁对医疗基础设施和脆弱人群的影响受到联合国卫生机构关注，具有公共卫生与人道意义。",
+        "importance_score": 7,
+        "importance_reason": "地雷污染具有长期、跨代影响，妨碍平民返乡、农业生产和人道救援，并凸显国际禁雷机制承压。",
         "impact_assessment": {
-          "degree": "低",
-          "horizon": "中期",
-          "confidence": "中",
-          "details": "该事件对全球能源市场影响有限，但凸显能源供应中断对医疗系统的脆弱性。"
+          "degree": "中高",
+          "horizon": "长期",
+          "confidence": "高",
+          "details": "冲突结束后地雷仍持续威胁平民，并延缓灾后重建、难民返乡和农业恢复。"
         },
         "china_impact_analysis": {
           "degree": "低",
-          "horizon": "短期",
+          "horizon": "长期",
           "confidence": "中",
           "channels": {
-            "trade": "对中国贸易直接影响有限。",
-            "finance": "对全球市场风险偏好影响较小。",
-            "technology": "医疗设备和疫苗供应链合作可能受到关注。",
-            "energy": "燃料供应受限会放大电力与医疗系统脆弱性。",
-            "industry": "医疗设备、疫苗和应急电力保障具有现实需求。",
-            "livelihood": "对古巴居民医疗、用电和药品可及性影响较大；对中国居民无直接影响。",
-            "policy": "可关注国际公共卫生援助与制裁人道豁免讨论。"
+            "trade": "对中国贸易短期直接影响低。",
+            "finance": "市场直接影响有限。",
+            "technology": "排雷机器人、探测设备和遥感技术有长期人道应用价值。",
+            "energy": "无直接能源影响。",
+            "industry": "工程机械、传感器和无人系统可用于人道排雷，但需严格遵循国际规范。",
+            "livelihood": "平民返乡、土地复耕和儿童安全是主要民生问题。",
+            "policy": "关注国际人道排雷合作及相关地区中国公民安全提醒。"
           }
         },
-        "verification_status": "世卫组织的呼吁及200万美元援助由路透社报道；停电和医疗短缺数字为古巴政府提供，未作独立量化核验。",
+        "verification_status": "国际禁雷运动报告为原始统计来源；美联社、人权观察和HALO Trust均发布了对报告的摘要或说明。",
         "developing_details": [
-          "美国方面强调食品和药品存在法律豁免；限制措施的具体执行效果仍有争议。",
-          "世卫组织的援助是有限规模的卫生支持，不等同于解决古巴能源短缺。"
+          "统计对象为2025年，报告于2026年11月24日发布，不能误写成2026年新增伤亡。",
+          "各国冲突区域统计存在漏报可能，实际伤亡或高于已记录数字。"
         ],
         "sources": [
           {
-            "organization": "路透社 Reuters",
-            "title": "WHO chief calls on US to lift oil blockade on Cuba, citing health impact",
-            "url": "https://www.reuters.com/legal/government/who-chief-calls-us-lift-oil-blockade-cuba-citing-health-impact-2026-11-24/",
-            "publish_time": "2026-11-24 19:26 UTC（11月25日03:26北京时间）"
+            "organization": "Associated Press",
+            "title": "Global land mine casualties hit a 5-year high, driven by Myanmar's brutal civil war and Syria",
+            "url": "https://apnews.com/article/372ca2debb4628f8672584c6c267cb7d",
+            "publish_time": "2026-11-24（网页未显示精确时分）"
+          },
+          {
+            "organization": "Human Rights Watch",
+            "title": "Landmines: New Use, Production Undermine Ban Treaty",
+            "url": "https://www.hrw.org/news/2026/11/24/landmines-new-use-production-undermine-ban-treaty",
+            "publish_time": "2026-11-24 03:00 EST（16:00北京时间）"
+          },
+          {
+            "organization": "The HALO Trust",
+            "title": "Children Account for Half of Landmine Victims as Global Casualties Soar to Five-Year High",
+            "url": "https://www.halotrust.org/us/press-releases/landmine-monitor-2026/",
+            "publish_time": "2026-11-24（网页未显示精确时分）"
           }
         ],
         "follow_up": [
-          "关注世卫组织后续援助执行情况。",
-          "关注古巴电力供应和医疗物资短缺是否继续恶化。"
+          "关注11月30日国际禁雷条约相关会议是否形成新的排雷和援助承诺。",
+          "关注缅甸、叙利亚等地区排雷项目资金与平民返乡进展。"
         ],
         "tags": [
-          "世卫组织",
-          "古巴",
-          "公共卫生",
-          "能源限制"
+          "地雷",
+          "战争遗留爆炸物",
+          "缅甸",
+          "叙利亚",
+          "人道排雷"
         ]
       }
     ]
@@ -650,43 +692,43 @@
     "policy_and_government": [
       {
         "id": "C01",
-        "title": "中央纪委国家监委对上海市委书记陈吉宁立案审查调查",
+        "title": "中央纪委国家监委对上海市委书记陈吉宁审查调查",
         "category": "中国政策与政务",
         "location": "中国上海",
-        "event_time": "中央纪委国家监委于2026-11-24公布调查消息；公告发布时间19:35（北京时间）",
-        "publish_time": "中央纪委国家监委网站转载新华社：2026-11-24 19:35（北京时间）；路透社后续报道：2026-11-25 15:04（北京时间，窗口后）",
-        "summary": "中央纪委国家监委网站发布消息称，中央政治局委员、上海市委书记陈吉宁涉嫌严重违纪违法，目前正接受中央纪委国家监委纪律审查和监察调查。官方公告未披露具体案情，不能将调查等同于定罪。",
+        "event_time": "中央纪委国家监委于2026-11-24公布审查调查消息。",
+        "publish_time": "中央纪委国家监委网站转载新华社：2026-11-24 19:35（北京时间）；路透社和美联社于11月24日跟进报道。",
+        "summary": "中央纪委国家监委发布消息称，中央政治局委员、上海市委书记陈吉宁涉嫌严重违纪违法，正接受审查调查。官方通报没有披露具体案情、涉及事项或处理结果。接受审查调查不等于已经定罪，后续应以纪检监察机关正式通报为准。",
         "key_facts": [
-          "官方公告发布时间为11月24日19:35。",
-          "公告使用“涉嫌严重违纪违法”表述，未披露具体指控细节。",
-          "路透社11月25日后续报道将其列为2025年以来第四名被调查的中央政治局成员；该统计和背景分析发表于本简报窗口结束之后。"
+          "官方公告明确陈吉宁的政治局委员和上海市委书记身份，并宣布启动审查调查。",
+          "公告没有披露具体涉嫌事项、调查细节或最终处理结果。",
+          "上海市委相关会议表态支持中央决定；外媒指出此案涉及高层干部，但有关政治影响的判断属于分析。"
         ],
         "importance_score": 9.2,
-        "importance_reason": "涉及中央政治局委员和直辖市主要负责人，政治层级高，可能影响上海治理、干部任用与反腐政策预期。",
+        "importance_reason": "涉及中央政治局委员和中国重要经济中心上海的主要负责人，政治层级高，后续人事安排和地方治理连续性值得关注。",
         "impact_assessment": {
           "degree": "高",
-          "horizon": "中期",
-          "confidence": "高",
-          "details": "调查事实由中央纪委国家监委公开确认；对上海政策和经济的具体影响仍取决于后续人事安排及案件披露。"
+          "horizon": "短期至中期",
+          "confidence": "中",
+          "details": "后续人事调整、重大项目审批和地方政策执行可能成为市场关注点；目前没有证据表明上海日常行政和经济运行已经中断。"
         },
         "china_impact_analysis": {
           "degree": "中",
-          "horizon": "短期至中期",
+          "horizon": "短期",
           "confidence": "中",
           "channels": {
-            "trade": "短期没有直接贸易政策变化证据。",
-            "finance": "市场可能关注上海营商环境、地方治理和政策连续性，但不应据此推断上海经济政策立即改变。",
-            "technology": "对科技产业政策没有已公布的直接调整。",
-            "energy": "无直接能源影响。",
-            "industry": "需关注上海重大项目、国企和监管工作的连续性。",
-            "livelihood": "短期民生政策未见直接变化。",
-            "policy": "重点关注后续官方通报、上海市委主要负责人安排及政策执行连续性。"
+            "trade": "上海港口、外贸和外资政策短期应关注执行连续性，目前未见业务中断证据。",
+            "finance": "可能引发对上海地方治理和政策连续性的关注，但不宜据此推断金融市场必然下跌。",
+            "technology": "上海集成电路、生物医药和AI产业政策的延续性值得观察。",
+            "energy": "暂无直接能源影响。",
+            "industry": "重点关注重大项目审批、产业招商和地方营商环境是否保持稳定。",
+            "livelihood": "目前没有直接民生政策变化；居民应以正式通报和政府公告为准。",
+            "policy": "观察上海后续主要负责人安排和政策执行，不传播未经证实的案情。"
           }
         },
-        "verification_status": "已确认官方启动审查调查；具体事实、责任和处理结果尚未公布。",
+        "verification_status": "已由中央纪委国家监委官方消息确认正在审查调查；官方未公布具体案情，调查不等于定罪。",
         "developing_details": [
-          "路透社于11月25日15:04（北京时间）发布的政治局背景分析晚于本简报窗口，作为执行时补充核对，不改变官方公告的发布时间。",
-          "不得将调查写成已经认定的违法犯罪事实。"
+          "官方通报未给出调查完成时间或具体指控。",
+          "媒体关于人事影响和政治前景的评论属于分析，不能替代官方调查结论。"
         ],
         "sources": [
           {
@@ -697,364 +739,455 @@
           },
           {
             "organization": "路透社 Reuters",
-            "title": "China's Politburo shrinks as graft crackdown spreads",
-            "url": "https://www.reuters.com/world/china/chinas-politburo-shrinks-as-graft-crackdown-spreads-2026-11-25/",
-            "publish_time": "2026-11-25 07:04 UTC（15:04 北京时间，窗口后补充）"
+            "title": "China probes Shanghai party boss Chen Jining, marking fourth Politburo member to fall since 2025",
+            "url": "https://www.reuters.com/world/china/investigates-politburo-member-chen-jining-xinhua-says-2026-11-24/",
+            "publish_time": "2026-11-24（网页未显示精确时分）"
+          },
+          {
+            "organization": "美联社 AP",
+            "title": "China investigates Politburo member and Shanghai party chief Chen Jining",
+            "url": "https://apnews.com/article/china-probe-shanghai-party-secretary-abdd2572fe5c8276027ea832f4eb606c",
+            "publish_time": "2026-11-24（网页未显示精确时分）"
           }
         ],
         "follow_up": [
-          "关注中央纪委国家监委后续通报。",
-          "关注上海市委主要负责人调整及重大政策、项目执行是否保持连续。"
+          "关注中央纪委国家监委是否发布进一步案情或处理通报。",
+          "关注上海后续主要负责人安排、重大项目审批和营商政策是否保持连续。"
         ],
         "tags": [
-          "反腐",
+          "陈吉宁",
           "上海",
-          "干部监督",
-          "政务"
+          "中央纪委国家监委",
+          "反腐败",
+          "地方治理"
         ]
       },
       {
-        "id": "C02",
-        "title": "中国延长对美部分关键矿产及超硬材料两用物项出口管制暂停期",
-        "category": "中国政策与外贸",
-        "location": "中国、美国",
-        "event_time": "商务部公告签发日期2026-11-23；网页发布时间2026-11-24 15:00；新安排自11月28日起生效",
-        "publish_time": "商务部2026-11-24 15:00（北京时间）；路透社2026-11-24 22:41（北京时间）",
-        "summary": "商务部公告2026年第59号决定，自2026年11月28日至2027年1月27日，继续暂停实施2024年第46号公告第二款。涉及对美国相关两用物项出口管制安排的暂停实施，包括镓、锗、锑、超硬材料等相关项目；石墨出口仍涉及最终用户和最终用途审查。此举为中美经贸沟通保留空间，但不代表全面取消出口管制。",
+        "id": "C05",
+        "title": "国家数据局组织实施数字经济发展“十五五”行动计划，提出2030年核心产业增加值占GDP比重达12.5%",
+        "category": "中国政策与数字经济",
+        "location": "中国",
+        "event_time": "国家数据局于2026-11-24向媒体介绍行动计划组织实施情况；新闻网页于11月25日发布。",
+        "publish_time": "数字中国建设峰会网站2026-11-25 10:33（北京时间，窗口后补充）。",
+        "summary": "国家数据局组织实施数字经济发展“十五五”行动计划，提出到2030年数字经济核心产业增加值占GDP比重达到12.5%。行动围绕数据流通制度、全国一体化算力网、产业数字化转型、数字经济统计监测和人才培养等方面展开。",
         "key_facts": [
-          "暂停实施期限为2026年11月28日至2027年1月27日。",
-          "商务部公告编号为2026年第59号，公告网页发布时间为11月24日15:00。",
-          "路透社称该决定延长了中美贸易休战框架下的部分缓和措施。"
+          "到2030年数字经济核心产业增加值占GDP比重达到12.5%是行动计划提出的目标。",
+          "行动计划强调完善数据流通利用规则、建设全国一体化算力网和国家数据基础设施。",
+          "报道发表于11月25日10:33，晚于标准采集窗口；本条作为窗口后补充。"
+        ],
+        "importance_score": 7.2,
+        "importance_reason": "为“十五五”时期数字经济发展明确目标和重点任务，涉及数据要素、算力基础设施和实体经济数字化转型。",
+        "impact_assessment": {
+          "degree": "中高",
+          "horizon": "长期",
+          "confidence": "中",
+          "details": "目标将影响未来五年数字基础设施和产业政策方向，但实际成效取决于数据流通制度、投资效率和企业应用。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "中长期",
+          "confidence": "中",
+          "channels": {
+            "trade": "数字服务、数据跨境流动和数字产品出口可能成为政策关注重点。",
+            "finance": "算力基础设施和数据要素相关投资可能获得政策关注，但需警惕重复建设。",
+            "technology": "全国一体化算力网、数据基础设施和行业高质量数据集将影响AI训练与应用。",
+            "energy": "算力网络建设需要兼顾电力供应、绿色能源和能效。",
+            "industry": "制造业和服务业数字化转型有望扩大软件、数据服务和系统集成需求。",
+            "livelihood": "公共服务数字化可能改善效率，但需要重视数据安全和数字鸿沟。",
+            "policy": "需关注后续行动细则、数字经济促进法和数据治理制度建设。"
+          }
+        },
+        "verification_status": "数字中国建设峰会网站发布的官方新闻转述国家数据局信息；行动计划目标已明确，但完整配套文件和实施细则仍需后续跟踪。",
+        "developing_details": [
+          "该新闻网页发布时间为11月25日10:33，晚于本期标准窗口08:00。",
+          "12.5%是2030年目标值，不是当前已实现比例。"
+        ],
+        "sources": [
+          {
+            "organization": "数字中国建设峰会网站（人民日报海外版报道）",
+            "title": "数字经济成高质量发展重要经济形态",
+            "url": "https://www.digitalchina.gov.cn/2026/xwzx/szkx/202611/t20261125_5396610.htm",
+            "publish_time": "2026-11-25 10:33（北京时间，窗口后补充）"
+          }
+        ],
+        "follow_up": [
+          "关注国家数据局后续公开的行动计划全文和分年度指标。",
+          "关注全国一体化算力网、公共数据授权运营和数据跨境流动的实施细则。"
+        ],
+        "tags": [
+          "国家数据局",
+          "十五五",
+          "数字经济",
+          "算力网",
+          "数据要素",
+          "政策目标"
+        ]
+      }
+    ],
+    "economy_and_markets": [
+      {
+        "id": "C02",
+        "title": "商务部延长对美部分两用物项出口管制暂停期至2027年1月27日",
+        "category": "中国经济与对外贸易",
+        "location": "中国、美国",
+        "event_time": "商务部公告签发日期为2026-11-23；网页发布时间为11月24日15:00；新安排自11月28日起实施。",
+        "publish_time": "商务部官网2026-11-24 15:00（北京时间）；路透社于11月24日发布后续报道。",
+        "summary": "商务部公告2026年第59号明确，自2026年11月28日起至2027年1月27日，继续暂停实施商务部公告2024年第46号第二款。该措施涉及对美相关两用物项出口管制安排的部分暂停，并不意味着全面取消出口管制。镓、锗、锑及超硬材料相关供应链仍需关注具体许可和用途限制。",
+        "key_facts": [
+          "商务部公告编号为2026年第59号，暂停期延长至2027年1月27日。",
+          "暂停实施的是2024年第46号公告第二款，不应扩大解释为全部出口限制取消。",
+          "路透社指出，该调整为中美经贸磋商留出时间；美国对中国先进芯片的限制仍是双边科技摩擦的重要因素。"
         ],
         "importance_score": 8.9,
-        "importance_reason": "涉及半导体、新能源电池和关键材料供应链，是中美经贸关系最具实质性的近期政策信号之一。",
+        "importance_reason": "涉及关键矿产、半导体和新能源材料供应链，是中美经贸关系短期缓和的重要政策信号。",
         "impact_assessment": {
           "degree": "高",
-          "horizon": "短期",
+          "horizon": "短期至中期",
           "confidence": "高",
-          "details": "官方公告明确了暂停范围和期限；未来是否进一步延长，取决于中美经贸磋商及出口管制政策变化。"
+          "details": "相关企业获得约两个月的政策确定性，但措施有明确期限，后续是否延长取决于双边经贸谈判和监管变化。"
         },
         "china_impact_analysis": {
           "degree": "高",
           "horizon": "短期至中期",
           "confidence": "高",
           "channels": {
-            "trade": "为部分对美关键矿产供应恢复提供时间窗口，但暂停措施有期限，不能视为长期放开。",
-            "finance": "有助于缓和中美贸易摩擦预期，可能改善相关材料和出口链风险情绪。",
-            "technology": "镓、锗与半导体、光纤、红外器件相关；石墨与电池产业链相关，供应预期更稳定。",
-            "energy": "石墨供应预期对电动车电池材料链有间接影响。",
-            "industry": "美国买方可在期限内安排采购，中国企业仍须遵守最终用户和用途审核要求。",
-            "livelihood": "若供应链摩擦缓和，可能降低部分制造业成本波动，但不会立即改变终端价格。",
-            "policy": "观察2027年1月27日到期前是否续期，以及美方芯片限制是否同步调整。"
+            "trade": "对美相关两用物项出口安排出现阶段性缓和，有助于部分供应合同和贸易预期稳定。",
+            "finance": "中美经贸摩擦缓和信号可能改善部分出口链风险偏好，但不代表关税和科技限制全面解除。",
+            "technology": "镓、锗等材料与半导体、红外和光纤等领域相关；出口许可和最终用途审查仍是关键。",
+            "energy": "石墨是电池产业重要材料，政策预期变化可能影响新能源供应链安排。",
+            "industry": "材料、半导体、光电和新能源企业可据公告安排合规出口，但须逐项核对管制清单。",
+            "livelihood": "对居民价格没有立刻可见的直接影响，主要通过产业链和就业间接传导。",
+            "policy": "中国保留出口管制工具，同时通过限期暂停为双边谈判保留空间。"
           }
         },
-        "verification_status": "商务部原始公告确认政策内容、编号和实施日期；路透社独立报道解释中美贸易背景。",
+        "verification_status": "商务部原始公告确认编号、条款和实施日期；路透社独立报道政策背景。具体适用范围应以公告原文及配套清单为准。",
         "developing_details": [
-          "该决定并非全面取消对美两用物项出口管制。",
-          "暂停措施自11月28日才生效，11月25日仍处于公告后的准备期。"
+          "新安排从11月28日开始生效，不是公告发布当天立即生效。",
+          "公告只暂停2024年第46号公告第二款；其他出口许可、最终用户和最终用途要求仍可能适用。"
         ],
         "sources": [
           {
             "organization": "中华人民共和国商务部",
             "title": "公布继续调整实施商务部公告2024年第46号的决定（商务部公告2026年第59号）",
-            "url": "https://www.mofcom.gov.cn/zcfb/blgg/gg/2026/art/2026/art_fc4036b0e6b046e0a84c5579ce09e5b0.html",
+            "url": "https://www.mofcom.gov.cn/zwgk/zcfb/art/2026/art_69b3633579184af38198463be8116ebf.html",
             "publish_time": "2026-11-24 15:00（北京时间）"
           },
           {
             "organization": "路透社 Reuters",
             "title": "China extends suspension of ban on US-bound gallium, germanium, antimony exports",
             "url": "https://www.reuters.com/markets/commodities/china-extends-suspension-ban-us-bound-gallium-germanium-antimony-exports-2026-11-24/",
-            "publish_time": "2026-11-24 14:41 UTC（22:41 北京时间）"
+            "publish_time": "2026-11-24（网页未显示精确时分）"
           }
         ],
         "follow_up": [
-          "关注11月28日政策生效及美方回应。",
-          "关注2027年1月27日到期前的续期或调整公告。"
+          "关注11月28日措施正式生效后的商务部配套说明和企业执行口径。",
+          "关注2027年1月27日到期前中美经贸沟通及美国芯片出口政策变化。"
         ],
         "tags": [
-          "关键矿产",
+          "商务部",
+          "中美贸易",
           "镓",
           "锗",
           "锑",
-          "石墨",
-          "中美贸易"
+          "出口管制",
+          "半导体"
         ]
-      },
+      }
+    ],
+    "technology_and_ai": [
       {
         "id": "C03",
-        "title": "王毅同英国外交大臣米利班德通电话，强调自由贸易与中英关系稳定发展",
-        "category": "中国外交",
-        "location": "中国、英国",
-        "event_time": "通话发生于2026-11-24；具体通话时刻未披露",
-        "publish_time": "外交部网页发布时间2026-11-24 22:21（北京时间）；路透社2026-11-24（转载报道）",
-        "summary": "中共中央政治局委员、外交部长王毅应约同英国外交大臣米利班德通电话。王毅表示双方应规划下一阶段高层交往，释放合作潜力，并希望英方坚持自由贸易原则，为中国企业赴英合作提供稳定政策预期和良好营商环境；双方还讨论中东和乌克兰局势。",
+        "title": "前三季度数字产业收入同比增长14.8%，工信部称人工智能产业规模继续扩大",
+        "category": "中国科技与人工智能",
+        "location": "中国",
+        "event_time": "工信部于2026-11-24发布前三季度数字产业数据；市场监管总局专题发布会于11月24日上午举行。",
+        "publish_time": "工信部官网2026-11-24 10:39（北京时间）；市场监管总局官网2026-11-24 17:00（北京时间）。",
+        "summary": "工信部数据显示，2026年前三季度数字产业实现收入32.41万亿元，同比增长14.8%；利润2.78万亿元，同比增长23.4%。同日市场监管总局专题发布会上，工信部有关负责人介绍，2026年上半年中国人工智能核心产业规模预计超过7500亿元，核心企业超过6600家，智能算力规模超过2592 EFLOPS。",
         "key_facts": [
-          "中方强调恪守一个中国原则及双边关系政治基础。",
-          "英方表示愿拓展互利合作，并称在台湾问题上的立场没有改变。",
-          "双方就中东和乌克兰问题交换意见。"
+          "前三季度数字产业收入32.41万亿元，同比增长14.8%；利润2.78万亿元，同比增长23.4%。",
+          "数字产业制造业部分收入19.32万亿元，同比增长20.5%；服务业部分收入13.09万亿元，同比增长7.3%。",
+          "工信部在市场监管总局发布会上介绍，2026年上半年AI核心产业规模预计超过7500亿元，核心企业数量超过6600家。",
+          "人工智能核心产业规模为测算值，数字产业收入和利润为工信部统计口径，两者统计范围不同。"
         ],
-        "importance_score": 6.7,
-        "importance_reason": "中英高层沟通有助于保持经贸和外交渠道，尤其在欧洲贸易政策和中国企业海外经营环境方面具有现实意义。",
+        "importance_score": 7.8,
+        "importance_reason": "数据表明数字产业和AI应用正在形成较大规模，但需要进一步观察利润兑现、产业结构和企业现金流。",
         "impact_assessment": {
-          "degree": "中",
+          "degree": "中高",
           "horizon": "中期",
-          "confidence": "中",
-          "details": "对双边关系有稳定预期作用，但尚未公布新的贸易协议或具体投资项目。"
+          "confidence": "中高",
+          "details": "产业收入和利润增速显示数字经济仍有增长动能，但统计口径不同，不能将核心AI产业估算与数字产业总收入直接相加。"
         },
         "china_impact_analysis": {
           "degree": "中",
           "horizon": "中期",
-          "confidence": "中",
+          "confidence": "中高",
           "channels": {
-            "trade": "英国若提供更稳定的营商政策，有利于中国企业评估赴英投资和服务贸易机会。",
-            "finance": "改善双边关系预期可能利于金融、专业服务合作。",
-            "technology": "可为科技、创新和科研合作保持沟通渠道。",
-            "energy": "无直接能源政策变化。",
-            "industry": "关注中国企业在英投资、绿色产业和供应链合作机会。",
-            "livelihood": "对就业与消费的影响取决于后续项目落地。",
-            "policy": "关注下一阶段高层往来和英国对华经贸政策。"
+            "trade": "电子产品出口延续较强增长，有助于数字产业链企业外需，但需关注贸易壁垒。",
+            "finance": "产业数据可能改善市场对数字经济板块的基本面预期，但不等于所有企业盈利同步改善。",
+            "technology": "AI核心产业规模、算力和企业数量扩张，说明模型、芯片、服务器和行业应用生态持续扩大。",
+            "energy": "算力规模扩张将增加数据中心电力和冷却需求，能源效率将影响长期成本。",
+            "industry": "制造业数字化和AI赋能可能提升效率，同时加剧行业分化。",
+            "livelihood": "AI应用可能改善公共服务和生产效率，也会带来岗位技能转换压力。",
+            "policy": "关注AI标准、算力能耗、数据治理和制造业应用的配套政策。"
           }
         },
-        "verification_status": "中国外交部公布通话内容；路透社报道了中方关于自由贸易与营商环境的表态。",
+        "verification_status": "工信部和市场监管总局官方发布会及统计通报提供原始信息；AI核心产业规模为官方测算预计值，已明确标注。",
         "developing_details": [
-          "双方尚未公布新的经贸协定或高层访问日期。",
-          "通话是政策沟通，不代表分歧已经解决。"
+          "前三季度数据为2026年1至9月统计；AI核心产业规模为2026年上半年预计值。",
+          "产业收入增长不代表所有细分企业均实现盈利，需关注制造业、服务业和头部企业的分化。"
         ],
         "sources": [
           {
-            "organization": "中华人民共和国外交部",
-            "title": "王毅同英国外交大臣米利班德通电话",
-            "url": "https://www.mfa.gov.cn/wjbzhd/202611/t20261124_12066362.shtml",
-            "publish_time": "2026-11-24 22:21（北京时间）"
+            "organization": "工业和信息化部",
+            "title": "前三季度我国数字产业发展呈现向优向好态势",
+            "url": "https://www.miit.gov.cn/jgsj/yxj/xxfb/art/2026/art_98cf9280367940dc8e4002083ac51281.html",
+            "publish_time": "2026-11-24 10:39（北京时间）"
           },
           {
-            "organization": "路透社 Reuters",
-            "title": "China urges Britain to support free trade, provide favourable business environment",
-            "url": "https://www.reuters.com/world/uk/china-urges-britain-support-free-trade-provide-favourable-business-environment-2026-11-24/",
-            "publish_time": "2026-11-24（页面时间未显示）"
+            "organization": "国家市场监督管理总局",
+            "title": "市场监管总局人工智能国际标准化工作专题新闻发布会实录",
+            "url": "https://www.samr.gov.cn/hd/zxft/art/2026/art_1fe10d5e599e49209fd5191ba1159e00.html",
+            "publish_time": "2026-11-24 17:00（北京时间）"
           }
         ],
         "follow_up": [
-          "关注中英下一轮高层交往安排。",
-          "关注英国对中国企业投资和市场准入的政策变化。"
+          "关注四季度数字产业收入、利润率和出口增速是否延续。",
+          "关注AI核心产业统计口径、算力利用率和企业盈利数据。"
         ],
         "tags": [
-          "中英关系",
-          "自由贸易",
-          "海外投资",
-          "外交"
+          "工信部",
+          "数字产业",
+          "人工智能",
+          "算力",
+          "产业收入",
+          "智能制造"
         ]
       },
       {
         "id": "C04",
-        "title": "中美贸易理事会农业工作组首次会议在北京举行，农产品监管与市场准入列入议程",
-        "category": "中国外贸与经贸合作",
-        "location": "中国北京",
-        "event_time": "会议于2026-11-23至24日举行；具体场次时间未披露",
-        "publish_time": "商务部网页2026-11-25 12:52（北京时间，窗口后发布）；路透社2026-11-25 13:24（北京时间，窗口后发布）",
-        "summary": "中美双方在北京举行中美贸易理事会项下农业工作组首次会议，就农产品监管、市场准入和农产品贸易进行交流。会议本身发生在本简报覆盖期内，但中方公开通报及路透社报道均在11月25日12:52之后发布，因此作为窗口内事件的迟到信息补充。",
+        "title": "中国启动八省市6G创新发展部省协同试点",
+        "category": "中国科技与人工智能",
+        "location": "北京、河北、上海、江苏、浙江、安徽、湖北、广东",
+        "event_time": "2026年6月启动专项行动；8省市于2026-11-24在上海举行的2026年6G发展大会上正式启动协同试点。",
+        "publish_time": "新华社于2026-11-24 21:28:13发布；新华社浙江频道转载人民日报报道于11月24日10:55:46发布。",
+        "summary": "工业和信息化部与北京、河北、上海、江苏、浙江、安徽、湖北、广东八个省市在上海启动6G创新发展部省协同试点。试点将围绕新型终端、关键器件、操作系统、卫星互联网等方向开展攻关，并探索沉浸式通信、工业制造、具身智能和智慧海洋等潜在应用。",
         "key_facts": [
-          "会议时间为11月23日至24日。",
-          "商务部称双方进行了坦诚、深入、建设性的交流。",
-          "双方表示将继续通过工作组加强沟通，推动解决农业领域关切。"
+          "试点地区为北京、河北、上海、江苏、浙江、安徽、湖北和广东。",
+          "重点方向包括新型终端、关键器件、操作系统、卫星互联网及行业应用场景。",
+          "新华社称6G仍处于技术攻关和标准研制阶段，当前启动的是创新发展试点，不是6G全面商用。"
         ],
-        "importance_score": 7.2,
-        "importance_reason": "农业是中美贸易摩擦和市场准入的重要领域，工作组机制有助于把元首层面的共识转化为部门层面的议题。",
+        "importance_score": 7.4,
+        "importance_reason": "6G试点将研发、标准和产业应用协同推进，关系下一代通信、卫星互联网和具身智能等长期产业布局。",
         "impact_assessment": {
           "degree": "中",
-          "horizon": "中期",
-          "confidence": "中",
-          "details": "目前只有沟通机制启动，尚无具体采购、关税减让或市场准入成果。"
+          "horizon": "长期",
+          "confidence": "中高",
+          "details": "试点有助于聚合研发资源和应用场景，但距离大规模商用仍有标准、器件、成本和网络建设等阶段。"
         },
         "china_impact_analysis": {
           "degree": "中",
-          "horizon": "中期",
-          "confidence": "中",
+          "horizon": "长期",
+          "confidence": "中高",
           "channels": {
-            "trade": "若后续解决检疫、准入和采购障碍，可能改善农产品双向贸易。",
-            "finance": "对人民币和资本市场的即时影响有限。",
-            "technology": "农业检验、冷链和数字贸易可能成为后续合作环节。",
-            "energy": "无直接能源影响。",
-            "industry": "影响大豆、玉米、肉类及农产品加工和物流企业的中长期预期。",
-            "livelihood": "若进口渠道更稳定，可能改善部分农产品供应，但短期价格影响不确定。",
-            "policy": "关注工作组是否公布下一次会议、具体准入安排或采购进展。"
+            "trade": "未来通信设备和相关器件若形成标准优势，可能影响国际设备和服务贸易。",
+            "finance": "对短期市场盈利影响有限，主要是长期产业主题。",
+            "technology": "推动6G核心器件、终端、操作系统和卫星互联网协同研发。",
+            "energy": "6G网络和数据中心扩张将增加能耗，需要同步推进能效技术。",
+            "industry": "工业制造、低空经济和智慧海洋可能成为试点应用场景。",
+            "livelihood": "短期居民端感知有限，长期可能影响通信服务和工业就业结构。",
+            "policy": "关注国际标准、试点考核和跨行业频谱及安全监管。"
           }
         },
-        "verification_status": "会议召开由商务部官方通报和路透社报道交叉确认；会议具体成果和量化贸易承诺尚未公布。",
+        "verification_status": "新华社和人民日报报道确认八省市试点于11月24日启动；试点阶段和应用方向已由官方报道说明。",
         "developing_details": [
-          "该消息发布时间晚于08:00采集截止点，但会议发生于11月23日至24日，故作为迟到信息明确标记。",
-          "“建设性交流”不等于已达成采购量或市场准入协议。"
+          "试点专项行动早在2026年6月启动，本次新闻增量是八省市在11月24日大会上正式启动协同试点。",
+          "目前没有官方宣布6G商用时间表，不应把试点等同于商用网络部署。"
         ],
         "sources": [
           {
-            "organization": "中华人民共和国商务部",
-            "title": "中美贸易理事会项下农业工作组首次会议在京举行",
-            "url": "https://www.mofcom.gov.cn/xwfb/rcxwfb/art/2026/art_6e6ac6c48c544802b6f2b68e4ef07522.html",
-            "publish_time": "2026-11-25 12:52（北京时间，窗口后发布）"
+            "organization": "新华网",
+            "title": "6G创新发展部省协同试点在上海启动",
+            "url": "https://www.news.cn/tech/20261124/f92bd4ce5cec4eee9ed5dbbcc82ca5a7/c.html",
+            "publish_time": "2026-11-24 21:28:13（北京时间）"
           },
           {
-            "organization": "路透社 Reuters",
-            "title": "China, US discuss farm trade, market access at agriculture talks",
-            "url": "https://www.reuters.com/markets/commodities/china-us-discuss-farm-trade-market-access-agriculture-talks-2026-11-25/",
-            "publish_time": "2026-11-25 05:24 UTC（13:24 北京时间，窗口后发布）"
+            "organization": "新华网浙江频道（人民日报稿）",
+            "title": "8省份试点6G创新发展部省协同",
+            "url": "https://www.zj.news.cn/20261124/2e822e3d9c234e33835136a7237c82e6/c.html",
+            "publish_time": "2026-11-24 10:55:46（北京时间）"
           }
         ],
         "follow_up": [
-          "关注中美农业工作组后续会议及农产品检疫、准入和采购安排。",
-          "关注美方是否发布对应会谈纪要。"
+          "关注试点省市公布的项目清单、应用场景和考核指标。",
+          "关注IMT-2030（6G）推进组后续技术试验和国际标准进展。"
         ],
         "tags": [
-          "中美贸易",
-          "农产品",
-          "市场准入",
-          "工作组"
+          "6G",
+          "工信部",
+          "卫星互联网",
+          "具身智能",
+          "通信标准",
+          "试点"
         ]
-      }
-    ],
-    "economy_and_markets": [],
-    "technology_and_ai": [
+      },
       {
-        "id": "C05",
-        "title": "神舟二十四号载人飞船与天宫空间站对接，巴基斯坦航天员成为首位到访的外籍航天员",
+        "id": "C06",
+        "title": "神舟二十四号与天宫空间站完成对接，巴基斯坦航天员成为首位到访中国空间站的外籍航天员",
         "category": "中国科技与航天",
-        "location": "中国酒泉、近地轨道",
-        "event_time": "任务新闻发布会于2026-11-24 09:00公布计划；飞船于11月25日08:18发射、11:56完成对接（后两项发生在08:00窗口结束后）",
-        "publish_time": "中国载人航天工程网2026-11-24（发布会及乘组信息）；路透社2026-11-25 08:27（北京时间，窗口后）",
-        "summary": "中国载人航天工程网在11月24日发布任务信息，确认神舟二十四号计划于11月25日08:18发射，乘组由汤洪波、武毅和巴基斯坦航天员穆罕默德·齐尚·阿里组成。执行时补充核实显示，飞船已于11月25日08:18发射，并于11:56与天宫空间站对接；齐尚·阿里成为首位进入中国空间站的外籍航天员。",
+        "location": "中国酒泉卫星发射中心、中国空间站",
+        "event_time": "2026-11-25 08:18发射；11:56与天宫空间站天和核心舱前向端口完成对接。",
+        "publish_time": "中国载人航天工程网于11月25日发布发射及对接消息；新华社于12:05发布对接报道；美联社于11月25日跟进。",
+        "summary": "神舟二十四号载人飞船于北京时间11月25日8时18分从酒泉发射升空，11时56分与中国空间站完成自主快速交会对接。乘组包括中国航天员汤洪波、武毅和巴基斯坦航天员穆罕默德·齐尚·阿里。齐尚·阿里成为首位到访中国空间站的外籍航天员。这是中巴航天合作的重要里程碑，但该事件发生在标准采集窗口结束后的08:18，故单独列为窗口后重大更新。",
         "key_facts": [
-          "中国载人航天工程网11月24日新闻发布会公布发射时间和乘组。",
-          "发射时间为11月25日08:18（北京时间）；对接时间为11:56（北京时间）。",
-          "巴基斯坦航天员穆罕默德·齐尚·阿里将在空间站开展载荷实验，计划停留约5至10天。",
-          "中国航天员朱杨柱将继续在轨驻留一年，开展长期空间飞行相关研究。"
+          "神舟二十四号于11月25日08:18发射，约10分钟后飞船与火箭分离并进入预定轨道。",
+          "飞船于11:56对接天和核心舱前向端口，对接过程约3.5小时。",
+          "乘组为汤洪波、武毅和巴基斯坦航天员穆罕默德·齐尚·阿里；任务计划开展90项科学实验和技术试验。",
+          "这是中国载人航天工程首次有外籍航天员参与的载人飞行任务。"
         ],
         "importance_score": 9,
-        "importance_reason": "中国空间站首次迎来外籍航天员，体现载人航天国际合作能力，是中国航天与对外科技合作的重要节点。",
+        "importance_reason": "中国空间站首次迎来外籍航天员，体现中国载人航天国际合作能力，是中巴科技合作的标志性进展。",
         "impact_assessment": {
           "degree": "高",
           "horizon": "长期",
           "confidence": "高",
-          "details": "任务发射和对接均已由中国载人航天工程网与路透社报道确认；后续科研成果和合作规模仍待观察。"
+          "details": "任务成功强化中国空间站作为国际科研合作平台的形象，并为未来联合飞行和空间科学合作积累经验。"
         },
         "china_impact_analysis": {
-          "degree": "中至高",
+          "degree": "中",
           "horizon": "长期",
           "confidence": "高",
           "channels": {
-            "trade": "直接贸易影响有限，但可拓展航天设备、材料和科研合作。",
-            "finance": "短期资本市场影响有限，长期有助于航天产业生态和科研投入预期。",
-            "technology": "空间材料、生命科学、微重力实验和空间站运维能力得到验证。",
-            "energy": "空间能源系统与高可靠电源技术有潜在外溢价值。",
-            "industry": "有利于航天制造、精密仪器、材料、测控和科研服务产业链。",
-            "livelihood": "可带动科普教育和高端工程人才培养，短期对居民物价无直接影响。",
-            "policy": "为中巴科技合作及中国空间站国际合作机制提供示范。"
+            "trade": "对贸易的直接影响有限，但有助于深化中国与巴基斯坦的科技合作。",
+            "finance": "对金融市场直接影响低，更多是国家科技能力和产业信心层面的长期信号。",
+            "technology": "空间站运行、空间生命科学、材料科学和微重力实验积累将促进航天技术发展。",
+            "energy": "直接能源影响有限，空间能源与材料实验有长期科研价值。",
+            "industry": "航天制造、测控、材料、生命科学和科研设备产业可能获得技术外溢。",
+            "livelihood": "短期居民生活影响有限，长期科研和人才培养具有公共价值。",
+            "policy": "显示中国空间站对国际合作伙伴开放的能力，后续需关注国际合作规则和联合实验成果。"
           }
         },
-        "verification_status": "发射和对接事实已由中国载人航天工程网及路透社报道确认；实验结果尚未产生，不能提前宣称技术突破。",
+        "verification_status": "中国载人航天工程网、新华社和美联社均确认发射及对接；航天员身份、时间和任务安排以中国载人航天工程办公室信息为准。",
         "developing_details": [
-          "本次任务是空间站国际合作的重要里程碑；外籍航天员参与不改变中国空间站的运行管理安排。",
-          "发射和对接发生在08:00覆盖窗口结束之后，因本次执行时间延迟，作为窗口外突发更新列入。"
+          "本事件发生于11月25日08:18，晚于标准窗口结束时间18分钟；对接发生于11:56。",
+          "巴基斯坦航天员将参与载荷实验，具体实验结果尚未公布。"
         ],
         "sources": [
           {
             "organization": "中国载人航天工程网",
-            "title": "神舟二十四号载人飞行任务新闻发布会召开",
-            "url": "https://www.cmse.gov.cn/xwzx/202611/t20261124_57876.html",
-            "publish_time": "2026-11-24（发布会于09:00举行）"
+            "title": "神舟二十四号载人飞船发射取得圆满成功",
+            "url": "https://www.cmse.gov.cn/xwzx/202611/t20261125_57891.html",
+            "publish_time": "2026-11-25（页面未显示精确时分）"
           },
           {
             "organization": "中国载人航天工程网",
-            "title": "神舟二十四号载人飞行任务航天员乘组出征仪式在酒泉卫星发射中心举行",
-            "url": "https://www.cmse.gov.cn/xwzx/202611/t20261125_57886.html",
-            "publish_time": "2026-11-25（页面未显示具体时刻）"
+            "title": "神舟二十四号载人飞船与空间站组合体完成自主快速交会对接",
+            "url": "https://www.cmse.gov.cn/xwzx/202611/t20261125_57897.html",
+            "publish_time": "2026-11-25（页面未显示精确时分）"
           },
           {
-            "organization": "路透社 Reuters",
-            "title": "China's Shenzhou-24 docks at space station with Pakistani national as first foreign astronaut",
-            "url": "https://www.reuters.com/science/chinas-shenzhou-24-space-flight-takes-off-with-pakistani-national-first-foreign-2026-11-25/",
-            "publish_time": "2026-11-25 00:27 UTC（08:27 北京时间，窗口后）"
+            "organization": "新华社",
+            "title": "神舟二十四号载人飞船与空间站组合体完成自主快速交会对接",
+            "url": "https://www.news.cn/tech/20261125/62a43f74224143c6a44fbc120d6348c9/c.html",
+            "publish_time": "2026-11-25 12:05:03（北京时间）"
+          },
+          {
+            "organization": "美联社 AP",
+            "title": "China launches Shenzhou 24 spacecraft carrying 2 Chinese and 1 Pakistani astronaut",
+            "url": "https://apnews.com/article/543306bfe17419395d10fae107500564",
+            "publish_time": "2026-11-25（网页未显示精确时分）"
           }
         ],
         "follow_up": [
-          "关注巴基斯坦航天员在轨实验和后续返回安排。",
-          "关注中巴后续联合航天任务及国际空间站合作项目。"
+          "关注三名航天员进入空间站后的在轨轮换和90项科学实验安排。",
+          "关注巴基斯坦航天员返回计划及后续中巴联合飞行合作。"
         ],
         "tags": [
           "神舟二十四号",
           "天宫空间站",
-          "中巴合作",
+          "巴基斯坦",
           "载人航天",
-          "外籍航天员"
+          "国际合作"
         ]
       }
     ],
     "society_and_livelihood": []
   },
   "china_impact_dashboard": {
-    "trade": "中美关键矿产出口管制暂停延长，为部分对美供应提供至2027年1月27日的政策窗口；农业工作组启动沟通，但尚无量化采购或准入成果。整体影响：中等偏正面，短期；可信度中高。",
-    "finance": "美国AI资产回调、美元和美债收益率变化可能通过全球风险偏好影响港股、A股科技板块和人民币预期。市场方向仍需观察美国PCE与GDP数据。影响程度：中等，短期；可信度中。",
-    "technology": "英伟达治理与出口合规争议强化先进算力供应链不确定性；国产芯片、先进封装、开源模型和低成本推理的重要性提升。神舟二十四号体现中国空间站国际合作能力。影响程度：高，长期；可信度中高。",
-    "energy": "布伦特原油在航运风险消息下走高，霍尔木兹海峡和其他航运瓶颈仍是风险变量；当前不能据此认定全球能源供应出现新的实质性中断。影响程度：中，短期；可信度中。",
-    "employment": "若全球AI资本开支放缓，海外服务器、芯片和数据中心供应链订单可能波动；国内AI应用、运维、电力和国产算力岗位结构仍在调整。影响程度：中， 中期；可信度中低。",
-    "public_livelihood": "当前未发现覆盖期内中国居民普遍适用的新民生政策。国际粮食、能源与航运成本若持续上升，可能增加输入性成本，但传导受国内库存、进口来源和政策调节影响。影响程度：低至中，中期；可信度中。",
-    "overall_outlook": "中美经贸关系出现有限缓和信号，但科技出口管制和地缘风险仍未消失；全球AI市场正在从估值扩张转向盈利验证。中国需兼顾外贸稳定、关键技术自主可控、能源粮食安全和地方治理连续性。",
-    "confidence": "总体中等。官方政策公告和航天任务信息可信度高；地缘冲突部分细节仍有各方说法差异；市场影响判断属于分析，不构成确定预测。"
+    "trade": "影响程度：中高；周期：短期至中期；可信度：中高。商务部对美部分两用物项暂停措施延长至2027年1月27日，为相关材料贸易提供阶段性确定性，但其他许可和最终用途要求仍适用。地中海、红海和波罗的海风险目前未造成中国主要航线已中断的证据。",
+    "finance": "影响程度：中；周期：短期；可信度：中。美国科技股回调、美元回落和美联储加息预期可能影响人民币、港股和A股风险偏好。北京时间11月25日21:30美国GDP和PCE数据将是下一观察点。",
+    "technology": "影响程度：中高；周期：中长期；可信度：中高。中国前三季度数字产业收入增长14.8%，AI核心产业规模为上半年预计超过7500亿元；八省市启动6G协同试点。与此同时，全球AI资产估值回调提示算力投资必须重视利用率和商业回报。",
+    "energy": "影响程度：中；周期：短期至中期；可信度：中。路透社报道布伦特原油期货结算约每桶91.40美元，地缘航运风险和美国利率预期共同影响油价；该数字为报道时点数据，不是实时价格。",
+    "employment": "影响程度：中；周期：中长期；可信度：中。数字产业和AI应用扩张有望创造技术、工程和行业应用岗位，但自动化会改变部分岗位技能需求；本窗口没有新的全国就业数据可用于量化净影响。",
+    "public_livelihood": "影响程度：低至中；周期：中期；可信度：中。国际粮食援助和航运风险可能抬高脆弱国家食品成本；中国居民端是否受影响，取决于能源、粮食和物流成本能否持续传导，目前没有直接短缺证据。",
+    "overall_outlook": "总体呈现“外部不确定性上升、国内数字产业保持增长、对美关键材料政策有限缓和”的组合。对中国企业而言，应重视出口管制合规、海外航运风险和AI资本开支效率；不宜把单日市场波动外推为趋势。",
+    "confidence": "中。主要政策和统计数据来自官方公告；市场和冲突信息由多家媒体交叉核对；部分战场细节及未来市场影响仍有不确定性。"
   },
   "next_24_hours_watchlist": {
     "events": [
       {
-        "name": "美国个人收入与支出（含PCE价格指数）及第三季度GDP第二次估值",
+        "name": "美国第三季度GDP第二次估值、10月个人收入与支出及PCE价格指数",
         "beijing_time": "2026-11-25 21:30",
-        "status": "已正式公布日程",
-        "why_watch": "PCE是美联储关注的通胀指标，GDP二次估值用于校验美国增长动能。",
-        "potential_impact": "可能影响美联储12月利率预期、美元、美债收益率及全球科技股估值。",
-        "china_link": "影响人民币汇率、港股和A股风险偏好，以及中国出口需求预期。",
+        "status": "美国经济分析局已正式公布日程",
+        "why_watch": "GDP二次估值用于校验增长动能，PCE是美联储重点关注的通胀指标。",
+        "potential_impact": "可能改变市场对美联储12月政策路径的判断，并影响美元、美债收益率和科技股估值。",
+        "china_link": "通过汇率、全球风险偏好和美国消费需求传导至中国金融市场和出口预期。",
         "priority": "高",
-        "source": "美国经济分析局BEA发布日程：https://www.bea.gov/news/schedule"
+        "source": "美国经济分析局：https://www.bea.gov/news/schedule"
       },
       {
         "name": "美国10月耐用品订单",
         "beijing_time": "2026-11-25 21:30",
-        "status": "已正式公布日程",
+        "status": "美国人口普查局已正式公布日程",
         "why_watch": "反映制造业资本品订单和企业投资意愿。",
-        "potential_impact": "若订单明显偏强或偏弱，可能改变市场对美国制造业和利率路径的判断。",
-        "china_link": "影响中国机电产品、工业零部件和设备出口预期。",
+        "potential_impact": "订单强弱可能改变市场对美国制造业和经济周期的判断。",
+        "china_link": "影响中国机电产品、零部件和工业设备出口预期。",
         "priority": "中高",
-        "source": "美国人口普查局2026年经济指标日历：https://www.census.gov/economic-indicators/calendar-listview-2026.html"
+        "source": "美国人口普查局：https://www.census.gov/economic-indicators/calendar-listview-2026.html"
       },
       {
-        "name": "美国10月新屋销售",
+        "name": "美国10月新建住宅销售",
         "beijing_time": "2026-11-25 23:00",
-        "status": "已正式公布日程",
+        "status": "美国人口普查局已正式公布日程",
         "why_watch": "观察住房需求、按揭利率和居民购买力。",
-        "potential_impact": "影响美国住房周期及利率敏感行业情绪。",
-        "china_link": "对中国外贸直接影响有限，主要通过美国消费和金融条件间接传导。",
+        "potential_impact": "影响美国住房周期和利率敏感行业情绪。",
+        "china_link": "主要通过美国消费和金融条件间接影响中国出口预期。",
         "priority": "中",
-        "source": "美国人口普查局2026年经济指标日历：https://www.census.gov/economic-indicators/calendar-listview-2026.html"
+        "source": "美国人口普查局：https://www.census.gov/economic-indicators/calendar-listview-2026.html"
       },
       {
         "name": "美国能源信息署每周石油状况报告",
-        "beijing_time": "2026-11-25 23:30（按美东时间10:30常规发布时间换算）",
-        "status": "按官方常规周三日程；如遇临时调整以EIA公告为准",
-        "why_watch": "关注原油库存、汽油和馏分油库存、炼厂开工率。",
+        "beijing_time": "2026-11-25 23:30（按美东时间周三10:30换算）",
+        "status": "EIA官网公布常规周三发布时间；若临时调整以官网为准",
+        "why_watch": "关注原油、汽油和馏分油库存及炼厂开工率。",
         "potential_impact": "可能影响WTI、布伦特短期价格和能源风险溢价。",
-        "china_link": "影响中国原油进口成本预期及炼化行业利润。",
+        "china_link": "影响中国原油进口成本预期和炼化企业利润。",
         "priority": "中高",
-        "source": "美国能源信息署EIA发布安排：https://www.eia.gov/petroleum/supply/weekly/schedule.php"
+        "source": "美国能源信息署：https://www.eia.gov/petroleum/supply/weekly/schedule.php"
       },
       {
-        "name": "美国感恩节，纽约证券交易所和纳斯达克休市",
-        "beijing_time": "2026-11-26（美国当地全天休市；北京时间对应美股常规开盘时段为22:30）",
-        "status": "交易所已公布年度日历",
-        "why_watch": "假期会降低美股现货交易流动性，次日11月27日美股提前收市。",
-        "potential_impact": "注意成交量下降和假期前后价格跳空风险。",
+        "name": "美联储发布褐皮书（Beige Book）",
+        "beijing_time": "2026-11-26 03:00",
+        "status": "美联储官方日历已正式公布，原定美国东部时间11月25日14:00",
+        "why_watch": "汇总美国12个联储辖区企业和社区经济状况，为观察就业、价格和需求提供定性信息。",
+        "potential_impact": "可能影响市场对美国经济韧性和未来利率路径的判断。",
+        "china_link": "通过美元、美债收益率和美国需求预期影响中国市场。",
+        "priority": "高",
+        "source": "美联储官方日历：https://www.federalreserve.gov/newsevents/2026-november.htm"
+      },
+      {
+        "name": "美国感恩节，美股现货市场休市",
+        "beijing_time": "2026-11-26（美国当地全天）",
+        "status": "纳斯达克年度交易日历已公布",
+        "why_watch": "假期将改变全球市场流动性和美股价格发现节奏。",
+        "potential_impact": "休市期间海外市场仍交易，节后开盘可能集中反映新增信息。",
         "china_link": "影响中国投资者跟踪美股科技股和中概股的交易节奏。",
         "priority": "中",
-        "source": "纽约证券交易所：https://www.nyse.com/trade/hours-calendars；纳斯达克：https://www.nasdaq.com/market-activity/stock-market-holiday-schedule"
+        "source": "纳斯达克交易日历：https://www.nasdaq.com/market-activity/stock-market-holiday-schedule"
       }
     ],
     "economic_calendar": [
       {
-        "event": "美国PCE价格指数、个人收入与支出、第三季度GDP第二次估值",
+        "event": "美国第三季度GDP第二次估值、10月个人收入与支出及PCE",
         "beijing_time": "2026-11-25 21:30",
         "priority": "高",
         "source": "https://www.bea.gov/news/schedule"
@@ -1066,7 +1199,7 @@
         "source": "https://www.census.gov/economic-indicators/calendar-listview-2026.html"
       },
       {
-        "event": "美国10月新屋销售",
+        "event": "美国10月新建住宅销售",
         "beijing_time": "2026-11-25 23:00",
         "priority": "中",
         "source": "https://www.census.gov/economic-indicators/calendar-listview-2026.html"
@@ -1076,38 +1209,52 @@
         "beijing_time": "2026-11-25 23:30（常规时点）",
         "priority": "中高",
         "source": "https://www.eia.gov/petroleum/supply/weekly/schedule.php"
+      },
+      {
+        "event": "美联储褐皮书",
+        "beijing_time": "2026-11-26 03:00",
+        "priority": "高",
+        "source": "https://www.federalreserve.gov/newsevents/2026-november.htm"
       }
     ],
     "policy_announcements": [],
     "diplomatic_events": [],
     "technology_events": [
       {
-        "event": "神舟二十四号任务对接后的在轨实验与乘组安排",
-        "beijing_time": "时间待确认（任务已完成发射和对接）",
+        "event": "2026年6G发展大会第二天活动",
+        "beijing_time": "2026-11-25（具体议程时间待确认）",
+        "status": "大会官方报道确认会议于11月24日至25日在上海举行；单项议程时刻未核实",
         "priority": "中",
-        "source": "https://www.cmse.gov.cn/xwzx/202611/t20261125_57886.html"
+        "source": "https://www.news.cn/tech/20261124/f92bd4ce5cec4eee9ed5dbbcc82ca5a7/c.html"
+      },
+      {
+        "event": "神舟二十四号乘组进驻空间站及在轨实验安排",
+        "beijing_time": "时间待确认；发射和对接已完成",
+        "status": "窗口后重大更新已确认，后续实验时间尚无公开日程",
+        "priority": "中",
+        "source": "https://www.cmse.gov.cn/xwzx/202611/t20261125_57897.html"
       }
     ],
     "potential_risks": [
       {
-        "risk": "AI估值波动可能在美国通胀数据公布前后加剧。",
+        "risk": "美国GDP和PCE数据若显著偏离预期，可能引发美元、美债收益率和全球科技股波动。",
         "priority": "高",
-        "status": "风险观察，不是已发生的市场预测。"
+        "status": "前瞻风险，不是已发生结果。"
       },
       {
-        "risk": "俄乌海上无人艇袭击引发地中海和波罗的海航运安全外溢。",
+        "risk": "俄乌海上无人艇袭击可能使地中海和波罗的海航运安全风险溢价上升。",
         "priority": "中高",
-        "status": "已发生袭击及外交回应；后续是否扩大仍不确定。"
+        "status": "袭击和外交回应已发生，后续扩散仍不确定。"
       },
       {
-        "risk": "霍尔木兹海峡油轮安全报告存在各方不同说法，伊朗关于油轮触雷的说法尚未独立证实。",
+        "risk": "也门战线靠近亚丁，若冲突扩大可能影响曼德海峡周边安全和人道救援。",
         "priority": "中高",
-        "status": "单方说法与航运安全信息需继续核验，不将触雷说法当作已确认事实。"
+        "status": "距亚丁约60公里为也门政府军方说法，战场态势尚待独立核实。"
       },
       {
-        "risk": "中美关键矿产暂停措施将于2027年1月27日到期，后续续期与美方科技限制仍有不确定性。",
+        "risk": "全球AI资产估值回调可能影响算力投资和科技企业融资情绪。",
         "priority": "中",
-        "status": "政策期限已确认，未来调整尚未确认。"
+        "status": "股价回调已发生，产业投资是否放缓尚未确认。"
       }
     ]
   },
