@@ -1,0 +1,141 @@
+name: 构建并发布每日新闻站点
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "news/**"
+      - "audio-script/**"
+      - "site/**"
+      - "scripts/**"
+      - ".github/workflows/publish.yml"
+  workflow_dispatch:
+    inputs:
+      force_audio:
+        description: "强制重新生成全部语音（忽略缓存）"
+        type: boolean
+        default: false
+
+# 同一时间只允许一个发布任务，避免并发抢 Cloudflare Pages 的部署位
+concurrency:
+  group: publish-site
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 配置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install edge-tts
+
+      - name: 校验新闻 JSON 格式
+        run: |
+          python scripts/build_site.py --strict --check-only
+
+      - name: 计算缓存键（按月份滚动）
+        id: info
+        run: |
+          MONTH=$(python - <<'PY'
+          import re
+          from pathlib import Path
+          dates = sorted(p.stem for p in Path("audio-script").rglob("*.txt")
+                         if re.fullmatch(r"\d{4}-\d{2}-\d{2}", p.stem))
+          print(dates[-1][:7] if dates else "none")
+          PY
+          )
+          echo "month=$MONTH" >> "$GITHUB_OUTPUT"
+          echo "语音缓存月份：$MONTH"
+
+      # 语音文件不入库，用 Actions 缓存承接。
+      #
+      # 缓存键 = 月份 + 全部稿件的 hash：
+      #  * 每天新增一期稿件 → hash 变化 → 精确 key 必然 miss，于是重新保存
+      #    一份包含「历史音频 + 当天新音频」的缓存。这是必要的，因为
+      #    Actions 缓存一旦写入就不可变，用「只按月份」的 key 会精确命中旧
+      #    缓存、导致当天新生成的 mp3 永远存不进去。
+      #  * restore-keys 用前缀匹配，取最近一份同月（或更早）的缓存作为基线，
+      #    于是 make_audio.py 能识别已存在的 mp3 而跳过，只合成新增的那一期。
+      #  * 每月换一次前缀，配合缓存 LRU 淘汰，不会有条目无限累积的问题。
+      - name: 恢复语音缓存
+        uses: actions/cache@v4
+        with:
+          path: dist/audio
+          key: tts-v1-${{ steps.info.outputs.month }}-${{ hashFiles('audio-script/**/*.txt') }}
+          restore-keys: |
+            tts-v1-${{ steps.info.outputs.month }}-
+            tts-v1-
+
+      - name: 生成语音播报（edge-tts，增量）
+        id: audio
+        continue-on-error: true
+        run: |
+          if [ "${{ inputs.force_audio }}" = "true" ]; then
+            python scripts/make_audio.py --force
+          else
+            python scripts/make_audio.py
+          fi
+
+      - name: 构建静态站点
+        run: |
+          python scripts/build_site.py --strict --base-url "https://daily-news.cc.cd"
+
+      - name: 检查构建产物
+        run: |
+          set -e
+          test -f dist/index.html || { echo "缺少 dist/index.html"; exit 1; }
+          test -f dist/archive.html || { echo "缺少 dist/archive.html"; exit 1; }
+          test -f dist/style.css || { echo "缺少 dist/style.css"; exit 1; }
+
+          COUNT=$(ls -1 dist/news/*.html 2>/dev/null | wc -l)
+          echo "期次页面：$COUNT 个"
+          AUDIO=$(ls -1 dist/audio/*.mp3 2>/dev/null | wc -l || true)
+          echo "语音文件：$AUDIO 个"
+          du -sh dist || true
+
+      - name: 发布到 Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: >-
+            pages deploy dist
+            --project-name=${{ secrets.CF_PAGES_PROJECT }}
+            --branch=main
+            --commit-dirty=true
+
+      - name: 发布结果汇总
+        if: always()
+        run: |
+          {
+            echo "### 发布结果"
+            echo ""
+            echo "| 项目 | 状态 |"
+            echo "|---|---|"
+            echo "| 语音生成 | ${{ steps.audio.outcome == 'success' && '✅ 成功' || '⚠️ 失败（站点仍已发布，但可能缺音频）' }} |"
+            echo "| 站点构建 | 见上方日志 |"
+            echo "| Cloudflare Pages | 见上方日志 |"
+            echo ""
+            echo "站点地址：https://daily-news.cc.cd/"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # 语音失败时不阻断站点发布，但要让整个 run 变红，避免问题被忽略
+      - name: 语音失败则标记运行失败
+        if: steps.audio.outcome == 'failure'
+        run: |
+          echo "::error::语音播报生成失败，请查看「生成语音播报」步骤日志。站点已按可用音频发布。"
+          exit 1

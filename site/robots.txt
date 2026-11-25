@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /*.json$
+
+Sitemap: https://daily-news.cc.cd/sitemap.xml

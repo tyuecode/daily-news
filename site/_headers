@@ -1,0 +1,22 @@
+# Cloudflare Pages 响应头配置
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+
+# 音频按日期命名，内容永不改变，可长期强缓存
+/audio/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS / 静态资源
+/style.css
+  Cache-Control: public, max-age=3600, must-revalidate
+
+# HTML 与索引每次回源校验，保证新闻及时更新
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/archive.json
+  Cache-Control: public, max-age=0, must-revalidate

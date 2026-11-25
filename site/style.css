@@ -1,0 +1,353 @@
+/* ============================================================
+   每日国际与中国热点新闻早报 — 站点样式
+   纯静态，无外部依赖。所有路径均为根相对路径。
+   ============================================================ */
+
+:root {
+  --bg: #f6f6f3;
+  --card: #ffffff;
+  --ink: #1b1b1a;
+  --ink-soft: #3d3d3a;
+  --muted: #6b6b66;
+  --faint: #9a9a94;
+  --accent: #b3261e;
+  --accent-soft: #fdf1f0;
+  --line: #e4e4de;
+  --chip: #f1f1ec;
+  --gold: #8a6d1f;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(20, 20, 18, .05), 0 6px 18px rgba(20, 20, 18, .045);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", "Source Han Sans SC",
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  letter-spacing: .01em;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- 布局 ---------- */
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: rgba(246, 246, 243, .92);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.site-header .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; min-height: 58px; flex-wrap: wrap;
+}
+.brand {
+  font-weight: 700; font-size: 15px; letter-spacing: .02em;
+  color: var(--ink); display: flex; align-items: center; gap: 9px;
+}
+.brand:hover { text-decoration: none; }
+.brand .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); display: inline-block;
+}
+.nav-links { display: flex; gap: 18px; font-size: 13.5px; }
+.nav-links a { color: var(--muted); }
+.nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+main { padding: 34px 0 72px; }
+
+/* ---------- 标题 ---------- */
+.page-kicker {
+  font-size: 12.5px; letter-spacing: .14em; font-weight: 700;
+  color: var(--accent); text-transform: uppercase; margin: 0 0 10px;
+}
+h1.page-title {
+  font-size: 30px; line-height: 1.32; margin: 0 0 14px;
+  font-weight: 800; letter-spacing: -.01em;
+}
+.reading-time {
+  font-size: 13px; color: var(--faint); margin: 0 0 26px;
+  display: flex; gap: 14px; flex-wrap: wrap;
+}
+
+/* ---------- 卡片 ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin: 0 0 18px;
+  box-shadow: var(--shadow);
+}
+.card > h2 {
+  font-size: 17px; margin: 0 0 14px; padding-bottom: 11px;
+  border-bottom: 1px solid var(--line); font-weight: 700;
+  letter-spacing: .01em;
+}
+.card > h3 { font-size: 15px; margin: 20px 0 9px; font-weight: 700; }
+.card p:first-child { margin-top: 0; }
+.card p:last-child { margin-bottom: 0; }
+
+/* ---------- 首页 Hero ---------- */
+.hero {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 26px 28px 24px;
+  margin: 0 0 26px;
+  box-shadow: var(--shadow);
+}
+.hero .hero-date {
+  font-size: 12.5px; letter-spacing: .1em; color: var(--faint);
+  font-weight: 700; margin: 0 0 10px;
+}
+.hero h1 { font-size: 25px; line-height: 1.42; margin: 0 0 16px; font-weight: 800; }
+.hero .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+
+.btn {
+  display: inline-block; padding: 9px 17px; border-radius: 999px;
+  font-size: 13.5px; font-weight: 600; border: 1px solid var(--line);
+  background: var(--card); color: var(--ink-soft); transition: .15s;
+}
+.btn:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-primary:hover { background: #971e17; color: #fff; border-color: #971e17; }
+
+/* ---------- 突发横幅 ---------- */
+.breaking {
+  background: var(--accent-soft);
+  border: 1px solid #f2cfcb;
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 15px 20px;
+  margin: 0 0 20px;
+}
+.breaking .tag-breaking {
+  display: inline-block; background: var(--accent); color: #fff;
+  font-size: 11.5px; font-weight: 800; letter-spacing: .1em;
+  padding: 3px 9px; border-radius: 3px; margin-bottom: 9px;
+}
+.breaking p { margin: 0; font-size: 14.5px; color: var(--ink-soft); }
+
+/* ---------- 置顶五条 ---------- */
+.top-list { list-style: none; padding: 0; margin: 0; counter-reset: top; }
+.top-list > li {
+  counter-increment: top;
+  position: relative;
+  padding: 0 0 18px 46px;
+  margin: 0 0 18px;
+  border-bottom: 1px dashed var(--line);
+}
+.top-list > li:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+.top-list > li::before {
+  content: counter(top);
+  position: absolute; left: 0; top: 1px;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent);
+  font-weight: 800; font-size: 14.5px;
+  display: flex; align-items: center; justify-content: center;
+}
+.top-list .top-title { font-weight: 700; font-size: 16.5px; line-height: 1.5; margin: 0 0 6px; }
+.top-list .top-reason { font-size: 14px; color: var(--muted); margin: 0; }
+
+/* ---------- 分节标题 ---------- */
+.section-head {
+  display: flex; align-items: baseline; gap: 12px;
+  margin: 40px 0 16px; padding-bottom: 10px;
+  border-bottom: 2px solid var(--ink);
+}
+.section-head h2 { margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -.01em; }
+.section-head .count { font-size: 12.5px; color: var(--faint); font-weight: 600; }
+
+/* ---------- 新闻条目 ---------- */
+.news-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin: 0 0 14px;
+  box-shadow: var(--shadow);
+}
+.news-item .news-head {
+  display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;
+}
+.news-item h3 {
+  margin: 0; font-size: 17px; line-height: 1.5; font-weight: 700; flex: 1;
+  letter-spacing: -.005em;
+}
+.score {
+  flex: none; font-size: 13px; font-weight: 800;
+  color: var(--gold); background: #faf6ea;
+  border: 1px solid #ece2c4; border-radius: 6px;
+  padding: 2px 8px; line-height: 1.6; white-space: nowrap;
+}
+.news-meta {
+  font-size: 12.5px; color: var(--faint); margin: 0 0 12px;
+  display: flex; gap: 6px 16px; flex-wrap: wrap;
+}
+.news-meta span { white-space: nowrap; }
+.news-summary { margin: 0 0 14px; font-size: 15.2px; color: var(--ink-soft); }
+
+.key-facts { margin: 0 0 14px; padding-left: 20px; font-size: 14.5px; color: var(--ink-soft); }
+.key-facts li { margin: 0 0 6px; }
+.key-facts li::marker { color: var(--accent); }
+
+/* ---------- 徽标 ---------- */
+.chips { display: flex; gap: 7px; flex-wrap: wrap; margin: 0 0 12px; }
+.chip {
+  font-size: 12px; padding: 2px 9px; border-radius: 999px;
+  background: var(--chip); color: var(--muted); font-weight: 600;
+  border: 1px solid transparent;
+}
+.chip-high { background: var(--accent-soft); color: var(--accent); border-color: #f2cfcb; }
+.chip-mid { background: #fdf7e8; color: var(--gold); border-color: #eee0ba; }
+.chip-low { background: #f0f4f2; color: #47675a; border-color: #d8e5df; }
+.chip-tag { background: transparent; border-color: var(--line); color: var(--faint); font-weight: 500; }
+
+/* ---------- 折叠详情 ---------- */
+details.more {
+  margin: 14px 0 0;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+details.more > summary {
+  cursor: pointer; font-size: 13.5px; font-weight: 700;
+  color: var(--muted); list-style: none; user-select: none;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+details.more > summary::-webkit-details-marker { display: none; }
+details.more > summary::before { content: "＋"; color: var(--accent); font-weight: 700; }
+details.more[open] > summary::before { content: "－"; }
+details.more > summary:hover { color: var(--accent); }
+.more-body { padding-top: 12px; font-size: 14.3px; color: var(--ink-soft); }
+.more-body h4 {
+  font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--faint); margin: 16px 0 7px; font-weight: 700;
+}
+.more-body h4:first-child { margin-top: 0; }
+
+/* ---------- 影响渠道表 ---------- */
+.channels { width: 100%; border-collapse: collapse; font-size: 14px; margin: 6px 0 0; }
+.channels th, .channels td {
+  text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.channels th {
+  width: 74px; color: var(--muted); font-weight: 700; font-size: 13px;
+  white-space: nowrap;
+}
+.channels tr:last-child th, .channels tr:last-child td { border-bottom: 0; }
+
+/* ---------- 来源 ---------- */
+.sources-list { list-style: none; padding: 0; margin: 6px 0 0; font-size: 13.8px; }
+.sources-list li {
+  padding: 7px 0; border-bottom: 1px dashed var(--line); color: var(--muted);
+}
+.sources-list li:last-child { border-bottom: 0; }
+.sources-list .src-org { font-weight: 700; color: var(--ink-soft); }
+.sources-list .src-time { color: var(--faint); font-size: 12.5px; }
+
+/* ---------- 音频 ---------- */
+.audio-box {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px 20px; margin: 0 0 20px;
+  box-shadow: var(--shadow);
+}
+.audio-box .audio-label {
+  font-size: 12.5px; font-weight: 700; letter-spacing: .08em;
+  color: var(--faint); margin: 0 0 10px; text-transform: uppercase;
+}
+.audio-box audio { width: 100%; height: 42px; display: block; }
+.audio-box .audio-note { font-size: 12.5px; color: var(--faint); margin: 9px 0 0; }
+
+/* ---------- 归档列表 ---------- */
+.month-group { margin: 0 0 26px; }
+.month-group > h3 {
+  font-size: 14px; font-weight: 700; color: var(--muted);
+  letter-spacing: .06em; margin: 0 0 10px; padding-bottom: 7px;
+  border-bottom: 1px solid var(--line);
+}
+.archive-list { list-style: none; padding: 0; margin: 0; }
+.archive-list li { border-bottom: 1px solid var(--line); }
+.archive-list li:last-child { border-bottom: 0; }
+.archive-list a {
+  display: flex; align-items: baseline; gap: 14px;
+  padding: 13px 2px; color: var(--ink);
+}
+.archive-list a:hover { text-decoration: none; background: #fbfbf8; }
+.archive-list .a-date {
+  font-size: 13.5px; font-weight: 700; color: var(--accent);
+  white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+.archive-list .a-title { font-size: 14.5px; color: var(--ink-soft); flex: 1; }
+.archive-list .a-score { font-size: 12px; color: var(--faint); white-space: nowrap; }
+
+/* ---------- 提示条 ---------- */
+.notice {
+  background: #fbfbf8; border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 14px 18px;
+  font-size: 13.5px; color: var(--muted); margin: 0 0 18px;
+}
+.notice strong { color: var(--ink-soft); }
+
+.footer {
+  border-top: 1px solid var(--line); padding: 26px 0 40px;
+  font-size: 13px; color: var(--faint); line-height: 1.9;
+}
+.footer a { color: var(--muted); }
+
+hr.soft { border: 0; border-top: 1px solid var(--line); margin: 26px 0; }
+
+.empty-state {
+  text-align: center; padding: 60px 20px; color: var(--muted);
+  background: var(--card); border: 1px dashed var(--line); border-radius: var(--radius);
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 640px) {
+  body { font-size: 15.3px; }
+  .wrap { padding: 0 16px; }
+  h1.page-title { font-size: 24px; }
+  .hero { padding: 22px 20px; }
+  .hero h1 { font-size: 21px; }
+  .card, .news-item { padding: 18px 17px; }
+  .news-item h3 { font-size: 16px; }
+  .nav-links { gap: 13px; font-size: 13px; }
+  main { padding: 24px 0 56px; }
+  .top-list > li { padding-left: 40px; }
+  .channels th { width: 62px; }
+  .archive-list a { flex-wrap: wrap; gap: 4px 12px; }
+  .archive-list .a-title { flex-basis: 100%; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141413; --card: #1c1c1a; --ink: #ececea; --ink-soft: #c9c9c5;
+    --muted: #9d9d97; --faint: #77776f; --line: #2e2e2b; --chip: #262623;
+    --accent: #ff6b60; --accent-soft: #2a1a18; --gold: #d9b44a;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 18px rgba(0,0,0,.28);
+  }
+  .site-header { background: rgba(20, 20, 19, .92); }
+  .breaking { border-color: #4a2523; }
+  .chip-high { border-color: #4a2523; }
+  .chip-mid { background: #2a2415; border-color: #4a3f1f; }
+  .chip-low { background: #1b2320; border-color: #2c3a34; color: #8fb5a4; }
+  .score { background: #2a2415; border-color: #4a3f1f; }
+  .archive-list a:hover { background: #232320; }
+  .notice { background: #1a1a18; }
+  .btn-primary { color: #141413; }
+  .btn-primary:hover { color: #141413; }
+}
