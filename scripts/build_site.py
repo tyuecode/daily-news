@@ -302,6 +302,8 @@ def render_head(
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
 <link rel="stylesheet" href="/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
 <link rel="canonical" href="{esc(base_url.rstrip('/') + canonical)}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="{esc(title)}">
@@ -323,6 +325,25 @@ def render_head(
 <main>
   <div class="wrap">
 """
+
+
+def render_404_page(base_url: str) -> str:
+    """Cloudflare Pages 的 404 兜底页。"""
+    page = [
+        render_head(f"页面不存在｜{SITE_TITLE}", "请求的页面不存在。", "/404.html", base_url),
+        '      <p class="page-kicker">404</p>\n',
+        '      <h1 class="page-title">这个页面不存在</h1>\n',
+        '      <p class="reading-time">可能是链接过期，或者这一期还没有发布。</p>\n',
+        '      <div class="card">\n',
+        '        <p>可以回到首页看今天的最新简报，或者去归档页按日期查找。</p>\n',
+        '        <div class="hero-actions">\n',
+        '          <a class="btn btn-primary" href="/">回首页</a>\n',
+        '          <a class="btn" href="/archive">全部归档</a>\n',
+        '        </div>\n',
+        '      </div>\n',
+        render_foot(),
+    ]
+    return "".join(page)
 
 
 def render_foot(generated_at: str = "") -> str:
@@ -1081,6 +1102,14 @@ def main() -> int:
     )
     (out_dir / "archive.html").write_text(
         render_archive_page(briefings, audio_map, args.base_url), encoding="utf-8"
+    )
+
+    # 404 页面。
+    # Cloudflare Pages 默认行为是：找不到匹配文件时回退到 index.html 并返回
+    # 200（软 404）。对搜索引擎和用户体验都不好。产出 404.html 后，Pages
+    # 会用它作为兜底，并正确返回 404 状态码。
+    (out_dir / "404.html").write_text(
+        render_404_page(args.base_url), encoding="utf-8"
     )
 
     # 顺手输出一个机器可读索引，便于以后接 API / 搜索
