@@ -12,10 +12,10 @@
 
 ## 最新一期
 
-- [2026-11-25 最新简报](latest.md)
-- [2026-11-25 完整情报 JSON](news/2026/11/2026-11-25.json)
-- [2026-11-25 新闻文字简报](news/2026/11/2026-11-25.md)
-- [2026-11-25 中文语音播报稿](audio-script/2026/11/2026-11-25.txt)
+- [2026-11-26 最新简报](latest.md)
+- [2026-11-26 完整情报 JSON](news/2026/11/2026-11-26.json)
+- [2026-11-26 新闻文字简报](news/2026/11/2026-11-26.md)
+- [2026-11-26 中文语音播报稿](audio-script/2026/11/2026-11-26.txt)
 
 ## 历史归档
 
@@ -24,6 +24,7 @@
 #### 11月
 | 日期 | JSON情报 | 新闻简报 | 语音稿 |
 |---|---|---|---|
+| 2026-11-26 | [JSON](news/2026/11/2026-11-26.json) | [Markdown](news/2026/11/2026-11-26.md) | [TXT](audio-script/2026/11/2026-11-26.txt) |
 | 2026-11-25 | [JSON](news/2026/11/2026-11-25.json) | [Markdown](news/2026/11/2026-11-25.md) | [TXT](audio-script/2026/11/2026-11-25.txt) |
 
 ---
@@ -103,7 +104,7 @@ python -m http.server 8000 --directory dist
 
 ```bash
 python scripts/build_site.py --base-url https://daily-news.cc.cd
-python scripts/make_audio.py --only 2026-11-25   # 只处理某一期
+python scripts/make_audio.py --only 2026-11-26   # 只处理某一期
 python scripts/make_audio.py --force             # 全部重新合成
 python scripts/make_audio.py --voice zh-CN-YunxiNeural --rate +5%
 ```
