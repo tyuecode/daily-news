@@ -740,7 +740,7 @@
         "category": "外交与产业政策",
         "location": "中国北京／荷兰",
         "event_time": "2026-11-25（北京会谈）",
-        "publish_time": "中国外交部于2026-11-25 19:48发布会谈消息；Reuters于同日16:35 UTC报道荷方对MATCH法案表态",
+        "publish_time": "中国外交部于2026-11-25 19:48发布会谈消息；Reuters于2026-11-25 08:35 UTC报道荷方对MATCH法案表态",
         "summary": "中共中央政治局委员、外交部长王毅在北京会见荷兰外交大臣汤姆·贝伦德森，强调中荷开放务实合作和中国企业公平、透明、可预期的营商环境。Reuters同日报道，荷兰政府正努力阻止美国国会通过可能迫使荷兰和日本进一步限制对华芯片设备出口的MATCH法案；该法案仍处于讨论阶段，尚未成为法律。",
         "key_facts": [
           "中国外交部称双方讨论中荷关系、经贸合作及台湾问题等。",
@@ -775,10 +775,16 @@
             "publish_time": "2026-11-25 19:48（北京时间）"
           },
           {
+            "organization": "中华人民共和国外交部",
+            "title": "中荷外长共识声明",
+            "url": "https://www.mfa.gov.cn/web/wjbzhd/202611/t20261125_12067183.shtml",
+            "publish_time": "2026-11-25 21:37（北京时间）"
+          },
+          {
             "organization": "Reuters",
             "title": "Dutch government working to prevent passing of US MATCH bill, minister says",
             "url": "https://www.reuters.com/world/china/dutch-government-working-prevent-passing-us-match-bill-minister-says-2026-11-25/",
-            "publish_time": "2026-11-25 16:35 UTC"
+            "publish_time": "2026-11-25 08:35 UTC"
           }
         ],
         "follow_up": [
@@ -898,10 +904,10 @@
             "publish_time": "2026-11-25 14:21（北京时间）"
           },
           {
-            "organization": "新华社",
-            "title": "习近平对党内法规工作作出重要指示（新华社报道）",
-            "url": "https://www.news.cn/politics/20261125/",
-            "publish_time": "2026-11-25（栏目日期；具体稿件链接以官方转载为准）"
+            "organization": "中国共产党新闻网（人民网）",
+            "title": "习近平对党内法规工作作出重要指示",
+            "url": "https://cpc.people.com.cn/n1/2026/1125/c64094-40840349.html",
+            "publish_time": "2026-11-25 13:54（北京时间）"
           }
         ],
         "follow_up": [
@@ -965,15 +971,9 @@
           },
           {
             "organization": "新华社",
-            "title": "神舟二十四号乘组进驻“天宫” 中外航天员首次“太空握手”",
-            "url": "https://www.news.cn/tech/20261125/98567ef93fcd4a4eb6bed4fa5db79d34/c.html",
-            "publish_time": "2026-11-25 14:58:04（北京时间）"
-          },
-          {
-            "organization": "中华人民共和国外交部",
-            "title": "习近平同巴基斯坦总统就中巴航天员执行联合飞行任务互致贺电",
-            "url": "https://www.fmprc.gov.cn/web/gjhdq_676201/gjhdqzz_681964/zgzyjz_148218/xgxw_688964/202611/t20261125_12066779.shtml",
-            "publish_time": "2026-11-25（官网日期）"
+            "title": "神舟二十四号丨神二十四乘组进驻“天宫” 中外航天员首次“太空握手”",
+            "url": "https://www.news.cn/politics/20261125/df4c2ae532154c3fadd8495bca28a076/c.html",
+            "publish_time": "2026-11-25 14:58:07（北京时间）"
           }
         ],
         "follow_up": [
@@ -1079,7 +1079,7 @@
     "source_urls_checked": true,
     "notes": [
       "标准窗口为2026-11-25 08:00至2026-11-26 08:00（北京时间）。",
-      "陈吉宁接受审查调查的官方消息发布于2026-11-25 06:48，早于本期窗口起点；上一期已报道，本期未发现新的官方案情进展，因此未重复列为本期新新闻。",
+      "陈吉宁接受审查调查的官方消息在本期窗口开始前已公开，上一期已报道；本期未发现新的官方案情进展，因此未重复列为本期新新闻。",
       "11月24日已公布的中国6G试点和数字产业数据不作为本期新事件重复报道。",
       "霍尔木兹油轮触雷和沙特炼厂受袭的部分细节仍未经独立确认，已在相应新闻中明确标注。",
       "本期未发现可确认的重大国际AI模型新版本发布；AI板块报道聚焦市场估值和资本开支回报预期。"
