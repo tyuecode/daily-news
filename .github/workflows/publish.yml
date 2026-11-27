@@ -8,6 +8,7 @@ on:
       - "audio-script/**"
       - "site/**"
       - "scripts/**"
+      - "requirements.txt"
       - ".github/workflows/publish.yml"
   workflow_dispatch:
     inputs:
@@ -16,19 +17,27 @@ on:
         type: boolean
         default: false
 
-# 同一时间只允许一个发布任务，避免并发抢 Cloudflare Pages 的部署位
+# 并发策略说明
+# --------------
+# 之前用 job 级 cancel-in-progress:true，实测 20 次运行里 13 次被取消，
+# 且取消发生在 Cloudflare 部署步骤中——可能留下「构建被砍、部署半截」
+# 的中间状态。内容生成端会连续多次 commit，这个概率并不低。
+#
+# 现在改为：构建 job 允许被新提交取消（省资源），
+# 部署 job 单独串行且不取消，保证每次上线都是完整产物。
 concurrency:
-  group: publish-site
+  group: publish-build
   cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
-
+    timeout-minutes: 90
+    outputs:
+      audio_ok: ${{ steps.audio.outcome }}
     steps:
       - name: 检出仓库
         uses: actions/checkout@v4
@@ -38,39 +47,41 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: 安装依赖
+      - name: 安装依赖（锁定版本）
         run: |
           python -m pip install --upgrade pip
-          python -m pip install edge-tts
+          python -m pip install -r requirements.txt
 
-      - name: 校验新闻 JSON 格式
+      # 第一道闸门：输入数据完整性（结构、引用、日期、来源）
+      - name: 校验新闻数据
         run: |
-          python scripts/build_site.py --strict --check-only
+          python scripts/build_site.py --check-only
 
-      - name: 计算缓存键（按月份滚动）
+      - name: 计算语音缓存键
         id: info
         run: |
-          MONTH=$(python - <<'PY'
+          MONTH=$(python -c "
           import re
           from pathlib import Path
-          dates = sorted(p.stem for p in Path("audio-script").rglob("*.txt")
-                         if re.fullmatch(r"\d{4}-\d{2}-\d{2}", p.stem))
-          print(dates[-1][:7] if dates else "none")
-          PY
+          dates = sorted(
+              p.stem for p in Path('audio-script').rglob('*.txt')
+              if re.fullmatch(r'\d{4}-\d{2}-\d{2}', p.stem)
           )
+          print(dates[-1][:7] if dates else 'none')
+          ")
           echo "month=$MONTH" >> "$GITHUB_OUTPUT"
           echo "语音缓存月份：$MONTH"
 
       # 语音文件不入库，用 Actions 缓存承接。
       #
-      # 缓存键 = 月份 + 全部稿件的 hash：
-      #  * 每天新增一期稿件 → hash 变化 → 精确 key 必然 miss，于是重新保存
-      #    一份包含「历史音频 + 当天新音频」的缓存。这是必要的，因为
-      #    Actions 缓存一旦写入就不可变，用「只按月份」的 key 会精确命中旧
-      #    缓存、导致当天新生成的 mp3 永远存不进去。
-      #  * restore-keys 用前缀匹配，取最近一份同月（或更早）的缓存作为基线，
-      #    于是 make_audio.py 能识别已存在的 mp3 而跳过，只合成新增的那一期。
-      #  * 每月换一次前缀，配合缓存 LRU 淘汰，不会有条目无限累积的问题。
+      # 缓存键 = 月份 + 全部稿件 hash：
+      #  * 每天新增一期 → hash 变化 → 精确 key 必然 miss，于是重新保存一份
+      #    含「历史音频 + 当天新音频」的缓存。这是必要的：Actions 缓存写入后
+      #    不可变，若只用月份做 key 会精确命中旧缓存，新 mp3 永远存不进去。
+      #  * restore-keys 前缀匹配，取最近一份同月（或更早）缓存作为基线，
+      #    make_audio.py 据此跳过已合成的期次。
+      #  * 注意：缓存受 GitHub 配额与 LRU 淘汰约束，不是永久存储。
+      #    缓存被清理后，历史音频会在下次构建时全部重新合成。
       - name: 恢复语音缓存
         uses: actions/cache@v4
         with:
@@ -90,24 +101,64 @@ jobs:
             python scripts/make_audio.py
           fi
 
+      # 语音失败不阻断站点发布，但会在构建产物里把该期标记为「无音频」，
+      # 页面因此不会展示可能过期的播放器。
       - name: 构建静态站点
         run: |
-          python scripts/build_site.py --strict --base-url "https://daily-news.cc.cd"
+          python scripts/build_site.py --base-url "https://daily-news.cc.cd"
 
-      - name: 检查构建产物
+      # 第二道闸门：输出 HTML 的内容完整性 + 站内链接探测
+      # 这一步直接检查渲染结果，能抓住「数据合法但渲染丢失」的情况
+      - name: 验收构建产物
         run: |
-          set -e
-          test -f dist/index.html || { echo "缺少 dist/index.html"; exit 1; }
-          test -f dist/archive.html || { echo "缺少 dist/archive.html"; exit 1; }
-          test -f dist/style.css || { echo "缺少 dist/style.css"; exit 1; }
+          python scripts/verify_site.py --dist dist --news news
 
-          COUNT=$(ls -1 dist/news/*.html 2>/dev/null | wc -l)
-          echo "期次页面：$COUNT 个"
-          AUDIO=$(ls -1 dist/audio/*.mp3 2>/dev/null | wc -l || true)
-          echo "语音文件：$AUDIO 个"
-          du -sh dist || true
+      - name: 另存构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-dist
+          path: dist
+          retention-days: 7
+
+      - name: 构建结果汇总
+        if: always()
+        run: |
+          {
+            echo "### 构建结果"
+            echo ""
+            echo "| 项目 | 状态 |"
+            echo "|---|---|"
+            echo "| 数据校验 | 见「校验新闻数据」 |"
+            echo "| 语音生成 | ${{ steps.audio.outcome == 'success' && '✅ 成功' || '⚠️ 失败（该期页面将不显示播放器）' }} |"
+            echo "| 产物验收 | 见「验收构建产物」 |"
+            echo ""
+            echo "提交：\`${{ github.sha }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # 语音失败要让这次运行变红，避免静默降级
+      - name: 语音失败则标记失败
+        if: steps.audio.outcome == 'failure'
+        run: |
+          echo "::error::语音播报生成失败。站点仍会按「无音频」发布，请检查「生成语音播报」步骤。"
+          exit 1
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    # 部署阶段不取消：保证上线的是完整产物
+    concurrency:
+      group: publish-deploy
+      cancel-in-progress: false
+    steps:
+      - name: 取出构建产物
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: dist
 
       - name: 发布到 Cloudflare Pages
+        id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
@@ -126,16 +177,29 @@ jobs:
             echo ""
             echo "| 项目 | 状态 |"
             echo "|---|---|"
-            echo "| 语音生成 | ${{ steps.audio.outcome == 'success' && '✅ 成功' || '⚠️ 失败（站点仍已发布，但可能缺音频）' }} |"
-            echo "| 站点构建 | 见上方日志 |"
-            echo "| Cloudflare Pages | 见上方日志 |"
+            echo "| 语音生成 | ${{ needs.build.outputs.audio_ok == 'success' && '✅ 成功' || '⚠️ 失败' }} |"
+            echo "| Cloudflare Pages | ${{ steps.deploy.outcome == 'success' && '✅ 已发布' || '❌ 失败' }} |"
             echo ""
-            echo "站点地址：https://daily-news.cc.cd/"
+            echo "- 提交：\`${{ github.sha }}\`"
+            echo "- 站点：https://daily-news.cc.cd/"
+            echo "- 运行：${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           } >> "$GITHUB_STEP_SUMMARY"
 
-      # 语音失败时不阻断站点发布，但要让整个 run 变红，避免问题被忽略
-      - name: 语音失败则标记运行失败
-        if: steps.audio.outcome == 'failure'
+      # 发布后回访线上，确认真的更新了（不能只看 wrangler 退出码）
+      - name: 验证线上可访问
+        if: steps.deploy.outcome == 'success'
         run: |
-          echo "::error::语音播报生成失败，请查看「生成语音播报」步骤日志。站点已按可用音频发布。"
+          set -e
+          echo "等待 CDN 生效…"
+          sleep 15
+          for i in 1 2 3 4 5; do
+            CODE=$(curl -s -o /dev/null -w '%{http_code}' -L "https://daily-news.cc.cd/")
+            echo "第 $i 次探测：HTTP $CODE"
+            if [ "$CODE" = "200" ]; then
+              echo "线上首页可访问。"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::线上首页连续探测失败，请检查 Cloudflare Pages 部署状态。"
           exit 1

@@ -81,6 +81,12 @@ h1.page-title {
   font-size: 13px; color: var(--faint); margin: 0 0 26px;
   display: flex; gap: 14px; flex-wrap: wrap;
 }
+/* flex 子项默认 min-width:auto，长串（如 ISO 时间戳）不会收缩，
+   会把整个页面撑出横向滚动。必须允许收缩与断行。 */
+.reading-time > span { min-width: 0; overflow-wrap: anywhere; }
+
+/* 兜底：任何长英文串/URL 都不应撑破布局 */
+body { overflow-wrap: break-word; }
 
 /* ---------- 卡片 ---------- */
 .card {
@@ -198,7 +204,8 @@ h1.page-title {
   font-size: 12.5px; color: var(--faint); margin: 0 0 12px;
   display: flex; gap: 6px 16px; flex-wrap: wrap;
 }
-.news-meta span { white-space: nowrap; }
+/* 元数据在窄屏允许换行，避免长事件时间把布局撑出横向滚动 */
+.news-meta span { overflow-wrap: anywhere; }
 .news-summary { margin: 0 0 14px; font-size: 15.2px; color: var(--ink-soft); }
 
 .key-facts { margin: 0 0 14px; padding-left: 20px; font-size: 14.5px; color: var(--ink-soft); }
@@ -272,6 +279,25 @@ details.more > summary:hover { color: var(--accent); }
 }
 .audio-box audio { width: 100%; height: 42px; display: block; }
 .audio-box .audio-note { font-size: 12.5px; color: var(--faint); margin: 9px 0 0; }
+.audio-box .audio-warn {
+  font-size: 12.5px; color: var(--accent); background: var(--accent-soft);
+  border-left: 3px solid var(--accent); border-radius: 4px;
+  padding: 8px 11px; margin: 10px 0 0; line-height: 1.6;
+}
+
+/* ---------- 未来观察列表 ---------- */
+.watch-list {
+  list-style: none; padding: 0; margin: 0 0 4px;
+  font-size: 14.3px; color: var(--ink-soft);
+}
+.watch-list > li {
+  padding: 11px 0; border-bottom: 1px dashed var(--line); line-height: 1.75;
+}
+.watch-list > li:last-child { border-bottom: 0; }
+.watch-list .watch-name { font-weight: 700; color: var(--ink); }
+
+/* 质控未完成提示 */
+.notice-warn { color: var(--accent); font-weight: 700; }
 
 /* ---------- 归档列表 ---------- */
 .month-group { margin: 0 0 26px; }

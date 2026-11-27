@@ -6,13 +6,20 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
 
-# 音频按日期命名，内容永不改变，可长期强缓存
-/audio/*
-  Cache-Control: public, max-age=31536000, immutable
+# 音频：页面引用的是带内容哈希的文件名（/audio/YYYY-MM-DD.<hash>.mp3），
+# 文件名一变 URL 就变，因此这里不能用一年 immutable——
+# 稿件修订后重新合成的 mp3 会复用同一个「日期」名，
+# 若长缓存则用户可能长期听到旧内容。改为可重新验证。
+/audio/*.mp3
+  Cache-Control: public, max-age=300, must-revalidate
 
-# CSS / 静态资源
+# 音频元数据（时长、哈希）随时可能重建，不能长缓存
+/audio/*.json
+  Cache-Control: public, max-age=0, must-revalidate
+
+# CSS：文件名固定，靠 revalidate 保证更新
 /style.css
-  Cache-Control: public, max-age=3600, must-revalidate
+  Cache-Control: public, max-age=600, must-revalidate
 
 # HTML 与索引每次回源校验，保证新闻及时更新
 /*.html

@@ -6,16 +6,18 @@ build_site.py — 把 news/YYYY/MM/*.json 解析成静态新闻网站。
 设计要点
 --------
 * 只用标准库：CI 里不需要额外安装任何依赖就能跑。
-* 容错解析：JSON 里缺字段、字段类型不对、值为 null 都不应让构建崩掉，
-  缺失的部分安静跳过，页面上不出现 "None" 或 "undefined"。
-* 纯相对/根相对路径：产物是可直接丢到 Cloudflare Pages 的 dist/。
-* 日期来自文件名，不依赖 JSON 内部的 news_date（两者不一致时以文件名为准，
-  但会在页面脚注提示）。
+* 渲染层只消费 scripts/normalize.py 的输出，绝不直接读原始 JSON 字段。
+  原因：不同期次的 JSON 存在三代字段漂移，直接读原始字段会让整块内容
+  静默消失（线上已真实发生过置顶五条、对华影响、观察事项全部丢失）。
+* 缺字段安静跳过，页面上不出现 "None" 或 Python 字典字面量。
+* --strict / --check-only 作为发布闸门，校验的是内容完整性而非仅语法。
+* 站内链接统一输出 Cloudflare Pages 的美食 URL（不带 .html）。
 
 用法
 ----
-    python scripts/build_site.py                 # 读 news/ 写 dist/
-    python scripts/build_site.py --base-url https://daily-news.cc.cd
+    python scripts/build_site.py                       # 读 news/ 写 dist/
+    python scripts/build_site.py --check-only          # 只校验不产出
+    python scripts/build_site.py --check-only --strict # CI 闸门（更严格）
 """
 
 from __future__ import annotations
@@ -28,13 +30,21 @@ import shutil
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Iterable, Optional
+from typing import Any, Optional
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import normalize as N  # noqa: E402
 
 # --------------------------------------------------------------------------
 # 常量
 # --------------------------------------------------------------------------
 SITE_TITLE = "每日国际与中国热点新闻早报"
-SITE_DESC = "每天八分钟，掌握国际与中国最重要的新闻，并理解全球变化对中国经济、科技、金融与普通居民生活的实际影响。"
+SITE_DESC = (
+    "每天八分钟，掌握国际与中国最重要的新闻，"
+    "并理解全球变化对中国经济、科技、金融与普通居民生活的实际影响。"
+)
+REPO_URL = "https://github.com/tyuecode/daily-news"
 
 INTL_SECTIONS = [
     ("politics_and_diplomacy", "国际政治与外交"),
@@ -49,67 +59,21 @@ CN_SECTIONS = [
     ("society_and_livelihood", "中国社会与民生"),
 ]
 
-CHANNEL_LABELS = {
-    "trade": "外贸",
-    "finance": "金融",
-    "technology": "科技",
-    "energy": "能源",
-    "industry": "产业",
-    "livelihood": "民生",
-    "policy": "政策",
-}
-
-DASHBOARD_LABELS = [
-    ("trade", "外贸"),
-    ("finance", "金融"),
-    ("technology", "科技"),
-    ("energy", "能源"),
-    ("employment", "就业"),
-    ("public_livelihood", "民生"),
-]
-
 WEEKDAY_CN = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
+
+# 内容闸门阈值
+MAX_TOTAL_ITEMS = 24
+MIN_TOP5 = 3
+MAX_TOP5 = 5
 
 
 # --------------------------------------------------------------------------
 # 小工具
 # --------------------------------------------------------------------------
 def esc(value: Any) -> str:
-    """安全转义为 HTML 文本。"""
     if value is None:
         return ""
     return html.escape(str(value), quote=True)
-
-
-def as_list(value: Any) -> list:
-    if isinstance(value, list):
-        return value
-    if value is None:
-        return []
-    return [value]
-
-
-def as_text(value: Any) -> str:
-    """把可能是 None / 字典 / 列表的值转成可读文本。"""
-    if value is None:
-        return ""
-    if isinstance(value, str):
-        return value.strip()
-    if isinstance(value, (int, float)):
-        return str(value)
-    if isinstance(value, dict):
-        return "；".join(f"{k}：{v}" for k, v in value.items() if v)
-    if isinstance(value, list):
-        return "；".join(as_text(v) for v in value if v)
-    return str(value).strip()
-
-
-def first_nonempty(*values: Any) -> str:
-    for v in values:
-        t = as_text(v)
-        if t:
-            return t
-    return ""
 
 
 def parse_date(name: str) -> Optional[datetime]:
@@ -121,13 +85,7 @@ def parse_date(name: str) -> Optional[datetime]:
 
 def fmt_date_cn(dt: datetime, with_weekday: bool = False) -> str:
     base = f"{dt.year}年{dt.month}月{dt.day}日"
-    if with_weekday:
-        base += "　" + WEEKDAY_CN[dt.weekday()]
-    return base
-
-
-def fmt_iso_date(dt: datetime) -> str:
-    return dt.strftime("%Y-%m-%d")
+    return base + "　" + WEEKDAY_CN[dt.weekday()] if with_weekday else base
 
 
 def fmt_duration(ms: int) -> str:
@@ -146,24 +104,28 @@ def score_class(score: Any) -> str:
         v = float(score)
     except (TypeError, ValueError):
         return "chip"
-    if v >= 8:
-        return "chip chip-high"
-    if v >= 6:
-        return "chip chip-mid"
-    return "chip chip-low"
+    return "chip chip-high" if v >= 8 else ("chip chip-mid" if v >= 6 else "chip chip-low")
+
+
+def truncate_cn(text: str, limit: int) -> str:
+    """按字符截断，尽量停在标点处，避免断在词中间。"""
+    text = (text or "").strip()
+    if not text or len(text) <= limit:
+        return text
+    window = text[:limit]
+    for i in range(len(window) - 1, max(len(window) // 2, 0), -1):
+        if window[i] in "，。；、：！？,;:!?":
+            return window[: i + 1] + "…"
+    return window + "…"
 
 
 URL_RE = re.compile(r"https?://[^\s，；、）)】\]\"'<>]+")
 
 
 def linkify(text: str) -> str:
-    """
-    把一段可能夹带 URL 的文字转成 HTML：URL 变链接，其余原样转义。
-    """
     if not text:
         return ""
-    out: list[str] = []
-    pos = 0
+    out, pos = [], 0
     for m in URL_RE.finditer(text):
         out.append(esc(text[pos : m.start()]))
         url = m.group(0)
@@ -175,114 +137,8 @@ def linkify(text: str) -> str:
     return "".join(out)
 
 
-def truncate_cn(text: str, limit: int) -> str:
-    """
-    按字符截断中文标题，尽量停在标点处，并补省略号。
-    避免出现「……天宫空间站对」这种断在词中间的情况。
-    """
-    text = as_text(text)
-    if not text or len(text) <= limit:
-        return text
-    window = text[:limit]
-    # 在窗口后半段找一个句读，优先在标点处断开
-    for i in range(len(window) - 1, max(len(window) // 2, 0), -1):
-        if window[i] in "，。；、：！？,;:!?":
-            return window[: i + 1] + "…"
-    return window + "…"
-
-
-def text_len(*chunks: Any) -> int:
-    """粗略统计中文字数，用于估算阅读时长。"""
-    n = 0
-    for c in chunks:
-        if not c:
-            continue
-        for s in as_list(c):
-            n += len(re.findall(r"[\u4e00-\u9fff]", as_text(s)))
-    return n
-
-
-# --------------------------------------------------------------------------
-# 数据加载
-# --------------------------------------------------------------------------
-def load_briefings(news_dir: Path, strict: bool = False) -> list[dict]:
-    """
-    扫描 news/YYYY/MM/YYYY-MM-DD.json，返回按日期倒序的期次列表。
-
-    strict=True 时，遇到无法解析的 JSON 直接抛异常（CI 用来做发布闸门）；
-    strict=False 时跳过坏文件并告警（本地随便跑跑时更顺手）。
-    """
-    briefings: list[dict] = []
-    if not news_dir.exists():
-        return briefings
-
-    for path in sorted(news_dir.rglob("*.json")):
-        dt = parse_date(path.stem)
-        if dt is None:
-            print(f"  跳过非日期 JSON：{path}", file=sys.stderr)
-            continue
-        try:
-            # utf-8-sig 兼容带 BOM 的文件
-            data = json.loads(path.read_text(encoding="utf-8-sig"))
-        except Exception as exc:  # noqa: BLE001
-            msg = f"JSON 解析失败：{path}：{exc}"
-            if strict:
-                raise ValueError(msg) from exc
-            print(f"  !! {msg}，已跳过", file=sys.stderr)
-            continue
-        if not isinstance(data, dict):
-            msg = f"JSON 顶层不是对象：{path}"
-            if strict:
-                raise ValueError(msg)
-            print(f"  !! {msg}，已跳过", file=sys.stderr)
-            continue
-
-        briefings.append(
-            {"date": dt, "date_str": fmt_iso_date(dt), "path": path, "data": data}
-        )
-
-    briefings.sort(key=lambda b: b["date"], reverse=True)
-    return briefings
-
-
-def collect_items(briefing: dict) -> list[dict]:
-    """
-    把国际 + 中国的全部新闻条目拉平成一个列表。
-
-    注意：international_news 与 china_news 存在同名分类
-    （economy_and_markets / technology_and_ai），因此必须按各自的分区
-    使用对应的分类表，否则会重复收集条目。同时按 id 兜底去重。
-    """
-    items: list[dict] = []
-    seen_ids: set[str] = set()
-    for group, sections in (
-        ("international_news", INTL_SECTIONS),
-        ("china_news", CN_SECTIONS),
-    ):
-        block = briefing.get(group)
-        if not isinstance(block, dict):
-            continue
-        for key, _label in sections:
-            for item in as_list(block.get(key)):
-                if not isinstance(item, dict):
-                    continue
-                nid = as_text(item.get("id"))
-                if nid:
-                    if nid in seen_ids:
-                        continue
-                    seen_ids.add(nid)
-                items.append(item)
-    return items
-
-
-# --------------------------------------------------------------------------
-# 组件渲染
-# --------------------------------------------------------------------------
-
-# 站内链接一律输出 Cloudflare Pages 的「美化 URL」（不带 .html）。
-# 原因：Pages 会把 /news/xxx.html 以 308 跳到 /news/xxx。若页面里仍写
-# .html，每个内链都多一跳；canonical 与 sitemap 指向被重定向的地址也不利
-# 于收录。生成时直接写最终地址，磁盘上仍保留 xxx.html（Pages 自己映射）。
+# 站内链接：Cloudflare Pages 会把 /x.html 以 308 跳到 /x，
+# 因此直接输出最终地址，canonical 与 sitemap 也用它。
 def news_url(date_str: str) -> str:
     return f"/news/{date_str}"
 
@@ -291,9 +147,73 @@ def archive_url() -> str:
     return "/archive"
 
 
-def render_head(
-    title: str, description: str, canonical: str, base_url: str
-) -> str:
+# --------------------------------------------------------------------------
+# 数据加载
+# --------------------------------------------------------------------------
+def load_briefings(news_dir: Path, strict: bool = False, issues: list = None) -> list[dict]:
+    """扫描 news/ 下的期次 JSON，返回规范化后的期次列表（按日期倒序）。"""
+    issues = issues if issues is not None else []
+    briefings: list[dict] = []
+    if not news_dir.exists():
+        issues.append({"level": "error", "msg": f"新闻目录不存在：{news_dir}"})
+        return briefings
+
+    for path in sorted(news_dir.rglob("*.json")):
+        dt = parse_date(path.stem)
+        if dt is None:
+            issues.append({"level": "warn", "msg": f"跳过非日期文件：{path.name}"})
+            continue
+        try:
+            raw = json.loads(path.read_text(encoding="utf-8-sig"))
+        except Exception as exc:  # noqa: BLE001
+            issues.append({"level": "error", "msg": f"JSON 解析失败 {path.name}：{exc}"})
+            continue
+        if not isinstance(raw, dict):
+            issues.append({"level": "error", "msg": f"JSON 顶层不是对象：{path.name}"})
+            continue
+
+        # 目录/文件日期一致性
+        parts = path.parts
+        if len(parts) >= 3:
+            expect_dir = f"{dt.year:04d}/{dt.month:02d}"
+            if f"{parts[-3]}/{parts[-2]}" != expect_dir:
+                issues.append(
+                    {
+                        "level": "error",
+                        "msg": f"{path.name} 所在目录与日期不一致（应为 {expect_dir}）",
+                    }
+                )
+
+        b = N.normalize_briefing(raw, path.stem)
+        b["date"] = dt
+        b["path"] = path
+        briefings.append(b)
+
+    briefings.sort(key=lambda x: x["date"], reverse=True)
+    return briefings
+
+
+def section_items(briefing: dict, region: str, key: str) -> list[dict]:
+    """按 region + 分类取新闻；分类判定同时兼容 category 字段。"""
+    out = []
+    for item in briefing["items"]:
+        if item["region"] != region:
+            continue
+        cat = item["category"]
+        if cat == key:
+            out.append(item)
+    return out
+
+
+def collect_by_region(briefing: dict, region: str) -> list[dict]:
+    return [i for i in briefing["items"] if i["region"] == region]
+
+
+# --------------------------------------------------------------------------
+# 组件渲染
+# --------------------------------------------------------------------------
+def render_head(title: str, description: str, canonical: str, base_url: str) -> str:
+    full = base_url.rstrip("/") + canonical
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -304,11 +224,11 @@ def render_head(
 <link rel="stylesheet" href="/style.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/favicon.svg">
-<link rel="canonical" href="{esc(base_url.rstrip('/') + canonical)}">
+<link rel="canonical" href="{esc(full)}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
-<meta property="og:url" content="{esc(base_url.rstrip('/') + canonical)}">
+<meta property="og:url" content="{esc(full)}">
 <meta name="color-scheme" content="light dark">
 </head>
 <body>
@@ -318,7 +238,7 @@ def render_head(
     <nav class="nav-links">
       <a href="/">今日</a>
       <a href="{esc(archive_url())}">归档</a>
-      <a href="https://github.com/tyuecode/daily-news" target="_blank" rel="noopener noreferrer">源码</a>
+      <a href="{esc(REPO_URL)}" target="_blank" rel="noopener noreferrer">源码</a>
     </nav>
   </div>
 </header>
@@ -327,29 +247,8 @@ def render_head(
 """
 
 
-def render_404_page(base_url: str) -> str:
-    """Cloudflare Pages 的 404 兜底页。"""
-    page = [
-        render_head(f"页面不存在｜{SITE_TITLE}", "请求的页面不存在。", "/404.html", base_url),
-        '      <p class="page-kicker">404</p>\n',
-        '      <h1 class="page-title">这个页面不存在</h1>\n',
-        '      <p class="reading-time">可能是链接过期，或者这一期还没有发布。</p>\n',
-        '      <div class="card">\n',
-        '        <p>可以回到首页看今天的最新简报，或者去归档页按日期查找。</p>\n',
-        '        <div class="hero-actions">\n',
-        '          <a class="btn btn-primary" href="/">回首页</a>\n',
-        '          <a class="btn" href="/archive">全部归档</a>\n',
-        '        </div>\n',
-        '      </div>\n',
-        render_foot(),
-    ]
-    return "".join(page)
-
-
 def render_foot(generated_at: str = "") -> str:
-    stamp = (
-        f'<p>本期生成时间：{esc(generated_at)}</p>' if generated_at else ""
-    )
+    stamp = f"<p>本期生成时间：{esc(generated_at)}</p>" if generated_at else ""
     return f"""  </div>
 </main>
 <footer class="footer">
@@ -357,7 +256,7 @@ def render_foot(generated_at: str = "") -> str:
     {stamp}
     <p>{esc(SITE_TITLE)}｜每日北京时间 08:00 采集，覆盖前一日 08:00 至当日 08:00。</p>
     <p>内容来自公开信息源，已标注报道机构与原始链接；分析判断与客观事实分开陈述，不构成投资建议。</p>
-    <p><a href="https://github.com/tyuecode/daily-news" target="_blank" rel="noopener noreferrer">GitHub 仓库</a>
+    <p><a href="{esc(REPO_URL)}" target="_blank" rel="noopener noreferrer">GitHub 仓库</a>
        ｜ <a href="{esc(archive_url())}">全部归档</a></p>
   </div>
 </footer>
@@ -366,254 +265,255 @@ def render_foot(generated_at: str = "") -> str:
 """
 
 
-def render_audio_box(date_str: str, audio_meta: dict) -> str:
-    """音频存在才渲染播放器。"""
-    if not audio_meta:
+def render_404_page(base_url: str) -> str:
+    return "".join(
+        [
+            render_head(f"页面不存在｜{SITE_TITLE}", "请求的页面不存在。", "/404", base_url),
+            '      <p class="page-kicker">404</p>\n',
+            '      <h1 class="page-title">这个页面不存在</h1>\n',
+            '      <p class="reading-time">可能是链接过期，或者这一期还没有发布。</p>\n',
+            '      <div class="card">\n',
+            "        <p>可以回到首页看今天的最新简报，或者去归档页按日期查找。</p>\n",
+            '        <div class="hero-actions">\n',
+            '          <a class="btn btn-primary" href="/">回首页</a>\n',
+            f'          <a class="btn" href="{esc(archive_url())}">全部归档</a>\n',
+            "        </div>\n",
+            "      </div>\n",
+            render_foot(),
+        ]
+    )
+
+
+def render_audio_box(date_str: str, audio: dict) -> str:
+    """
+    只有「本次构建确认与当前稿件一致」的音频才渲染播放器。
+
+    audio 由 load_audio_index 产出：
+      ok     音频存在且可用
+      src    带内容哈希的 URL（稿件变更后 URL 随之变化，避免缓存旧音频）
+      stale  稿件已更新但音频未重新合成
+    """
+    if not audio or not audio.get("ok"):
         return ""
-    dur = fmt_duration(int(audio_meta.get("duration_ms") or 0))
+    dur = fmt_duration(int(audio.get("duration_ms") or 0))
     dur_txt = f"，约 {dur}" if dur else ""
+    src = audio.get("src") or f"/audio/{date_str}.mp3"
+    warn = ""
+    if audio.get("stale"):
+        warn = (
+            '<p class="audio-warn">本期稿件已更新，语音播报尚未重新合成；'
+            "以下音频对应上一版稿件，内容可能与文字不完全一致。</p>"
+        )
     return f"""      <div class="audio-box">
         <p class="audio-label">语音播报{dur_txt}</p>
-        <audio controls preload="none" src="/audio/{esc(date_str)}.mp3">
-          你的浏览器不支持音频播放，可<a href="/audio/{esc(date_str)}.mp3">直接下载</a>。
+        <audio controls preload="none" src="{esc(src)}">
+          你的浏览器不支持音频播放，可<a href="{esc(src)}">直接下载</a>。
         </audio>
+        {warn}
         <p class="audio-note">中文播报稿由 edge-tts 合成，可直接收听或下载。</p>
       </div>
 """
 
 
-def render_breaking(top5: list, items_by_id: dict) -> str:
-    """从 top_5 里识别带突发标记的条目，渲染横幅。"""
-    hits = []
-    for t in top5:
-        if not isinstance(t, dict):
-            continue
-        status = as_text(t.get("window_status"))
-        if any(k in status for k in ("突发", "重大更新", "窗口后")):
-            hits.append(t)
+def render_breaking(items: list[dict]) -> str:
+    """扫描全部新闻的结构化突发标记，不再依赖置顶里的文字。"""
+    hits = [i for i in items if i["breaking"]["is_breaking"]]
     if not hits:
         return ""
-
+    hits.sort(key=lambda i: i["importance_score"] or 0, reverse=True)
     rows = []
-    for t in hits:
-        title = as_text(t.get("title"))
-        reason = as_text(t.get("reason"))
-        nid = as_text(t.get("id"))
-        item = items_by_id.get(nid, {})
-        summary = as_text(item.get("summary"))
-        body = summary or reason
+    for item in hits[:4]:
+        status = item["breaking"]["window_status"] or "窗口后更新"
         rows.append(
-            f"<p><strong>{esc(title)}</strong>"
-            + (f" 　{esc(body)}" if body else "")
+            "        <p>"
+            f"<strong>{esc(item['title'])}</strong>"
+            f' <span class="src-time">{esc(status)}</span>'
+            + (f"<br>{esc(item['summary'])}" if item["summary"] else "")
             + "</p>"
         )
     return (
         '      <div class="breaking">\n'
         '        <span class="tag-breaking">突发重大消息</span>\n'
-        + "\n".join("        " + r for r in rows)
+        + "\n".join(rows)
         + "\n      </div>\n"
     )
 
 
-def render_overview(overview: dict, takeaways: list) -> str:
-    intl = as_text(overview.get("international_overview"))
-    cn = as_text(overview.get("china_overview"))
+def render_overview(overview: dict) -> str:
+    if not overview:
+        return ""
+    intl = overview.get("international_overview", "")
+    cn = overview.get("china_overview", "")
+    takeaways = overview.get("key_takeaways") or []
     if not intl and not cn and not takeaways:
         return ""
-
     parts = ['      <div class="card">\n        <h2>当天概览</h2>\n']
     if intl:
         parts.append(f"        <h3>国际</h3>\n        <p>{esc(intl)}</p>\n")
     if cn:
         parts.append(f"        <h3>中国</h3>\n        <p>{esc(cn)}</p>\n")
     if takeaways:
-        parts.append("        <h3>关键要点</h3>\n        <ul class=\"key-facts\">\n")
+        parts.append('        <h3>关键要点</h3>\n        <ul class="key-facts">\n')
         for t in takeaways:
-            txt = as_text(t)
-            if txt:
-                parts.append(f"          <li>{esc(txt)}</li>\n")
+            parts.append(f"          <li>{esc(t)}</li>\n")
         parts.append("        </ul>\n")
     parts.append("      </div>\n")
     return "".join(parts)
 
 
-def render_top5(top5: list) -> str:
-    rows = [t for t in as_list(top5) if isinstance(t, dict)]
-    if not rows:
+def render_top5(top5: list[dict]) -> str:
+    if not top5:
         return ""
     out = [
         '      <div class="card">\n',
         "        <h2>今日最重要的五件事</h2>\n",
         '        <ol class="top-list">\n',
     ]
-    for t in rows:
-        title = as_text(t.get("title"))
-        reason = as_text(t.get("reason"))
-        score = t.get("importance_score")
+    for t in top5:
+        title = t.get("title") or t.get("id") or "（该条目在正文中缺失）"
+        score = t.get("score")
         score_html = (
             f' <span class="{score_class(score)}">{esc(score)} 分</span>'
-            if score not in (None, "")
+            if score is not None
             else ""
         )
         out.append("          <li>\n")
-        out.append(
-            f'            <p class="top-title">{esc(title)}{score_html}</p>\n'
-        )
-        if reason:
-            out.append(f'            <p class="top-reason">{esc(reason)}</p>\n')
+        out.append(f'            <p class="top-title">{esc(title)}{score_html}</p>\n')
+        if t.get("reason"):
+            out.append(f'            <p class="top-reason">{esc(t["reason"])}</p>\n')
         out.append("          </li>\n")
     out.append("        </ol>\n      </div>\n")
     return "".join(out)
 
 
 def render_channels(channels: dict) -> str:
-    if not isinstance(channels, dict):
+    if not channels:
         return ""
     rows = []
-    for key, label in CHANNEL_LABELS.items():
-        val = as_text(channels.get(key))
-        if val:
-            rows.append(
-                f"            <tr><th>{esc(label)}</th><td>{esc(val)}</td></tr>\n"
-            )
+    for key, label in N.CHANNEL_ORDER:
+        text = channels.get(key)
+        if text:
+            rows.append(f"            <tr><th>{esc(label)}</th><td>{esc(text)}</td></tr>\n")
+    # 未知渠道也保留，避免丢信息
+    for key, text in channels.items():
+        if key not in dict(N.CHANNEL_ORDER) and text:
+            rows.append(f"            <tr><th>{esc(key)}</th><td>{esc(text)}</td></tr>\n")
     if not rows:
         return ""
-    return (
-        '        <table class="channels">\n' + "".join(rows) + "        </table>\n"
-    )
+    return '        <table class="channels">\n' + "".join(rows) + "        </table>\n"
 
 
 def render_news_item(item: dict) -> str:
-    title = as_text(item.get("title"))
+    title = item.get("title")
     if not title:
         return ""
 
     score = item.get("importance_score")
-    score_html = (
-        f'<span class="{score_class(score)}">{esc(score)}</span>'
-        if score not in (None, "")
-        else ""
-    )
+    score_html = f'<span class="{score_class(score)}">{esc(score)}</span>' if score is not None else ""
 
-    meta_bits = []
-    for key, label in (
-        ("location", "地点"),
-        ("event_time", "事件时间"),
-        ("publish_time", "报道时间"),
+    meta = []
+    for value, label in (
+        (item.get("location"), "地点"),
+        (item.get("event_time"), "事件时间"),
+        (item.get("publish_time"), "报道时间"),
     ):
-        val = as_text(item.get(key))
-        if val:
-            meta_bits.append(f"<span>{esc(label)}：{esc(val)}</span>")
+        if value:
+            meta.append(f"<span>{esc(label)}：{esc(value)}</span>")
 
     out = ['      <article class="news-item">\n', '        <div class="news-head">\n']
     out.append(f"          <h3>{esc(title)}</h3>\n")
     if score_html:
         out.append(f"          {score_html}\n")
     out.append("        </div>\n")
-    if meta_bits:
-        out.append(
-            '        <p class="news-meta">' + "".join(meta_bits) + "</p>\n"
-        )
+    if meta:
+        out.append('        <p class="news-meta">' + "".join(meta) + "</p>\n")
 
-    # 标签 + 影响程度
     chips = []
-    impact = item.get("impact_assessment")
-    if isinstance(impact, dict):
-        degree = as_text(impact.get("degree"))
-        if degree:
-            cls = {"高": "chip chip-high", "中高": "chip chip-mid", "中": "chip chip-mid"}.get(
-                degree, "chip chip-low"
-            )
-            chips.append(f'<span class="{cls}">影响 {esc(degree)}</span>')
-    for tag in as_list(item.get("tags")):
-        t = as_text(tag)
-        if t:
-            chips.append(f'<span class="chip chip-tag">{esc(t)}</span>')
+    impact = item.get("impact") or {}
+    if impact.get("degree"):
+        chips.append(f'<span class="{score_class(8 if impact["degree"] in ("高", "高至中") else 6)}">影响 {esc(impact["degree"])}</span>')
+    if impact.get("horizon"):
+        chips.append(f'<span class="chip chip-tag">{esc(impact["horizon"])}</span>')
+    if item["breaking"]["is_breaking"]:
+        chips.append('<span class="chip chip-high">突发</span>')
+    for tag in item.get("tags") or []:
+        chips.append(f'<span class="chip chip-tag">{esc(tag)}</span>')
     if chips:
         out.append('        <div class="chips">' + "".join(chips) + "</div>\n")
 
-    summary = as_text(item.get("summary"))
-    if summary:
-        out.append(f'        <p class="news-summary">{esc(summary)}</p>\n')
+    if item.get("summary"):
+        out.append(f'        <p class="news-summary">{esc(item["summary"])}</p>\n')
 
-    facts = [as_text(f) for f in as_list(item.get("key_facts")) if as_text(f)]
+    facts = item.get("key_facts") or []
     if facts:
         out.append('        <ul class="key-facts">\n')
         for f in facts:
             out.append(f"          <li>{esc(f)}</li>\n")
         out.append("        </ul>\n")
 
-    # ---- 折叠区：对中国影响 / 核实状态 / 来源 / 后续 ----
+    # ---- 折叠区 ----
     body: list[str] = []
-    cia = item.get("china_impact_analysis")
-    if isinstance(cia, dict) and cia:
+
+    cia = item.get("china_impact") or {}
+    if cia.get("channels") or cia.get("degree"):
+        body.append("          <h4>对中国的潜在影响</h4>\n")
         head = []
-        for k in ("degree", "horizon", "confidence"):
-            v = as_text(cia.get(k))
-            if v:
-                label = {"degree": "程度", "horizon": "周期", "confidence": "可信度"}[k]
-                head.append(f"{label}：{v}")
+        for k, label in (("degree", "程度"), ("horizon", "周期"), ("confidence", "可信度")):
+            if cia.get(k):
+                head.append(f"{label}：{cia[k]}")
         if head:
-            body.append(f"          <h4>对中国的潜在影响</h4>\n")
             body.append(f"          <p>{esc('　｜　'.join(head))}</p>\n")
-        ch = render_channels(cia.get("channels"))
+        ch = render_channels(cia.get("channels") or {})
         if ch:
             body.append(ch)
 
-    if isinstance(impact, dict):
-        details = as_text(impact.get("details"))
-        if details:
-            body.append("          <h4>影响评估</h4>\n")
-            body.append(f"          <p>{esc(details)}</p>\n")
+    if impact.get("details"):
+        body.append("          <h4>影响评估</h4>\n")
+        line = []
+        for k, label in (("degree", "程度"), ("horizon", "周期"), ("confidence", "可信度")):
+            if impact.get(k):
+                line.append(f"{label}：{impact[k]}")
+        if line:
+            body.append(f"          <p>{esc('　｜　'.join(line))}</p>\n")
+        body.append(f"          <p>{esc(impact['details'])}</p>\n")
 
-    ver = as_text(item.get("verification_status"))
-    if ver:
+    if item.get("verification_status"):
         body.append("          <h4>核实状态</h4>\n")
-        body.append(f"          <p>{esc(ver)}</p>\n")
+        body.append(f"          <p>{esc(item['verification_status'])}</p>\n")
 
-    dev = [as_text(x) for x in as_list(item.get("developing_details")) if as_text(x)]
-    if dev:
-        body.append("          <h4>仍在发展</h4>\n")
-        body.append('          <ul class="key-facts">\n')
-        for d in dev:
+    if item.get("developing_details"):
+        body.append("          <h4>仍在发展</h4>\n          <ul class=\"key-facts\">\n")
+        for d in item["developing_details"]:
             body.append(f"            <li>{esc(d)}</li>\n")
         body.append("          </ul>\n")
 
-    fu = [as_text(x) for x in as_list(item.get("follow_up")) if as_text(x)]
-    if fu:
-        body.append("          <h4>后续关注</h4>\n")
-        body.append('          <ul class="key-facts">\n')
-        for d in fu:
+    if item.get("follow_up"):
+        body.append("          <h4>后续关注</h4>\n          <ul class=\"key-facts\">\n")
+        for d in item["follow_up"]:
             body.append(f"            <li>{esc(d)}</li>\n")
         body.append("          </ul>\n")
 
-    sources = [s for s in as_list(item.get("sources")) if isinstance(s, dict)]
+    sources = item.get("sources") or []
     if sources:
-        body.append("          <h4>信息来源</h4>\n")
-        body.append('          <ul class="sources-list">\n')
+        body.append("          <h4>信息来源</h4>\n          <ul class=\"sources-list\">\n")
         for s in sources:
-            org = first_nonempty(s.get("organization"), s.get("publisher"), "来源")
-            stitle = as_text(s.get("title"))
-            url = as_text(s.get("url"))
-            stime = as_text(s.get("publish_time"))
+            org = s.get("organization") or "来源"
             line = f'            <li><span class="src-org">{esc(org)}</span>'
-            if stitle:
-                if url:
+            if s.get("title"):
+                if s.get("url"):
                     line += (
-                        f'：<a href="{esc(url)}" target="_blank" rel="noopener noreferrer">'
-                        f"{esc(stitle)}</a>"
+                        f'：<a href="{esc(s["url"])}" target="_blank" rel="noopener noreferrer">'
+                        f'{esc(s["title"])}</a>'
                     )
                 else:
-                    line += f"：{esc(stitle)}"
-            elif url:
+                    line += f'：{esc(s["title"])}'
+            elif s.get("url"):
                 line += (
-                    f'：<a href="{esc(url)}" target="_blank" rel="noopener noreferrer">'
-                    f"原文链接</a>"
+                    f'：<a href="{esc(s["url"])}" target="_blank" rel="noopener noreferrer">原文链接</a>'
                 )
-            if stime:
-                line += f' <span class="src-time">（{esc(stime)}）</span>'
-            line += "</li>\n"
-            body.append(line)
+            if s.get("publish_time"):
+                line += f' <span class="src-time">（{esc(s["publish_time"])}）</span>'
+            body.append(line + "</li>\n")
         body.append("          </ul>\n")
 
     if body:
@@ -621,16 +521,14 @@ def render_news_item(item: dict) -> str:
         out.append("          <summary>影响分析 · 核实 · 来源</summary>\n")
         out.append('          <div class="more-body">\n')
         out.extend(body)
-        out.append("          </div>\n")
-        out.append("        </details>\n")
+        out.append("          </div>\n        </details>\n")
 
     out.append("      </article>\n")
     return "".join(out)
 
 
-def render_section(title: str, items: list) -> str:
-    rows = [render_news_item(i) for i in items if isinstance(i, dict)]
-    rows = [r for r in rows if r]
+def render_section(title: str, items: list[dict]) -> str:
+    rows = [r for r in (render_news_item(i) for i in items) if r]
     if not rows:
         return ""
     return (
@@ -641,136 +539,105 @@ def render_section(title: str, items: list) -> str:
     )
 
 
-def render_dashboard(dash: dict) -> str:
-    if not isinstance(dash, dict):
-        return ""
+def render_dashboard(dashboard: dict, overall: str, confidence: str) -> str:
     rows = []
-    for key, label in DASHBOARD_LABELS:
-        val = as_text(dash.get(key))
-        if val:
-            rows.append(
-                f"            <tr><th>{esc(label)}</th><td>{esc(val)}</td></tr>\n"
-            )
-    overall = as_text(dash.get("overall_outlook"))
-    conf = as_text(dash.get("confidence"))
-    if not rows and not overall:
+    channels = dashboard.get("channels") or {}
+    for key, label in N.CHANNEL_ORDER:
+        if channels.get(key):
+            rows.append(f"            <tr><th>{esc(label)}</th><td>{esc(channels[key])}</td></tr>\n")
+    if not rows and not overall and not confidence:
         return ""
-
     out = ['      <div class="card">\n', "        <h2>对中国的综合影响</h2>\n"]
     if rows:
         out.append('        <table class="channels">\n' + "".join(rows) + "        </table>\n")
     if overall:
         out.append(f"        <h3>总体展望</h3>\n        <p>{esc(overall)}</p>\n")
-    if conf:
-        out.append(f"        <h3>判断可信度</h3>\n        <p>{esc(conf)}</p>\n")
+    if confidence:
+        out.append(f"        <h3>判断可信度</h3>\n        <p>{esc(confidence)}</p>\n")
     out.append("      </div>\n")
     return "".join(out)
 
 
 def render_watchlist(watch: dict) -> str:
-    if not isinstance(watch, dict):
+    if not watch or not any(watch.values()):
         return ""
-
     out = ['      <div class="card">\n', "        <h2>未来 24 小时重点观察</h2>\n"]
-    rendered_any = False
+    rendered = False
 
-    events = [e for e in as_list(watch.get("events")) if isinstance(e, dict)]
-    if events:
-        rendered_any = True
-        out.append('        <table class="channels">\n')
-        for e in events:
-            name = as_text(e.get("name"))
-            when = as_text(e.get("beijing_time"))
-            status = as_text(e.get("status"))
-            why = as_text(e.get("why_watch"))
-            impact_txt = as_text(e.get("potential_impact"))
-            cn_link = as_text(e.get("china_link"))
-            pri = as_text(e.get("priority"))
-            src = as_text(e.get("source"))
-
-            cell = [f"<strong>{esc(name)}</strong>"]
-            if when:
-                cell.append(f'<br><span class="src-time">北京时间 {esc(when)}</span>')
-            if pri:
-                cell.append(f' <span class="chip chip-mid">{esc(pri)}</span>')
-            if status:
-                cell.append(f'<br><span class="src-time">日程状态：{esc(status)}</span>')
-            if why:
-                cell.append(f"<br>关注原因：{esc(why)}")
-            if impact_txt:
-                cell.append(f"<br>潜在影响：{esc(impact_txt)}")
-            if cn_link:
-                cell.append(f"<br>对华关联：{esc(cn_link)}")
-            if src:
-                cell.append(f"<br><span class=\"src-time\">来源：{linkify(src)}</span>")
-            rows_html = "".join(cell)
-            out.append(
-                f'          <tr><th>{esc(when[:16] if when else "—")}</th><td>{rows_html}</td></tr>\n'
-            )
-        out.append("        </table>\n")
-
-    def simple_list(key: str, label: str, main_field: str) -> None:
-        nonlocal rendered_any
-        rows = [r for r in as_list(watch.get(key)) if isinstance(r, dict)]
+    for key, label in N.WATCH_SECTIONS:
+        rows = watch.get(key) or []
         if not rows:
-            return
-        rendered_any = True
+            continue
+        rendered = True
         out.append(f"        <h3>{esc(label)}</h3>\n")
-        out.append('        <ul class="key-facts">\n')
-        for r in rows:
-            name = as_text(r.get(main_field)) or as_text(r.get("event")) or as_text(r.get("name"))
-            when = as_text(r.get("beijing_time"))
-            pri = as_text(r.get("priority"))
-            src = as_text(r.get("source"))
-            line = esc(name)
-            if when:
-                line += f"　<span class=\"src-time\">北京时间 {esc(when)}</span>"
-            if pri:
-                line += f' <span class="chip chip-mid">{esc(pri)}</span>'
-            if src:
-                line += f'<br><span class="src-time">来源：{linkify(src)}</span>'
-            out.append(f"          <li>{line}</li>\n")
+        out.append('        <ul class="watch-list">\n')
+        for e in rows:
+            parts = [f'<span class="watch-name">{esc(e["name"])}</span>']
+            if e.get("beijing_time"):
+                parts.append(f'<span class="src-time">北京时间 {esc(e["beijing_time"])}</span>')
+            if e.get("priority"):
+                parts.append(f'<span class="chip chip-mid">{esc(e["priority"])}</span>')
+            out.append("          <li>" + " ".join(parts))
+            if e.get("status"):
+                out.append(f'<br><span class="src-time">日程状态：{esc(e["status"])}</span>')
+            if e.get("why_watch"):
+                out.append(f"<br>关注原因：{esc(e['why_watch'])}")
+            if e.get("potential_impact"):
+                out.append(f"<br>潜在影响：{esc(e['potential_impact'])}")
+            if e.get("china_link"):
+                out.append(f"<br>对华关联：{esc(e['china_link'])}")
+            if e.get("sources"):
+                links = " ".join(linkify(u) for u in e["sources"])
+                out.append(f'<br><span class="src-time">来源：{links}</span>')
+            out.append("</li>\n")
         out.append("        </ul>\n")
 
-    simple_list("economic_calendar", "重要经济数据", "event")
-    simple_list("policy_announcements", "中国政策与会议", "event")
-    simple_list("diplomatic_events", "外交与国际会议", "event")
-    simple_list("technology_events", "企业与科技事件", "event")
-    simple_list("potential_risks", "风险观察", "risk")
-
     out.append("      </div>\n")
-    return "".join(out) if rendered_any else ""
+    return "".join(out) if rendered else ""
 
 
-def render_methodology(config: dict, qc: dict) -> str:
-    period = as_text(config.get("coverage_period"))
-    generated = as_text(config.get("generated_at"))
-    tz = as_text(config.get("timezone")) or "Asia/Shanghai"
+def render_methodology(briefing: dict) -> str:
+    """
+    编辑说明 + 质控状态。
+    质量控制为 false 时必须显式告知读者，而不是把标签隐藏起来。
+    """
+    config = briefing["config"]
+    qc = briefing["quality"]
+    period = config.get("coverage_period")
+    tz = config.get("timezone") or "Asia/Shanghai"
 
-    flags = []
-    if isinstance(qc, dict):
-        mapping = {
-            "duplicate_check": "重复条目已合并",
-            "major_news_cross_verified": "重大新闻已交叉核实",
-            "unverified_claims_marked": "未证实说法已标注",
-            "source_urls_checked": "来源链接已核对",
-        }
-        for k, label in mapping.items():
-            if qc.get(k) is True:
-                flags.append(label)
+    passed, failed = [], []
+    labels = {
+        "duplicate_check": "重复条目已合并",
+        "major_news_cross_verified": "重大新闻已交叉核实",
+        "unverified_claims_marked": "未证实说法已标注",
+        "source_urls_checked": "来源链接已核对",
+    }
+    for key, label in labels.items():
+        if qc.get(key):
+            passed.append(label)
+        elif qc.get("present"):
+            failed.append(label.replace("已", "未"))
+        else:
+            failed.append(label.replace("已", "未"))
 
-    if not period and not flags:
+    if not period and not qc.get("present"):
         return ""
 
-    out = ['      <div class="notice">\n']
-    out.append("        <strong>编辑说明</strong><br>\n")
+    out = ['      <div class="notice">\n', "        <strong>编辑说明</strong><br>\n"]
     if period:
         out.append(f"        采集窗口：{esc(period)}<br>\n")
     out.append(
         f"        时区：{esc(tz)}；本简报为每日一次的信息整理，不代表全天候实时监测。<br>\n"
     )
-    if flags:
-        out.append("        " + "；".join(esc(f) for f in flags) + "。<br>\n")
+    if passed:
+        out.append("        已完成：" + "；".join(esc(p) for p in passed) + "。<br>\n")
+    if failed:
+        out.append(
+            '        <span class="notice-warn">未完成：'
+            + "；".join(esc(f) for f in failed)
+            + "。请以来源原文与后续官方通报为准。</span><br>\n"
+        )
     out.append(
         "        客观事实与媒体分析分开陈述；市场判断存在时间边界，不构成投资建议。\n"
     )
@@ -781,197 +648,162 @@ def render_methodology(config: dict, qc: dict) -> str:
 # --------------------------------------------------------------------------
 # 整页渲染
 # --------------------------------------------------------------------------
-def render_briefing_page(
-    briefing: dict, audio_meta: dict, base_url: str
-) -> str:
-    d = briefing["data"]
+def render_briefing_page(briefing: dict, audio: dict, base_url: str) -> str:
     date_str = briefing["date_str"]
     dt = briefing["date"]
-    config = d.get("briefing_config") if isinstance(d.get("briefing_config"), dict) else {}
-    overview = d.get("daily_overview") if isinstance(d.get("daily_overview"), dict) else {}
-    top5 = as_list(d.get("top_5_headlines"))
-    qc = d.get("quality_control")
+    overview = briefing["overview"]
+    items = briefing["items"]
 
-    items = collect_items(d)
-    items_by_id = {
-        as_text(i.get("id")): i for i in items if as_text(i.get("id"))
-    }
-
-    headline = as_text(overview.get("headline")) or first_nonempty(
-        (items[0].get("title") if items else ""), SITE_TITLE
+    headline = overview.get("headline") or (items[0]["title"] if items else SITE_TITLE)
+    cjk = sum(len(re.findall(r"[\u4e00-\u9fff]", i.get("summary", ""))) for i in items)
+    cjk += sum(
+        len(re.findall(r"[\u4e00-\u9fff]", f))
+        for i in items
+        for f in (i.get("key_facts") or [])
     )
+    read_min = max(1, round(cjk / 400))
 
-    # 阅读时长估算：概览 + 摘要 + 要点
-    cn_chars = text_len(
-        headline,
-        overview.get("international_overview"),
-        overview.get("china_overview"),
-        overview.get("key_takeaways"),
-        [i.get("summary") for i in items],
-        [i.get("key_facts") for i in items],
-    )
-    read_min = max(1, round(cn_chars / 400))
-
-    title = f"{fmt_date_cn(dt)}｜{SITE_TITLE}"
-    canonical = news_url(date_str)
-
-    page = [render_head(title, headline, canonical, base_url)]
-    page.append('      <p class="page-kicker">每日早报</p>\n')
-    page.append(f'      <h1 class="page-title">{esc(fmt_date_cn(dt, True))}</h1>\n')
-    page.append(
+    page = [
+        render_head(
+            f"{fmt_date_cn(dt)}｜{SITE_TITLE}", headline, news_url(date_str), base_url
+        ),
+        '      <p class="page-kicker">每日早报</p>\n',
+        f'      <h1 class="page-title">{esc(fmt_date_cn(dt, True))}</h1>\n',
         '      <p class="reading-time">'
         f"<span>{len(items)} 条新闻</span>"
         f"<span>约 {read_min} 分钟阅读</span>"
-        f"<span>生成于 {esc(as_text(config.get('generated_at')) or '—')}</span>"
-        "</p>\n"
-    )
+        f"<span>生成于 {esc(briefing['config'].get('generated_at') or '—')}</span>"
+        "</p>\n",
+        render_audio_box(date_str, audio),
+        render_breaking(items),
+        render_overview(overview),
+        render_top5(briefing["top5"]),
+    ]
 
-    page.append(render_audio_box(date_str, audio_meta))
-    page.append(render_breaking(top5, items_by_id))
-    page.append(render_overview(overview, as_list(overview.get("key_takeaways"))))
-    page.append(render_top5(top5))
+    for region, title, sections in (
+        ("international", "国际新闻", INTL_SECTIONS),
+        ("china", "中国新闻", CN_SECTIONS),
+    ):
+        region_items = collect_by_region(briefing, region)
+        if not region_items:
+            continue
+        page.append(f'      <div class="section-head"><h2>{esc(title)}</h2></div>\n')
+        for key, label in sections:
+            selected = [i for i in region_items if i["category"] == key]
+            page.append(render_section(label, selected))
+        # 分类缺失或未匹配的条目也不能丢
+        known = {k for k, _ in sections}
+        others = [i for i in region_items if i["category"] not in known]
+        if others:
+            page.append(render_section("其他", others))
 
-    # 国际
-    intl = d.get("international_news") if isinstance(d.get("international_news"), dict) else {}
-    intl_html = "".join(
-        render_section(label, as_list(intl.get(key))) for key, label in INTL_SECTIONS
-    )
-    if intl_html:
-        page.append(
-            '      <div class="section-head"><h2>国际新闻</h2></div>\n'
+    page.append(
+        render_dashboard(
+            briefing["dashboard"],
+            briefing.get("dashboard_overall", ""),
+            briefing.get("dashboard_confidence", ""),
         )
-        page.append(intl_html)
-
-    # 中国
-    cn = d.get("china_news") if isinstance(d.get("china_news"), dict) else {}
-    cn_html = "".join(
-        render_section(label, as_list(cn.get(key))) for key, label in CN_SECTIONS
     )
-    if cn_html:
-        page.append('      <div class="section-head"><h2>中国新闻</h2></div>\n')
-        page.append(cn_html)
-
-    page.append(render_dashboard(d.get("china_impact_dashboard")))
-    page.append(render_watchlist(d.get("next_24_hours_watchlist")))
-    page.append(render_methodology(config, qc))
-
+    page.append(render_watchlist(briefing["watch"]))
+    page.append(render_methodology(briefing))
     page.append(
         '      <p class="reading-time" style="margin-top:26px">'
         f'<a href="{esc(archive_url())}">← 查看全部归档</a></p>\n'
     )
-    page.append(render_foot(as_text(config.get("generated_at"))))
+    page.append(render_foot(briefing["config"].get("generated_at", "")))
     return "".join(page)
 
 
-def render_index_page(
-    briefings: list[dict], audio_map: dict, base_url: str
-) -> str:
+def render_index_page(briefings: list[dict], audio_map: dict, base_url: str) -> str:
     if not briefings:
-        page = [
-            render_head(SITE_TITLE, SITE_DESC, "/", base_url),
-            '      <div class="empty-state">\n',
-            "        <p>还没有任何简报。</p>\n",
-            "        <p>把生成的 JSON 放到 <code>news/YYYY/MM/</code> 下并重新构建即可。</p>\n",
-            "      </div>\n",
-            render_foot(),
-        ]
-        return "".join(page)
+        return "".join(
+            [
+                render_head(SITE_TITLE, SITE_DESC, "/", base_url),
+                '      <div class="empty-state">\n        <p>还没有任何简报。</p>\n',
+                "        <p>把生成的 JSON 放到 <code>news/YYYY/MM/</code> 下并重新构建即可。</p>\n",
+                "      </div>\n",
+                render_foot(),
+            ]
+        )
 
     latest = briefings[0]
-    d = latest["data"]
-    dt = latest["date"]
-    config = d.get("briefing_config") if isinstance(d.get("briefing_config"), dict) else {}
-    overview = d.get("daily_overview") if isinstance(d.get("daily_overview"), dict) else {}
-    headline = as_text(overview.get("headline")) or SITE_TITLE
-    items = collect_items(d)
+    overview = latest["overview"]
+    items = latest["items"]
+    headline = overview.get("headline") or SITE_TITLE
 
     page = [render_head(SITE_TITLE, SITE_DESC, "/", base_url)]
-
-    # Hero
     page.append('      <div class="hero">\n')
     page.append(
-        f'        <p class="hero-date">{esc(fmt_date_cn(dt, True))}　最新一期</p>\n'
+        f'        <p class="hero-date">{esc(fmt_date_cn(latest["date"], True))}　最新一期</p>\n'
     )
     page.append(f"        <h1>{esc(headline)}</h1>\n")
+    page.append('        <div class="hero-actions">\n')
     page.append(
-        '        <div class="hero-actions">\n'
         f'          <a class="btn btn-primary" href="{esc(news_url(latest["date_str"]))}">阅读本期全文</a>\n'
     )
-    if audio_map.get(latest["date_str"]):
+    latest_audio = audio_map.get(latest["date_str"], {})
+    if latest_audio.get("ok"):
+        audio_href = latest_audio.get("src") or f"/audio/{latest['date_str']}.mp3"
         page.append(
-            f'          <a class="btn" href="/audio/{esc(latest["date_str"])}.mp3">收听语音播报</a>\n'
+            f'          <a class="btn" href="{esc(audio_href)}">收听语音播报</a>\n'
         )
-    page.append('          <a class="btn" href="{esc(archive_url())}">全部归档</a>\n')
+    page.append(f'          <a class="btn" href="{esc(archive_url())}">全部归档</a>\n')
     page.append("        </div>\n      </div>\n")
 
     page.append(render_audio_box(latest["date_str"], audio_map.get(latest["date_str"], {})))
-    page.append(render_overview(overview, as_list(overview.get("key_takeaways"))))
-    page.append(render_top5(as_list(d.get("top_5_headlines"))))
+    page.append(render_breaking(items))
+    page.append(render_overview(overview))
+    page.append(render_top5(latest["top5"]))
 
-    # 最新一期其余条目（简明列表，避免首页过长）
-    if len(items) > 5:
-        seen = set()
-        for t in as_list(d.get("top_5_headlines")):
-            if isinstance(t, dict):
-                seen.add(as_text(t.get("id")))
-        rest = [i for i in items if as_text(i.get("id")) not in seen]
-        if rest:
-            page.append(
-                '      <div class="card">\n        <h2>本期其他要闻</h2>\n'
-                '        <ul class="key-facts">\n'
-            )
-            for i in rest:
-                t = as_text(i.get("title"))
-                sc = i.get("importance_score")
-                sc_html = (
-                    f' <span class="{score_class(sc)}">{esc(sc)}</span>'
-                    if sc not in (None, "")
-                    else ""
-                )
-                page.append(f"          <li>{esc(t)}{sc_html}</li>\n")
-            page.append("        </ul>\n")
-            page.append(
-                f'        <p style="margin-top:14px"><a href="{esc(news_url(latest["date_str"]))}">'
-                "查看全部详情（含影响分析与信息来源）→</a></p>\n"
-            )
-            page.append("      </div>\n")
+    # 置顶之外的条目，按 ID 精确排除（修复 v3 字符串置顶导致“全部条目重复出现”）
+    top_ids = {t["id"] for t in latest["top5"] if t.get("id")}
+    rest = [i for i in items if i.get("id") not in top_ids]
+    if rest:
+        page.append(
+            '      <div class="card">\n        <h2>本期其他要闻</h2>\n'
+            '        <ul class="key-facts">\n'
+        )
+        for i in rest:
+            sc = i.get("importance_score")
+            sc_html = f' <span class="{score_class(sc)}">{esc(sc)}</span>' if sc is not None else ""
+            page.append(f"          <li>{esc(i['title'])}{sc_html}</li>\n")
+        page.append("        </ul>\n")
+        page.append(
+            f'        <p style="margin-top:14px"><a href="{esc(news_url(latest["date_str"]))}">'
+            "查看全部详情（含影响分析与信息来源）→</a></p>\n"
+        )
+        page.append("      </div>\n")
 
-    # 近期几期
     if len(briefings) > 1:
         page.append(
             '      <div class="card">\n        <h2>往期回顾</h2>\n'
             '        <ul class="archive-list">\n'
         )
         for b in briefings[1:6]:
-            bd = b["data"]
-            bo = bd.get("daily_overview") if isinstance(bd.get("daily_overview"), dict) else {}
-            raw_head = as_text(bo.get("headline"))
-            bhead = truncate_cn(raw_head, 46) or SITE_TITLE
+            head = truncate_cn(b["overview"].get("headline", ""), 46) or SITE_TITLE
             page.append(
                 f'          <li><a href="{esc(news_url(b["date_str"]))}">'
                 f'<span class="a-date">{esc(b["date_str"])}</span>'
-                f'<span class="a-title">{esc(bhead)}</span></a></li>\n'
+                f'<span class="a-title">{esc(head)}</span></a></li>\n'
             )
         page.append("        </ul>\n")
         page.append(
-            f'        <p style="margin-top:14px"><a href="{esc(archive_url())}">全部 {len(briefings)} 期 →</a></p>\n'
+            f'        <p style="margin-top:14px"><a href="{esc(archive_url())}">'
+            f"全部 {len(briefings)} 期 →</a></p>\n"
         )
         page.append("      </div>\n")
 
-    page.append(render_foot(as_text(config.get("generated_at"))))
+    page.append(render_foot(latest["config"].get("generated_at", "")))
     return "".join(page)
 
 
-def render_archive_page(
-    briefings: list[dict], audio_map: dict, base_url: str
-) -> str:
-    page = [render_head(f"全部归档｜{SITE_TITLE}", SITE_DESC, archive_url(), base_url)]
-    page.append('      <p class="page-kicker">归档</p>\n')
-    page.append('      <h1 class="page-title">全部归档</h1>\n')
-    page.append(
-        f'      <p class="reading-time"><span>共 {len(briefings)} 期</span></p>\n'
-    )
-
+def render_archive_page(briefings: list[dict], audio_map: dict, base_url: str) -> str:
+    page = [
+        render_head(f"全部归档｜{SITE_TITLE}", SITE_DESC, archive_url(), base_url),
+        '      <p class="page-kicker">归档</p>\n',
+        '      <h1 class="page-title">全部归档</h1>\n',
+        f'      <p class="reading-time"><span>共 {len(briefings)} 期</span></p>\n',
+    ]
     if not briefings:
         page.append('      <div class="empty-state"><p>还没有任何简报。</p></div>\n')
         page.append(render_foot())
@@ -986,21 +818,14 @@ def render_archive_page(
         page.append(f"        <h3>{year}年{month}月</h3>\n")
         page.append('        <ul class="archive-list">\n')
         for b in rows:
-            d = b["data"]
-            o = d.get("daily_overview") if isinstance(d.get("daily_overview"), dict) else {}
-            raw_head = as_text(o.get("headline"))
-            head = truncate_cn(raw_head, 52) or SITE_TITLE
-            items = collect_items(d)
+            head = truncate_cn(b["overview"].get("headline", ""), 52) or SITE_TITLE
             top_score = ""
-            for i in items:
+            for i in b["items"]:
                 sc = i.get("importance_score")
-                try:
-                    if float(sc) >= 9:
-                        top_score = f"{sc} 分"
-                        break
-                except (TypeError, ValueError):
-                    continue
-            audio_tag = " · 含语音" if audio_map.get(b["date_str"]) else ""
+                if sc is not None and sc >= 9:
+                    top_score = f"{sc} 分"
+                    break
+            audio_tag = " · 含语音" if audio_map.get(b["date_str"], {}).get("ok") else ""
             page.append(
                 f'          <li><a href="{esc(news_url(b["date_str"]))}">'
                 f'<span class="a-date">{esc(fmt_date_cn(b["date"], True))}</span>'
@@ -1014,29 +839,189 @@ def render_archive_page(
 
 
 # --------------------------------------------------------------------------
+# 内容闸门
+# --------------------------------------------------------------------------
+def validate_briefing(b: dict) -> list[dict]:
+    """
+    内容级校验：只查会影响读者理解的关键项。
+    返回 issue 列表，level=error 会导致构建失败（strict 模式）。
+    """
+    issues: list[dict] = []
+    day = b["date_str"]
+
+    def err(msg: str) -> None:
+        issues.append({"level": "error", "msg": f"[{day}] {msg}"})
+
+    def warn(msg: str) -> None:
+        issues.append({"level": "warn", "msg": f"[{day}] {msg}"})
+
+    items = b["items"]
+    if not items:
+        err("没有任何有效新闻条目")
+        return issues
+
+    # 日期与配置一致性
+    nd = b["config"].get("news_date")
+    if nd and nd != day:
+        err(f"briefing_config.news_date（{nd}）与文件名日期（{day}）不一致")
+
+    # ID 唯一
+    ids = [i["id"] for i in items if i["id"]]
+    if len(ids) != len(set(ids)):
+        err("存在重复的新闻 ID")
+
+    # 置顶引用必须全部可解析
+    for t in b["top5"]:
+        if not t.get("resolved"):
+            err(f"top_5 引用了不存在的新闻 ID：{t.get('id')}")
+        elif not t.get("title"):
+            err(f"top_5 条目缺少标题：{t.get('id')}")
+    n5 = len(b["top5"])
+    if n5 < MIN_TOP5:
+        warn(f"置顶条目只有 {n5} 条，建议 {MIN_TOP5}–{MAX_TOP5} 条")
+    if n5 > MAX_TOP5:
+        err(f"置顶条目 {n5} 条，超过上限 {MAX_TOP5}")
+
+    if len(items) > MAX_TOTAL_ITEMS:
+        warn(f"本期 {len(items)} 条新闻，超过建议上限 {MAX_TOTAL_ITEMS}，重点可能被稀释")
+
+    # 关键内容完整性
+    no_summary = [i["id"] for i in items if not i.get("summary")]
+    if no_summary:
+        err(f"缺少 summary：{', '.join(no_summary[:6])}")
+
+    no_source = [i["id"] for i in items if not i.get("sources")]
+    if no_source:
+        err(f"缺少信息来源：{', '.join(no_source[:6])}")
+
+    bad_url = [
+        i["id"]
+        for i in items
+        for s in i.get("sources", [])
+        if s.get("url") and not s["url"].startswith(("http://", "https://"))
+    ]
+    if bad_url:
+        err(f"来源链接不是 http(s)：{', '.join(sorted(set(bad_url))[:6])}")
+
+    # 对华影响：这是本产品核心价值
+    no_china = [i["id"] for i in items if not (i.get("china_impact") or {}).get("channels")]
+    if no_china:
+        warn(f"缺少对华影响分析：{len(no_china)} 条（{', '.join(no_china[:6])}）")
+
+    # 窗口后事件必须显式标注
+    for i in items:
+        if i["breaking"]["is_breaking"] and not i["breaking"].get("window_status"):
+            warn(f"{i['id']} 疑似窗口后事件但未结构化标注 window_status")
+
+    # 空分类需要说明
+    for region, sections, label in (
+        ("international", INTL_SECTIONS, "国际"),
+        ("china", CN_SECTIONS, "中国"),
+    ):
+        for key, name in sections:
+            if not any(i["category"] == key and i["region"] == region for i in items):
+                warn(f"{label}「{name}」分类为空")
+
+    return issues
+
+
+# --------------------------------------------------------------------------
+# 音频可用性
+# --------------------------------------------------------------------------
+def load_audio_index(audio_dir: Path, briefings: list[dict], issues: list) -> dict:
+    """
+    判定每期音频是否可用，并给出带内容哈希的 URL。
+
+    ok=True 需同时满足：mp3 存在且非空、元数据可读。
+    随后用稿件哈希判断是否 stale；无论是否 stale，都把 mp3 复制一份到
+    <date>.<hash>.mp3，页面引用该地址。这样：
+      * 稿件不变 → URL 不变，浏览器可正常复用缓存
+      * 稿件变更 → URL 变化，用户不会继续拿到旧音频
+    """
+    import hashlib
+    import shutil as _shutil
+
+    index: dict[str, dict] = {}
+    for b in briefings:
+        day = b["date_str"]
+        mp3 = audio_dir / f"{day}.mp3"
+        meta_path = audio_dir / f"{day}.json"
+        if not mp3.exists() or mp3.stat().st_size < 1024:
+            if mp3.exists():
+                issues.append({"level": "warn", "msg": f"[{day}] 音频文件过小，忽略"})
+            continue
+
+        try:
+            meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            meta = {}
+            issues.append({"level": "warn", "msg": f"[{day}] 音频缺少元数据，标记为陈旧"})
+
+        # 当前稿件哈希
+        script = (
+            Path("audio-script") / f"{b['date'].year:04d}" / f"{b['date'].month:02d}" / f"{day}.txt"
+        )
+        script_hash = ""
+        if script.exists():
+            script_hash = hashlib.sha256(
+                script.read_text(encoding="utf-8", errors="replace").encode("utf-8")
+            ).hexdigest()
+
+        audio_hash = str(meta.get("source_sha256") or "").strip()
+        stale = bool(script_hash and audio_hash and script_hash != audio_hash)
+        if stale:
+            issues.append(
+                {"level": "warn", "msg": f"[{day}] 稿件已变更但音频未重新合成（陈旧音频）"}
+            )
+
+        # 版本化文件名：用稿件哈希前 8 位；无哈希时退回文件内容哈希
+        if audio_hash:
+            version = audio_hash[:8]
+        else:
+            version = hashlib.sha256(mp3.read_bytes()).hexdigest()[:8]
+        versioned = audio_dir / f"{day}.{version}.mp3"
+        if not versioned.exists():
+            try:
+                # 用重命名而非复制：避免 dist/audio 体积翻倍
+                mp3.rename(versioned)
+            except OSError:
+                try:
+                    _shutil.copy2(mp3, versioned)
+                except OSError:
+                    versioned = mp3
+        # 无论是否本次移动，都清掉未版本化的源文件，避免重复占用与歧义
+        if versioned != mp3 and mp3.exists():
+            try:
+                mp3.unlink()
+            except OSError:
+                pass
+
+        index[day] = {
+            "ok": True,
+            "stale": stale,
+            "duration_ms": int(meta.get("duration_ms") or 0),
+            "src": f"/audio/{versioned.name}",
+        }
+    return index
+
+
+# --------------------------------------------------------------------------
 # 主流程
 # --------------------------------------------------------------------------
 def main() -> int:
     parser = argparse.ArgumentParser(description="把新闻 JSON 构建成静态网站")
-    parser.add_argument("--news-dir", default="news", help="JSON 根目录（默认 news）")
-    parser.add_argument("--audio-dir", default="dist/audio", help="音频目录（默认 dist/audio）")
-    parser.add_argument("--out-dir", default="dist", help="输出目录（默认 dist）")
+    parser.add_argument("--news-dir", default="news")
+    parser.add_argument("--audio-dir", default="dist/audio")
+    parser.add_argument("--out-dir", default="dist")
+    parser.add_argument("--base-url", default="https://daily-news.cc.cd")
+    parser.add_argument("--static-dir", default="site")
+    parser.add_argument("--strict", action="store_true", help="保留参数以兼容旧调用；现在默认即拦截错误")
     parser.add_argument(
-        "--base-url", default="https://daily-news.cc.cd", help="站点根地址，用于 canonical"
-    )
-    parser.add_argument(
-        "--static-dir", default="site", help="静态资源目录，其内容会被复制到输出根"
-    )
-    parser.add_argument(
-        "--strict",
+        "--allow-errors",
         action="store_true",
-        help="遇到非法 JSON 直接失败（CI 发布闸门用）",
+        help="即使内容校验有错误也强制产出（默认拒绝，用于本地排查）",
     )
-    parser.add_argument(
-        "--check-only",
-        action="store_true",
-        help="只校验 JSON 是否合法，不生成任何文件",
-    )
+    parser.add_argument("--check-only", action="store_true", help="只校验不产出")
     args = parser.parse_args()
 
     news_dir = Path(args.news_dir)
@@ -1044,40 +1029,62 @@ def main() -> int:
     audio_dir = Path(args.audio_dir)
     static_dir = Path(args.static_dir)
 
+    issues: list[dict] = []
     print(f"读取 JSON：{news_dir}")
-    try:
-        briefings = load_briefings(news_dir, strict=args.strict)
-    except ValueError as exc:
-        print(f"  !! {exc}", file=sys.stderr)
-        print("\n构建中止：存在非法 JSON 文件。", file=sys.stderr)
-        return 1
+    briefings = load_briefings(news_dir, strict=args.strict, issues=issues)
     print(f"  找到 {len(briefings)} 期简报")
 
+    if not briefings:
+        issues.append({"level": "error", "msg": "没有可构建的简报"})
+
+    for b in briefings:
+        issues.extend(validate_briefing(b))
+
+    errors = [i for i in issues if i["level"] == "error"]
+    warns = [i for i in issues if i["level"] == "warn"]
+
+    for i in warns:
+        print(f"  ! {i['msg']}", file=sys.stderr)
+    for i in errors:
+        print(f"  !! {i['msg']}", file=sys.stderr)
+
+    print(f"\n校验：{len(errors)} 个错误，{len(warns)} 个警告")
+
     if args.check_only:
-        print(f"\n校验通过：{len(briefings)} 个 JSON 文件格式合法。")
+        if errors:
+            print("校验未通过。", file=sys.stderr)
+            return 1
+        print(f"校验通过：{len(briefings)} 期。")
         return 0
 
-    if not briefings:
-        print("  !! 没有可构建的简报", file=sys.stderr)
+    # 默认即拦截：绝不把「内容已知不完整」的结果发布出去。
+    # 历史上正是因为放行了这类构建，才出现线上整块空白。
+    if errors and not args.allow_errors:
+        print(
+            "构建中止：存在内容错误。确需强制产出请显式加 --allow-errors。",
+            file=sys.stderr,
+        )
+        return 1
+    if errors:
+        print("警告：已使用 --allow-errors，将产出内容不完整的站点。", file=sys.stderr)
 
-    # 音频元数据
-    audio_map: dict[str, dict] = {}
-    if audio_dir.exists():
-        for meta_path in sorted(audio_dir.glob("*.json")):
-            try:
-                meta = json.loads(meta_path.read_text(encoding="utf-8"))
-                date_key = meta.get("date") or meta_path.stem
-                mp3 = audio_dir / f"{date_key}.mp3"
-                if mp3.exists() and mp3.stat().st_size > 1024:
-                    audio_map[str(date_key)] = meta
-            except Exception:  # noqa: BLE001
-                continue
-    print(f"  找到 {len(audio_map)} 个可用音频")
+    audio_map = load_audio_index(audio_dir, briefings, issues)
+    print(f"  可用音频：{len(audio_map)} 期")
 
-    # 准备输出目录
+    # 音频相关告警在 validate 之后才产生，需重新汇总并打印
+    errors = [i for i in issues if i["level"] == "error"]
+    warns = [i for i in issues if i["level"] == "warn"]
+    audio_warns = [i for i in warns if "音频" in i["msg"]]
+    for i in audio_warns:
+        print(f"  ! {i['msg']}", file=sys.stderr)
+    if errors:
+        for i in errors:
+            print(f"  !! {i['msg']}", file=sys.stderr)
+        if args.strict:
+            print("构建中止：内容校验未通过。", file=sys.stderr)
+            return 1
+
     out_dir.mkdir(parents=True, exist_ok=True)
-
-    # 复制静态资源（不删除 dist/audio）
     if static_dir.exists():
         for item in static_dir.iterdir():
             dest = out_dir / item.name
@@ -1089,40 +1096,27 @@ def main() -> int:
                 shutil.copy2(item, dest)
         print(f"  复制静态资源：{static_dir} -> {out_dir}")
 
-    # 简报页
     news_out = out_dir / "news"
     news_out.mkdir(parents=True, exist_ok=True)
     for b in briefings:
-        html_doc = render_briefing_page(b, audio_map.get(b["date_str"], {}), args.base_url)
-        (news_out / f"{b['date_str']}.html").write_text(html_doc, encoding="utf-8")
+        doc = render_briefing_page(b, audio_map.get(b["date_str"], {}), args.base_url)
+        (news_out / f"{b['date_str']}.html").write_text(doc, encoding="utf-8")
 
-    # 首页 / 归档
     (out_dir / "index.html").write_text(
         render_index_page(briefings, audio_map, args.base_url), encoding="utf-8"
     )
     (out_dir / "archive.html").write_text(
         render_archive_page(briefings, audio_map, args.base_url), encoding="utf-8"
     )
+    (out_dir / "404.html").write_text(render_404_page(args.base_url), encoding="utf-8")
 
-    # 404 页面。
-    # Cloudflare Pages 默认行为是：找不到匹配文件时回退到 index.html 并返回
-    # 200（软 404）。对搜索引擎和用户体验都不好。产出 404.html 后，Pages
-    # 会用它作为兜底，并正确返回 404 状态码。
-    (out_dir / "404.html").write_text(
-        render_404_page(args.base_url), encoding="utf-8"
-    )
-
-    # 顺手输出一个机器可读索引，便于以后接 API / 搜索
     index_data = [
         {
             "date": b["date_str"],
-            "headline": as_text(
-                (b["data"].get("daily_overview") or {}).get("headline")
-                if isinstance(b["data"].get("daily_overview"), dict)
-                else ""
-            ),
-            "news_count": len(collect_items(b["data"])),
-            "has_audio": b["date_str"] in audio_map,
+            "headline": b["overview"].get("headline", ""),
+            "news_count": len(b["items"]),
+            "has_audio": audio_map.get(b["date_str"], {}).get("ok", False),
+            "audio_duration_ms": audio_map.get(b["date_str"], {}).get("duration_ms", 0),
             "url": news_url(b["date_str"]),
         }
         for b in briefings
@@ -1131,7 +1125,6 @@ def main() -> int:
         json.dumps(index_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
 
-    # robots.txt 里声明了 sitemap.xml，这里必须真的生成，否则是死链
     base = args.base_url.rstrip("/")
     sitemap = [
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -1150,7 +1143,6 @@ def main() -> int:
     add_url(archive_url(), briefings[0]["date_str"] if briefings else "", "0.8")
     for b in briefings:
         add_url(news_url(b["date_str"]), b["date_str"], "0.7")
-
     sitemap.append("</urlset>")
     (out_dir / "sitemap.xml").write_text("\n".join(sitemap) + "\n", encoding="utf-8")
 
