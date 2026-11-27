@@ -109,12 +109,13 @@ def check_literals(day: str, html: str) -> list[str]:
 
 
 def check_links(name: str, html: str, dist: Path) -> list[str]:
-    """站内链接必须能对应到 dist 下的实际文件。"""
+    """站内链接与资源引用必须能对应到 dist 下的实际文件。"""
     errs = []
-    for href in set(re.findall(r'href="(/[^"#?]*)"', html)):
-        if href.startswith("//"):
+    refs = set(re.findall(r'(?:href|src)="(/[^"#?]*)"', html))
+    for ref in refs:
+        if ref.startswith("//"):
             continue
-        target = href.strip("/")
+        target = ref.strip("/")
         if not target:
             cand = [dist / "index.html"]
         else:
@@ -124,12 +125,10 @@ def check_links(name: str, html: str, dist: Path) -> list[str]:
                 dist / target / "index.html",
                 dist / target / "index.htm",
             ]
-        if not any(c.exists() for c in cand):
-            # 静态资源与音频单独判断
-            if target.startswith("audio/") or target.startswith("news/"):
-                errs.append(f"[{name}] 站内链接指向不存在的产物：{href}")
-            elif not (dist / target).exists():
-                errs.append(f"[{name}] 站内链接失效：{href}")
+        if any(c.exists() for c in cand):
+            continue
+        # 音频/新闻等产物缺失必须报错；其余同样视为失效
+        errs.append(f"[{name}] 引用指向不存在的产物：{ref}")
     return errs
 
 

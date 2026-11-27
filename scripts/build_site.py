@@ -212,8 +212,43 @@ def collect_by_region(briefing: dict, region: str) -> list[dict]:
 # --------------------------------------------------------------------------
 # 组件渲染
 # --------------------------------------------------------------------------
+# --------------------------------------------------------------------------
+# 静态资源版本化
+#
+# Cloudflare 的边缘缓存对 /style.css 这类固定文件名会长时间命中旧版本
+# （实测线上返回 Age 3000+ 与旧内容），即使重新部署也可能短期内看不到更新。
+# 解决方式不是依赖 _headers 的 TTL，而是给文件名带上内容哈希：
+# 内容一变 URL 就变，缓存自然失效。
+# --------------------------------------------------------------------------
+ASSET_VERSIONS: dict[str, str] = {}
+
+
+def asset_url(name: str) -> str:
+    """返回带内容哈希的资源地址，例如 /style.<hash>.css"""
+    version = ASSET_VERSIONS.get(name)
+    if not version:
+        return f"/{name}"
+    if "." in name:
+        stem, ext = name.rsplit(".", 1)
+        return f"/{stem}.{version}.{ext}"
+    return f"/{name}?v={version}"
+
+
+def build_asset_versions(static_dir: Path) -> None:
+    """为 site/ 下的静态资源计算内容哈希。"""
+    import hashlib
+
+    for name in ("style.css", "site.js", "favicon.svg"):
+        path = static_dir / name
+        if path.exists():
+            ASSET_VERSIONS[name] = hashlib.sha256(path.read_bytes()).hexdigest()[:8]
+
+
 def render_head(title: str, description: str, canonical: str, base_url: str) -> str:
     full = base_url.rstrip("/") + canonical
+    css = asset_url("style.css")
+    js = asset_url("site.js")
+    ico = asset_url("favicon.svg")
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -221,16 +256,16 @@ def render_head(title: str, description: str, canonical: str, base_url: str) -> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
-<link rel="stylesheet" href="/style.css">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/favicon.svg">
+<link rel="stylesheet" href="{esc(css)}">
+<link rel="icon" href="{esc(ico)}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{esc(ico)}">
 <link rel="canonical" href="{esc(full)}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{esc(full)}">
 <meta name="color-scheme" content="light dark">
-<script src="/site.js" defer></script>
+<script src="{esc(js)}" defer></script>
 </head>
 <body>
 <div class="progress-bar" id="progress" aria-hidden="true"></div>
@@ -1234,6 +1269,8 @@ def main() -> int:
 
     out_dir.mkdir(parents=True, exist_ok=True)
     if static_dir.exists():
+        # 先算哈希，render_head 需要用它生成带版本的 URL
+        build_asset_versions(static_dir)
         for item in static_dir.iterdir():
             dest = out_dir / item.name
             if item.is_dir():
@@ -1242,6 +1279,11 @@ def main() -> int:
                 shutil.copytree(item, dest)
             else:
                 shutil.copy2(item, dest)
+                # 同时产出一份带内容哈希的副本，供 HTML 引用
+                version = ASSET_VERSIONS.get(item.name)
+                if version and "." in item.name:
+                    stem, ext = item.name.rsplit(".", 1)
+                    shutil.copy2(item, out_dir / f"{stem}.{version}.{ext}")
         print(f"  复制静态资源：{static_dir} -> {out_dir}")
 
     news_out = out_dir / "news"
