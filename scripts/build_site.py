@@ -230,8 +230,10 @@ def render_head(title: str, description: str, canonical: str, base_url: str) -> 
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:url" content="{esc(full)}">
 <meta name="color-scheme" content="light dark">
+<script src="/site.js" defer></script>
 </head>
 <body>
+<div class="progress-bar" id="progress" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="/"><span class="dot"></span>{esc(SITE_TITLE)}</a>
@@ -260,6 +262,7 @@ def render_foot(generated_at: str = "") -> str:
        ｜ <a href="{esc(archive_url())}">全部归档</a></p>
   </div>
 </footer>
+<button type="button" class="to-top" id="toTop" aria-label="回到顶部" hidden>↑</button>
 </body>
 </html>
 """
@@ -284,34 +287,100 @@ def render_404_page(base_url: str) -> str:
     )
 
 
-def render_audio_box(date_str: str, audio: dict) -> str:
+def render_audio_box(date_str: str, audio: dict, script_text: str = "") -> str:
     """
-    只有「本次构建确认与当前稿件一致」的音频才渲染播放器。
+    语音播报播放器。
 
     audio 由 load_audio_index 产出：
-      ok     音频存在且可用
-      src    带内容哈希的 URL（稿件变更后 URL 随之变化，避免缓存旧音频）
-      stale  稿件已更新但音频未重新合成
+      ok       音频存在且可用
+      voices   [{key,label,desc,src,duration_ms}, …] 多音色
+      src      默认音色的 URL（带内容哈希）
+      stale    稿件已更新但音频未重新合成
+
+    交互（少量原生 JS，见 site.js）：
+      * 音色切换：换 <audio> 的 src，记住选择
+      * 倍速：playbackRate，记住选择
+      * 展开播报稿：<details>，纯 CSS，无需 JS
     """
     if not audio or not audio.get("ok"):
         return ""
+
+    voices = audio.get("voices") or []
+    default_src = audio.get("src") or f"/audio/{date_str}.mp3"
     dur = fmt_duration(int(audio.get("duration_ms") or 0))
     dur_txt = f"，约 {dur}" if dur else ""
-    src = audio.get("src") or f"/audio/{date_str}.mp3"
+
     warn = ""
     if audio.get("stale"):
         warn = (
             '<p class="audio-warn">本期稿件已更新，语音播报尚未重新合成；'
             "以下音频对应上一版稿件，内容可能与文字不完全一致。</p>"
         )
-    return f"""      <div class="audio-box">
+
+    # --- 音色按钮 ---
+    voice_html = ""
+    if len(voices) > 1:
+        btns = []
+        for v in voices:
+            active = " is-active" if v.get("src") == default_src else ""
+            btns.append(
+                f'            <button type="button" class="voice-btn{active}"'
+                f' data-src="{esc(v.get("src"))}"'
+                f' data-voice="{esc(v.get("key"))}"'
+                f' title="{esc(v.get("desc") or v.get("label"))}">'
+                f'{esc(v.get("label"))}</button>'
+            )
+        voice_html = (
+            '        <div class="audio-controls">\n'
+            '          <span class="ctrl-label">音色</span>\n'
+            '          <div class="voice-group" role="group" aria-label="选择播报音色">\n'
+            + "\n".join(btns)
+            + "\n          </div>\n"
+            "        </div>\n"
+        )
+
+    # --- 倍速按钮 ---
+    rate_btns = []
+    for r in ("0.75", "1", "1.25", "1.5", "2"):
+        active = " is-active" if r == "1" else ""
+        label = "1×" if r == "1" else f"{r}×"
+        rate_btns.append(
+            f'            <button type="button" class="rate-btn{active}"'
+            f' data-rate="{r}">{label}</button>'
+        )
+    rate_html = (
+        '        <div class="audio-controls">\n'
+        '          <span class="ctrl-label">倍速</span>\n'
+        '          <div class="rate-group" role="group" aria-label="播放速度">\n'
+        + "\n".join(rate_btns)
+        + "\n          </div>\n"
+        "        </div>\n"
+    )
+
+    # --- 播报稿展开 ---
+    script_html = ""
+    if script_text.strip():
+        paragraphs = [
+            p.strip() for p in re.split(r"\n\s*\n", script_text.strip()) if p.strip()
+        ]
+        body = "\n".join(f"            <p>{esc(p)}</p>" for p in paragraphs)
+        script_html = (
+            '        <details class="script-details">\n'
+            "          <summary>展开播报稿全文</summary>\n"
+            '          <div class="script-body">\n'
+            f"{body}\n"
+            "          </div>\n"
+            "        </details>\n"
+        )
+
+    return f"""      <div class="audio-box" data-audio-box>
         <p class="audio-label">语音播报{dur_txt}</p>
-        <audio controls preload="none" src="{esc(src)}">
-          你的浏览器不支持音频播放，可<a href="{esc(src)}">直接下载</a>。
+        <audio controls preload="none" src="{esc(default_src)}" data-audio>
+          你的浏览器不支持音频播放，可<a href="{esc(default_src)}">直接下载</a>。
         </audio>
-        {warn}
+{voice_html}{rate_html}        {warn}
         <p class="audio-note">中文播报稿由 edge-tts 合成，可直接收听或下载。</p>
-      </div>
+{script_html}      </div>
 """
 
 
@@ -347,7 +416,7 @@ def render_overview(overview: dict) -> str:
     takeaways = overview.get("key_takeaways") or []
     if not intl and not cn and not takeaways:
         return ""
-    parts = ['      <div class="card">\n        <h2>当天概览</h2>\n']
+    parts = ['      <div class="card" id="overview">\n        <h2>当天概览</h2>\n']
     if intl:
         parts.append(f"        <h3>国际</h3>\n        <p>{esc(intl)}</p>\n")
     if cn:
@@ -365,7 +434,7 @@ def render_top5(top5: list[dict]) -> str:
     if not top5:
         return ""
     out = [
-        '      <div class="card">\n',
+        '      <div class="card" id="top5">\n',
         "        <h2>今日最重要的五件事</h2>\n",
         '        <ol class="top-list">\n',
     ]
@@ -527,12 +596,13 @@ def render_news_item(item: dict) -> str:
     return "".join(out)
 
 
-def render_section(title: str, items: list[dict]) -> str:
+def render_section(title: str, items: list[dict], anchor: str = "") -> str:
     rows = [r for r in (render_news_item(i) for i in items) if r]
     if not rows:
         return ""
+    id_attr = f' id="{esc(anchor)}"' if anchor else ""
     return (
-        '      <div class="section-head">\n'
+        f'      <div class="section-head"{id_attr}>\n'
         f"        <h2>{esc(title)}</h2>"
         f'<span class="count">{len(rows)} 条</span>\n'
         "      </div>\n" + "".join(rows)
@@ -547,7 +617,7 @@ def render_dashboard(dashboard: dict, overall: str, confidence: str) -> str:
             rows.append(f"            <tr><th>{esc(label)}</th><td>{esc(channels[key])}</td></tr>\n")
     if not rows and not overall and not confidence:
         return ""
-    out = ['      <div class="card">\n', "        <h2>对中国的综合影响</h2>\n"]
+    out = ['      <div class="card" id="impact">\n', "        <h2>对中国的综合影响</h2>\n"]
     if rows:
         out.append('        <table class="channels">\n' + "".join(rows) + "        </table>\n")
     if overall:
@@ -561,7 +631,7 @@ def render_dashboard(dashboard: dict, overall: str, confidence: str) -> str:
 def render_watchlist(watch: dict) -> str:
     if not watch or not any(watch.values()):
         return ""
-    out = ['      <div class="card">\n', "        <h2>未来 24 小时重点观察</h2>\n"]
+    out = ['      <div class="card" id="watch">\n', "        <h2>未来 24 小时重点观察</h2>\n"]
     rendered = False
 
     for key, label in N.WATCH_SECTIONS:
@@ -624,7 +694,7 @@ def render_methodology(briefing: dict) -> str:
     if not period and not qc.get("present"):
         return ""
 
-    out = ['      <div class="notice">\n', "        <strong>编辑说明</strong><br>\n"]
+    out = ['      <div class="notice" id="method">\n', "        <strong>编辑说明</strong><br>\n"]
     if period:
         out.append(f"        采集窗口：{esc(period)}<br>\n")
     out.append(
@@ -674,11 +744,17 @@ def render_briefing_page(briefing: dict, audio: dict, base_url: str) -> str:
         f"<span>约 {read_min} 分钟阅读</span>"
         f"<span>生成于 {esc(briefing['config'].get('generated_at') or '—')}</span>"
         "</p>\n",
-        render_audio_box(date_str, audio),
+        render_audio_box(date_str, audio, audio.get("script", "")),
         render_breaking(items),
         render_overview(overview),
         render_top5(briefing["top5"]),
     ]
+
+    toc_entries: list[tuple[str, str]] = []
+    if overview.get("international_overview") or overview.get("china_overview"):
+        toc_entries.append(("#overview", "当天概览"))
+    if briefing["top5"]:
+        toc_entries.append(("#top5", "最重要的五件事"))
 
     for region, title, sections in (
         ("international", "国际新闻", INTL_SECTIONS),
@@ -687,15 +763,25 @@ def render_briefing_page(briefing: dict, audio: dict, base_url: str) -> str:
         region_items = collect_by_region(briefing, region)
         if not region_items:
             continue
-        page.append(f'      <div class="section-head"><h2>{esc(title)}</h2></div>\n')
+        anchor = "intl" if region == "international" else "cn"
+        toc_entries.append((f"#{anchor}", title))
+        page.append(
+            f'      <div class="section-head" id="{anchor}">'
+            f"<h2>{esc(title)}</h2></div>\n"
+        )
         for key, label in sections:
             selected = [i for i in region_items if i["category"] == key]
-            page.append(render_section(label, selected))
-        # 分类缺失或未匹配的条目也不能丢
+            page.append(render_section(label, selected, anchor=key))
         known = {k for k, _ in sections}
         others = [i for i in region_items if i["category"] not in known]
         if others:
             page.append(render_section("其他", others))
+
+    if (briefing["dashboard"].get("channels") or briefing.get("dashboard_overall")):
+        toc_entries.append(("#impact", "对中国的综合影响"))
+    if any(briefing["watch"].values()):
+        toc_entries.append(("#watch", "未来 24 小时"))
+    toc_entries.append(("#method", "编辑说明"))
 
     page.append(
         render_dashboard(
@@ -706,6 +792,19 @@ def render_briefing_page(briefing: dict, audio: dict, base_url: str) -> str:
     )
     page.append(render_watchlist(briefing["watch"]))
     page.append(render_methodology(briefing))
+
+    # 目录：放在概览之前不合适（尚未渲染），因此插到音频框之后
+    if len(toc_entries) >= 3:
+        page.insert(
+            6,
+            '      <nav class="toc" aria-label="本页目录">\n'
+            '        <span class="toc-label">目录</span>\n'
+            + "\n".join(
+                f'        <a href="{esc(href)}">{esc(label)}</a>'
+                for href, label in toc_entries
+            )
+            + "\n      </nav>\n",
+        )
     page.append(
         '      <p class="reading-time" style="margin-top:26px">'
         f'<a href="{esc(archive_url())}">← 查看全部归档</a></p>\n'
@@ -930,12 +1029,12 @@ def validate_briefing(b: dict) -> list[dict]:
 # --------------------------------------------------------------------------
 def load_audio_index(audio_dir: Path, briefings: list[dict], issues: list) -> dict:
     """
-    判定每期音频是否可用，并给出带内容哈希的 URL。
+    判定每期音频是否可用，产出多音色信息与带内容哈希的 URL。
 
-    ok=True 需同时满足：mp3 存在且非空、元数据可读。
-    随后用稿件哈希判断是否 stale；无论是否 stale，都把 mp3 复制一份到
-    <date>.<hash>.mp3，页面引用该地址。这样：
-      * 稿件不变 → URL 不变，浏览器可正常复用缓存
+    ok=True 需满足：至少一个音色的 mp3 存在且非空、元数据可读。
+    稿件哈希与元数据不一致时标记 stale（页面会显式提示）。
+    每个 mp3 复制/重命名为 <date>.<voice>.<hash>.mp3，页面引用该地址：
+      * 稿件不变 → URL 不变，可正常复用缓存
       * 稿件变更 → URL 变化，用户不会继续拿到旧音频
     """
     import hashlib
@@ -944,29 +1043,24 @@ def load_audio_index(audio_dir: Path, briefings: list[dict], issues: list) -> di
     index: dict[str, dict] = {}
     for b in briefings:
         day = b["date_str"]
-        mp3 = audio_dir / f"{day}.mp3"
         meta_path = audio_dir / f"{day}.json"
-        if not mp3.exists() or mp3.stat().st_size < 1024:
-            if mp3.exists():
-                issues.append({"level": "warn", "msg": f"[{day}] 音频文件过小，忽略"})
-            continue
+
+        # 当前稿件哈希
+        script_path = (
+            Path("audio-script") / f"{b['date'].year:04d}" / f"{b['date'].month:02d}" / f"{day}.txt"
+        )
+        script_hash = ""
+        script_text = ""
+        if script_path.exists():
+            script_text = script_path.read_text(encoding="utf-8", errors="replace")
+            script_hash = hashlib.sha256(script_text.encode("utf-8")).hexdigest()
 
         try:
             meta = json.loads(meta_path.read_text(encoding="utf-8"))
         except Exception:  # noqa: BLE001
             meta = {}
-            issues.append({"level": "warn", "msg": f"[{day}] 音频缺少元数据，标记为陈旧"})
 
-        # 当前稿件哈希
-        script = (
-            Path("audio-script") / f"{b['date'].year:04d}" / f"{b['date'].month:02d}" / f"{day}.txt"
-        )
-        script_hash = ""
-        if script.exists():
-            script_hash = hashlib.sha256(
-                script.read_text(encoding="utf-8", errors="replace").encode("utf-8")
-            ).hexdigest()
-
+        meta_voices = meta.get("voices") if isinstance(meta.get("voices"), dict) else {}
         audio_hash = str(meta.get("source_sha256") or "").strip()
         stale = bool(script_hash and audio_hash and script_hash != audio_hash)
         if stale:
@@ -974,33 +1068,87 @@ def load_audio_index(audio_dir: Path, briefings: list[dict], issues: list) -> di
                 {"level": "warn", "msg": f"[{day}] 稿件已变更但音频未重新合成（陈旧音频）"}
             )
 
-        # 版本化文件名：用稿件哈希前 8 位；无哈希时退回文件内容哈希
-        if audio_hash:
-            version = audio_hash[:8]
-        else:
-            version = hashlib.sha256(mp3.read_bytes()).hexdigest()[:8]
-        versioned = audio_dir / f"{day}.{version}.mp3"
-        if not versioned.exists():
-            try:
-                # 用重命名而非复制：避免 dist/audio 体积翻倍
-                mp3.rename(versioned)
-            except OSError:
+        voices_out: list[dict] = []
+        for key, vm in meta_voices.items():
+            if not isinstance(vm, dict):
+                continue
+            # 元数据里记的是「未版本化」文件名（构建时会被改名），
+            # 因此先在原始名找，找不到再按版本化名找，否则重复构建会丢音频。
+            base_name = vm.get("file") or f"{day}.{key}.mp3"
+            mp3 = audio_dir / base_name
+            version = (vm.get("source_sha256") or audio_hash or "")[:8]
+            if not version and mp3.exists():
+                version = hashlib.sha256(mp3.read_bytes()).hexdigest()[:8]
+            versioned = audio_dir / f"{day}.{key}.{version}.mp3" if version else mp3
+
+            if not mp3.exists():
+                # 已被上次构建改名：直接用版本化文件
+                if versioned.exists() and versioned.stat().st_size >= 1024:
+                    mp3 = versioned
+                else:
+                    continue
+            if mp3.stat().st_size < 1024:
+                continue
+
+            if mp3 != versioned and not versioned.exists():
                 try:
-                    _shutil.copy2(mp3, versioned)
+                    mp3.rename(versioned)
                 except OSError:
-                    versioned = mp3
-        # 无论是否本次移动，都清掉未版本化的源文件，避免重复占用与歧义
-        if versioned != mp3 and mp3.exists():
-            try:
-                mp3.unlink()
-            except OSError:
-                pass
+                    try:
+                        _shutil.copy2(mp3, versioned)
+                    except OSError:
+                        versioned = mp3
+            if mp3 == versioned:
+                versioned = mp3
+            if versioned != mp3 and mp3.exists():
+                try:
+                    mp3.unlink()
+                except OSError:
+                    pass
+            voices_out.append(
+                {
+                    "key": key,
+                    "label": vm.get("label") or key,
+                    "desc": vm.get("desc") or "",
+                    "src": f"/audio/{versioned.name}",
+                    "duration_ms": int(vm.get("duration_ms") or 0),
+                }
+            )
+
+        # 兼容旧版单音色元数据（无 voices 字段）
+        if not voices_out:
+            legacy = audio_dir / f"{day}.mp3"
+            if legacy.exists() and legacy.stat().st_size >= 1024:
+                version = (audio_hash or hashlib.sha256(legacy.read_bytes()).hexdigest())[:8]
+                versioned = audio_dir / f"{day}.{version}.mp3"
+                if not versioned.exists():
+                    try:
+                        legacy.rename(versioned)
+                    except OSError:
+                        versioned = legacy
+                voices_out.append(
+                    {
+                        "key": "default",
+                        "label": "默认",
+                        "desc": "",
+                        "src": f"/audio/{versioned.name}",
+                        "duration_ms": int(meta.get("duration_ms") or 0),
+                    }
+                )
+
+        if not voices_out:
+            continue
+
+        default_key = meta.get("default") or voices_out[0]["key"]
+        chosen = next((v for v in voices_out if v["key"] == default_key), voices_out[0])
 
         index[day] = {
             "ok": True,
             "stale": stale,
-            "duration_ms": int(meta.get("duration_ms") or 0),
-            "src": f"/audio/{versioned.name}",
+            "src": chosen["src"],
+            "duration_ms": chosen["duration_ms"],
+            "voices": voices_out,
+            "script": script_text,
         }
     return index
 

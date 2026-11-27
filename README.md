@@ -93,9 +93,22 @@ daily-news/
 
 ### 音频版本化
 
-页面引用的是带内容哈希的文件名（`/audio/YYYY-MM-DD.<hash>.mp3`）。
+页面引用的是带内容哈希的文件名（`/audio/YYYY-MM-DD.<voice>.<hash>.mp3`）。
 稿件一改，哈希变、URL 变，用户不会继续听到旧音频。
 若稿件已更新但语音尚未重新合成，页面会显式提示「对应上一版稿件」。
+
+### 页面功能
+
+详情页提供：
+
+- **阅读进度条**：页面顶部的进度指示，长文阅读时知道还剩多少。
+- **目录**：跳转到概览、五件事、国际、中国、影响、观察等章节，滚动时高亮当前章节。
+- **语音播报**：三种音色（云扬 / 晓晓 / 云希）即时切换、0.75×–2× 倍速、
+  一键展开播报稿全文。音色与倍速选择会被记住。
+- **回到顶部**：滚动超过一屏后出现。
+
+交互全部由 `site/site.js` 实现，原生 JS、无第三方依赖、无追踪。
+禁用 JS 时页面内容完整可读，只是没有上述增强（播放器仍可用系统默认控件）。
 
 ### 触发方式
 
@@ -136,11 +149,19 @@ python -m http.server 8000 --directory dist
 python scripts/build_site.py --base-url https://daily-news.cc.cd
 python scripts/make_audio.py --only 2026-11-26   # 只处理某一期
 python scripts/make_audio.py --force             # 全部重新合成
-python scripts/make_audio.py --voice zh-CN-YunxiNeural --rate +5%
+python scripts/make_audio.py --voices yunyang,xiaoxiao --rate +0%
 ```
 
-可用中文音色：`zh-CN-YunyangNeural`（默认，新闻播报）、`zh-CN-YunxiNeural`、
-`zh-CN-YunjianNeural`、`zh-CN-XiaoxiaoNeural`、`zh-CN-XiaoyiNeural`。
+可用音色（`--voices` 的 key）：
+
+| key | 音色 | 说明 |
+|---|---|---|
+| `yunyang` | 云扬 | 男声 · 新闻播报（默认） |
+| `xiaoxiao` | 晓晓 | 女声 · 清晰亲和 |
+| `yunxi` | 云希 | 男声 · 年轻 |
+
+默认生成全部三个音色；每期约 3.9 MB。
+只想出默认音色可用 `--voices yunyang` 显著减少构建时间与体积。
 
 ---
 

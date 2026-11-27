@@ -91,7 +91,7 @@ jobs:
             tts-v1-${{ steps.info.outputs.month }}-
             tts-v1-
 
-      - name: 生成语音播报（edge-tts，增量）
+      - name: 生成语音播报（edge-tts，多音色、增量）
         id: audio
         continue-on-error: true
         run: |
