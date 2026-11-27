@@ -1195,7 +1195,7 @@
           "public_livelihood": "低｜短期｜低：期货上市不直接改变居民电池或汽车价格。",
           "policy": "中｜中期｜中：关注交易所风控、交割标准和产业客户参与度。"
         },
-        "verification_status": "广州期货交易所公告确认上市时间及挂牌基准价；未将基准价误写成首日成交价。",
+        "verification_status": "广州期货交易所官方检索结果列出上市日期和挂牌基准价；本次执行中交易所公告页读取超时，未能直接复核页面正文，故该项来源链接检查标记为未完全通过。",
         "developing_details": "关注首日成交量、持仓量、交割规则执行和产业客户套保参与度。",
         "sources": [
           {
@@ -1433,6 +1433,6 @@
     "duplicate_check": true,
     "major_news_cross_verified": false,
     "unverified_claims_marked": true,
-    "source_urls_checked": true
+    "source_urls_checked": false
   }
 }
