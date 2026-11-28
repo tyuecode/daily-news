@@ -146,8 +146,8 @@
         "title": "俄乌空袭持续升级：乌方称俄军夜间发动大规模无人机袭击",
         "category": "国际政治与外交",
         "location": "乌克兰多地；俄罗斯多地",
-        "event_time": "2026-11-27夜间至11-28凌晨：乌方称俄军发动无人机袭击",
-        "publish_time": "美联社：2026-11-27",
+        "event_time": "2026-11-26 18:00至2026-11-27 08:00（基辅时间）：俄军夜间无人机袭击，乌方08:00公布初步拦截数据",
+        "publish_time": "乌克兰空军通报经Interfax报道：2026-11-27 09:20 Kyiv；Anadolu：2026-11-27；俄方国防部数据经NAMPA/Sputnik转发：2026-11-27",
         "summary": "乌克兰方面称俄军夜间发射155架无人机，其中110架被拦截，袭击波及27处地点，造成至少1人死亡、6人受伤。俄罗斯国防部则称拦截318架乌克兰无人机。双方战报均为交战方口径，尚不能完全独立核实。",
         "key_facts": [
           "乌方称拦截110架俄方无人机，27处地点遭袭。",
@@ -174,13 +174,25 @@
             "policy": "中｜中期｜中：中国企业应强化欧洲供应链和人员安全预案。"
           }
         },
-        "verification_status": "双方公布战果均为交战方口径；拦截率、受损地点和伤亡仍需独立核实。",
+        "verification_status": "乌方155架来袭、110架拦截及27处命中数据由乌克兰空军通报，经Interfax和Anadolu报道；伤亡数字来自乌总理通报。俄方318架数据来自俄罗斯国防部，经NAMPA/Sputnik转述。双方战报均为官方口径，独立核实有限。",
         "developing_details": [],
         "sources": [
           {
-            "organization": "美联社",
-            "title": "Zelenskyy urges US to put more pressure on Putin",
-            "url": "https://apnews.com/article/russia-ukraine-war-zelenskyy-trump-putin-d891149b4cbd6521b83096a32bd5e53d",
+            "organization": "Interfax-Ukraine（转述乌克兰空军）",
+            "title": "Air defense downs, suppresses 110 of 155 Russian UAVs, strikes recorded at 27 locations – Air Force",
+            "url": "https://en.interfax.com.ua/news/general/1243228-amp.html",
+            "publish_time": "2026-11-27 09:20 Kyiv"
+          },
+          {
+            "organization": "Anadolu Agency",
+            "title": "1 killed, 9 injured in Russia-Ukraine overnight strikes",
+            "url": "https://www.aa.com.tr/en/russia-ukraine-war/1-killed-9-injured-in-russia-ukraine-overnight-strikes/4140194",
+            "publish_time": "2026-11-27（页面日期）"
+          },
+          {
+            "organization": "NAMPA／Sputnik（转述俄罗斯国防部）",
+            "title": "Russian Air Defense Forces Downed 318 Ukrainian Drones Overnight - Defense Ministry",
+            "url": "https://www.nampa.org/text/23076357",
             "publish_time": "2026-11-27"
           }
         ],
