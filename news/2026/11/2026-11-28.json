@@ -1,0 +1,1059 @@
+{
+  "briefing_config": {
+    "title": "每日国际与中国热点新闻早报",
+    "news_date": "2026-11-28",
+    "generated_at": "2026-11-28 08:43:34",
+    "timezone": "Asia/Shanghai",
+    "coverage_period": "2026-11-27 08:00 至 2026-11-28 08:00（北京时间）。"
+  },
+  "daily_overview": {
+    "headline": "国务院释放资本市场改革与稳定信号，工业利润保持两位数增长但行业分化；俄乌空袭、萨赫勒安全风险和全球能源供应不确定性持续，AI重组与居民债务变化值得关注。",
+    "international_overview": "欧盟未能就对乌贷款和长期预算达成一致；尼日尔遭遇严重武装袭击，乌克兰能源和交通设施继续遭受空袭。布伦特原油结束三周连跌，美股在感恩节后缩短交易时段反弹。",
+    "china_overview": "国务院常务会议提出深化资本市场投融资改革；前10个月规上工业利润增长16%，电子和高技术制造业较强，但汽车、公用事业等行业利润承压。AI+制造和基础研究科普工作继续推进。",
+    "key_takeaways": [
+      "国务院资本市场政策信号推动A股反弹，但单日上涨不等于趋势反转。",
+      "工业利润保持两位数增长，电子和高技术制造业表现突出，行业分化仍明显。",
+      "布伦特原油全周上涨约3%，OPEC+会议是近期能源市场关键观察点。",
+      "俄乌空袭、尼日尔袭击和全球粮食热点增加，地缘与人道风险仍高。",
+      "AI正在推动制造业效率提升，也在改变企业岗位结构；居民债务变化需结合央行原始数据审慎判断。"
+    ]
+  },
+  "top_5_headlines": [
+    "CHN-20261128-01",
+    "CHN-20261128-03",
+    "INT-20261128-03",
+    "INT-20261128-04",
+    "INT-20261128-08"
+  ],
+  "international_news": {
+    "politics_and_diplomacy": [
+      {
+        "id": "INT-20261128-01",
+        "title": "欧盟峰会未能就乌克兰约450亿欧元贷款达成一致，谈判延至12月",
+        "category": "国际政治与外交",
+        "location": "比利时·布鲁塞尔",
+        "event_time": "2026-11-26至11-27：欧盟领导人预算谈判",
+        "publish_time": "AP：2026-11-27；卫报：2026-11-26 18:51 CET",
+        "summary": "欧盟领导人未能就长期预算及对乌约450亿欧元贷款达成一致。27国中24国支持，捷克、匈牙利和斯洛伐克仍需协调；下一轮谈判拟于12月17日至18日举行。",
+        "key_facts": [
+          "拟议贷款约450亿欧元，最终金额和分摊尚未确定。",
+          "未达成一致不等于欧盟已取消对乌援助。"
+        ],
+        "importance_score": 8.4,
+        "importance_reason": "影响乌克兰财政支持连续性，也暴露欧盟内部预算优先次序分歧。",
+        "impact_assessment": {
+          "level": "中高",
+          "period": "短中期",
+          "confidence": "高",
+          "details": "融资延迟增加乌克兰财政安排不确定性，但现有援助并未自动终止。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "低｜中期｜中：对中欧贸易无直接即时影响。",
+            "finance": "中｜短期｜中：欧洲政治分歧可能扰动风险偏好。",
+            "industry": "中｜中期｜中：欧洲防务预算可能改变产业投资优先级。",
+            "policy": "中｜中期｜中：中国需关注欧盟内部政策协调。"
+          }
+        },
+        "verification_status": "已确认欧盟峰会未达成一致；贷款金额、分摊和批准程序尚未最终确定。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "美联社",
+            "title": "EU budget talks stall, holding up a key Ukraine loan",
+            "url": "https://apnews.com/article/europe-budget-ukraine-2028-summit-costa-fd025046850b824b2e62def18408c6b6",
+            "publish_time": "2026-11-27"
+          },
+          {
+            "organization": "卫报",
+            "title": "EU leaders wrestle over Ukraine aid at budget talks",
+            "url": "https://www.theguardian.com/world/2026/nov/26/eu-leaders-braced-for-clashes-over-ukraine-aid-at-budget-talks",
+            "publish_time": "2026-11-26 18:51 CET"
+          }
+        ],
+        "follow_up": [
+          "跟踪12月欧盟预算谈判和贷款分摊方案。"
+        ],
+        "tags": [
+          "欧盟",
+          "乌克兰",
+          "预算",
+          "财政援助"
+        ]
+      },
+      {
+        "id": "INT-20261128-02",
+        "title": "尼日尔西部国民卫队据点遇袭，13名士兵死亡、20人受伤",
+        "category": "国际政治与外交",
+        "location": "尼日尔·蒂拉贝里大区·萨纳姆",
+        "event_time": "2026-11-26：袭击发生；国防部当晚公布伤亡，伊斯兰国于27日声称负责",
+        "publish_time": "路透社：2026-11-27 11:49 UTC；美联社：2026-11-27",
+        "summary": "尼日尔国防部称武装人员袭击西部萨纳姆一处国民卫队据点，造成13名士兵死亡、20人受伤。伊斯兰国随后声称负责，但责任声明仍需独立调查。",
+        "key_facts": [
+          "伤亡数字由尼日尔国防部公布，属初步统计。",
+          "伊斯兰国于27日声称负责。"
+        ],
+        "importance_score": 8.3,
+        "importance_reason": "显示萨赫勒地区安全压力持续，可能影响当地政局、贸易和人道援助。",
+        "impact_assessment": {
+          "level": "中",
+          "period": "中期",
+          "confidence": "中高",
+          "details": "事件主要影响西非安全与区域稳定，对中国的直接经济传导有限。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "低｜中期｜中：当地贸易和工程项目可能面临更高安保成本。",
+            "industry": "低｜中期｜中：当地矿业和基建项目需评估安全。",
+            "public_livelihood": "中｜中期｜中：当地居民安全与人道援助可能承压。",
+            "policy": "中｜中期｜中：中国在非项目需强化安保和领事保护预案。"
+          }
+        },
+        "verification_status": "国防部公布伤亡，伊斯兰国声称负责；袭击组织身份和完整经过仍待核实。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "路透社",
+            "title": "Thirteen soldiers killed in southwest Niger in attack claimed by Islamic State",
+            "url": "https://www.reuters.com/world/africa/suspected-militants-kill-13-soldiers-southwest-niger-ministry-says-2026-11-27/",
+            "publish_time": "2026-11-27 11:49 UTC"
+          },
+          {
+            "organization": "美联社",
+            "title": "Armed group kills 13 Niger National Guard members in Sanam",
+            "url": "https://apnews.com/article/niger-soldiers-killed-attack-fab7f1520d4fab4ec10b2575ddfdab03",
+            "publish_time": "2026-11-27"
+          }
+        ],
+        "follow_up": [
+          "关注尼日尔国防部后续通报和伤亡修订。"
+        ],
+        "tags": [
+          "尼日尔",
+          "萨赫勒",
+          "安全",
+          "反恐"
+        ]
+      },
+      {
+        "id": "INT-20261128-03",
+        "title": "俄乌空袭持续升级：乌方称俄军夜间发动大规模无人机袭击",
+        "category": "国际政治与外交",
+        "location": "乌克兰多地；俄罗斯多地",
+        "event_time": "2026-11-27夜间至11-28凌晨：乌方称俄军发动无人机袭击",
+        "publish_time": "美联社：2026-11-27",
+        "summary": "乌克兰方面称俄军夜间发射155架无人机，其中110架被拦截，袭击波及27处地点，造成至少1人死亡、6人受伤。俄罗斯国防部则称拦截318架乌克兰无人机。双方战报均为交战方口径，尚不能完全独立核实。",
+        "key_facts": [
+          "乌方称拦截110架俄方无人机，27处地点遭袭。",
+          "俄方另称拦截318架乌方无人机，双方口径不同。"
+        ],
+        "importance_score": 8.6,
+        "importance_reason": "能源和交通基础设施持续成为打击目标，冬季供电、供暖和民用物流风险上升。",
+        "impact_assessment": {
+          "level": "高",
+          "period": "短中期",
+          "confidence": "中",
+          "details": "若能源设施损毁扩大，可能增加欧洲能源市场波动，并影响黑海航运。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "中｜短期｜中：黑海航运、保险和欧洲物流成本可能波动。",
+            "finance": "中｜短期｜中：地缘风险可能推高避险需求。",
+            "energy": "中高｜短期｜中：区域能源设施受损会增加供应不确定性。",
+            "industry": "中｜中期｜中：欧洲能源成本可能影响中国对欧制造业订单。",
+            "public_livelihood": "中｜短期｜中：乌克兰居民供电、供暖和交通承压。",
+            "policy": "中｜中期｜中：中国企业应强化欧洲供应链和人员安全预案。"
+          }
+        },
+        "verification_status": "双方公布战果均为交战方口径；拦截率、受损地点和伤亡仍需独立核实。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "美联社",
+            "title": "Zelenskyy urges US to put more pressure on Putin",
+            "url": "https://apnews.com/article/russia-ukraine-war-zelenskyy-trump-putin-d891149b4cbd6521b83096a32bd5e53d",
+            "publish_time": "2026-11-27"
+          }
+        ],
+        "follow_up": [
+          "关注能源设施修复、停电范围和核安全通报。",
+          "继续区分双方官方战报与独立核实信息。"
+        ],
+        "tags": [
+          "俄乌冲突",
+          "无人机",
+          "能源设施",
+          "核安全"
+        ]
+      }
+    ],
+    "economy_and_markets": [
+      {
+        "id": "INT-20261128-04",
+        "title": "布伦特原油全周上涨约3%，OPEC+将于11月29日举行部长级会议",
+        "category": "全球经济与金融市场",
+        "location": "全球能源市场；维也纳",
+        "event_time": "2026-11-27：布伦特期货结算；OPEC+第42次部长级会议排定11月29日",
+        "publish_time": "路透社：2026-11-27 21:12 UTC；OPEC日程公告：2026-06-07、2026-10-04",
+        "summary": "布伦特原油周五下跌1.2%，结算于每桶95.44美元，但全周上涨约3%，结束此前连续三周下跌。OPEC官方已将第42次部长级会议安排在11月29日，具体时刻未公布。维持2027年第一季度产量目标的说法属于市场预期，并非官方决定。",
+        "key_facts": [
+          "布伦特结算价95.44美元/桶，周五跌1.2%，全周涨约3%。",
+          "OPEC确认第42次部长级会议为11月29日；JMMC第69次会议亦排在同日。"
+        ],
+        "importance_score": 8.6,
+        "importance_reason": "原油供应风险溢价回升；中国是全球主要原油进口国，价格变化具有较强外溢性。",
+        "impact_assessment": {
+          "level": "高",
+          "period": "短期",
+          "confidence": "中高",
+          "details": "原油进口成本对中国炼化、交通和化工行业有直接影响，最终传导取决于供应风险是否持续。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "中｜短期｜中：油价高位可能抬升进口账单和海运保险。",
+            "finance": "中｜短期｜中：能源价格可能影响人民币、债券和行业轮动。",
+            "energy": "高｜短期｜高：油价上涨可能增加进口成本。",
+            "industry": "高｜短中期｜中：炼化、航空、航运、化工和物流成本敏感。",
+            "employment": "中｜中期｜中：能源成本持续上行可能压缩交通和制造企业利润。",
+            "public_livelihood": "中｜短期｜中：燃油和物流成本存在间接传导可能。",
+            "policy": "中｜短期｜中：中国需关注战略储备、进口来源和运输通道安全。"
+          }
+        },
+        "verification_status": "油价结算和周涨幅已由路透社报道；OPEC官方确认会议日期。产量目标预期不是官方决议。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "路透社",
+            "title": "Oil notches first weekly gain in November on supply fears",
+            "url": "https://www.reuters.com/business/energy/brent-trades-near-months-high-mideast-conflict-threatens-supply-2026-11-27/",
+            "publish_time": "2026-11-27 21:12 UTC"
+          },
+          {
+            "organization": "OPEC",
+            "title": "41st OPEC and non-OPEC Ministerial Meeting",
+            "url": "https://www.opec.org/pr-detail/1783605-7-june-2026.html",
+            "publish_time": "2026-06-07"
+          },
+          {
+            "organization": "OPEC",
+            "title": "68th Meeting of the Joint Ministerial Monitoring Committee",
+            "url": "https://www.opec.org/pr-detail/617-4-october-2026.html",
+            "publish_time": "2026-10-04"
+          }
+        ],
+        "follow_up": [
+          "关注11月29日OPEC+正式公报和2027年产量基准。"
+        ],
+        "tags": [
+          "原油",
+          "OPEC+",
+          "能源安全",
+          "大宗商品"
+        ]
+      },
+      {
+        "id": "INT-20261128-05",
+        "title": "感恩节后美股缩短交易时段反弹，纳指单日上涨2.3%",
+        "category": "全球经济与金融市场",
+        "location": "美国；全球股票市场",
+        "event_time": "2026-11-27：美国感恩节后缩短交易时段收盘",
+        "publish_time": "美联社：2026-11-27收盘后；路透社转载：2026-11-27 10:57 EST",
+        "summary": "美国三大股指周五全线上涨：标普500上涨1.6%，道指上涨1.2%，纳斯达克上涨2.3%。标普500全周上涨5.6%。亚洲和欧洲股市也出现反弹，但交易日缩短、流动性较低，市场仍未消除对AI投资回报和高估值的疑虑。",
+        "key_facts": [
+          "标普500单日上涨1.6%，道指上涨1.2%，纳指上涨2.3%。",
+          "标普500全周上涨5.6%，纳指全周上涨6.7%。"
+        ],
+        "importance_score": 8.1,
+        "importance_reason": "市场反弹缓解短期风险偏好压力，但不足以证明AI估值和全球增长担忧已经消失。",
+        "impact_assessment": {
+          "level": "中",
+          "period": "短期",
+          "confidence": "高",
+          "details": "股市反弹可改善全球风险偏好，但短期走势仍受利率、AI盈利预期和地缘风险影响。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "中｜短期｜中：风险偏好改善可能支持出口链估值。",
+            "finance": "中高｜短期｜中：海外科技股波动会传导至港股和A股成长板块。",
+            "technology": "中｜中期｜中：AI股反弹未消除算力资本开支回报疑虑。",
+            "industry": "中｜中期｜中：半导体、云计算和数据中心板块可能随风险偏好波动。",
+            "employment": "中｜中期｜中：全球科技企业成本重组可能持续。",
+            "public_livelihood": "低｜短期｜中：对居民消费和物价暂无直接影响。"
+          }
+        },
+        "verification_status": "收盘数据由美联社公布，路透社报道全球市场反弹；短期反弹不等于趋势反转。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "美联社",
+            "title": "How major US stock indexes fared Friday 11/27/2026",
+            "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-04dab6079cf7f3dfe7285a3cc1f240a2",
+            "publish_time": "2026-11-27收盘后"
+          },
+          {
+            "organization": "路透社（MarketScreener转载）",
+            "title": "Global markets rally as end of bruising month approaches",
+            "url": "https://www.marketscreener.com/news/global-markets-rally-as-end-of-bruising-month-approaches-ce7851d9de8df224/",
+            "publish_time": "2026-11-27 10:57 EST"
+          }
+        ],
+        "follow_up": [
+          "观察AI板块成交量、盈利预期和美债收益率。"
+        ],
+        "tags": [
+          "美股",
+          "全球市场",
+          "AI估值",
+          "风险偏好"
+        ]
+      }
+    ],
+    "technology_and_ai": [
+      {
+        "id": "INT-20261128-06",
+        "title": "路透社：SAP考虑因AI业务重组裁减至少一万人，企业尚未确认",
+        "category": "国际科技与人工智能",
+        "location": "德国；全球企业软件行业",
+        "event_time": "2026-11-27：路透社援引两名知情人士报道，相关讨论尚处计划阶段",
+        "publish_time": "路透社：2026-11-27 09:17 UTC",
+        "summary": "路透社援引两名知情人士称，德国软件企业SAP正在考虑裁减相当数量岗位；彭博此前报道其可能至少裁减一万人，理由与AI驱动的业务重组有关。最终规模和时间表均未确定。",
+        "key_facts": [
+          "至少一万人是媒体报道的拟议规模，并非已公布裁员决定。",
+          "SAP尚未正式确认具体裁员人数和实施时间。"
+        ],
+        "importance_score": 7.7,
+        "importance_reason": "大型软件企业可能通过AI重组岗位结构，反映AI商业化同时改变业务流程和就业需求。",
+        "impact_assessment": {
+          "level": "中",
+          "period": "中长期",
+          "confidence": "中",
+          "details": "若AI提高企业软件开发和服务效率，岗位需求可能重新分配；目前不能将拟议裁员等同于行业普遍裁员。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "finance": "中｜短期｜中：全球软件股可能重新评估AI效率和人力成本。",
+            "technology": "高｜中长期｜中：企业AI应用可能重构软件工程、客服和咨询岗位。",
+            "industry": "中｜中期｜中：国内软件服务商面临AI产品化和交付效率竞争。",
+            "employment": "高｜中期｜中：技术、运营和服务岗位技能要求可能变化。",
+            "public_livelihood": "中｜中期｜中：AI生产率收益与就业转型成本可能并存。",
+            "policy": "中｜中期｜中：中国需完善职业培训和劳动保障。"
+          }
+        },
+        "verification_status": "媒体报道，未获企业正式确认；人数、岗位范围和时间表均未定。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "路透社",
+            "title": "Software giant SAP weighs major job cuts as AI transforms sector, sources say",
+            "url": "https://www.reuters.com/business/world-at-work/sap-seeks-cut-sizeable-number-jobs-sources-say-2026-11-27/",
+            "publish_time": "2026-11-27 09:17 UTC"
+          }
+        ],
+        "follow_up": [
+          "等待SAP正式公告和员工代表机构回应。"
+        ],
+        "tags": [
+          "SAP",
+          "人工智能",
+          "企业软件",
+          "就业转型"
+        ]
+      }
+    ],
+    "major_social_events": [
+      {
+        "id": "INT-20261128-07",
+        "title": "英国劳动与养老金部遭遇严重网络安全事件，多项线上服务下线",
+        "category": "国际重大社会事件",
+        "location": "英国·伦敦",
+        "event_time": "2026-11-26晚发现异常活动并下线服务；11月27日部长确认事件严重",
+        "publish_time": "路透社：2026-11-27 09:00 UTC；卫报：2026-11-27持续更新",
+        "summary": "英国劳动与养老金部因网络安全事件暂停部分线上服务。部长表示目前没有证据显示个人数据遭泄露，养老金和福利定期付款继续正常进行；事件原因和是否涉及恶意攻击仍在调查。",
+        "key_facts": [
+          "部分福利申请、养老金查询和线上账户功能受影响。",
+          "官方称常规养老金与福利付款不受影响。"
+        ],
+        "importance_score": 7.8,
+        "importance_reason": "公共福利系统涉及敏感个人与财务数据，凸显政府关键服务网络韧性问题。",
+        "impact_assessment": {
+          "level": "低",
+          "period": "短期",
+          "confidence": "高",
+          "details": "事件对英国居民影响直接，对中国主要提供公共部门网络安全和业务连续性参考。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "technology": "中｜中期｜中：关键系统隔离、备份和应急切换值得关注。",
+            "industry": "低｜中期｜中：网络安全服务需求可能增加。",
+            "public_livelihood": "中｜短期｜高：线上办理暂时受阻，但定期付款不受影响。",
+            "policy": "中｜中期｜中：中国公共服务平台应重视备份和事件通报。"
+          }
+        },
+        "verification_status": "服务下线和调查已确认；目前无个人数据泄露证据，是否为恶意攻击尚未确认。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "路透社",
+            "title": "UK pensions department hit by 'serious' cyber incident, minister says",
+            "url": "https://www.reuters.com/legal/litigation/uk-pensions-department-hit-by-cyber-incident-2026-11-27/",
+            "publish_time": "2026-11-27 09:00 UTC"
+          },
+          {
+            "organization": "卫报",
+            "title": "DWP 'cyber incident' knocks almost all pensions and benefits systems offline",
+            "url": "https://www.theguardian.com/politics/2026/nov/27/dwp-cyber-incident-pensions-benefits-systems-offline",
+            "publish_time": "2026-11-27"
+          }
+        ],
+        "follow_up": [
+          "关注线上服务恢复和数据安全调查。",
+          "警惕借系统故障索要银行信息或验证码的诈骗。"
+        ],
+        "tags": [
+          "英国",
+          "网络安全",
+          "养老金",
+          "公共服务"
+        ]
+      },
+      {
+        "id": "INT-20261128-08",
+        "title": "联合国粮食机构警告全球饥饿热点增至16个，厄尔尼诺与冲突叠加",
+        "category": "国际重大社会事件",
+        "location": "非洲南部、中美洲、东非、中东",
+        "event_time": "2026-11-27：FAO与WFP发布2026年12月至2027年5月粮食安全预警",
+        "publish_time": "FAO/WFP：2026-11-27；路透社：2026-11-27",
+        "summary": "联合国粮农组织和世界粮食计划署将全球粮食安全热点列为16个，高于6月的13个。南部非洲和中美洲干旱走廊受厄尔尼诺影响；苏丹、南苏丹、索马里、尼日利亚部分地区和也门仍属最高关注区域。",
+        "key_facts": [
+          "16个热点较6月增加3个。",
+          "报告关注期为2026年12月至2027年5月。",
+          "冲突是16个热点中12个地区粮食危机的重要驱动因素。"
+        ],
+        "importance_score": 8.3,
+        "importance_reason": "冲突、气候和援助资金下降叠加，可能加剧迁徙和地区不稳定。",
+        "impact_assessment": {
+          "level": "中",
+          "period": "中期",
+          "confidence": "高",
+          "details": "中国粮食供给总体不由这些地区决定，但全球粮食、化肥和运输市场的气候冲击仍需关注。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "中｜中期｜中：农产品、化肥和航运路线可能受区域气候与冲突影响。",
+            "energy": "中｜中期｜中：厄尔尼诺可能影响水电和农业灌溉。",
+            "industry": "中｜中期｜中：化肥、粮食加工和物流供应链可能出现区域需求变化。",
+            "public_livelihood": "中｜中期｜中：粮价波动可能间接影响食品成本，但不代表国内必然涨价。",
+            "policy": "中｜中期｜中：中国可加强粮食储备、进口多元化和农业气象监测。"
+          }
+        },
+        "verification_status": "FAO与WFP联合报告已发布；未来饥饿人口规模属于预测。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "联合国粮农组织",
+            "title": "El Niño adds new hunger hotspots as conflict continues to drive risk of famine, warn FAO and WFP",
+            "url": "https://www.fao.org/newsroom/detail/el-nino-adds-new-hunger-hotspots-as-conflict-continues-to-drive-risk-of-famine-warn-fao-and-wfp/en",
+            "publish_time": "2026-11-27"
+          },
+          {
+            "organization": "路透社",
+            "title": "UN warns famine risks rising as hunger hotspots increase",
+            "url": "https://www.reuters.com/business/environment/un-warns-famine-risks-rising-hunger-hotspots-increase-2026-11-27/",
+            "publish_time": "2026-11-27"
+          },
+          {
+            "organization": "世界粮食计划署",
+            "title": "Hunger Hotspots FAO-WFP early warnings: December 2026 to May 2027 outlook",
+            "url": "https://www.wfp.org/publications/hunger-hotspots-fao-wfp-early-warnings-acute-food-insecurity-december-2026-may-2027",
+            "publish_time": "2026-11-27"
+          }
+        ],
+        "follow_up": [
+          "关注厄尔尼诺强度、主要粮食产区降雨和人道援助缺口。"
+        ],
+        "tags": [
+          "粮食安全",
+          "厄尔尼诺",
+          "人道主义",
+          "联合国"
+        ]
+      },
+      {
+        "id": "INT-20261128-09",
+        "title": "西班牙加那利群岛附近移民船发现至少8具遗体，6人重伤送医",
+        "category": "国际重大社会事件",
+        "location": "西班牙·加那利群岛·埃尔耶罗岛附近",
+        "event_time": "2026-11-27：救援部门在埃尔耶罗岛以南约39海里处救援载有约100人的船只",
+        "publish_time": "路透社：2026-11-27 11:43 UTC；AFP：2026-11-27",
+        "summary": "西班牙海上救援部门称，一艘载有约100人的移民船获救时，船上发现8至10具遗体，6人被直升机送医且伤势严重。另有84名幸存者从另一艘船只在当地港口上岸。",
+        "key_facts": [
+          "救援部门称发现8至10具遗体，具体人数待确认。",
+          "6人重伤送医，另有84名幸存者来自另一艘船。"
+        ],
+        "importance_score": 8,
+        "importance_reason": "反映西非至加那利群岛大西洋移民航线的人道风险，也可能影响西班牙及欧盟移民政策讨论。",
+        "impact_assessment": {
+          "level": "低",
+          "period": "中期",
+          "confidence": "中",
+          "details": "对中国经济直接影响有限，主要是欧洲政治议题和人道主义风险观察。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "public_livelihood": "中｜短期｜高：涉及遇难者身份、幸存者医疗与安置。",
+            "policy": "中｜中期｜中：移民议题可能影响西班牙选后政策和欧盟边境治理。"
+          }
+        },
+        "verification_status": "救援部门公布初步数字，遗体数量仍为8至10具；国籍、出发地和事故原因尚未全部确认。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "路透社",
+            "title": "At least eight found dead on migrant boat off Spain's Canary Islands",
+            "url": "https://www.reuters.com/world/least-eight-found-dead-migrant-boat-off-spains-canary-islands-2026-11-27/",
+            "publish_time": "2026-11-27"
+          },
+          {
+            "organization": "AFP转载",
+            "title": "At least 8 migrants die off Spain's Canary Islands",
+            "url": "https://www.thelocal.es/20261127/at-least-8-migrants-die-off-spains-canary-islands",
+            "publish_time": "2026-11-27 CET"
+          }
+        ],
+        "follow_up": [
+          "关注遇难人数和幸存者安置的官方更新。"
+        ],
+        "tags": [
+          "西班牙",
+          "加那利群岛",
+          "移民",
+          "人道救援"
+        ]
+      }
+    ]
+  },
+  "china_news": {
+    "policy_and_government": [
+      {
+        "id": "CHN-20261128-01",
+        "title": "国务院部署深化资本市场投融资改革，中央汇金稳定市场功能获强调",
+        "category": "中国政策与政务",
+        "location": "中国·北京",
+        "event_time": "2026-11-27：国务院常务会议召开并研究资本市场投融资改革",
+        "publish_time": "中国政府网：2026-11-27 13:08；路透社：2026-11-27 06:24 UTC",
+        "summary": "国务院常务会议提出完善市场稳定机制、研究新措施、鼓励分红回购，并优化中央汇金类稳定基金功能，引导保险资金、企业年金和社保基金等中长期资金入市。消息后沪指上涨3.7%，沪深300上涨4.2%，科创50上涨约15%。",
+        "key_facts": [
+          "官方提出发挥国家队资金稳定市场作用并优化中央汇金功能。",
+          "沪指上涨3.7%，沪深300上涨4.2%，科创50上涨约15%。",
+          "新增资金规模和具体实施时间尚未公布。"
+        ],
+        "importance_score": 9.2,
+        "importance_reason": "这是当日中国金融市场最重要的政策信号，影响股市流动性、投资者预期和中长期资金入市安排。",
+        "impact_assessment": {
+          "level": "高",
+          "period": "短中期",
+          "confidence": "高",
+          "details": "政策方向已明确，但市场持续性取决于措施落地、企业盈利和居民消费修复。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "中｜中期｜中：融资改善可能帮助部分企业，但不能替代订单增长。",
+            "finance": "高｜短期｜高：政策信号推动A股反弹，持续性需看后续措施和盈利。",
+            "technology": "中高｜中期｜中：科技创新板块可能受风险偏好支持。",
+            "industry": "中｜中期｜中：融资功能改善有利于研发和设备投资。",
+            "employment": "中｜中期｜中：融资环境改善可能支持企业扩张。",
+            "public_livelihood": "中｜短期｜中：股市收益不等同于居民收入普遍增加。",
+            "policy": "高｜中期｜高：关注中长期资金入市、分红回购制度和投资者保护。"
+          }
+        },
+        "verification_status": "国务院会议内容由政府网发布，路透社独立报道市场反应；新增资金规模和政策时间表未公布。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "中国政府网／新华社",
+            "title": "Chinese premier chairs State Council executive meeting",
+            "url": "https://english.www.gov.cn/news/202611/27/content_WS6b091065c6d00ca5f9a0ea19.html",
+            "publish_time": "2026-11-27 13:08 北京时间"
+          },
+          {
+            "organization": "路透社",
+            "title": "China stocks surge most in two years as Beijing vows stronger market support",
+            "url": "https://www.reuters.com/markets/europe/china-stocks-shoot-up-after-beijing-vows-support-2026-11-27/",
+            "publish_time": "2026-11-27 06:24 UTC"
+          }
+        ],
+        "follow_up": [
+          "跟踪中央汇金、证监会和交易所后续政策。",
+          "观察反弹成交量、行业分化和中长期资金流入。"
+        ],
+        "tags": [
+          "资本市场",
+          "中央汇金",
+          "中长期资金",
+          "A股"
+        ]
+      },
+      {
+        "id": "CHN-20261128-02",
+        "title": "国务院常务会议审议通过安全生产事故隐患排查整治条例草案",
+        "category": "中国政策与政务",
+        "location": "中国·北京",
+        "event_time": "2026-11-27：国务院常务会议审议并原则通过相关条例草案",
+        "publish_time": "中国政府网新华社稿：2026-11-27 13:08 北京时间",
+        "summary": "国务院常务会议听取国家标准体系建设情况报告，并审议通过安全生产事故隐患排查整治条例草案。会议强调围绕重点行业领域排查隐患、完善标准体系，坚决防范重特大事故。",
+        "key_facts": [
+          "会议审议通过的是条例草案，后续仍需履行法定程序。",
+          "会议要求围绕重点行业排查整治安全隐患。"
+        ],
+        "importance_score": 7.8,
+        "importance_reason": "涉及工业、矿山、建筑、交通等重点行业安全治理，可能影响企业合规成本和事故预防体系。",
+        "impact_assessment": {
+          "level": "中高",
+          "period": "中期",
+          "confidence": "高",
+          "details": "政策方向已公开，具体义务、处罚和实施日期需以正式文本为准。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "technology": "中｜中期｜中：工业互联网、传感器和智能巡检可能成为治理工具。",
+            "energy": "中｜中期｜中：能源、化工和矿山企业安全检查可能强化。",
+            "industry": "高｜中期｜高：重点行业需关注隐患排查和整改闭环。",
+            "employment": "中｜中期｜中：安全培训和巡检岗位需求可能增加。",
+            "public_livelihood": "中高｜长期｜高：若制度落实，可降低重大生产事故风险。",
+            "policy": "高｜中期｜高：正式条例文本、施行日期和执法细则是重点。"
+          }
+        },
+        "verification_status": "已确认国务院会议审议通过草案；正式文本、施行日期和具体法律责任尚未公布。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "中国政府网／新华社",
+            "title": "Chinese premier chairs State Council executive meeting",
+            "url": "https://english.www.gov.cn/news/202611/27/content_WS6b091065c6d00ca5f9a0ea19.html",
+            "publish_time": "2026-11-27 13:08 北京时间"
+          }
+        ],
+        "follow_up": [
+          "等待国务院正式公布条例文本。",
+          "关注重点行业配套标准和执法安排。"
+        ],
+        "tags": [
+          "安全生产",
+          "国务院常务会议",
+          "国家标准",
+          "企业合规"
+        ]
+      },
+      {
+        "id": "CHN-20261128-05",
+        "title": "李强将于12月2日在厦门举行“1+10”对话会，十家国际经济组织负责人参加",
+        "category": "中国政策与政务",
+        "location": "中国·福建厦门",
+        "event_time": "计划于2026-12-02上午举行；11月27日外交部公布安排",
+        "publish_time": "新华社：2026-11-27 16:10:49；中国政府网：2026-11-27 18:25",
+        "summary": "国务院总理李强将于12月2日上午在厦门与新开发银行、世界银行、IMF、WTO等十家国际经济组织负责人举行“1+10”对话会，主题为创新推动持续增长、开放促进共同发展。",
+        "key_facts": [
+          "会议地点厦门，时间为12月2日上午。",
+          "世界银行、IMF、WTO、NDB和AIIB等十家机构负责人参加。"
+        ],
+        "importance_score": 7.7,
+        "importance_reason": "涉及中国与多边经济机构的高层沟通，可能释放贸易、投资和全球治理合作信号。",
+        "impact_assessment": {
+          "level": "中高",
+          "period": "短中期",
+          "confidence": "高",
+          "details": "会议日期、地点和参与机构已公开，具体议题成果尚未发生。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "中高｜中期｜中：主题涉及开放和共同发展。",
+            "finance": "中｜短期｜中：国际机构表态可能影响投资者预期。",
+            "technology": "中｜中期｜中：创新合作可能涉及数字经济和绿色技术。",
+            "industry": "中｜中期｜中：多边机构合作可形成产业投资机会。",
+            "policy": "中高｜短期｜高：12月2日会议是近期重要经济外交日程。"
+          }
+        },
+        "verification_status": "外交部已公布会议日期、地点、主题和参与机构；具体议程和成果未公布。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "新华社",
+            "title": "李强将与全球主要国际经济组织负责人举行“1+10”对话会",
+            "url": "https://www.news.cn/20261127/0dd1228eae4d4395b24c14608605f057/c.html",
+            "publish_time": "2026-11-27 16:10:49 北京时间"
+          },
+          {
+            "organization": "中国政府网／新华社",
+            "title": "Chinese premier to hold '1+10' dialogue with heads of major international economic organizations",
+            "url": "https://english.www.gov.cn/news/202611/27/content_WS6b095ab5c6d00ca5f9a0ea30.html",
+            "publish_time": "2026-11-27 18:25 北京时间"
+          }
+        ],
+        "follow_up": [
+          "关注12月2日会议议程、讲话和会后成果。"
+        ],
+        "tags": [
+          "1+10对话",
+          "多边合作",
+          "国际经济组织",
+          "开放"
+        ]
+      }
+    ],
+    "economy_and_markets": [
+      {
+        "id": "CHN-20261128-03",
+        "title": "前10个月规上工业企业利润增长16%，电子和高技术制造业表现突出",
+        "category": "中国经济与金融市场",
+        "location": "中国·全国",
+        "event_time": "统计区间：2026年1—10月；国家统计局于11月27日09:30发布",
+        "publish_time": "国家统计局：2026-11-27 09:30 北京时间",
+        "summary": "国家统计局数据显示，1—10月全国规模以上工业企业利润总额6.73736万亿元，同比增长16.0%；10月单月增长20.1%。电子行业利润增长1倍，高技术制造业利润增长50.9%；汽车制造业利润下降26.0%，公用事业利润下降14.8%。",
+        "key_facts": [
+          "1—10月规上工业企业利润67373.6亿元，同比增长16.0%。",
+          "10月单月利润同比增长20.1%。",
+          "高技术制造业利润增长50.9%，汽车制造业利润下降26.0%。"
+        ],
+        "importance_score": 8.8,
+        "importance_reason": "工业利润保持两位数增长，但行业分化、应收账款和库存显示经营质量仍需观察。",
+        "impact_assessment": {
+          "level": "高",
+          "period": "中期",
+          "confidence": "高",
+          "details": "官方统计显示新动能行业支撑较强，但汽车、传统制造和公用事业利润承压。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "中｜中期｜中：电子和高技术制造利润较快增长。",
+            "finance": "中｜短期｜中：利润改善可能支持制造业板块预期。",
+            "technology": "高｜中期｜高：电子行业利润增长与AI算力和存储芯片需求相联系。",
+            "energy": "中｜中期｜中：采矿利润增长、公用事业利润下降。",
+            "industry": "高｜中期｜高：高技术制造利润增速显著高于工业整体。",
+            "employment": "中｜中期｜中：高技术制造扩张有利于技术岗位。",
+            "public_livelihood": "中｜中期｜中：企业利润改善有助于投资和就业，但不代表居民收入同步增长。",
+            "policy": "中｜中期｜高：关注扩大内需、账款压力和传统行业转型。"
+          }
+        },
+        "verification_status": "国家统计局原始数据和统计局解读均已查阅；利润增长不代表所有行业和企业同步改善。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "国家统计局",
+            "title": "2026年1—10月份全国规模以上工业企业利润增长16.0%",
+            "url": "https://www.stats.gov.cn/sj/zxfbhjd/202611/t20261127_1965949.html",
+            "publish_time": "2026-11-27 09:30 北京时间"
+          },
+          {
+            "organization": "国家统计局",
+            "title": "国家统计局工业司首席统计师解读2026年1—10月份工业企业利润数据",
+            "url": "https://www.stats.gov.cn/sj/sjjd/202611/t20261127_1965950.html",
+            "publish_time": "2026-11-27 09:30 北京时间"
+          }
+        ],
+        "follow_up": [
+          "关注应收账款、库存和行业利润差异。"
+        ],
+        "tags": [
+          "工业利润",
+          "高技术制造",
+          "电子行业",
+          "企业经营"
+        ]
+      },
+      {
+        "id": "CHN-20261128-07",
+        "title": "FT报道中国家庭持续偿还消费债务，提示内需修复仍面临信心约束",
+        "category": "中国经济与金融市场",
+        "location": "中国·全国",
+        "event_time": "数据覆盖2026年1—9月及截至10月；并非11月27日新发布的官方统计",
+        "publish_time": "金融时报：2026-11-27（全文受订阅限制）",
+        "summary": "金融时报根据中国人民银行数据撰文称，2026年前三季度居民消费贷款（含房贷）余额减少约1.6万亿元，降至56.6万亿元；房贷余额较2023年峰值低约8%。该报道是对既有央行数据的媒体分析，不是当日新发布的官方统计，全文受付费墙限制。",
+        "key_facts": [
+          "FT援引央行数据称，前三季度居民消费贷款余额减少约1.6万亿元。",
+          "报道所列余额约56.6万亿元，家庭总债务较2025年6月峰值减少约2.2万亿元。"
+        ],
+        "importance_score": 8,
+        "importance_reason": "居民减少借贷可能反映谨慎储蓄、房地产调整和收入预期偏弱，影响消费与信贷需求判断。",
+        "impact_assessment": {
+          "level": "中高",
+          "period": "中期",
+          "confidence": "中",
+          "details": "该报道提示居民部门去杠杆现象，但需结合央行月度金融统计、居民存款和消费数据判断。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "中｜中期｜中：消费意愿偏弱可能影响可选消费和进口需求。",
+            "finance": "中高｜中期｜中：居民贷款需求偏弱可能限制银行零售贷款增长。",
+            "industry": "中｜中期｜中：消费需求偏弱会影响家电、汽车和服务业订单。",
+            "employment": "中｜中期｜中：相关行业用工恢复可能较慢。",
+            "public_livelihood": "高｜中期｜中：债务下降需结合收入、资产和储蓄综合判断。",
+            "policy": "中高｜中期｜中：政策需兼顾居民收入预期、住房稳定和消费信贷风险。"
+          }
+        },
+        "verification_status": "媒体分析；FT全文受订阅限制，数据未逐项从央行原始统计表独立复核，不是当日官方发布。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "金融时报",
+            "title": "Chinese households shed billions in consumer debt",
+            "url": "https://www.ft.com/content/8c5e0298-58f0-47e9-a843-513178d9fa2e",
+            "publish_time": "2026-11-27（全文订阅限制）"
+          }
+        ],
+        "follow_up": [
+          "对照央行金融统计、居民存款和社零数据复核。"
+        ],
+        "tags": [
+          "居民债务",
+          "消费",
+          "房地产",
+          "内需"
+        ]
+      }
+    ],
+    "technology_and_ai": [
+      {
+        "id": "CHN-20261128-04",
+        "title": "“人工智能+制造”行动推进至20个行业，已形成1000多个应用场景",
+        "category": "中国科技与人工智能",
+        "location": "中国·钢铁、汽车、医药等制造行业",
+        "event_time": "专项行动自2026年以来持续推进；本次进展截至11月27日",
+        "publish_time": "中央网信办转载央视网：2026-11-27 10:02 北京时间",
+        "summary": "“人工智能+制造”专项行动已在20个行业打造1000多个应用场景，推广100余项工业智能体，并布局30多个国家人工智能应用中试基地。到2027年计划打造100个工业领域高质量数据集。",
+        "key_facts": [
+          "20个行业已打造1000多个应用场景。",
+          "已推广100余项工业智能体，布局30多个国家AI应用中试基地。",
+          "到2027年计划建设100个工业领域高质量数据集。"
+        ],
+        "importance_score": 8.2,
+        "importance_reason": "显示中国AI应用正从单点生产环节向研发设计、质检运维和管理流程扩展。",
+        "impact_assessment": {
+          "level": "高",
+          "period": "中长期",
+          "confidence": "中高",
+          "details": "官方披露应用场景与试点数量，但各行业投资回报和规模化复制仍需企业数据验证。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "trade": "中｜中期｜中：制造效率提升有助于出口质量和交付能力。",
+            "finance": "中｜短期｜中：工业AI应用可能改善企业预期，但商业回报需验证。",
+            "technology": "高｜中长期｜高：工业智能体、行业数据集和中试基地是AI产业化基础。",
+            "energy": "中｜中期｜中：AI优化生产能耗，也会增加算力用电。",
+            "industry": "高｜中长期｜高：研发、生产、质检和运维流程可能被重构。",
+            "employment": "中｜中长期｜中：数据治理和工程复合岗位可能增加。",
+            "public_livelihood": "中｜中期｜中：效率提升有望改善质量和成本，就业转型需要培训。",
+            "policy": "中高｜中期｜高：关注数据集质量、工业数据安全和中试基地机制。"
+          }
+        },
+        "verification_status": "中央网信办网站转载央视网报道；部分企业案例经济效益数字尚无独立审计材料。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "中央网信办（转载央视网）",
+            "title": "我国加速推进“人工智能+制造”专项行动",
+            "url": "https://www.cac.gov.cn/2026-11/27/c_1797537974348256.htm",
+            "publish_time": "2026-11-27 10:02 北京时间"
+          }
+        ],
+        "follow_up": [
+          "关注2027年数据集和行业大模型建设进展。",
+          "区分试点数量与规模化商业收入。"
+        ],
+        "tags": [
+          "人工智能",
+          "智能制造",
+          "工业智能体",
+          "行业数据集"
+        ]
+      }
+    ],
+    "society_and_livelihood": [
+      {
+        "id": "CHN-20261128-08",
+        "title": "中国发布基础研究科普工作方案，强化青少年科学兴趣与创新人才培养",
+        "category": "中国社会与民生",
+        "location": "中国·全国",
+        "event_time": "2026-11-27：官方披露方案已发布，具体印发日期未说明",
+        "publish_time": "中国政府网新华社稿：2026-11-27 21:47 北京时间",
+        "summary": "中国科协、教育部、科技部、中国科学院和国家自然科学基金委员会联合印发基础研究科普工作方案，提出增加高质量科普内容，通过互动展览、科技馆体验和主题活动培养青少年科学兴趣与探索能力。",
+        "key_facts": [
+          "方案由五家机构联合印发。",
+          "重点包括高质量科普内容、青少年科学兴趣和基础研究人才培养。"
+        ],
+        "importance_score": 7.1,
+        "importance_reason": "基础研究人才培养周期长，科普和早期兴趣培养是创新人才储备的一部分。",
+        "impact_assessment": {
+          "level": "中",
+          "period": "长期",
+          "confidence": "高",
+          "details": "短期不直接改变科研产出，但有助于改善青少年科学素养和基础研究人才储备。"
+        },
+        "china_impact_analysis": {
+          "degree": "中",
+          "horizon": "短中期",
+          "confidence": "中",
+          "channels": {
+            "technology": "中｜长期｜中：科学素养是原始创新的长期基础。",
+            "industry": "中｜长期｜中：未来人才有助于高端制造和原创技术供给。",
+            "employment": "中｜长期｜中：可能改善科研、教育和科技传播人才储备。",
+            "public_livelihood": "中｜长期｜高：青少年科学教育资源和参与机会值得关注。",
+            "policy": "中｜长期｜高：关注地方教育、科技馆和科研机构的实施项目。"
+          }
+        },
+        "verification_status": "政府网新华社报道方案联合发布机构和主要措施；执行预算、覆盖人数和考核指标未披露。",
+        "developing_details": [],
+        "sources": [
+          {
+            "organization": "中国政府网／新华社",
+            "title": "China unveils plan to strengthen science popularization for basic research",
+            "url": "https://english.www.gov.cn/news/202611/27/content_WS6b098a0dc6d00ca5f9a0ea40.html",
+            "publish_time": "2026-11-27 21:47 北京时间"
+          }
+        ],
+        "follow_up": [
+          "关注地方项目、科技馆活动和青少年基础研究实践。"
+        ],
+        "tags": [
+          "基础研究",
+          "科学普及",
+          "教育",
+          "人才培养"
+        ]
+      }
+    ]
+  },
+  "china_impact_dashboard": {
+    "trade": "中｜短中期｜中：全球地缘风险与能源运输成本可能增加部分进口和物流费用；工业利润改善对出口供给有支撑。",
+    "finance": "高｜短期｜中高：国务院资本市场政策信号推动A股反弹；持续性取决于政策落地、企业盈利和中长期资金配置。",
+    "technology": "高｜中长期｜中高：中国AI应用向制造业扩展，工业数据集和中试基地是关键；全球AI重组也提示岗位和商业模式变化。",
+    "energy": "高｜短期｜中高：布伦特全周上涨约3%，中东供应风险与OPEC+产量决策可能影响中国原油进口成本。",
+    "employment": "中｜中期｜中：AI提高制造效率的同时改变岗位结构；传统行业利润分化要求加强技能转换。",
+    "public_livelihood": "中｜中期｜中：居民债务下降的媒体分析提示消费信心仍需观察；能源和粮食价格存在外溢风险，但不代表国内生活成本必然上涨。",
+    "overall_outlook": "中国短期重点是观察资本市场政策落地、工业利润结构、原油进口成本和居民消费修复。科技方面，AI从示范走向规模化是中长期机会，但岗位转换、数据质量和投资回报仍是约束。",
+    "confidence": "中高。国务院、国家统计局、FAO/WFP和OPEC官方日程有一手资料；SAP岗位调整和居民债务部分信息来自媒体报道，已标注未确认或付费墙限制。"
+  },
+  "next_24_hours_watchlist": {
+    "events": [
+      {
+        "name": "西班牙内政部举行29N大选信息发布安排记者会",
+        "beijing_time": "2026-11-28 19:30（北京时间；当地12:30 CET）",
+        "status": "已正式公布日程",
+        "why_watch": "介绍选举信息发布和数据中心安排。",
+        "potential_impact": "影响选举信息透明度；西班牙大选投票开始时间晚于本简报未来24小时窗口。",
+        "china_link": "选后立场可能影响欧盟对华经贸和政策协调。",
+        "priority": "中",
+        "sources": [
+          "https://www.interior.gob.es/opencms/es/detalle/convocatoria/Presentacion-del-dispositivo-informativo-para-las-elecciones-generales-del-29N-2026.11.28/"
+        ]
+      },
+      {
+        "name": "OPEC+第42次部长级会议及JMMC第69次会议",
+        "beijing_time": "2026-11-29；具体时刻待确认，是否落入未来24小时窗口尚不能确定",
+        "status": "会议日期已由OPEC正式公布；具体时刻未公布",
+        "why_watch": "讨论产量政策、补偿机制和2027年生产基准；维持一季度目标属于媒体预期。",
+        "potential_impact": "产量政策偏紧可能支撑油价，增产信号可能缓解供应溢价。",
+        "china_link": "中国是全球主要原油进口国，会议结果影响进口成本和炼化利润。",
+        "priority": "高",
+        "sources": [
+          "https://www.opec.org/pr-detail/1783605-7-june-2026.html",
+          "https://www.opec.org/pr-detail/617-4-october-2026.html",
+          "https://www.reuters.com/business/energy/brent-trades-near-months-high-mideast-conflict-threatens-supply-2026-11-27/"
+        ]
+      }
+    ],
+    "economic_calendar": [],
+    "policy_announcements": [],
+    "diplomatic_events": [],
+    "technology_events": [],
+    "potential_risks": [
+      {
+        "name": "中东油轮通行和能源设施安全",
+        "beijing_time": "持续关注；无固定发布时间",
+        "status": "持续风险，后续进展时间待确认",
+        "why_watch": "布伦特原油全周上涨约3%，航运和能源设施风险重新进入市场定价。",
+        "potential_impact": "若出现供给中断，油价、运费和保险成本可能进一步上升。",
+        "china_link": "影响中国原油进口账单、炼化利润、航运和化工成本。",
+        "priority": "高",
+        "sources": [
+          "https://www.reuters.com/business/energy/brent-trades-near-months-high-mideast-conflict-threatens-supply-2026-11-27/"
+        ]
+      },
+      {
+        "name": "俄乌能源与交通设施后续受损情况",
+        "beijing_time": "持续关注；无固定发布时间",
+        "status": "冲突持续，损失仍在更新",
+        "why_watch": "乌方称夜间袭击波及能源、铁路和民用设施。",
+        "potential_impact": "可能影响乌克兰民生、欧洲能源预期及黑海运输保险。",
+        "china_link": "关注对欧贸易物流、能源价格和海外项目安全的间接影响。",
+        "priority": "高",
+        "sources": [
+          "https://apnews.com/article/russia-ukraine-war-zelenskyy-trump-putin-d891149b4cbd6521b83096a32bd5e53d"
+        ]
+      },
+      {
+        "name": "英国劳动与养老金部网络事件的服务恢复和数据安全调查",
+        "beijing_time": "持续关注；恢复时间待确认",
+        "status": "官方调查进行中，暂未确认恶意攻击或个人数据泄露",
+        "why_watch": "公共福利线上服务暂停，后续恢复和数据安全通报关系到用户权益。",
+        "potential_impact": "可能造成申请和查询积压，官方称常规付款继续。",
+        "china_link": "为中国公共服务平台关键系统备份和网络韧性提供参考。",
+        "priority": "中",
+        "sources": [
+          "https://www.reuters.com/legal/litigation/uk-pensions-department-hit-by-cyber-incident-2026-11-27/",
+          "https://www.theguardian.com/politics/2026/nov/27/dwp-cyber-incident-pensions-benefits-systems-offline"
+        ]
+      }
+    ]
+  },
+  "quality_control": {
+    "duplicate_check": true,
+    "major_news_cross_verified": false,
+    "unverified_claims_marked": true,
+    "source_urls_checked": true
+  }
+}
