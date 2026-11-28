@@ -19,11 +19,327 @@
     ]
   },
   "top_5_headlines": [
-    "CHN-20261128-01",
-    "CHN-20261128-03",
-    "INT-20261128-03",
-    "INT-20261128-04",
-    "INT-20261128-08"
+    {
+      "id": "CHN-20261128-01",
+      "title": "国务院部署深化资本市场投融资改革，中央汇金稳定市场功能获强调",
+      "category": "中国政策与政务",
+      "location": "中国·北京",
+      "event_time": "2026-11-27：国务院常务会议召开并研究资本市场投融资改革",
+      "publish_time": "中国政府网：2026-11-27 13:08；路透社：2026-11-27 06:24 UTC",
+      "summary": "国务院常务会议提出完善市场稳定机制、研究新措施、鼓励分红回购，并优化中央汇金类稳定基金功能，引导保险资金、企业年金和社保基金等中长期资金入市。消息后沪指上涨3.7%，沪深300上涨4.2%，科创50上涨约15%。",
+      "key_facts": [
+        "官方提出发挥国家队资金稳定市场作用并优化中央汇金功能。",
+        "沪指上涨3.7%，沪深300上涨4.2%，科创50上涨约15%。",
+        "新增资金规模和具体实施时间尚未公布。"
+      ],
+      "importance_score": 9.2,
+      "importance_reason": "这是当日中国金融市场最重要的政策信号，影响股市流动性、投资者预期和中长期资金入市安排。",
+      "impact_assessment": {
+        "level": "高",
+        "period": "短中期",
+        "confidence": "高",
+        "details": "政策方向已明确，但市场持续性取决于措施落地、企业盈利和居民消费修复。"
+      },
+      "china_impact_analysis": {
+        "degree": "中",
+        "horizon": "短中期",
+        "confidence": "中",
+        "channels": {
+          "trade": "中｜中期｜中：融资改善可能帮助部分企业，但不能替代订单增长。",
+          "finance": "高｜短期｜高：政策信号推动A股反弹，持续性需看后续措施和盈利。",
+          "technology": "中高｜中期｜中：科技创新板块可能受风险偏好支持。",
+          "industry": "中｜中期｜中：融资功能改善有利于研发和设备投资。",
+          "employment": "中｜中期｜中：融资环境改善可能支持企业扩张。",
+          "public_livelihood": "中｜短期｜中：股市收益不等同于居民收入普遍增加。",
+          "policy": "高｜中期｜高：关注中长期资金入市、分红回购制度和投资者保护。"
+        }
+      },
+      "verification_status": "国务院会议内容由政府网发布，路透社独立报道市场反应；新增资金规模和政策时间表未公布。",
+      "developing_details": [],
+      "sources": [
+        {
+          "organization": "中国政府网／新华社",
+          "title": "Chinese premier chairs State Council executive meeting",
+          "url": "https://english.www.gov.cn/news/202611/27/content_WS6b091065c6d00ca5f9a0ea19.html",
+          "publish_time": "2026-11-27 13:08 北京时间"
+        },
+        {
+          "organization": "路透社",
+          "title": "China stocks surge most in two years as Beijing vows stronger market support",
+          "url": "https://www.reuters.com/markets/europe/china-stocks-shoot-up-after-beijing-vows-support-2026-11-27/",
+          "publish_time": "2026-11-27 06:24 UTC"
+        }
+      ],
+      "follow_up": [
+        "跟踪中央汇金、证监会和交易所后续政策。",
+        "观察反弹成交量、行业分化和中长期资金流入。"
+      ],
+      "tags": [
+        "资本市场",
+        "中央汇金",
+        "中长期资金",
+        "A股"
+      ]
+    },
+    {
+      "id": "CHN-20261128-03",
+      "title": "前10个月规上工业企业利润增长16%，电子和高技术制造业表现突出",
+      "category": "中国经济与金融市场",
+      "location": "中国·全国",
+      "event_time": "统计区间：2026年1—10月；国家统计局于11月27日09:30发布",
+      "publish_time": "国家统计局：2026-11-27 09:30 北京时间",
+      "summary": "国家统计局数据显示，1—10月全国规模以上工业企业利润总额6.73736万亿元，同比增长16.0%；10月单月增长20.1%。电子行业利润增长1倍，高技术制造业利润增长50.9%；汽车制造业利润下降26.0%，公用事业利润下降14.8%。",
+      "key_facts": [
+        "1—10月规上工业企业利润67373.6亿元，同比增长16.0%。",
+        "10月单月利润同比增长20.1%。",
+        "高技术制造业利润增长50.9%，汽车制造业利润下降26.0%。"
+      ],
+      "importance_score": 8.8,
+      "importance_reason": "工业利润保持两位数增长，但行业分化、应收账款和库存显示经营质量仍需观察。",
+      "impact_assessment": {
+        "level": "高",
+        "period": "中期",
+        "confidence": "高",
+        "details": "官方统计显示新动能行业支撑较强，但汽车、传统制造和公用事业利润承压。"
+      },
+      "china_impact_analysis": {
+        "degree": "中",
+        "horizon": "短中期",
+        "confidence": "中",
+        "channels": {
+          "trade": "中｜中期｜中：电子和高技术制造利润较快增长。",
+          "finance": "中｜短期｜中：利润改善可能支持制造业板块预期。",
+          "technology": "高｜中期｜高：电子行业利润增长与AI算力和存储芯片需求相联系。",
+          "energy": "中｜中期｜中：采矿利润增长、公用事业利润下降。",
+          "industry": "高｜中期｜高：高技术制造利润增速显著高于工业整体。",
+          "employment": "中｜中期｜中：高技术制造扩张有利于技术岗位。",
+          "public_livelihood": "中｜中期｜中：企业利润改善有助于投资和就业，但不代表居民收入同步增长。",
+          "policy": "中｜中期｜高：关注扩大内需、账款压力和传统行业转型。"
+        }
+      },
+      "verification_status": "国家统计局原始数据和统计局解读均已查阅；利润增长不代表所有行业和企业同步改善。",
+      "developing_details": [],
+      "sources": [
+        {
+          "organization": "国家统计局",
+          "title": "2026年1—10月份全国规模以上工业企业利润增长16.0%",
+          "url": "https://www.stats.gov.cn/sj/zxfbhjd/202611/t20261127_1965949.html",
+          "publish_time": "2026-11-27 09:30 北京时间"
+        },
+        {
+          "organization": "国家统计局",
+          "title": "国家统计局工业司首席统计师解读2026年1—10月份工业企业利润数据",
+          "url": "https://www.stats.gov.cn/sj/sjjd/202611/t20261127_1965950.html",
+          "publish_time": "2026-11-27 09:30 北京时间"
+        }
+      ],
+      "follow_up": [
+        "关注应收账款、库存和行业利润差异。"
+      ],
+      "tags": [
+        "工业利润",
+        "高技术制造",
+        "电子行业",
+        "企业经营"
+      ]
+    },
+    {
+      "id": "INT-20261128-03",
+      "title": "俄乌空袭持续升级：乌方称俄军夜间发动大规模无人机袭击",
+      "category": "国际政治与外交",
+      "location": "乌克兰多地；俄罗斯多地",
+      "event_time": "2026-11-26 18:00至2026-11-27 08:00（基辅时间）：俄军夜间无人机袭击，乌方08:00公布初步拦截数据",
+      "publish_time": "乌克兰空军通报经Interfax报道：2026-11-27 09:20 Kyiv；Anadolu：2026-11-27；俄方国防部数据经NAMPA/Sputnik转发：2026-11-27",
+      "summary": "乌克兰方面称俄军夜间发射155架无人机，其中110架被拦截，袭击波及27处地点，造成至少1人死亡、6人受伤。俄罗斯国防部则称拦截318架乌克兰无人机。双方战报均为交战方口径，尚不能完全独立核实。",
+      "key_facts": [
+        "乌方称拦截110架俄方无人机，27处地点遭袭。",
+        "俄方另称拦截318架乌方无人机，双方口径不同。"
+      ],
+      "importance_score": 8.6,
+      "importance_reason": "能源和交通基础设施持续成为打击目标，冬季供电、供暖和民用物流风险上升。",
+      "impact_assessment": {
+        "level": "高",
+        "period": "短中期",
+        "confidence": "中",
+        "details": "若能源设施损毁扩大，可能增加欧洲能源市场波动，并影响黑海航运。"
+      },
+      "china_impact_analysis": {
+        "degree": "中",
+        "horizon": "短中期",
+        "confidence": "中",
+        "channels": {
+          "trade": "中｜短期｜中：黑海航运、保险和欧洲物流成本可能波动。",
+          "finance": "中｜短期｜中：地缘风险可能推高避险需求。",
+          "energy": "中高｜短期｜中：区域能源设施受损会增加供应不确定性。",
+          "industry": "中｜中期｜中：欧洲能源成本可能影响中国对欧制造业订单。",
+          "public_livelihood": "中｜短期｜中：乌克兰居民供电、供暖和交通承压。",
+          "policy": "中｜中期｜中：中国企业应强化欧洲供应链和人员安全预案。"
+        }
+      },
+      "verification_status": "乌方155架来袭、110架拦截及27处命中数据由乌克兰空军通报，经Interfax和Anadolu报道；伤亡数字来自乌总理通报。俄方318架数据来自俄罗斯国防部，经NAMPA/Sputnik转述。双方战报均为官方口径，独立核实有限。",
+      "developing_details": [],
+      "sources": [
+        {
+          "organization": "Interfax-Ukraine（转述乌克兰空军）",
+          "title": "Air defense downs, suppresses 110 of 155 Russian UAVs, strikes recorded at 27 locations – Air Force",
+          "url": "https://en.interfax.com.ua/news/general/1243228-amp.html",
+          "publish_time": "2026-11-27 09:20 Kyiv"
+        },
+        {
+          "organization": "Anadolu Agency",
+          "title": "1 killed, 9 injured in Russia-Ukraine overnight strikes",
+          "url": "https://www.aa.com.tr/en/russia-ukraine-war/1-killed-9-injured-in-russia-ukraine-overnight-strikes/4140194",
+          "publish_time": "2026-11-27（页面日期）"
+        },
+        {
+          "organization": "NAMPA／Sputnik（转述俄罗斯国防部）",
+          "title": "Russian Air Defense Forces Downed 318 Ukrainian Drones Overnight - Defense Ministry",
+          "url": "https://www.nampa.org/text/23076357",
+          "publish_time": "2026-11-27"
+        }
+      ],
+      "follow_up": [
+        "关注能源设施修复、停电范围和核安全通报。",
+        "继续区分双方官方战报与独立核实信息。"
+      ],
+      "tags": [
+        "俄乌冲突",
+        "无人机",
+        "能源设施",
+        "核安全"
+      ]
+    },
+    {
+      "id": "INT-20261128-04",
+      "title": "布伦特原油全周上涨约3%，OPEC+将于11月29日举行部长级会议",
+      "category": "全球经济与金融市场",
+      "location": "全球能源市场；维也纳",
+      "event_time": "2026-11-27：布伦特期货结算；OPEC+第42次部长级会议排定11月29日",
+      "publish_time": "路透社：2026-11-27 21:12 UTC；OPEC日程公告：2026-06-07、2026-10-04",
+      "summary": "布伦特原油周五下跌1.2%，结算于每桶95.44美元，但全周上涨约3%，结束此前连续三周下跌。OPEC官方已将第42次部长级会议安排在11月29日，具体时刻未公布。维持2027年第一季度产量目标的说法属于市场预期，并非官方决定。",
+      "key_facts": [
+        "布伦特结算价95.44美元/桶，周五跌1.2%，全周涨约3%。",
+        "OPEC确认第42次部长级会议为11月29日；JMMC第69次会议亦排在同日。"
+      ],
+      "importance_score": 8.6,
+      "importance_reason": "原油供应风险溢价回升；中国是全球主要原油进口国，价格变化具有较强外溢性。",
+      "impact_assessment": {
+        "level": "高",
+        "period": "短期",
+        "confidence": "中高",
+        "details": "原油进口成本对中国炼化、交通和化工行业有直接影响，最终传导取决于供应风险是否持续。"
+      },
+      "china_impact_analysis": {
+        "degree": "中",
+        "horizon": "短中期",
+        "confidence": "中",
+        "channels": {
+          "trade": "中｜短期｜中：油价高位可能抬升进口账单和海运保险。",
+          "finance": "中｜短期｜中：能源价格可能影响人民币、债券和行业轮动。",
+          "energy": "高｜短期｜高：油价上涨可能增加进口成本。",
+          "industry": "高｜短中期｜中：炼化、航空、航运、化工和物流成本敏感。",
+          "employment": "中｜中期｜中：能源成本持续上行可能压缩交通和制造企业利润。",
+          "public_livelihood": "中｜短期｜中：燃油和物流成本存在间接传导可能。",
+          "policy": "中｜短期｜中：中国需关注战略储备、进口来源和运输通道安全。"
+        }
+      },
+      "verification_status": "油价结算和周涨幅已由路透社报道；OPEC官方确认会议日期。产量目标预期不是官方决议。",
+      "developing_details": [],
+      "sources": [
+        {
+          "organization": "路透社",
+          "title": "Oil notches first weekly gain in November on supply fears",
+          "url": "https://www.reuters.com/business/energy/brent-trades-near-months-high-mideast-conflict-threatens-supply-2026-11-27/",
+          "publish_time": "2026-11-27 21:12 UTC"
+        },
+        {
+          "organization": "OPEC",
+          "title": "41st OPEC and non-OPEC Ministerial Meeting",
+          "url": "https://www.opec.org/pr-detail/1783605-7-june-2026.html",
+          "publish_time": "2026-06-07"
+        },
+        {
+          "organization": "OPEC",
+          "title": "68th Meeting of the Joint Ministerial Monitoring Committee",
+          "url": "https://www.opec.org/pr-detail/617-4-october-2026.html",
+          "publish_time": "2026-10-04"
+        }
+      ],
+      "follow_up": [
+        "关注11月29日OPEC+正式公报和2027年产量基准。"
+      ],
+      "tags": [
+        "原油",
+        "OPEC+",
+        "能源安全",
+        "大宗商品"
+      ]
+    },
+    {
+      "id": "INT-20261128-08",
+      "title": "联合国粮食机构警告全球饥饿热点增至16个，厄尔尼诺与冲突叠加",
+      "category": "国际重大社会事件",
+      "location": "非洲南部、中美洲、东非、中东",
+      "event_time": "2026-11-27：FAO与WFP发布2026年12月至2027年5月粮食安全预警",
+      "publish_time": "FAO/WFP：2026-11-27；路透社：2026-11-27",
+      "summary": "联合国粮农组织和世界粮食计划署将全球粮食安全热点列为16个，高于6月的13个。南部非洲和中美洲干旱走廊受厄尔尼诺影响；苏丹、南苏丹、索马里、尼日利亚部分地区和也门仍属最高关注区域。",
+      "key_facts": [
+        "16个热点较6月增加3个。",
+        "报告关注期为2026年12月至2027年5月。",
+        "冲突是16个热点中12个地区粮食危机的重要驱动因素。"
+      ],
+      "importance_score": 8.3,
+      "importance_reason": "冲突、气候和援助资金下降叠加，可能加剧迁徙和地区不稳定。",
+      "impact_assessment": {
+        "level": "中",
+        "period": "中期",
+        "confidence": "高",
+        "details": "中国粮食供给总体不由这些地区决定，但全球粮食、化肥和运输市场的气候冲击仍需关注。"
+      },
+      "china_impact_analysis": {
+        "degree": "中",
+        "horizon": "短中期",
+        "confidence": "中",
+        "channels": {
+          "trade": "中｜中期｜中：农产品、化肥和航运路线可能受区域气候与冲突影响。",
+          "energy": "中｜中期｜中：厄尔尼诺可能影响水电和农业灌溉。",
+          "industry": "中｜中期｜中：化肥、粮食加工和物流供应链可能出现区域需求变化。",
+          "public_livelihood": "中｜中期｜中：粮价波动可能间接影响食品成本，但不代表国内必然涨价。",
+          "policy": "中｜中期｜中：中国可加强粮食储备、进口多元化和农业气象监测。"
+        }
+      },
+      "verification_status": "FAO与WFP联合报告已发布；未来饥饿人口规模属于预测。",
+      "developing_details": [],
+      "sources": [
+        {
+          "organization": "联合国粮农组织",
+          "title": "El Niño adds new hunger hotspots as conflict continues to drive risk of famine, warn FAO and WFP",
+          "url": "https://www.fao.org/newsroom/detail/el-nino-adds-new-hunger-hotspots-as-conflict-continues-to-drive-risk-of-famine-warn-fao-and-wfp/en",
+          "publish_time": "2026-11-27"
+        },
+        {
+          "organization": "路透社",
+          "title": "UN warns famine risks rising as hunger hotspots increase",
+          "url": "https://www.reuters.com/business/environment/un-warns-famine-risks-rising-hunger-hotspots-increase-2026-11-27/",
+          "publish_time": "2026-11-27"
+        },
+        {
+          "organization": "世界粮食计划署",
+          "title": "Hunger Hotspots FAO-WFP early warnings: December 2026 to May 2027 outlook",
+          "url": "https://www.wfp.org/publications/hunger-hotspots-fao-wfp-early-warnings-acute-food-insecurity-december-2026-may-2027",
+          "publish_time": "2026-11-27"
+        }
+      ],
+      "follow_up": [
+        "关注厄尔尼诺强度、主要粮食产区降雨和人道援助缺口。"
+      ],
+      "tags": [
+        "粮食安全",
+        "厄尔尼诺",
+        "人道主义",
+        "联合国"
+      ]
+    }
   ],
   "international_news": {
     "politics_and_diplomacy": [
